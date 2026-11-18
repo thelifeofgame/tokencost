@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Daily LLM Industry Market Radar & Price Drops",
+  "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
+  "version": "1.0.0",
+  "lastUpdated": "2026-11-18T09:03:59.281482+08:00",
+  "date": "2026-11-18",
+  "totalItems": 12,
+  "categories": [
+    {
+      "type": "new_model",
+      "label": "新模型发布 (New Models)",
+      "badgeColor": "emerald"
+    },
+    {
+      "type": "price_cut",
+      "label": "API 降价 (Price Cuts)",
+      "badgeColor": "rose"
+    },
+    {
+      "type": "promo",
+      "label": "限时与批处理特惠 (Batch & Promos)",
+      "badgeColor": "amber"
+    },
+    {
+      "type": "caching_update",
+      "label": "缓存降本升级 (Prompt Caching)",
+      "badgeColor": "indigo"
+    }
+  ],
+  "items": [
+    {
+      "id": "radar-dyn-gpt-6.2-astra-pro",
+      "type": "new_model",
+      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Astra Pro，支持 1,050,000 上下文",
+      "provider": "Openai",
+      "modelId": "gpt-6.2-astra-pro",
+      "badgeText": "New Arrival",
+      "summary": "GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pr",
+      "effectiveDate": "2026-11-18",
+      "link": "https://openrouter.ai/models/openai/gpt-6.2-astra-pro",
+      "metrics": {
+        "inputPerM": 8.0,
+        "outputPerM": 40.0,
+        "cacheDiscountPercent": 50.0,
+        "contextWindow": 1050000,
+        "throughputTps": 85.0
+      }
+    },
+    {
+      "id": "radar-dyn-gpt-6.2-astra",
+      "type": "new_model",
+      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Astra，支持 1,050,000 上下文",
+      "provider": "Openai",
+      "modelId": "gpt-6.2-astra",
+      "badgeText": "New Arrival",
+      "summary": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, profes",
+      "effectiveDate": "2026-11-18",
+      "link": "https://openrouter.ai/models/openai/gpt-6.2-astra",
+      "metrics": {
+        "inputPerM": 8.0,
+        "outputPerM": 40.0,
+        "cacheDiscountPercent": 50.0,
+        "contextWindow": 1050000,
+        "throughputTps": 85.0
+      }
+    },
+    {
+      "id": "radar-dyn-gpt-6.2-sol-pro",
+      "type": "new_model",
+      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Sol Pro，支持 1,050,000 上下文",
+      "provider": "Openai",
+      "modelId": "gpt-6.2-sol-pro",
+      "badgeText": "New Arrival",
+      "summary": "GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for",
+      "effectiveDate": "2026-11-18",
+      "link": "https://openrouter.ai/models/openai/gpt-6.2-sol-pro",
+      "metrics": {
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cacheDiscountPercent": 50.0,
+        "contextWindow": 1050000,
+        "throughputTps": 85.0
+      }
+    },
+    {
+      "id": "radar-dyn-gpt-6.2-sol",
+      "type": "new_model",
+      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Sol，支持 1,050,000 上下文",
+      "provider": "Openai",
+      "modelId": "gpt-6.2-sol",
+      "badgeText": "New Arrival",
+      "summary": "GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile",
+      "effectiveDate": "2026-11-18",
+      "link": "https://openrouter.ai/models/openai/gpt-6.2-sol",
+      "metrics": {
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cacheDiscountPercent": 50.0,
+        "contextWindow": 1050000,
+        "throughputTps": 85.0
+      }
+    },
+    {
+      "id": "radar-gemini-4-carbon-launch",
+      "type": "new_model",
+      "title": "Google 发布 Gemini 4 Carbon 超旗舰：2M 窗口原生支持，吞吐达 145 t/s",
+      "provider": "Google",
+      "modelId": "gemini-4-carbon",
+      "badgeText": "New Flagship",
+      "summary": "Google 官方正式上线 Gemini 4 Carbon，定价 $2.00/$10.00 每百万 Token，支持 200 万 Token 原生上下文与 95% 提示词缓存折扣，端到端生成吞吐较上一代提升超 120%。",
+      "effectiveDate": "2026-11-11",
+      "link": "https://ai.google.dev/pricing",
+      "metrics": {
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cacheDiscountPercent": 95.0,
+        "contextWindow": 1048576,
+        "throughputTps": 145.0
+      }
+    },
+    {
+      "id": "radar-claude-fable-5-2-launch",
+      "type": "new_model",
+      "title": "Anthropic 推出新一代故事与多模态长篇创作模型 Claude Fable 5.2",
+      "provider": "Anthropic",
+      "modelId": "claude-fable-5.2",
+      "badgeText": "New Model",
+      "summary": "面向长篇连贯叙事、复杂世界观建模与高质量创作者，支持 100 万长上下文，输入缓存折率高达 97.5%（折后仅 $0.20/1M）。",
+      "effectiveDate": "2026-11-10",
+      "link": "https://www.anthropic.com/pricing",
+      "metrics": {
+        "inputPerM": 8.0,
+        "outputPerM": 40.0,
+        "cacheDiscountPercent": 97.5,
+        "contextWindow": 1000000,
+        "throughputTps": 45.0
+      }
+    },
+    {
+      "id": "radar-openai-batch-50-expansion",
+      "type": "promo",
+      "title": "OpenAI 异步 Batch API 全面覆盖 GPT-6.1 Sol 系列，立减 50% 预算",
+      "provider": "OpenAI",
+      "modelId": "gpt-6.1-sol",
+      "badgeText": "50% Off Batch",
+      "summary": "针对 24 小时内 SLA 异步离线任务，GPT-6.1 Sol 批量端点输入单价降至 $1.00/1M，输出 $5.00/1M，极大降低大规模代码审计与合成数据训练成本。",
+      "effectiveDate": "2026-11-08",
+      "link": "https://openai.com/api/pricing/",
+      "metrics": {
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "batchDiscountPercent": 50.0,
+        "contextWindow": 1050000,
+        "throughputTps": 85.0,
+        "cacheDiscountPercent": 95.0
+      }
+    },
+    {
+      "id": "radar-anthropic-cache-read-drop",
+      "type": "caching_update",
+      "title": "Anthropic 提示词缓存读取折扣升级至 90%~95%，长对话 RAG 成本骤降",
+      "provider": "Anthropic",
+      "modelId": "claude-sonnet-5.5",
+      "badgeText": "Caching 95%",
+      "summary": "Sonnet 5.5 与 Opus 5.5 提示词缓存（Prompt Caching）读取费率降至基准输入的 5%~10%，企业级多轮客服与 Agent 架构边际成本接近零。",
+      "effectiveDate": "2026-11-05",
+      "link": "https://www.anthropic.com/pricing",
+      "metrics": {
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cacheDiscountPercent": 95.0,
+        "contextWindow": 1000000,
+        "throughputTps": 85.0
+      }
+    },
+    {
+      "id": "radar-deepseek-v4-1-flash-price-cut",
+      "type": "price_cut",
+      "title": "DeepSeek V4.1 Flash 费率极限下探：输入仅 $0.022/1M，周调用突破 9.5T",
+      "provider": "DeepSeek",
+      "modelId": "deepseek-v4.1-flash",
+      "badgeText": "Price Drop",
+      "summary": "DeepSeek 持续领跑全球高并发调用降本，输入端单价降至 $0.022/1M，输出 $0.40/1M，较 GPT-4o-mini 便宜 85.3%，连续两周稳居全球 API 消耗量第一。",
+      "effectiveDate": "2026-11-04",
+      "link": "https://api-docs.deepseek.com/quick_start/pricing",
+      "metrics": {
+        "inputPerM": 0.051,
+        "outputPerM": 0.567,
+        "cacheDiscountPercent": 64.71,
+        "contextWindow": 1048576,
+        "throughputTps": 145.0
+      }
+    },
+    {
+      "id": "radar-tencent-hy4-release",
+      "type": "new_model",
+      "title": "腾讯发布混元 Hy4 大模型：高性价比多模态推理，周 Token 激增",
+      "provider": "Tencent",
+      "modelId": "hy4",
+      "badgeText": "New Release",
+      "summary": "腾讯新一代混元主力模型 Hy4 登陆全球主流 API 聚合平台，输入 $0.417/1M，输出 $1.25/1M，上线首周即进入 OpenRouter 消耗榜前列。",
+      "effectiveDate": "2026-11-04",
+      "link": "https://cloud.tencent.com/document/product/1729",
+      "metrics": {
+        "inputPerM": 0.417,
+        "outputPerM": 1.2505,
+        "cacheDiscountPercent": 94.96,
+        "contextWindow": 131072,
+        "throughputTps": 85.0
+      }
+    },
+    {
+      "id": "radar-glm-5-3-flash-discount",
+      "type": "price_cut",
+      "title": "智谱 GLM 5.3 Flash 极速降价：输入 $0.0399/1M 开启普惠算力",
+      "provider": "Zhipu AI",
+      "modelId": "glm-5.3-flash",
+      "badgeText": "Price Drop",
+      "summary": "智谱 AI 针对海量高频场景推出 GLM 5.3 Flash 超低费率，百万 Token 输入仅需 0.28 元人民币（约 $0.0399），并支持 100 万超长上下文。",
+      "effectiveDate": "2026-11-03",
+      "link": "https://open.bigmodel.cn/pricing",
+      "metrics": {
+        "inputPerM": 0.0399,
+        "outputPerM": 0.0784,
+        "cacheDiscountPercent": 24.81,
+        "contextWindow": 1048576,
+        "throughputTps": 145.0
+      }
+    },
+    {
+      "id": "radar-groq-llama-3-3-speedup",
+      "type": "new_model",
+      "title": "Groq LPU 架构 Llama 3.3 70B 吞吐提速至 420 t/s，首字延迟 0.18s",
+      "provider": "Groq",
+      "modelId": "llama-3.3-70b",
+      "badgeText": "420 t/s Speed",
+      "summary": "Groq 优化 Llama 3.3 硬件编译架构，在 $0.59/$0.79 的平民定价下实现每秒 420 Token 的实时交互，彻底消灭流式输出卡顿。",
+      "effectiveDate": "2026-11-02",
+      "link": "https://groq.com/pricing/",
+      "metrics": {
+        "inputPerM": 0.59,
+        "outputPerM": 0.79,
+        "cacheDiscountPercent": 50.0,
+        "contextWindow": 131072,
+        "throughputTps": 420.0
+      }
+    }
+  ]
+}

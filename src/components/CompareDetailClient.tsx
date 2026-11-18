@@ -1,0 +1,193 @@
+'use client';
+
+import React, { useState } from 'react';
+import { ModelPricingRule } from '@/types/pricing';
+import { calculateModelCost } from '@/lib/calculator-engine';
+import { formatCurrency } from '@/lib/utils';
+import { Sparkles, SlidersHorizontal, Calculator } from 'lucide-react';
+import { useI18n } from '@/i18n/I18nProvider';
+
+interface CompareDetailClientProps {
+  modelA: ModelPricingRule;
+  modelB: ModelPricingRule;
+}
+
+export default function CompareDetailClient({
+  modelA,
+  modelB,
+}: CompareDetailClientProps) {
+  const { t } = useI18n();
+
+  // Interactive slider state for dynamic comparison
+  const [requests, setRequests] = useState(100000);
+  const [inputTokens, setInputTokens] = useState(4000);
+  const [outputTokens, setOutputTokens] = useState(1000);
+  const [cacheHitRate, setCacheHitRate] = useState(0.70);
+  const [batchRate, setBatchRate] = useState(0.0);
+
+  const costA = calculateModelCost(modelA, {
+    monthlyRequests: requests,
+    inputTokens,
+    outputTokens,
+    cacheHitRate,
+    batchRate,
+    enableLongContext: false,
+  });
+
+  const costB = calculateModelCost(modelB, {
+    monthlyRequests: requests,
+    inputTokens,
+    outputTokens,
+    cacheHitRate,
+    batchRate,
+    enableLongContext: false,
+  });
+
+  const cheaperModel = costA.monthlyNetCost <= costB.monthlyNetCost ? modelA : modelB;
+  const moreExpensiveCost = Math.max(costA.monthlyNetCost, costB.monthlyNetCost);
+  const cheaperCost = Math.min(costA.monthlyNetCost, costB.monthlyNetCost);
+  const savingsAmount = moreExpensiveCost - cheaperCost;
+  const savingsRatio = moreExpensiveCost > 0
+    ? Math.round((savingsAmount / moreExpensiveCost) * 100)
+    : 0;
+
+  const cheaperHeadline = `${cheaperModel.modelName} ${t.compare.cheaperBy.replace('{percent}', String(savingsRatio))}`;
+  const savingsDescription = t.compare.savesPerMonth
+    .replace('{model}', cheaperModel.modelName)
+    .replace('{amount}', formatCurrency(savingsAmount));
+
+  return (
+    <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-xl space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-zinc-800 pb-4">
+        <div>
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1">
+            <SlidersHorizontal className="h-3.5 w-3.5" />
+            <span>{t.compare.interactiveEngine}</span>
+          </div>
+          <h2 className="text-xl font-bold text-zinc-100">
+            {modelA.modelName} {t.common.vs} {modelB.modelName}
+          </h2>
+          <p className="text-xs text-zinc-400 mt-0.5">
+            {t.compare.scenariosDesc}
+          </p>
+        </div>
+        <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 bg-zinc-950 px-3 py-1.5 rounded-lg border border-zinc-800">
+          <Calculator className="h-3.5 w-3.5 text-indigo-400" />
+          <span>Live 50ms Engine</span>
+        </div>
+      </div>
+
+      {/* Sliders Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="space-y-2">
+          <div className="flex justify-between text-xs">
+            <span className="text-zinc-400 font-medium">{t.simulator.controls.monthlyRequests}</span>
+            <span className="font-mono text-zinc-200">{requests.toLocaleString()}</span>
+          </div>
+          <input
+            type="range"
+            min={10000}
+            max={2000000}
+            step={10000}
+            value={requests}
+            onChange={(e) => setRequests(Number(e.target.value))}
+            className="w-full accent-indigo-500"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex justify-between text-xs">
+            <span className="text-zinc-400 font-medium">{t.simulator.controls.inputTokens}</span>
+            <span className="font-mono text-zinc-200">{inputTokens.toLocaleString()}</span>
+          </div>
+          <input
+            type="range"
+            min={500}
+            max={64000}
+            step={500}
+            value={inputTokens}
+            onChange={(e) => setInputTokens(Number(e.target.value))}
+            className="w-full accent-indigo-500"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex justify-between text-xs">
+            <span className="text-zinc-400 font-medium">{t.simulator.controls.outputTokens}</span>
+            <span className="font-mono text-zinc-200">{outputTokens.toLocaleString()}</span>
+          </div>
+          <input
+            type="range"
+            min={100}
+            max={8192}
+            step={100}
+            value={outputTokens}
+            onChange={(e) => setOutputTokens(Number(e.target.value))}
+            className="w-full accent-indigo-500"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex justify-between text-xs">
+            <span className="text-zinc-400 font-medium">{t.simulator.controls.cacheHitRate}</span>
+            <span className="font-mono text-emerald-400 font-semibold">{Math.round(cacheHitRate * 100)}%</span>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={1}
+            step={0.05}
+            value={cacheHitRate}
+            onChange={(e) => setCacheHitRate(Number(e.target.value))}
+            className="w-full accent-emerald-500"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex justify-between text-xs">
+            <span className="text-zinc-400 font-medium">{t.simulator.controls.batchOffload}</span>
+            <span className="font-mono text-indigo-400 font-semibold">{Math.round(batchRate * 100)}%</span>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={1}
+            step={0.1}
+            value={batchRate}
+            onChange={(e) => setBatchRate(Number(e.target.value))}
+            className="w-full accent-indigo-500"
+          />
+        </div>
+      </div>
+
+      {/* Real-time Calculation Result Banner */}
+      <div className="rounded-xl border border-indigo-500/30 bg-indigo-950/20 p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="space-y-1 text-center sm:text-left">
+          <div className="flex items-center justify-center sm:justify-start gap-2">
+            <Sparkles className="h-4 w-4 text-emerald-400 shrink-0" />
+            <span className="text-base font-bold text-zinc-100">
+              {cheaperHeadline}
+            </span>
+          </div>
+          <p className="text-xs text-zinc-400">
+            {savingsDescription}
+          </p>
+        </div>
+
+        <div className="flex items-center gap-6 font-mono text-center">
+          <div className="p-2.5 rounded-lg bg-zinc-950/80 border border-zinc-800">
+            <span className="text-[10px] uppercase text-zinc-400 block font-sans font-medium">{modelA.modelName}</span>
+            <span className="text-lg font-bold text-zinc-100">{formatCurrency(costA.monthlyNetCost)}</span>
+            <span className="text-[10px] text-zinc-500 block font-sans">${(costA.singleRequestCost * 1000).toFixed(3)}/{t.common.per1kRequests}</span>
+          </div>
+          <span className="text-zinc-500 font-sans text-sm font-semibold">{t.common.vs}</span>
+          <div className="p-2.5 rounded-lg bg-zinc-950/80 border border-zinc-800">
+            <span className="text-[10px] uppercase text-zinc-400 block font-sans font-medium">{modelB.modelName}</span>
+            <span className="text-lg font-bold text-zinc-100">{formatCurrency(costB.monthlyNetCost)}</span>
+            <span className="text-[10px] text-zinc-500 block font-sans">${(costB.singleRequestCost * 1000).toFixed(3)}/{t.common.per1kRequests}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
