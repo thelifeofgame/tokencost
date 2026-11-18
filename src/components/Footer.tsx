@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-3 text-zinc-400">
             <a
-              href="https://github.com"
+              href="https://github.com/thelifeofgame/tokencost"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Repository"
