@@ -13,6 +13,7 @@ import {
   extractLocaleFromPath,
   getLocalizedPath as buildLocalizedPath,
 } from './index';
+import { trackEvent } from '@/lib/analytics';
 
 interface I18nContextValue {
   locale: Locale;
@@ -94,24 +95,12 @@ export function I18nProvider({
         document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
         document.documentElement.lang = newLocale;
 
-        // 2. Track commercial event (PRD 5.2 requirement)
-        try {
-          if (typeof window !== 'undefined') {
-            const eventPayload = {
-              event: 'language_change',
-              from_locale: oldLocale,
-              to_locale: newLocale,
-              current_path: window.location.pathname,
-              timestamp: new Date().toISOString(),
-            };
-            // Log for analytics / GA4 / PostHog
-            if (process.env.NODE_ENV === 'development') {
-              console.log('[Analytics Event]', eventPayload);
-            }
-          }
-        } catch {
-          // Ignore tracking errors
-        }
+        // 2. Track commercial event (dataLayer)
+        trackEvent('language_change', {
+          from_locale: oldLocale,
+          to_locale: newLocale,
+          current_path: window.location.pathname,
+        });
 
         // 3. Seamless Hot-Switching of URL without losing state
         const currentSearch = window.location.search || '';

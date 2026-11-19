@@ -1,0 +1,1591 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coding Agent & Harness Benchmark Catalog (2026)",
+  "description": "Structured evaluation, token overhead multipliers, BYOK configuration templates, and 2026 model compatibility matrices for top coding agents and harnesses.",
+  "version": "1.0.0",
+  "lastUpdated": "2026-11-19T12:25:00+08:00",
+  "verifiedDate": "2026-11-19",
+  "totalTools": 7,
+  "benchmarkAssumptions": {
+    "referenceTask": "15-turn multi-file repository refactoring with 5 tool calls",
+    "referenceTaskZh": "典型 15 轮次跨文件代码重构任务（含 5 次工具调用）",
+    "baseTaskInputTokens": 30000,
+    "baseTaskOutputTokens": 4500,
+    "defaultCacheHitRate": 0.7
+  },
+  "categories": [
+    {
+      "id": "cli-agent",
+      "name": "Terminal CLI Agent",
+      "nameZh": "终端 CLI Agent"
+    },
+    {
+      "id": "ai-ide",
+      "name": "Standalone AI IDE",
+      "nameZh": "独立 AI IDE"
+    },
+    {
+      "id": "ide-extension",
+      "name": "IDE Extension",
+      "nameZh": "编辑器插件"
+    }
+  ],
+  "tools": [
+    {
+      "slug": "claude-code",
+      "name": "Claude Code",
+      "category": "cli-agent",
+      "categoryLabel": "Official Terminal CLI Agent",
+      "categoryLabelZh": "官方终端 CLI Agent",
+      "isOpenSource": false,
+      "license": "Proprietary (CLI source-available)",
+      "officialUrl": "https://docs.anthropic.com/en/docs/claude-code/overview",
+      "tagline": "Anthropic's agentic terminal CLI with native prompt caching, subagent delegation, and /compact memory control.",
+      "taglineZh": "Anthropic 官方终端编程 Agent，原生支持 Prompt Caching、Subagent 协同与 /compact 自动压缩。",
+      "githubRepo": "anthropics/claude-code",
+      "githubStars": 156198,
+      "latestVersion": "v2.1.328",
+      "verifiedDate": "2026-11-19",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "Node.js >= 18.0",
+        "Git >= 2.30",
+        "macOS / Linux / WSL2"
+      ],
+      "dependencies": [
+        "Node.js >= 18.0",
+        "Git >= 2.30",
+        "ripgrep (bundled)"
+      ],
+      "installCommand": "npm install -g @anthropic-ai/claude-code",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "ANTHROPIC_API_KEY",
+          "ANTHROPIC_BASE_URL",
+          "ANTHROPIC_MODEL",
+          "ANTHROPIC_SMALL_FAST_MODEL"
+        ],
+        "notes": "Supports Anthropic API keys directly or any Anthropic-Messages-compatible endpoint (such as OpenRouter or DeepSeek Anthropic endpoint) via ANTHROPIC_BASE_URL.",
+        "notesZh": "原生支持 Anthropic API Key，也可通过 ANTHROPIC_BASE_URL 接入 OpenRouter 或兼容 Anthropic Messages 协议的 DeepSeek 网关。"
+      },
+      "tokenMultiplierMin": 1.8,
+      "tokenMultiplierMax": 2.5,
+      "tokenMultiplierRange": {
+        "min": 1.8,
+        "max": 2.5,
+        "typical": 2.1
+      },
+      "baseSystemPromptTokens": 3200,
+      "basePromptOverheadTokens": 3200,
+      "compactionStrategy": "Native Prompt Caching + threshold-triggered /compact LLM summarization when context fills",
+      "compactionStrategyZh": "原生 Prompt Caching 前缀复用 + 上下文达到阈值时触发 /compact 摘要压缩",
+      "promptCachingEfficiency": "Very High (80%–92% cache read hit rate across multi-turn bash/edit loops)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "Very High",
+        "hitRateRangePercent": [
+          80,
+          92
+        ],
+        "notes": "Automatically marks system prompt, CLAUDE.md, and tool definitions with cache_control breakpoints.",
+        "notesZh": "自动在系统提示词、CLAUDE.md 与工具定义上注入 cache_control 断点，长会话读取折扣高达 90%–95%。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, Claude Code amplifies raw prompt tokens by 1.8x–2.5x due to bash/file read loops, but 80%+ cache hits cut effective input cost by ~75%.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮跨文件重构（含 5 次工具调用）中，多轮终端与文件读取使总 Token 乘数为 1.8x–2.5x，但极高的缓存命中率可抵消约 75% 的输入成本。",
+      "recommendedModels": [
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Best balance of SWE-bench accuracy, native cache breakpoints, and $2/$10 pricing.",
+          "reasonZh": "代码准确率、原生缓存断点与 $2/$10 价格的最佳平衡点。"
+        },
+        {
+          "modelId": "claude-opus-5.5",
+          "modelName": "Anthropic: Claude Opus 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 4.0,
+          "outputPerM": 20.0,
+          "cachedInputPerM": 0.2,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Architect / Complex",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Peak ELO (1392) for multi-service architectural refactors and deep debugging.",
+          "reasonZh": "ELO 1392 顶级推理，适合跨模块重构与疑难排障。"
+        },
+        {
+          "modelId": "claude-haiku-5.5",
+          "modelName": "Anthropic: Claude Haiku 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 0.1,
+          "outputPerM": 0.5,
+          "cachedInputPerM": 0.01,
+          "cacheDiscountPercent": 90.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Fast Subagent",
+          "toolCalling": "Native",
+          "promptCaching": "Full (90% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Ultra-cheap ($0.10/$0.50) background search & subagent worker via ANTHROPIC_SMALL_FAST_MODEL.",
+          "reasonZh": "$0.10/$0.50 极低单价，适合通过 ANTHROPIC_SMALL_FAST_MODEL 担任文件检索子代理。"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.3,
+          "outputPerM": 1.2,
+          "cachedInputPerM": 0.006,
+          "cacheDiscountPercent": 98.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Budget BYOK",
+          "toolCalling": "Native (via Anthropic-compat gateway)",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "98% cached input discount ($0.006/M) when routed via Anthropic-compatible endpoint.",
+          "reasonZh": "通过兼容端点接入可享受 98% 缓存读取折扣（$0.006/M）。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "First-party default"
+        },
+        {
+          "modelId": "claude-opus-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Recommended for planning"
+        },
+        {
+          "modelId": "claude-haiku-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Ideal for fast subagents"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Provider-Dependent",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Requires Anthropic-format endpoint"
+        }
+      ],
+      "configTemplate": {
+        "language": "bash",
+        "filename": "~/.zshrc or .env",
+        "code": "# 1) Official Anthropic (Recommended for native 95% caching)\nexport ANTHROPIC_API_KEY=\"sk-ant-...\"\nexport ANTHROPIC_MODEL=\"claude-sonnet-5.5\"\nexport ANTHROPIC_SMALL_FAST_MODEL=\"claude-haiku-5.5\"\n\n# 2) DeepSeek Anthropic-Compatible Endpoint (Budget BYOK)\nexport ANTHROPIC_BASE_URL=\"https://api.deepseek.com/anthropic\"\nexport ANTHROPIC_API_KEY=\"sk-ds-...\"\nexport ANTHROPIC_MODEL=\"deepseek-chat\""
+      },
+      "configTemplates": [
+        {
+          "id": "claude-code-deepseek",
+          "title": "DeepSeek Anthropic-Compatible (.env)",
+          "titleZh": "DeepSeek Anthropic 兼容端点配置",
+          "provider": "DeepSeek",
+          "language": "bash",
+          "filename": ".env",
+          "code": "export ANTHROPIC_BASE_URL=\"https://api.deepseek.com/anthropic\"\nexport ANTHROPIC_API_KEY=\"${DEEPSEEK_API_KEY}\"\nexport ANTHROPIC_MODEL=\"deepseek-chat\"\nexport ANTHROPIC_SMALL_FAST_MODEL=\"deepseek-chat\"\nexport API_TIMEOUT_MS=\"600000\""
+        },
+        {
+          "id": "claude-code-openrouter",
+          "title": "OpenRouter Anthropic Bridge (.env)",
+          "titleZh": "OpenRouter 路由接入配置",
+          "provider": "OpenRouter",
+          "language": "bash",
+          "filename": ".env",
+          "code": "export ANTHROPIC_BASE_URL=\"https://openrouter.ai/api\"\nexport ANTHROPIC_AUTH_TOKEN=\"${OPENROUTER_API_KEY}\"\nexport ANTHROPIC_API_KEY=\"\"\nexport ANTHROPIC_MODEL=\"anthropic/claude-sonnet-5.5\""
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "cc-faq-1",
+          "severity": "critical",
+          "question": "Why does token cost spike suddenly after 15+ turns?",
+          "questionZh": "为什么多轮对话超过 15 轮后单次账单突然飙升？",
+          "answer": "Large bash outputs (test logs, npm build dumps) bloat the uncached tail and can break cache prefixes if context exceeds limits. Run `/compact` proactively after finishing each subtask or keep `CLAUDE.md` concise.",
+          "answerZh": "冗长的终端输出（如完整测试日志或编译报错）会迅速撑大上下文并触发前缀失效。建议每完成一个小任务主动执行 `/compact`，并精简 `CLAUDE.md`。"
+        },
+        {
+          "id": "cc-faq-2",
+          "severity": "warning",
+          "question": "How do I avoid wasting Opus 5.5 tokens on simple grep/file reads?",
+          "questionZh": "如何避免简单搜索与读文件也消耗昂贵的旗舰模型额度？",
+          "answer": "Always set `ANTHROPIC_SMALL_FAST_MODEL=claude-haiku-5.5` so Claude Code routes subagent file searches and summaries to the $0.10/1M tier.",
+          "answerZh": "务必配置 `ANTHROPIC_SMALL_FAST_MODEL=claude-haiku-5.5`，将文件检索与摘要子任务自动分流至 $0.10/1M 的轻量模型。"
+        },
+        {
+          "id": "cc-faq-3",
+          "severity": "tip",
+          "question": "Why does OpenRouter or DeepSeek fail with 404 or timeout?",
+          "questionZh": "通过 OpenRouter 或 DeepSeek 网关接入时为何出现 404 或超时？",
+          "answer": "Claude Code speaks the `/v1/messages` Anthropic schema, not OpenAI `/v1/chat/completions`. Point `ANTHROPIC_BASE_URL` to an Anthropic-compatible endpoint and raise `API_TIMEOUT_MS=600000`.",
+          "answerZh": "Claude Code 使用 Anthropic `/v1/messages` 协议而非 OpenAI 格式。必须使用支持 Anthropic 协议的 Base URL，并设置 `API_TIMEOUT_MS=600000` 防止长工具调用超时。"
+        }
+      ]
+    },
+    {
+      "slug": "cursor",
+      "name": "Cursor",
+      "category": "ai-ide",
+      "categoryLabel": "Standalone AI IDE (VS Code Fork)",
+      "categoryLabelZh": "独立 AI IDE（VS Code 分支）",
+      "isOpenSource": false,
+      "license": "Proprietary",
+      "officialUrl": "https://www.cursor.com/",
+      "tagline": "Full-featured AI IDE with codebase indexing, Shadow Workspace lint verification, and multi-file Composer Agent.",
+      "taglineZh": "搭载私有代码索引、影子工作区校验与多文件 Composer Agent 的主流 AI IDE。",
+      "githubRepo": "cursor/cursor",
+      "githubStars": 33343,
+      "latestVersion": "2.x Stable",
+      "verifiedDate": "2026-11-19",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "macOS / Windows / Linux Desktop",
+        "4 GB+ RAM"
+      ],
+      "dependencies": [
+        "Standalone Electron/VS Code binary",
+        "Git (optional)"
+      ],
+      "installCommand": "brew install --cask cursor  # or download from cursor.com",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "Settings > Models > OpenAI/Anthropic/Google API Key & Override Base URL"
+        ],
+        "notes": "Supports BYOK in Settings, though proprietary features like Cursor Tab, codebase embeddings, and some Composer tools rely on Cursor Pro proxy routing.",
+        "notesZh": "支持在设置中填入自带 Key 与自定义 Base URL，但 Cursor Tab 补全与部分语义检索索引仍依赖官方代理。"
+      },
+      "tokenMultiplierMin": 2.2,
+      "tokenMultiplierMax": 3.5,
+      "tokenMultiplierRange": {
+        "min": 2.2,
+        "max": 3.5,
+        "typical": 2.8
+      },
+      "baseSystemPromptTokens": 4200,
+      "basePromptOverheadTokens": 4200,
+      "compactionStrategy": "Semantic codebase embeddings + Shadow Workspace diff verification + aggressive multi-file context injection",
+      "compactionStrategyZh": "语义代码向量索引 + 影子工作区 Lint 校验 + 多文件上下文自动注入",
+      "promptCachingEfficiency": "Medium (60%–78%; dynamic RAG chunks can shift prompt prefix)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "Medium",
+        "hitRateRangePercent": [
+          60,
+          78
+        ],
+        "notes": "Cursor's managed proxy applies caching on static prefixes, while BYOK OpenAI-override paths may see lower cache reuse when RAG snippets reorder.",
+        "notesZh": "官方托管模式下对前缀缓存有一定优化，但 BYOK 模式下由于动态检索片段位置变化，缓存命中率通常在 60%–78%。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, automatic codebase indexing, @Files mentions, and lint-fix retries drive a 2.2x–3.5x token multiplier.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮代码重构中，自动检索关联文件、多文件编辑与报错自动重试会带来 2.2x–3.5x 的较高 Token 放大倍率。",
+      "recommendedModels": [
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Top Composer reliability for multi-file diffs and clean TypeScript/Python edits.",
+          "reasonZh": "多文件 Diff 编辑成功率最高，Composer 模式稳定性最佳。"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "modelName": "Google: Gemini 4 Neon",
+          "providerOrg": "Google",
+          "inputPerM": 3.0,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "High-Speed Repo Agent",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "61.4 AA intelligence with 145 t/s speed makes Composer iterations nearly twice as fast.",
+          "reasonZh": "AA 指数 61.4 搭配 145 t/s 生成速度，显著缩短多轮重构等待时间。"
+        },
+        {
+          "modelId": "gpt-6.2-sol",
+          "modelName": "OpenAI: GPT-6.2 Sol",
+          "providerOrg": "OpenAI",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1050000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Balanced Daily Driver",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Strong instruction following and 1.05M context window at $2/$10.",
+          "reasonZh": "指令遵循稳定，1.05M 超长上下文配合 $2/$10 均衡费率。"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.3,
+          "outputPerM": 1.2,
+          "cachedInputPerM": 0.006,
+          "cacheDiscountPercent": 98.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "BYOK Budget",
+          "toolCalling": "Native",
+          "promptCaching": "Partial (via OpenAI-compat)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Ultra-low $0.30/$1.20 rate when configured via OpenAI Base URL override.",
+          "reasonZh": "通过 Override OpenAI Base URL 接入可大幅降低高频问答成本。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Default Agent choice"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Fastest frontier option"
+        },
+        {
+          "modelId": "gpt-6.2-sol",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Strong tool schemas"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Partial",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Use OpenAI Base URL override"
+        }
+      ],
+      "configTemplate": {
+        "language": "json",
+        "filename": "Cursor Settings > Models (BYOK / OpenRouter)",
+        "code": "{\n  \"openAI.apiKey\": \"sk-or-v1-...\",\n  \"openAI.baseUrl\": \"https://openrouter.ai/api/v1\",\n  \"customModels\": [\n    \"google/gemini-4-neon\",\n    \"openai/gpt-6.2-sol\",\n    \"deepseek/deepseek-v4.1-flash\"\n  ]\n}"
+      },
+      "configTemplates": [
+        {
+          "id": "cursor-deepseek",
+          "title": "DeepSeek via OpenAI Override",
+          "titleZh": "DeepSeek 自定义 Base URL 配置",
+          "provider": "DeepSeek",
+          "language": "json",
+          "filename": "Cursor Settings > Models",
+          "code": "{\n  \"Override OpenAI Base URL\": \"https://api.deepseek.com/v1\",\n  \"OpenAI API Key\": \"sk-ds-your-key\",\n  \"Add Custom Model\": \"deepseek-chat\"\n}"
+        },
+        {
+          "id": "cursor-openrouter",
+          "title": "OpenRouter Multi-Model Routing",
+          "titleZh": "OpenRouter 多模型聚合配置",
+          "provider": "OpenRouter",
+          "language": "json",
+          "filename": "Cursor Settings > Models",
+          "code": "{\n  \"Override OpenAI Base URL\": \"https://openrouter.ai/api/v1\",\n  \"OpenAI API Key\": \"sk-or-v1-your-key\",\n  \"Add Custom Model\": [\"google/gemini-4-neon\", \"anthropic/claude-sonnet-5.5\"]\n}"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "cur-faq-1",
+          "severity": "critical",
+          "question": "Why does BYOK mode disable some Cursor Agent or Tab features?",
+          "questionZh": "为什么开启 BYOK 自定义 Key 后部分 Cursor Agent 或 Tab 补全不可用？",
+          "answer": "Cursor's proprietary apply-model and Tab autocomplete require Cursor's hosted routing. Use BYOK mainly for Chat/Ask, or route via OpenRouter with models supporting native tool calls.",
+          "answerZh": "Cursor 的极速代码应用模型与 Tab 补全依赖官方后端路由，BYOK 模式更适合普通 Chat 或标准工具调用场景。"
+        },
+        {
+          "id": "cur-faq-2",
+          "severity": "warning",
+          "question": "How can I prevent Cursor from eating 100k+ tokens per Composer prompt?",
+          "questionZh": "如何防止 Composer 单次请求吃掉超过 10 万 Token？",
+          "answer": "Maintain a strict `.cursorignore` excluding `node_modules/`, `dist/`, `.next/`, and large JSON/CSV fixtures so indexing doesn't inject bulk data.",
+          "answerZh": "务必配置 `.cursorignore`，屏蔽 `node_modules/`、`dist/`、大型 JSON/日志数据文件，避免语义检索自动塞入无关大文件。"
+        },
+        {
+          "id": "cur-faq-3",
+          "severity": "tip",
+          "question": "Should I stay in long Composer threads or start fresh?",
+          "questionZh": "长任务应该一直续聊还是及时新开 Composer 会话？",
+          "answer": "Start a new Composer session every 10–15 turns once a milestone passes; stale file snapshots inflate token multipliers past 3.5x.",
+          "answerZh": "每完成一个功能节点（约 10–15 轮）就新建会话，旧对话中残留的历史文件快照会让倍率飙升至 3.5x 以上。"
+        }
+      ]
+    },
+    {
+      "slug": "windsurf",
+      "name": "Windsurf",
+      "category": "ai-ide",
+      "categoryLabel": "Standalone AI IDE (Codeium)",
+      "categoryLabelZh": "独立 AI IDE（Codeium 出品）",
+      "isOpenSource": false,
+      "license": "Proprietary",
+      "officialUrl": "https://windsurf.com/",
+      "tagline": "Flow-driven AI IDE powered by Cascade engine with selective AST chunking and strict step-by-step tool control.",
+      "taglineZh": "搭载 Cascade 引擎的 AI IDE，通过按需代码块检索与严格工具流控制降低上下文冗余。",
+      "githubRepo": "Exafunction/codeium",
+      "githubStars": null,
+      "latestVersion": "Wave 13+ (LS v2.12.5)",
+      "verifiedDate": "2026-11-19",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "macOS / Windows / Linux Desktop",
+        "4 GB+ RAM"
+      ],
+      "dependencies": [
+        "Standalone Windsurf Desktop App"
+      ],
+      "installCommand": "brew install --cask windsurf  # or download from windsurf.com",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": false,
+        "customModel": true,
+        "envVars": [
+          "Settings > Windsurf > Custom Provider API Keys (Anthropic / OpenAI / Google)"
+        ],
+        "notes": "Supports bringing personal Anthropic/OpenAI/Google keys for select models, while arbitrary third-party Base URL overrides are restricted compared to open extensions.",
+        "notesZh": "支持绑定个人 Anthropic/OpenAI/Google 官方 Key，但相比开源插件对第三方自定义 Base URL 的开放度较低。"
+      },
+      "tokenMultiplierMin": 1.9,
+      "tokenMultiplierMax": 2.8,
+      "tokenMultiplierRange": {
+        "min": 1.9,
+        "max": 2.8,
+        "typical": 2.3
+      },
+      "baseSystemPromptTokens": 3600,
+      "basePromptOverheadTokens": 3600,
+      "compactionStrategy": "Cascade flow-aware selective chunking + automatic terminal output truncation",
+      "compactionStrategyZh": "Cascade 流程感知按需切片检索 + 终端输出自动截断机制",
+      "promptCachingEfficiency": "Medium-High (68%–82% via Cascade prefix stabilization)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "Medium-High",
+        "hitRateRangePercent": [
+          68,
+          82
+        ],
+        "notes": "Cascade orders repository context more deterministically than naive RAG, yielding solid cache reuse on Anthropic and Gemini models.",
+        "notesZh": "Cascade 对静态上下文顺序编排较稳定，在 Claude 5.5 与 Gemini 4 上可实现 68%–82% 缓存命中。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, Cascade's selective chunk retrieval keeps overhead at 1.9x–2.8x—roughly 15%–20% leaner than unpruned multi-file IDE agents.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构任务中，Cascade 按需检索将 Token 倍率控制在 1.9x–2.8x，比全量塞文件的 IDE 节省约 15%–20%。",
+      "recommendedModels": [
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Smooth Cascade flow execution with 95% cache read discount.",
+          "reasonZh": "与 Cascade 工具流高度契合，95% 缓存读取折率表现优异。"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "modelName": "Google: Gemini 4 Neon",
+          "providerOrg": "Google",
+          "inputPerM": 3.0,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "High-Speed Agent",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "145 t/s speed pairs naturally with Windsurf real-time flow previews.",
+          "reasonZh": "145 t/s 极速输出让 Cascade 实时代码修改预览零卡顿。"
+        },
+        {
+          "modelId": "gpt-6.2-sol",
+          "modelName": "OpenAI: GPT-6.2 Sol",
+          "providerOrg": "OpenAI",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1050000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "General Coding",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Consistent multi-step schema adherence at $2/$10.",
+          "reasonZh": "多步工具调用结构化输出稳定，$2/$10 性价比突出。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Top Cascade accuracy"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Best throughput/intelligence ratio"
+        },
+        {
+          "modelId": "gpt-6.2-sol",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Reliable general refactoring"
+        },
+        {
+          "modelId": "deepseek-v3",
+          "toolCalling": "Native",
+          "promptCaching": "Provider-Dependent",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Available via Windsurf hosted tier / custom config"
+        }
+      ],
+      "configTemplate": {
+        "language": "json",
+        "filename": "~/.codeium/windsurf/mcp_config.json & API Key Settings",
+        "code": "{\n  \"providerKeys\": {\n    \"anthropic\": \"sk-ant-...\",\n    \"openai\": \"sk-...\",\n    \"google\": \"AIza...\"\n  },\n  \"cascade\": {\n    \"preferredModel\": \"gemini-4-neon\",\n    \"autoRunTerminal\": false\n  }\n}"
+      },
+      "configTemplates": [
+        {
+          "id": "windsurf-official-byok",
+          "title": "Official Provider BYOK Setup",
+          "titleZh": "官方模型 BYOK 绑定配置",
+          "provider": "Google / Anthropic / OpenAI",
+          "language": "json",
+          "filename": "Windsurf Settings > Models",
+          "code": "{\n  \"googleApiKey\": \"${GEMINI_API_KEY}\",\n  \"anthropicApiKey\": \"${ANTHROPIC_API_KEY}\",\n  \"defaultCascadeModel\": \"gemini-4-neon\"\n}"
+        },
+        {
+          "id": "windsurf-litellm-proxy",
+          "title": "Local LiteLLM Proxy for DeepSeek/OpenRouter",
+          "titleZh": "通过本地 LiteLLM 代理接入 DeepSeek / OpenRouter",
+          "provider": "DeepSeek / OpenRouter",
+          "language": "yaml",
+          "filename": "litellm_config.yaml",
+          "code": "model_list:\n  - model_name: gpt-6.2-sol\n    litellm_params:\n      model: openrouter/deepseek/deepseek-v4.1-flash\n      api_key: os.environ/OPENROUTER_API_KEY"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "ws-faq-1",
+          "severity": "critical",
+          "question": "Can I plug a custom DeepSeek Base URL directly into Windsurf?",
+          "questionZh": "Windsurf 能否直接填写 DeepSeek 自定义 Base URL？",
+          "answer": "Windsurf restricts arbitrary Base URL overrides natively; either use Windsurf's built-in hosted DeepSeek credits or front OpenRouter/DeepSeek behind a local OpenAI-compatible proxy.",
+          "answerZh": "Windsurf 原生对自定义 Base URL 限制较严，如需接入私有 DeepSeek 节点建议通过本地 LiteLLM 代理桥接。"
+        },
+        {
+          "id": "ws-faq-2",
+          "severity": "warning",
+          "question": "Why do Cascade Flow Action credits deplete faster than raw API tokens?",
+          "questionZh": "为什么 Cascade 的 Flow Action 消耗比纯 API Token 更快？",
+          "answer": "Each file search, grep, lint check, and terminal command counts as a Cascade tool step. Batch clear requirements into one prompt instead of micro-prompting.",
+          "answerZh": "每次搜索、Lint 检查和终端执行都会触发额外工具步。将需求一次性写清楚可大幅减少来回探测步数。"
+        },
+        {
+          "id": "ws-faq-3",
+          "severity": "tip",
+          "question": "How to keep Windsurf from reading build artifacts?",
+          "questionZh": "如何防止 Windsurf 索引打包产物或缓存目录？",
+          "answer": "Add build outputs, lockfiles, and dataset folders to `.codeiumignore` at the repository root.",
+          "answerZh": "在仓库根目录创建 `.codeiumignore`，排除编译产物、lockfile 与大型测试数据集。"
+        }
+      ]
+    },
+    {
+      "slug": "aider",
+      "name": "Aider",
+      "category": "cli-agent",
+      "categoryLabel": "Open-Source Terminal CLI",
+      "categoryLabelZh": "开源终端 CLI",
+      "isOpenSource": true,
+      "license": "Apache-2.0",
+      "officialUrl": "https://aider.chat/",
+      "tagline": "Token-frugal open-source CLI using Tree-sitter AST Repo-Map, Architect/Editor split, and clean Git auto-commits.",
+      "taglineZh": "业界公认最省 Token 的开源终端编程工具：Tree-sitter AST 仓库地图 + Architect/Editor 双模型分工。",
+      "githubRepo": "Aider-AI/aider",
+      "githubStars": 50175,
+      "latestVersion": "v0.86.0",
+      "verifiedDate": "2026-11-19",
+      "installDifficulty": 2,
+      "runtimeRequirements": [
+        "Python 3.10–3.12",
+        "Git >= 2.25"
+      ],
+      "dependencies": [
+        "Python >= 3.10",
+        "pip / uv",
+        "Git",
+        "tree-sitter"
+      ],
+      "installCommand": "python -m pip install aider-install && aider-install",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "DEEPSEEK_API_KEY",
+          "OPENROUTER_API_KEY",
+          "ANTHROPIC_API_KEY",
+          "OPENAI_API_KEY",
+          "OPENAI_API_BASE"
+        ],
+        "notes": "Built on LiteLLM: supports 100+ providers, custom OpenAI-compatible endpoints, local Ollama, and dual-model Architect/Editor routing out of the box.",
+        "notesZh": "基于 LiteLLM 构建，开箱支持 100+ 厂商、任意 OpenAI 兼容网关、Ollama 本地模型及 Architect/Editor 双模型混搭。"
+      },
+      "tokenMultiplierMin": 1.2,
+      "tokenMultiplierMax": 1.8,
+      "tokenMultiplierRange": {
+        "min": 1.2,
+        "max": 1.8,
+        "typical": 1.45
+      },
+      "baseSystemPromptTokens": 1150,
+      "basePromptOverheadTokens": 1150,
+      "compactionStrategy": "Tree-sitter AST Repo-Map (1k–2k token budget) + search/replace diff edits + explicit /drop context hygiene",
+      "compactionStrategyZh": "Tree-sitter AST 仓库地图剪枝（约 1k–2k Token）+ 局部 Diff 补丁 + /drop 精准清理上下文",
+      "promptCachingEfficiency": "Very High (78%–90% with --cache-prompts enabled)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "Very High",
+        "hitRateRangePercent": [
+          78,
+          90
+        ],
+        "notes": "Pass `--cache-prompts` (plus `--cache-keepalive-pings` for Anthropic) to cache Repo-Map and added read-only files.",
+        "notesZh": "开启 `--cache-prompts` 后可将 Repo-Map 与只读文件全部缓存复用，缓存命中率达 78%–90%。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, AST Repo-Map + search/replace diffs keep total multiplier at just 1.2x–1.8x (the lowest in this benchmark).",
+      "typicalTaskMultiplierNoteZh": "在 15 轮代码重构中，AST 仓库地图与精准替换补丁使总消耗倍率仅 1.2x–1.8x，是 7 款工具中实测最省钱的方案。",
+      "recommendedModels": [
+        {
+          "modelId": "deepseek-v3",
+          "modelName": "DeepSeek-V3 (deepseek-chat)",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.27,
+          "outputPerM": 1.1,
+          "cachedInputPerM": 0.07,
+          "cacheDiscountPercent": 74.07,
+          "contextWindow": 128000,
+          "supportsVision": false,
+          "supportsFunctionCalling": true,
+          "role": "Budget Workhorse",
+          "toolCalling": "Diff/Edit Block",
+          "promptCaching": "Full (74% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "Industry-favorite $0.27/$1.10 coding pair with high diff-format accuracy.",
+          "reasonZh": "社区口碑极高的低成本主力模型，$0.27/$1.10 且 Diff 格式极稳。"
+        },
+        {
+          "modelId": "deepseek-r1",
+          "modelName": "DeepSeek-R1 (deepseek-reasoner)",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.55,
+          "outputPerM": 2.19,
+          "cachedInputPerM": 0.14,
+          "cacheDiscountPercent": 74.55,
+          "contextWindow": 128000,
+          "supportsVision": false,
+          "supportsFunctionCalling": false,
+          "role": "Architect Mode",
+          "toolCalling": "Prompt/Architect Only",
+          "promptCaching": "Full (74.5% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "Pair R1 as `--architect` with Sonnet 5.5 or DeepSeek-V3 as `--editor-model` for reasoning-grade patches at minimal cost.",
+          "reasonZh": "搭配 `--architect` 负责推理规划、由 Editor 模型落盘代码，兼具顶级推理与极致低价。"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary Editor",
+          "toolCalling": "Native / Search-Replace",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Near-zero edit failures with `--cache-prompts` 95% cache savings.",
+          "reasonZh": "补丁应用一次成功率最高，开启 `--cache-prompts` 可享 95% 缓存折扣。"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "modelName": "Google: Gemini 4 Neon",
+          "providerOrg": "Google",
+          "inputPerM": 3.0,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "High-Speed Large Repo",
+          "toolCalling": "Native / Whole-Diff",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "1M context + 61.4 AA intelligence handles huge multi-file diffs at 145 t/s.",
+          "reasonZh": "1M 窗口配合 AA 61.4 指数与 145 t/s 速度，大仓库跨文件改造极快。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "deepseek-v3",
+          "toolCalling": "Diff/Edit Block",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Best ultra-low-cost coding engine"
+        },
+        {
+          "modelId": "deepseek-r1",
+          "toolCalling": "Architect Only",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Use with --architect --editor-model"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Use --cache-prompts"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Ideal for large repo maps"
+        }
+      ],
+      "configTemplate": {
+        "language": "bash",
+        "filename": ".env + ~/.aider.conf.yml",
+        "code": "# DeepSeek R1 (Architect) + DeepSeek V3 (Editor) ultra-budget combo\nexport DEEPSEEK_API_KEY=\"sk-ds-...\"\naider --architect --model deepseek/deepseek-reasoner --editor-model deepseek/deepseek-chat --cache-prompts"
+      },
+      "configTemplates": [
+        {
+          "id": "aider-deepseek",
+          "title": "DeepSeek Architect/Editor Combo",
+          "titleZh": "DeepSeek R1 + V3 双模型省钱配置",
+          "provider": "DeepSeek",
+          "language": "yaml",
+          "filename": "~/.aider.conf.yml",
+          "code": "model: deepseek/deepseek-chat\narchitect: true\neditor-model: deepseek/deepseek-chat\ncache-prompts: true\nmap-tokens: 1024\nauto-commits: true"
+        },
+        {
+          "id": "aider-openrouter",
+          "title": "OpenRouter Gemini 4 Neon + Claude Sonnet 5.5",
+          "titleZh": "OpenRouter 2026 旗舰接入配置",
+          "provider": "OpenRouter",
+          "language": "bash",
+          "filename": ".env",
+          "code": "export OPENROUTER_API_KEY=\"sk-or-v1-...\"\naider --model openrouter/google/gemini-4-neon --cache-prompts --map-tokens 2048"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "aid-faq-1",
+          "severity": "critical",
+          "question": "Why does DeepSeek-R1 fail to apply edits directly in Aider?",
+          "questionZh": "为什么直接用 DeepSeek-R1 时偶尔出现代码改写格式失败？",
+          "answer": "DeepSeek-R1 does not support native function calling and excels at planning rather than strict diff syntax. Always run it with `--architect --editor-model deepseek/deepseek-chat`.",
+          "answerZh": "R1 不支持原生 Function Calling，直接输出严格 Diff 偶有格式偏差。请务必配合 `--architect --editor-model deepseek/deepseek-chat` 分工模式。"
+        },
+        {
+          "id": "aid-faq-2",
+          "severity": "warning",
+          "question": "How do I stop chat history from polluting Repo-Map tokens?",
+          "questionZh": "如何避免长对话历史与无关文件把上下文撑爆？",
+          "answer": "Run `/clear` between unrelated tasks and `/drop <file>` as soon as you finish editing a file; keep `--map-tokens` between `1024` and `2048`.",
+          "answerZh": "每换一个子任务执行 `/clear` 清理对话历史，编辑完的文件用 `/drop` 移出上下文，并将 `--map-tokens` 控制在 1024–2048。"
+        },
+        {
+          "id": "aid-faq-3",
+          "severity": "tip",
+          "question": "How do I prevent Aider from committing secrets or dirty build files?",
+          "questionZh": "如何防止 Aider 自动 Git Commit 时误提交临时文件或密钥？",
+          "answer": "Verify `.gitignore` is clean before launching, or pass `--no-auto-commits` when testing experimental refactors.",
+          "answerZh": "启动前检查 `.gitignore` 完整性；高风险重构时可临时加上 `--no-auto-commits` 参数。"
+        }
+      ]
+    },
+    {
+      "slug": "cline",
+      "name": "Cline",
+      "category": "ide-extension",
+      "categoryLabel": "Open-Source VS Code Extension",
+      "categoryLabelZh": "开源 VS Code 插件",
+      "isOpenSource": true,
+      "license": "Apache-2.0",
+      "officialUrl": "https://cline.bot/",
+      "tagline": "Autonomous open-source VS Code coding agent with step-by-step approval, real-time token cost readout, and full BYOK.",
+      "taglineZh": "全透明开源 VS Code Agent 插件，支持单步审批、实时 Token 费用显示、浏览器控制与完全 BYOK。",
+      "githubRepo": "cline/cline",
+      "githubStars": 71760,
+      "latestVersion": "v4.1.26",
+      "verifiedDate": "2026-11-19",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "VS Code >= 1.90",
+        "Node.js >= 18 (for MCP/browser tools)"
+      ],
+      "dependencies": [
+        "VS Code Marketplace (saoudrizwan.claude-dev)",
+        "Git"
+      ],
+      "installCommand": "code --install-extension saoudrizwan.claude-dev",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "Cline Provider Settings: OpenRouter / DeepSeek / Anthropic / OpenAI-Compatible Base URL"
+        ],
+        "notes": "100% BYOK-first design with native selectors for OpenRouter, DeepSeek, Gemini, Anthropic, and custom OpenAI-compatible Base URLs.",
+        "notesZh": "100% BYOK 原生架构，内置 OpenRouter、DeepSeek、Google、Anthropic 及任意 OpenAI 兼容网关配置面板。"
+      },
+      "tokenMultiplierMin": 2.0,
+      "tokenMultiplierMax": 3.0,
+      "tokenMultiplierRange": {
+        "min": 2.0,
+        "max": 3.0,
+        "typical": 2.4
+      },
+      "baseSystemPromptTokens": 3100,
+      "basePromptOverheadTokens": 3100,
+      "compactionStrategy": "Transparent XML/JSON tool loop + user-gated file/command approval + auto-condense checkpoints",
+      "compactionStrategyZh": "全透明工具调用循环 + 人工单步确认 + 上下文 Checkpoint 自动凝缩",
+      "promptCachingEfficiency": "High (75%–88% on Anthropic, Gemini, and DeepSeek)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "High",
+        "hitRateRangePercent": [
+          75,
+          88
+        ],
+        "notes": "Displays live Cache Writes, Cache Reads, and exact USD spend in the chat header after every turn.",
+        "notesZh": "每次交互实时在对话顶部显示 Cache Write、Cache Read 与精确美元费用，支持 Anthropic/Gemini/DeepSeek 缓存。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, Cline's 3.1k system prompt + full file read/write verification yields a 2.0x–3.0x multiplier—visually auditable per step.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构任务中，约 3.1k 系统提示词底噪与完整文件读写校验使倍率为 2.0x–3.0x，但每一步消耗全透明可见。",
+      "recommendedModels": [
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.3,
+          "outputPerM": 1.2,
+          "cachedInputPerM": 0.006,
+          "cacheDiscountPercent": 98.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Budget Autonomous",
+          "toolCalling": "Native",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "98% cached input ($0.006/M) keeps long 20-turn Cline tool loops under a few cents.",
+          "reasonZh": "98% 缓存读折扣（$0.006/M）让 20 轮以上长任务总花销仅需几美分。"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary Production",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Highest stability across Cline's file diff, terminal, and browser tools.",
+          "reasonZh": "在文件 Diff、终端执行与内置浏览器交互上综合稳定性最高。"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "modelName": "Google: Gemini 4 Neon",
+          "providerOrg": "Google",
+          "inputPerM": 3.0,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Fast 1M Context",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "1M context + 145 t/s eliminates slow turn waiting during large codebase scans.",
+          "reasonZh": "1M 上下文配合 145 t/s 极速输出，扫描大仓库几乎无需等待。"
+        },
+        {
+          "modelId": "gpt-6.2-sol",
+          "modelName": "OpenAI: GPT-6.2 Sol",
+          "providerOrg": "OpenAI",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1050000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Balanced Alternative",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Clean structured tool arguments and 1.05M window at $2/$10.",
+          "reasonZh": "工具参数结构化精准，1.05M 窗口与 $2/$10 定价均衡。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Lowest multi-turn cost"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Gold standard for diffs"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Fastest 1M coding model"
+        },
+        {
+          "modelId": "deepseek-r1",
+          "toolCalling": "Prompt Emulation",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Use Plan mode only; switch to V3/V4.1 for Act"
+        }
+      ],
+      "configTemplate": {
+        "language": "json",
+        "filename": "VS Code settings.json (Cline BYOK)",
+        "code": "{\n  \"cline.apiProvider\": \"openrouter\",\n  \"cline.openRouterModelId\": \"google/gemini-4-neon\",\n  \"cline.planActSeparateModelsSetting\": true,\n  \"cline.planModeOpenRouterModelId\": \"deepseek/deepseek-r1\",\n  \"cline.actModeOpenRouterModelId\": \"deepseek/deepseek-v4.1-flash\"\n}"
+      },
+      "configTemplates": [
+        {
+          "id": "cline-deepseek-native",
+          "title": "DeepSeek Direct API (Plan/Act Split)",
+          "titleZh": "DeepSeek 官方直连（Plan/Act 双模式拆分）",
+          "provider": "DeepSeek",
+          "language": "json",
+          "filename": "Cline UI / settings.json",
+          "code": "{\n  \"apiProvider\": \"deepseek\",\n  \"deepSeekApiKey\": \"${DEEPSEEK_API_KEY}\",\n  \"planModeApiModelId\": \"deepseek-reasoner\",\n  \"actModeApiModelId\": \"deepseek-chat\"\n}"
+        },
+        {
+          "id": "cline-openrouter-neon",
+          "title": "OpenRouter Gemini 4 Neon + Prompt Cache",
+          "titleZh": "OpenRouter 接入 Gemini 4 Neon",
+          "provider": "OpenRouter",
+          "language": "json",
+          "filename": "Cline UI / settings.json",
+          "code": "{\n  \"apiProvider\": \"openrouter\",\n  \"openRouterApiKey\": \"${OPENROUTER_API_KEY}\",\n  \"openRouterModelId\": \"google/gemini-4-neon\",\n  \"openRouterProviderSorting\": \"throughput\"\n}"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "cln-faq-1",
+          "severity": "critical",
+          "question": "Why does Cline hit context window limits or fail on huge files?",
+          "questionZh": "为什么 Cline 处理大文件时容易触发上下文爆满或高额账单？",
+          "answer": "By default Cline reads entire files into conversation history unless `replace_in_file` diff mode succeeds. Add `.clineignore` for large generated/data files and start new tasks after major milestones.",
+          "answerZh": "全文件覆写或读取大文件会迅速堆高上下文。请配置 `.clineignore` 忽略生成文件/大数据集，并在阶段完成后新建 Task。"
+        },
+        {
+          "id": "cln-faq-2",
+          "severity": "warning",
+          "question": "Why does DeepSeek-R1 loop on XML tool tags in Act mode?",
+          "questionZh": "在 Act 执行模式下使用 DeepSeek-R1 为何容易出现工具标签循环报错？",
+          "answer": "R1 lacks native function calling and struggles with strict XML tool execution. Enable `Plan/Act Separate Models`: put R1 on Plan mode and DeepSeek-V4.1-Flash or Sonnet 5.5 on Act mode.",
+          "answerZh": "R1 缺乏原生 Tool Calling 支持。强烈建议开启 Plan/Act 独立模型设置：Plan 用 R1 规划，Act 用 V4.1-Flash 或 Sonnet 5.5 执行。"
+        },
+        {
+          "id": "cln-faq-3",
+          "severity": "tip",
+          "question": "How to stop infinite retry loops on failing terminal tests?",
+          "questionZh": "如何防止自动跑测试报错时陷入无限重试烧钱循环？",
+          "answer": "Keep Auto-Approve disabled for terminal execution or cap max consecutive mistakes (`autoApprovalSettings.maxRequests`) to 5–8 turns.",
+          "answerZh": "勿对未知测试脚本开启无限自动批准，并在 Auto-Approve 设置中限制最大连续请求步数（建议 5–8 步）。"
+        }
+      ]
+    },
+    {
+      "slug": "roo-code",
+      "name": "Roo Code",
+      "category": "ide-extension",
+      "categoryLabel": "Open-Source VS Code Extension (Cline Fork)",
+      "categoryLabelZh": "开源 VS Code 插件（Cline 多模式进化版）",
+      "isOpenSource": true,
+      "license": "Apache-2.0",
+      "officialUrl": "https://roocode.com/",
+      "tagline": "Multi-mode VS Code agent (Architect, Code, Debug, Ask) with per-mode system prompt pruning and model profiles.",
+      "taglineZh": "支持多角色模式（Architect / Code / Debug / Ask）独立提示词裁剪与多模型切换的开源 VS Code Agent。",
+      "githubRepo": "RooCodeInc/Roo-Code",
+      "githubStars": 24236,
+      "latestVersion": "v3.54.0",
+      "verifiedDate": "2026-11-19",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "VS Code >= 1.90",
+        "Node.js >= 18 (optional for MCP)"
+      ],
+      "dependencies": [
+        "VS Code Marketplace (RooVeterinaryInc.roo-cline)",
+        "Git"
+      ],
+      "installCommand": "code --install-extension RooVeterinaryInc.roo-cline",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "Roo Code API Profiles (Per-mode OpenRouter / DeepSeek / OpenAI-Compatible / Anthropic)"
+        ],
+        "notes": "Supports multiple saved API Configuration Profiles and binds different models + Base URLs to Architect, Code, Ask, and Orchestrator modes.",
+        "notesZh": "支持保存多套 API Profile，并可将 Architect、Code、Ask、Orchestrator 不同模式分别绑定不同厂商与 Base URL。"
+      },
+      "tokenMultiplierMin": 1.7,
+      "tokenMultiplierMax": 2.6,
+      "tokenMultiplierRange": {
+        "min": 1.7,
+        "max": 2.6,
+        "typical": 2.05
+      },
+      "baseSystemPromptTokens": 2350,
+      "basePromptOverheadTokens": 2350,
+      "compactionStrategy": "Per-mode stripped system prompts (Ask/Architect exclude edit tools) + sliding window condense",
+      "compactionStrategyZh": "按角色模式剥离冗余工具提示词（Ask/Architect 不加载写工具）+ 滑动窗口凝缩",
+      "promptCachingEfficiency": "High (78%–90%; smaller per-mode prompt improves cache density)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "High",
+        "hitRateRangePercent": [
+          78,
+          90
+        ],
+        "notes": "Separating Ask/Architect from Code trims base prompt overhead by ~25% vs single-mode extensions while preserving cache stability.",
+        "notesZh": "通过拆分只读模式与写代码模式减少约 25% 底噪，且支持每套 Profile 独立配置提示词缓存。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, stripping unused tool schemas in Architect/Ask modes trims the multiplier to 1.7x–2.6x (~15% cheaper than Cline).",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构任务中，分模式剥离无用工具定义使倍率为 1.7x–2.6x，同等任务比通用单模式插件省约 15%。",
+      "recommendedModels": [
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.3,
+          "outputPerM": 1.2,
+          "cachedInputPerM": 0.006,
+          "cacheDiscountPercent": 98.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Code Mode Budget",
+          "toolCalling": "Native",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Ideal for high-frequency Code & Debug turns at $0.006/M cached input.",
+          "reasonZh": "高频 Code 与 Debug 模式首选，$0.006/M 缓存读取极具性价比。"
+        },
+        {
+          "modelId": "qwen3-coder",
+          "modelName": "Qwen: Qwen3 Coder 480B A35B",
+          "providerOrg": "Alibaba Qwen",
+          "inputPerM": 0.3,
+          "outputPerM": 1.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 66.67,
+          "contextWindow": 262144,
+          "supportsVision": false,
+          "supportsFunctionCalling": true,
+          "role": "Specialized Open Coder",
+          "toolCalling": "Native",
+          "promptCaching": "Full (66.7% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "Dedicated 480B A35B coding specialist ($0.30/$1.00) with crisp diff compliance.",
+          "reasonZh": "专为代码优化的 Qwen3 Coder 480B（$0.30/$1.00），代码补丁准确率高。"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Orchestrator / Architect",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Reliable Boomerang sub-task delegation in Orchestrator mode.",
+          "reasonZh": "在 Orchestrator 子任务编排与复杂重构中稳定性最佳。"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "modelName": "Google: Gemini 4 Neon",
+          "providerOrg": "Google",
+          "inputPerM": 3.0,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "1M Context Architect",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Reads entire repositories in Ask/Architect mode at 145 t/s.",
+          "reasonZh": "适合在 Ask/Architect 模式下以 145 t/s 速览百万级代码库。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Best Code/Debug budget profile"
+        },
+        {
+          "modelId": "qwen3-coder",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Strong OpenRouter/Alibaba coding"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Best Orchestrator mode"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Fastest large-context planning"
+        }
+      ],
+      "configTemplate": {
+        "language": "json",
+        "filename": ".roomodes + Roo Code Profile",
+        "code": "{\n  \"profiles\": {\n    \"architect-neon\": { \"provider\": \"openrouter\", \"model\": \"google/gemini-4-neon\" },\n    \"coder-deepseek\": { \"provider\": \"deepseek\", \"model\": \"deepseek-chat\", \"baseUrl\": \"https://api.deepseek.com\" }\n  },\n  \"modeBindings\": {\n    \"architect\": \"architect-neon\",\n    \"code\": \"coder-deepseek\",\n    \"debug\": \"coder-deepseek\"\n  }\n}"
+      },
+      "configTemplates": [
+        {
+          "id": "roo-deepseek-openrouter",
+          "title": "DeepSeek Official + OpenRouter Hybrid Profiles",
+          "titleZh": "DeepSeek 直连 + OpenRouter 混合模式配置",
+          "provider": "DeepSeek / OpenRouter",
+          "language": "json",
+          "filename": "roo-code-profiles.json",
+          "code": "{\n  \"Code\": {\n    \"apiProvider\": \"openai\",\n    \"openAiBaseUrl\": \"https://api.deepseek.com/v1\",\n    \"openAiApiKey\": \"${DEEPSEEK_API_KEY}\",\n    \"openAiModelId\": \"deepseek-chat\"\n  },\n  \"Architect\": {\n    \"apiProvider\": \"openrouter\",\n    \"openRouterApiKey\": \"${OPENROUTER_API_KEY}\",\n    \"openRouterModelId\": \"google/gemini-4-neon\"\n  }\n}"
+        },
+        {
+          "id": "roo-qwen3-coder",
+          "title": "Qwen3 Coder via OpenRouter",
+          "titleZh": "OpenRouter 接入 Qwen3 Coder",
+          "provider": "OpenRouter",
+          "language": "json",
+          "filename": "roo-qwen3.json",
+          "code": "{\n  \"apiProvider\": \"openrouter\",\n  \"openRouterApiKey\": \"${OPENROUTER_API_KEY}\",\n  \"openRouterModelId\": \"qwen/qwen3-coder\",\n  \"diffEnabled\": true,\n  \"fuzzyMatchThreshold\": 1.0\n}"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "roo-faq-1",
+          "severity": "critical",
+          "question": "Why does Boomerang / Orchestrator mode sometimes duplicate context?",
+          "questionZh": "为什么 Orchestrator（Boomerang）拆分多子任务时偶尔会增加额外 Token？",
+          "answer": "Each delegated subtask starts a fresh child context with its own 2.3k system prompt. Use Orchestrator only for multi-module work; keep small fixes in `Code` mode.",
+          "answerZh": "每个子任务都会独立初始化一次约 2.3k 的系统提示词。小型改动直接停留在 `Code` 模式即可，跨模块大任务再启用 Orchestrator。"
+        },
+        {
+          "id": "roo-faq-2",
+          "severity": "warning",
+          "question": "How to fix fuzzy diff apply failures on cheaper models?",
+          "questionZh": "使用低价模型时偶发 Diff 匹配失败怎么办？",
+          "answer": "Keep `Diff Match Precision` at `1.0` (strict) or `0.95` and ensure the file wasn't edited externally mid-turn.",
+          "answerZh": "建议将 Diff 匹配阈值保持在 `0.95–1.0`，并避免在模型输出补丁期间手动修改目标文件。"
+        },
+        {
+          "id": "roo-faq-3",
+          "severity": "tip",
+          "question": "How to cut Roo Code costs by 60%+ without hurting quality?",
+          "questionZh": "如何在不牺牲代码质量的前提下把 Roo Code 费用再降 60% 以上？",
+          "answer": "Bind `Architect` to Gemini 4 Neon or Claude Sonnet 5.5, and bind `Code`/`Ask` to DeepSeek-V4.1-Flash or Qwen3 Coder.",
+          "answerZh": "将 `Architect` 绑定到 Gemini 4 Neon 或 Sonnet 5.5 做架构设计，而把高频执行的 `Code`/`Ask` 绑定到 DeepSeek-V4.1-Flash 或 Qwen3 Coder。"
+        }
+      ]
+    },
+    {
+      "slug": "opencode-continue",
+      "name": "OpenCode / Continue",
+      "category": "ide-extension",
+      "categoryLabel": "Open-Source Cross-IDE & TUI Agent",
+      "categoryLabelZh": "开源跨编辑器插件与终端 TUI",
+      "isOpenSource": true,
+      "license": "Apache-2.0 / MIT",
+      "officialUrl": "https://opencode.ai/",
+      "tagline": "Vendor-neutral open-source agent ecosystem (OpenCode TUI + Continue VS Code/JetBrains) via declarative config.yaml/json.",
+      "taglineZh": "完全无厂商锁定的开源 Agent 生态（OpenCode 终端 TUI + Continue 跨 IDE 插件），通过声明式配置文件直连全球任意 API。",
+      "githubRepo": "anomalyco/opencode",
+      "githubStars": 227861,
+      "latestVersion": "OpenCode v1.19.6 / Continue v2.0.0",
+      "verifiedDate": "2026-11-19",
+      "installDifficulty": 2,
+      "runtimeRequirements": [
+        "VS Code / JetBrains IDE (Continue) or macOS/Linux Terminal (OpenCode)",
+        "Git"
+      ],
+      "dependencies": [
+        "Homebrew / curl / npm (OpenCode)",
+        "VS Code or JetBrains Marketplace (Continue)"
+      ],
+      "installCommand": "curl -fsSL https://opencode.ai/install | bash  # or install Continue in VS Code/JetBrains",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "OPENROUTER_API_KEY",
+          "DEEPSEEK_API_KEY",
+          "OPENAI_API_KEY",
+          "ANTHROPIC_API_KEY",
+          "GROQ_API_KEY"
+        ],
+        "notes": "Zero vendor lock-in: configure OpenRouter, DeepSeek, Groq LPU, LiteLLM, vLLM, or Ollama declaratively in `opencode.json` or `~/.continue/config.yaml`.",
+        "notesZh": "零厂商锁定，可在 `opencode.json` 或 `~/.continue/config.yaml` 中自由声明 OpenRouter、DeepSeek、Groq、LiteLLM 或本地 Ollama。"
+      },
+      "tokenMultiplierMin": 1.5,
+      "tokenMultiplierMax": 2.3,
+      "tokenMultiplierRange": {
+        "min": 1.5,
+        "max": 2.3,
+        "typical": 1.85
+      },
+      "baseSystemPromptTokens": 1850,
+      "basePromptOverheadTokens": 1850,
+      "compactionStrategy": "Explicit @-context providers + OpenCode /compact session pruning + minimal 1.8k system prompt",
+      "compactionStrategyZh": "显式 @ 上下文精准注入 + OpenCode 会话 /compact 剪枝 + 约 1.8k 轻量系统提示词",
+      "promptCachingEfficiency": "Medium-High (72%–86% with explicit cache_control enabled in config)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "Medium-High",
+        "hitRateRangePercent": [
+          72,
+          86
+        ],
+        "notes": "Supports prompt caching natively on Anthropic, DeepSeek, and OpenRouter endpoints when `cache: true` / `promptCaching` is enabled.",
+        "notesZh": "在配置中开启缓存选项后，支持 Anthropic、DeepSeek 与 OpenRouter 的高命中前缀缓存。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, explicit @-file scoping and a slim 1.85k system prompt keep overhead at 1.5x–2.3x.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构任务中，显式按需引用上下文与 1.85k 极简系统提示词将 Token 放大倍率稳定在 1.5x–2.3x。",
+      "recommendedModels": [
+        {
+          "modelId": "deepseek-v3",
+          "modelName": "DeepSeek-V3 (deepseek-chat)",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.27,
+          "outputPerM": 1.1,
+          "cachedInputPerM": 0.07,
+          "cacheDiscountPercent": 74.07,
+          "contextWindow": 128000,
+          "supportsVision": false,
+          "supportsFunctionCalling": true,
+          "role": "Primary Open-Source",
+          "toolCalling": "Native",
+          "promptCaching": "Full (74% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "Clean OpenAI-compatible tool calling at $0.27/$1.10 with zero lock-in.",
+          "reasonZh": "极佳的 OpenAI 兼容工具调用表现，配合 $0.27/$1.10 低价实现零锁定开发。"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.3,
+          "outputPerM": 1.2,
+          "cachedInputPerM": 0.006,
+          "cacheDiscountPercent": 98.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Ultra-Low Cost",
+          "toolCalling": "Native",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Sub-cent coding loops via OpenRouter or DeepSeek direct API.",
+          "reasonZh": "通过 OpenRouter 或直连实现 98% 缓存读折扣的极低成本 Agent 循环。"
+        },
+        {
+          "modelId": "llama-3.3-70b",
+          "modelName": "Llama 3.3 70B Versatile",
+          "providerOrg": "Groq",
+          "inputPerM": 0.59,
+          "outputPerM": 0.79,
+          "cachedInputPerM": 0.295,
+          "cacheDiscountPercent": 50.0,
+          "contextWindow": 128000,
+          "supportsVision": false,
+          "supportsFunctionCalling": true,
+          "role": "420 t/s Autocomplete & Fast Chat",
+          "toolCalling": "Native",
+          "promptCaching": "Full (50% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "Groq LPU 420 tokens/sec speed makes interactive edits and tab-chat feel instantaneous.",
+          "reasonZh": "依托 Groq LPU 420 t/s 惊人吞吐，实现零延迟实时问答与快速重构。"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "modelName": "Google: Gemini 4 Neon",
+          "providerOrg": "Google",
+          "inputPerM": 3.0,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Frontier 1M Agent",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Top AA 61.4 coding intelligence when complex multi-repo reasoning is needed.",
+          "reasonZh": "复杂跨仓库重构时可一键切换至 AA 61.4 的 Gemini 4 Neon。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "deepseek-v3",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Top Continue/OpenCode default"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "98% cache discount"
+        },
+        {
+          "modelId": "llama-3.3-70b",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "420 t/s on Groq LPU"
+        },
+        {
+          "modelId": "gemini-4-neon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "1M context via OpenRouter/Google"
+        }
+      ],
+      "configTemplate": {
+        "language": "json",
+        "filename": "opencode.json",
+        "code": "{\n  \"$schema\": \"https://opencode.ai/config.json\",\n  \"model\": \"openrouter/google/gemini-4-neon\",\n  \"small_model\": \"deepseek/deepseek-chat\",\n  \"provider\": {\n    \"deepseek\": {\n      \"options\": { \"apiKey\": \"{env:DEEPSEEK_API_KEY}\" }\n    },\n    \"openrouter\": {\n      \"options\": { \"apiKey\": \"{env:OPENROUTER_API_KEY}\" }\n    }\n  }\n}"
+      },
+      "configTemplates": [
+        {
+          "id": "opencode-json",
+          "title": "OpenCode TUI (DeepSeek + OpenRouter)",
+          "titleZh": "OpenCode 终端代理配置文件",
+          "provider": "OpenRouter / DeepSeek",
+          "language": "json",
+          "filename": "opencode.json",
+          "code": "{\n  \"$schema\": \"https://opencode.ai/config.json\",\n  \"model\": \"deepseek/deepseek-chat\",\n  \"small_model\": \"openrouter/deepseek/deepseek-v4.1-flash\",\n  \"provider\": {\n    \"deepseek\": { \"options\": { \"apiKey\": \"{env:DEEPSEEK_API_KEY}\" } },\n    \"openrouter\": { \"options\": { \"apiKey\": \"{env:OPENROUTER_API_KEY}\" } }\n  }\n}"
+        },
+        {
+          "id": "continue-yaml",
+          "title": "Continue IDE Extension (config.yaml)",
+          "titleZh": "Continue 插件多模型配置 (VS Code / JetBrains)",
+          "provider": "DeepSeek / Groq / OpenRouter",
+          "language": "yaml",
+          "filename": "~/.continue/config.yaml",
+          "code": "name: TokencostAI Production Stack\nversion: 2.0.0\nschema: v1\nmodels:\n  - name: DeepSeek V3 (Chat & Agent)\n    provider: deepseek\n    model: deepseek-chat\n    apiKey: ${{ secrets.DEEPSEEK_API_KEY }}\n    roles: [chat, edit, apply]\n  - name: Gemini 4 Neon (OpenRouter)\n    provider: openrouter\n    model: google/gemini-4-neon\n    apiKey: ${{ secrets.OPENROUTER_API_KEY }}\n    roles: [chat]\n  - name: Llama 3.3 70B (Groq Fast)\n    provider: groq\n    model: llama-3.3-70b-versatile\n    apiKey: ${{ secrets.GROQ_API_KEY }}\n    roles: [chat, edit]"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "oc-faq-1",
+          "severity": "critical",
+          "question": "Why does Continue fail to call tools when using Ollama or older models?",
+          "questionZh": "在 Continue 中配置本地模型或旧模型时为什么无法触发工具调用？",
+          "answer": "Tool Calling in Continue/OpenCode requires native `functionCalling` support. Verify the model supports `capabilities: [tool_use]` (e.g., DeepSeek-V3, Gemini 4 Neon, GPT-6.2 Sol) instead of raw reasoning-only checkpoints.",
+          "answerZh": "Agent 工具调用强依赖原生 `functionCalling` 能力。请确保配置的是支持工具调用的模型（如 DeepSeek-V3、Gemini 4 Neon、GPT-6.2 Sol）。"
+        },
+        {
+          "id": "oc-faq-2",
+          "severity": "warning",
+          "question": "How do I prevent `@codebase` indexing from slowing down JetBrains/VS Code?",
+          "questionZh": "开启 `@codebase` 索引后 IDE 变卡且 Token 飙升怎么处理？",
+          "answer": "Configure `.continueignore` to skip build folders and use `@file` / `@folder` explicitly instead of broad `@codebase` queries on every prompt.",
+          "answerZh": "先用 `.continueignore` 排除构建与依赖目录，日常对话优先使用精确的 `@file` / `@folder` 而非全局 `@codebase`。"
+        },
+        {
+          "id": "oc-faq-3",
+          "severity": "tip",
+          "question": "What is the best split between OpenCode `model` and `small_model`?",
+          "questionZh": "OpenCode 中 `model` 和 `small_model` 怎么搭配最省钱？",
+          "answer": "Set `model` to `google/gemini-4-neon` or `claude-sonnet-5.5` for coding edits, and `small_model` to `deepseek/deepseek-v4.1-flash` for title generation and compaction summaries.",
+          "answerZh": "主 `model` 选用 `gemini-4-neon` 或 `claude-sonnet-5.5`，辅助 `small_model` 选用 `deepseek-v4.1-flash` 处理标题生成与上下文压缩。"
+        }
+      ]
+    }
+  ]
+}

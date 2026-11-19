@@ -39,6 +39,7 @@ export interface TranslationDictionary {
     simulator: string;
     models: string;
     compare: string;
+    harness: string;
     calculators: string;
     guides: string;
     developers: string;

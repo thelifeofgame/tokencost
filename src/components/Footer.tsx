@@ -17,7 +17,7 @@ export default function Footer() {
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-white shadow-md shadow-indigo-500/20">
               <Cpu className="h-4 w-4" />
             </div>
-            <span>TokenCosts AI<span className="text-indigo-400">.io</span></span>
+            <span>TokenCosts AI</span>
           </Link>
           <p className="text-xs text-zinc-400 leading-relaxed">
             {t.footer.about}
@@ -70,6 +70,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href={getLocalizedPath('/harness')} className="hover:text-zinc-200 transition-colors">
+                {t.nav.harness}
+              </Link>
+            </li>
+            <li>
               <Link href={getLocalizedPath('/models')} className="hover:text-zinc-200 transition-colors">
                 {t.nav.models}
               </Link>
@@ -89,23 +94,23 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-xs">
             <li>
-              <Link href={getLocalizedPath('/compare/claude-3-5-sonnet-vs-gpt-4o/')} className="hover:text-zinc-200 transition-colors">
-                Claude 3.5 Sonnet vs GPT-4o
+              <Link href={getLocalizedPath('/compare/gemini-4-neon-vs-gpt-6.2-sol/')} className="hover:text-zinc-200 transition-colors">
+                Gemini 4 Neon vs GPT-6.2 Sol
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/compare/deepseek-r1-vs-openai-o1/')} className="hover:text-zinc-200 transition-colors">
-                DeepSeek-R1 vs OpenAI o1
+              <Link href={getLocalizedPath('/compare/claude-sonnet-5.5-vs-gpt-6.2-astra/')} className="hover:text-zinc-200 transition-colors">
+                GPT-6.2 Astra vs Claude Sonnet 5.5
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/compare/deepseek-v3-vs-gpt-4o/')} className="hover:text-zinc-200 transition-colors">
-                DeepSeek-V3 vs GPT-4o
+              <Link href={getLocalizedPath('/compare/deepseek-v4.1-flash-vs-gpt-6.2-sol/')} className="hover:text-zinc-200 transition-colors">
+                DeepSeek-V4.1-Flash vs GPT-6.2 Sol
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/compare/claude-3-5-haiku-vs-gpt-4o-mini/')} className="hover:text-zinc-200 transition-colors">
-                Claude 3.5 Haiku vs GPT-4o mini
+              <Link href={getLocalizedPath('/compare/claude-sonnet-5.5-vs-gemini-4-neon/')} className="hover:text-zinc-200 transition-colors">
+                Gemini 4 Neon vs Claude Sonnet 5.5
               </Link>
             </li>
           </ul>

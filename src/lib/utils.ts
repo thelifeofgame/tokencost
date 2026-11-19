@@ -66,7 +66,10 @@ export function decodeSimulationParams(searchParams: URLSearchParams, defaultPar
   };
 }
 
-export function getAffiliateUrl(url: string, providerName?: string): string {
+export function getAffiliateUrl(url: string, providerName?: string, medium = 'router_affiliate'): string {
   const separator = url.includes('?') ? '&' : '?';
-  return `${url}${separator}utm_source=tokencost_io&utm_medium=router_affiliate${providerName ? `&utm_campaign=${providerName.toLowerCase().replace(/\s+/g, '_')}` : ''}`;
+  const hasRef = /[?&]ref=/.test(url);
+  const refParam = hasRef ? '' : 'ref=tokencostsai_com&';
+  const campaign = providerName ? `&utm_campaign=${providerName.toLowerCase().replace(/\s+/g, '_')}` : '';
+  return `${url}${separator}${refParam}utm_source=tokencostsai_com&utm_medium=${medium}${campaign}`;
 }

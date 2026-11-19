@@ -6,6 +6,7 @@ import {
   getAllCompareStaticSlugs,
   getComparisonData,
 } from '@/lib/models-data';
+import { getAllHarnessSlugs } from '@/lib/harness-data';
 import { SUPPORTED_LOCALES } from '@/i18n';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '', priority: 1.0, changeFrequency: 'daily' as const },
     { path: 'calculator/', priority: 0.9, changeFrequency: 'daily' as const },
     { path: 'compare/', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: 'harness/', priority: 0.9, changeFrequency: 'weekly' as const },
     { path: 'models/', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: 'pricing/', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: 'developers/', priority: 0.8, changeFrequency: 'weekly' as const },
@@ -42,6 +44,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: item.priority,
     }))
   );
+
+  // Coding Agent & Harness Detail Pages
+  const harnessRoutes: MetadataRoute.Sitemap = getAllHarnessSlugs().map((slug) => ({
+    url: `${baseUrl}/harness/${slug}/`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  }));
 
   // P0 精选对比页（最高优先级）
   const p0Slugs = new Set(P0_COMPARE_PAIRS.map((pair) => pair.canonicalSlug));
@@ -100,6 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...localizedStaticRoutes,
+    ...harnessRoutes,
     ...p0CompareRoutes,
     ...tier1CompareRoutes,
     ...modelRoutes,

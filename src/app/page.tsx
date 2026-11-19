@@ -36,7 +36,7 @@ function SimulatorContent() {
   );
 
   const [selectedProviders, setSelectedProviders] = useState<string[]>(['All']);
-  const [selectedBaselineId, setSelectedBaselineId] = useState<string>('gpt-6.1-terra');
+  const [selectedBaselineId, setSelectedBaselineId] = useState<string>('gpt-6.2-sol');
 
   const [exporterModalOpen, setExporterModalOpen] = useState(false);
   const [selectedRecForExport, setSelectedRecForExport] = useState<RouterRecommendation | null>(null);
@@ -83,7 +83,7 @@ function SimulatorContent() {
     return calculateAllModels(filteredModels, params);
   }, [filteredModels, params]);
 
-  // Mainstream models for CostChart (sorted from low to high: GPT-6 Luna to Claude Fable 5.2)
+  // Mainstream models for CostChart
   const mainstreamBreakdowns = useMemo(() => {
     return calculateMainstreamModels(MODELS_DATA, params, selectedProviders);
   }, [params, selectedProviders]);
@@ -92,7 +92,7 @@ function SimulatorContent() {
   const selectedBaselineModel = useMemo(() => {
     return (
       MODELS_DATA.find((m) => m.modelId === selectedBaselineId) ||
-      MODELS_DATA.find((m) => m.modelId === 'gpt-6.1-terra') ||
+      MODELS_DATA.find((m) => m.modelId === 'gpt-6.2-sol') ||
       MODELS_DATA[0]
     );
   }, [selectedBaselineId]);
@@ -157,7 +157,7 @@ function SimulatorContent() {
         <MarketPulseRadar />
       </section>
 
-      {/* Full Width Model Leaderboard (Full catalog of 371 models) */}
+      {/* Full Width Model Leaderboard (Full catalog of 371+ models) */}
       <div className="pt-2">
         <LeaderboardTable breakdowns={allBreakdowns} />
       </div>
@@ -188,11 +188,11 @@ export default function HomePage() {
 
   return (
     <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
-      {/* Pre-rendered Static Hero Section (紧凑现代，确保第一屏清晰直达计算器) */}
+      {/* Pre-rendered Static Hero Section */}
       <div className="relative text-center max-w-4xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-400">
           <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
-          <span>{t.simulator.heroBadge} • 371 Models (GPT-6.1 Sol/Terra, Claude 5.5, Gemini 4, DeepSeek R1/V4)</span>
+          <span>{t.simulator.heroBadge} • 371+ Models (Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude 5.5, DeepSeek-V4.1)</span>
         </div>
 
         <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-zinc-100 leading-tight">
@@ -211,28 +211,28 @@ export default function HomePage() {
             href={getLocalizedPath('/models')}
             className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-zinc-100 hover:border-zinc-700 transition-colors"
           >
-            <span>{t.nav.models} (371)</span>
+            <span>{t.common.modelsCount}</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
           <Link
-            href={getLocalizedPath('/compare/claude-sonnet-5.5-vs-gpt-6.1-sol/')}
+            href={getLocalizedPath('/compare/gemini-4-neon-vs-gpt-6.2-sol/')}
             className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-zinc-100 hover:border-zinc-700 transition-colors"
           >
-            <span>🔥 2026 旗舰：GPT-6.1 Sol vs Claude 5.5</span>
+            <span>🔥 {t.simulator.quickCompareGptClaude}</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
           <Link
-            href={getLocalizedPath('/compare/deepseek-r1-vs-openai-o1/')}
+            href={getLocalizedPath('/compare/claude-sonnet-5.5-vs-deepseek-v4.1-flash/')}
             className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-zinc-100 hover:border-zinc-700 transition-colors"
           >
-            <span>🧠 深度推理：DeepSeek-R1 vs o1 (-96%)</span>
+            <span>⚡ {t.simulator.quickCompareDeepseekLlama}</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
           <Link
-            href={getLocalizedPath('/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/')}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-zinc-100 hover:border-zinc-700 transition-colors"
+            href={getLocalizedPath('/harness/')}
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:text-indigo-200 hover:border-indigo-400/50 transition-colors"
           >
-            <span>⚡ 极速降本：V4.1-Flash vs Terra ($0.004/M)</span>
+            <span>🛠️ {t.nav.harness} (1.2x–3.5x)</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
         </div>

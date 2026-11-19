@@ -1,46 +1,55 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Terminal, Copy, Check, Code2, FileCode } from 'lucide-react';
+import { Terminal, Copy, Check, FileCode } from 'lucide-react';
 import SchemaOrg from '@/components/seo/SchemaOrg';
+import BadgeGenerator from '@/components/BadgeGenerator';
 import { useI18n } from '@/i18n/I18nProvider';
+import { trackEvent } from '@/lib/analytics';
 
 export default function DevelopersPage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [copiedSection, setCopiedSection] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
     setCopiedSection(id);
     setTimeout(() => setCopiedSection(null), 2000);
+    trackEvent('developers_sdk_copy', {
+      sdk_section: id,
+      locale,
+    });
   };
 
   const litellmConfig = `model_list:
-  # Cost-optimized intelligent router configuration
+  # 2026 Cost-optimized intelligent router configuration
   - model_name: cost-router-fast
     litellm_params:
-      model: deepseek/deepseek-chat
+      model: deepseek/deepseek-v4.1-flash
       api_base: https://api.deepseek.com
       api_key: os.environ/DEEPSEEK_API_KEY
-  - model_name: cost-router-reasoning
+  - model_name: cost-router-coding
     litellm_params:
-      model: deepseek/deepseek-reasoner
-      api_base: https://api.deepseek.com
-      api_key: os.environ/DEEPSEEK_API_KEY
+      model: openrouter/google/gemini-4-neon
+      api_key: os.environ/OPENROUTER_API_KEY
   - model_name: cost-router-flagship
     litellm_params:
-      model: anthropic/claude-3-5-sonnet-20241022
+      model: anthropic/claude-sonnet-5.5
       api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: cost-router-architect
+    litellm_params:
+      model: openai/gpt-6.2-sol
+      api_key: os.environ/OPENAI_API_KEY
 
 router_settings:
   routing_strategy: cost-based-routing
   max_budget_per_req: 0.005
-  fallbacks: [{"cost-router-fast": ["cost-router-flagship"]}]`;
+  fallbacks: [{"cost-router-coding": ["cost-router-flagship", "cost-router-architect"]}]`;
 
   const vercelAiCode = `import { createOpenAI } from '@ai-sdk/openai';
 import { generateText } from 'ai';
 
-// TokenCosts AI Dynamic Routing Gateway
+// TokenCosts AI Dynamic Routing Gateway (2026 Flagships)
 const openrouter = createOpenAI({
   baseURL: 'https://openrouter.ai/api/v1',
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -51,18 +60,15 @@ const openrouter = createOpenAI({
 });
 
 export async function executeCostOptimizedPrompt(prompt: string, isComplex = false) {
-  const targetModel = isComplex 
-    ? 'deepseek/deepseek-r1' 
-    : 'deepseek/deepseek-chat';
+  const targetModel = isComplex
+    ? 'google/gemini-4-neon'
+    : 'deepseek/deepseek-v4.1-flash';
 
   return await generateText({
     model: openrouter(targetModel),
     prompt,
   });
 }`;
-
-  const badgeMarkdown = `<!-- TokenCosts AI Real-time Cost Badge -->
-[![TokenCosts AI](https://img.shields.io/badge/API%20Cost-DeepSeek--V3%20%240.27%2FM-emerald)](https://tokencostsai.com/models/deepseek-v3)`;
 
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 space-y-10">
@@ -88,7 +94,7 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
 
       {/* Section 1: LiteLLM Configuration */}
       <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 backdrop-blur-md shadow-xl space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2">
             <Terminal className="h-4 w-4 text-indigo-400" />
             <h2 className="text-base font-bold text-zinc-100">
@@ -96,6 +102,7 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
             </h2>
           </div>
           <button
+            type="button"
             onClick={() => copyToClipboard(litellmConfig, 'litellm')}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors"
           >
@@ -120,7 +127,7 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
 
       {/* Section 2: Vercel AI SDK */}
       <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 backdrop-blur-md shadow-xl space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2">
             <FileCode className="h-4 w-4 text-indigo-400" />
             <h2 className="text-base font-bold text-zinc-100">
@@ -128,6 +135,7 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
             </h2>
           </div>
           <button
+            type="button"
             onClick={() => copyToClipboard(vercelAiCode, 'vercel')}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors"
           >
@@ -150,41 +158,8 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
         </pre>
       </div>
 
-      {/* Section 3: Embeddable GitHub Badges */}
-      <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 backdrop-blur-md shadow-xl space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Code2 className="h-4 w-4 text-emerald-400" />
-            <h2 className="text-base font-bold text-zinc-100">
-              GitHub README Dynamic Cost Badges
-            </h2>
-          </div>
-          <button
-            onClick={() => copyToClipboard(badgeMarkdown, 'badge')}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors"
-          >
-            {copiedSection === 'badge' ? (
-              <>
-                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-400">{t.common.copied}</span>
-              </>
-            ) : (
-              <>
-                <Copy className="h-3.5 w-3.5" />
-                <span>{t.developers.copyCode} Markdown</span>
-              </>
-            )}
-          </button>
-        </div>
-
-        <p className="text-xs text-zinc-400">
-          Embed transparent real-time API cost badges directly in your open-source repository documentation:
-        </p>
-
-        <pre className="p-4 rounded-xl bg-zinc-950 font-mono text-xs text-zinc-200 overflow-x-auto leading-relaxed border border-zinc-800/80">
-          <code>{badgeMarkdown}</code>
-        </pre>
-      </div>
+      {/* Section 3: Static GitHub README Dynamic Cost Badge Generator */}
+      <BadgeGenerator />
     </div>
   );
 }

@@ -1,16 +1,26 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { ModelPricingRule } from '@/types/pricing';
 import { calculateModelCost } from '@/lib/calculator-engine';
+import { estimateHarnessTaskCost } from '@/lib/harness-data';
+import { trackEvent } from '@/lib/analytics';
 import { formatCurrency } from '@/lib/utils';
-import { Sparkles, SlidersHorizontal, Calculator } from 'lucide-react';
+import { Sparkles, SlidersHorizontal, Calculator, Terminal, ArrowRight } from 'lucide-react';
 import { useI18n } from '@/i18n/I18nProvider';
 
 interface CompareDetailClientProps {
   modelA: ModelPricingRule;
   modelB: ModelPricingRule;
 }
+
+const HARNESS_SIMULATOR_MODES = [
+  { id: 'raw', label: 'Raw API', multiplier: 1.0, badge: null, slug: null },
+  { id: 'aider', label: 'Aider · Repo-Map', multiplier: 1.5, badge: 'Best', slug: 'aider' },
+  { id: 'claude-code', label: 'Claude Code · CLI', multiplier: 2.1, badge: null, slug: 'claude-code' },
+  { id: 'cursor', label: 'Cursor · Composer', multiplier: 2.8, badge: null, slug: 'cursor' },
+] as const;
 
 export default function CompareDetailClient({
   modelA,
@@ -24,6 +34,7 @@ export default function CompareDetailClient({
   const [outputTokens, setOutputTokens] = useState(1000);
   const [cacheHitRate, setCacheHitRate] = useState(0.70);
   const [batchRate, setBatchRate] = useState(0.0);
+  const [selectedHarnessId, setSelectedHarnessId] = useState<string>('raw');
 
   const costA = calculateModelCost(modelA, {
     monthlyRequests: requests,
@@ -55,6 +66,26 @@ export default function CompareDetailClient({
   const savingsDescription = t.compare.savesPerMonth
     .replace('{model}', cheaperModel.modelName)
     .replace('{amount}', formatCurrency(savingsAmount));
+
+  const activeHarness =
+    HARNESS_SIMULATOR_MODES.find((m) => m.id === selectedHarnessId) || HARNESS_SIMULATOR_MODES[0];
+  const taskCostA = estimateHarnessTaskCost(modelA, activeHarness.multiplier);
+  const taskCostB = estimateHarnessTaskCost(modelB, activeHarness.multiplier);
+  const maxTaskCost = Math.max(taskCostA.totalCost, taskCostB.totalCost);
+  const minTaskCost = Math.min(taskCostA.totalCost, taskCostB.totalCost);
+  const taskSavingsPct =
+    maxTaskCost > 0 ? Math.round(((maxTaskCost - minTaskCost) / maxTaskCost) * 100) : 0;
+  const aWinsTask = taskCostA.totalCost <= taskCostB.totalCost;
+
+  const handleSelectHarness = (mode: (typeof HARNESS_SIMULATOR_MODES)[number]) => {
+    setSelectedHarnessId(mode.id);
+    trackEvent('harness_overhead_simulate', {
+      harness_slug: mode.id,
+      model_a: modelA.modelId,
+      model_b: modelB.modelId,
+      multiplier: mode.multiplier,
+    });
+  };
 
   return (
     <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-xl space-y-6">
@@ -186,6 +217,118 @@ export default function CompareDetailClient({
             <span className="text-lg font-bold text-zinc-100">{formatCurrency(costB.monthlyNetCost)}</span>
             <span className="text-[10px] text-zinc-500 block font-sans">${(costB.singleRequestCost * 1000).toFixed(3)}/{t.common.per1kRequests}</span>
           </div>
+        </div>
+      </div>
+
+      {/* Coding Agent Overhead Simulator Extension */}
+      <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/70 p-4 sm:p-5 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Terminal className="h-4 w-4 text-indigo-400 shrink-0" />
+            <h3 className="text-sm font-bold text-zinc-100">
+              Coding Agent Overhead Simulator
+            </h3>
+          </div>
+          <span className="text-[11px] font-mono text-zinc-400">
+            15-turn refactor · 5 tool calls · 30k context · 70% cache hit
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0 pb-1">
+          {HARNESS_SIMULATOR_MODES.map((mode) => {
+            const active = activeHarness.id === mode.id;
+            return (
+              <button
+                key={mode.id}
+                type="button"
+                onClick={() => handleSelectHarness(mode)}
+                className={`shrink-0 min-h-[40px] px-3 py-1.5 rounded-xl border text-xs font-medium flex items-center gap-2 transition-all active:scale-[0.98] ${
+                  active
+                    ? 'border-indigo-500/70 bg-indigo-500/10 text-indigo-300 shadow-[0_0_12px_rgba(99,102,241,0.18)]'
+                    : 'border-zinc-800 bg-zinc-900/70 text-zinc-400 hover:border-zinc-700'
+                }`}
+              >
+                <span>{mode.label}</span>
+                <span className="font-mono text-[11px] text-zinc-300">
+                  {mode.multiplier.toFixed(1)}x
+                </span>
+                {mode.badge && (
+                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                    {mode.badge}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div
+            className={`rounded-xl border p-4 space-y-2 ${
+              aWinsTask
+                ? 'border-emerald-500/40 bg-emerald-500/[0.04]'
+                : 'border-zinc-800 bg-zinc-900/50'
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs font-semibold text-zinc-200 truncate">
+                {modelA.modelName}
+              </span>
+              {aWinsTask && taskSavingsPct > 0 && (
+                <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  Cheaper by {taskSavingsPct}%
+                </span>
+              )}
+            </div>
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="text-xs font-mono text-zinc-400">
+                34.5k → {(taskCostA.totalTokens / 1000).toFixed(1)}k tok
+              </span>
+              <span className="text-lg font-bold font-mono text-zinc-100">
+                ${taskCostA.totalCost.toFixed(3)}
+              </span>
+            </div>
+          </div>
+
+          <div
+            className={`rounded-xl border p-4 space-y-2 ${
+              !aWinsTask
+                ? 'border-emerald-500/40 bg-emerald-500/[0.04]'
+                : 'border-zinc-800 bg-zinc-900/50'
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs font-semibold text-zinc-200 truncate">
+                {modelB.modelName}
+              </span>
+              {!aWinsTask && taskSavingsPct > 0 && (
+                <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  Cheaper by {taskSavingsPct}%
+                </span>
+              )}
+            </div>
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="text-xs font-mono text-zinc-400">
+                34.5k → {(taskCostB.totalTokens / 1000).toFixed(1)}k tok
+              </span>
+              <span className="text-lg font-bold font-mono text-zinc-100">
+                ${taskCostB.totalCost.toFixed(3)}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-1">
+          <span>
+            Active multiplier: <strong className="text-zinc-300 font-mono">{activeHarness.multiplier.toFixed(1)}x</strong>
+          </span>
+          <Link
+            href={activeHarness.slug ? `/harness/${activeHarness.slug}/` : '/harness/'}
+            className="inline-flex items-center gap-1 text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
+          >
+            <span>{activeHarness.slug ? 'Full Harness Audit' : 'Compare All 7 Harnesses'}</span>
+            <ArrowRight className="h-3 w-3" />
+          </Link>
         </div>
       </div>
     </div>

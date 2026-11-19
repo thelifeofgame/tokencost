@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="277" height="22" viewBox="0 0 277 22" role="img" aria-label="TokenCosts AI: Muse Spark 1.2 $1.25 / $4.25 per 1M">
+  <title>TokenCosts AI: Muse Spark 1.2 $1.25 / $4.25 per 1M</title>
+  <defs>
+    <clipPath id="clip-light-muse-spark-1.2">
+      <rect width="277" height="22" rx="4"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-light-muse-spark-1.2)">
+    <rect x="0" y="0" width="108" height="22" fill="#F4F4F5"/>
+    <rect x="108" y="0" width="169" height="22" fill="#FFFFFF"/>
+    <rect x="107.5" y="0" width="1" height="22" fill="#E4E4E7"/>
+    <path d="M13.5 5.5L8.5 11.5H12.5L11.5 16.5L16.5 10.5H12.5L13.5 5.5Z" fill="#4F46E5"/>
+  </g>
+  <rect x="0.5" y="0.5" width="276" height="21" rx="3.5" fill="none" stroke="#E4E4E7" stroke-width="1"/>
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-rendering="geometricPrecision">
+    <text x="22" y="14.5" fill="#18181B">TokenCosts AI</text>
+  </g>
+  <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="500" text-rendering="geometricPrecision">
+    <text x="117" y="14.5" fill="#52525B">Muse Spark 1.2 <tspan fill="#059669" font-weight="700">$1.25/1M</tspan></text>
+  </g>
+</svg>

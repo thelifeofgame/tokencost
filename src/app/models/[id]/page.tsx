@@ -2,7 +2,8 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MODELS_DATA, TIER1_MODELS, compareHref } from '@/lib/models-data';
-import { ExternalLink, ArrowRight, ChevronLeft, Sparkles } from 'lucide-react';
+import { getRecommendedHarnessesForModel } from '@/lib/harness-data';
+import { ExternalLink, ArrowRight, ChevronLeft, Sparkles, Terminal } from 'lucide-react';
 import Link from 'next/link';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 
@@ -66,6 +67,7 @@ export default function ModelDetailPage({ params }: { params: { id: string } }) 
   // 非 Tier-1 模型：链出去的组合只有兜底页（noindex），控制数量避免浪费抓取预算
   const featuredSiblings = tier1Siblings.slice(0, isTier1Model ? 8 : 4);
   const restSiblings = isTier1Model ? tier1Siblings.slice(8) : [];
+  const recommendedHarnesses = getRecommendedHarnessesForModel(model.modelId);
 
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
@@ -189,6 +191,89 @@ export default function ModelDetailPage({ params }: { params: { id: string } }) 
           </div>
         </div>
       </div>
+
+      {/* Recommended Coding Agents & Harnesses Cross-Link Widget */}
+      {recommendedHarnesses.length > 0 && (
+        <section className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-5 sm:p-6 backdrop-blur-md shadow-xl space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Terminal className="h-4 w-4 text-indigo-400 shrink-0" />
+              <h2 className="text-base font-bold text-zinc-100">
+                Recommended Coding Agents &amp; Harnesses
+              </h2>
+            </div>
+            <Link
+              href="/harness/"
+              className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 inline-flex items-center gap-1 transition-colors"
+            >
+              <span>Compare all 7 harnesses →</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {recommendedHarnesses.map(({ tool, matchType }) => {
+              const formLabel =
+                tool.category === 'cli-agent'
+                  ? 'CLI'
+                  : tool.category === 'ai-ide'
+                  ? 'IDE'
+                  : 'Plugin';
+              const hitMin = tool.promptCachingSupport.hitRateRangePercent?.[0] ?? 70;
+              const hitMax = tool.promptCachingSupport.hitRateRangePercent?.[1] ?? 85;
+              const avgHit = Math.round((hitMin + hitMax) / 2);
+
+              return (
+                <div
+                  key={tool.slug}
+                  className="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 flex flex-col justify-between gap-3 hover:border-indigo-500/50 transition-all"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="text-sm font-bold text-zinc-100 truncate">
+                        {tool.name}
+                      </span>
+                      <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-[10px] font-mono text-zinc-400">
+                        {formLabel}
+                      </span>
+                    </div>
+                    <span
+                      className={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
+                        matchType === 'Native'
+                          ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                          : 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30'
+                      }`}
+                    >
+                      {matchType}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
+                    <div>
+                      <span className="text-[10px] text-zinc-500 block">Multiplier</span>
+                      <span className="font-mono font-semibold text-emerald-400">
+                        {tool.tokenMultiplierMin.toFixed(1)}x – {tool.tokenMultiplierMax.toFixed(1)}x
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-zinc-500 block">Cache Match</span>
+                      <span className="font-mono font-semibold text-zinc-200">
+                        ~{avgHit}% Hit
+                      </span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href={`/harness/${tool.slug}/`}
+                    className="min-h-[36px] inline-flex items-center text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+                  >
+                    Setup Config →
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Hosting Alternatives and Aggregators Table */}
       {model.hostedProviders && model.hostedProviders.length > 0 && (

@@ -7,19 +7,21 @@ import { I18nProvider } from '@/i18n/I18nProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tokencostsai.com'),
-  title: 'TokenCosts AI | LLM API Cost Intelligence & Smart Router',
-  description: 'Simulate true LLM API costs with prompt caching discounts, batch 50% savings, and intelligent multi-model routing recommendations for OpenAI, Claude, DeepSeek, and Google Gemini.',
+  title: 'TokenCosts AI | LLM API Pricing, Coding Agent Costs & Smart Router (2026)',
+  description:
+    'Compare real-time LLM API pricing across 371+ models including Gemini 4 Neon, GPT-6.2 Astra & Sol, Claude Sonnet 5.5, and DeepSeek-V4.1-Flash. Audit Prompt Caching ROI, Batch 50% discounts, and Coding Agent token multipliers.',
   keywords: [
-    'LLM API pricing',
-    'Token cost calculator',
-    'Prompt caching calculator',
-    'DeepSeek pricing',
-    'Claude 3.5 Sonnet cost',
-    'GPT-4o token cost',
-    'LLM cost router',
-    'Batch API pricing',
+    'LLM API pricing 2026',
+    'Gemini 4 Neon pricing',
+    'GPT-6.2 Sol vs Astra cost',
+    'Claude Sonnet 5.5 API cost',
+    'DeepSeek V4.1 Flash pricing',
+    'Prompt caching ROI calculator',
+    'Coding agent token multiplier',
+    'AI API cost comparison',
+    'BYOK LLM cost router',
     '大模型API价格计算器',
-    '提示词缓存省钱对比',
+    '大模型提示词缓存省钱对比',
   ],
   authors: [{ name: 'TokenCosts AI Engineering' }],
   alternates: {
@@ -35,8 +37,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'TokenCosts AI | Stop Guessing Your AI Bill',
-    description: 'Simulate true LLM costs with Prompt Caching, Batch discounts, and Pareto-optimal smart routing.',
+    title: 'TokenCosts AI | Stop Guessing Your AI & Coding Agent Bill',
+    description:
+      'Simulate real-world LLM API costs for Gemini 4 Neon, GPT-6.2, Claude Sonnet 5.5 & DeepSeek-V4.1-Flash with 95% Prompt Caching and Coding Harness overhead.',
     url: 'https://tokencostsai.com',
     siteName: 'TokenCosts AI',
     locale: 'en_US',
@@ -44,8 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TokenCosts AI | LLM Cost Intelligence & Smart Router',
-    description: 'Simulate true LLM API costs with prompt caching discounts, batch 50% savings, and multi-model router.',
+    title: 'TokenCosts AI | 2026 LLM Cost Intelligence & Agent Overhead Calculator',
+    description:
+      'Compare Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude Sonnet 5.5 & DeepSeek-V4.1-Flash token bills with Prompt Caching & Batch savings.',
   },
   robots: {
     index: true,

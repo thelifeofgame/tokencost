@@ -11,6 +11,9 @@ import rawData from '@/data/model_pricing_schema.json';
 import trendingComparisonsData from '@/data/trending_comparisons.json';
 
 const KNOWN_BENCHMARKS: Record<string, ModelBenchmarks> = {
+  'gemini-4-neon': { evalScore: 96.4, mmlu: 94.8, arenaElo: 1410, avgLatencyTtftMs: 250, avgThroughputTokS: 145 },
+  'gpt-6.2-sol': { evalScore: 96.8, mmlu: 95.1, arenaElo: 1415, avgLatencyTtftMs: 360, avgThroughputTokS: 85 },
+  'gpt-6.2-astra': { evalScore: 98.5, mmlu: 97.2, arenaElo: 1455, avgLatencyTtftMs: 450, avgThroughputTokS: 85 },
   'gpt-6.1-sol': { evalScore: 96.2, mmlu: 94.5, arenaElo: 1395, avgLatencyTtftMs: 380, avgThroughputTokS: 110 },
   'gpt-6.1-sol-pro': { evalScore: 97.4, mmlu: 95.8, arenaElo: 1420, avgLatencyTtftMs: 820, avgThroughputTokS: 65 },
   'gpt-6.1-terra': { evalScore: 90.5, mmlu: 87.8, arenaElo: 1290, avgLatencyTtftMs: 210, avgThroughputTokS: 150 },
@@ -33,16 +36,21 @@ const KNOWN_BENCHMARKS: Record<string, ModelBenchmarks> = {
 };
 
 const FEATURED_PRIORITY_ORDER = [
+  'gemini-4-neon',
+  'gpt-6.2-sol',
+  'claude-sonnet-5.5',
+  'deepseek-v4.1-flash',
+  'gpt-6.2-astra',
+  'claude-opus-5.5',
   'gpt-6.1-sol',
+  'gpt-6.1-terra',
+  'deepseek-v3',
+  'deepseek-r1',
   'gpt-4o',
   'claude-3-5-sonnet',
-  'deepseek-v3',
-  'gpt-6.1-terra',
-  'claude-sonnet-5.5',
   'gpt-4o-mini',
   'gemini-1.5-pro',
   'gemini-1.5-flash',
-  'deepseek-v4.1-flash',
   'o3-mini',
   'llama-3.3-70b',
   'grok-4.5',
@@ -51,7 +59,10 @@ const FEATURED_PRIORITY_ORDER = [
 function isFrontierId(id: string): boolean {
   const lower = id.toLowerCase();
   return (
+    lower.includes('6.2') ||
     lower.includes('6.1') ||
+    lower.includes('gemini-4-neon') ||
+    lower.includes('gemini-4') ||
     lower.includes('sonnet-5') ||
     lower.includes('opus-5') ||
     lower.includes('deepseek-v4') ||
@@ -77,6 +88,7 @@ function buildModelsData(): ModelPricingRule[] {
     };
 
     const isFrontier = isFrontierId(raw.modelId);
+    const openRouterAffiliate = `https://openrouter.ai/${raw.modelId}?ref=tokencostsai_com&utm_source=tokencostsai_com&utm_medium=model_affiliate`;
 
     const hostedProviders: HostedProvider[] = [
       {
@@ -93,7 +105,7 @@ function buildModelsData(): ModelPricingRule[] {
         outputPerM: raw.outputPerM,
         cachedInputPerM: raw.cachedInputPerM,
         supportsCaching: raw.cacheDiscountPercent > 0,
-        affiliateUrl: `https://openrouter.ai/${raw.modelId}?ref=tokencost_io`,
+        affiliateUrl: openRouterAffiliate,
       },
     ];
 
@@ -113,7 +125,7 @@ function buildModelsData(): ModelPricingRule[] {
       capabilities: raw.capabilities,
       benchmarks,
       officialDocUrl: raw.officialDocUrl,
-      affiliateUrl: `https://openrouter.ai/${raw.modelId}?ref=tokencost_io`,
+      affiliateUrl: openRouterAffiliate,
       isFrontier,
       notes: raw.notes,
       hostedProviders,
@@ -212,6 +224,10 @@ export const SCENARIO_PRESETS: ScenarioPreset[] = [
 ];
 
 export const POPULAR_COMPARE_PAIRS = [
+  { a: 'gemini-4-neon', b: 'gpt-6.2-sol' },
+  { a: 'claude-sonnet-5.5', b: 'gpt-6.2-astra' },
+  { a: 'deepseek-v4.1-flash', b: 'gpt-6.2-sol' },
+  { a: 'claude-sonnet-5.5', b: 'gemini-4-neon' },
   { a: 'gpt-6.1-sol', b: 'gpt-4o' },
   { a: 'gpt-4o', b: 'claude-3-5-sonnet' },
   { a: 'deepseek-v3', b: 'llama-3.3-70b' },
@@ -227,26 +243,26 @@ export const PRICING_TOPICS = [
   {
     slug: 'cheapest-llm-api-providers',
     title: 'Cheapest LLM API Providers in 2026',
-    description: 'Comprehensive analysis of lowest cost per million tokens across DeepSeek, Google, Groq, and OpenRouter.',
-    bestModel: 'deepseek-v3',
+    description: 'Comprehensive analysis of lowest cost per million tokens across DeepSeek-V4.1-Flash, Google Gemini, Groq, and OpenRouter.',
+    bestModel: 'deepseek-v4.1-flash',
   },
   {
     slug: 'prompt-caching-cost-guide',
     title: 'The Ultimate Prompt Caching Cost Guide',
-    description: 'Mathematical breakdown of Anthropic vs OpenAI vs Google caching discounts and write surcharge break-even curves.',
-    bestModel: 'claude-3-5-sonnet',
+    description: 'Mathematical breakdown of Anthropic vs OpenAI vs Google vs DeepSeek caching discounts and write surcharge break-even curves.',
+    bestModel: 'claude-sonnet-5.5',
   },
   {
     slug: 'best-coding-models-pricing',
     title: 'Best Coding Models & Price-Performance Index',
-    description: 'Comparing Claude 3.5 Sonnet, DeepSeek-V3, GPT-4o, and GPT-6.1 Sol on coding benchmark ROI.',
-    bestModel: 'gpt-6.1-sol',
+    description: 'Comparing Gemini 4 Neon, GPT-6.2 Sol, Claude Sonnet 5.5, and DeepSeek-V4.1-Flash on coding benchmark ROI.',
+    bestModel: 'gemini-4-neon',
   },
   {
     slug: 'batch-api-discount-comparison',
     title: 'Batch API 50% Off: When & How to Use It',
     description: 'How to save 50% on large offline tasks with OpenAI, Anthropic, and Google asynchronous batch endpoints.',
-    bestModel: 'gpt-4o-mini',
+    bestModel: 'gpt-6.2-sol',
   },
 ];
 
@@ -658,7 +674,18 @@ function generateComparisonFaqs(modelA: ModelPricingRule, modelB: ModelPricingRu
  * 增删时请同步检查：build 会校验每个 id 都存在于模型数据中，写错会直接报错。
  */
 export const TIER1_MODELS: string[] = [
-  // —— OpenAI
+  // —— Google (2026 Flagships)
+  'gemini-4-neon',
+  'gemini-2.5-pro',
+  'gemini-2.5-flash',
+  'gemini-4-hydrogen',
+  'gemini-4-argon',
+  'gemini-4-carbon',
+  'gemini-1.5-flash',
+  'gemini-3.1-flash-lite',
+  // —— OpenAI (2026 Flagships)
+  'gpt-6.2-sol',
+  'gpt-6.2-astra',
   'gpt-6.1-sol',
   'gpt-6.1-terra',
   'gpt-6-luna',
@@ -678,14 +705,6 @@ export const TIER1_MODELS: string[] = [
   'claude-fable-5.2',
   'claude-3-5-sonnet',
   'claude-3-5-haiku',
-  // —— Google
-  'gemini-2.5-pro',
-  'gemini-2.5-flash',
-  'gemini-4-hydrogen',
-  'gemini-4-argon',
-  'gemini-4-carbon',
-  'gemini-1.5-flash',
-  'gemini-3.1-flash-lite',
   // —— DeepSeek
   'deepseek-v4.1-flash',
   'deepseek-v4-pro',
@@ -811,7 +830,7 @@ export function getAllCompareStaticSlugs(): string[] {
  *  - 有 → /compare/<slug>/（预渲染，参与 SEO）
  *  - 没有 → /compare/view/?slug=<slug>（客户端按需渲染，noindex）
  *
- * 不这么做的话，用户从全部 ~367 个模型里选两个，99.5% 的组合会 404。
+ * 不这么做的话，用户从全部 ~371 个模型里选两个，99.5% 的组合会 404。
  */
 let compareSlugCache: Set<string> | null = null;
 

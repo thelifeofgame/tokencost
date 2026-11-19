@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ModelCostBreakdown } from '@/types/pricing';
 import { formatCurrency } from '@/lib/utils';
+import { trackEvent } from '@/lib/analytics';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ArrowUpDown, Table, ExternalLink, Search, Sparkles, ChevronDown } from 'lucide-react';
 
@@ -229,6 +230,14 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
                           href={item.model.affiliateUrl}
                           target="_blank"
                           rel="nofollow sponsored noopener noreferrer"
+                          onClick={() =>
+                            trackEvent('affiliate_click', {
+                              partner: 'openrouter',
+                              placement: 'leaderboard',
+                              model_id: item.model.modelId,
+                              outbound_url: item.model.affiliateUrl,
+                            })
+                          }
                           className="p-1 rounded bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 transition-colors"
                           title={t.simulator.leaderboard.connectApi}
                         >
