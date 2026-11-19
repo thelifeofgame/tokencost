@@ -2,10 +2,24 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Market Radar Events Feed",
   "description": "Industry hot news, price cuts, new releases, and policy deals for LLM APIs.",
-  "version": "1.0.2",
-  "lastUpdated": "2026-11-18T09:00:00+08:00",
-  "totalEvents": 6,
+  "version": "1.0.3",
+  "lastUpdated": "2026-11-19T09:00:00+08:00",
+  "totalEvents": 7,
   "events": [
+    {
+      "id": "radar-2026-008",
+      "type": "new_release",
+      "badgeText": "Reasoning & Coding",
+      "badgeColor": "cyan",
+      "provider": "Google",
+      "title": "Google Releases Gemini 4 Neon: 61.4 AI Index & 1M Context at $3/$15",
+      "highlight": "AA 61.4 / 1M Context",
+      "description": "Google debuts Gemini 4 Neon tailored for code and agentic tasks with native 1M context, 145 t/s throughput, and 95% prompt cache read discount ($0.15/1M).",
+      "ctaText": "Compare Neon vs Sol",
+      "ctaLink": "/compare/gemini-4-carbon-vs-gpt-6.1-sol/",
+      "timestamp": "Today",
+      "isFeatured": true
+    },
     {
       "id": "radar-2026-007",
       "type": "new_release",
@@ -17,7 +31,7 @@
       "description": "OpenAI introduces GPT-6.2 Astra flagship ($5/$25) and Astra Pro ($8/$40) with reasoning mode, featuring 1.05M token windows and 95% cached input discount.",
       "ctaText": "Compare Sol vs Astra",
       "ctaLink": "/compare/gemini-4-carbon-vs-gpt-6.1-sol/",
-      "timestamp": "Today",
+      "timestamp": "Yesterday",
       "isFeatured": true
     },
     {
@@ -34,7 +48,7 @@
       "description": "DeepSeek slashed on-demand API input rates to $0.022/M with prompt cache reads down to an unprecedented $0.004/M.",
       "ctaText": "Calculate New Cost",
       "ctaLink": "/calculator/deepseek-v4.1-flash",
-      "timestamp": "Yesterday",
+      "timestamp": "2 days ago",
       "isFeatured": true
     },
     {
@@ -48,7 +62,7 @@
       "description": "Google pushes carbon architecture with 2M native context window without Tier-2 doubling fees, beating frontier models in throughput.",
       "ctaText": "View Carbon vs Sol",
       "ctaLink": "/compare/gemini-4-carbon-vs-gpt-6.1-sol/",
-      "timestamp": "2 days ago",
+      "timestamp": "3 days ago",
       "isFeatured": true
     },
     {
@@ -62,7 +76,7 @@
       "description": "Anthropic introduces adaptive TTL caching for Sonnet 5.5 and Opus 5.5, cutting agent multi-turn conversation cost by up to 88%.",
       "ctaText": "Check Cache Breakeven",
       "ctaLink": "/calculator/claude-sonnet-5.5",
-      "timestamp": "3 days ago",
+      "timestamp": "4 days ago",
       "isFeatured": false
     },
     {

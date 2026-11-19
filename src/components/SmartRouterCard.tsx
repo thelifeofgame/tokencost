@@ -14,6 +14,14 @@ interface SmartRouterCardProps {
   availableModels?: ModelPricingRule[];
 }
 
+// Baseline category presets
+const CATEGORY_MODEL_IDS: Record<string, string[]> = {
+  flagship: ['gpt-6.1-terra', 'gpt-6.1-sol', 'claude-sonnet-5.5', 'claude-fable-5.2', 'gemini-2.5-pro'],
+  fast: ['gpt-6-luna', 'claude-haiku-4.5', 'gemini-2.5-flash', 'deepseek-v3', 'gpt-4.1-mini'],
+  reasoning: ['deepseek-r1', 'o1', 'o3-mini'],
+  legacy: ['gpt-4o', 'claude-3-5-sonnet'],
+};
+
 export default function SmartRouterCard({
   recommendations,
   onOpenExporter,
@@ -49,13 +57,6 @@ export default function SmartRouterCard({
   const currentRec =
     recommendations.find((r) => r.id === selectedStrategyId) || recommendations[0];
 
-  // Baseline category presets
-  const CATEGORY_MODEL_IDS: Record<string, string[]> = {
-    flagship: ['gpt-6.1-terra', 'gpt-6.1-sol', 'claude-sonnet-5.5', 'claude-fable-5.2', 'gemini-2.5-pro'],
-    fast: ['gpt-6-luna', 'claude-haiku-4.5', 'gemini-2.5-flash', 'deepseek-v3', 'gpt-4.1-mini'],
-    reasoning: ['deepseek-r1', 'o1', 'o3-mini'],
-    legacy: ['gpt-4o', 'claude-3-5-sonnet'],
-  };
 
   // Filtered baseline models for selection menu
   const candidateBaselines = useMemo(() => {

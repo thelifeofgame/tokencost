@@ -3,8 +3,8 @@
   "title": "Daily LLM Industry Market Radar & Price Drops",
   "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-18T09:03:59.281482+08:00",
-  "date": "2026-11-18",
+  "lastUpdated": "2026-11-19T09:04:43.315193+08:00",
+  "date": "2026-11-19",
   "totalItems": 12,
   "categories": [
     {
@@ -30,6 +30,24 @@
   ],
   "items": [
     {
+      "id": "radar-dyn-gemini-4-neon",
+      "type": "new_model",
+      "title": "Google 上线新模型 Google: Gemini 4 Neon，支持 1,048,576 上下文",
+      "provider": "Google",
+      "modelId": "gemini-4-neon",
+      "badgeText": "New Arrival",
+      "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and termi",
+      "effectiveDate": "2026-11-18",
+      "link": "https://openrouter.ai/models/google/gemini-4-neon",
+      "metrics": {
+        "inputPerM": 3.0,
+        "outputPerM": 15.0,
+        "cacheDiscountPercent": 95.0,
+        "contextWindow": 1048576,
+        "throughputTps": 145.0
+      }
+    },
+    {
       "id": "radar-dyn-gpt-6.2-astra-pro",
       "type": "new_model",
       "title": "Openai 上线新模型 OpenAI: GPT-6.2 Astra Pro，支持 1,050,000 上下文",
@@ -42,7 +60,7 @@
       "metrics": {
         "inputPerM": 8.0,
         "outputPerM": 40.0,
-        "cacheDiscountPercent": 50.0,
+        "cacheDiscountPercent": 95.0,
         "contextWindow": 1050000,
         "throughputTps": 85.0
       }
@@ -60,7 +78,7 @@
       "metrics": {
         "inputPerM": 8.0,
         "outputPerM": 40.0,
-        "cacheDiscountPercent": 50.0,
+        "cacheDiscountPercent": 95.0,
         "contextWindow": 1050000,
         "throughputTps": 85.0
       }
@@ -78,27 +96,9 @@
       "metrics": {
         "inputPerM": 2.0,
         "outputPerM": 10.0,
-        "cacheDiscountPercent": 50.0,
+        "cacheDiscountPercent": 95.0,
         "contextWindow": 1050000,
-        "throughputTps": 85.0
-      }
-    },
-    {
-      "id": "radar-dyn-gpt-6.2-sol",
-      "type": "new_model",
-      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Sol，支持 1,050,000 上下文",
-      "provider": "Openai",
-      "modelId": "gpt-6.2-sol",
-      "badgeText": "New Arrival",
-      "summary": "GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile",
-      "effectiveDate": "2026-11-18",
-      "link": "https://openrouter.ai/models/openai/gpt-6.2-sol",
-      "metrics": {
-        "inputPerM": 2.0,
-        "outputPerM": 10.0,
-        "cacheDiscountPercent": 50.0,
-        "contextWindow": 1050000,
-        "throughputTps": 85.0
+        "throughputTps": 65.0
       }
     },
     {
@@ -185,9 +185,9 @@
       "effectiveDate": "2026-11-04",
       "link": "https://api-docs.deepseek.com/quick_start/pricing",
       "metrics": {
-        "inputPerM": 0.051,
-        "outputPerM": 0.567,
-        "cacheDiscountPercent": 64.71,
+        "inputPerM": 0.3,
+        "outputPerM": 1.2,
+        "cacheDiscountPercent": 98.0,
         "contextWindow": 1048576,
         "throughputTps": 145.0
       }
@@ -221,9 +221,9 @@
       "effectiveDate": "2026-11-03",
       "link": "https://open.bigmodel.cn/pricing",
       "metrics": {
-        "inputPerM": 0.0399,
-        "outputPerM": 0.0784,
-        "cacheDiscountPercent": 24.81,
+        "inputPerM": 0.15,
+        "outputPerM": 0.5,
+        "cacheDiscountPercent": 80.0,
         "contextWindow": 1048576,
         "throughputTps": 145.0
       }

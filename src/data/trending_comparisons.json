@@ -3,8 +3,8 @@
   "title": "Daily Trending LLM API Model Comparisons (2026)",
   "description": "Daily automated algorithmic selection of top head-to-head model matchups across 2026 frontier flagship, reasoning ROI, ultra-low cost scaling, Groq throughput, and prompt caching economics.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-18T09:03:59.199000+08:00",
-  "date": "2026-11-18",
+  "lastUpdated": "2026-11-19T09:04:43.222356+08:00",
+  "date": "2026-11-19",
   "totalComparisons": 12,
   "sources": [
     "Artificial Analysis Benchmarks & Trending (https://artificialanalysis.ai/models)",
@@ -65,11 +65,11 @@
         "modelId": "deepseek-v4.1-flash",
         "modelName": "DeepSeek: DeepSeek V4.1 Flash",
         "providerOrg": "DeepSeek",
-        "inputPerM": 0.051,
-        "outputPerM": 0.567,
-        "cachedInputPerM": 0.018,
-        "cacheDiscountPercent": 64.71,
-        "batchDiscountPercent": 0.0,
+        "inputPerM": 0.3,
+        "outputPerM": 1.2,
+        "cachedInputPerM": 0.006,
+        "cacheDiscountPercent": 98.0,
+        "batchDiscountPercent": 62.67,
         "contextWindow": 1048576,
         "maxOutputTokens": 943718,
         "throughputTps": 145.0,
@@ -99,10 +99,10 @@
       },
       "metricsDelta": {
         "cheaperModel": "deepseek-v4.1-flash",
-        "inputSavingsPercent": 94.9,
-        "outputSavingsPercent": 88.7,
-        "costReductionPercent": 90.6,
-        "cachedSavingsPercent": 64.0,
+        "inputSavingsPercent": 70.0,
+        "outputSavingsPercent": 76.0,
+        "costReductionPercent": 74.1,
+        "cachedSavingsPercent": 88.0,
         "fasterModel": "deepseek-v4.1-flash",
         "throughputMultiplier": 1.71,
         "throughputDeltaTps": 60.0,
@@ -113,90 +113,12 @@
         "eloDelta": null
       },
       "highlights": [
-        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 OpenAI: GPT-6.1 Terra 综合调用成本骤降 90.6%（输入节省 94.9%，输出节省 88.7%），高并发生产部署 ROI 极高。",
-        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 64.71%（折后 $0.018/1M）vs OpenAI: GPT-6.1 Terra 缓存折扣 95.0%（折后 $0.050/1M），极大释放高频 Agent 与多轮对话红利。",
+        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 OpenAI: GPT-6.1 Terra 综合调用成本骤降 74.1%（输入节省 70.0%，输出节省 76.0%），高并发生产部署 ROI 极高。",
+        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 98.0%（折后 $0.006/1M）vs OpenAI: GPT-6.1 Terra 缓存折扣 95.0%（折后 $0.050/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：DeepSeek: DeepSeek V4.1 Flash 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
         "上下文架构容量：OpenAI: GPT-6.1 Terra 提供高达 1,050,000 Tokens 上下文（比 DeepSeek: DeepSeek V4.1 Flash 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 1
-    },
-    {
-      "id": "gemini-4-carbon-vs-gpt-6.1-sol",
-      "slug": "gemini-4-carbon-vs-gpt-6.1-sol",
-      "canonicalSlug": "gemini-4-carbon-vs-gpt-6.1-sol",
-      "category": "frontier_flagship",
-      "categoryName": "2026 旗舰巅峰",
-      "categoryNameEn": "2026 Frontier Flagship Duels",
-      "badge": "60.0 AA Index",
-      "tags": [
-        "60.0 AA Index",
-        "145 t/s Ultra-Throughput",
-        "2M Context"
-      ],
-      "heatScore": 99.9,
-      "targetKeyword": "gemini 4 carbon vs gpt 6.1 sol benchmarks",
-      "title": "Google Gemini 4 Carbon vs OpenAI GPT-6.1 Sol: Throughput & Intelligence Parity",
-      "headline": "Gemini 4 Carbon vs GPT-6.1 Sol: 60.0 AA Index vs 145 t/s Ultra-Throughput",
-      "editorialFocus": "Google 2026 最新碳基旗舰，Artificial Analysis 综合智能指数高达 60.0（超 GPT-6.1 Sol 的 54.6），吞吐量高达 145 t/s（GPT 为 85 t/s），同等 $2.00/$10.00 单价下的算力降维打击！",
-      "modelA": {
-        "modelId": "gemini-4-carbon",
-        "modelName": "Google: Gemini 4 Carbon",
-        "providerOrg": "Google",
-        "inputPerM": 2.0,
-        "outputPerM": 10.0,
-        "cachedInputPerM": 0.1,
-        "cacheDiscountPercent": 95.0,
-        "batchDiscountPercent": 50.0,
-        "contextWindow": 1048576,
-        "maxOutputTokens": 943718,
-        "throughputTps": 145.0,
-        "ttftSec": 0.25,
-        "intelligenceIndex": 60,
-        "codingIndex": 1340,
-        "arenaElo": 1288,
-        "officialDocUrl": "https://ai.google.dev/pricing"
-      },
-      "modelB": {
-        "modelId": "gpt-6.1-sol",
-        "modelName": "OpenAI: GPT-6.1 Sol",
-        "providerOrg": "OpenAI",
-        "inputPerM": 2.0,
-        "outputPerM": 10.0,
-        "cachedInputPerM": 0.1,
-        "cacheDiscountPercent": 95.0,
-        "batchDiscountPercent": 50.0,
-        "contextWindow": 1050000,
-        "maxOutputTokens": 128000,
-        "throughputTps": 85.0,
-        "ttftSec": 0.45,
-        "intelligenceIndex": 54.6,
-        "codingIndex": 1286,
-        "arenaElo": 1194,
-        "officialDocUrl": "https://openai.com/api/pricing/"
-      },
-      "metricsDelta": {
-        "cheaperModel": "gemini-4-carbon",
-        "inputSavingsPercent": 0.0,
-        "outputSavingsPercent": 0.0,
-        "costReductionPercent": 0.0,
-        "cachedSavingsPercent": 0.0,
-        "fasterModel": "gemini-4-carbon",
-        "throughputMultiplier": 1.71,
-        "throughputDeltaTps": 60.0,
-        "ttftDeltaSec": 0.2,
-        "higherIntelligenceModel": "gemini-4-carbon",
-        "intelligenceDelta": 5.4,
-        "codingDelta": 54,
-        "eloDelta": 94
-      },
-      "highlights": [
-        "费率持平：两者定价高度接近（输入 $2.00 vs $2.00，输出 $10.00 vs $10.00 / 1M），核心胜负在于推理质量与吞吐性能。",
-        "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs OpenAI: GPT-6.1 Sol 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
-        "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1288 分（领先 +94 分），人类对齐盲测与指令遵循表现更为拔尖。",
-        "上下文架构容量：OpenAI: GPT-6.1 Sol 提供高达 1,050,000 Tokens 上下文（比 Google: Gemini 4 Carbon 多 1 倍），海量文档与代码库检索免分块。"
-      ],
-      "rank": 2
     },
     {
       "id": "claude-sonnet-5.5-vs-gpt-6.1-sol",
@@ -230,8 +152,8 @@
         "throughputTps": 85.0,
         "ttftSec": 0.45,
         "intelligenceIndex": 54.5,
-        "codingIndex": 1297,
-        "arenaElo": 1260,
+        "codingIndex": 1294,
+        "arenaElo": 1264,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "modelB": {
@@ -248,8 +170,8 @@
         "throughputTps": 85.0,
         "ttftSec": 0.45,
         "intelligenceIndex": 54.6,
-        "codingIndex": 1286,
-        "arenaElo": 1194,
+        "codingIndex": 1283,
+        "arenaElo": 1195,
         "officialDocUrl": "https://openai.com/api/pricing/"
       },
       "metricsDelta": {
@@ -265,16 +187,16 @@
         "higherIntelligenceModel": "gpt-6.1-sol",
         "intelligenceDelta": 0.1,
         "codingDelta": 11,
-        "eloDelta": 66
+        "eloDelta": 69
       },
       "highlights": [
         "费率持平：两者定价高度接近（输入 $2.00 vs $2.00，输出 $10.00 vs $10.00 / 1M），核心胜负在于推理质量与吞吐性能。",
         "Prompt Caching 经济学：Anthropic: Claude Sonnet 5.5 缓存折扣 95.0%（折后 $0.100/1M）vs OpenAI: GPT-6.1 Sol 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
         "生产级吞吐性能：两者流式生成速度平稳（85 t/s vs 85 t/s），首字延迟均在毫秒级生产线标准。",
-        "Chatbot Arena 竞技场：Anthropic: Claude Sonnet 5.5 ELO 评分达 1260 分（领先 +66 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "Chatbot Arena 竞技场：Anthropic: Claude Sonnet 5.5 ELO 评分达 1264 分（领先 +69 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：OpenAI: GPT-6.1 Sol 提供高达 1,050,000 Tokens 上下文（比 Anthropic: Claude Sonnet 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
-      "rank": 3
+      "rank": 2
     },
     {
       "id": "claude-opus-5.5-vs-gpt-6.1-sol",
@@ -308,8 +230,8 @@
         "throughputTps": 45.0,
         "ttftSec": 0.85,
         "intelligenceIndex": 59.1,
-        "codingIndex": 1319,
-        "arenaElo": 1390,
+        "codingIndex": 1316,
+        "arenaElo": 1392,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "modelB": {
@@ -326,8 +248,8 @@
         "throughputTps": 85.0,
         "ttftSec": 0.45,
         "intelligenceIndex": 54.6,
-        "codingIndex": 1286,
-        "arenaElo": 1194,
+        "codingIndex": 1283,
+        "arenaElo": 1195,
         "officialDocUrl": "https://openai.com/api/pricing/"
       },
       "metricsDelta": {
@@ -343,16 +265,16 @@
         "higherIntelligenceModel": "claude-opus-5.5",
         "intelligenceDelta": 4.5,
         "codingDelta": 33,
-        "eloDelta": 196
+        "eloDelta": 197
       },
       "highlights": [
         "震撼级成本降幅：OpenAI: GPT-6.1 Sol 相比 Anthropic: Claude Opus 5.5 综合调用成本骤降 50.0%（输入节省 50.0%，输出节省 50.0%），高并发生产部署 ROI 极高。",
         "Prompt Caching 经济学：Anthropic: Claude Opus 5.5 缓存折扣 95.0%（折后 $0.200/1M）vs OpenAI: GPT-6.1 Sol 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：OpenAI: GPT-6.1 Sol 具备 1.89x 极速输出（85 t/s vs 45 t/s），首字时延仅 0.45s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1390 分（领先 +196 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1392 分（领先 +197 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：OpenAI: GPT-6.1 Sol 提供高达 1,050,000 Tokens 上下文（比 Anthropic: Claude Opus 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
-      "rank": 4
+      "rank": 3
     },
     {
       "id": "deepseek-r1-vs-openai-o1",
@@ -430,7 +352,7 @@
         "Chatbot Arena 竞技场：DeepSeek-R1 (deepseek-reasoner) ELO 评分达 1360 分（领先 +2 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：OpenAI o1 提供高达 200,000 Tokens 上下文（比 DeepSeek-R1 (deepseek-reasoner) 多 1 倍），海量文档与代码库检索免分块。"
       ],
-      "rank": 5
+      "rank": 4
     },
     {
       "id": "deepseek-v4.1-flash-vs-llama-3.3-70b",
@@ -454,11 +376,11 @@
         "modelId": "deepseek-v4.1-flash",
         "modelName": "DeepSeek: DeepSeek V4.1 Flash",
         "providerOrg": "DeepSeek",
-        "inputPerM": 0.051,
-        "outputPerM": 0.567,
-        "cachedInputPerM": 0.018,
-        "cacheDiscountPercent": 64.71,
-        "batchDiscountPercent": 0.0,
+        "inputPerM": 0.3,
+        "outputPerM": 1.2,
+        "cachedInputPerM": 0.006,
+        "cacheDiscountPercent": 98.0,
+        "batchDiscountPercent": 62.67,
         "contextWindow": 1048576,
         "maxOutputTokens": 943718,
         "throughputTps": 145.0,
@@ -488,10 +410,10 @@
       },
       "metricsDelta": {
         "cheaperModel": "deepseek-v4.1-flash",
-        "inputSavingsPercent": 91.4,
-        "outputSavingsPercent": 28.2,
-        "costReductionPercent": 68.3,
-        "cachedSavingsPercent": 93.9,
+        "inputSavingsPercent": 49.2,
+        "outputSavingsPercent": 34.2,
+        "costReductionPercent": 12.3,
+        "cachedSavingsPercent": 98.0,
         "fasterModel": "llama-3.3-70b",
         "throughputMultiplier": 2.9,
         "throughputDeltaTps": 275.0,
@@ -502,31 +424,31 @@
         "eloDelta": null
       },
       "highlights": [
-        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 Llama 3.3 70B Versatile 综合调用成本骤降 68.3%（输入节省 91.4%，输出节省 28.2%），高并发生产部署 ROI 极高。",
-        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 64.71%（折后 $0.018/1M）vs Llama 3.3 70B Versatile 缓存折扣 50.0%（折后 $0.295/1M），极大释放高频 Agent 与多轮对话红利。",
+        "费率优势：DeepSeek: DeepSeek V4.1 Flash 综合节省 12.3%（输入 $0.300 vs $0.590 / 1M），适合大规模长期调用流水线。",
+        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 98.0%（折后 $0.006/1M）vs Llama 3.3 70B Versatile 缓存折扣 50.0%（折后 $0.295/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Llama 3.3 70B Versatile 具备 2.9x 极速输出（420 t/s vs 145 t/s），首字时延仅 0.18s，彻底消灭生成卡顿。",
         "上下文架构容量：DeepSeek: DeepSeek V4.1 Flash 提供高达 1,048,576 Tokens 上下文（比 Llama 3.3 70B Versatile 多 8 倍），海量文档与代码库检索免分块。"
       ],
-      "rank": 6
+      "rank": 5
     },
     {
-      "id": "gemini-4-carbon-vs-claude-sonnet-5.5",
-      "slug": "gemini-4-carbon-vs-claude-sonnet-5.5",
-      "canonicalSlug": "gemini-4-carbon-vs-claude-sonnet-5.5",
-      "category": "long_context_rag",
-      "categoryName": "2M长文档RAG",
-      "categoryNameEn": "Massive Context & Cache ROI Duels",
-      "badge": "2M Context RAG",
+      "id": "gemini-4-carbon-vs-gpt-6.1-sol",
+      "slug": "gemini-4-carbon-vs-gpt-6.1-sol",
+      "canonicalSlug": "gemini-4-carbon-vs-gpt-6.1-sol",
+      "category": "frontier_flagship",
+      "categoryName": "2026 旗舰巅峰",
+      "categoryNameEn": "2026 Frontier Flagship Duels",
+      "badge": "60.0 AA Index",
       "tags": [
-        "2M Context",
-        "Enterprise RAG",
-        "Zero-Surge Cost"
+        "60.0 AA Index",
+        "145 t/s Ultra-Throughput",
+        "2M Context"
       ],
-      "heatScore": 99.0,
-      "targetKeyword": "gemini 4 carbon vs claude sonnet 5.5 2m context caching",
-      "title": "Gemini 4 Carbon (2M Context) vs Claude Sonnet 5.5: Enterprise RAG Architecture",
-      "headline": "Gemini 4 Carbon vs Claude Sonnet 5.5: 2M Context vs 95% Cache ROI",
-      "editorialFocus": "Gemini 4 原生 2M 上下文（无阶梯暴增惩罚）对比 Claude 5.5 深度 95% 缓存机制，百万级文档库分析的月度总账单对照与切片架构选型。",
+      "heatScore": 98.9,
+      "targetKeyword": "gemini 4 carbon vs gpt 6.1 sol benchmarks",
+      "title": "Google Gemini 4 Carbon vs OpenAI GPT-6.1 Sol: Throughput & Intelligence Parity",
+      "headline": "Gemini 4 Carbon vs GPT-6.1 Sol: 60.0 AA Index vs 145 t/s Ultra-Throughput",
+      "editorialFocus": "Google 2026 最新碳基旗舰，Artificial Analysis 综合智能指数高达 60.0（超 GPT-6.1 Sol 的 54.6），吞吐量高达 145 t/s（GPT 为 85 t/s），同等 $2.00/$10.00 单价下的算力降维打击！",
       "modelA": {
         "modelId": "gemini-4-carbon",
         "modelName": "Google: Gemini 4 Carbon",
@@ -541,27 +463,27 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 60,
-        "codingIndex": 1340,
-        "arenaElo": 1288,
+        "codingIndex": 1336,
+        "arenaElo": 1275,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
-        "modelId": "claude-sonnet-5.5",
-        "modelName": "Anthropic: Claude Sonnet 5.5",
-        "providerOrg": "Anthropic",
+        "modelId": "gpt-6.1-sol",
+        "modelName": "OpenAI: GPT-6.1 Sol",
+        "providerOrg": "OpenAI",
         "inputPerM": 2.0,
         "outputPerM": 10.0,
         "cachedInputPerM": 0.1,
         "cacheDiscountPercent": 95.0,
         "batchDiscountPercent": 50.0,
-        "contextWindow": 1000000,
+        "contextWindow": 1050000,
         "maxOutputTokens": 128000,
         "throughputTps": 85.0,
         "ttftSec": 0.45,
-        "intelligenceIndex": 54.5,
-        "codingIndex": 1297,
-        "arenaElo": 1260,
-        "officialDocUrl": "https://www.anthropic.com/pricing"
+        "intelligenceIndex": 54.6,
+        "codingIndex": 1283,
+        "arenaElo": 1195,
+        "officialDocUrl": "https://openai.com/api/pricing/"
       },
       "metricsDelta": {
         "cheaperModel": "gemini-4-carbon",
@@ -574,18 +496,18 @@
         "throughputDeltaTps": 60.0,
         "ttftDeltaSec": 0.2,
         "higherIntelligenceModel": "gemini-4-carbon",
-        "intelligenceDelta": 5.5,
-        "codingDelta": 43,
-        "eloDelta": 28
+        "intelligenceDelta": 5.4,
+        "codingDelta": 53,
+        "eloDelta": 80
       },
       "highlights": [
         "费率持平：两者定价高度接近（输入 $2.00 vs $2.00，输出 $10.00 vs $10.00 / 1M），核心胜负在于推理质量与吞吐性能。",
-        "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Sonnet 5.5 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
+        "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs OpenAI: GPT-6.1 Sol 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1288 分（领先 +28 分），人类对齐盲测与指令遵循表现更为拔尖。",
-        "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Sonnet 5.5 多 1 倍），海量文档与代码库检索免分块。"
+        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1275 分（领先 +80 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "上下文架构容量：OpenAI: GPT-6.1 Sol 提供高达 1,050,000 Tokens 上下文（比 Google: Gemini 4 Carbon 多 1 倍），海量文档与代码库检索免分块。"
       ],
-      "rank": 7
+      "rank": 6
     },
     {
       "id": "deepseek-v4.1-flash-vs-gemini-2.5-flash",
@@ -609,11 +531,11 @@
         "modelId": "deepseek-v4.1-flash",
         "modelName": "DeepSeek: DeepSeek V4.1 Flash",
         "providerOrg": "DeepSeek",
-        "inputPerM": 0.051,
-        "outputPerM": 0.567,
-        "cachedInputPerM": 0.018,
-        "cacheDiscountPercent": 64.71,
-        "batchDiscountPercent": 0.0,
+        "inputPerM": 0.3,
+        "outputPerM": 1.2,
+        "cachedInputPerM": 0.006,
+        "cacheDiscountPercent": 98.0,
+        "batchDiscountPercent": 62.67,
         "contextWindow": 1048576,
         "maxOutputTokens": 943718,
         "throughputTps": 145.0,
@@ -637,16 +559,16 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": null,
-        "codingIndex": 1092,
-        "arenaElo": 1051,
+        "codingIndex": 1089,
+        "arenaElo": 1044,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "metricsDelta": {
         "cheaperModel": "deepseek-v4.1-flash",
-        "inputSavingsPercent": 83.0,
-        "outputSavingsPercent": 77.3,
-        "costReductionPercent": 78.6,
-        "cachedSavingsPercent": 40.0,
+        "inputSavingsPercent": 0.0,
+        "outputSavingsPercent": 52.0,
+        "costReductionPercent": 40.6,
+        "cachedSavingsPercent": 80.0,
         "fasterModel": "deepseek-v4.1-flash",
         "throughputMultiplier": 1.0,
         "throughputDeltaTps": 0.0,
@@ -657,30 +579,30 @@
         "eloDelta": null
       },
       "highlights": [
-        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 Google: Gemini 2.5 Flash 综合调用成本骤降 78.6%（输入节省 83.0%，输出节省 77.3%），高并发生产部署 ROI 极高。",
-        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 64.71%（折后 $0.018/1M）vs Google: Gemini 2.5 Flash 缓存折扣 90.0%（折后 $0.030/1M），极大释放高频 Agent 与多轮对话红利。",
+        "费率优势：DeepSeek: DeepSeek V4.1 Flash 综合节省 40.6%（输入 $0.300 vs $0.300 / 1M），适合大规模长期调用流水线。",
+        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 98.0%（折后 $0.006/1M）vs Google: Gemini 2.5 Flash 缓存折扣 90.0%（折后 $0.030/1M），极大释放高频 Agent 与多轮对话红利。",
         "生产级吞吐性能：两者流式生成速度平稳（145 t/s vs 145 t/s），首字延迟均在毫秒级生产线标准。"
       ],
-      "rank": 8
+      "rank": 7
     },
     {
-      "id": "gemini-4-carbon-vs-claude-opus-5.5",
-      "slug": "gemini-4-carbon-vs-claude-opus-5.5",
-      "canonicalSlug": "gemini-4-carbon-vs-claude-opus-5.5",
+      "id": "gemini-4-carbon-vs-claude-sonnet-5.5",
+      "slug": "gemini-4-carbon-vs-claude-sonnet-5.5",
+      "canonicalSlug": "gemini-4-carbon-vs-claude-sonnet-5.5",
       "category": "long_context_rag",
       "categoryName": "2M长文档RAG",
       "categoryNameEn": "Massive Context & Cache ROI Duels",
-      "badge": "2M vs ELO 1397",
+      "badge": "2M Context RAG",
       "tags": [
         "2M Context",
-        "ELO 1397 vs AA 60.0",
-        "Enterprise Architecture"
+        "Enterprise RAG",
+        "Zero-Surge Cost"
       ],
       "heatScore": 98.0,
-      "targetKeyword": "gemini 4 carbon vs claude opus 5.5 benchmarks",
-      "title": "Gemini 4 Carbon vs Claude Opus 5.5: 2M High-Speed Context vs Peak Reasoning ELO",
-      "headline": "Gemini 4 Carbon vs Claude Opus 5.5: 145 t/s Throughput vs Coding ELO",
-      "editorialFocus": "Google 2026 超旗舰（AA 60.0, 145 t/s, 2M 上下文）对战 Anthropic 最强旗舰 Opus 5.5（AA 59.1, ELO 1397），吞吐速度高达 3.2 倍。",
+      "targetKeyword": "gemini 4 carbon vs claude sonnet 5.5 2m context caching",
+      "title": "Gemini 4 Carbon (2M Context) vs Claude Sonnet 5.5: Enterprise RAG Architecture",
+      "headline": "Gemini 4 Carbon vs Claude Sonnet 5.5: 2M Context vs 95% Cache ROI",
+      "editorialFocus": "Gemini 4 原生 2M 上下文（无阶梯暴增惩罚）对比 Claude 5.5 深度 95% 缓存机制，百万级文档库分析的月度总账单对照与切片架构选型。",
       "modelA": {
         "modelId": "gemini-4-carbon",
         "modelName": "Google: Gemini 4 Carbon",
@@ -695,51 +617,51 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 60,
-        "codingIndex": 1340,
-        "arenaElo": 1288,
+        "codingIndex": 1336,
+        "arenaElo": 1275,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
-        "modelId": "claude-opus-5.5",
-        "modelName": "Anthropic: Claude Opus 5.5",
+        "modelId": "claude-sonnet-5.5",
+        "modelName": "Anthropic: Claude Sonnet 5.5",
         "providerOrg": "Anthropic",
-        "inputPerM": 4.0,
-        "outputPerM": 20.0,
-        "cachedInputPerM": 0.2,
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cachedInputPerM": 0.1,
         "cacheDiscountPercent": 95.0,
         "batchDiscountPercent": 50.0,
         "contextWindow": 1000000,
         "maxOutputTokens": 128000,
-        "throughputTps": 45.0,
-        "ttftSec": 0.85,
-        "intelligenceIndex": 59.1,
-        "codingIndex": 1319,
-        "arenaElo": 1390,
+        "throughputTps": 85.0,
+        "ttftSec": 0.45,
+        "intelligenceIndex": 54.5,
+        "codingIndex": 1294,
+        "arenaElo": 1264,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
         "cheaperModel": "gemini-4-carbon",
-        "inputSavingsPercent": 50.0,
-        "outputSavingsPercent": 50.0,
-        "costReductionPercent": 50.0,
-        "cachedSavingsPercent": 50.0,
+        "inputSavingsPercent": 0.0,
+        "outputSavingsPercent": 0.0,
+        "costReductionPercent": 0.0,
+        "cachedSavingsPercent": 0.0,
         "fasterModel": "gemini-4-carbon",
-        "throughputMultiplier": 3.22,
-        "throughputDeltaTps": 100.0,
-        "ttftDeltaSec": 0.6,
+        "throughputMultiplier": 1.71,
+        "throughputDeltaTps": 60.0,
+        "ttftDeltaSec": 0.2,
         "higherIntelligenceModel": "gemini-4-carbon",
-        "intelligenceDelta": 0.9,
-        "codingDelta": 21,
-        "eloDelta": 102
+        "intelligenceDelta": 5.5,
+        "codingDelta": 42,
+        "eloDelta": 11
       },
       "highlights": [
-        "震撼级成本降幅：Google: Gemini 4 Carbon 相比 Anthropic: Claude Opus 5.5 综合调用成本骤降 50.0%（输入节省 50.0%，输出节省 50.0%），高并发生产部署 ROI 极高。",
-        "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Opus 5.5 缓存折扣 95.0%（折后 $0.200/1M），极大释放高频 Agent 与多轮对话红利。",
-        "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 3.22x 极速输出（145 t/s vs 45 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1390 分（领先 +102 分），人类对齐盲测与指令遵循表现更为拔尖。",
-        "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Opus 5.5 多 1 倍），海量文档与代码库检索免分块。"
+        "费率持平：两者定价高度接近（输入 $2.00 vs $2.00，输出 $10.00 vs $10.00 / 1M），核心胜负在于推理质量与吞吐性能。",
+        "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Sonnet 5.5 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
+        "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
+        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1275 分（领先 +11 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Sonnet 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
-      "rank": 9
+      "rank": 8
     },
     {
       "id": "deepseek-r1-vs-o3-mini",
@@ -816,6 +738,84 @@
         "吞吐与延迟天花板：OpenAI o3-mini 具备 1.55x 极速输出（85 t/s vs 55 t/s），首字时延仅 1.45s，彻底消灭生成卡顿。",
         "Chatbot Arena 竞技场：DeepSeek-R1 (deepseek-reasoner) ELO 评分达 1360 分（领先 +40 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：OpenAI o3-mini 提供高达 200,000 Tokens 上下文（比 DeepSeek-R1 (deepseek-reasoner) 多 1 倍），海量文档与代码库检索免分块。"
+      ],
+      "rank": 9
+    },
+    {
+      "id": "gemini-4-carbon-vs-claude-opus-5.5",
+      "slug": "gemini-4-carbon-vs-claude-opus-5.5",
+      "canonicalSlug": "gemini-4-carbon-vs-claude-opus-5.5",
+      "category": "long_context_rag",
+      "categoryName": "2M长文档RAG",
+      "categoryNameEn": "Massive Context & Cache ROI Duels",
+      "badge": "2M vs ELO 1397",
+      "tags": [
+        "2M Context",
+        "ELO 1397 vs AA 60.0",
+        "Enterprise Architecture"
+      ],
+      "heatScore": 97.0,
+      "targetKeyword": "gemini 4 carbon vs claude opus 5.5 benchmarks",
+      "title": "Gemini 4 Carbon vs Claude Opus 5.5: 2M High-Speed Context vs Peak Reasoning ELO",
+      "headline": "Gemini 4 Carbon vs Claude Opus 5.5: 145 t/s Throughput vs Coding ELO",
+      "editorialFocus": "Google 2026 超旗舰（AA 60.0, 145 t/s, 2M 上下文）对战 Anthropic 最强旗舰 Opus 5.5（AA 59.1, ELO 1397），吞吐速度高达 3.2 倍。",
+      "modelA": {
+        "modelId": "gemini-4-carbon",
+        "modelName": "Google: Gemini 4 Carbon",
+        "providerOrg": "Google",
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cachedInputPerM": 0.1,
+        "cacheDiscountPercent": 95.0,
+        "batchDiscountPercent": 50.0,
+        "contextWindow": 1048576,
+        "maxOutputTokens": 943718,
+        "throughputTps": 145.0,
+        "ttftSec": 0.25,
+        "intelligenceIndex": 60,
+        "codingIndex": 1336,
+        "arenaElo": 1275,
+        "officialDocUrl": "https://ai.google.dev/pricing"
+      },
+      "modelB": {
+        "modelId": "claude-opus-5.5",
+        "modelName": "Anthropic: Claude Opus 5.5",
+        "providerOrg": "Anthropic",
+        "inputPerM": 4.0,
+        "outputPerM": 20.0,
+        "cachedInputPerM": 0.2,
+        "cacheDiscountPercent": 95.0,
+        "batchDiscountPercent": 50.0,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "throughputTps": 45.0,
+        "ttftSec": 0.85,
+        "intelligenceIndex": 59.1,
+        "codingIndex": 1316,
+        "arenaElo": 1392,
+        "officialDocUrl": "https://www.anthropic.com/pricing"
+      },
+      "metricsDelta": {
+        "cheaperModel": "gemini-4-carbon",
+        "inputSavingsPercent": 50.0,
+        "outputSavingsPercent": 50.0,
+        "costReductionPercent": 50.0,
+        "cachedSavingsPercent": 50.0,
+        "fasterModel": "gemini-4-carbon",
+        "throughputMultiplier": 3.22,
+        "throughputDeltaTps": 100.0,
+        "ttftDeltaSec": 0.6,
+        "higherIntelligenceModel": "gemini-4-carbon",
+        "intelligenceDelta": 0.9,
+        "codingDelta": 20,
+        "eloDelta": 117
+      },
+      "highlights": [
+        "震撼级成本降幅：Google: Gemini 4 Carbon 相比 Anthropic: Claude Opus 5.5 综合调用成本骤降 50.0%（输入节省 50.0%，输出节省 50.0%），高并发生产部署 ROI 极高。",
+        "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Opus 5.5 缓存折扣 95.0%（折后 $0.200/1M），极大释放高频 Agent 与多轮对话红利。",
+        "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 3.22x 极速输出（145 t/s vs 45 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
+        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1392 分（领先 +117 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Opus 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 10
     },
@@ -928,8 +928,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": null,
-        "codingIndex": 1092,
-        "arenaElo": 1051,
+        "codingIndex": 1089,
+        "arenaElo": 1044,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
