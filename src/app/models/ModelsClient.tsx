@@ -6,6 +6,7 @@ import { MODELS_DATA } from '@/lib/models-data';
 import { Search, ChevronRight, Filter, Sparkles, ChevronDown, ExternalLink } from 'lucide-react';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import { useI18n } from '@/i18n/I18nProvider';
+import { formatModelCount } from '@/i18n';
 
 const QUICK_PROVIDERS = [
   'All',
@@ -27,6 +28,11 @@ export default function ModelsClient() {
   const [activeTab, setActiveTab] = useState<string>('All');
   const [selectedProviderDropdown, setSelectedProviderDropdown] = useState<string>('');
   const [displayCount, setDisplayCount] = useState<number>(36);
+
+  const modelCount = MODELS_DATA.length;
+  const localizedTitle = formatModelCount(t.models.title, modelCount);
+  const localizedDesc = formatModelCount(t.models.desc, modelCount);
+  const localizedBadge = formatModelCount(t.common.modelsCount, modelCount);
 
   // Extract all unique provider orgs for the extended dropdown
   const allProviders = useMemo(() => {
@@ -77,22 +83,22 @@ export default function ModelsClient() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <SchemaOrg
-        name={t.models.title}
-        description={t.models.desc}
-        url="https://tokencostsai.com/models"
+        name={localizedTitle}
+        description={localizedDesc}
+        url="https://tokencostsai.com/models/"
       />
 
       {/* Header */}
       <div className="space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-400">
           <Sparkles className="h-3.5 w-3.5" />
-          <span>{t.common.modelsCount} • {t.common.verified}</span>
+          <span>{localizedBadge} • {t.common.verified}</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-100">
-          {t.models.title}
+          {localizedTitle}
         </h1>
         <p className="text-sm text-zinc-400 max-w-3xl leading-relaxed">
-          {t.models.desc}
+          {localizedDesc}
         </p>
       </div>
 

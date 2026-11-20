@@ -8,6 +8,7 @@ import { calculateAllModels, calculateMainstreamModels } from '@/lib/calculator-
 import { generateRouterRecommendations } from '@/lib/router-engine';
 import { encodeSimulationParams, decodeSimulationParams } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
+import { formatModelCount } from '@/i18n';
 import SimulatorDeck from '@/components/SimulatorDeck';
 import CostChart from '@/components/CostChart';
 import SmartRouterCard from '@/components/SmartRouterCard';
@@ -142,7 +143,7 @@ function SimulatorContent() {
             availableModels={MODELS_DATA}
           />
 
-          {/* Sponsored Provider Placement */}
+          {/* Dual-Engine Sponsored Provider Placement */}
           <SponsorBanner />
         </div>
 
@@ -152,12 +153,12 @@ function SimulatorContent() {
         </div>
       </div>
 
-      {/* 行业热点与降价雷达 (Market Radar / Price Drops) */}
+      {/* Market Radar / Featured Event Strip & Price Drops */}
       <section className="pt-2">
         <MarketPulseRadar />
       </section>
 
-      {/* Full Width Model Leaderboard (Full catalog of 371+ models) */}
+      {/* Full Width Model Leaderboard */}
       <div className="pt-2">
         <LeaderboardTable breakdowns={allBreakdowns} />
       </div>
@@ -184,7 +185,9 @@ function SimulatorContent() {
 }
 
 export default function HomePage() {
-  const { t, getLocalizedPath } = useI18n();
+  const { t, locale, getLocalizedPath } = useI18n();
+  const modelCount = MODELS_DATA.length;
+  const isZh = locale === 'zh-CN' || locale === 'zh-TW';
 
   return (
     <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
@@ -192,26 +195,26 @@ export default function HomePage() {
       <div className="relative text-center max-w-4xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-400">
           <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
-          <span>{t.simulator.heroBadge} • 371+ Models (Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude 5.5, DeepSeek-V4.1)</span>
+          <span>{t.simulator.heroBadge} • {modelCount}+ Models (Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude 5.5, DeepSeek-V4.1)</span>
         </div>
 
         <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-zinc-100 leading-tight">
           {t.simulator.heroTitle}{' '}
           <span className="bg-gradient-to-r from-indigo-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">
-            Simulate, Route & Save up to 90%
+            Simulate, Route &amp; Save up to 90%
           </span>
         </h1>
 
         <p className="text-xs sm:text-sm text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-          {t.simulator.heroDesc}
+          {formatModelCount(t.simulator.heroDesc, modelCount)}
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs">
           <Link
-            href={getLocalizedPath('/models')}
+            href={getLocalizedPath('/models/')}
             className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-zinc-100 hover:border-zinc-700 transition-colors"
           >
-            <span>{t.common.modelsCount}</span>
+            <span>{formatModelCount(t.common.modelsCount, modelCount)}</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
           <Link
@@ -235,10 +238,32 @@ export default function HomePage() {
             <span>🛠️ {t.nav.harness} (1.2x–3.5x)</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
+          <Link
+            href={getLocalizedPath('/pricing/realtime-voice-world-model-api-costs/')}
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:text-purple-200 hover:border-purple-400/50 transition-colors"
+          >
+            <span>
+              {isZh
+                ? '🎙️ Genie 4 ($0.10/s) 与实时语音待机算费指南'
+                : '🎙️ Genie 4 ($0.10/s) & GPT-Live Standby Guide'}
+            </span>
+            <ArrowRight className="h-3 w-3" />
+          </Link>
+          <Link
+            href={getLocalizedPath('/pricing/gemini-4-carbon-dec-1-migration-guide/')}
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 hover:text-rose-200 hover:border-rose-400/50 transition-colors"
+          >
+            <span>
+              {isZh
+                ? '⚠️ Gemini 4 Carbon 12/1 翻倍涨价与 o3 迁移攻略'
+                : '⚠️ Gemini 4 Carbon Dec 1 2x Hike & o3 Migration'}
+            </span>
+            <ArrowRight className="h-3 w-3" />
+          </Link>
         </div>
       </div>
 
-      {/* 核心算费模拟器 (首屏即见，三栏并排) */}
+      {/* Core Cost Simulator */}
       <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center text-zinc-500 font-mono text-sm">{t.common.loading}</div>}>
         <SimulatorContent />
       </Suspense>

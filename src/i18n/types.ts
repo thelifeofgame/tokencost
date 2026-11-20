@@ -52,6 +52,20 @@ export interface TranslationDictionary {
     heroDesc: string;
     quickCompareGptClaude: string;
     quickCompareDeepseekLlama: string;
+    sponsor: {
+      openrouter: {
+        badge: string;
+        title: string;
+        subtitle: string;
+        cta: string;
+      };
+      groq: {
+        badge: string;
+        title: string;
+        subtitle: string;
+        cta: string;
+      };
+    };
     radar: {
       badge: string;
       title: string;

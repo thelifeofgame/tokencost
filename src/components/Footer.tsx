@@ -65,22 +65,22 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/compare')} className="hover:text-zinc-200 transition-colors">
+              <Link href={getLocalizedPath('/compare/')} className="hover:text-zinc-200 transition-colors">
                 {t.nav.compare}
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/harness')} className="hover:text-zinc-200 transition-colors">
+              <Link href={getLocalizedPath('/harness/')} className="hover:text-zinc-200 transition-colors">
                 {t.nav.harness}
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/models')} className="hover:text-zinc-200 transition-colors">
+              <Link href={getLocalizedPath('/models/')} className="hover:text-zinc-200 transition-colors">
                 {t.nav.models}
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/calculator')} className="hover:text-zinc-200 transition-colors">
+              <Link href={getLocalizedPath('/calculator/')} className="hover:text-zinc-200 transition-colors">
                 {t.nav.calculators}
               </Link>
             </li>
@@ -104,13 +104,13 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/compare/deepseek-v4.1-flash-vs-gpt-6.2-sol/')} className="hover:text-zinc-200 transition-colors">
-                DeepSeek-V4.1-Flash vs GPT-6.2 Sol
+              <Link href={getLocalizedPath('/compare/gemini-4-carbon-vs-claude-sonnet-5.5/')} className="hover:text-zinc-200 transition-colors">
+                Gemini 4 Carbon vs Claude Sonnet 5.5
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/compare/claude-sonnet-5.5-vs-gemini-4-neon/')} className="hover:text-zinc-200 transition-colors">
-                Gemini 4 Neon vs Claude Sonnet 5.5
+              <Link href={getLocalizedPath('/compare/deepseek-r1-vs-o3-mini/')} className="hover:text-zinc-200 transition-colors">
+                DeepSeek-R1 vs Azure o3-mini
               </Link>
             </li>
           </ul>
@@ -122,6 +122,16 @@ export default function Footer() {
             {t.footer.guides}
           </h4>
           <ul className="space-y-2 text-xs">
+            <li>
+              <Link href={getLocalizedPath('/pricing/realtime-voice-world-model-api-costs/')} className="hover:text-zinc-200 transition-colors text-purple-300">
+                Genie 4 &amp; Voice Standby API Costs
+              </Link>
+            </li>
+            <li>
+              <Link href={getLocalizedPath('/pricing/gemini-4-carbon-dec-1-migration-guide/')} className="hover:text-zinc-200 transition-colors text-rose-300">
+                Gemini 4 Carbon Dec 1 Migration (10d Left)
+              </Link>
+            </li>
             <li>
               <Link href={getLocalizedPath('/pricing/cheapest-llm-api-providers/')} className="hover:text-zinc-200 transition-colors">
                 Cheapest LLM APIs in 2026
@@ -143,7 +153,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href={getLocalizedPath('/contact')} className="hover:text-zinc-200 transition-colors text-indigo-400 font-medium">
+              <Link href={getLocalizedPath('/contact/')} className="hover:text-zinc-200 transition-colors text-indigo-400 font-medium">
                 {t.nav.contact}
               </Link>
             </li>

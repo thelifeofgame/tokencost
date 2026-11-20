@@ -25,10 +25,10 @@ export default function SchemaOrg({
   type = 'software',
   name = 'TokenCosts AI - Real-Time LLM API Cost Intelligence & Smart Router',
   description = 'Real-time LLM API cost simulator, prompt caching discount calculator, and multi-model adaptive routing engine.',
-  url = 'https://tokencostsai.com',
+  url = 'https://tokencostsai.com/',
   faqs,
   breadcrumbs,
-  includeHreflang = true,
+  includeHreflang = false,
 }: SchemaOrgProps) {
   const schemas: Record<string, unknown>[] = [];
 
@@ -101,7 +101,7 @@ export default function SchemaOrg({
     });
   }
 
-  // 4. TechArticle / WebPage Schema for Compare Pages
+  // 4. TechArticle Schema for Compare Pages
   if (type === 'compare') {
     schemas.push({
       '@context': 'https://schema.org',
@@ -122,17 +122,15 @@ export default function SchemaOrg({
     });
   }
 
-  // Alternate hreflangs
+  // Alternate hreflangs (disabled by default; Next.js Metadata.alternates.languages is the single source of truth)
   const hreflangs = includeHreflang && url ? generateHreflangTags(url) : [];
 
   return (
     <>
-      {/* Dynamic hreflang alternates */}
       {hreflangs.map((hl) => (
         <link key={hl.hrefLang} rel="alternate" hrefLang={hl.hrefLang} href={hl.href} />
       ))}
 
-      {/* JSON-LD Schemas */}
       {schemas.map((schema, idx) => (
         <script
           key={idx}

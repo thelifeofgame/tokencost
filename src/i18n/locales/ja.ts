@@ -7,9 +7,9 @@ export const ja: TranslationDictionary = {
     versionBadge: 'v1.0',
     tryRouterApi: 'ルーターAPIを試す',
     github: 'GitHub',
-    modelsCount: '371+ モデル対応',
+    modelsCount: '{count}+ モデル対応',
     verified: '公式検証済み',
-    searchPlaceholder: '371以上のモデル、プロバイダー、Agentツールを検索...',
+    searchPlaceholder: '{count}以上のモデル、プロバイダー、Agentツールを検索...',
     loading: '料金データを読み込み中...',
     perMillion: '/ 100万トークン',
     per1kRequests: '/ 1,000リクエスト',
@@ -39,9 +39,23 @@ export const ja: TranslationDictionary = {
   simulator: {
     heroBadge: '2026年最新 LLM＆エージェントコスト分析',
     heroTitle: 'LLM API リアルタイム費用シミュレーター＆スマートルーター',
-    heroDesc: 'Gemini 4 Neon、GPT-6.2 Sol/Astra、Claude Sonnet 5.5、DeepSeek-V4.1-Flashなど371以上のモデルでPrompt Caching 95%+割引、Batch 50%オフを精密計算します。',
+    heroDesc: 'Gemini 4 Neon、GPT-6.2 Sol/Astra、Claude Sonnet 5.5、DeepSeek-V4.1-Flashなど{count}以上のモデルでPrompt Caching 95%+割引、Batch 50%オフを精密計算します。',
     quickCompareGptClaude: 'Gemini 4 Neon vs GPT-6.2 Sol',
     quickCompareDeepseekLlama: 'DeepSeek-V4.1-Flash vs Claude Sonnet 5.5',
+    sponsor: {
+      openrouter: {
+        badge: '値下げ統合ルーター',
+        title: 'OpenRouter：{count}+ モデルを最安レートへ自動ルーティング',
+        subtitle: '本日の値下げ対応：DeepSeek V4.1 Flash-1017 -76% ($0.036/M)、gpt-oss-120b -40%、GLM-5.2 出力 -64%。',
+        cta: 'OpenRouter で接続',
+      },
+      groq: {
+        badge: '公式パートナー',
+        title: 'Groq LPU 推論クラウド：420 t/s 超高速応答',
+        subtitle: 'Llama 3.3 70B を 420 tokens/s・TTFT 200ms未満で実行。$100分の無料クレジットを獲得。',
+        cta: '$100 無料枠を取得',
+      },
+    },
     radar: {
       badge: 'マーケットレーダー • リアルタイム情報',
       title: '業界トレンド＆値下げレーダー',
@@ -102,7 +116,7 @@ export const ja: TranslationDictionary = {
     },
     leaderboard: {
       title: 'グローバルLLM料金＆ベンチマークランキング',
-      subtitle: '371以上のフロンティア閉域モデルからオープンソースまで、100万トークンあたりの実質単価と精度を比較',
+      subtitle: '{count}以上のフロンティア閉域モデルからオープンソースまで、100万トークンあたりの実質単価と精度を比較',
       filterProvider: 'すべてのプロバイダー',
       filterTier: 'すべてのレイテンシ階層',
       colRank: '#',
@@ -147,8 +161,8 @@ export const ja: TranslationDictionary = {
     savesPerMonth: '月間推定削減額',
   },
   models: {
-    title: '371+ LLM料金＆技術仕様ディレクトリ',
-    desc: 'Gemini 4 Neon、GPT-6.2、Claude Sonnet 5.5、DeepSeek-V4.1-Flashなど371以上の最新API価格、最大コンテキスト長、レイテンシを完全網羅。',
+    title: '{count}+ LLM料金＆技術仕様ディレクトリ',
+    desc: 'Gemini 4 Neon、GPT-6.2、Claude Sonnet 5.5、DeepSeek-V4.1-Flashなど{count}以上の最新API価格、最大コンテキスト長、レイテンシを完全網羅。',
     totalModels: '収録モデル総数',
     searchPlaceholder: 'モデル名やIDで検索 (例: gemini-4-neon, gpt-6.2-sol, claude-sonnet-5.5, deepseek-v4.1-flash)...',
     filterByProvider: 'プロバイダーで絞り込み',

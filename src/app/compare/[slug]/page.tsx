@@ -7,6 +7,8 @@ import {
   getAllCompareStaticSlugs,
 } from '@/lib/models-data';
 import SchemaOrg from '@/components/seo/SchemaOrg';
+import { buildAlternates } from '@/lib/seo-alternates';
+import { Locale } from '@/i18n/types';
 import CompareDetailClient from '@/components/CompareDetailClient';
 import {
   Scale,
@@ -25,12 +27,8 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const data = getComparisonData(params.slug);
+export function buildCompareMetadata(slug: string, locale: Locale = 'en'): Metadata {
+  const data = getComparisonData(slug);
   if (!data) {
     return {
       title: 'Comparison Not Found | TokenCosts AI',
@@ -40,19 +38,17 @@ export async function generateMetadata({
 
   const title = `${data.title} | TokenCosts AI`;
   const description = data.description;
-  const canonicalUrl = `https://tokencostsai.com/compare/${data.canonicalSlug}/`;
+  const alternates = buildAlternates(`/compare/${data.canonicalSlug}/`, locale);
 
   return {
     title,
     description,
-    alternates: {
-      canonical: canonicalUrl,
-    },
+    alternates,
     openGraph: {
       title,
       description,
       type: 'article',
-      url: canonicalUrl,
+      url: alternates.canonical,
       siteName: 'TokenCosts AI',
       images: [
         {
@@ -69,6 +65,14 @@ export async function generateMetadata({
       description,
     },
   };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  return buildCompareMetadata(params.slug, 'en');
 }
 
 export default function ComparePage({ params }: { params: { slug: string } }) {
@@ -142,6 +146,30 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
           </span>
         </div>
       </header>
+
+      {/* P1-1 Bidirectional Migration Alert Banner for Carbon/Argon/o3-mini */}
+      {(modelA.modelId === 'gemini-4-carbon' ||
+        modelB.modelId === 'gemini-4-carbon' ||
+        modelA.modelId === 'gemini-4-argon' ||
+        modelB.modelId === 'gemini-4-argon' ||
+        modelA.modelId === 'o3-mini' ||
+        modelB.modelId === 'o3-mini') && (
+        <div className="rounded-2xl border border-rose-500/35 bg-rose-50 dark:bg-rose-950/35 px-4 py-3.5 sm:px-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-start sm:items-center gap-2.5 text-xs sm:text-sm text-rose-900 dark:text-rose-200">
+            <AlertTriangle className="h-4 w-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5 sm:mt-0" />
+            <span>
+              <strong>Migration Alert:</strong> Gemini 4 Carbon &amp; Argon double from $2/$10 to $4/$20 on Dec 1 (and Azure o3/o4-mini retired Nov 19).
+            </span>
+          </div>
+          <Link
+            href="/pricing/gemini-4-carbon-dec-1-migration-guide/"
+            className="min-h-[38px] shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold transition-colors"
+          >
+            <span>Read the Migration Playbook</span>
+            <ChevronRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      )}
 
       {/* 4. Side-by-Side Model Spec & Pricing Matrix */}
       <section aria-label="Side-by-Side Pricing Matrix">

@@ -7,9 +7,9 @@ export const ko: TranslationDictionary = {
     versionBadge: 'v1.0',
     tryRouterApi: '라우터 API 체험',
     github: 'GitHub 소스',
-    modelsCount: '371개 이상의 모델',
+    modelsCount: '{count}개 이상의 모델',
     verified: '공식 검증 완료',
-    searchPlaceholder: '371개 이상의 모델, 제공업체, 코딩 에이전트 검색...',
+    searchPlaceholder: '{count}개 이상의 모델, 제공업체, 코딩 에이전트 검색...',
     loading: '가격 데이터 불러오는 중...',
     perMillion: '/ 100만 토큰',
     per1kRequests: '/ 1천 회 요청',
@@ -39,9 +39,23 @@ export const ko: TranslationDictionary = {
   simulator: {
     heroBadge: '2026년 최신 LLM 및 에이전트 비용 관리',
     heroTitle: 'LLM API 실제 청구 비용 시뮬레이터 및 스마트 라우터',
-    heroDesc: 'Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude Sonnet 5.5, DeepSeek-V4.1-Flash 등 371개 이상의 모델에서 Prompt Caching 95%+ 할인과 Batch API 50% 절감을 정밀 계산합니다.',
+    heroDesc: 'Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude Sonnet 5.5, DeepSeek-V4.1-Flash 등 {count}개 이상의 모델에서 Prompt Caching 95%+ 할인과 Batch API 50% 절감을 정밀 계산합니다.',
     quickCompareGptClaude: 'Gemini 4 Neon vs GPT-6.2 Sol',
     quickCompareDeepseekLlama: 'DeepSeek-V4.1-Flash vs Claude Sonnet 5.5',
+    sponsor: {
+      openrouter: {
+        badge: '인하 모델 통합 라우터',
+        title: 'OpenRouter: {count}+ 모델 오늘의 최저가 자동 라우팅',
+        subtitle: '실시간 인하 적용: DeepSeek V4.1 Flash-1017 -76% ($0.036/M), gpt-oss-120b -40%, GLM-5.2 출력 -64%.',
+        cta: 'OpenRouter 시작하기',
+      },
+      groq: {
+        badge: '공식 파트너',
+        title: 'Groq LPU 추론 클라우드: 420 t/s 초고속 실행',
+        subtitle: 'Llama 3.3 70B를 420 tokens/s, 200ms 미만 TTFT로 스트리밍하고 $100 무료 크레딧을 받으세요.',
+        cta: '$100 무료 크레딧 받기',
+      },
+    },
     radar: {
       badge: '마켓 레이더 • 실시간 인텔리전스',
       title: '업계 트렌드 및 가격 인하 레이더',
@@ -102,7 +116,7 @@ export const ko: TranslationDictionary = {
     },
     leaderboard: {
       title: '글로벌 LLM 요율 및 벤치마크 랭킹',
-      subtitle: '371개 이상의 상용 플래그십 및 오픈소스 모델의 100만 토큰당 실제 단가와 벤치마크 점수 비교',
+      subtitle: '{count}개 이상의 상용 플래그십 및 오픈소스 모델의 100만 토큰당 실제 단가와 벤치마크 점수 비교',
       filterProvider: '모든 제공업체',
       filterTier: '모든 지연 시간 티어',
       colRank: '#',
@@ -147,8 +161,8 @@ export const ko: TranslationDictionary = {
     savesPerMonth: '월간 예상 절감액',
   },
   models: {
-    title: '371+ 전체 LLM 요율 및 기술 사양 디렉터리',
-    desc: 'Gemini 4 Neon, GPT-6.2, Claude Sonnet 5.5, DeepSeek-V4.1-Flash 등 371개 이상 모델의 최신 API 가격, 최대 컨텍스트 및 첫 토큰 지연 시간 완벽 수록.',
+    title: '{count}+ 전체 LLM 요율 및 기술 사양 디렉터리',
+    desc: 'Gemini 4 Neon, GPT-6.2, Claude Sonnet 5.5, DeepSeek-V4.1-Flash 등 {count}개 이상 모델의 최신 API 가격, 최대 컨텍스트 및 첫 토큰 지연 시간 완벽 수록.',
     totalModels: '수록된 총 모델 수',
     searchPlaceholder: '모델명 또는 ID 검색 (예: gemini-4-neon, gpt-6.2-sol, claude-sonnet-5.5, deepseek-v4.1-flash)...',
     filterByProvider: '제공업체별 필터',

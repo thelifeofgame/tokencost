@@ -6,6 +6,8 @@ import { getRecommendedHarnessesForModel } from '@/lib/harness-data';
 import { ExternalLink, ArrowRight, ChevronLeft, Sparkles, Terminal } from 'lucide-react';
 import Link from 'next/link';
 import SchemaOrg from '@/components/seo/SchemaOrg';
+import { buildAlternates } from '@/lib/seo-alternates';
+import { Locale } from '@/i18n/types';
 
 export async function generateStaticParams() {
   return MODELS_DATA.map((m) => ({
@@ -13,12 +15,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
-  const model = MODELS_DATA.find((m) => m.modelId === params.id);
+export function buildModelMetadata(id: string, locale: Locale = 'en'): Metadata {
+  const model = MODELS_DATA.find((m) => m.modelId === id);
   if (!model) {
     return {
       title: 'Model Not Found | TokenCosts AI',
@@ -27,22 +25,29 @@ export async function generateMetadata({
   }
 
   const title = `${model.modelName} API Pricing & Prompt Caching (2026) | TokenCosts AI`;
-  const description = `Official token rates for ${model.modelName} (${model.providerOrg}): $${model.inputPerM}/1M input, $${model.outputPerM}/1M output. Cached prompt reads at $${model.cachedInputPerM}/1M (${model.cacheDiscountPercent}% discount). Context window: ${(model.contextWindow / 1000).toLocaleString()}k tokens.`;
+  const description = `Official token rates for ${model.modelName} (${model.providerOrg}): ${model.inputPerM}/1M input, ${model.outputPerM}/1M output. Cached prompt reads at ${model.cachedInputPerM}/1M (${model.cacheDiscountPercent}% discount). Context window: ${(model.contextWindow / 1000).toLocaleString()}k tokens.`;
+  const alternates = buildAlternates(`/models/${model.modelId}/`, locale);
 
   return {
     title,
     description,
-    alternates: {
-      canonical: `https://tokencostsai.com/models/${model.modelId}`,
-    },
+    alternates,
     openGraph: {
       title,
       description,
       type: 'article',
-      url: `https://tokencostsai.com/models/${model.modelId}`,
+      url: alternates.canonical,
       siteName: 'TokenCosts AI',
     },
   };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  return buildModelMetadata(params.id, 'en');
 }
 
 export default function ModelDetailPage({ params }: { params: { id: string } }) {
@@ -75,7 +80,7 @@ export default function ModelDetailPage({ params }: { params: { id: string } }) 
         type="model"
         name={`${model.modelName} API Pricing & Prompt Caching Rates`}
         description={model.notes}
-        url={`https://tokencostsai.com/models/${model.modelId}`}
+        url={`https://tokencostsai.com/models/${model.modelId}/`}
       />
 
       {/* Back button */}

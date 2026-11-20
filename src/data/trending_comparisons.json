@@ -3,8 +3,8 @@
   "title": "Daily Trending LLM API Model Comparisons (2026)",
   "description": "Daily automated algorithmic selection of top head-to-head model matchups across 2026 frontier flagship, reasoning ROI, ultra-low cost scaling, Groq throughput, and prompt caching economics.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-19T12:24:14.086888+08:00",
-  "date": "2026-11-19",
+  "lastUpdated": "2026-11-20T09:03:14.259466+08:00",
+  "date": "2026-11-20",
   "totalComparisons": 12,
   "sources": [
     "Artificial Analysis Benchmarks & Trending (https://artificialanalysis.ai/models)",
@@ -75,8 +75,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 61.4,
-        "codingIndex": null,
-        "arenaElo": null,
+        "codingIndex": 1399,
+        "arenaElo": 1500,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -153,8 +153,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 61.4,
-        "codingIndex": null,
-        "arenaElo": null,
+        "codingIndex": 1399,
+        "arenaElo": 1500,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -171,8 +171,8 @@
         "throughputTps": 85.0,
         "ttftSec": 0.45,
         "intelligenceIndex": 54.5,
-        "codingIndex": 1294,
-        "arenaElo": 1264,
+        "codingIndex": 1293,
+        "arenaElo": 1261,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -187,14 +187,14 @@
         "ttftDeltaSec": 0.2,
         "higherIntelligenceModel": "gemini-4-neon",
         "intelligenceDelta": 6.9,
-        "codingDelta": null,
-        "eloDelta": null
+        "codingDelta": 106,
+        "eloDelta": 239
       },
       "highlights": [
         "费率优势：Anthropic: Claude Sonnet 5.5 综合节省 33.3%（输入 $2.000 vs $3.000 / 1M），适合大规模长期调用流水线。",
         "Prompt Caching 经济学：Google: Gemini 4 Neon 缓存折扣 95.0%（折后 $0.150/1M）vs Anthropic: Claude Sonnet 5.5 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Google: Gemini 4 Neon 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Artificial Analysis 智能评测：Google: Gemini 4 Neon 智能指数达 61.4 分（分差 +6.9），在复杂逻辑与长程规划任务更胜一筹。",
+        "Chatbot Arena 竞技场：Google: Gemini 4 Neon ELO 评分达 1500 分（领先 +239 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：Google: Gemini 4 Neon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Sonnet 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 2
@@ -249,8 +249,8 @@
         "throughputTps": 45.0,
         "ttftSec": 0.85,
         "intelligenceIndex": 59.1,
-        "codingIndex": 1316,
-        "arenaElo": 1392,
+        "codingIndex": 1313,
+        "arenaElo": 1397,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -559,8 +559,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": null,
-        "codingIndex": 1089,
-        "arenaElo": 1044,
+        "codingIndex": 1087,
+        "arenaElo": 1039,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "metricsDelta": {
@@ -617,8 +617,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 60,
-        "codingIndex": 1336,
-        "arenaElo": 1275,
+        "codingIndex": 1335,
+        "arenaElo": 1272,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -635,8 +635,8 @@
         "throughputTps": 85.0,
         "ttftSec": 0.45,
         "intelligenceIndex": 54.5,
-        "codingIndex": 1294,
-        "arenaElo": 1264,
+        "codingIndex": 1293,
+        "arenaElo": 1261,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -658,7 +658,7 @@
         "费率持平：两者定价高度接近（输入 $2.00 vs $2.00，输出 $10.00 vs $10.00 / 1M），核心胜负在于推理质量与吞吐性能。",
         "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Sonnet 5.5 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1275 分（领先 +11 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1272 分（领先 +11 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Sonnet 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 8
@@ -773,8 +773,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 60,
-        "codingIndex": 1336,
-        "arenaElo": 1275,
+        "codingIndex": 1335,
+        "arenaElo": 1272,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -791,8 +791,8 @@
         "throughputTps": 45.0,
         "ttftSec": 0.85,
         "intelligenceIndex": 59.1,
-        "codingIndex": 1316,
-        "arenaElo": 1392,
+        "codingIndex": 1313,
+        "arenaElo": 1397,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -807,14 +807,14 @@
         "ttftDeltaSec": 0.6,
         "higherIntelligenceModel": "gemini-4-carbon",
         "intelligenceDelta": 0.9,
-        "codingDelta": 20,
-        "eloDelta": 117
+        "codingDelta": 22,
+        "eloDelta": 125
       },
       "highlights": [
         "震撼级成本降幅：Google: Gemini 4 Carbon 相比 Anthropic: Claude Opus 5.5 综合调用成本骤降 50.0%（输入节省 50.0%，输出节省 50.0%），高并发生产部署 ROI 极高。",
         "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Opus 5.5 缓存折扣 95.0%（折后 $0.200/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 3.22x 极速输出（145 t/s vs 45 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1392 分（领先 +117 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1397 分（领先 +125 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Opus 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 10
@@ -928,8 +928,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": null,
-        "codingIndex": 1089,
-        "arenaElo": 1044,
+        "codingIndex": 1087,
+        "arenaElo": 1039,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {

@@ -1,9 +1,10 @@
 import React from 'react';
 import ModelCalculatorPage, {
   generateStaticParams as originalGenerateStaticParams,
-  generateMetadata as originalGenerateMetadata,
+  buildCalculatorMetadata,
 } from '@/app/calculator/[model]/page';
 import { SUPPORTED_LOCALES } from '@/i18n';
+import { resolveLocale } from '@/lib/seo-alternates';
 
 export async function generateStaticParams() {
   const models = await originalGenerateStaticParams();
@@ -22,7 +23,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string; model: string };
 }) {
-  return originalGenerateMetadata({ params: { model: params.model } });
+  return buildCalculatorMetadata(params.model, resolveLocale(params.locale));
 }
 
 export default function LocalizedModelCalculatorPage({

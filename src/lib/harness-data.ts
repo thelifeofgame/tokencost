@@ -1,6 +1,7 @@
 import harnessRaw from '@/data/harness_tools.json';
 import { ModelPricingRule } from '@/types/pricing';
 import { MODELS_DATA } from './models-data';
+import { Locale } from '@/i18n/types';
 
 export type HarnessCategoryId = 'cli-agent' | 'ai-ide' | 'ide-extension';
 
@@ -219,6 +220,81 @@ export function getHarnessSeoMeta(slug: string): {
       `Audit ${name} real token multiplier, system prompt overhead, and BYOK cost optimization setups.`,
     h1: `${name}: Real Token Multiplier & BYOK Cost Guide`,
   };
+}
+
+const HARNESS_TOP_MODELS: Record<string, string> = {
+  'claude-code': 'Claude Sonnet 5.5 / Gemini 4 Neon',
+  cursor: 'Gemini 4 Neon / GPT-6.2 Sol',
+  windsurf: 'GPT-6.2 Sol / Claude Sonnet 5.5',
+  aider: 'DeepSeek-V4.1-Flash / Gemini 4 Neon',
+  cline: 'DeepSeek-V4.1-Flash / Gemini 4 Neon',
+  'roo-code': 'Gemini 4 Neon / DeepSeek-V4.1-Flash',
+  'opencode-continue': 'DeepSeek-V4.1-Flash / GPT-6.2 Sol',
+};
+
+export function getLocalizedHarnessSeoMeta(
+  slug: string,
+  locale: Locale = 'en'
+): {
+  title: string;
+  description: string;
+  h1: string;
+} {
+  if (locale === 'en') {
+    return getHarnessSeoMeta(slug);
+  }
+
+  const tool = getHarnessBySlug(slug);
+  const name = tool?.name || slug;
+  const min = `${(tool?.tokenMultiplierMin ?? 1.5).toFixed(1)}x`;
+  const max = `${(tool?.tokenMultiplierMax ?? 2.5).toFixed(1)}x`;
+  const overhead = (
+    tool?.baseSystemPromptTokens ??
+    tool?.basePromptOverheadTokens ??
+    2000
+  ).toLocaleString('en-US');
+  const topModels =
+    HARNESS_TOP_MODELS[slug] ||
+    tool?.recommendedModels
+      ?.slice(0, 2)
+      .map((m) => m.modelName.split(': ').pop() || m.modelId)
+      .join(' / ') ||
+    'DeepSeek-V4.1-Flash / Gemini 4 Neon';
+
+  switch (locale) {
+    case 'zh-CN':
+      return {
+        title: `${name} Token 消耗倍率 (${min}-${max}) 与 BYOK 省钱配置 (2026) | TokenCosts AI`,
+        description: `实测 ${name} 真实 Token 消耗倍率（${min}-${max}，系统提示词底噪约 ${overhead} tokens）。一键复制 ${topModels} BYOK 降本路由与 Prompt Caching 配置，最高省费 80%。`,
+        h1: `${name}：真实 Token 倍率实测与 BYOK 降本配置指南`,
+      };
+    case 'zh-TW':
+      return {
+        title: `${name} Token 消耗倍率 (${min}-${max}) 與 BYOK 省錢配置 (2026) | TokenCosts AI`,
+        description: `實測 ${name} 真實 Token 消耗倍率（${min}-${max}，系統提示詞底噪約 ${overhead} tokens）。一鍵複製 ${topModels} BYOK 降本路由與快取設定，最高省費 80%。`,
+        h1: `${name}：真實 Token 倍率實測與 BYOK 降本設定指南`,
+      };
+    case 'ja':
+      return {
+        title: `${name} トークン消費倍率 (${min}-${max})・BYOK 最安設定 (2026) | TokenCosts AI`,
+        description: `${name} の実測トークン倍率（${min}-${max}、システムプロンプト負荷約 ${overhead} tokens）を検証。${topModels} 向け BYOK コスト最適化設定とキャッシュ活用術を公開。`,
+        h1: `${name}：実測トークン倍率＆BYOK コスト最適化ガイド`,
+      };
+    case 'ko':
+      return {
+        title: `${name} 토큰 배수 (${min}-${max}) 및 BYOK 비용 최적화 (2026) | TokenCosts AI`,
+        description: `${name}의 실제 토큰 배수(${min}-${max}, 시스템 프롬프트 오버헤드 약 ${overhead} tokens)를 분석합니다. ${topModels} 기반 BYOK 라우팅 및 프롬프트 캐싱 절감 가이드를 복사하세요.`,
+        h1: `${name}: 실제 토큰 배수 측정 및 BYOK 비용 절감 가이드`,
+      };
+    case 'es':
+      return {
+        title: `Costo de Tokens en ${name} (${min}-${max}) y Guía BYOK (2026) | TokenCosts AI`,
+        description: `Audita el multiplicador real de tokens de ${name} (${min}-${max}, ~${overhead} tokens de sistema) y reduce tu factura con configuración BYOK para ${topModels} y Prompt Caching.`,
+        h1: `${name}: Multiplicador Real de Tokens y Optimización BYOK`,
+      };
+    default:
+      return getHarnessSeoMeta(slug);
+  }
 }
 
 /**

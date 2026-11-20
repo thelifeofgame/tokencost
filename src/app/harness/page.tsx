@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import HarnessDirectoryClient from '@/components/HarnessDirectoryClient';
 import SchemaOrg from '@/components/seo/SchemaOrg';
+import { buildAlternates } from '@/lib/seo-alternates';
 
 export const metadata: Metadata = {
   title: 'Coding Agent & Harness Token Multiplier Benchmark (2026) | TokenCosts AI',
@@ -14,9 +15,7 @@ export const metadata: Metadata = {
     siteName: 'TokenCosts AI',
     type: 'website',
   },
-  alternates: {
-    canonical: 'https://tokencostsai.com/harness/',
-  },
+  alternates: buildAlternates('/harness/', 'en'),
 };
 
 const HARNESS_HUB_FAQS = [

@@ -6,6 +6,8 @@ import { ModelCostBreakdown } from '@/types/pricing';
 import { formatCurrency } from '@/lib/utils';
 import { trackEvent } from '@/lib/analytics';
 import { useI18n } from '@/i18n/I18nProvider';
+import { formatModelCount } from '@/i18n';
+import { MODELS_DATA } from '@/lib/models-data';
 import { ArrowUpDown, Table, ExternalLink, Search, Sparkles, ChevronDown } from 'lucide-react';
 
 interface LeaderboardTableProps {
@@ -62,11 +64,11 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
               {t.simulator.leaderboard.title}
             </h2>
             <span className="rounded-full bg-zinc-800 px-2 py-0.5 text-[10px] font-mono text-zinc-400 border border-zinc-750">
-              {breakdowns.length} {t.common.modelsCount}
+              {formatModelCount(t.common.modelsCount, breakdowns.length)}
             </span>
           </div>
           <p className="text-xs text-zinc-400 mt-0.5">
-            {t.simulator.leaderboard.subtitle}
+            {formatModelCount(t.simulator.leaderboard.subtitle, MODELS_DATA.length)}
           </p>
         </div>
 
@@ -75,7 +77,7 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-500" />
           <input
             type="text"
-            placeholder={t.common.searchPlaceholder}
+            placeholder={formatModelCount(t.common.searchPlaceholder, MODELS_DATA.length)}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-indigo-500 transition-colors"

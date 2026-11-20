@@ -1,9 +1,10 @@
 import React from 'react';
 import ComparePage, {
   generateStaticParams as originalGenerateStaticParams,
-  generateMetadata as originalGenerateMetadata,
+  buildCompareMetadata,
 } from '@/app/compare/[slug]/page';
 import { SUPPORTED_LOCALES } from '@/i18n';
+import { resolveLocale } from '@/lib/seo-alternates';
 
 export async function generateStaticParams() {
   const slugs = await originalGenerateStaticParams();
@@ -22,7 +23,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string; slug: string };
 }) {
-  return originalGenerateMetadata({ params: { slug: params.slug } });
+  return buildCompareMetadata(params.slug, resolveLocale(params.locale));
 }
 
 export default function LocalizedCompareDetailPage({

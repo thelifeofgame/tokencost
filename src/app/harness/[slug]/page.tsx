@@ -6,6 +6,7 @@ import {
   getHarnessBySlug,
   getHarnessSeoMeta,
 } from '@/lib/harness-data';
+import { buildAlternates } from '@/lib/seo-alternates';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import HarnessDetailClient from '@/components/HarnessDetailClient';
 
@@ -32,9 +33,7 @@ export async function generateMetadata({
   return {
     title: seo.title,
     description: seo.description,
-    alternates: {
-      canonical: canonicalUrl,
-    },
+    alternates: buildAlternates(`/harness/${tool.slug}/`, 'en'),
     openGraph: {
       title: seo.title,
       description: seo.description,

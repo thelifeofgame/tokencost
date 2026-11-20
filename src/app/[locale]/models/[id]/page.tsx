@@ -1,9 +1,10 @@
 import React from 'react';
 import ModelDetailPage, {
   generateStaticParams as originalGenerateStaticParams,
-  generateMetadata as originalGenerateMetadata,
+  buildModelMetadata,
 } from '@/app/models/[id]/page';
 import { SUPPORTED_LOCALES } from '@/i18n';
+import { resolveLocale } from '@/lib/seo-alternates';
 
 export async function generateStaticParams() {
   const models = await originalGenerateStaticParams();
@@ -22,7 +23,7 @@ export async function generateMetadata({
 }: {
   params: { locale: string; id: string };
 }) {
-  return originalGenerateMetadata({ params: { id: params.id } });
+  return buildModelMetadata(params.id, resolveLocale(params.locale));
 }
 
 export default function LocalizedModelDetailPage({

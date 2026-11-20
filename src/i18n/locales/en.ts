@@ -7,9 +7,9 @@ export const en: TranslationDictionary = {
     versionBadge: 'v1.0',
     tryRouterApi: 'Try Router API',
     github: 'GitHub',
-    modelsCount: '371+ Models',
+    modelsCount: '{count}+ Models',
     verified: 'Verified',
-    searchPlaceholder: 'Search 371+ models, providers, coding agents...',
+    searchPlaceholder: 'Search {count}+ models, providers, coding agents...',
     loading: 'Loading pricing data...',
     perMillion: '/ 1M tokens',
     per1kRequests: '/ 1k reqs',
@@ -39,9 +39,23 @@ export const en: TranslationDictionary = {
   simulator: {
     heroBadge: '2026 LLM & Agent Cost Intelligence',
     heroTitle: 'LLM API Cost Intelligence & Smart Router',
-    heroDesc: 'Simulate true API costs for Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude Sonnet 5.5, and DeepSeek-V4.1-Flash with 95%+ Prompt Caching discounts, Batch 50% savings, and Pareto-optimal routing.',
+    heroDesc: 'Simulate true API costs across {count}+ models including Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude Sonnet 5.5, and DeepSeek-V4.1-Flash with 95%+ Prompt Caching discounts, Batch 50% savings, and Pareto-optimal routing.',
     quickCompareGptClaude: 'Gemini 4 Neon vs GPT-6.2 Sol',
     quickCompareDeepseekLlama: 'DeepSeek-V4.1-Flash vs Claude Sonnet 5.5',
+    sponsor: {
+      openrouter: {
+        badge: 'Rate-Drop Routing',
+        title: 'OpenRouter: Auto-Route {count}+ Models at Today\'s Lowest Rates',
+        subtitle: 'Tap today\'s cuts: DeepSeek V4.1 Flash-1017 -76% ($0.036/M), gpt-oss-120b -40% ($0.09/M) & GLM-5.2 output -64%.',
+        cta: 'Route via OpenRouter',
+      },
+      groq: {
+        badge: 'Sponsored Partner',
+        title: 'Groq LPU Cloud: 420 t/s Ultra-Low Latency',
+        subtitle: 'Run Llama 3.3 70B at 420 tokens/sec with <200ms TTFT. Unlock $100 in free compute credits.',
+        cta: 'Claim $100 Free Credits',
+      },
+    },
     radar: {
       badge: 'Market Radar • Live Intelligence',
       title: 'Market Radar & Price Drops',
@@ -102,7 +116,7 @@ export const en: TranslationDictionary = {
     },
     leaderboard: {
       title: 'Global Model Pricing & Benchmark Leaderboard',
-      subtitle: 'Sort and filter across 371+ frontier, enterprise, and open-weight models',
+      subtitle: 'Sort and filter across {count}+ frontier, enterprise, and open-weight models',
       filterProvider: 'All Providers',
       filterTier: 'All Latency Tiers',
       colRank: '#',
@@ -147,8 +161,8 @@ export const en: TranslationDictionary = {
     savesPerMonth: 'saves approximately',
   },
   models: {
-    title: 'Model Pricing & Specifications Directory',
-    desc: 'Comprehensive database of 371+ frontier and open-weights LLMs including Gemini 4 Neon, GPT-6.2, Claude Sonnet 5.5, and DeepSeek-V4.1-Flash with caching and latency metrics.',
+    title: '{count}+ Model Pricing & Specifications Directory',
+    desc: 'Comprehensive database of {count}+ frontier and open-weights LLMs including Gemini 4 Neon, GPT-6.2, Claude Sonnet 5.5, and DeepSeek-V4.1-Flash with caching and latency metrics.',
     totalModels: 'Total Models Cataloged',
     searchPlaceholder: 'Search model by name or ID (e.g. gemini-4-neon, gpt-6.2-sol, claude-sonnet-5.5, deepseek-v4.1-flash)...',
     filterByProvider: 'Filter by Provider',

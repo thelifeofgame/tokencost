@@ -3,9 +3,9 @@
   "title": "Daily LLM Industry Market Radar & Price Drops",
   "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-19T09:04:43.315193+08:00",
-  "date": "2026-11-19",
-  "totalItems": 12,
+  "lastUpdated": "2026-11-20T10:42:00+08:00",
+  "date": "2026-11-20",
+  "totalItems": 14,
   "categories": [
     {
       "type": "new_model",
@@ -29,6 +29,43 @@
     }
   ],
   "items": [
+    {
+      "id": "radar-openrouter-gpt-oss-120b-drop-20261120",
+      "type": "price_cut",
+      "title": "OpenAI gpt-oss-120b 费率直降 40%：输入 $0.09/1M、输出 $0.36/1M",
+      "provider": "OpenAI",
+      "modelId": "gpt-oss-120b",
+      "badgeText": "-40% Price Cut",
+      "summary": "OpenRouter 实时追踪显示 openai/gpt-oss-120b 从 $0.15/$0.60 下调 40% 至 $0.09/$0.36 每百万 Token，缓存读取 $0.045/1M（50% 折扣），批处理折扣达 67.11%。",
+      "effectiveDate": "2026-11-20",
+      "link": "https://openrouter.ai/models/openai/gpt-oss-120b",
+      "metrics": {
+        "inputPerM": 0.09,
+        "outputPerM": 0.36,
+        "cacheDiscountPercent": 50.0,
+        "batchDiscountPercent": 67.11,
+        "contextWindow": 131072,
+        "throughputTps": 85.0
+      }
+    },
+    {
+      "id": "radar-openrouter-deepseek-v41-flash-1017-drop-20261120",
+      "type": "price_cut",
+      "title": "DeepSeek V4.1 Flash-1017 输入暴降 76% 至 $0.036/1M，输出 $0.50/1M",
+      "provider": "DeepSeek",
+      "modelId": "deepseek-v4.1-flash-1017",
+      "badgeText": "-76% Price Cut",
+      "summary": "DeepSeek V4.1 Flash-1017（1017 快照）输入端由 $0.15/1M 大幅下探 76% 至 $0.036/1M，输出降至 $0.50/1M，缓存读取低至 $0.010/1M，支持 1,048,576 上下文与 145 t/s 吞吐。",
+      "effectiveDate": "2026-11-20",
+      "link": "https://openrouter.ai/models/deepseek/deepseek-v4.1-flash-1017",
+      "metrics": {
+        "inputPerM": 0.036,
+        "outputPerM": 0.5,
+        "cacheDiscountPercent": 72.22,
+        "contextWindow": 1048576,
+        "throughputTps": 145.0
+      }
+    },
     {
       "id": "radar-dyn-gemini-4-neon",
       "type": "new_model",

@@ -264,6 +264,18 @@ export const PRICING_TOPICS = [
     description: 'How to save 50% on large offline tasks with OpenAI, Anthropic, and Google asynchronous batch endpoints.',
     bestModel: 'gpt-6.2-sol',
   },
+  {
+    slug: 'realtime-voice-world-model-api-costs',
+    title: 'Real-Time Voice & World Model API Costs: Genie 4 ($0.10/s) vs GPT-Live-1.1 Standby',
+    description: 'Audit real-time multimodal API unit economics: Google Genie 4 at $0.10/sec ($6.05/min, 5,760 tok/s) vs OpenAI GPT-Live-1.1 WebRTC Standby cutting idle voice costs 60% to $0.02/min.',
+    bestModel: 'gemini-4-neon',
+  },
+  {
+    slug: 'gemini-4-carbon-dec-1-migration-guide',
+    title: 'Gemini 4 Carbon Dec 1 Price Hike & Azure o3/o4-mini Migration Playbook',
+    description: 'Gemini 4 Carbon & Argon double from $2/$10 to $4/$20 after Nov 30, while Azure o3/o4-mini retired Nov 19. Audit drop-in $2/$10 replacements: Claude Sonnet 5.5, GPT-6.2 Sol & DeepSeek-R1.',
+    bestModel: 'claude-sonnet-5.5',
+  },
 ];
 
 export interface ComparisonScenarioResult {

@@ -46,12 +46,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   // Coding Agent & Harness Detail Pages
-  const harnessRoutes: MetadataRoute.Sitemap = getAllHarnessSlugs().map((slug) => ({
+  const harnessSlugs = getAllHarnessSlugs();
+  const harnessRoutes: MetadataRoute.Sitemap = harnessSlugs.map((slug) => ({
     url: `${baseUrl}/harness/${slug}/`,
     lastModified: currentDate,
     changeFrequency: 'weekly',
     priority: 0.85,
   }));
+
+  // Non-English Localized Coding Agent & Harness Detail Pages (35 URLs)
+  const localizedHarnessRoutes: MetadataRoute.Sitemap = nonEnLocales.flatMap((locale) =>
+    harnessSlugs.map((slug) => ({
+      url: `${baseUrl}/${locale.code}/harness/${slug}/`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    }))
+  );
 
   // P0 精选对比页（最高优先级）
   const p0Slugs = new Set(P0_COMPARE_PAIRS.map((pair) => pair.canonicalSlug));
@@ -62,8 +73,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.95,
   }));
 
-  // 其余全部预生成的 Tier-1 组合对比页（此前完全没进 sitemap，只能靠内链发现）
-  // 用 canonicalSlug 去重：正反两个方向的页面 canonical 指向同一个地址，只收录一次
+  // 其余全部预生成的 Tier-1 组合对比页
   const tier1Seen = new Set<string>(p0Slugs);
   const tier1CompareRoutes: MetadataRoute.Sitemap = [];
 
@@ -99,22 +109,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Pricing Guide Topics
+  // Pricing Guide Topics (English + P1-1 Featured Topics)
+  const p1TopicSlugs = new Set([
+    'realtime-voice-world-model-api-costs',
+    'gemini-4-carbon-dec-1-migration-guide',
+  ]);
   const topicRoutes: MetadataRoute.Sitemap = PRICING_TOPICS.map((topic) => ({
     url: `${baseUrl}/pricing/${topic.slug}/`,
     lastModified: currentDate,
-    changeFrequency: 'weekly',
-    priority: 0.8,
+    changeFrequency: p1TopicSlugs.has(topic.slug) ? 'daily' : 'weekly',
+    priority: p1TopicSlugs.has(topic.slug) ? 0.85 : 0.8,
   }));
+
+  // Non-English Localized Pricing Guide Topics (30 URLs)
+  const localizedTopicRoutes: MetadataRoute.Sitemap = nonEnLocales.flatMap((locale) =>
+    PRICING_TOPICS.map((topic) => ({
+      url: `${baseUrl}/${locale.code}/pricing/${topic.slug}/`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    }))
+  );
 
   return [
     ...staticRoutes,
     ...localizedStaticRoutes,
     ...harnessRoutes,
+    ...localizedHarnessRoutes,
     ...p0CompareRoutes,
     ...tier1CompareRoutes,
     ...modelRoutes,
     ...calculatorRoutes,
     ...topicRoutes,
+    ...localizedTopicRoutes,
   ];
 }

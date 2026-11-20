@@ -7,9 +7,9 @@ export const zhCN: TranslationDictionary = {
     versionBadge: 'v1.0',
     tryRouterApi: '体验路由 API',
     github: 'GitHub 源码',
-    modelsCount: '371+ 款大模型',
+    modelsCount: '{count}+ 款大模型',
     verified: '官方核对',
-    searchPlaceholder: '搜索 371+ 款大模型、厂商名称、Agent 工具...',
+    searchPlaceholder: '搜索 {count}+ 款大模型、厂商名称、Agent 工具...',
     loading: '正在加载模型定价数据...',
     perMillion: '/ 100万 Tokens',
     per1kRequests: '/ 千次请求',
@@ -39,9 +39,23 @@ export const zhCN: TranslationDictionary = {
   simulator: {
     heroBadge: '告别大模型与 Agent 账单盲猜',
     heroTitle: 'LLM API 真实计费模拟器与自适应智能路由',
-    heroDesc: '精准核算 Gemini 4 Neon、GPT-6.2 Sol/Astra、Claude Sonnet 5.5 与 DeepSeek-V4.1-Flash 等 371+ 款模型的 Prompt Caching 95%+ 缓存减免、Batch 半价折扣与最优降本路由。',
+    heroDesc: '精准核算 Gemini 4 Neon、GPT-6.2 Sol/Astra、Claude Sonnet 5.5 与 DeepSeek-V4.1-Flash 等 {count}+ 款模型的 Prompt Caching 95%+ 缓存减免、Batch 半价折扣与最优降本路由。',
     quickCompareGptClaude: 'Gemini 4 Neon 对比 GPT-6.2 Sol',
     quickCompareDeepseekLlama: 'DeepSeek-V4.1-Flash 对比 Claude Sonnet 5.5',
+    sponsor: {
+      openrouter: {
+        badge: '降价聚合路由',
+        title: 'OpenRouter：一键聚合路由 {count}+ 模型，锁定今日最低费率',
+        subtitle: '直享今日调价：DeepSeek V4.1 Flash-1017 直降 76% ($0.036/M)、gpt-oss-120b -40%、GLM-5.2 输出 -64%。',
+        cta: '开启 OpenRouter 路由',
+      },
+      groq: {
+        badge: '官方合作云',
+        title: 'Groq LPU 极速推理：420 t/s 超低首字延迟',
+        subtitle: 'Llama 3.3 70B 实测 420 tokens/s 与 <200ms TTFT，新用户立即领取 $100 免费算力赠金。',
+        cta: '领取 $100 免费额度',
+      },
+    },
     radar: {
       badge: '行业雷达 • 实时情报',
       title: '行业热点与降价雷达',
@@ -102,7 +116,7 @@ export const zhCN: TranslationDictionary = {
     },
     leaderboard: {
       title: '全球大模型费率与基准评测排行榜',
-      subtitle: '横向对比 371+ 款前沿闭源旗舰、高性价比与开源大模型的真实每百万 Token 费率与跑分',
+      subtitle: '横向对比 {count}+ 款前沿闭源旗舰、高性价比与开源大模型的真实每百万 Token 费率与跑分',
       filterProvider: '全部服务厂商',
       filterTier: '全部时延梯队',
       colRank: '排名',
@@ -147,8 +161,8 @@ export const zhCN: TranslationDictionary = {
     savesPerMonth: '预计每月节省',
   },
   models: {
-    title: '371+ 全量大模型定价与技术规格大全',
-    desc: '全面收录 Gemini 4 Neon、GPT-6.2、Claude Sonnet 5.5、DeepSeek-V4.1-Flash 等 371+ 款主流模型的最新 API 资费、缓存折扣与首字时延。',
+    title: '{count}+ 全量大模型定价与技术规格大全',
+    desc: '全面收录 Gemini 4 Neon、GPT-6.2、Claude Sonnet 5.5、DeepSeek-V4.1-Flash 等 {count}+ 款主流模型的最新 API 资费、缓存折扣与首字时延。',
     totalModels: '已收录大模型总数',
     searchPlaceholder: '搜索模型名称或标识符 (例如 gemini-4-neon, gpt-6.2-sol, claude-sonnet-5.5, deepseek-v4.1-flash)...',
     filterByProvider: '按服务商筛选',

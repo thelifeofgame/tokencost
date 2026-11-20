@@ -80,6 +80,10 @@ export function getTranslation(locale: Locale): TranslationDictionary {
   return translations[locale] || translations[DEFAULT_LOCALE];
 }
 
+export function formatModelCount(template: string, count: number): string {
+  return template.replace(/\{count\}/g, String(count));
+}
+
 export function isValidLocale(locale: string): locale is Locale {
   return SUPPORTED_LOCALES.some((l) => l.code === locale);
 }
@@ -94,7 +98,7 @@ export function extractLocaleFromPath(pathname: string): {
   locale: Locale;
   pathnameWithoutLocale: string;
 } {
-  const pathOnly = pathname.replace(/^https?:\/\/[^\/]+/, '') || '/';
+  const pathOnly = pathname.replace(/^https?:\/\/[^/]+/, '') || '/';
   const segments = pathOnly.split('/').filter(Boolean);
   if (segments.length > 0 && isValidLocale(segments[0])) {
     const locale = segments[0];
@@ -128,14 +132,15 @@ export function getLocalizedPath(path: string, locale: Locale): string {
 export function generateHreflangTags(canonicalPath: string) {
   const baseUrl = 'https://tokencostsai.com';
   const { pathnameWithoutLocale } = extractLocaleFromPath(canonicalPath);
-  const cleanPath = pathnameWithoutLocale.replace(/^\/+/, '');
+  const cleanPath = pathnameWithoutLocale.replace(/^\/+|\/+$/g, '');
+  const suffix = cleanPath ? `${cleanPath}/` : '';
 
   const alternates: { hrefLang: string; href: string }[] = [];
 
   // Default fallback (x-default points to default en)
   alternates.push({
     hrefLang: 'x-default',
-    href: cleanPath ? `${baseUrl}/${cleanPath}` : `${baseUrl}/`,
+    href: `${baseUrl}/${suffix}`,
   });
 
   // All 6 locales
@@ -143,12 +148,12 @@ export function generateHreflangTags(canonicalPath: string) {
     if (loc.code === DEFAULT_LOCALE) {
       alternates.push({
         hrefLang: loc.code,
-        href: cleanPath ? `${baseUrl}/${cleanPath}` : `${baseUrl}/`,
+        href: `${baseUrl}/${suffix}`,
       });
     } else {
       alternates.push({
         hrefLang: loc.code,
-        href: cleanPath ? `${baseUrl}/${loc.code}/${cleanPath}` : `${baseUrl}/${loc.code}/`,
+        href: `${baseUrl}/${loc.code}/${suffix}`,
       });
     }
   }
