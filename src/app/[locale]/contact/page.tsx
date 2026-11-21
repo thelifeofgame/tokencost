@@ -2,7 +2,11 @@ import React from 'react';
 import type { Metadata } from 'next';
 import ContactClient from '@/app/contact/ContactClient';
 import { SUPPORTED_LOCALES, getTranslation } from '@/i18n';
-import { buildAlternates, resolveLocale } from '@/lib/seo-alternates';
+import {
+  buildAlternates, resolveLocale,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 
 export async function generateStaticParams() {
   return SUPPORTED_LOCALES
@@ -31,6 +35,13 @@ export async function generateMetadata({
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
       type: 'website',
+      images: DEFAULT_OG_IMAGES,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+      images: [DEFAULT_OG_IMAGE_URL],
     },
   };
 }

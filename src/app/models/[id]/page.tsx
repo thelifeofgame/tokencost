@@ -6,7 +6,11 @@ import { getRecommendedHarnessesForModel } from '@/lib/harness-data';
 import { ExternalLink, ArrowRight, ChevronLeft, Sparkles, Terminal } from 'lucide-react';
 import Link from 'next/link';
 import SchemaOrg from '@/components/seo/SchemaOrg';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 import { Locale } from '@/i18n/types';
 
 export async function generateStaticParams() {
@@ -38,6 +42,13 @@ export function buildModelMetadata(id: string, locale: Locale = 'en'): Metadata 
       type: 'article',
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
+      images: DEFAULT_OG_IMAGES,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+      images: [DEFAULT_OG_IMAGE_URL],
     },
   };
 }

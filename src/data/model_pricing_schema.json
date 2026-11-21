@@ -3,7 +3,7 @@
   "title": "Global LLM Official Pricing, Benchmarks and Performance Schema",
   "description": "Standardized schema tracking official API token rates, prompt caching, batch discounts, context windows, Artificial Analysis benchmarks, and throughput/latency metrics for leading foundational LLM providers.",
   "version": "2.1.0",
-  "lastUpdated": "2026-11-20T09:03:13.730213+08:00",
+  "lastUpdated": "2026-11-21T10:09:22.020517+08:00",
   "currency": "USD",
   "unit": "per_1m_tokens",
   "referenceSources": [
@@ -656,7 +656,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 44.2,
-        "codingIndex": 1243,
+        "codingIndex": 1240,
         "agenticIndex": null,
         "arenaElo": 1203,
         "evalSources": [
@@ -692,9 +692,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 59.1,
-        "codingIndex": 1313,
+        "codingIndex": 1310,
         "agenticIndex": null,
-        "arenaElo": 1397,
+        "arenaElo": 1399,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -728,7 +728,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1217,
+        "codingIndex": 1214,
         "agenticIndex": null,
         "arenaElo": 1170,
         "evalSources": [
@@ -763,9 +763,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 54.5,
-        "codingIndex": 1293,
+        "codingIndex": 1291,
         "agenticIndex": null,
-        "arenaElo": 1261,
+        "arenaElo": 1262,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -799,7 +799,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1189,
+        "codingIndex": 1188,
         "agenticIndex": null,
         "arenaElo": 1156,
         "evalSources": [
@@ -817,11 +817,11 @@
       "modelId": "deepseek-v4-flash-0731",
       "modelName": "DeepSeek: DeepSeek V4 Flash 0731",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.1,
+      "inputPerM": 0.0443,
       "outputPerM": 0.3,
-      "cachedInputPerM": 0.05,
-      "cacheDiscountPercent": 50.0,
-      "batchDiscountPercent": 52.0,
+      "cachedInputPerM": 0.035,
+      "cacheDiscountPercent": 20.99,
+      "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 943718,
       "latencyTier": "reasoning-medium",
@@ -853,13 +853,13 @@
       "modelId": "deepseek-v4-flash-vision-exp",
       "modelName": "DeepSeek: DeepSeek V4 Flash Vision Exp",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.44,
-      "outputPerM": 1.32,
-      "cachedInputPerM": 0.014,
-      "cacheDiscountPercent": 96.82,
+      "inputPerM": 0.2156,
+      "outputPerM": 0.6468,
+      "cachedInputPerM": 0.0069,
+      "cacheDiscountPercent": 96.8,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
-      "maxOutputTokens": 943717,
+      "maxOutputTokens": 262144,
       "latencyTier": "fast",
       "officialDocUrl": "https://api-docs.deepseek.com/quick_start/pricing",
       "affiliateTag": null,
@@ -924,10 +924,10 @@
       "modelId": "deepseek-v4-pro-0813",
       "modelName": "DeepSeek: DeepSeek V4 Pro 0813",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.27,
-      "outputPerM": 11.5,
-      "cachedInputPerM": 0.21,
-      "cacheDiscountPercent": 22.22,
+      "inputPerM": 1.32,
+      "outputPerM": 3.96,
+      "cachedInputPerM": 0.044,
+      "cacheDiscountPercent": 96.67,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 943718,
@@ -959,13 +959,13 @@
       "modelId": "deepseek-v4.1-flash",
       "modelName": "DeepSeek: DeepSeek V4.1 Flash",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.3,
-      "outputPerM": 1.2,
-      "cachedInputPerM": 0.006,
-      "cacheDiscountPercent": 98.0,
-      "batchDiscountPercent": 62.67,
+      "inputPerM": 0.0507,
+      "outputPerM": 0.2028,
+      "cachedInputPerM": 0.001,
+      "cacheDiscountPercent": 98.03,
+      "batchDiscountPercent": 1.38,
       "contextWindow": 1048576,
-      "maxOutputTokens": 943718,
+      "maxOutputTokens": 393216,
       "latencyTier": "fast",
       "officialDocUrl": "https://api-docs.deepseek.com/quick_start/pricing",
       "affiliateTag": null,
@@ -994,13 +994,13 @@
       "modelId": "deepseek-v4.1-flash-1017",
       "modelName": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.036,
-      "outputPerM": 0.5,
-      "cachedInputPerM": 0.01,
-      "cacheDiscountPercent": 72.22,
-      "batchDiscountPercent": 0.0,
+      "inputPerM": 0.15,
+      "outputPerM": 0.6,
+      "cachedInputPerM": 0.003,
+      "cacheDiscountPercent": 98.0,
+      "batchDiscountPercent": 76.67,
       "contextWindow": 1048576,
-      "maxOutputTokens": 943718,
+      "maxOutputTokens": 393216,
       "latencyTier": "fast",
       "officialDocUrl": "https://api-docs.deepseek.com/quick_start/pricing",
       "affiliateTag": null,
@@ -1012,9 +1012,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 32.6,
-        "codingIndex": 1282,
+        "codingIndex": 1281,
         "agenticIndex": null,
-        "arenaElo": 1261,
+        "arenaElo": 1263,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1048,7 +1048,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 50.4,
-        "codingIndex": 1281,
+        "codingIndex": 1278,
         "agenticIndex": null,
         "arenaElo": 1266,
         "evalSources": [
@@ -1086,7 +1086,7 @@
         "intelligenceIndex": 60,
         "codingIndex": 1335,
         "agenticIndex": null,
-        "arenaElo": 1272,
+        "arenaElo": 1270,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1120,9 +1120,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 53.9,
-        "codingIndex": 1336,
+        "codingIndex": 1334,
         "agenticIndex": null,
-        "arenaElo": 1212,
+        "arenaElo": 1226,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1156,9 +1156,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 61.4,
-        "codingIndex": 1399,
+        "codingIndex": 1392,
         "agenticIndex": null,
-        "arenaElo": 1500,
+        "arenaElo": 1489,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1542,9 +1542,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 54.6,
-        "codingIndex": 1281,
+        "codingIndex": 1275,
         "agenticIndex": null,
-        "arenaElo": 1190,
+        "arenaElo": 1191,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1825,7 +1825,7 @@
         "intelligenceIndex": null,
         "codingIndex": 1115,
         "agenticIndex": null,
-        "arenaElo": 968,
+        "arenaElo": 1018,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1859,9 +1859,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 14.2,
-        "codingIndex": 1081,
+        "codingIndex": 1077,
         "agenticIndex": null,
-        "arenaElo": 1081,
+        "arenaElo": 1077,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1895,9 +1895,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1120,
+        "codingIndex": 1116,
         "agenticIndex": null,
-        "arenaElo": 1035,
+        "arenaElo": 1036,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1966,7 +1966,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1101,
+        "codingIndex": 1097,
         "agenticIndex": null,
         "arenaElo": 954,
         "evalSources": [
@@ -2001,7 +2001,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1193,
+        "codingIndex": 1189,
         "agenticIndex": null,
         "arenaElo": 1182,
         "evalSources": [
@@ -2012,7 +2012,7 @@
         "throughputTokensPerSec": 85.0,
         "timeToFirstTokenSec": 0.45
       },
-      "notes": "Grok 4.5 is a model from SpaceXAI with frontier performance on coding, knowledge work, and STEM."
+      "notes": "Grok 4.5 is a model from SpaceXSI with frontier performance on coding, knowledge work, and STEM."
     },
     {
       "modelId": "grok-4.6",
@@ -2036,7 +2036,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 31,
-        "codingIndex": 1225,
+        "codingIndex": 1222,
         "agenticIndex": null,
         "arenaElo": 1156,
         "evalSources": [
@@ -2072,7 +2072,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 35.5,
-        "codingIndex": 1260,
+        "codingIndex": 1259,
         "agenticIndex": null,
         "arenaElo": 1163,
         "evalSources": [
@@ -2493,7 +2493,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1022,
+        "codingIndex": 1021,
         "agenticIndex": null,
         "arenaElo": 962,
         "evalSources": [
@@ -2529,7 +2529,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1016,
+        "codingIndex": 1015,
         "agenticIndex": null,
         "arenaElo": 965,
         "evalSources": [
@@ -2565,9 +2565,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 925,
+        "codingIndex": 924,
         "agenticIndex": null,
-        "arenaElo": 925,
+        "arenaElo": 924,
         "evalSources": [
           "Design Arena"
         ]
@@ -2670,9 +2670,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1126,
+        "codingIndex": 1125,
         "agenticIndex": null,
-        "arenaElo": 1126,
+        "arenaElo": 1125,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -2688,9 +2688,9 @@
       "modelId": "qwen3-coder-30b-a3b-instruct",
       "modelName": "Qwen: Qwen3 Coder 30B A3B Instruct",
       "providerOrg": "Alibaba Qwen",
-      "inputPerM": 0.15,
-      "outputPerM": 0.6,
-      "cachedInputPerM": 0.03,
+      "inputPerM": 0.07,
+      "outputPerM": 0.28,
+      "cachedInputPerM": 0.014,
       "cacheDiscountPercent": 80.0,
       "batchDiscountPercent": 40.0,
       "contextWindow": 262144,
@@ -2969,13 +2969,13 @@
       "modelId": "qwen3.5-27b",
       "modelName": "Qwen: Qwen3.5-27B",
       "providerOrg": "Alibaba Qwen",
-      "inputPerM": 0.26,
-      "outputPerM": 2.6,
-      "cachedInputPerM": 0.052,
+      "inputPerM": 0.195,
+      "outputPerM": 1.56,
+      "cachedInputPerM": 0.039,
       "cacheDiscountPercent": 80.0,
       "batchDiscountPercent": 40.0,
       "contextWindow": 262144,
-      "maxOutputTokens": 81920,
+      "maxOutputTokens": 65536,
       "latencyTier": "fast",
       "officialDocUrl": "https://www.alibabacloud.com/help/en/model-studio",
       "affiliateTag": null,
@@ -3057,9 +3057,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1163,
+        "codingIndex": 1162,
         "agenticIndex": null,
-        "arenaElo": 1128,
+        "arenaElo": 1129,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -3163,9 +3163,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1150,
+        "codingIndex": 1149,
         "agenticIndex": null,
-        "arenaElo": 1086,
+        "arenaElo": 1087,
         "evalSources": [
           "Design Arena"
         ]
@@ -3338,9 +3338,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1220,
+        "codingIndex": 1219,
         "agenticIndex": null,
-        "arenaElo": 1167,
+        "arenaElo": 1187,
         "evalSources": [
           "Design Arena"
         ]
@@ -3408,7 +3408,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1183,
+        "codingIndex": 1180,
         "agenticIndex": null,
         "arenaElo": 1105,
         "evalSources": [
@@ -3443,9 +3443,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1253,
+        "codingIndex": 1252,
         "agenticIndex": null,
-        "arenaElo": 1117,
+        "arenaElo": 1124,
         "evalSources": [
           "Design Arena"
         ]
@@ -3496,7 +3496,7 @@
       "modelName": "Qwen: Qwen3.8 27B",
       "providerOrg": "Alibaba Qwen",
       "inputPerM": 0.06,
-      "outputPerM": 2.2,
+      "outputPerM": 1.96,
       "cachedInputPerM": 0.059,
       "cacheDiscountPercent": 1.67,
       "batchDiscountPercent": 0.0,
@@ -3830,10 +3830,9 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 823,
+        "arenaElo": null,
         "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
+          "Artificial Analysis"
         ]
       },
       "performance": {
@@ -3866,10 +3865,9 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 785,
+        "arenaElo": null,
         "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
+          "Artificial Analysis"
         ]
       },
       "performance": {
@@ -3935,7 +3933,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1237,
+        "codingIndex": 1234,
         "agenticIndex": null,
         "arenaElo": 1231,
         "evalSources": [
@@ -3970,9 +3968,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 50,
-        "codingIndex": 1314,
+        "codingIndex": 1311,
         "agenticIndex": null,
-        "arenaElo": 1294,
+        "arenaElo": 1299,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4042,7 +4040,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 7.4,
-        "codingIndex": 1098,
+        "codingIndex": 1097,
         "agenticIndex": null,
         "arenaElo": 1040,
         "evalSources": [
@@ -4080,7 +4078,7 @@
         "intelligenceIndex": 36.5,
         "codingIndex": 1271,
         "agenticIndex": null,
-        "arenaElo": 1185,
+        "arenaElo": 1173,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4114,7 +4112,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1154,
+        "codingIndex": 1153,
         "agenticIndex": null,
         "arenaElo": 1121,
         "evalSources": [
@@ -4185,7 +4183,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1181,
+        "codingIndex": 1177,
         "agenticIndex": null,
         "arenaElo": 1144,
         "evalSources": [
@@ -4256,7 +4254,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1208,
+        "codingIndex": 1204,
         "agenticIndex": null,
         "arenaElo": 1183,
         "evalSources": [
@@ -4291,7 +4289,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1166,
+        "codingIndex": 1165,
         "agenticIndex": null,
         "arenaElo": 1125,
         "evalSources": [
@@ -4327,7 +4325,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1165,
+        "codingIndex": 1162,
         "agenticIndex": null,
         "arenaElo": 1118,
         "evalSources": [
@@ -4762,41 +4760,6 @@
       "notes": "Command R7B (12-2024) is a small, fast update of the Command R+ model, delivered in December 2024. It excels at RAG, tool use, agents, and similar tasks requiring complex reasoning..."
     },
     {
-      "modelId": "north-mini-code:free",
-      "modelName": "Cohere: North Mini Code (free)",
-      "providerOrg": "Cohere",
-      "inputPerM": 0.0,
-      "outputPerM": 0.0,
-      "cachedInputPerM": 0.0,
-      "cacheDiscountPercent": 0.0,
-      "batchDiscountPercent": 0.0,
-      "contextWindow": 256000,
-      "maxOutputTokens": 64000,
-      "latencyTier": "fast",
-      "officialDocUrl": "https://cohere.com/pricing",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": true,
-        "vision": false,
-        "functionCalling": true,
-        "structuredOutputs": false
-      },
-      "benchmarks": {
-        "intelligenceIndex": 3.4,
-        "codingIndex": null,
-        "agenticIndex": null,
-        "arenaElo": null,
-        "evalSources": [
-          "Artificial Analysis"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 145.0,
-        "timeToFirstTokenSec": 0.25
-      },
-      "notes": "North Mini Code is Cohere's first agentic coding model and the debut of its North family. A sparse mixture-of-experts model with 30B total parameters and 3B active, it is optimized..."
-    },
-    {
       "modelId": "deepseek-chat",
       "modelName": "DeepSeek: DeepSeek V3",
       "providerOrg": "DeepSeek",
@@ -4835,13 +4798,13 @@
       "modelId": "deepseek-chat-v3-0324",
       "modelName": "DeepSeek: DeepSeek V3 0324",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.29,
-      "outputPerM": 1.14,
-      "cachedInputPerM": 0.11,
-      "cacheDiscountPercent": 62.07,
+      "inputPerM": 0.25,
+      "outputPerM": 1.0,
+      "cachedInputPerM": 0.0638,
+      "cacheDiscountPercent": 74.48,
       "batchDiscountPercent": 0.0,
       "contextWindow": 163840,
-      "maxOutputTokens": 115200,
+      "maxOutputTokens": 147456,
       "latencyTier": "standard",
       "officialDocUrl": "https://api-docs.deepseek.com/quick_start/pricing",
       "affiliateTag": null,
@@ -4888,9 +4851,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1095,
+        "codingIndex": 1094,
         "agenticIndex": null,
-        "arenaElo": 1044,
+        "arenaElo": 1045,
         "evalSources": [
           "Design Arena"
         ]
@@ -4923,7 +4886,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1122,
+        "codingIndex": 1121,
         "agenticIndex": null,
         "arenaElo": 1079,
         "evalSources": [
@@ -4959,7 +4922,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1159,
+        "codingIndex": 1158,
         "agenticIndex": null,
         "arenaElo": 1108,
         "evalSources": [
@@ -4995,7 +4958,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1147,
+        "codingIndex": 1146,
         "agenticIndex": null,
         "arenaElo": 1100,
         "evalSources": [
@@ -5031,7 +4994,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1154,
+        "codingIndex": 1153,
         "agenticIndex": null,
         "arenaElo": 1116,
         "evalSources": [
@@ -5278,7 +5241,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1136,
+        "codingIndex": 1135,
         "agenticIndex": null,
         "arenaElo": 1048,
         "evalSources": [
@@ -5349,7 +5312,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1086,
+        "codingIndex": 1082,
         "agenticIndex": null,
         "arenaElo": 1073,
         "evalSources": [
@@ -5631,7 +5594,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1101,
+        "codingIndex": 1097,
         "agenticIndex": null,
         "arenaElo": 1061,
         "evalSources": [
@@ -5702,7 +5665,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1176,
+        "codingIndex": 1173,
         "agenticIndex": null,
         "arenaElo": 1127,
         "evalSources": [
@@ -5772,7 +5735,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1173,
+        "codingIndex": 1170,
         "agenticIndex": null,
         "arenaElo": 1124,
         "evalSources": [
@@ -5807,7 +5770,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1203,
+        "codingIndex": 1200,
         "agenticIndex": null,
         "arenaElo": 1181,
         "evalSources": [
@@ -5842,9 +5805,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 30.8,
-        "codingIndex": 1210,
+        "codingIndex": 1208,
         "agenticIndex": null,
-        "arenaElo": 1089,
+        "arenaElo": 1091,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -6036,12 +5999,12 @@
       "modelName": "Google: Gemma 3 27B",
       "providerOrg": "Google",
       "inputPerM": 0.08,
-      "outputPerM": 0.16,
-      "cachedInputPerM": 0.02,
-      "cacheDiscountPercent": 75.0,
+      "outputPerM": 0.45,
+      "cachedInputPerM": 0.04,
+      "cacheDiscountPercent": 50.0,
       "batchDiscountPercent": 50.0,
       "contextWindow": 131072,
-      "maxOutputTokens": 16384,
+      "maxOutputTokens": 117964,
       "latencyTier": "reasoning-heavy",
       "officialDocUrl": "https://ai.google.dev/pricing",
       "affiliateTag": null,
@@ -6105,9 +6068,9 @@
       "modelId": "gemma-4-26b-a4b-it",
       "modelName": "Google: Gemma 4 26B A4B ",
       "providerOrg": "Google",
-      "inputPerM": 0.0765,
-      "outputPerM": 0.255,
-      "cachedInputPerM": 0.0425,
+      "inputPerM": 0.0675,
+      "outputPerM": 0.225,
+      "cachedInputPerM": 0.0375,
       "cacheDiscountPercent": 44.44,
       "batchDiscountPercent": 50.0,
       "contextWindow": 262144,
@@ -6490,9 +6453,9 @@
       "modelId": "ling-3.1-flash",
       "modelName": "inclusionAI: Ling 3.1 Flash",
       "providerOrg": "Inclusionai",
-      "inputPerM": 0.045,
-      "outputPerM": 0.135,
-      "cachedInputPerM": 0.009,
+      "inputPerM": 0.06,
+      "outputPerM": 0.18,
+      "cachedInputPerM": 0.012,
       "cacheDiscountPercent": 80.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1000000,
@@ -6907,51 +6870,16 @@
       "notes": "Meta's latest class of model (Llama 3.1) launched with a variety of sizes & flavors. This 8B instruct-tuned version is fast and efficient. It has demonstrated strong performance compared to..."
     },
     {
-      "modelId": "llama-3.2-1b-instruct",
-      "modelName": "Meta: Llama 3.2 1B Instruct",
-      "providerOrg": "Meta",
-      "inputPerM": 0.027,
-      "outputPerM": 0.201,
-      "cachedInputPerM": 0.027,
-      "cacheDiscountPercent": 0.0,
-      "batchDiscountPercent": 0.0,
-      "contextWindow": 60000,
-      "maxOutputTokens": 54000,
-      "latencyTier": "fast",
-      "officialDocUrl": "https://www.llama.com/",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": false,
-        "vision": false,
-        "functionCalling": false,
-        "structuredOutputs": false
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": null,
-        "agenticIndex": null,
-        "arenaElo": null,
-        "evalSources": [
-          "Artificial Analysis Community Standard"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "Llama 3.2 1B is a 1-billion-parameter language model focused on efficiently performing natural language tasks, such as summarization, dialogue, and multilingual text analysis. Its smaller size allo..."
-    },
-    {
       "modelId": "llama-3.2-3b-instruct",
       "modelName": "Meta: Llama 3.2 3B Instruct",
       "providerOrg": "Meta",
-      "inputPerM": 0.0509,
-      "outputPerM": 0.335,
-      "cachedInputPerM": 0.0509,
+      "inputPerM": 0.05,
+      "outputPerM": 0.33,
+      "cachedInputPerM": 0.05,
       "cacheDiscountPercent": 0.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 131072,
-      "maxOutputTokens": 72000,
+      "maxOutputTokens": 117964,
       "latencyTier": "reasoning-heavy",
       "officialDocUrl": "https://www.llama.com/",
       "affiliateTag": null,
@@ -7033,7 +6961,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 863,
+        "codingIndex": 862,
         "agenticIndex": null,
         "arenaElo": 869,
         "evalSources": [
@@ -7069,9 +6997,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 773,
+        "codingIndex": 772,
         "agenticIndex": null,
-        "arenaElo": 773,
+        "arenaElo": 772,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7142,7 +7070,7 @@
         "intelligenceIndex": 36,
         "codingIndex": 1341,
         "agenticIndex": null,
-        "arenaElo": 1357,
+        "arenaElo": 1358,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7176,9 +7104,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 6.3,
-        "codingIndex": 1152,
+        "codingIndex": 1150,
         "agenticIndex": null,
-        "arenaElo": 1094,
+        "arenaElo": 1097,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7212,7 +7140,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1182,
+        "codingIndex": 1178,
         "agenticIndex": null,
         "arenaElo": 1130,
         "evalSources": [
@@ -7247,7 +7175,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1199,
+        "codingIndex": 1195,
         "agenticIndex": null,
         "arenaElo": 1126,
         "evalSources": [
@@ -7317,9 +7245,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 36.6,
-        "codingIndex": 1282,
+        "codingIndex": 1279,
         "agenticIndex": null,
-        "arenaElo": 1289,
+        "arenaElo": 1287,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7388,9 +7316,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 24.9,
-        "codingIndex": 1292,
+        "codingIndex": 1291,
         "agenticIndex": null,
-        "arenaElo": 1056,
+        "arenaElo": 1090,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7424,9 +7352,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 43.6,
-        "codingIndex": 1387,
+        "codingIndex": 1386,
         "agenticIndex": null,
-        "arenaElo": 1124,
+        "arenaElo": 1121,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7477,13 +7405,13 @@
       "modelId": "minimax-m2.5",
       "modelName": "MiniMax: MiniMax M2.5",
       "providerOrg": "MiniMax",
-      "inputPerM": 0.295,
-      "outputPerM": 1.2,
-      "cachedInputPerM": 0.06,
-      "cacheDiscountPercent": 79.66,
+      "inputPerM": 0.27,
+      "outputPerM": 0.95,
+      "cachedInputPerM": 0.03,
+      "cacheDiscountPercent": 88.89,
       "batchDiscountPercent": 0.0,
       "contextWindow": 198000,
-      "maxOutputTokens": 176947,
+      "maxOutputTokens": 32768,
       "latencyTier": "fast",
       "officialDocUrl": "https://www.minimaxi.com/",
       "affiliateTag": null,
@@ -7513,13 +7441,13 @@
       "modelId": "minimax-m2.7",
       "modelName": "MiniMax: MiniMax M2.7",
       "providerOrg": "MiniMax",
-      "inputPerM": 0.21,
-      "outputPerM": 0.84,
-      "cachedInputPerM": 0.042,
-      "cacheDiscountPercent": 80.0,
+      "inputPerM": 0.6,
+      "outputPerM": 1.8,
+      "cachedInputPerM": 0.3,
+      "cacheDiscountPercent": 50.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 196608,
-      "maxOutputTokens": 176947,
+      "maxOutputTokens": 131072,
       "latencyTier": "fast",
       "officialDocUrl": "https://www.minimaxi.com/",
       "affiliateTag": null,
@@ -7527,11 +7455,11 @@
         "reasoning": true,
         "vision": false,
         "functionCalling": true,
-        "structuredOutputs": true
+        "structuredOutputs": false
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1217,
+        "codingIndex": 1216,
         "agenticIndex": null,
         "arenaElo": 1163,
         "evalSources": [
@@ -7567,7 +7495,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 18.9,
-        "codingIndex": 1185,
+        "codingIndex": 1182,
         "agenticIndex": null,
         "arenaElo": 1113,
         "evalSources": [
@@ -7614,7 +7542,7 @@
         "throughputTokensPerSec": 145.0,
         "timeToFirstTokenSec": 0.25
       },
-      "notes": "MiniMax-M3.1-Flash is a multimodal model from MiniMax. Compared with M3, it delivers significant improvements across multiple benchmarks, particularly in complex agentic tasks, coding, and cybersec..."
+      "notes": "MiniMax-M3.1-Flash is a multimodal model from MiniMax for complex agentic, coding, and cybersecurity tasks. Pricing uses Peak/Off-Peak windows: Peak (01:00-15:00 UTC) is $0.15/$0.60 per 1M ($0.015 cached); Off-Peak (15:00-01:00 UTC) offers 50% off at $0.075/$0.30 per 1M ($0.0075 cached)."
     },
     {
       "modelId": "codestral-2508",
@@ -7708,9 +7636,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1048,
+        "codingIndex": 1047,
         "agenticIndex": null,
-        "arenaElo": 957,
+        "arenaElo": 958,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7886,7 +7814,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1125,
+        "codingIndex": 1124,
         "agenticIndex": null,
         "arenaElo": 1067,
         "evalSources": [
@@ -7958,7 +7886,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1052,
+        "codingIndex": 1051,
         "agenticIndex": null,
         "arenaElo": 1051,
         "evalSources": [
@@ -8028,7 +7956,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1104,
+        "codingIndex": 1103,
         "agenticIndex": null,
         "arenaElo": 1049,
         "evalSources": [
@@ -8239,9 +8167,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 890,
+        "codingIndex": 889,
         "agenticIndex": null,
-        "arenaElo": 890,
+        "arenaElo": 889,
         "evalSources": [
           "Design Arena"
         ]
@@ -8286,6 +8214,41 @@
         "timeToFirstTokenSec": 0.45
       },
       "notes": "Mistral's official instruct fine-tuned version of [Mixtral 8x22B](/models/mistralai/mixtral-8x22b). It uses 39B active parameters out of 141B, offering unparalleled cost efficiency for its size. It..."
+    },
+    {
+      "modelId": "pixtral-large-2502",
+      "modelName": "Mistral: Pixtral Large 2502",
+      "providerOrg": "Mistral",
+      "inputPerM": 2.0,
+      "outputPerM": 6.0,
+      "cachedInputPerM": 1.0,
+      "cacheDiscountPercent": 50.0,
+      "batchDiscountPercent": 50.0,
+      "contextWindow": 128000,
+      "maxOutputTokens": 102400,
+      "latencyTier": "standard",
+      "officialDocUrl": "https://mistral.ai/technology/#pricing",
+      "affiliateTag": null,
+      "capabilities": {
+        "reasoning": false,
+        "vision": true,
+        "functionCalling": true,
+        "structuredOutputs": false
+      },
+      "benchmarks": {
+        "intelligenceIndex": null,
+        "codingIndex": null,
+        "agenticIndex": null,
+        "arenaElo": null,
+        "evalSources": [
+          "Artificial Analysis Community Standard"
+        ]
+      },
+      "performance": {
+        "throughputTokensPerSec": 45.0,
+        "timeToFirstTokenSec": 0.85
+      },
+      "notes": "Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following [Pixtral Large 2411](https://openrouter.ai/mistralai/pixtral-large-2411). It accepts text and image..."
     },
     {
       "modelId": "voxtral-small-24b-2507",
@@ -8414,9 +8377,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1017,
+        "codingIndex": 1016,
         "agenticIndex": null,
-        "arenaElo": 1017,
+        "arenaElo": 1016,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8450,9 +8413,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1081,
+        "codingIndex": 1080,
         "agenticIndex": null,
-        "arenaElo": 1081,
+        "arenaElo": 1080,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8522,7 +8485,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1111,
+        "codingIndex": 1107,
         "agenticIndex": null,
         "arenaElo": 1104,
         "evalSources": [
@@ -8594,7 +8557,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1152,
+        "codingIndex": 1148,
         "agenticIndex": null,
         "arenaElo": 1077,
         "evalSources": [
@@ -8630,7 +8593,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 17.4,
-        "codingIndex": 1272,
+        "codingIndex": 1269,
         "agenticIndex": null,
         "arenaElo": 1202,
         "evalSources": [
@@ -8666,9 +8629,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 46.5,
-        "codingIndex": 1299,
+        "codingIndex": 1297,
         "agenticIndex": null,
-        "arenaElo": 1162,
+        "arenaElo": 1164,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8914,7 +8877,7 @@
         "intelligenceIndex": 11.8,
         "codingIndex": 1125,
         "agenticIndex": null,
-        "arenaElo": 1107,
+        "arenaElo": 1075,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8950,7 +8913,7 @@
         "intelligenceIndex": 11.8,
         "codingIndex": 1125,
         "agenticIndex": null,
-        "arenaElo": 1107,
+        "arenaElo": 1075,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9072,12 +9035,12 @@
       "modelName": "NVIDIA: Nemotron 3.5 Super VL",
       "providerOrg": "NVIDIA",
       "inputPerM": 0.15,
-      "outputPerM": 0.5,
+      "outputPerM": 0.47,
       "cachedInputPerM": 0.02,
       "cacheDiscountPercent": 86.67,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
-      "maxOutputTokens": 235929,
+      "maxOutputTokens": 943718,
       "latencyTier": "standard",
       "officialDocUrl": "https://build.nvidia.com/",
       "affiliateTag": null,
@@ -9091,7 +9054,7 @@
         "intelligenceIndex": 13.6,
         "codingIndex": 1132,
         "agenticIndex": null,
-        "arenaElo": 1002,
+        "arenaElo": 1052,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9127,7 +9090,7 @@
         "intelligenceIndex": 13.6,
         "codingIndex": 1132,
         "agenticIndex": null,
-        "arenaElo": 1002,
+        "arenaElo": 1052,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9406,9 +9369,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1009,
+        "codingIndex": 1008,
         "agenticIndex": null,
-        "arenaElo": 817,
+        "arenaElo": 818,
         "evalSources": [
           "Design Arena"
         ]
@@ -9441,9 +9404,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 977,
+        "codingIndex": 976,
         "agenticIndex": null,
-        "arenaElo": 804,
+        "arenaElo": 805,
         "evalSources": [
           "Design Arena"
         ]
@@ -9476,7 +9439,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 946,
+        "codingIndex": 945,
         "agenticIndex": null,
         "arenaElo": 893,
         "evalSources": [
@@ -9651,7 +9614,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1151,
+        "codingIndex": 1150,
         "agenticIndex": null,
         "arenaElo": 1023,
         "evalSources": [
@@ -9757,7 +9720,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1098,
+        "codingIndex": 1097,
         "agenticIndex": null,
         "arenaElo": 1005,
         "evalSources": [
@@ -9864,9 +9827,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1154,
+        "codingIndex": 1153,
         "agenticIndex": null,
-        "arenaElo": 1028,
+        "arenaElo": 1029,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9900,7 +9863,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 993,
+        "codingIndex": 990,
         "agenticIndex": null,
         "arenaElo": 1086,
         "evalSources": [
@@ -9971,7 +9934,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1077,
+        "codingIndex": 1076,
         "agenticIndex": null,
         "arenaElo": 956,
         "evalSources": [
@@ -10007,7 +9970,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1061,
+        "codingIndex": 1057,
         "agenticIndex": null,
         "arenaElo": 1182,
         "evalSources": [
@@ -10078,7 +10041,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1026,
+        "codingIndex": 1022,
         "agenticIndex": null,
         "arenaElo": 1176,
         "evalSources": [
@@ -10148,7 +10111,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1008,
+        "codingIndex": 1004,
         "agenticIndex": null,
         "arenaElo": 1084,
         "evalSources": [
@@ -10358,7 +10321,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1092,
+        "codingIndex": 1089,
         "agenticIndex": null,
         "arenaElo": 1125,
         "evalSources": [
@@ -10603,7 +10566,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 3.8,
-        "codingIndex": 946,
+        "codingIndex": 945,
         "agenticIndex": null,
         "arenaElo": 869,
         "evalSources": [
@@ -10621,9 +10584,9 @@
       "modelId": "gpt-oss-20b",
       "modelName": "OpenAI: gpt-oss-20b",
       "providerOrg": "OpenAI",
-      "inputPerM": 0.018,
-      "outputPerM": 0.09,
-      "cachedInputPerM": 0.009,
+      "inputPerM": 0.017,
+      "outputPerM": 0.085,
+      "cachedInputPerM": 0.0085,
       "cacheDiscountPercent": 50.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 131072,
@@ -10710,9 +10673,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1003,
+        "codingIndex": 1002,
         "agenticIndex": null,
-        "arenaElo": 1003,
+        "arenaElo": 1002,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -10798,10 +10761,10 @@
       "modelId": "particle-1",
       "modelName": "Particle AI: Particle-1",
       "providerOrg": "Particle-ai",
-      "inputPerM": 0.06,
+      "inputPerM": 0.07,
       "outputPerM": 0.5,
-      "cachedInputPerM": 0.003,
-      "cacheDiscountPercent": 95.0,
+      "cachedInputPerM": 0.006,
+      "cacheDiscountPercent": 91.43,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 131072,
@@ -11180,6 +11143,41 @@
       "notes": "Ternary Bonsai 2 9B is PrismML’s compact, open-weight language model for conversational AI, reasoning, and tool use. Built on Qwen3.5, it uses ternary weights packed into 2 bits for efficient..."
     },
     {
+      "modelId": "daisyrose-27b",
+      "modelName": "RadixArk: DaisyRose 27B",
+      "providerOrg": "Radixark",
+      "inputPerM": 0.15,
+      "outputPerM": 1.875,
+      "cachedInputPerM": 0.0375,
+      "cacheDiscountPercent": 75.0,
+      "batchDiscountPercent": 0.0,
+      "contextWindow": 262144,
+      "maxOutputTokens": 235929,
+      "latencyTier": "reasoning-heavy",
+      "officialDocUrl": "https://openrouter.ai/models/radixark/daisyrose-27b",
+      "affiliateTag": null,
+      "capabilities": {
+        "reasoning": true,
+        "vision": true,
+        "functionCalling": true,
+        "structuredOutputs": true
+      },
+      "benchmarks": {
+        "intelligenceIndex": null,
+        "codingIndex": null,
+        "agenticIndex": null,
+        "arenaElo": null,
+        "evalSources": [
+          "Artificial Analysis Community Standard"
+        ]
+      },
+      "performance": {
+        "throughputTokensPerSec": 85.0,
+        "timeToFirstTokenSec": 0.45
+      },
+      "notes": "DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from [Qwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b) using reinforcement learning only on long-horizon agent ..."
+    },
+    {
       "modelId": "flint-v1.0:free",
       "modelName": "Recursive: Flint (free)",
       "providerOrg": "Recursive",
@@ -11236,9 +11234,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 17.7,
-        "codingIndex": 1218,
+        "codingIndex": 1216,
         "agenticIndex": null,
-        "arenaElo": 1179,
+        "arenaElo": 1182,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -11727,9 +11725,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1163,
+        "codingIndex": 1162,
         "agenticIndex": null,
-        "arenaElo": 1145,
+        "arenaElo": 1149,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -11917,41 +11915,6 @@
       "notes": "Hy3 is a 295B-parameter Mixture-of-Experts model from Tencent (21B active, 192 experts with top-8 routing) built for reasoning, agentic workflows, and real-world production use. It supports a confi..."
     },
     {
-      "modelId": "hy3-preview",
-      "modelName": "Tencent: Hy3 preview",
-      "providerOrg": "Tencent",
-      "inputPerM": 0.18,
-      "outputPerM": 0.6,
-      "cachedInputPerM": 0.06,
-      "cacheDiscountPercent": 66.67,
-      "batchDiscountPercent": 0.0,
-      "contextWindow": 262144,
-      "maxOutputTokens": 235929,
-      "latencyTier": "reasoning-heavy",
-      "officialDocUrl": "https://cloud.tencent.com/document/product/1729",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": true,
-        "vision": false,
-        "functionCalling": true,
-        "structuredOutputs": false
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": null,
-        "agenticIndex": null,
-        "arenaElo": null,
-        "evalSources": [
-          "Artificial Analysis"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "Hy3 preview is a high-efficiency Mixture-of-Experts model from Tencent designed for agentic workflows and production use. It supports configurable reasoning levels across disabled, low, and high mo..."
-    },
-    {
       "modelId": "hy4",
       "modelName": "Tencent: Hy4",
       "providerOrg": "Tencent",
@@ -11973,9 +11936,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 34.6,
-        "codingIndex": 1250,
+        "codingIndex": 1248,
         "agenticIndex": null,
-        "arenaElo": 1263,
+        "arenaElo": 1219,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12009,9 +11972,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1228,
+        "codingIndex": 1226,
         "agenticIndex": null,
-        "arenaElo": 1218,
+        "arenaElo": 1213,
         "evalSources": [
           "Design Arena"
         ]
@@ -12184,9 +12147,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 12.5,
-        "codingIndex": 1171,
+        "codingIndex": 1168,
         "agenticIndex": null,
-        "arenaElo": 1171,
+        "arenaElo": 1168,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12465,9 +12428,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1246,
+        "codingIndex": 1245,
         "agenticIndex": null,
-        "arenaElo": 1185,
+        "arenaElo": 1186,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12503,7 +12466,7 @@
         "intelligenceIndex": null,
         "codingIndex": 1256,
         "agenticIndex": null,
-        "arenaElo": 1223,
+        "arenaElo": 1195,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12524,7 +12487,7 @@
       "cachedInputPerM": 0.0028,
       "cacheDiscountPercent": 98.0,
       "batchDiscountPercent": 0.0,
-      "contextWindow": 1050000,
+      "contextWindow": 1048576,
       "maxOutputTokens": 131072,
       "latencyTier": "fast",
       "officialDocUrl": "https://miai.xiaomi.com/",
@@ -12559,7 +12522,7 @@
       "cachedInputPerM": 0.0036,
       "cacheDiscountPercent": 99.17,
       "batchDiscountPercent": 0.0,
-      "contextWindow": 1050000,
+      "contextWindow": 1048576,
       "maxOutputTokens": 131072,
       "latencyTier": "standard",
       "officialDocUrl": "https://miai.xiaomi.com/",
@@ -12572,9 +12535,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 29.9,
-        "codingIndex": 1267,
+        "codingIndex": 1264,
         "agenticIndex": null,
-        "arenaElo": 1267,
+        "arenaElo": 1264,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12750,7 +12713,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1149,
+        "codingIndex": 1148,
         "agenticIndex": null,
         "arenaElo": 1071,
         "evalSources": [
@@ -12770,8 +12733,8 @@
       "providerOrg": "Zhipu AI",
       "inputPerM": 0.3,
       "outputPerM": 0.9,
-      "cachedInputPerM": 0.05,
-      "cacheDiscountPercent": 83.33,
+      "cachedInputPerM": 0.055,
+      "cacheDiscountPercent": 81.67,
       "batchDiscountPercent": 50.0,
       "contextWindow": 131072,
       "maxOutputTokens": 32768,
@@ -12821,7 +12784,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1200,
+        "codingIndex": 1199,
         "agenticIndex": null,
         "arenaElo": 1096,
         "evalSources": [
@@ -12857,7 +12820,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1161,
+        "codingIndex": 1160,
         "agenticIndex": null,
         "arenaElo": 1088,
         "evalSources": [
@@ -12893,9 +12856,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1230,
+        "codingIndex": 1229,
         "agenticIndex": null,
-        "arenaElo": 1135,
+        "arenaElo": 1134,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12931,7 +12894,7 @@
         "intelligenceIndex": null,
         "codingIndex": 1245,
         "agenticIndex": null,
-        "arenaElo": 1177,
+        "arenaElo": 1193,
         "evalSources": [
           "Design Arena"
         ]
@@ -13000,7 +12963,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1198,
+        "codingIndex": 1195,
         "agenticIndex": null,
         "arenaElo": 1156,
         "evalSources": [
@@ -13036,7 +12999,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 31.7,
-        "codingIndex": 1276,
+        "codingIndex": 1275,
         "agenticIndex": null,
         "arenaElo": 1279,
         "evalSources": [
@@ -13054,13 +13017,13 @@
       "modelId": "glm-5.3-flash",
       "modelName": "Z.ai: GLM 5.3 Flash",
       "providerOrg": "Zhipu AI",
-      "inputPerM": 0.15,
-      "outputPerM": 0.5,
+      "inputPerM": 0.0399,
+      "outputPerM": 0.0784,
       "cachedInputPerM": 0.03,
-      "cacheDiscountPercent": 80.0,
-      "batchDiscountPercent": 84.0,
+      "cacheDiscountPercent": 24.81,
+      "batchDiscountPercent": 42.36,
       "contextWindow": 1048576,
-      "maxOutputTokens": 943717,
+      "maxOutputTokens": 131072,
       "latencyTier": "fast",
       "officialDocUrl": "https://open.bigmodel.cn/pricing",
       "affiliateTag": null,
@@ -13072,9 +13035,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 27.8,
-        "codingIndex": 1261,
+        "codingIndex": 1260,
         "agenticIndex": null,
-        "arenaElo": 1215,
+        "arenaElo": 1217,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -13213,7 +13176,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1100,
+        "codingIndex": 1097,
         "agenticIndex": null,
         "arenaElo": 1049,
         "evalSources": [

@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import CompareClient from './CompareClient';
 import { MODELS_DATA } from '@/lib/models-data';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 
 const MODEL_COUNT = MODELS_DATA.length;
 
@@ -15,6 +19,13 @@ export const metadata: Metadata = {
     url: 'https://tokencostsai.com/compare/',
     siteName: 'TokenCosts AI',
     type: 'website',
+      images: DEFAULT_OG_IMAGES,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LLM API Model Versus & Cost Comparison Hub | TokenCosts AI',
+    description: `Head-to-head benchmarks and cost parity analysis for ${MODEL_COUNT}+ AI foundation models.`,
+    images: [DEFAULT_OG_IMAGE_URL],
   },
 };
 

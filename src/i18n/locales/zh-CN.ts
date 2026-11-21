@@ -46,7 +46,7 @@ export const zhCN: TranslationDictionary = {
       openrouter: {
         badge: '降价聚合路由',
         title: 'OpenRouter：一键聚合路由 {count}+ 模型，锁定今日最低费率',
-        subtitle: '直享今日调价：DeepSeek V4.1 Flash-1017 直降 76% ($0.036/M)、gpt-oss-120b -40%、GLM-5.2 输出 -64%。',
+        subtitle: '今日直降 53%–84%：DeepSeek V4.1 Flash -83% ($0.0507/M)、GLM-5.3-Flash 输出 -84% ($0.0784/M)、Qwen3-Coder-30B -53% ($0.07/M)。',
         cta: '开启 OpenRouter 路由',
       },
       groq: {

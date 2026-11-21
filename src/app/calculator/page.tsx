@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import CalculatorClient from './CalculatorClient';
 import { MODELS_DATA } from '@/lib/models-data';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 
 const MODEL_COUNT = MODELS_DATA.length;
 
@@ -15,6 +19,13 @@ export const metadata: Metadata = {
     url: 'https://tokencostsai.com/calculator/',
     siteName: 'TokenCosts AI',
     type: 'website',
+      images: DEFAULT_OG_IMAGES,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prompt Caching & LLM API ROI Calculators | TokenCosts AI',
+    description: `Dedicated prompt caching break-even simulators for ${MODEL_COUNT}+ AI foundation models.`,
+    images: [DEFAULT_OG_IMAGE_URL],
   },
 };
 

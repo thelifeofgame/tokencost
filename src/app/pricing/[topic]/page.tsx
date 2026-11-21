@@ -3,8 +3,14 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PRICING_TOPICS, MODELS_DATA } from '@/lib/models-data';
+import rawPricingSchema from '@/data/model_pricing_schema.json';
 import { getTopicSeoMeta, getTopicFaqs } from '@/lib/pricing-topics-seo';
-import { buildAlternates, buildLocalizedCanonical } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  buildLocalizedCanonical,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 import { DEFAULT_LOCALE, Locale } from '@/i18n';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import RealtimeVoiceWorldModelSimulator from '@/components/pricing/RealtimeVoiceWorldModelSimulator';
@@ -43,11 +49,13 @@ export function buildTopicMetadata(
       type: 'article',
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
+      images: DEFAULT_OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title: seo.title,
       description: seo.description,
+      images: [DEFAULT_OG_IMAGE_URL],
     },
   };
 }
@@ -89,6 +97,7 @@ export default function PricingTopicPage({
   const isRealtimeVoiceTopic = topic.slug === 'realtime-voice-world-model-api-costs';
   const isCarbonMigrationTopic = topic.slug === 'gemini-4-carbon-dec-1-migration-guide';
   const sortedByPrice = [...MODELS_DATA].sort((a, b) => a.inputPerM - b.inputPerM);
+  const lastUpdatedDate = String(rawPricingSchema.lastUpdated || '2026-11-21').slice(0, 10);
 
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
@@ -139,7 +148,7 @@ export default function PricingTopicPage({
       <div className="space-y-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-600 dark:text-indigo-400">
           <BookOpen className="h-3.5 w-3.5" />
-          <span>Engineering Whitepaper • Updated Nov 20, 2026</span>
+          <span>Engineering Whitepaper • Updated {lastUpdatedDate}</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
           {seo.h1}
@@ -167,7 +176,7 @@ export default function PricingTopicPage({
                 <strong>Prompt Caching Invalidation:</strong> Anthropic caches expire in 5 minutes unless refreshed by subsequent hits. For low-traffic apps (&lt;1 req/5min), write surcharges can increase total bills.
               </li>
               <li>
-                <strong>The Ground-Floor Pricing Era:</strong> DeepSeek-V4.1-Flash ($0.30/M official, $0.036/M OpenRouter) and Gemini 3.1 Flash-Lite have made commodity classification and extraction nearly free.
+                <strong>The Ground-Floor Pricing Era:</strong> DeepSeek-V4.1-Flash ($0.30/M official, $0.0507/M OpenRouter, $0.001/M cached) and GLM-5.3-Flash ($0.0399/$0.0784) have made commodity classification and extraction nearly free.
               </li>
               <li>
                 <strong>Hybrid Cascading:</strong> Never route 100% of traffic to a single flagship model. 60%-80% of agent tasks can be handled by fast tiers with zero loss in end-to-end task success.
@@ -208,13 +217,13 @@ export default function PricingTopicPage({
                       </td>
                       <td className="py-2.5 px-3 font-sans">{m.providerOrg}</td>
                       <td className="py-2.5 px-3">
-                        ${m.inputPerM.toFixed(m.inputPerM < 0.1 ? 3 : 2)}
+                        ${m.inputPerM < 0.1 ? Number(m.inputPerM.toFixed(4)) : m.inputPerM.toFixed(2)}
                       </td>
                       <td className="py-2.5 px-3">
-                        ${m.outputPerM.toFixed(m.outputPerM < 0.1 ? 3 : 2)}
+                        ${m.outputPerM < 1 ? Number(m.outputPerM.toFixed(4)) : m.outputPerM.toFixed(2)}
                       </td>
                       <td className="py-2.5 px-3 text-emerald-600 dark:text-emerald-400">
-                        ${m.cachedInputPerM.toFixed(3)}
+                        ${m.cachedInputPerM < 0.01 ? Number(m.cachedInputPerM.toFixed(4)) : m.cachedInputPerM.toFixed(3)}
                       </td>
                     </tr>
                   ))}

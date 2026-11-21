@@ -63,7 +63,7 @@ const BADGE_STYLE: Record<BadgeColor, string> = {
   amber:
     'bg-amber-500/10 border-amber-500/25 text-amber-800 dark:bg-amber-500/15 dark:border-amber-500/30 dark:text-amber-300',
   rose:
-    'bg-rose-500/10 border-rose-500/30 text-rose-700 dark:bg-rose-500/15 dark:border-rose-500/30 dark:text-rose-300',
+    'bg-rose-500/12 border-rose-500/35 text-rose-800 dark:bg-rose-500/20 dark:border-rose-400/40 dark:text-rose-200',
   indigo:
     'bg-indigo-500/10 border-indigo-500/25 text-indigo-700 dark:bg-indigo-500/15 dark:border-indigo-500/30 dark:text-indigo-300',
 };
@@ -236,16 +236,16 @@ export default function MarketPulseRadar() {
 
       {/* Countdown Alert Strip (radar-2026-003: Nov 30 Deadline) */}
       {carbonAlertEvent && (
-        <div className="relative overflow-hidden rounded-xl border border-rose-500/30 dark:border-rose-500/30 bg-rose-500/[0.06] dark:bg-rose-950/25 px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div className="relative overflow-hidden rounded-xl border border-rose-500/35 dark:border-rose-500/35 bg-rose-500/[0.06] dark:bg-rose-950/25 px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           <div className="flex items-start sm:items-center gap-2.5 min-w-0">
-            <span className="mt-0.5 sm:mt-0 inline-flex items-center gap-1.5 shrink-0 rounded-full bg-rose-500/15 border border-rose-500/30 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+            <span className="mt-0.5 sm:mt-0 inline-flex items-center gap-1.5 shrink-0 rounded-full bg-rose-500/15 border border-rose-500/35 px-2 py-0.5 text-[10px] font-mono tabular-nums font-bold uppercase tracking-wider text-rose-800 dark:text-rose-200">
               <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-pulse" />
               <span>NOV 30 DEADLINE · {daysLeft}D LEFT</span>
             </span>
             <p className="text-xs font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
               Gemini 4 Carbon &amp; Argon{' '}
               <span className="font-mono font-semibold line-through text-zinc-500">$2/$10</span>{' '}
-              <span className="font-mono font-bold text-rose-600 dark:text-rose-400">
+              <span className="font-mono font-bold text-rose-700 dark:text-rose-300">
                 → $4/$20 on Dec 1 (+100%)
               </span>
             </p>
@@ -275,7 +275,7 @@ export default function MarketPulseRadar() {
                   target_path: carbonAlertEvent.ctaLink || '/compare/gemini-4-carbon-vs-claude-sonnet-5.5/',
                 })
               }
-              className="min-h-[36px] sm:min-h-[32px] inline-flex items-center px-2.5 py-1.5 rounded-lg border border-rose-500/30 bg-white/70 dark:bg-zinc-900/70 text-[11px] font-medium text-rose-700 dark:text-rose-300 hover:bg-rose-500/10 transition-colors"
+              className="min-h-[36px] sm:min-h-[32px] inline-flex items-center px-2.5 py-1.5 rounded-lg border border-rose-500/35 bg-white/80 dark:bg-zinc-900/70 text-[11px] font-medium text-rose-800 dark:text-rose-200 hover:bg-rose-500/10 transition-colors"
             >
               Carbon vs Sonnet
             </Link>
@@ -288,16 +288,33 @@ export default function MarketPulseRadar() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3.5">
           {featuredEvents.map((ev) => {
             const colorKey: BadgeColor = ev.badgeColor in BADGE_STYLE ? ev.badgeColor : 'indigo';
+            const isUrgentCarbon = ev.id === 'radar-2026-003' || colorKey === 'rose';
+            const dynamicBadgeLabel =
+              ev.id === 'radar-2026-003'
+                ? daysLeft > 0
+                  ? `${daysLeft}D LEFT · DEC 1 HIKE`
+                  : 'EXPIRES TODAY · DEC 1'
+                : ev.badgeText;
             const { primaryHref, primaryLabel, secondaryHref, secondaryLabel } =
               getPrimaryAndSecondaryCta(ev);
 
             return (
               <article
                 key={ev.id}
-                className="group relative overflow-hidden rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/70 p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg hover:shadow-indigo-500/5 flex flex-col justify-between gap-3"
+                className={`group relative overflow-hidden rounded-xl border p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg flex flex-col justify-between gap-3 ${
+                  isUrgentCarbon
+                    ? 'border-rose-300/80 dark:border-rose-500/40 bg-gradient-to-b from-rose-50/75 via-white/90 to-white/90 dark:from-rose-950/30 dark:via-zinc-900/75 dark:to-zinc-900/70 hover:border-rose-400 dark:hover:border-rose-500/65 hover:shadow-rose-500/10'
+                    : 'border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/70 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-indigo-500/5'
+                }`}
               >
                 {/* Top 1px Sheen */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-400/30 dark:via-zinc-400/20 to-transparent" />
+                <div
+                  className={`pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent ${
+                    isUrgentCarbon
+                      ? 'via-rose-500/60 dark:via-rose-400/50'
+                      : 'via-zinc-400/30 dark:via-zinc-400/20'
+                  }`}
+                />
 
                 <div className="space-y-2.5">
                   {/* Layer 1: Provider + Badge */}
@@ -305,26 +322,53 @@ export default function MarketPulseRadar() {
                     <span className="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 truncate">
                       {ev.provider}
                     </span>
-                    <span className={`shrink-0 px-2 py-0.5 rounded-full border text-[10px] font-semibold tracking-tight ${BADGE_STYLE[colorKey]}`}>
-                      {ev.badgeText}
+                    <span
+                      className={`shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border text-[10px] font-mono tabular-nums font-bold tracking-tight whitespace-nowrap ${
+                        isUrgentCarbon
+                          ? 'bg-rose-500/12 border-rose-500/35 text-rose-800 dark:bg-rose-500/20 dark:border-rose-400/40 dark:text-rose-200'
+                          : BADGE_STYLE[colorKey]
+                      }`}
+                    >
+                      {isUrgentCarbon && (
+                        <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-pulse" />
+                      )}
+                      <span>{dynamicBadgeLabel}</span>
                     </span>
                   </div>
 
                   {/* Layer 2: Title */}
-                  <h3 className="text-[13px] font-bold text-zinc-900 dark:text-zinc-50 leading-snug line-clamp-2 min-h-[2.35rem] group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
+                  <h3
+                    className={`text-[13px] font-bold text-zinc-900 dark:text-zinc-50 leading-snug line-clamp-2 min-h-[2.35rem] transition-colors ${
+                      isUrgentCarbon
+                        ? 'group-hover:text-rose-700 dark:group-hover:text-rose-300'
+                        : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-300'
+                    }`}
+                  >
                     {ev.title}
                   </h3>
 
                   {/* Layer 3: Highlight Metric Slot */}
-                  <div className={`rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-950/80 px-2.5 py-1.5 flex items-center justify-between gap-2 ${HIGHLIGHT_ACCENT_BORDER[colorKey]}`}>
-                    <span className="font-mono tabular-nums text-xs font-bold text-zinc-900 dark:text-zinc-100 truncate">
+                  <div
+                    className={`rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-950/80 px-2.5 py-1.5 flex items-center justify-between gap-2 ${HIGHLIGHT_ACCENT_BORDER[colorKey]}`}
+                  >
+                    <span
+                      className={`font-mono tabular-nums text-xs font-bold truncate ${
+                        isUrgentCarbon
+                          ? 'text-rose-700 dark:text-rose-300'
+                          : 'text-zinc-900 dark:text-zinc-100'
+                      }`}
+                    >
                       {ev.highlight}
                     </span>
-                    {typeof ev.discountPercent === 'number' && (
-                      <span className="shrink-0 rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                    {typeof ev.discountPercent === 'number' ? (
+                      <span className="shrink-0 rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-mono tabular-nums font-bold text-emerald-700 dark:text-emerald-400">
                         -{ev.discountPercent}%
                       </span>
-                    )}
+                    ) : isUrgentCarbon ? (
+                      <span className="shrink-0 rounded bg-rose-500/15 px-1.5 py-0.5 text-[10px] font-mono tabular-nums font-bold text-rose-700 dark:text-rose-300">
+                        +100%
+                      </span>
+                    ) : null}
                   </div>
 
                   {/* Layer 4a: Description */}
@@ -344,7 +388,11 @@ export default function MarketPulseRadar() {
                         target_path: primaryHref,
                       })
                     }
-                    className="min-h-[36px] inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
+                    className={`min-h-[36px] inline-flex items-center gap-1 text-[11px] font-semibold transition-colors ${
+                      isUrgentCarbon
+                        ? 'text-rose-700 dark:text-rose-300 hover:text-rose-600 dark:hover:text-rose-200'
+                        : 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300'
+                    }`}
                   >
                     <span>{primaryLabel}</span>
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />

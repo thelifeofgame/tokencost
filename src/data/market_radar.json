@@ -3,9 +3,9 @@
   "title": "Daily LLM Industry Market Radar & Price Drops",
   "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-20T10:42:00+08:00",
-  "date": "2026-11-20",
-  "totalItems": 14,
+  "lastUpdated": "2026-11-21T09:13:02.281672+08:00",
+  "date": "2026-11-21",
+  "totalItems": 12,
   "categories": [
     {
       "type": "new_model",
@@ -30,50 +30,49 @@
   ],
   "items": [
     {
-      "id": "radar-openrouter-gpt-oss-120b-drop-20261120",
-      "type": "price_cut",
-      "title": "OpenAI gpt-oss-120b 费率直降 40%：输入 $0.09/1M、输出 $0.36/1M",
-      "provider": "OpenAI",
-      "modelId": "gpt-oss-120b",
-      "badgeText": "-40% Price Cut",
-      "summary": "OpenRouter 实时追踪显示 openai/gpt-oss-120b 从 $0.15/$0.60 下调 40% 至 $0.09/$0.36 每百万 Token，缓存读取 $0.045/1M（50% 折扣），批处理折扣达 67.11%。",
-      "effectiveDate": "2026-11-20",
-      "link": "https://openrouter.ai/models/openai/gpt-oss-120b",
+      "id": "radar-dyn-daisyrose-27b",
+      "type": "new_model",
+      "title": "RadixArk 上线新模型 DaisyRose 27B，支持 262,144 上下文",
+      "provider": "Radixark",
+      "modelId": "daisyrose-27b",
+      "badgeText": "New Arrival",
+      "summary": "DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from Qwen3.8 27B using reinforcement learning only on long-horizon agent",
+      "effectiveDate": "2026-11-21",
+      "link": "https://openrouter.ai/models/radixark/daisyrose-27b",
       "metrics": {
-        "inputPerM": 0.09,
-        "outputPerM": 0.36,
-        "cacheDiscountPercent": 50.0,
-        "batchDiscountPercent": 67.11,
-        "contextWindow": 131072,
+        "inputPerM": 0.15,
+        "outputPerM": 1.875,
+        "cacheDiscountPercent": 75.0,
+        "contextWindow": 262144,
         "throughputTps": 85.0
       }
     },
     {
-      "id": "radar-openrouter-deepseek-v41-flash-1017-drop-20261120",
-      "type": "price_cut",
-      "title": "DeepSeek V4.1 Flash-1017 输入暴降 76% 至 $0.036/1M，输出 $0.50/1M",
-      "provider": "DeepSeek",
-      "modelId": "deepseek-v4.1-flash-1017",
-      "badgeText": "-76% Price Cut",
-      "summary": "DeepSeek V4.1 Flash-1017（1017 快照）输入端由 $0.15/1M 大幅下探 76% 至 $0.036/1M，输出降至 $0.50/1M，缓存读取低至 $0.010/1M，支持 1,048,576 上下文与 145 t/s 吞吐。",
+      "id": "radar-dyn-pixtral-large-2502",
+      "type": "new_model",
+      "title": "Mistralai 上线新模型 Mistral: Pixtral Large 2502，支持 128,000 上下文",
+      "provider": "Mistralai",
+      "modelId": "pixtral-large-2502",
+      "badgeText": "New Arrival",
+      "summary": "Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following Pixtral Large 2411. It accepts text and image input,",
       "effectiveDate": "2026-11-20",
-      "link": "https://openrouter.ai/models/deepseek/deepseek-v4.1-flash-1017",
+      "link": "https://openrouter.ai/models/mistralai/pixtral-large-2502",
       "metrics": {
-        "inputPerM": 0.036,
-        "outputPerM": 0.5,
-        "cacheDiscountPercent": 72.22,
-        "contextWindow": 1048576,
-        "throughputTps": 145.0
+        "inputPerM": 2.0,
+        "outputPerM": 6.0,
+        "cacheDiscountPercent": 50.0,
+        "contextWindow": 128000,
+        "throughputTps": 45.0
       }
     },
     {
       "id": "radar-dyn-gemini-4-neon",
       "type": "new_model",
-      "title": "Google 上线新模型 Google: Gemini 4 Neon，支持 1,048,576 上下文",
+      "title": "Google 上线新模型 Gemini 4 Neon，支持 1,048,576 上下文",
       "provider": "Google",
       "modelId": "gemini-4-neon",
       "badgeText": "New Arrival",
-      "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and termi",
+      "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal",
       "effectiveDate": "2026-11-18",
       "link": "https://openrouter.ai/models/google/gemini-4-neon",
       "metrics": {
@@ -87,11 +86,11 @@
     {
       "id": "radar-dyn-gpt-6.2-astra-pro",
       "type": "new_model",
-      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Astra Pro，支持 1,050,000 上下文",
+      "title": "OpenAI 上线新模型 GPT-6.2 Astra Pro，支持 1,050,000 上下文",
       "provider": "Openai",
       "modelId": "gpt-6.2-astra-pro",
       "badgeText": "New Arrival",
-      "summary": "GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pr",
+      "summary": "GPT-6.2 Astra Pro is the same underlying model as GPT-6.2 Astra, served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks.",
       "effectiveDate": "2026-11-18",
       "link": "https://openrouter.ai/models/openai/gpt-6.2-astra-pro",
       "metrics": {
@@ -100,42 +99,6 @@
         "cacheDiscountPercent": 95.0,
         "contextWindow": 1050000,
         "throughputTps": 85.0
-      }
-    },
-    {
-      "id": "radar-dyn-gpt-6.2-astra",
-      "type": "new_model",
-      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Astra，支持 1,050,000 上下文",
-      "provider": "Openai",
-      "modelId": "gpt-6.2-astra",
-      "badgeText": "New Arrival",
-      "summary": "GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, profes",
-      "effectiveDate": "2026-11-18",
-      "link": "https://openrouter.ai/models/openai/gpt-6.2-astra",
-      "metrics": {
-        "inputPerM": 8.0,
-        "outputPerM": 40.0,
-        "cacheDiscountPercent": 95.0,
-        "contextWindow": 1050000,
-        "throughputTps": 85.0
-      }
-    },
-    {
-      "id": "radar-dyn-gpt-6.2-sol-pro",
-      "type": "new_model",
-      "title": "Openai 上线新模型 OpenAI: GPT-6.2 Sol Pro，支持 1,050,000 上下文",
-      "provider": "Openai",
-      "modelId": "gpt-6.2-sol-pro",
-      "badgeText": "New Arrival",
-      "summary": "GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for",
-      "effectiveDate": "2026-11-18",
-      "link": "https://openrouter.ai/models/openai/gpt-6.2-sol-pro",
-      "metrics": {
-        "inputPerM": 2.0,
-        "outputPerM": 10.0,
-        "cacheDiscountPercent": 95.0,
-        "contextWindow": 1050000,
-        "throughputTps": 65.0
       }
     },
     {
@@ -214,17 +177,17 @@
     {
       "id": "radar-deepseek-v4-1-flash-price-cut",
       "type": "price_cut",
-      "title": "DeepSeek V4.1 Flash 费率极限下探：输入仅 $0.022/1M，周调用突破 9.5T",
+      "title": "DeepSeek V4.1 Flash 费率再下探：实时路由输入仅 $0.0507/1M，缓存低至 $0.001/1M",
       "provider": "DeepSeek",
       "modelId": "deepseek-v4.1-flash",
       "badgeText": "Price Drop",
-      "summary": "DeepSeek 持续领跑全球高并发调用降本，输入端单价降至 $0.022/1M，输出 $0.40/1M，较 GPT-4o-mini 便宜 85.3%，连续两周稳居全球 API 消耗量第一。",
+      "summary": "DeepSeek V4.1 Flash 持续领跑高并发降本，实时路由输入单价 $0.0507/1M、输出 $0.2028/1M（官方按需峰/谷 $0.30/$0.15），缓存折扣高达 98.03%，稳居全球高频调用前列。",
       "effectiveDate": "2026-11-04",
       "link": "https://api-docs.deepseek.com/quick_start/pricing",
       "metrics": {
-        "inputPerM": 0.3,
-        "outputPerM": 1.2,
-        "cacheDiscountPercent": 98.0,
+        "inputPerM": 0.0507,
+        "outputPerM": 0.2028,
+        "cacheDiscountPercent": 98.03,
         "contextWindow": 1048576,
         "throughputTps": 145.0
       }
@@ -258,9 +221,9 @@
       "effectiveDate": "2026-11-03",
       "link": "https://open.bigmodel.cn/pricing",
       "metrics": {
-        "inputPerM": 0.15,
-        "outputPerM": 0.5,
-        "cacheDiscountPercent": 80.0,
+        "inputPerM": 0.0399,
+        "outputPerM": 0.0784,
+        "cacheDiscountPercent": 24.81,
         "contextWindow": 1048576,
         "throughputTps": 145.0
       }

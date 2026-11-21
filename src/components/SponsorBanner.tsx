@@ -22,7 +22,7 @@ export default function SponsorBanner() {
       partner: 'openrouter',
       placement: 'sponsor_banner_dual',
       slot_position: 'primary_left',
-      offer_tag: '40_76_rate_drop',
+      offer_tag: '53_84_rate_drop',
       outbound_url: OPENROUTER_SPONSOR_URL,
       locale,
     });
@@ -46,14 +46,14 @@ export default function SponsorBanner() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent" />
 
         <div className="space-y-2.5">
-          <div className="flex items-start justify-between gap-2">
-            <div className="flex items-center gap-2.5 min-w-0">
+          <div className="flex items-start justify-between gap-2.5">
+            <div className="flex items-center gap-2.5 min-w-0 flex-1">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-600 dark:text-indigo-400">
                 <Route className="h-4.5 w-4.5" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 truncate">
+                  <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
                     OpenRouter Unified Gateway
                   </span>
                 </div>
@@ -63,8 +63,8 @@ export default function SponsorBanner() {
               </div>
             </div>
 
-            <span className="shrink-0 rounded-md bg-emerald-500/10 border border-emerald-500/25 px-1.5 py-0.5 text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
-              40%–76% Rate Drops
+            <span className="shrink-0 whitespace-nowrap rounded-md bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 text-[10px] font-mono tabular-nums font-bold tracking-tight text-emerald-700 dark:text-emerald-400">
+              53%–84% Rate Drops
             </span>
           </div>
 
@@ -95,14 +95,14 @@ export default function SponsorBanner() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent" />
 
         <div className="space-y-2.5">
-          <div className="flex items-start justify-between gap-2">
-            <div className="flex items-center gap-2.5 min-w-0">
+          <div className="flex items-start justify-between gap-2.5">
+            <div className="flex items-center gap-2.5 min-w-0 flex-1">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-600 dark:text-amber-400">
                 <Zap className="h-4.5 w-4.5" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 truncate">
+                  <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
                     Groq LPU Inference Cloud
                   </span>
                 </div>
@@ -112,7 +112,7 @@ export default function SponsorBanner() {
               </div>
             </div>
 
-            <span className="shrink-0 rounded-md bg-amber-500/10 border border-amber-500/25 px-1.5 py-0.5 text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400">
+            <span className="shrink-0 whitespace-nowrap rounded-md bg-amber-500/10 border border-amber-500/25 px-2 py-0.5 text-[10px] font-mono tabular-nums font-bold tracking-tight text-amber-700 dark:text-amber-400">
               $100 Free · 420 t/s
             </span>
           </div>

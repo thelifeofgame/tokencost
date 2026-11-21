@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import HarnessDirectoryClient from '@/components/HarnessDirectoryClient';
 import SchemaOrg from '@/components/seo/SchemaOrg';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 
 export const metadata: Metadata = {
   title: 'Coding Agent & Harness Token Multiplier Benchmark (2026) | TokenCosts AI',
@@ -14,6 +18,13 @@ export const metadata: Metadata = {
     url: 'https://tokencostsai.com/harness/',
     siteName: 'TokenCosts AI',
     type: 'website',
+      images: DEFAULT_OG_IMAGES,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Coding Agent & Harness Token Multiplier Benchmark (2026) | TokenCosts AI',
+    description: 'Compare real token multipliers (1.2x Aider vs 3.5x Cursor), AST repo-map pruning, Prompt Caching hit rates, and BYOK configs across 7 coding agents.',
+    images: [DEFAULT_OG_IMAGE_URL],
   },
   alternates: buildAlternates('/harness/', 'en'),
 };

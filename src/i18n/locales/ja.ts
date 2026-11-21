@@ -46,7 +46,7 @@ export const ja: TranslationDictionary = {
       openrouter: {
         badge: '値下げ統合ルーター',
         title: 'OpenRouter：{count}+ モデルを最安レートへ自動ルーティング',
-        subtitle: '本日の値下げ対応：DeepSeek V4.1 Flash-1017 -76% ($0.036/M)、gpt-oss-120b -40%、GLM-5.2 出力 -64%。',
+        subtitle: '本日の大幅値下げ（53%–84%OFF）：DeepSeek V4.1 Flash -83% ($0.0507/M)、GLM-5.3-Flash 出力 -84% ($0.0784/M)、Qwen3-Coder-30B -53% ($0.07/M)。',
         cta: 'OpenRouter で接続',
       },
       groq: {

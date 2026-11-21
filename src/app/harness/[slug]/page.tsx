@@ -6,7 +6,11 @@ import {
   getHarnessBySlug,
   getHarnessSeoMeta,
 } from '@/lib/harness-data';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import HarnessDetailClient from '@/components/HarnessDetailClient';
 
@@ -40,11 +44,13 @@ export async function generateMetadata({
       type: 'article',
       url: canonicalUrl,
       siteName: 'TokenCosts AI',
+      images: DEFAULT_OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title: seo.title,
       description: seo.description,
+      images: [DEFAULT_OG_IMAGE_URL],
     },
   };
 }

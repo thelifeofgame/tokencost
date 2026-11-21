@@ -7,7 +7,11 @@ import {
   getAllCompareStaticSlugs,
 } from '@/lib/models-data';
 import SchemaOrg from '@/components/seo/SchemaOrg';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 import { Locale } from '@/i18n/types';
 import CompareDetailClient from '@/components/CompareDetailClient';
 import {
@@ -50,19 +54,13 @@ export function buildCompareMetadata(slug: string, locale: Locale = 'en'): Metad
       type: 'article',
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
-      images: [
-        {
-          url: 'https://tokencostsai.com/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: `${data.modelA.modelName} vs ${data.modelB.modelName}`,
-        },
-      ],
+      images: DEFAULT_OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [DEFAULT_OG_IMAGE_URL],
     },
   };
 }

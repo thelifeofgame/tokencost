@@ -4,7 +4,11 @@ import type { Metadata } from 'next';
 import { MODELS_DATA } from '@/lib/models-data';
 import ModelCachingCalculatorClient from '@/components/ModelCachingCalculatorClient';
 import SchemaOrg from '@/components/seo/SchemaOrg';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 import { Locale } from '@/i18n/types';
 
 export async function generateStaticParams() {
@@ -36,6 +40,13 @@ export function buildCalculatorMetadata(modelId: string, locale: Locale = 'en'):
       type: 'article',
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
+      images: DEFAULT_OG_IMAGES,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+      images: [DEFAULT_OG_IMAGE_URL],
     },
   };
 }

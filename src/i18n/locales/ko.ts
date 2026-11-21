@@ -46,7 +46,7 @@ export const ko: TranslationDictionary = {
       openrouter: {
         badge: '인하 모델 통합 라우터',
         title: 'OpenRouter: {count}+ 모델 오늘의 최저가 자동 라우팅',
-        subtitle: '실시간 인하 적용: DeepSeek V4.1 Flash-1017 -76% ($0.036/M), gpt-oss-120b -40%, GLM-5.2 출력 -64%.',
+        subtitle: '오늘 53%–84% 인하 적용: DeepSeek V4.1 Flash -83% ($0.0507/M), GLM-5.3-Flash 출력 -84% ($0.0784/M), Qwen3-Coder-30B -53% ($0.07/M).',
         cta: 'OpenRouter 시작하기',
       },
       groq: {

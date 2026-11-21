@@ -5,7 +5,11 @@ import Footer from '@/components/Footer';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import { I18nProvider } from '@/i18n/I18nProvider';
 import { MODELS_DATA } from '@/lib/models-data';
-import { buildAlternates } from '@/lib/seo-alternates';
+import {
+  buildAlternates,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_OG_IMAGE_URL,
+} from '@/lib/seo-alternates';
 
 const MODEL_COUNT = MODELS_DATA.length;
 
@@ -36,12 +40,14 @@ export const metadata: Metadata = {
     siteName: 'TokenCosts AI',
     locale: 'en_US',
     type: 'website',
+    images: DEFAULT_OG_IMAGES,
   },
   twitter: {
     card: 'summary_large_image',
     title: 'TokenCosts AI | 2026 LLM Cost Intelligence & Agent Overhead Calculator',
     description:
       'Compare Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude Sonnet 5.5 & DeepSeek-V4.1-Flash token bills with Prompt Caching & Batch savings.',
+    images: [DEFAULT_OG_IMAGE_URL],
   },
   robots: {
     index: true,

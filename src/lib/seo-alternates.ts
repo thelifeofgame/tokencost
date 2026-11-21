@@ -1,6 +1,16 @@
 import { Locale, SUPPORTED_LOCALES, DEFAULT_LOCALE, isValidLocale } from '@/i18n';
 
 export const BASE_URL = 'https://tokencostsai.com';
+export const DEFAULT_OG_IMAGE_URL = `${BASE_URL}/og-image.png`;
+
+export const DEFAULT_OG_IMAGES = [
+  {
+    url: DEFAULT_OG_IMAGE_URL,
+    width: 1200,
+    height: 630,
+    alt: 'TokencostSAI.com — 368+ LLM API Pricing, Cache & Smart Router',
+  },
+];
 
 export function resolveLocale(locale?: string): Locale {
   if (locale && isValidLocale(locale)) {

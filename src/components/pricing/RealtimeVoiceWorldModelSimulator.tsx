@@ -404,7 +404,7 @@ export default function RealtimeVoiceWorldModelSimulator({
             Real-Time Multimodal Unit Economics Comparison
           </h2>
           <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-            Verified Nov 20, 2026 Rates
+            Verified Live 2026 Rates
           </span>
         </div>
 

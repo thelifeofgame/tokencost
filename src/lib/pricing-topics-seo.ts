@@ -62,13 +62,13 @@ export const TOPIC_SEO_MAP: Record<string, Partial<Record<Locale, TopicSeoMeta>>
       title: 'Gemini 4 Carbon 12/1 翻倍涨价与 Azure o3 停服迁移指南 | TokenCosts AI',
       description:
         'Gemini 4 Carbon/Argon $2/$10 优惠将于 11/30 到期翻倍至 $4/$20，且 Azure o3/o4-mini 已于 11/19 停服。对比同价平替 Claude Sonnet 5.5、GPT-6.2 Sol 与 DeepSeek-R1。',
-      h1: '10 天倒计时：Gemini 4 Carbon 12/1 涨价翻倍与 Azure o3 停服迁移指南',
+      h1: '倒计时窗口：Gemini 4 Carbon 12/1 涨价翻倍与 Azure o3 停服迁移指南',
     },
     'zh-TW': {
       title: 'Gemini 4 Carbon 12/1 翻倍漲價與 Azure o3 停服遷移指南 | TokenCosts AI',
       description:
         'Gemini 4 Carbon/Argon $2/$10 優惠將於 11/30 到期翻倍至 $4/$20，且 Azure o3/o4-mini 已於 11/19 停服。對比同價平替 Claude Sonnet 5.5、GPT-6.2 Sol 與 DeepSeek-R1。',
-      h1: '10 天倒數：Gemini 4 Carbon 12/1 漲價翻倍與 Azure o3 停服遷移指南',
+      h1: '倒數視窗：Gemini 4 Carbon 12/1 漲價翻倍與 Azure o3 停服遷移指南',
     },
     ja: {
       title: 'Gemini 4 Carbon 12/1 価格倍増＆Azure o3 終了移行ガイド | TokenCosts AI',
@@ -106,7 +106,7 @@ export const TOPIC_FAQS_MAP: Record<string, TopicFaqItem[]> = {
     {
       question: 'When should teams cascade to text/tool routers instead of keeping Genie 4 or GPT-Live active?',
       answer:
-        'Offload background RAG retrieval, state summarization, and classification to sub-cent text models like deepseek-v4.1-flash-1017 ($0.036/$0.50 per 1M on OpenRouter, with built-in web search/fetch tool fees removed) or gpt-oss-120b ($0.09/$0.36 per 1M), keeping real-time voice or world-model streams reserved strictly for active user interaction windows.',
+        'Offload background RAG retrieval, state summarization, and classification to sub-cent text models like deepseek-v4.1-flash ($0.0507/$0.2028 per 1M on OpenRouter, $0.001/M cached, with built-in web search/fetch tool fees removed) or gpt-oss-120b ($0.09/$0.36 per 1M), keeping real-time voice or world-model streams reserved strictly for active user interaction windows.',
     },
     {
       question: 'Can Prompt Caching or Batch 50% discounts offset Genie 4 streaming bills?',
@@ -128,7 +128,7 @@ export const TOPIC_FAQS_MAP: Record<string, TopicFaqItem[]> = {
     {
       question: 'What should teams migrate to after the November 19 Azure OpenAI o3 and o4-mini retirement?',
       answer:
-        "Engineering teams moving off retired Azure o3 and o4-mini endpoints can route reasoning workloads to GPT-6.2 Sol ($2.00/$10.00, 1.05M context) for ecosystem parity, or cut reasoning costs by 50.1% with DeepSeek-R1 ($0.55/$2.19 per 1M vs o3-mini's $1.10/$4.40), while high-volume subtasks can drop to deepseek-v4.1-flash-1017 ($0.036/$0.50 on OpenRouter).",
+        "Engineering teams moving off retired Azure o3 and o4-mini endpoints can route reasoning workloads to GPT-6.2 Sol ($2.00/$10.00, 1.05M context) for ecosystem parity, or cut reasoning costs by 50.1% with DeepSeek-R1 ($0.55/$2.19 per 1M vs o3-mini's $1.10/$4.40), while high-volume subtasks can drop to deepseek-v4.1-flash ($0.0507/$0.2028 on OpenRouter, $0.001/M cached).",
     },
     {
       question: 'How can LiteLLM or OpenRouter automate a zero-downtime migration before December 1?',
