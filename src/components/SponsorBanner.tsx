@@ -6,6 +6,7 @@ import { trackEvent } from '@/lib/analytics';
 import { useI18n } from '@/i18n/I18nProvider';
 import { formatModelCount } from '@/i18n';
 import { MODELS_DATA } from '@/lib/models-data';
+import { getLiveFlashRates } from '@/lib/live-copy-helpers';
 
 const OPENROUTER_SPONSOR_URL =
   'https://openrouter.ai/?ref=tokencostsai_com&utm_source=tokencostsai_com&utm_medium=sponsor_banner&utm_campaign=openrouter_rate_drops';
@@ -16,13 +17,21 @@ const GROQ_SPONSOR_URL =
 export default function SponsorBanner() {
   const { t, locale } = useI18n();
   const sponsorT = t.simulator.sponsor;
+  const rates = getLiveFlashRates();
+
+  const openrouterSubtitle = formatModelCount(sponsorT.openrouter.subtitle, MODELS_DATA.length)
+    .replace(/\{minDrop\}/g, String(rates.minDropPct))
+    .replace(/\{maxDrop\}/g, String(rates.maxDropPct))
+    .replace(/\{deepseekIn\}/g, rates.deepseekIn)
+    .replace(/\{glmOut\}/g, rates.glmOut)
+    .replace(/\{qwenIn\}/g, rates.qwenIn);
 
   const handleOpenRouterClick = () => {
     trackEvent('affiliate_click', {
       partner: 'openrouter',
       placement: 'sponsor_banner_dual',
       slot_position: 'primary_left',
-      offer_tag: '53_84_rate_drop',
+      offer_tag: `${rates.minDropPct}_${rates.maxDropPct}_rate_drop`,
       outbound_url: OPENROUTER_SPONSOR_URL,
       locale,
     });
@@ -64,7 +73,7 @@ export default function SponsorBanner() {
             </div>
 
             <span className="shrink-0 whitespace-nowrap rounded-md bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 text-[10px] font-mono tabular-nums font-bold tracking-tight text-emerald-700 dark:text-emerald-400">
-              53%–84% Rate Drops
+              {rates.minDropPct}%–{rates.maxDropPct}% Rate Drops
             </span>
           </div>
 
@@ -73,7 +82,7 @@ export default function SponsorBanner() {
               {formatModelCount(sponsorT.openrouter.title, MODELS_DATA.length)}
             </h3>
             <p className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-2">
-              {formatModelCount(sponsorT.openrouter.subtitle, MODELS_DATA.length)}
+              {openrouterSubtitle}
             </p>
           </div>
         </div>

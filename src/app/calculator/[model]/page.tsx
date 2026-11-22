@@ -6,9 +6,12 @@ import ModelCachingCalculatorClient from '@/components/ModelCachingCalculatorCli
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import {
   buildAlternates,
+  buildLocalizedCanonical,
+  getOgLocale,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
+import { BREADCRUMB_LABELS, getLocalizedCalculatorMeta } from '@/lib/detail-seo';
 import { Locale } from '@/i18n/types';
 
 export async function generateStaticParams() {
@@ -26,26 +29,27 @@ export function buildCalculatorMetadata(modelId: string, locale: Locale = 'en'):
     };
   }
 
-  const title = `${model.modelName} Prompt Caching Calculator & ROI Simulator | TokenCosts AI`;
-  const description = `Simulate prompt cache read savings (-${model.cacheDiscountPercent}% off), write surcharge amortization, and monthly net bills for ${model.modelName} (${model.inputPerM}/1M base, ${model.cachedInputPerM}/1M cached).`;
+  const { title, description, keywords } = getLocalizedCalculatorMeta(model, locale);
   const alternates = buildAlternates(`/calculator/${model.modelId}/`, locale);
 
   return {
     title,
     description,
+    keywords,
     alternates,
     openGraph: {
       title,
       description,
       type: 'article',
+      locale: getOgLocale(locale),
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
       images: DEFAULT_OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
-      title: title,
-      description: description,
+      title,
+      description,
       images: [DEFAULT_OG_IMAGE_URL],
     },
   };
@@ -61,8 +65,10 @@ export async function generateMetadata({
 
 export default function ModelCachingCalculatorPage({
   params,
+  locale = 'en',
 }: {
   params: { model: string };
+  locale?: Locale;
 }) {
   const model = MODELS_DATA.find((m) => m.modelId === params.model);
 
@@ -70,12 +76,27 @@ export default function ModelCachingCalculatorPage({
     return notFound();
   }
 
+  const canonicalUrl = buildLocalizedCanonical(`/calculator/${model.modelId}/`, locale);
+  const { title: localizedTitle, description: localizedDescription } = getLocalizedCalculatorMeta(
+    model,
+    locale
+  );
+  const bc = BREADCRUMB_LABELS[locale];
+  const breadcrumbs = [
+    { name: bc.home, url: buildLocalizedCanonical('/', locale) },
+    { name: bc.calculators, url: buildLocalizedCanonical('/calculator/', locale) },
+    { name: model.modelName, url: canonicalUrl },
+  ];
+
   return (
     <>
       <SchemaOrg
-        name={`${model.modelName} Prompt Caching Calculator`}
-        description={`Calculate monthly API bill savings with ${model.modelName} prompt caching discounts.`}
-        url={`https://tokencostsai.com/calculator/${model.modelId}/`}
+        type="software"
+        name={localizedTitle}
+        description={localizedDescription}
+        url={canonicalUrl}
+        inLanguage={locale}
+        breadcrumbs={breadcrumbs}
       />
       <ModelCachingCalculatorClient model={model} />
     </>

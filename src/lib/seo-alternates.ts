@@ -1,14 +1,28 @@
 import { Locale, SUPPORTED_LOCALES, DEFAULT_LOCALE, isValidLocale } from '@/i18n';
+import { LIVE_MODEL_COUNT } from '@/lib/live-copy-helpers';
 
 export const BASE_URL = 'https://tokencostsai.com';
 export const DEFAULT_OG_IMAGE_URL = `${BASE_URL}/og-image.png`;
+
+export const OG_LOCALE_MAP: Record<Locale, string> = {
+  en: 'en_US',
+  'zh-CN': 'zh_CN',
+  'zh-TW': 'zh_TW',
+  ja: 'ja_JP',
+  ko: 'ko_KR',
+  es: 'es_ES',
+};
+
+export function getOgLocale(locale: Locale = DEFAULT_LOCALE): string {
+  return OG_LOCALE_MAP[locale] || 'en_US';
+}
 
 export const DEFAULT_OG_IMAGES = [
   {
     url: DEFAULT_OG_IMAGE_URL,
     width: 1200,
     height: 630,
-    alt: 'TokencostSAI.com — 368+ LLM API Pricing, Cache & Smart Router',
+    alt: `TokenCosts AI (tokencostsai.com) — ${LIVE_MODEL_COUNT}+ LLM API Pricing, Cache & Smart Router`,
   },
 ];
 

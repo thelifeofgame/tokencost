@@ -3,8 +3,8 @@
   "title": "Daily LLM Industry Market Radar & Price Drops",
   "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-21T09:13:02.281672+08:00",
-  "date": "2026-11-21",
+  "lastUpdated": "2026-11-22T09:04:45.789964+08:00",
+  "date": "2026-11-22",
   "totalItems": 12,
   "categories": [
     {
@@ -30,6 +30,24 @@
   ],
   "items": [
     {
+      "id": "radar-dyn-inkling-2-mini",
+      "type": "new_model",
+      "title": "Thinking Machines 上线新模型 Inkling 2 Mini，支持 1,048,576 上下文",
+      "provider": "Thinkingmachines",
+      "modelId": "inkling-2-mini",
+      "badgeText": "New Arrival",
+      "summary": "Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle",
+      "effectiveDate": "2026-11-21",
+      "link": "https://openrouter.ai/models/thinkingmachines/inkling-2-mini",
+      "metrics": {
+        "inputPerM": 0.075,
+        "outputPerM": 0.3,
+        "cacheDiscountPercent": 80,
+        "contextWindow": 1048576,
+        "throughputTps": 145
+      }
+    },
+    {
       "id": "radar-dyn-daisyrose-27b",
       "type": "new_model",
       "title": "RadixArk 上线新模型 DaisyRose 27B，支持 262,144 上下文",
@@ -42,15 +60,15 @@
       "metrics": {
         "inputPerM": 0.15,
         "outputPerM": 1.875,
-        "cacheDiscountPercent": 75.0,
+        "cacheDiscountPercent": 75,
         "contextWindow": 262144,
-        "throughputTps": 85.0
+        "throughputTps": 85
       }
     },
     {
       "id": "radar-dyn-pixtral-large-2502",
       "type": "new_model",
-      "title": "Mistralai 上线新模型 Mistral: Pixtral Large 2502，支持 128,000 上下文",
+      "title": "Mistral 上线新模型 Pixtral Large 2502，支持 128,000 上下文",
       "provider": "Mistralai",
       "modelId": "pixtral-large-2502",
       "badgeText": "New Arrival",
@@ -58,11 +76,11 @@
       "effectiveDate": "2026-11-20",
       "link": "https://openrouter.ai/models/mistralai/pixtral-large-2502",
       "metrics": {
-        "inputPerM": 2.0,
-        "outputPerM": 6.0,
-        "cacheDiscountPercent": 50.0,
+        "inputPerM": 2,
+        "outputPerM": 6,
+        "cacheDiscountPercent": 50,
         "contextWindow": 128000,
-        "throughputTps": 45.0
+        "throughputTps": 45
       }
     },
     {
@@ -76,29 +94,11 @@
       "effectiveDate": "2026-11-18",
       "link": "https://openrouter.ai/models/google/gemini-4-neon",
       "metrics": {
-        "inputPerM": 3.0,
-        "outputPerM": 15.0,
-        "cacheDiscountPercent": 95.0,
+        "inputPerM": 3,
+        "outputPerM": 15,
+        "cacheDiscountPercent": 95,
         "contextWindow": 1048576,
-        "throughputTps": 145.0
-      }
-    },
-    {
-      "id": "radar-dyn-gpt-6.2-astra-pro",
-      "type": "new_model",
-      "title": "OpenAI 上线新模型 GPT-6.2 Astra Pro，支持 1,050,000 上下文",
-      "provider": "Openai",
-      "modelId": "gpt-6.2-astra-pro",
-      "badgeText": "New Arrival",
-      "summary": "GPT-6.2 Astra Pro is the same underlying model as GPT-6.2 Astra, served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks.",
-      "effectiveDate": "2026-11-18",
-      "link": "https://openrouter.ai/models/openai/gpt-6.2-astra-pro",
-      "metrics": {
-        "inputPerM": 8.0,
-        "outputPerM": 40.0,
-        "cacheDiscountPercent": 95.0,
-        "contextWindow": 1050000,
-        "throughputTps": 85.0
+        "throughputTps": 145
       }
     },
     {
@@ -112,11 +112,11 @@
       "effectiveDate": "2026-11-11",
       "link": "https://ai.google.dev/pricing",
       "metrics": {
-        "inputPerM": 2.0,
-        "outputPerM": 10.0,
-        "cacheDiscountPercent": 95.0,
+        "inputPerM": 2,
+        "outputPerM": 10,
+        "cacheDiscountPercent": 95,
         "contextWindow": 1048576,
-        "throughputTps": 145.0
+        "throughputTps": 145
       }
     },
     {
@@ -130,11 +130,11 @@
       "effectiveDate": "2026-11-10",
       "link": "https://www.anthropic.com/pricing",
       "metrics": {
-        "inputPerM": 8.0,
-        "outputPerM": 40.0,
+        "inputPerM": 8,
+        "outputPerM": 40,
         "cacheDiscountPercent": 97.5,
         "contextWindow": 1000000,
-        "throughputTps": 45.0
+        "throughputTps": 45
       }
     },
     {
@@ -148,12 +148,12 @@
       "effectiveDate": "2026-11-08",
       "link": "https://openai.com/api/pricing/",
       "metrics": {
-        "inputPerM": 2.0,
-        "outputPerM": 10.0,
-        "batchDiscountPercent": 50.0,
+        "inputPerM": 2,
+        "outputPerM": 10,
+        "batchDiscountPercent": 50,
         "contextWindow": 1050000,
-        "throughputTps": 85.0,
-        "cacheDiscountPercent": 95.0
+        "throughputTps": 85,
+        "cacheDiscountPercent": 95
       }
     },
     {
@@ -167,29 +167,29 @@
       "effectiveDate": "2026-11-05",
       "link": "https://www.anthropic.com/pricing",
       "metrics": {
-        "inputPerM": 2.0,
-        "outputPerM": 10.0,
-        "cacheDiscountPercent": 95.0,
+        "inputPerM": 2,
+        "outputPerM": 10,
+        "cacheDiscountPercent": 95,
         "contextWindow": 1000000,
-        "throughputTps": 85.0
+        "throughputTps": 85
       }
     },
     {
       "id": "radar-deepseek-v4-1-flash-price-cut",
       "type": "price_cut",
-      "title": "DeepSeek V4.1 Flash 费率再下探：实时路由输入仅 $0.0507/1M，缓存低至 $0.001/1M",
+      "title": "DeepSeek V4.1 Flash 费率再下探：实时路由输入仅 $0.0498/1M，缓存低至 $0.001/1M",
       "provider": "DeepSeek",
       "modelId": "deepseek-v4.1-flash",
       "badgeText": "Price Drop",
-      "summary": "DeepSeek V4.1 Flash 持续领跑高并发降本，实时路由输入单价 $0.0507/1M、输出 $0.2028/1M（官方按需峰/谷 $0.30/$0.15），缓存折扣高达 98.03%，稳居全球高频调用前列。",
+      "summary": "DeepSeek V4.1 Flash 持续领跑高并发降本，实时路由输入单价 $0.0498/1M、输出 $0.1992/1M（官方按需峰/谷 $0.30/$0.15），缓存折扣高达 97.99%，稳居全球高频调用前列。",
       "effectiveDate": "2026-11-04",
       "link": "https://api-docs.deepseek.com/quick_start/pricing",
       "metrics": {
-        "inputPerM": 0.0507,
-        "outputPerM": 0.2028,
-        "cacheDiscountPercent": 98.03,
+        "inputPerM": 0.0498,
+        "outputPerM": 0.1992,
+        "cacheDiscountPercent": 97.99,
         "contextWindow": 1048576,
-        "throughputTps": 145.0
+        "throughputTps": 145
       }
     },
     {
@@ -206,8 +206,8 @@
         "inputPerM": 0.417,
         "outputPerM": 1.2505,
         "cacheDiscountPercent": 94.96,
-        "contextWindow": 131072,
-        "throughputTps": 85.0
+        "contextWindow": 1048576,
+        "throughputTps": 85
       }
     },
     {
@@ -225,7 +225,7 @@
         "outputPerM": 0.0784,
         "cacheDiscountPercent": 24.81,
         "contextWindow": 1048576,
-        "throughputTps": 145.0
+        "throughputTps": 145
       }
     },
     {
@@ -241,9 +241,9 @@
       "metrics": {
         "inputPerM": 0.59,
         "outputPerM": 0.79,
-        "cacheDiscountPercent": 50.0,
-        "contextWindow": 131072,
-        "throughputTps": 420.0
+        "cacheDiscountPercent": 50,
+        "contextWindow": 128000,
+        "throughputTps": 420
       }
     }
   ]

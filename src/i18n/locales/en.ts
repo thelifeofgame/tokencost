@@ -46,7 +46,7 @@ export const en: TranslationDictionary = {
       openrouter: {
         badge: 'Rate-Drop Routing',
         title: 'OpenRouter: Auto-Route {count}+ Models at Today\'s Lowest Rates',
-        subtitle: 'Live cuts (53%–84% off): DeepSeek V4.1 Flash -83% ($0.0507/M), GLM-5.3-Flash out -84% ($0.0784/M) & Qwen3-Coder-30B -53% ($0.07/M).',
+        subtitle: 'Live cuts ({minDrop}%–{maxDrop}% off): DeepSeek V4.1 Flash -83% ({deepseekIn}/M), GLM-5.3-Flash out -84% ({glmOut}/M) & Qwen3-Coder-30B -53% ({qwenIn}/M).',
         cta: 'Route via OpenRouter',
       },
       groq: {

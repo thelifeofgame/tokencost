@@ -31,5 +31,6 @@ export default function LocalizedModelCalculatorPage({
 }: {
   params: { locale: string; model: string };
 }) {
-  return <ModelCalculatorPage params={{ model: params.model }} />;
+  const locale = resolveLocale(params.locale);
+  return <ModelCalculatorPage params={{ model: params.model }} locale={locale} />;
 }

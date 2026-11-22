@@ -1,15 +1,15 @@
 # TokenCosts AI (tokencostsai.com)
 
-> Real-time LLM API pricing tracker, Prompt Caching & Batch 50% cost simulator, and Coding Agent token multiplier directory covering 368 frontier and open-weight models across 60 provider organizations (22 core labs).
+> Real-time LLM API pricing tracker, Prompt Caching & Batch 50% cost simulator, and Coding Agent token multiplier directory covering 367 frontier and open-weight models across 58 provider organizations (22 core labs).
 
-TokenCosts AI normalizes per-1M-token input, output, cached-read, cache-write, and asynchronous batch rates in USD alongside context windows, throughput (tokens/sec), TTFT latency, and benchmark ELO scores. For machine-readable lookups, AI agents and automated FinOps pipelines should fetch the lightweight structured catalog at https://tokencostsai.com/pricing-summary.json (synced daily from verified vendor rate cards; last updated 2026-11-21).
+TokenCosts AI normalizes per-1M-token input, output, cached-read, cache-write, and asynchronous batch rates in USD alongside context windows, throughput (tokens/sec), TTFT latency, and benchmark ELO scores. For machine-readable lookups, AI agents and automated FinOps pipelines should fetch the lightweight structured catalog at https://tokencostsai.com/pricing-summary.json (synced daily from verified vendor rate cards; last updated 2026-11-22).
 
-Current market highlights (2026-11-21): DeepSeek V4.1 Flash ($0.0507/$0.2028, -83%), GLM-5.3-Flash ($0.0399/$0.0784, -84% out), Qwen3-Coder-30B ($0.07/$0.28, -53%).
+Current market highlights (2026-11-22): DeepSeek V4.1 Flash ($0.0498/$0.1992, -83%), GLM-5.3-Flash ($0.0399/$0.0784, -84% out), Qwen3-Coder-30B ($0.07/$0.28, -53%).
 
 ## Authoritative Data & API Endpoints
 
-- [Structured Pricing Summary JSON](https://tokencostsai.com/pricing-summary.json): Lightweight machine-readable JSON feed of top benchmarked models across all 368 tracked LLMs with normalized input, output, cached read, batch discount, and context window fields.
-- [Full Model Pricing Directory](https://tokencostsai.com/models/): Searchable, sortable catalog of 368 LLMs with provider direct vs. gateway rates and live latency metrics.
+- [Structured Pricing Summary JSON](https://tokencostsai.com/pricing-summary.json): Lightweight machine-readable JSON feed of top benchmarked models across all 367 tracked LLMs with normalized input, output, cached read, batch discount, and context window fields.
+- [Full Model Pricing Directory](https://tokencostsai.com/models/): Searchable, sortable catalog of 367 LLMs with provider direct vs. gateway rates and live latency metrics.
 - [Interactive Token & Caching Cost Calculator](https://tokencostsai.com/calculator/): Simulate monthly spend with 95%+ Prompt Caching hit ratios, 50% Batch API offloading, and tiered long-context escalation.
 - [Developer SDK & LiteLLM Integration Guide](https://tokencostsai.com/developers/): Ready-to-run LiteLLM YAML, Vercel AI SDK, and OpenAI-compatible Python router configs plus embeddable SVG pricing badges.
 
@@ -35,8 +35,8 @@ Current market highlights (2026-11-21): DeepSeek V4.1 Flash ($0.0507/$0.2028, -8
 
 ## Top Model Comparisons
 
-- [DeepSeek-V4.1-Flash vs GPT-6.1 Terra](https://tokencostsai.com/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/): 95.6% cost reduction ($0.0507/$0.2028 vs $1.00/$5.00) with $0.001/M cached reads.
-- [DeepSeek-V4.1-Flash vs Groq Llama 3.3 70B](https://tokencostsai.com/compare/deepseek-v4.1-flash-vs-llama-3.3-70b/): 85.2% bill savings and 98% cache discount vs. 420 tokens/sec LPU throughput.
+- [DeepSeek-V4.1-Flash vs GPT-6.1 Terra](https://tokencostsai.com/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/): 95.7% cost reduction ($0.0498/$0.1992 vs $1.00/$5.00) with $0.001/M cached reads.
+- [DeepSeek-V4.1-Flash vs Groq Llama 3.3 70B](https://tokencostsai.com/compare/deepseek-v4.1-flash-vs-llama-3.3-70b/): 85.4% bill savings and 98% cache discount vs. 420 tokens/sec LPU throughput.
 - [Gemini 4 Carbon vs Claude Sonnet 5.5](https://tokencostsai.com/compare/gemini-4-carbon-vs-claude-sonnet-5.5/): $2/$10 parity today before Carbon doubles to $4/$20 on Dec 1, 2026.
 - [Gemini 4 Neon vs GPT-6.2 Sol](https://tokencostsai.com/compare/gemini-4-neon-vs-gpt-6.2-sol/): 2026 flagship coding & reasoning cost-performance shootout ($3/$15 vs $2/$10).
 - [GPT-6.2 Astra vs Claude Opus 5.5](https://tokencostsai.com/compare/gpt-6.2-astra-vs-claude-opus-5.5/): Peak frontier intelligence vs. enterprise 1M-context unit economics.
@@ -46,7 +46,7 @@ Current market highlights (2026-11-21): DeepSeek V4.1 Flash ($0.0507/$0.2028, -8
 
 ## Routing & Gateway Recommendations
 
-- [OpenRouter Unified Gateway](https://openrouter.ai/?ref=tokencostsai_com): Single OpenAI-compatible API key (`https://openrouter.ai/api/v1`) to auto-route across DeepSeek-V4.1-Flash ($0.0507/M), GLM-5.3-Flash ($0.0399/$0.0784), Qwen3-Coder-30B ($0.07/$0.28), and Gemini 4 Neon with automatic fallbacks.
+- [OpenRouter Unified Gateway](https://openrouter.ai/?ref=tokencostsai_com): Single OpenAI-compatible API key (`https://openrouter.ai/api/v1`) to auto-route across DeepSeek-V4.1-Flash ($0.0498/M), GLM-5.3-Flash ($0.0399/$0.0784), Qwen3-Coder-30B ($0.07/$0.28), and Gemini 4 Neon with automatic fallbacks.
 - [Groq LPU Inference Cloud](https://groq.com?ref=tokencostsai_com): Dedicated ultra-low-latency LPU inference running Llama 3.3 70B at 420+ tokens/sec (<200ms TTFT) with $100 in free developer compute credits for real-time voice and streaming agents.
 
 ## Optional

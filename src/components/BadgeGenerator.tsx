@@ -4,10 +4,12 @@ import React, { useState, useMemo } from 'react';
 import { Code2, Copy, Check, FileText, Sun, Moon, ExternalLink } from 'lucide-react';
 import { MODELS_DATA } from '@/lib/models-data';
 import { useI18n } from '@/i18n/I18nProvider';
+import { Locale } from '@/i18n/types';
 import { trackEvent } from '@/lib/analytics';
 import {
   BadgeTheme,
   BadgeMetricMode,
+  formatBadgeRate,
   getBadgePublicUrl,
   getBadgeFileName,
   getBadgeTargetUrl,
@@ -15,12 +17,93 @@ import {
   renderBadgeSvg,
 } from '@/lib/badge-generator';
 
-const QUICK_MODEL_PRESETS = [
+const QUICK_MODEL_PRESETS: { id: string; label: string; isNew?: boolean }[] = [
   { id: 'gemini-4-neon', label: 'Gemini 4 Neon' },
   { id: 'deepseek-v4.1-flash', label: 'DeepSeek-V4.1-Flash' },
+  { id: 'glm-5.3-flash', label: 'GLM-5.3-Flash', isNew: true },
+  { id: 'inkling-2-mini', label: 'Inkling 2 Mini', isNew: true },
   { id: 'gpt-6.2-sol', label: 'GPT-6.2 Sol' },
   { id: 'claude-sonnet-5.5', label: 'Claude Sonnet 5.5' },
 ];
+
+const BADGE_PRESET_WHITELIST = new Set([
+  'gemini-4-neon',
+  'deepseek-v4.1-flash',
+  'glm-5.3-flash',
+  'inkling-2-mini',
+  'gpt-6.2-sol',
+  'claude-sonnet-5.5',
+]);
+
+const PRESET_HIGHLIGHTS: Record<
+  'inkling-2-mini' | 'glm-5.3-flash',
+  Record<Locale, { displayTitle: string; description: string }>
+> = {
+  'inkling-2-mini': {
+    en: {
+      displayTitle: 'Inkling 2 Mini · 1M Context MoE',
+      description:
+        "Thinking Machines' 3.4B-active looped MoE ($0.075/$0.30 per 1M, 80% cache discount, 145 t/s) — ideal for lean OSS agents & 1M RAG repos.",
+    },
+    'zh-CN': {
+      displayTitle: 'Inkling 2 Mini · 1M 上下文推理小钢炮',
+      description:
+        'Thinking Machines 开源 3.4B 激活循环 MoE（$0.075/$0.30 每百万，80% 缓存折扣，145 t/s），适合轻量开源 Agent 与百万上下文 RAG 项目挂标。',
+    },
+    'zh-TW': {
+      displayTitle: 'Inkling 2 Mini · 1M 上下文推理輕量王',
+      description:
+        'Thinking Machines 開源 3.4B 激活循環 MoE（$0.075/$0.30 每百萬，80% 快取折扣，145 t/s），適合輕量開源 Agent 與百萬上下文 RAG 專案。',
+    },
+    ja: {
+      displayTitle: 'Inkling 2 Mini · 1M文脈 MoE',
+      description:
+        'Thinking Machines製 3.4Bアクティブ MoE（$0.075/$0.30・キャッシュ80%OFF・145 t/s）。1Mトークン対応の軽量OSSエージェント向けバッジ。',
+    },
+    ko: {
+      displayTitle: 'Inkling 2 Mini · 1M 컨텍스트 MoE',
+      description:
+        'Thinking Machines의 3.4B 활성 루프 MoE($0.075/$0.30, 캐시 80% 할인, 145 t/s) — 경량 오픈소스 에이전트 및 1M RAG README에 최적화.',
+    },
+    es: {
+      displayTitle: 'Inkling 2 Mini · MoE Contexto 1M',
+      description:
+        'MoE de Thinking Machines con 3.4B activos ($0.075/$0.30 por 1M, 80% en caché, 145 t/s): ideal para agentes OSS ligeros y repos RAG de 1M.',
+    },
+  },
+  'glm-5.3-flash': {
+    en: {
+      displayTitle: 'GLM-5.3-Flash · -84% Output Floor',
+      description:
+        'Z.ai 1M-context multimodal Flash ($0.0399 in / $0.0784 out per 1M, 145 t/s, Coding 1259) — built for high-output codegen & batch pipelines.',
+    },
+    'zh-CN': {
+      displayTitle: 'GLM-5.3-Flash · 输出直降 84% 地板价',
+      description:
+        '智谱 1M 上下文原生多模态模型（输入 $0.0399 / 输出 $0.0784 每百万，145 t/s，Coding 1259），适合高输出代码生成与批处理项目。',
+    },
+    'zh-TW': {
+      displayTitle: 'GLM-5.3-Flash · 輸出直降 84% 地板價',
+      description:
+        '智譜 1M 上下文原生多模態模型（輸入 $0.0399 / 輸出 $0.0784 每百萬，145 t/s，Coding 1259），適合高輸出程式碼生成與批次管線。',
+    },
+    ja: {
+      displayTitle: 'GLM-5.3-Flash · 出力84%OFF 最安水準',
+      description:
+        'Z.ai の1M文脈マルチモーダル（入力 $0.0399 / 出力 $0.0784・145 t/s・Coding 1259）。大量出力を伴うコード生成・バッチ処理に最適。',
+    },
+    ko: {
+      displayTitle: 'GLM-5.3-Flash · 출력 84% 인하 최저가',
+      description:
+        'Z.ai 1M 컨텍스트 멀티모달 Flash(입력 $0.0399 / 출력 $0.0784, 145 t/s, Coding 1259) — 대량 출력 코드 생성 및 배치 파이프라인용.',
+    },
+    es: {
+      displayTitle: 'GLM-5.3-Flash · -84% en Salida',
+      description:
+        'Modelo multimodal de Z.ai con contexto 1M ($0.0399 entrada / $0.0784 salida, 145 t/s, Coding 1259): ideal para generación masiva de código.',
+    },
+  },
+};
 
 export default function BadgeGenerator() {
   const { locale } = useI18n();
@@ -41,6 +124,14 @@ export default function BadgeGenerator() {
       MODELS_DATA[0]
     );
   }, [selectedModelId]);
+
+  const activeHighlight = useMemo(() => {
+    if (isHarnessPreset) return null;
+    if (selectedModel.modelId === 'inkling-2-mini' || selectedModel.modelId === 'glm-5.3-flash') {
+      return PRESET_HIGHLIGHTS[selectedModel.modelId][locale];
+    }
+    return null;
+  }, [isHarnessPreset, selectedModel.modelId, locale]);
 
   const badgeInput = useMemo(
     () => ({
@@ -91,7 +182,7 @@ export default function BadgeGenerator() {
 
     const presetSlug = isHarnessPreset
       ? 'harness_benchmark'
-      : ['gemini-4-neon', 'deepseek-v4.1-flash'].includes(selectedModel.modelId)
+      : BADGE_PRESET_WHITELIST.has(selectedModel.modelId)
         ? selectedModel.modelId
         : 'custom';
 
@@ -159,37 +250,51 @@ export default function BadgeGenerator() {
               <option value="__harness__">Coding Agent Harness Benchmark (1.2x–3.5x)</option>
               {MODELS_DATA.map((m) => (
                 <option key={m.modelId} value={m.modelId}>
-                  {m.modelName} (${m.inputPerM}/1M in · ${m.outputPerM}/1M out)
+                  {m.modelName} ({formatBadgeRate(m.inputPerM)}/1M in · {formatBadgeRate(m.outputPerM)}/1M out)
                 </option>
               ))}
             </select>
 
             {/* Quick Presets */}
-            <div className="flex flex-wrap gap-1.5 pt-1">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
               {QUICK_MODEL_PRESETS.map((preset) => {
                 const active = !isHarnessPreset && selectedModelId === preset.id;
+                const highlight =
+                  preset.id === 'inkling-2-mini' || preset.id === 'glm-5.3-flash'
+                    ? PRESET_HIGHLIGHTS[preset.id][locale]
+                    : undefined;
                 return (
                   <button
                     key={preset.id}
                     type="button"
+                    title={highlight?.description}
                     onClick={() => {
                       setIsHarnessPreset(false);
                       setSelectedModelId(preset.id);
                     }}
-                    className={`min-h-[32px] px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${
+                    className={`min-h-[36px] sm:min-h-[32px] px-2.5 py-1 rounded-full text-xs font-medium border transition-all inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 active:scale-[0.98] ${
                       active
                         ? 'border-indigo-500/60 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shadow-[0_0_12px_rgba(99,102,241,0.18)]'
                         : 'border-zinc-200 dark:border-zinc-800 bg-zinc-100/70 dark:bg-zinc-900/80 text-zinc-600 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-200'
                     }`}
                   >
-                    {preset.label}
+                    {preset.isNew && (
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" aria-hidden="true" />
+                    )}
+                    <span>{preset.label}</span>
                   </button>
                 );
               })}
+
+              <span
+                className="hidden sm:inline-block h-4 w-px bg-zinc-200 dark:bg-zinc-800 self-center mx-0.5"
+                aria-hidden="true"
+              />
+
               <button
                 type="button"
                 onClick={() => setIsHarnessPreset(true)}
-                className={`min-h-[32px] px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${
+                className={`min-h-[36px] sm:min-h-[32px] px-2.5 py-1 rounded-full text-xs font-medium border transition-all inline-flex items-center whitespace-nowrap shrink-0 active:scale-[0.98] ${
                   isHarnessPreset
                     ? 'border-emerald-500/60 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.18)]'
                     : 'border-zinc-200 dark:border-zinc-800 bg-zinc-100/70 dark:bg-zinc-900/80 text-zinc-600 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-200'
@@ -198,6 +303,17 @@ export default function BadgeGenerator() {
                 Agent Benchmark
               </button>
             </div>
+
+            {activeHighlight && (
+              <div className="mt-2 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.06] dark:bg-emerald-500/[0.08] px-3 py-2 text-[11px] leading-relaxed">
+                <span className="font-semibold text-emerald-700 dark:text-emerald-300 block">
+                  {activeHighlight.displayTitle}
+                </span>
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  {activeHighlight.description}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* 2. Metric Display Mode */}

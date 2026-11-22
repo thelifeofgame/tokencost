@@ -81,6 +81,54 @@ export interface ModelPricingRule {
   tierOutputPerM?: number;    // e.g. Gemini >128k output rate
 }
 
+export interface NonTokenDisplayRate {
+  label: string;
+  rateUsd: number;
+  unitLabel: string;
+  secondaryEquivalent: string;
+  isHighlightDiscount?: boolean;
+}
+
+export interface NonTokenModelRule {
+  modelId: string;
+  modelName: string;
+  providerOrg: ProviderOrg;
+  billingType: 'non_token';
+  billingUnit: 'per_second' | 'per_minute';
+  primaryRateLabel: string;
+  secondaryRateLabel: string;
+  displayRates: NonTokenDisplayRate[];
+  streamSpecs: {
+    resolution?: string;
+    frameRateFps?: number;
+    videoTokensPerSec?: number;
+    audioSampleRateKhz?: number;
+    maxSessionMinutes?: number;
+    underlyingTokenRates: string;
+  };
+  targetCalculatorPath: string;
+  officialDocUrl: string;
+  isFrontier?: boolean;
+  isRealtimeWorld?: boolean;
+  capabilities: {
+    reasoning: boolean;
+    vision: boolean;
+    audio?: boolean;
+    videoStream?: boolean;
+    realtimeVoice?: boolean;
+    worldModel?: boolean;
+    functionCalling: boolean;
+    structuredOutputs: boolean;
+  };
+  notes: string;
+}
+
+export type DirectoryModelItem = ModelPricingRule | NonTokenModelRule;
+
+export function isNonTokenModel(item: DirectoryModelItem): item is NonTokenModelRule {
+  return 'billingType' in item && item.billingType === 'non_token';
+}
+
 export interface SimulationParams {
   monthlyRequests: number;
   inputTokens: number;

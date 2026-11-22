@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-ai-feeds.mjs",
+    "prebuild": "node scripts/generate-ai-feeds.mjs && node scripts/generate-badges.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

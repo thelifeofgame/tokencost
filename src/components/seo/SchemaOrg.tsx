@@ -1,5 +1,6 @@
 import React from 'react';
 import { generateHreflangTags } from '@/i18n';
+import { Locale } from '@/i18n/types';
 
 export interface FAQItem {
   question: string;
@@ -11,11 +12,19 @@ export interface BreadcrumbItem {
   url: string;
 }
 
+export interface ModelOfferSchema {
+  price: string;
+  provider?: string;
+  contextWindow?: number;
+}
+
 interface SchemaOrgProps {
   type?: 'software' | 'compare' | 'model' | 'faq';
   name?: string;
   description?: string;
   url?: string;
+  inLanguage?: Locale;
+  modelOffer?: ModelOfferSchema;
   faqs?: FAQItem[];
   breadcrumbs?: BreadcrumbItem[];
   includeHreflang?: boolean;
@@ -26,20 +35,24 @@ export default function SchemaOrg({
   name = 'TokenCosts AI - Real-Time LLM API Cost Intelligence & Smart Router',
   description = 'Real-time LLM API cost simulator, prompt caching discount calculator, and multi-model adaptive routing engine.',
   url = 'https://tokencostsai.com/',
+  inLanguage,
+  modelOffer,
   faqs,
   breadcrumbs,
   includeHreflang = false,
 }: SchemaOrgProps) {
   const schemas: Record<string, unknown>[] = [];
 
-  // 1. SoftwareApplication Schema (Primary for Homepage)
+  // 1. SoftwareApplication Schema (Primary for Homepage & Calculator pages)
   if (type === 'software') {
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
+      '@id': url,
       name,
       description,
       url,
+      ...(inLanguage ? { inLanguage } : {}),
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'All',
       softwareVersion: '2.0.0',
@@ -71,11 +84,53 @@ export default function SchemaOrg({
     });
   }
 
-  // 2. FAQPage Schema (For Compare and Topic Pages)
+  // 2. Model Page Schema (WebPage + mainEntity SoftwareApplication with Offer)
+  if (type === 'model') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': url,
+      name,
+      description,
+      url,
+      ...(inLanguage ? { inLanguage } : {}),
+      mainEntity: {
+        '@type': 'SoftwareApplication',
+        '@id': `${url}#model`,
+        name,
+        description,
+        url,
+        applicationCategory: 'DeveloperApplication',
+        operatingSystem: 'All',
+        ...(modelOffer?.provider
+          ? {
+              provider: {
+                '@type': 'Organization',
+                name: modelOffer.provider,
+              },
+            }
+          : {}),
+        offers: {
+          '@type': 'Offer',
+          price: modelOffer?.price ?? '0.00',
+          priceCurrency: 'USD',
+          description: 'USD per 1M input tokens',
+        },
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'TokenCosts AI',
+        url: 'https://tokencostsai.com',
+      },
+    });
+  }
+
+  // 3. FAQPage Schema (For Compare and Topic Pages)
   if (faqs && faqs.length > 0) {
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
+      ...(inLanguage ? { inLanguage } : {}),
       mainEntity: faqs.map((f) => ({
         '@type': 'Question',
         name: f.question,
@@ -87,7 +142,7 @@ export default function SchemaOrg({
     });
   }
 
-  // 3. BreadcrumbList Schema
+  // 4. BreadcrumbList Schema
   if (breadcrumbs && breadcrumbs.length > 0) {
     schemas.push({
       '@context': 'https://schema.org',
@@ -101,14 +156,16 @@ export default function SchemaOrg({
     });
   }
 
-  // 4. TechArticle Schema for Compare Pages
+  // 5. TechArticle Schema for Compare Pages
   if (type === 'compare') {
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'TechArticle',
+      '@id': url,
       headline: name,
       description,
       url,
+      ...(inLanguage ? { inLanguage } : {}),
       author: {
         '@type': 'Organization',
         name: 'TokenCosts AI Engineering',

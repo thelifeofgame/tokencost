@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Non-Token Billed Realtime Voice & Interactive World Models",
+  "version": "1.0.0",
+  "lastUpdated": "2026-11-22T10:00:00+08:00",
+  "models": [
+    {
+      "modelId": "genie-4",
+      "modelName": "Google: Genie 4 (Interactive World Model)",
+      "providerOrg": "Google",
+      "billingType": "non_token",
+      "billingUnit": "per_second",
+      "primaryRateLabel": "~$0.10/sec",
+      "secondaryRateLabel": "~$6.05/min (5,760 video tok/s)",
+      "displayRates": [
+        {
+          "label": "720p 24fps Stream",
+          "rateUsd": 0.1008,
+          "unitLabel": "/sec",
+          "secondaryEquivalent": "~$6.05/min · $17.50/M video tok"
+        },
+        {
+          "label": "Prompt Input",
+          "rateUsd": 1.5,
+          "unitLabel": "/1M tok",
+          "secondaryEquivalent": "~$0.0001/sec baseline"
+        }
+      ],
+      "streamSpecs": {
+        "resolution": "720p",
+        "frameRateFps": 24,
+        "videoTokensPerSec": 5760,
+        "audioSampleRateKhz": 48,
+        "underlyingTokenRates": "$1.50/M input · $9.00/M text · $17.50/M video+audio"
+      },
+      "targetCalculatorPath": "/pricing/realtime-voice-world-model-api-costs/",
+      "officialDocUrl": "https://ai.google.dev/pricing",
+      "isFrontier": true,
+      "isRealtimeWorld": true,
+      "capabilities": {
+        "reasoning": false,
+        "vision": true,
+        "audio": true,
+        "videoStream": true,
+        "realtimeVoice": false,
+        "worldModel": true,
+        "functionCalling": false,
+        "structuredOutputs": false
+      },
+      "notes": "Google Genie 4 (models/genie-4) on Gemini v1beta Interactions API. Streams 720p 24fps interactive worlds (5,760 video tok/s) with 48kHz stereo audio at ~$0.1008/sec (~$6.05/min). Paid tier only; Free/Batch/Flex excluded."
+    },
+    {
+      "modelId": "gpt-live-1.1",
+      "modelName": "OpenAI: GPT-Live-1.1 (Realtime Voice)",
+      "providerOrg": "OpenAI",
+      "billingType": "non_token",
+      "billingUnit": "per_minute",
+      "primaryRateLabel": "$0.05/min",
+      "secondaryRateLabel": "WebRTC Standby $0.02/min (-60%)",
+      "displayRates": [
+        {
+          "label": "Active Session",
+          "rateUsd": 0.05,
+          "unitLabel": "/min",
+          "secondaryEquivalent": "$3.00/hr (billed per sec)"
+        },
+        {
+          "label": "WebRTC Standby",
+          "rateUsd": 0.02,
+          "unitLabel": "/min",
+          "secondaryEquivalent": "$1.20/hr (-60% idle savings)",
+          "isHighlightDiscount": true
+        }
+      ],
+      "streamSpecs": {
+        "maxSessionMinutes": 120,
+        "underlyingTokenRates": "Session-duration billing on /v1/live/sessions (5-60s standby timeout)"
+      },
+      "targetCalculatorPath": "/pricing/realtime-voice-world-model-api-costs/",
+      "officialDocUrl": "https://openai.com/api/pricing/",
+      "isFrontier": true,
+      "isRealtimeWorld": true,
+      "capabilities": {
+        "reasoning": false,
+        "vision": false,
+        "audio": true,
+        "videoStream": false,
+        "realtimeVoice": true,
+        "worldModel": false,
+        "functionCalling": true,
+        "structuredOutputs": true
+      },
+      "notes": "OpenAI GPT-Live-1.1 on /v1/live/sessions (up to 2h per session). Active voice sessions bill $0.05/min ($3.00/hr); WebRTC Standby cuts idle connection billing by 60% to $0.02/min ($1.20/hr), billed per second."
+    }
+  ]
+}

@@ -17,26 +17,36 @@ function escapeXml(str) {
     .replace(/'/g, '&apos;');
 }
 
-function estimateTextWidth(text, fontSize, isMono = false) {
+function estimateTextWidth(text, fontSize, isMono = false, letterSpacing = 0) {
   let width = 0;
   for (const ch of text) {
     if (isMono) {
-      width += fontSize * 0.62;
+      width += fontSize * 0.645;
     } else if ('ijlI1.,·: '.includes(ch)) {
       width += fontSize * 0.34;
     } else if ('mwMWGOQD@%'.includes(ch)) {
-      width += fontSize * 0.78;
+      width += fontSize * 0.80;
+    } else if (ch >= 'A' && ch <= 'Z') {
+      width += fontSize * 0.68;
     } else {
       width += fontSize * 0.56;
     }
+  }
+  if (letterSpacing > 0 && text.length > 1) {
+    width += (text.length - 1) * letterSpacing;
   }
   return Math.ceil(width);
 }
 
 function formatBadgeRate(val) {
   if (val === 0) return '$0';
-  if (val < 0.01) return `$${Number(val.toFixed(4))}`;
-  if (val < 0.1) return `$${Number(val.toFixed(3))}`;
+  if (val < 0.1) return `$${Number(val.toFixed(4))}`;
+  const rounded4 = Number(val.toFixed(4));
+  const str = String(rounded4);
+  const dotIdx = str.indexOf('.');
+  if (dotIdx !== -1 && str.length - dotIdx - 1 > 2) {
+    return `$${str}`;
+  }
   return `$${val.toFixed(2)}`;
 }
 
@@ -61,7 +71,12 @@ function getBadgeMetricText(model, metric) {
 
 function renderBadgeSvg(model, theme, metric, isHarnessPreset = false) {
   const brandLabel = theme === 'indigo' ? 'TOKENCOSTS AI' : 'TokenCosts AI';
-  const leftLabelWidth = estimateTextWidth(brandLabel, theme === 'indigo' ? 10.5 : 11, false);
+  const leftLabelWidth = estimateTextWidth(
+    brandLabel,
+    theme === 'indigo' ? 10.5 : 11,
+    false,
+    theme === 'indigo' ? 0.4 : 0
+  );
   const leftWidth = (theme === 'indigo' ? 23 : 22) + leftLabelWidth + 10;
 
   const rightEntity = isHarnessPreset
@@ -80,7 +95,7 @@ function renderBadgeSvg(model, theme, metric, isHarnessPreset = false) {
   const combinedRight = `${rightEntity}${separator}${rightValue}`;
   const rightTextWidth = estimateTextWidth(combinedRight, 10.5, true);
   const rightPadLeft = theme === 'indigo' ? 10 : 9;
-  const rightWidth = rightPadLeft + rightTextWidth + 10;
+  const rightWidth = rightPadLeft + rightTextWidth + 12;
 
   const totalWidth = leftWidth + rightWidth;
   const height = theme === 'indigo' ? 26 : 22;
@@ -93,7 +108,7 @@ function renderBadgeSvg(model, theme, metric, isHarnessPreset = false) {
   const safeBrand = escapeXml(brandLabel);
   const safeEntity = escapeXml(rightEntity + separator);
   const safeValue = escapeXml(rightValue);
-  const safeId = escapeXml(isHarnessPreset ? 'harness-benchmark' : model.modelId);
+  const safeId = escapeXml(`${isHarnessPreset ? 'harness-benchmark' : model.modelId}-${metric}`);
 
   if (theme === 'dark') {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${height}" viewBox="0 0 ${totalWidth} ${height}" role="img" aria-label="${safeTitle}">
@@ -174,10 +189,16 @@ function main() {
   const raw = JSON.parse(fs.readFileSync(SCHEMA_PATH, 'utf8'));
   const models = raw.models || [];
 
+  // Remove stale SVG files before regenerating so removed models don't linger
   let count = 0;
   for (const theme of THEMES) {
     const themeDir = path.join(BADGES_DIR, theme);
     fs.mkdirSync(themeDir, { recursive: true });
+    for (const existing of fs.readdirSync(themeDir)) {
+      if (existing.endsWith('.svg')) {
+        fs.unlinkSync(path.join(themeDir, existing));
+      }
+    }
 
     // Generate per-model badges (3 metrics)
     for (const model of models) {

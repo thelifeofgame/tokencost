@@ -46,7 +46,7 @@ export const es: TranslationDictionary = {
       openrouter: {
         badge: 'Enrutador con Rebajas',
         title: 'OpenRouter: Enruta automáticamente {count}+ modelos al menor costo',
-        subtitle: 'Rebajas de hoy (53%–84%): DeepSeek V4.1 Flash -83% ($0.0507/M), GLM-5.3-Flash salida -84% ($0.0784/M) y Qwen3-Coder-30B -53% ($0.07/M).',
+        subtitle: 'Rebajas de hoy ({minDrop}%–{maxDrop}%): DeepSeek V4.1 Flash -83% ({deepseekIn}/M), GLM-5.3-Flash salida -84% ({glmOut}/M) y Qwen3-Coder-30B -53% ({qwenIn}/M).',
         cta: 'Usar OpenRouter',
       },
       groq: {

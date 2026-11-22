@@ -1,5 +1,6 @@
 import { Locale } from '@/i18n/types';
 import { PRICING_TOPICS } from './models-data';
+import { getLiveFlashRates } from './live-copy-helpers';
 
 export interface TopicSeoMeta {
   title: string;
@@ -91,52 +92,55 @@ export const TOPIC_SEO_MAP: Record<string, Partial<Record<Locale, TopicSeoMeta>>
   },
 };
 
-export const TOPIC_FAQS_MAP: Record<string, TopicFaqItem[]> = {
-  'realtime-voice-world-model-api-costs': [
-    {
-      question: 'How is Google Genie 4 API pricing calculated per second and per minute?',
-      answer:
-        'Google Genie 4 (models/genie-4 on the Gemini v1beta Interactions API) bills text/reference image input at $1.50/1M tokens, text output at $9.00/1M tokens, and synchronized 720p/24fps video + 48kHz stereo audio at $17.50/1M tokens. Because each 720p frame consumes 240 tokens (24 fps × 240 = 5,760 tokens/sec), live streaming video output costs roughly $0.10 per second (~$6.05 per minute) on Paid Tier—Free, Batch, Flex, and Priority tiers are not supported.',
-    },
-    {
-      question: 'How much does OpenAI GPT-Live-1.1 WebRTC Standby mode save on voice agents?',
-      answer:
-        'Active sessions on gpt-live-1.1 (/v1/live/sessions, up to 2 hours per session) cost $0.05/min ($3.00/hr). Enabling WebRTC Standby with a 5–60 second inactivity timeout drops idle connection billing by 60% to $0.02/min ($1.20/hr), billed per second across both gpt-live-1 and gpt-live-1.1.',
-    },
-    {
-      question: 'When should teams cascade to text/tool routers instead of keeping Genie 4 or GPT-Live active?',
-      answer:
-        'Offload background RAG retrieval, state summarization, and classification to sub-cent text models like deepseek-v4.1-flash ($0.0507/$0.2028 per 1M on OpenRouter, $0.001/M cached, with built-in web search/fetch tool fees removed) or gpt-oss-120b ($0.09/$0.36 per 1M), keeping real-time voice or world-model streams reserved strictly for active user interaction windows.',
-    },
-    {
-      question: 'Can Prompt Caching or Batch 50% discounts offset Genie 4 streaming bills?',
-      answer:
-        'Genie 4 explicitly excludes Batch, Flex, and Free tiers, meaning per-frame video output cannot be discounted by 50% Batch queues. Teams lower overall unit economics by caching static scene prompts/system rules on text orchestration models (gemini-4-neon at $0.15/1M cached) and enforcing strict per-session duration caps.',
-    },
-  ],
-  'gemini-4-carbon-dec-1-migration-guide': [
-    {
-      question: 'When does the Gemini 4 Carbon and Argon promotional rate expire, and what is the new price?',
-      answer:
-        'The introductory $2.00/1M input and $10.00/1M output promotional pricing for gemini-4-carbon and gemini-4-argon expires on November 30, 2026. Starting December 1, 2026, rates double by 100% to $4.00/1M input and $20.00/1M output—making unmigrated workloads twice as expensive overnight.',
-    },
-    {
-      question: "Which models match Gemini 4 Carbon's $2/$10 price tier without a Dec 1 price jump?",
-      answer:
-        'Both Claude Sonnet 5.5 ($2.00/$10.00, 1M context, 95% cache read at $0.10/1M) and GPT-6.2 Sol ($2.00/$10.00, 1.05M context, 95% cache read at $0.10/1M) sit at the exact same $2/$10 baseline. Even Gemini 4 Neon ($3.00/$15.00, 61.4 AI Index, 145 t/s) will cost 25% less than post-Dec 1 Gemini 4 Carbon ($4/$20).',
-    },
-    {
-      question: 'What should teams migrate to after the November 19 Azure OpenAI o3 and o4-mini retirement?',
-      answer:
-        "Engineering teams moving off retired Azure o3 and o4-mini endpoints can route reasoning workloads to GPT-6.2 Sol ($2.00/$10.00, 1.05M context) for ecosystem parity, or cut reasoning costs by 50.1% with DeepSeek-R1 ($0.55/$2.19 per 1M vs o3-mini's $1.10/$4.40), while high-volume subtasks can drop to deepseek-v4.1-flash ($0.0507/$0.2028 on OpenRouter, $0.001/M cached).",
-    },
-    {
-      question: 'How can LiteLLM or OpenRouter automate a zero-downtime migration before December 1?',
-      answer:
-        'Point your SDK base_url to an OpenAI-compatible router (LiteLLM Proxy or OpenRouter) and define a weighted fallback rule that shifts gemini-4-carbon aliases to claude-sonnet-5.5 or gpt-6.2-sol before 2026-12-01T00:00:00Z, preserving prompt-prefix stability for 95% cache hit rates.',
-    },
-  ],
-};
+function buildTopicFaqsMap(): Record<string, TopicFaqItem[]> {
+  const rates = getLiveFlashRates();
+  return {
+    'realtime-voice-world-model-api-costs': [
+      {
+        question: 'How is Google Genie 4 API pricing calculated per second and per minute?',
+        answer:
+          'Google Genie 4 (models/genie-4 on the Gemini v1beta Interactions API) bills text/reference image input at $1.50/1M tokens, text output at $9.00/1M tokens, and synchronized 720p/24fps video + 48kHz stereo audio at $17.50/1M tokens. Because each 720p frame consumes 240 tokens (24 fps × 240 = 5,760 tokens/sec), live streaming video output costs roughly $0.10 per second (~$6.05 per minute) on Paid Tier—Free, Batch, Flex, and Priority tiers are not supported.',
+      },
+      {
+        question: 'How much does OpenAI GPT-Live-1.1 WebRTC Standby mode save on voice agents?',
+        answer:
+          'Active sessions on gpt-live-1.1 (/v1/live/sessions, up to 2 hours per session) cost $0.05/min ($3.00/hr). Enabling WebRTC Standby with a 5–60 second inactivity timeout drops idle connection billing by 60% to $0.02/min ($1.20/hr), billed per second across both gpt-live-1 and gpt-live-1.1.',
+      },
+      {
+        question: 'When should teams cascade to text/tool routers instead of keeping Genie 4 or GPT-Live active?',
+        answer: `Offload background RAG retrieval, state summarization, and classification to sub-cent text models like deepseek-v4.1-flash (${rates.deepseekIn}/${rates.deepseekOut} per 1M on OpenRouter, ${rates.deepseekCached}/M cached, with built-in web search/fetch tool fees removed) or gpt-oss-120b ($0.09/$0.36 per 1M), keeping real-time voice or world-model streams reserved strictly for active user interaction windows.`,
+      },
+      {
+        question: 'Can Prompt Caching or Batch 50% discounts offset Genie 4 streaming bills?',
+        answer:
+          'Genie 4 explicitly excludes Batch, Flex, and Free tiers, meaning per-frame video output cannot be discounted by 50% Batch queues. Teams lower overall unit economics by caching static scene prompts/system rules on text orchestration models (gemini-4-neon at $0.15/1M cached) and enforcing strict per-session duration caps.',
+      },
+    ],
+    'gemini-4-carbon-dec-1-migration-guide': [
+      {
+        question: 'When does the Gemini 4 Carbon and Argon promotional rate expire, and what is the new price?',
+        answer:
+          'The introductory $2.00/1M input and $10.00/1M output promotional pricing for gemini-4-carbon and gemini-4-argon expires on November 30, 2026. Starting December 1, 2026, rates double by 100% to $4.00/1M input and $20.00/1M output—making unmigrated workloads twice as expensive overnight.',
+      },
+      {
+        question: "Which models match Gemini 4 Carbon's $2/$10 price tier without a Dec 1 price jump?",
+        answer:
+          'Both Claude Sonnet 5.5 ($2.00/$10.00, 1M context, 95% cache read at $0.10/1M) and GPT-6.2 Sol ($2.00/$10.00, 1.05M context, 95% cache read at $0.10/1M) sit at the exact same $2/$10 baseline. Even Gemini 4 Neon ($3.00/$15.00, 61.4 AI Index, 145 t/s) will cost 25% less than post-Dec 1 Gemini 4 Carbon ($4/$20).',
+      },
+      {
+        question: 'What should teams migrate to after the November 19 Azure OpenAI o3 and o4-mini retirement?',
+        answer: `Engineering teams moving off retired Azure o3 and o4-mini endpoints can route reasoning workloads to GPT-6.2 Sol ($2.00/$10.00, 1.05M context) for ecosystem parity, or cut reasoning costs by 50.1% with DeepSeek-R1 ($0.55/$2.19 per 1M vs o3-mini's $1.10/$4.40), while high-volume subtasks can drop to deepseek-v4.1-flash (${rates.deepseekIn}/${rates.deepseekOut} on OpenRouter, ${rates.deepseekCached}/M cached).`,
+      },
+      {
+        question: 'How can LiteLLM or OpenRouter automate a zero-downtime migration before December 1?',
+        answer:
+          'Point your SDK base_url to an OpenAI-compatible router (LiteLLM Proxy or OpenRouter) and define a weighted fallback rule that shifts gemini-4-carbon aliases to claude-sonnet-5.5 or gpt-6.2-sol before 2026-12-01T00:00:00Z, preserving prompt-prefix stability for 95% cache hit rates.',
+      },
+    ],
+  };
+}
+
+export const TOPIC_FAQS_MAP: Record<string, TopicFaqItem[]> = buildTopicFaqsMap();
 
 const GENERIC_LOCALE_SUFFIX: Record<Locale, string> = {
   en: '',
@@ -166,7 +170,7 @@ export function getTopicSeoMeta(slug: string, locale: Locale = 'en'): TopicSeoMe
 }
 
 export function getTopicFaqs(slug: string): TopicFaqItem[] {
-  return TOPIC_FAQS_MAP[slug] || [];
+  return buildTopicFaqsMap()[slug] || [];
 }
 
 export function getAuditCardCopy(locale: Locale, topicSlug: string) {

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ModelCostBreakdown } from '@/types/pricing';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, formatPerMillionPrice } from '@/lib/utils';
 import { trackEvent } from '@/lib/analytics';
 import { useI18n } from '@/i18n/I18nProvider';
 import { formatModelCount } from '@/i18n';
@@ -194,18 +194,18 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
                   {/* Input Cost */}
                   <td className="py-3 px-4 text-right font-mono">
                     <div className="text-zinc-200 font-medium">
-                      ${item.model.inputPerM.toFixed(item.model.inputPerM < 0.1 ? 3 : 2)}
+                      {formatPerMillionPrice(item.model.inputPerM)}
                     </div>
                     {item.model.cacheDiscountPercent > 0 && (
                       <div className="text-[10px] text-emerald-400">
-                        -${item.model.cacheDiscountPercent}% cached
+                        -{item.model.cacheDiscountPercent}% cached
                       </div>
                     )}
                   </td>
 
                   {/* Output Cost */}
                   <td className="py-3 px-4 text-right font-mono text-zinc-200 font-medium">
-                    ${item.model.outputPerM.toFixed(item.model.outputPerM < 0.1 ? 3 : 2)}
+                    {formatPerMillionPrice(item.model.outputPerM)}
                   </td>
 
                   {/* Monthly Net Cost */}

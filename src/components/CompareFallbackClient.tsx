@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ChevronRight, Scale, ArrowLeft, AlertCircle } from 'lucide-react';
 import { getComparisonData } from '@/lib/models-data';
+import { formatPerMillionPrice } from '@/lib/utils';
 import CompareDetailClient from '@/components/CompareDetailClient';
 
 /**
@@ -112,11 +113,11 @@ export default function CompareFallbackClient() {
             <div className="mt-3 space-y-1.5 text-xs font-mono">
               <div className="flex justify-between border-b border-zinc-800/50 py-1">
                 <span className="text-zinc-400 font-sans">Input / 1M</span>
-                <span className="text-zinc-100 font-bold">${m.inputPerM.toFixed(2)}</span>
+                <span className="text-zinc-100 font-bold">{formatPerMillionPrice(m.inputPerM)}</span>
               </div>
               <div className="flex justify-between border-b border-zinc-800/50 py-1">
                 <span className="text-zinc-400 font-sans">Output / 1M</span>
-                <span className="text-zinc-100 font-bold">${m.outputPerM.toFixed(2)}</span>
+                <span className="text-zinc-100 font-bold">{formatPerMillionPrice(m.outputPerM)}</span>
               </div>
               <div className="flex justify-between py-1">
                 <span className="text-zinc-400 font-sans">Model ID</span>

@@ -1,25 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="378" height="26" viewBox="0 0 378 26" role="img" aria-label="TokenCosts AI: Qwen3.8 Flash $0.15 / $0.47 per 1M">
+<svg xmlns="http://www.w3.org/2000/svg" width="407" height="26" viewBox="0 0 407 26" role="img" aria-label="TokenCosts AI: Qwen3.8 Flash $0.15 / $0.47 per 1M">
   <title>TokenCosts AI: Qwen3.8 Flash $0.15 / $0.47 per 1M</title>
   <defs>
-    <linearGradient id="indigo-grad-qwen3.8-flash" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="indigo-grad-qwen3.8-flash-cache" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#4F46E5"/>
       <stop offset="100%" stop-color="#6366F1"/>
     </linearGradient>
-    <clipPath id="clip-indigo-qwen3.8-flash">
-      <rect width="378" height="26" rx="6"/>
+    <clipPath id="clip-indigo-qwen3.8-flash-cache">
+      <rect width="407" height="26" rx="6"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#clip-indigo-qwen3.8-flash)">
-    <rect x="0" y="0" width="110" height="26" fill="#18181B"/>
-    <rect x="110" y="0" width="268" height="26" fill="url(#indigo-grad-qwen3.8-flash)"/>
-    <rect x="0" y="0" width="378" height="1" fill="#FFFFFF" fill-opacity="0.14"/>
+  <g clip-path="url(#clip-indigo-qwen3.8-flash-cache)">
+    <rect x="0" y="0" width="127" height="26" fill="#18181B"/>
+    <rect x="127" y="0" width="280" height="26" fill="url(#indigo-grad-qwen3.8-flash-cache)"/>
+    <rect x="0" y="0" width="407" height="1" fill="#FFFFFF" fill-opacity="0.14"/>
     <path d="M14.5 7.5L9.5 13.5H13.5L12.5 18.5L17.5 12.5H13.5L14.5 7.5Z" fill="#A5B4FC"/>
   </g>
-  <rect x="0.5" y="0.5" width="377" height="25" rx="5.5" fill="none" stroke="#6366F1" stroke-opacity="0.45" stroke-width="1"/>
+  <rect x="0.5" y="0.5" width="406" height="25" rx="5.5" fill="none" stroke="#6366F1" stroke-opacity="0.45" stroke-width="1"/>
   <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.4" text-rendering="geometricPrecision">
     <text x="23" y="16.8" fill="#FAFAFA">TOKENCOSTS AI</text>
   </g>
   <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="600" text-rendering="geometricPrecision">
-    <text x="120" y="16.8" fill="#EEF2FF">QWEN3.8 FLASH · <tspan fill="#FFFFFF" font-weight="700">-89% Cache ($0.016/1M)</tspan></text>
+    <text x="137" y="16.8" fill="#EEF2FF">QWEN3.8 FLASH · <tspan fill="#FFFFFF" font-weight="700">-89% Cache ($0.016/1M)</tspan></text>
   </g>
 </svg>

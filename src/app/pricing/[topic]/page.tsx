@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { PRICING_TOPICS, MODELS_DATA } from '@/lib/models-data';
 import rawPricingSchema from '@/data/model_pricing_schema.json';
 import { getTopicSeoMeta, getTopicFaqs } from '@/lib/pricing-topics-seo';
+import { getLiveFlashRates } from '@/lib/live-copy-helpers';
 import {
   buildAlternates,
   buildLocalizedCanonical,
@@ -83,6 +84,7 @@ export default function PricingTopicPage({
 
   const seo = getTopicSeoMeta(topic.slug, locale);
   const faqs = getTopicFaqs(topic.slug);
+  const liveRates = getLiveFlashRates();
   const canonicalUrl = buildLocalizedCanonical(`/pricing/${topic.slug}/`, locale);
   const homeUrl = buildLocalizedCanonical('/', locale);
   const pricingHubUrl = buildLocalizedCanonical('/pricing/', locale);
@@ -97,7 +99,7 @@ export default function PricingTopicPage({
   const isRealtimeVoiceTopic = topic.slug === 'realtime-voice-world-model-api-costs';
   const isCarbonMigrationTopic = topic.slug === 'gemini-4-carbon-dec-1-migration-guide';
   const sortedByPrice = [...MODELS_DATA].sort((a, b) => a.inputPerM - b.inputPerM);
-  const lastUpdatedDate = String(rawPricingSchema.lastUpdated || '2026-11-21').slice(0, 10);
+  const lastUpdatedDate = String(rawPricingSchema.lastUpdated || '2026-11-22').slice(0, 10);
 
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
@@ -176,7 +178,7 @@ export default function PricingTopicPage({
                 <strong>Prompt Caching Invalidation:</strong> Anthropic caches expire in 5 minutes unless refreshed by subsequent hits. For low-traffic apps (&lt;1 req/5min), write surcharges can increase total bills.
               </li>
               <li>
-                <strong>The Ground-Floor Pricing Era:</strong> DeepSeek-V4.1-Flash ($0.30/M official, $0.0507/M OpenRouter, $0.001/M cached) and GLM-5.3-Flash ($0.0399/$0.0784) have made commodity classification and extraction nearly free.
+                <strong>The Ground-Floor Pricing Era:</strong> DeepSeek-V4.1-Flash ($0.30/M official, {liveRates.deepseekIn}/M OpenRouter, {liveRates.deepseekCached}/M cached) and GLM-5.3-Flash ({liveRates.glmIn}/{liveRates.glmOut}) have made commodity classification and extraction nearly free.
               </li>
               <li>
                 <strong>Hybrid Cascading:</strong> Never route 100% of traffic to a single flagship model. 60%-80% of agent tasks can be handled by fast tiers with zero loss in end-to-end task success.

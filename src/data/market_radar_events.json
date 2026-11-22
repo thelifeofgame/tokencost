@@ -3,7 +3,7 @@
   "title": "Market Radar Events Feed",
   "description": "Industry hot news, price cuts, new releases, and policy deals for LLM APIs.",
   "version": "1.0.7",
-  "lastUpdated": "2026-11-21T10:09:22.020517+08:00",
+  "lastUpdated": "2026-11-22T09:09:02.224315+08:00",
   "totalEvents": 10,
   "events": [
     {
@@ -12,12 +12,12 @@
       "badgeText": "53%-84% Flash Drop",
       "badgeColor": "emerald",
       "provider": "DeepSeek / Zhipu / Qwen",
-      "title": "DeepSeek V4.1 Flash (-83%) & GLM-5.3-Flash (-84% Out) Lead Nov 21 Rate Drops",
-      "highlight": "$0.0507/M & $0.0399/M",
+      "title": "DeepSeek V4.1 Flash ($0.0498/M) & Inkling 2 Mini Lead Nov 22",
+      "highlight": "$0.0498/M & $0.0399/M",
       "prevValue": "$0.300",
-      "newValue": "$0.0507",
+      "newValue": "$0.0498",
       "discountPercent": 83,
-      "description": "Nov 21 live API tracker records steep drops on deepseek-v4.1-flash ($0.30/$1.20 to $0.0507/$0.2028, $0.001 cached), glm-5.3-flash ($0.15/$0.50 to $0.0399/$0.0784), and qwen3-coder-30b-a3b-instruct (-53% to $0.07/$0.28), plus minimax-m3.1-flash off-peak 50% window ($0.075/$0.30 at 15:00-01:00 UTC vs $0.15/$0.60 peak) and new DaisyRose 27B & Pixtral Large 2502.",
+      "description": "Nov 22 live API tracker records deepseek-v4.1-flash edging down to $0.0498/$0.1992 ($0.001 cached, 97.99% off), glm-5.3-flash holding $0.0399/$0.0784, gemma-3-4b-it dropping to $0.04/$0.05, qwen3.5-27b reverting to $0.26/$2.60, and new Thinking Machines Inkling 2 Mini ($0.075/$0.30, 1M context) added, while minimax-m3.1-flash keeps $0.15/$0.60 peak vs $0.075/$0.30 off-peak (15:00-01:00 UTC).",
       "ctaText": "Compare V4.1 Flash vs Terra",
       "ctaLink": "/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/",
       "timestamp": "Today",
@@ -26,7 +26,7 @@
     {
       "id": "radar-2026-003",
       "type": "policy_deal",
-      "badgeText": "9 Days Left: Dec 1 Hike",
+      "badgeText": "8 Days Left: Dec 1 Hike",
       "badgeColor": "rose",
       "provider": "Google",
       "title": "Gemini 4 Carbon & Argon Intro $2/$10 Pricing Expires Nov 30",
@@ -64,10 +64,10 @@
       "prevValue": "$0.150",
       "newValue": "$0.036",
       "discountPercent": 76,
-      "description": "Live API tracker records major price drops for openai/gpt-oss-120b ($0.15/$0.60 to $0.09/$0.36), deepseek-v4.1-flash-1017 ($0.15/$0.60 to $0.036/$0.50), GLM-5.1 (-15%), and Kimi-K2.7-Code output (-14.3%).",
+      "description": "Live API tracker records major price drops for openai/gpt-oss-120b ($0.15/$0.60 to $0.09/$0.36), deepseek-v4.1-flash-1017 ($0.15/$0.60 to $0.036/$0.50), GLM-5.1 (-15%), and Kimi-K2.7-Code output (-14.3%). (Note: deepseek-v4.1-flash-1017 has since reverted to $0.15/$0.60; gpt-oss-120b remains at $0.09/$0.36.)",
       "ctaText": "Calculate Flash Cost",
       "ctaLink": "/calculator/deepseek-v4.1-flash/",
-      "timestamp": "Yesterday",
+      "timestamp": "2 days ago",
       "isFeatured": true
     },
     {

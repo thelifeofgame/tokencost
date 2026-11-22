@@ -31,5 +31,6 @@ export default function LocalizedModelDetailPage({
 }: {
   params: { locale: string; id: string };
 }) {
-  return <ModelDetailPage params={{ id: params.id }} />;
+  const locale = resolveLocale(params.locale);
+  return <ModelDetailPage params={{ id: params.id }} locale={locale} />;
 }

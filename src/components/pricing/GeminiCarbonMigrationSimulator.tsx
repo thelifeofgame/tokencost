@@ -89,12 +89,12 @@ const TARGET_PRESETS: CandidatePreset[] = [
     id: 'deepseek-v4.1-flash',
     name: 'DeepSeek-V4.1-Flash',
     provider: 'OpenRouter / DeepSeek',
-    fallbackInputPerM: 0.0507,
-    fallbackOutputPerM: 0.2028,
+    fallbackInputPerM: 0.0498,
+    fallbackOutputPerM: 0.1992,
     fallbackCachedPerM: 0.001,
     contextLabel: '1M ctx · 145 t/s · 98% Cache',
     badge: '-98%+ Cost Killer',
-    note: 'Live OpenRouter routing floor (-83% to $0.0507/$0.2028, $0.001/M cached) for high-volume extraction, classification, and non-frontier subtasks.',
+    note: '',
     targetPath: '/calculator/deepseek-v4.1-flash/',
   },
 ];
@@ -167,16 +167,24 @@ export default function GeminiCarbonMigrationSimulator({
     const carbon = modelMap.get('gemini-4-carbon');
     const resolved: TargetCandidate[] = TARGET_PRESETS.map((preset) => {
       const live = modelMap.get(preset.id);
+      const inputPerM = live?.inputPerM ?? preset.fallbackInputPerM;
+      const outputPerM = live?.outputPerM ?? preset.fallbackOutputPerM;
+      const cachedInputPerM = live?.cachedInputPerM ?? preset.fallbackCachedPerM;
+      const note =
+        preset.id === 'deepseek-v4.1-flash'
+          ? `Live OpenRouter routing floor (-83% to ${formatTokenRate(inputPerM)}/${formatTokenRate(outputPerM)}, ${formatTokenRate(cachedInputPerM)}/M cached) for high-volume extraction, classification, and non-frontier subtasks.`
+          : preset.note;
+
       return {
         id: preset.id,
         name: preset.name,
         provider: preset.provider,
-        inputPerM: live?.inputPerM ?? preset.fallbackInputPerM,
-        outputPerM: live?.outputPerM ?? preset.fallbackOutputPerM,
-        cachedInputPerM: live?.cachedInputPerM ?? preset.fallbackCachedPerM,
+        inputPerM,
+        outputPerM,
+        cachedInputPerM,
         contextLabel: preset.contextLabel,
         badge: preset.badge,
-        note: preset.note,
+        note,
         targetPath: preset.targetPath,
       };
     });

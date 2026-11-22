@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-11-21T10:09:22.020517+08:00",
-  "lastUpdated": "2026-11-21T10:09:22.020517+08:00",
-  "totalModels": 368,
+  "generatedAt": "2026-11-22T09:03:30.498088+08:00",
+  "lastUpdated": "2026-11-22T09:03:30.498088+08:00",
+  "totalModels": 367,
   "totalProviders": 22,
-  "providerOrgsCount": 60,
+  "providerOrgsCount": 58,
   "unit": "per_1m_tokens",
   "currency": "USD",
   "alerts": [
     {
       "id": "radar-2026-012",
       "badgeText": "53%-84% Flash Drop",
-      "title": "DeepSeek V4.1 Flash (-83%) & GLM-5.3-Flash (-84% Out) Lead Nov 21 Rate Drops",
-      "highlight": "$0.0507/M & $0.0399/M",
+      "title": "DeepSeek V4.1 Flash ($0.0498/M) & Inkling 2 Mini Lead Nov 22",
+      "highlight": "$0.0498/M & $0.0399/M",
       "primaryUrl": "/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/",
       "secondaryUrl": null
     },
     {
       "id": "radar-2026-003",
-      "badgeText": "9 Days Left: Dec 1 Hike",
+      "badgeText": "8 Days Left: Dec 1 Hike",
       "title": "Gemini 4 Carbon & Argon Intro $2/$10 Pricing Expires Nov 30",
       "highlight": "Doubles to $4/$20 on Dec 1",
       "primaryUrl": "/pricing/gemini-4-carbon-dec-1-migration-guide/",
@@ -90,8 +90,8 @@
       "maxOutputTokens": 943718,
       "latencyTier": "fast",
       "intelligenceIndex": 61.4,
-      "codingIndex": 1392,
-      "arenaElo": 1489,
+      "codingIndex": 1391,
+      "arenaElo": 1491,
       "throughputTps": 145,
       "ttftSec": 0.25
     },
@@ -108,8 +108,8 @@
       "maxOutputTokens": 943718,
       "latencyTier": "reasoning-medium",
       "intelligenceIndex": 60,
-      "codingIndex": 1335,
-      "arenaElo": 1270,
+      "codingIndex": 1350,
+      "arenaElo": 1273,
       "throughputTps": 145,
       "ttftSec": 0.25,
       "pricingNote": "Promotional $2.00/$10.00 expires Nov 30, 2026; doubles +100% to $4.00/$20.00 on Dec 1, 2026."
@@ -127,8 +127,8 @@
       "maxOutputTokens": 128000,
       "latencyTier": "reasoning-heavy",
       "intelligenceIndex": 59.1,
-      "codingIndex": 1310,
-      "arenaElo": 1399,
+      "codingIndex": 1307,
+      "arenaElo": 1402,
       "throughputTps": 45,
       "ttftSec": 0.85
     },
@@ -145,8 +145,8 @@
       "maxOutputTokens": 128000,
       "latencyTier": "standard",
       "intelligenceIndex": 54.5,
-      "codingIndex": 1291,
-      "arenaElo": 1262,
+      "codingIndex": 1287,
+      "arenaElo": 1264,
       "throughputTps": 85,
       "ttftSec": 0.45
     },
@@ -163,7 +163,7 @@
       "maxOutputTokens": 128000,
       "latencyTier": "standard",
       "intelligenceIndex": 54.6,
-      "codingIndex": 1275,
+      "codingIndex": 1270,
       "arenaElo": 1191,
       "throughputTps": 85,
       "ttftSec": 0.45
@@ -172,11 +172,11 @@
       "id": "deepseek-v4.1-flash",
       "name": "DeepSeek: DeepSeek V4.1 Flash",
       "provider": "DeepSeek",
-      "inputPerM": 0.0507,
-      "outputPerM": 0.2028,
+      "inputPerM": 0.0498,
+      "outputPerM": 0.1992,
       "cachedInputPerM": 0.001,
-      "cacheDiscountPercent": 98.03,
-      "batchDiscountPercent": 1.38,
+      "cacheDiscountPercent": 97.99,
+      "batchDiscountPercent": 0,
       "contextWindow": 1048576,
       "maxOutputTokens": 393216,
       "latencyTier": "fast",
@@ -185,7 +185,7 @@
       "arenaElo": null,
       "throughputTps": 145,
       "ttftSec": 0.25,
-      "pricingNote": "Live OpenRouter floor $0.0507/$0.2028 ($0.001/M cached); official on-demand Peak $0.30/$1.20, Off-Peak $0.15/$0.60."
+      "pricingNote": "Live OpenRouter floor $0.0498/$0.1992 ($0.001/M cached); official on-demand Peak $0.30/$1.20, Off-Peak $0.15/$0.60."
     },
     {
       "id": "glm-5.3-flash",
@@ -200,8 +200,8 @@
       "maxOutputTokens": 131072,
       "latencyTier": "fast",
       "intelligenceIndex": 27.8,
-      "codingIndex": 1260,
-      "arenaElo": 1217,
+      "codingIndex": 1259,
+      "arenaElo": 1281,
       "throughputTps": 145,
       "ttftSec": 0.25,
       "pricingNote": "Live OpenRouter output rate drop (-84.3% to $0.0784/M output; $0.0399/M input)."
@@ -257,8 +257,8 @@
       "maxOutputTokens": 117964,
       "latencyTier": "reasoning-heavy",
       "intelligenceIndex": 3.8,
-      "codingIndex": 945,
-      "arenaElo": 869,
+      "codingIndex": 944,
+      "arenaElo": 868,
       "throughputTps": 85,
       "ttftSec": 0.45
     },
@@ -347,8 +347,8 @@
       "maxOutputTokens": 65536,
       "latencyTier": "reasoning-medium",
       "intelligenceIndex": null,
-      "codingIndex": 1135,
-      "arenaElo": 1048,
+      "codingIndex": 1134,
+      "arenaElo": 1047,
       "throughputTps": 145,
       "ttftSec": 0.25
     },
@@ -365,8 +365,8 @@
       "maxOutputTokens": 65535,
       "latencyTier": "reasoning-medium",
       "intelligenceIndex": null,
-      "codingIndex": 1087,
-      "arenaElo": 1039,
+      "codingIndex": 1086,
+      "arenaElo": 1038,
       "throughputTps": 145,
       "ttftSec": 0.25
     },
@@ -495,7 +495,7 @@
       "slug": "gpt-6.2-astra-vs-claude-opus-5.5",
       "category": "frontier_flagship",
       "badge": "Peak Intelligence",
-      "headline": "GPT-6.2 Astra vs Claude Opus 5.5: AA 62.1 算力巅峰对决 ELO 1399 编程王者",
+      "headline": "GPT-6.2 Astra vs Claude Opus 5.5: AA 62.1 算力巅峰对决 ELO 1402 编程王者",
       "cheaperModel": "claude-opus-5.5",
       "costReductionPercent": 50,
       "url": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/"
@@ -517,7 +517,7 @@
       "badge": "420 t/s LPU Speed",
       "headline": "DeepSeek-V4.1-Flash vs Groq Llama 3.3 70B: 98% 缓存降本 vs 420 t/s 极速",
       "cheaperModel": "deepseek-v4.1-flash",
-      "costReductionPercent": 85.2,
+      "costReductionPercent": 85.4,
       "url": "/compare/deepseek-v4.1-flash-vs-llama-3.3-70b/"
     },
     {
@@ -527,7 +527,7 @@
       "badge": "$0.001/M Cache Floor",
       "headline": "DeepSeek-V4.1-Flash vs GPT-6.1 Terra: $0.001/M 缓存地板价降本大战",
       "cheaperModel": "deepseek-v4.1-flash",
-      "costReductionPercent": 95.6,
+      "costReductionPercent": 95.7,
       "url": "/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/"
     },
     {
@@ -557,7 +557,7 @@
       "badge": "Massive Ingestion",
       "headline": "DeepSeek-V4.1-Flash vs Gemini 2.5 Flash: Massive Ingestion FinOps",
       "cheaperModel": "deepseek-v4.1-flash",
-      "costReductionPercent": 90,
+      "costReductionPercent": 90.1,
       "url": "/compare/deepseek-v4.1-flash-vs-gemini-2.5-flash/"
     },
     {
@@ -574,7 +574,7 @@
       "rank": 10,
       "slug": "gemini-4-carbon-vs-claude-opus-5.5",
       "category": "long_context_rag",
-      "badge": "145 t/s vs ELO 1399",
+      "badge": "145 t/s vs ELO 1402",
       "headline": "Gemini 4 Carbon vs Claude Opus 5.5: 145 t/s Throughput vs Coding ELO",
       "cheaperModel": "gemini-4-carbon",
       "costReductionPercent": 50,

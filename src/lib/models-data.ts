@@ -5,10 +5,14 @@ import {
   HostedProvider,
   LatencyTier,
   ProviderOrg,
+  NonTokenModelRule,
+  DirectoryModelItem,
+  isNonTokenModel,
 } from '@/types/pricing';
 import { calculateModelCost } from './calculator-engine';
 import rawData from '@/data/model_pricing_schema.json';
 import trendingComparisonsData from '@/data/trending_comparisons.json';
+import nonTokenModelsData from '@/data/non_token_models.json';
 
 const KNOWN_BENCHMARKS: Record<string, ModelBenchmarks> = {
   'gemini-4-neon': { evalScore: 96.4, mmlu: 94.8, arenaElo: 1410, avgLatencyTtftMs: 250, avgThroughputTokS: 145 },
@@ -851,4 +855,57 @@ export function hasComparePage(slug: string): boolean {
     compareSlugCache = new Set(getAllCompareStaticSlugs());
   }
   return compareSlugCache.has(slug);
+}
+
+export type DirectoryCapabilityFilterKey =
+  | 'realtime-world'
+  | '1m-context'
+  | 'reasoning'
+  | 'off-peak';
+
+export const NON_TOKEN_MODELS: NonTokenModelRule[] =
+  nonTokenModelsData.models as NonTokenModelRule[];
+
+export const ALL_DIRECTORY_MODELS: DirectoryModelItem[] = [
+  ...NON_TOKEN_MODELS,
+  ...MODELS_DATA,
+];
+
+export const OFF_PEAK_MODEL_IDS = new Set<string>([
+  'minimax-m3.1-flash',
+  'deepseek-v3',
+  'deepseek-v4.1-flash',
+  'deepseek-r1',
+]);
+
+export const REALTIME_WORLD_SCHEMA_IDS = new Set<string>([
+  'gpt-audio',
+  'gpt-audio-mini',
+  'voxtral-small-24b-2507',
+  'qwen3.8-omni-flash',
+  'gemini-omni-1.1-flash',
+  'gemini-omni-1.2-flash',
+  'nemotron-3-nano-omni-30b-a3b-reasoning:free',
+  'perceptron-mk1.5',
+]);
+
+export function matchesDirectoryCapabilityFilter(
+  item: DirectoryModelItem,
+  filterKey: DirectoryCapabilityFilterKey
+): boolean {
+  switch (filterKey) {
+    case 'realtime-world':
+      return isNonTokenModel(item)
+        ? Boolean(item.isRealtimeWorld)
+        : REALTIME_WORLD_SCHEMA_IDS.has(item.modelId);
+    case '1m-context':
+      return !isNonTokenModel(item) && item.contextWindow >= 1_000_000;
+    case 'reasoning':
+      return Boolean(item.capabilities.reasoning);
+    case 'off-peak':
+      return (
+        !isNonTokenModel(item) &&
+        (OFF_PEAK_MODEL_IDS.has(item.modelId) || /off-peak/i.test(item.notes ?? ''))
+      );
+  }
 }

@@ -3,8 +3,8 @@
   "title": "Daily Trending LLM API Model Comparisons (2026)",
   "description": "Daily automated algorithmic selection of top head-to-head model matchups across 2026 frontier flagship, reasoning ROI, ultra-low cost scaling, Groq throughput, and prompt caching economics.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-21T10:09:32.655944+08:00",
-  "date": "2026-11-21",
+  "lastUpdated": "2026-11-22T09:09:02.582904+08:00",
+  "date": "2026-11-22",
   "totalComparisons": 12,
   "sources": [
     "Artificial Analysis Benchmarks & Trending (https://artificialanalysis.ai/models)",
@@ -60,7 +60,7 @@
       "targetKeyword": "gemini 4 neon vs gpt 6.2 sol pricing benchmarks",
       "title": "Google Gemini 4 Neon vs OpenAI GPT-6.2 Sol API Pricing & AA Benchmark Comparison",
       "headline": "Gemini 4 Neon vs GPT-6.2 Sol: 2026 代码与 Agent 新王牌正面交锋",
-      "editorialFocus": "Google 今日重磅上线的 Gemini 4 Neon ($3.00/$15.00, 1M 窗口) 对决 OpenAI GPT-6.2 Sol ($2.00/$10.00, 1.05M 窗口)。Neon 的 Artificial Analysis 智能指数高达 61.4（领先 Sol 的 57.3），生成吞吐达 145 t/s（快 70%），且两者均支持 95% 提示词缓存折扣。",
+      "editorialFocus": "Google 新晋主力 Gemini 4 Neon ($3.00/$15.00, 1M 窗口) 对决 OpenAI GPT-6.2 Sol ($2.00/$10.00, 1.05M 窗口)。Neon 的 Artificial Analysis 智能指数高达 61.4（领先 Sol 的 57.3），生成吞吐达 145 t/s（快 70%），且两者均支持 95% 提示词缓存折扣。",
       "modelA": {
         "modelId": "gemini-4-neon",
         "modelName": "Google: Gemini 4 Neon",
@@ -75,8 +75,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 61.4,
-        "codingIndex": 1392,
-        "arenaElo": 1489,
+        "codingIndex": 1391,
+        "arenaElo": 1491,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -131,14 +131,14 @@
       "badge": "Peak Intelligence",
       "tags": [
         "AA 62.1 Peak",
-        "ELO 1399 King",
+        "ELO 1402 King",
         "50% Cost Delta"
       ],
       "heatScore": 101.2,
       "targetKeyword": "gpt 6.2 astra vs claude opus 5.5 pricing comparison",
       "title": "OpenAI GPT-6.2 Astra vs Anthropic Claude Opus 5.5: Peak Frontier Cost & ROI",
-      "headline": "GPT-6.2 Astra vs Claude Opus 5.5: AA 62.1 算力巅峰对决 ELO 1399 编程王者",
-      "editorialFocus": "2026 最强旗舰终极碰撞！OpenAI GPT-6.2 Astra ($8.00/$40.00, AA 智能指数 62.1 登顶) 对决 Anthropic Claude Opus 5.5 ($4.00/$20.00, AA 59.1, ELO 1399)——Opus 5.5 价格仅为 Astra 的一半且支持 95% 缓存 ($0.20/M)。",
+      "headline": "GPT-6.2 Astra vs Claude Opus 5.5: AA 62.1 算力巅峰对决 ELO 1402 编程王者",
+      "editorialFocus": "2026 最强旗舰终极碰撞！OpenAI GPT-6.2 Astra ($8.00/$40.00, AA 智能指数 62.1 登顶) 对决 Anthropic Claude Opus 5.5 ($4.00/$20.00, AA 59.1, ELO 1402)——Opus 5.5 价格仅为 Astra 的一半且支持 95% 缓存 ($0.20/M)。",
       "modelA": {
         "modelId": "gpt-6.2-astra",
         "modelName": "OpenAI: GPT-6.2 Astra",
@@ -171,8 +171,8 @@
         "throughputTps": 45.0,
         "ttftSec": 0.85,
         "intelligenceIndex": 59.1,
-        "codingIndex": 1310,
-        "arenaElo": 1399,
+        "codingIndex": 1307,
+        "arenaElo": 1402,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -216,7 +216,7 @@
       "targetKeyword": "gemini 4 neon vs claude sonnet 5.5 coding cost",
       "title": "Google Gemini 4 Neon vs Anthropic Claude Sonnet 5.5: Coding Agent Cost & Speed",
       "headline": "Gemini 4 Neon vs Claude Sonnet 5.5: 145 t/s 极速智能 vs 编程生态霸主",
-      "editorialFocus": "2026 Coding Agent 首选双雄！Gemini 4 Neon ($3.00/$15.00, AA 61.4, 145 t/s) 对阵 Claude Sonnet 5.5 ($2.00/$10.00, AA 54.5, Coding 1291, ELO 1262)。双方均提供 1M 原生上下文与 95% 缓存读取折扣（折后 $0.15 vs $0.10/M）。",
+      "editorialFocus": "2026 Coding Agent 首选双雄！Gemini 4 Neon ($3.00/$15.00, AA 61.4, 145 t/s) 对阵 Claude Sonnet 5.5 ($2.00/$10.00, AA 54.5, Coding 1287, ELO 1264)。双方均提供 1M 原生上下文与 95% 缓存读取折扣（折后 $0.15 vs $0.10/M）。",
       "modelA": {
         "modelId": "gemini-4-neon",
         "modelName": "Google: Gemini 4 Neon",
@@ -231,8 +231,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 61.4,
-        "codingIndex": 1392,
-        "arenaElo": 1489,
+        "codingIndex": 1391,
+        "arenaElo": 1491,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -249,8 +249,8 @@
         "throughputTps": 85.0,
         "ttftSec": 0.45,
         "intelligenceIndex": 54.5,
-        "codingIndex": 1291,
-        "arenaElo": 1262,
+        "codingIndex": 1287,
+        "arenaElo": 1264,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -265,14 +265,14 @@
         "ttftDeltaSec": 0.2,
         "higherIntelligenceModel": "gemini-4-neon",
         "intelligenceDelta": 6.9,
-        "codingDelta": 101,
+        "codingDelta": 104,
         "eloDelta": 227
       },
       "highlights": [
         "费率优势：Anthropic: Claude Sonnet 5.5 综合节省 33.3%（输入 $2.000 vs $3.000 / 1M），适合大规模长期调用流水线。",
         "Prompt Caching 经济学：Google: Gemini 4 Neon 缓存折扣 95.0%（折后 $0.150/1M）vs Anthropic: Claude Sonnet 5.5 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Google: Gemini 4 Neon 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Google: Gemini 4 Neon ELO 评分达 1489 分（领先 +227 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "Chatbot Arena 竞技场：Google: Gemini 4 Neon ELO 评分达 1491 分（领先 +227 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：Google: Gemini 4 Neon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Sonnet 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 3
@@ -294,16 +294,16 @@
       "targetKeyword": "deepseek v4.1 flash vs groq llama 3.3 70b",
       "title": "DeepSeek-V4.1-Flash vs Groq Llama 3.3 70B: 98% Cache Savings vs 420 Tokens/sec",
       "headline": "DeepSeek-V4.1-Flash vs Groq Llama 3.3 70B: 98% 缓存降本 vs 420 t/s 极速",
-      "editorialFocus": "极致缓存成本（DeepSeek-V4.1-Flash 官方按需峰期 $0.30/$1.20、谷期 $0.15/$0.60，聚合路由低至 $0.0507/$0.2028，98.03% 缓存折后仅 $0.001/M）vs 速度天花板（Groq LPU 420 t/s、首字延迟 0.18s），语音交互与实时 Agent 路由终极权衡。",
+      "editorialFocus": "极致缓存成本（DeepSeek-V4.1-Flash 官方按需峰期 $0.30/$1.20、谷期 $0.15/$0.60，聚合路由低至 $0.0498/$0.1992，97.99% 缓存折后仅 $0.001/M）vs 速度天花板（Groq LPU 420 t/s、首字延迟 0.18s），语音交互与实时 Agent 路由终极权衡。",
       "modelA": {
         "modelId": "deepseek-v4.1-flash",
         "modelName": "DeepSeek: DeepSeek V4.1 Flash",
         "providerOrg": "DeepSeek",
-        "inputPerM": 0.0507,
-        "outputPerM": 0.2028,
+        "inputPerM": 0.0498,
+        "outputPerM": 0.1992,
         "cachedInputPerM": 0.001,
-        "cacheDiscountPercent": 98.03,
-        "batchDiscountPercent": 1.38,
+        "cacheDiscountPercent": 97.99,
+        "batchDiscountPercent": 0.0,
         "contextWindow": 1048576,
         "maxOutputTokens": 393216,
         "throughputTps": 145.0,
@@ -333,9 +333,9 @@
       },
       "metricsDelta": {
         "cheaperModel": "deepseek-v4.1-flash",
-        "inputSavingsPercent": 91.4,
-        "outputSavingsPercent": 74.3,
-        "costReductionPercent": 85.2,
+        "inputSavingsPercent": 91.6,
+        "outputSavingsPercent": 74.8,
+        "costReductionPercent": 85.4,
         "cachedSavingsPercent": 99.7,
         "fasterModel": "llama-3.3-70b",
         "throughputMultiplier": 2.9,
@@ -347,8 +347,8 @@
         "eloDelta": null
       },
       "highlights": [
-        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 Llama 3.3 70B Versatile 综合调用成本骤降 85.2%（输入节省 91.4%，输出节省 74.3%），高并发生产部署 ROI 极高。",
-        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 98.03%（折后 $0.001/1M）vs Llama 3.3 70B Versatile 缓存折扣 50.0%（折后 $0.295/1M），极大释放高频 Agent 与多轮对话红利。",
+        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 Llama 3.3 70B Versatile 综合调用成本骤降 85.4%（输入节省 91.6%，输出节省 74.8%），高并发生产部署 ROI 极高。",
+        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 97.99%（折后 $0.001/1M）vs Llama 3.3 70B Versatile 缓存折扣 50.0%（折后 $0.295/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Llama 3.3 70B Versatile 具备 2.9x 极速输出（420 t/s vs 145 t/s），首字时延仅 0.18s，彻底消灭生成卡顿。",
         "上下文架构容量：DeepSeek: DeepSeek V4.1 Flash 提供高达 1,048,576 Tokens 上下文（比 Llama 3.3 70B Versatile 多 8 倍），海量文档与代码库检索免分块。"
       ],
@@ -364,23 +364,23 @@
       "badge": "$0.001/M Cache Floor",
       "tags": [
         "$0.001/M Cache Floor",
-        "98.03% Cache Discount",
+        "97.99% Cache Discount",
         "Extreme Scaling"
       ],
       "heatScore": 99.3,
       "targetKeyword": "deepseek v4.1 flash vs gpt 6.1 terra cost",
       "title": "OpenAI GPT-6.1 Terra vs DeepSeek-V4.1-Flash: Sub-Dollar Economy Titans",
       "headline": "DeepSeek-V4.1-Flash vs GPT-6.1 Terra: $0.001/M 缓存地板价降本大战",
-      "editorialFocus": "高并发轻量调用对决！GPT-6.1 Terra 定价 $1.00/$5.00（95% 缓存 = $0.05/M），DeepSeek-V4.1-Flash 官方按需峰期 $0.30/$1.20（谷期 $0.15/$0.60）、聚合路由低至 $0.0507/$0.2028 且缓存仅 $0.001/M（98.03% 折扣），综合成本直降 95.6%。",
+      "editorialFocus": "高并发轻量调用对决！GPT-6.1 Terra 定价 $1.00/$5.00（95% 缓存 = $0.05/M），DeepSeek-V4.1-Flash 官方按需峰期 $0.30/$1.20（谷期 $0.15/$0.60）、聚合路由低至 $0.0498/$0.1992 且缓存仅 $0.001/M（97.99% 折扣），综合成本直降 95.7%。",
       "modelA": {
         "modelId": "deepseek-v4.1-flash",
         "modelName": "DeepSeek: DeepSeek V4.1 Flash",
         "providerOrg": "DeepSeek",
-        "inputPerM": 0.0507,
-        "outputPerM": 0.2028,
+        "inputPerM": 0.0498,
+        "outputPerM": 0.1992,
         "cachedInputPerM": 0.001,
-        "cacheDiscountPercent": 98.03,
-        "batchDiscountPercent": 1.38,
+        "cacheDiscountPercent": 97.99,
+        "batchDiscountPercent": 0.0,
         "contextWindow": 1048576,
         "maxOutputTokens": 393216,
         "throughputTps": 145.0,
@@ -410,9 +410,9 @@
       },
       "metricsDelta": {
         "cheaperModel": "deepseek-v4.1-flash",
-        "inputSavingsPercent": 94.9,
-        "outputSavingsPercent": 95.9,
-        "costReductionPercent": 95.6,
+        "inputSavingsPercent": 95.0,
+        "outputSavingsPercent": 96.0,
+        "costReductionPercent": 95.7,
         "cachedSavingsPercent": 98.0,
         "fasterModel": "deepseek-v4.1-flash",
         "throughputMultiplier": 1.71,
@@ -424,8 +424,8 @@
         "eloDelta": null
       },
       "highlights": [
-        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 OpenAI: GPT-6.1 Terra 综合调用成本骤降 95.6%（输入节省 94.9%，输出节省 95.9%），高并发生产部署 ROI 极高。",
-        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 98.03%（折后 $0.001/1M）vs OpenAI: GPT-6.1 Terra 缓存折扣 95.0%（折后 $0.050/1M），极大释放高频 Agent 与多轮对话红利。",
+        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 OpenAI: GPT-6.1 Terra 综合调用成本骤降 95.7%（输入节省 95.0%，输出节省 96.0%），高并发生产部署 ROI 极高。",
+        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 97.99%（折后 $0.001/1M）vs OpenAI: GPT-6.1 Terra 缓存折扣 95.0%（折后 $0.050/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：DeepSeek: DeepSeek V4.1 Flash 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
         "上下文架构容量：OpenAI: GPT-6.1 Terra 提供高达 1,050,000 Tokens 上下文（比 DeepSeek: DeepSeek V4.1 Flash 多 1 倍），海量文档与代码库检索免分块。"
       ],
@@ -518,7 +518,7 @@
       "categoryNameEn": "Massive Context & Cache ROI Duels",
       "badge": "1M+ Context RAG",
       "tags": [
-        "9D Left: Dec 1 Hike",
+        "8D Left: Dec 1 Hike",
         "1M Context",
         "Enterprise RAG"
       ],
@@ -526,7 +526,7 @@
       "targetKeyword": "gemini 4 carbon vs claude sonnet 5.5 2m context caching",
       "title": "Gemini 4 Carbon vs Claude Sonnet 5.5: Enterprise RAG Architecture",
       "headline": "Gemini 4 Carbon vs Claude Sonnet 5.5: 145 t/s 吞吐与 95% 缓存 ROI",
-      "editorialFocus": "⚠️ 11月30日（仅剩9天）后 Carbon 将翻倍至 $4.00/$20.00！当前同为 $2.00/$10.00 定价与 95% 缓存（$0.10/M），Gemini 4 Carbon（AA 60.0, Coding 1335, 145 t/s）对比 Claude Sonnet 5.5（AA 54.5, Coding 1291, 85 t/s），建议提前规划 12/1 涨价前迁移与路由。",
+      "editorialFocus": "⚠️ 11月30日（仅剩8天）后 Carbon 将翻倍至 $4.00/$20.00！当前同为 $2.00/$10.00 定价与 95% 缓存（$0.10/M），Gemini 4 Carbon（AA 60.0, Coding 1350, 145 t/s）对比 Claude Sonnet 5.5（AA 54.5, Coding 1287, 85 t/s），建议提前规划 12/1 涨价前迁移与路由。",
       "modelA": {
         "modelId": "gemini-4-carbon",
         "modelName": "Google: Gemini 4 Carbon",
@@ -541,8 +541,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 60,
-        "codingIndex": 1335,
-        "arenaElo": 1270,
+        "codingIndex": 1350,
+        "arenaElo": 1273,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -559,8 +559,8 @@
         "throughputTps": 85.0,
         "ttftSec": 0.45,
         "intelligenceIndex": 54.5,
-        "codingIndex": 1291,
-        "arenaElo": 1262,
+        "codingIndex": 1287,
+        "arenaElo": 1264,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -575,14 +575,14 @@
         "ttftDeltaSec": 0.2,
         "higherIntelligenceModel": "gemini-4-carbon",
         "intelligenceDelta": 5.5,
-        "codingDelta": 44,
-        "eloDelta": 8
+        "codingDelta": 63,
+        "eloDelta": 9
       },
       "highlights": [
         "费率持平：两者定价高度接近（输入 $2.00 vs $2.00，输出 $10.00 vs $10.00 / 1M），核心胜负在于推理质量与吞吐性能。",
         "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Sonnet 5.5 缓存折扣 95.0%（折后 $0.100/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 1.71x 极速输出（145 t/s vs 85 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1270 分（领先 +8 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "Chatbot Arena 竞技场：Google: Gemini 4 Carbon ELO 评分达 1273 分（领先 +9 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Sonnet 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 7
@@ -604,16 +604,16 @@
       "targetKeyword": "deepseek v4.1 flash vs gemini 2.5 flash rag cost",
       "title": "DeepSeek-V4.1-Flash vs Gemini 2.5 Flash: High-Volume Retrieval at Scale",
       "headline": "DeepSeek-V4.1-Flash vs Gemini 2.5 Flash: Massive Ingestion FinOps",
-      "editorialFocus": "千万级文档切片并发检索的最优 FinOps 架构。DeepSeek-V4.1-Flash 官方按需峰期 $0.30/$1.20（谷期 $0.15/$0.60），聚合路由低至 $0.0507/$0.2028 与 98.03% 缓存 ($0.001/M)，对决 Gemini 2.5 Flash ($0.30/$2.50, 1M 窗口)。",
+      "editorialFocus": "千万级文档切片并发检索的最优 FinOps 架构。DeepSeek-V4.1-Flash 官方按需峰期 $0.30/$1.20（谷期 $0.15/$0.60），聚合路由低至 $0.0498/$0.1992 与 97.99% 缓存 ($0.001/M)，对决 Gemini 2.5 Flash ($0.30/$2.50, 1M 窗口)。",
       "modelA": {
         "modelId": "deepseek-v4.1-flash",
         "modelName": "DeepSeek: DeepSeek V4.1 Flash",
         "providerOrg": "DeepSeek",
-        "inputPerM": 0.0507,
-        "outputPerM": 0.2028,
+        "inputPerM": 0.0498,
+        "outputPerM": 0.1992,
         "cachedInputPerM": 0.001,
-        "cacheDiscountPercent": 98.03,
-        "batchDiscountPercent": 1.38,
+        "cacheDiscountPercent": 97.99,
+        "batchDiscountPercent": 0.0,
         "contextWindow": 1048576,
         "maxOutputTokens": 393216,
         "throughputTps": 145.0,
@@ -637,15 +637,15 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": null,
-        "codingIndex": 1087,
-        "arenaElo": 1039,
+        "codingIndex": 1086,
+        "arenaElo": 1038,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "metricsDelta": {
         "cheaperModel": "deepseek-v4.1-flash",
-        "inputSavingsPercent": 83.1,
-        "outputSavingsPercent": 91.9,
-        "costReductionPercent": 90.0,
+        "inputSavingsPercent": 83.4,
+        "outputSavingsPercent": 92.0,
+        "costReductionPercent": 90.1,
         "cachedSavingsPercent": 96.7,
         "fasterModel": "deepseek-v4.1-flash",
         "throughputMultiplier": 1.0,
@@ -657,8 +657,8 @@
         "eloDelta": null
       },
       "highlights": [
-        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 Google: Gemini 2.5 Flash 综合调用成本骤降 90.0%（输入节省 83.1%，输出节省 91.9%），高并发生产部署 ROI 极高。",
-        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 98.03%（折后 $0.001/1M）vs Google: Gemini 2.5 Flash 缓存折扣 90.0%（折后 $0.030/1M），极大释放高频 Agent 与多轮对话红利。",
+        "震撼级成本降幅：DeepSeek: DeepSeek V4.1 Flash 相比 Google: Gemini 2.5 Flash 综合调用成本骤降 90.1%（输入节省 83.4%，输出节省 92.0%），高并发生产部署 ROI 极高。",
+        "Prompt Caching 经济学：DeepSeek: DeepSeek V4.1 Flash 缓存折扣 97.99%（折后 $0.001/1M）vs Google: Gemini 2.5 Flash 缓存折扣 90.0%（折后 $0.030/1M），极大释放高频 Agent 与多轮对话红利。",
         "生产级吞吐性能：两者流式生成速度平稳（145 t/s vs 145 t/s），首字延迟均在毫秒级生产线标准。"
       ],
       "rank": 8
@@ -748,17 +748,17 @@
       "category": "long_context_rag",
       "categoryName": "2M长文档RAG",
       "categoryNameEn": "Massive Context & Cache ROI Duels",
-      "badge": "145 t/s vs ELO 1399",
+      "badge": "145 t/s vs ELO 1402",
       "tags": [
-        "9D Left: Dec 1 Hike",
+        "8D Left: Dec 1 Hike",
         "AA 60.0 vs 59.1",
-        "ELO 1399"
+        "ELO 1402"
       ],
       "heatScore": 97.5,
       "targetKeyword": "gemini 4 carbon vs claude opus 5.5 benchmarks",
       "title": "Gemini 4 Carbon vs Claude Opus 5.5: High-Speed Context vs Peak Reasoning ELO",
       "headline": "Gemini 4 Carbon vs Claude Opus 5.5: 145 t/s Throughput vs Coding ELO",
-      "editorialFocus": "⚠️ 11月30日优惠到期提醒（仅剩9天，12/1起 Carbon 翻倍至 $4/$20 与 Opus 5.5 持平）：当前 Gemini 4 Carbon（$2/$10, AA 60.0, 145 t/s）对战 Anthropic 顶级旗舰 Opus 5.5（$4/$20, AA 59.1, ELO 1399），吞吐速度高达 3.2 倍且当前成本减半。",
+      "editorialFocus": "⚠️ 11月30日优惠到期提醒（仅剩8天，12/1起 Carbon 翻倍至 $4/$20 与 Opus 5.5 持平）：当前 Gemini 4 Carbon（$2/$10, AA 60.0, 145 t/s）对战 Anthropic 顶级旗舰 Opus 5.5（$4/$20, AA 59.1, ELO 1402），吞吐速度高达 3.2 倍且当前成本减半。",
       "modelA": {
         "modelId": "gemini-4-carbon",
         "modelName": "Google: Gemini 4 Carbon",
@@ -773,8 +773,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": 60,
-        "codingIndex": 1335,
-        "arenaElo": 1270,
+        "codingIndex": 1350,
+        "arenaElo": 1273,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {
@@ -791,8 +791,8 @@
         "throughputTps": 45.0,
         "ttftSec": 0.85,
         "intelligenceIndex": 59.1,
-        "codingIndex": 1310,
-        "arenaElo": 1399,
+        "codingIndex": 1307,
+        "arenaElo": 1402,
         "officialDocUrl": "https://www.anthropic.com/pricing"
       },
       "metricsDelta": {
@@ -807,14 +807,14 @@
         "ttftDeltaSec": 0.6,
         "higherIntelligenceModel": "gemini-4-carbon",
         "intelligenceDelta": 0.9,
-        "codingDelta": 25,
+        "codingDelta": 43,
         "eloDelta": 129
       },
       "highlights": [
         "震撼级成本降幅：Google: Gemini 4 Carbon 相比 Anthropic: Claude Opus 5.5 综合调用成本骤降 50.0%（输入节省 50.0%，输出节省 50.0%），高并发生产部署 ROI 极高。",
         "Prompt Caching 经济学：Google: Gemini 4 Carbon 缓存折扣 95.0%（折后 $0.100/1M）vs Anthropic: Claude Opus 5.5 缓存折扣 95.0%（折后 $0.200/1M），极大释放高频 Agent 与多轮对话红利。",
         "吞吐与延迟天花板：Google: Gemini 4 Carbon 具备 3.22x 极速输出（145 t/s vs 45 t/s），首字时延仅 0.25s，彻底消灭生成卡顿。",
-        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1399 分（领先 +129 分），人类对齐盲测与指令遵循表现更为拔尖。",
+        "Chatbot Arena 竞技场：Anthropic: Claude Opus 5.5 ELO 评分达 1402 分（领先 +129 分），人类对齐盲测与指令遵循表现更为拔尖。",
         "上下文架构容量：Google: Gemini 4 Carbon 提供高达 1,048,576 Tokens 上下文（比 Anthropic: Claude Opus 5.5 多 1 倍），海量文档与代码库检索免分块。"
       ],
       "rank": 10
@@ -928,8 +928,8 @@
         "throughputTps": 145.0,
         "ttftSec": 0.25,
         "intelligenceIndex": null,
-        "codingIndex": 1087,
-        "arenaElo": 1039,
+        "codingIndex": 1086,
+        "arenaElo": 1038,
         "officialDocUrl": "https://ai.google.dev/pricing"
       },
       "modelB": {

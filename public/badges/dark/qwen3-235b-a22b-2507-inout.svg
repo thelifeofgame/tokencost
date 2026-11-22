@@ -1,21 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="401" height="22" viewBox="0 0 401 22" role="img" aria-label="TokenCosts AI: Qwen3 235B A22B Instruct… $0.14 / $0.80 per 1M">
+<svg xmlns="http://www.w3.org/2000/svg" width="418" height="22" viewBox="0 0 418 22" role="img" aria-label="TokenCosts AI: Qwen3 235B A22B Instruct… $0.14 / $0.80 per 1M">
   <title>TokenCosts AI: Qwen3 235B A22B Instruct… $0.14 / $0.80 per 1M</title>
   <defs>
-    <clipPath id="clip-dark-qwen3-235b-a22b-2507">
-      <rect width="401" height="22" rx="4"/>
+    <clipPath id="clip-dark-qwen3-235b-a22b-2507-inout">
+      <rect width="418" height="22" rx="4"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#clip-dark-qwen3-235b-a22b-2507)">
-    <rect x="0" y="0" width="108" height="22" fill="#09090B"/>
-    <rect x="108" y="0" width="293" height="22" fill="#18181B"/>
-    <rect x="107.5" y="0" width="1" height="22" fill="#27272A"/>
+  <g clip-path="url(#clip-dark-qwen3-235b-a22b-2507-inout)">
+    <rect x="0" y="0" width="112" height="22" fill="#09090B"/>
+    <rect x="112" y="0" width="306" height="22" fill="#18181B"/>
+    <rect x="111.5" y="0" width="1" height="22" fill="#27272A"/>
     <path d="M13.5 5.5L8.5 11.5H12.5L11.5 16.5L16.5 10.5H12.5L13.5 5.5Z" fill="#818CF8"/>
   </g>
-  <rect x="0.5" y="0.5" width="400" height="21" rx="3.5" fill="none" stroke="#27272A" stroke-width="1"/>
+  <rect x="0.5" y="0.5" width="417" height="21" rx="3.5" fill="none" stroke="#27272A" stroke-width="1"/>
   <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-rendering="geometricPrecision">
     <text x="22" y="14.5" fill="#FAFAFA">TokenCosts AI</text>
   </g>
   <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="500" text-rendering="geometricPrecision">
-    <text x="117" y="14.5" fill="#A1A1AA">Qwen3 235B A22B Instruct… <tspan fill="#34D399" font-weight="700">$0.14 · $0.80/1M</tspan></text>
+    <text x="121" y="14.5" fill="#A1A1AA">Qwen3 235B A22B Instruct… <tspan fill="#34D399" font-weight="700">$0.14 · $0.80/1M</tspan></text>
   </g>
 </svg>

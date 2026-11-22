@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { MODELS_DATA } from '@/lib/models-data';
+import { formatPerMillionPrice } from '@/lib/utils';
 import { Calculator, ChevronRight, Search, Sparkles } from 'lucide-react';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -95,11 +96,11 @@ export default function CalculatorClient() {
               <div className="mt-4 p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 font-mono text-xs space-y-1">
                 <div className="flex justify-between">
                   <span className="text-zinc-500 font-sans">{t.calculator.baseInput}:</span>
-                  <span className="text-zinc-200">${model.inputPerM}/M</span>
+                  <span className="text-zinc-200">{formatPerMillionPrice(model.inputPerM)}/M</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-500 font-sans">{t.calculator.cacheHitRead}:</span>
-                  <span className="text-emerald-400 font-bold">${model.cachedInputPerM.toFixed(3)}/M</span>
+                  <span className="text-emerald-400 font-bold">{formatPerMillionPrice(model.cachedInputPerM)}/M</span>
                 </div>
                 <div className="flex justify-between pt-1 border-t border-zinc-800/50 text-[11px]">
                   <span className="text-zinc-500 font-sans">Context Window:</span>

@@ -31,5 +31,6 @@ export default function LocalizedCompareDetailPage({
 }: {
   params: { locale: string; slug: string };
 }) {
-  return <ComparePage params={{ slug: params.slug }} />;
+  const locale = resolveLocale(params.locale);
+  return <ComparePage params={{ slug: params.slug }} locale={locale} />;
 }
