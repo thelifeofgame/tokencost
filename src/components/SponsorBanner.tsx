@@ -51,7 +51,7 @@ export default function SponsorBanner() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
       {/* Primary Partner (Left): OpenRouter Unified Gateway */}
-      <div className="group relative overflow-hidden rounded-2xl border border-indigo-500/30 dark:border-indigo-500/30 bg-white/85 dark:bg-gradient-to-br dark:from-zinc-900/90 dark:via-indigo-950/30 dark:to-zinc-900/90 p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/10 flex flex-col justify-between gap-3.5">
+      <div className="group relative overflow-hidden rounded-2xl border border-indigo-500/30 dark:border-indigo-500/30 bg-white/85 dark:bg-zinc-900/85 dark:bg-gradient-to-br dark:from-zinc-900/90 dark:via-indigo-950/30 dark:to-zinc-900/90 p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/10 flex flex-col justify-between gap-3.5">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/60 to-transparent" />
 
         <div className="space-y-2.5">
@@ -100,7 +100,7 @@ export default function SponsorBanner() {
       </div>
 
       {/* Speed Partner (Right): Groq LPU Inference Cloud */}
-      <div className="group relative overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-gradient-to-br dark:from-zinc-900/90 dark:via-amber-950/15 dark:to-zinc-900/90 p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/10 flex flex-col justify-between gap-3.5">
+      <div className="group relative overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/85 dark:bg-gradient-to-br dark:from-zinc-900/90 dark:via-amber-950/15 dark:to-zinc-900/90 p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/10 flex flex-col justify-between gap-3.5">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent" />
 
         <div className="space-y-2.5">

@@ -198,7 +198,7 @@ export default function SmartRouterCard({
   };
 
   return (
-    <div className="relative rounded-2xl border border-indigo-500/25 dark:border-indigo-500/30 bg-white/85 dark:bg-gradient-to-b dark:from-indigo-950/20 dark:via-zinc-900/70 dark:to-zinc-900/60 p-5 sm:p-6 backdrop-blur-md shadow-lg dark:shadow-2xl">
+    <div className="relative rounded-2xl border border-indigo-500/25 dark:border-indigo-500/30 bg-white/85 dark:bg-zinc-900/60 dark:bg-gradient-to-b dark:from-indigo-950/20 dark:via-zinc-900/70 dark:to-zinc-900/60 p-5 sm:p-6 backdrop-blur-md shadow-lg dark:shadow-2xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/40 to-transparent" />
 
       {/* Header */}
@@ -310,7 +310,7 @@ export default function SmartRouterCard({
             <span>
               {formatCurrency(currentRec.baselineCost)} {t.common.monthly}
             </span>
-            <span className="text-[10px] text-zinc-500">
+            <span className="text-[10px] text-zinc-500 dark:text-zinc-400">
               {formatTokenRate(currentRec.baselineModel.inputPerM)}/{formatTokenRate(currentRec.baselineModel.outputPerM)}
             </span>
           </div>
