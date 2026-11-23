@@ -273,7 +273,7 @@ export default function LiveVisitsBadge({
         <div
           id={tooltipId}
           role="tooltip"
-          className="absolute right-0 top-full mt-2 z-50 w-64 sm:w-72 origin-top-right rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl shadow-xl shadow-zinc-950/10 dark:shadow-2xl dark:shadow-black/60 p-3.5 text-left transition-all duration-150 ease-out"
+          className="fixed left-4 right-4 top-[68px] sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 z-50 sm:w-72 origin-top sm:origin-top-right rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl shadow-xl shadow-zinc-950/10 dark:shadow-2xl dark:shadow-black/60 p-3.5 text-left transition-all duration-150 ease-out"
         >
           <div className="flex items-center justify-between gap-2">
             <div className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
