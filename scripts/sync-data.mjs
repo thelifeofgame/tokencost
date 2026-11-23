@@ -11,6 +11,7 @@ const FILES_TO_SYNC = [
   'market_radar.json',
   'trending_comparisons.json',
   'harness_tools.json',
+  'official_deals.json',
 ];
 
 if (!fs.existsSync(ANALYST_DIR)) {

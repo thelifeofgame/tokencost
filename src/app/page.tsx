@@ -19,7 +19,7 @@ import SponsorBanner from '@/components/SponsorBanner';
 import ConfigExporterModal from '@/components/ConfigExporterModal';
 import TokenEstimatorModal from '@/components/TokenEstimatorModal';
 import MarketPulseRadar from '@/components/MarketPulseRadar';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
 const defaultParams: SimulationParams = {
@@ -193,7 +193,7 @@ export default function HomePage() {
   const isZh = locale === 'zh-CN' || locale === 'zh-TW';
 
   return (
-    <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+    <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
       <SchemaOrg
         type="software"
         name={`${t.common.brand} | ${t.simulator.heroTitle}`}
@@ -274,6 +274,26 @@ export default function HomePage() {
           </Link>
         </div>
       </div>
+
+      {/* Lightweight Official Deals & Billing Watch Entry Strip */}
+      <Link
+        href={getLocalizedPath('/deals/')}
+        className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl border border-emerald-200/90 dark:border-emerald-500/25 bg-gradient-to-r from-emerald-50/80 via-white/95 to-amber-50/60 dark:from-emerald-950/25 dark:via-zinc-900/75 dark:to-amber-950/20 px-3.5 py-2.5 backdrop-blur-sm shadow-sm shadow-zinc-950/[0.03] dark:shadow-none hover:border-emerald-300 dark:hover:border-emerald-400/45 transition-all"
+      >
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 min-w-0">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100/90 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 shrink-0">
+            <ShieldCheck className="h-3 w-3 text-emerald-700 dark:text-emerald-400" />
+            <span>{t.deals.homeBannerBadge}</span>
+          </span>
+          <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300 line-clamp-2 sm:truncate">
+            {t.deals.homeBannerText}
+          </span>
+        </div>
+        <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400 group-hover:text-emerald-800 dark:group-hover:text-emerald-300 whitespace-nowrap shrink-0">
+          <span>{t.deals.homeBannerCta}</span>
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </Link>
 
       {/* Core Cost Simulator */}
       <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center text-zinc-500 font-mono text-sm">{t.common.loading}</div>}>

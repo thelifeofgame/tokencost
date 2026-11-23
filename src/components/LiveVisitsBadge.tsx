@@ -10,7 +10,7 @@ interface LiveVisitsBadgeProps {
   count: number | null;
   status: LiveVisitsStatus;
   /**
-   * - navbar_desktop: 完整显示 [● 24h · 7,349]
+   * - navbar_desktop: 1024px 隐藏 "24h ·" 省出 24px 空间，1280px+ 完整显示 [● 24h · 7,349]
    * - navbar_mobile: <480px 隐藏 "24h ·" 仅显示 [● 7,349]，>=480px 显示完整版
    * - mobile_drawer: 抽屉顶部全宽遥测横幅卡片
    */
@@ -192,7 +192,7 @@ export default function LiveVisitsBadge({
     const minWidthClass =
       variant === 'navbar_mobile'
         ? 'min-w-[60px] min-[480px]:min-w-[88px]'
-        : 'min-w-[86px] xl:min-w-[94px]';
+        : 'min-w-[62px] xl:min-w-[94px]';
     return (
       <div
         aria-hidden="true"
@@ -246,10 +246,10 @@ export default function LiveVisitsBadge({
           />
         </span>
 
-        {/* 24h Prefix (hidden below 480px on mobile to save 22px breathing room) */}
+        {/* 24h Prefix (hidden below 480px on mobile and below 1280px on desktop to keep 9-tab navbar crisp) */}
         <span
           className={`items-center gap-1 text-[10px] font-medium tracking-tight text-zinc-600 dark:text-zinc-400 ${
-            variant === 'navbar_mobile' ? 'hidden min-[480px]:inline-flex' : 'inline-flex'
+            variant === 'navbar_mobile' ? 'hidden min-[480px]:inline-flex' : 'hidden xl:inline-flex'
           }`}
         >
           <span>{lv.windowTag}</span>

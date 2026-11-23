@@ -162,6 +162,17 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-xs">
             <li>
+              <Link
+                href={getLocalizedPath('/deals/')}
+                className="group inline-flex items-center flex-wrap gap-1.5 text-xs text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-emerald-200 font-medium transition-colors"
+              >
+                <span>{t.nav.dealsFull}</span>
+                <span className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-mono font-semibold leading-none text-emerald-800 dark:text-emerald-200 whitespace-nowrap">
+                  {t.deals.drawerBfBadge}
+                </span>
+              </Link>
+            </li>
+            <li>
               <Link href={getLocalizedPath('/pricing/realtime-voice-world-model-api-costs/')} className="text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-200 transition-colors">
                 Genie 4 &amp; Voice Standby API Costs
               </Link>

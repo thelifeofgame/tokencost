@@ -183,6 +183,13 @@ export default function MarketPulseRadar() {
             <span className="text-[10px] font-mono font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/80 px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-700/60">
               {radarT.sync}
             </span>
+            <Link
+              href={getLocalizedPath('/deals/')}
+              className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-500/25 transition-colors"
+            >
+              <span>{t.deals.radarLinkLabel}</span>
+              <ArrowRight className="h-3 w-3" />
+            </Link>
           </h2>
           <p className="text-xs text-zinc-600 dark:text-zinc-400">
             {radarT.desc}

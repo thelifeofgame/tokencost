@@ -20,7 +20,7 @@ export interface ModelOfferSchema {
 }
 
 interface SchemaOrgProps {
-  type?: 'software' | 'compare' | 'model' | 'faq';
+  type?: 'software' | 'compare' | 'model' | 'faq' | 'collection';
   name?: string;
   description?: string;
   url?: string;
@@ -135,7 +135,30 @@ export default function SchemaOrg({
     });
   }
 
-  // 3. FAQPage Schema (For Compare and Topic Pages)
+  // 3. CollectionPage Schema (For Official Deals & Billing Watch Directory)
+  if (type === 'collection') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': url,
+      name,
+      description,
+      url,
+      ...(normalizedLang ? { inLanguage: normalizedLang } : {}),
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'TokenCosts AI',
+        url: 'https://tokencostsai.com/',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'TokenCosts AI',
+        url: 'https://tokencostsai.com',
+      },
+    });
+  }
+
+  // 4. FAQPage Schema (For Compare, Deals and Topic Pages)
   if (faqs && faqs.length > 0) {
     schemas.push({
       '@context': 'https://schema.org',
@@ -152,7 +175,7 @@ export default function SchemaOrg({
     });
   }
 
-  // 4. BreadcrumbList Schema
+  // 5. BreadcrumbList Schema
   if (breadcrumbs && breadcrumbs.length > 0) {
     schemas.push({
       '@context': 'https://schema.org',
@@ -166,7 +189,7 @@ export default function SchemaOrg({
     });
   }
 
-  // 5. TechArticle Schema for Compare Pages
+  // 6. TechArticle Schema for Compare Pages
   if (type === 'compare') {
     schemas.push({
       '@context': 'https://schema.org',

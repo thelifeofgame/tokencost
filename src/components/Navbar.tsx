@@ -17,6 +17,15 @@ const OPENROUTER_NAVBAR_URL =
 
 const GITHUB_REPO_URL = 'https://github.com/thelifeofgame/tokencost';
 
+interface NavLinkItem {
+  href: string;
+  label: string;
+  shortLabel?: string;
+  drawerLabel?: string;
+  isNew?: boolean;
+  hasLiveDot?: boolean;
+}
+
 function GitHubIcon({ className = 'h-3.5 w-3.5 fill-current' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" aria-hidden="true">
@@ -40,16 +49,31 @@ export default function Navbar() {
     visitsStatus === 'loading' ||
     (visitsStatus !== 'error' && visitsCount !== null && visitsCount > 0);
 
-  const navLinks = [
-    { href: '/', label: t.nav.simulator },
-    { href: '/models', label: t.nav.models },
-    { href: '/compare', label: t.nav.compare },
-    { href: '/harness', label: t.nav.harness, isNew: true },
-    { href: '/calculator', label: t.nav.calculators },
-    { href: '/pricing', label: t.nav.guides },
-    { href: '/developers', label: t.nav.developers },
-    { href: '/contact', label: t.nav.contact },
+  const navLinks: NavLinkItem[] = [
+    { href: '/', label: t.nav.simulator, shortLabel: t.nav.short.simulator },
+    { href: '/models', label: t.nav.models, shortLabel: t.nav.short.models },
+    { href: '/compare', label: t.nav.compare, shortLabel: t.nav.short.compare },
+    { href: '/harness', label: t.nav.harness, shortLabel: t.nav.short.harness, isNew: true },
+    { href: '/calculator', label: t.nav.calculators, shortLabel: t.nav.short.calculators },
+    { href: '/pricing', label: t.nav.guides, shortLabel: t.nav.short.guides },
+    {
+      href: '/deals',
+      label: t.nav.deals,
+      drawerLabel: t.nav.dealsFull,
+      hasLiveDot: true,
+    },
+    { href: '/developers', label: t.nav.developers, shortLabel: t.nav.short.developers },
+    { href: '/contact', label: t.nav.contact, shortLabel: t.nav.short.contact },
   ];
+
+  // es / ko / ja expanded labels exceed 680px nav budget at 1280-1440px, so keep concise short labels until ultra-wide viewports
+  const useExtendedShort = locale === 'es' || locale === 'ko' || locale === 'ja';
+  const fullLabelClass = useExtendedShort
+    ? 'hidden min-[1600px]:inline'
+    : 'hidden xl:inline';
+  const shortLabelClass = useExtendedShort
+    ? 'inline min-[1600px]:hidden'
+    : 'inline xl:hidden';
 
   const handleOpenRouterClick = () => {
     trackEvent('affiliate_click', {
@@ -74,9 +98,9 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md transition-colors duration-150">
-      <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between gap-2 px-4 sm:px-6 lg:px-5 xl:px-6 min-[1440px]:px-8">
+      <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between gap-2 px-4 sm:px-6 lg:px-4 xl:px-6 min-[1440px]:px-8">
         {/* Brand + Desktop Nav */}
-        <div className="flex items-center gap-2 xl:gap-4 min-[1440px]:gap-6 min-w-0 flex-1">
+        <div className="flex items-center gap-2 xl:gap-3.5 min-[1440px]:gap-5 min-w-0 flex-1">
           <Link
             href={getLocalizedPath('/')}
             className="flex items-center gap-1.5 sm:gap-2.5 group min-w-0 shrink-0"
@@ -99,7 +123,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav (lg: 1024px+) */}
+          {/* Desktop Nav (lg: 1024px+, 9-tab zero-wrap adaptive) */}
           <nav className="hidden lg:flex items-center gap-0.5 min-[1440px]:gap-1 ml-1 min-w-0 flex-1 overflow-x-auto scrollbar-none">
             {navLinks.map((link) => {
               const localizedHref = getLocalizedPath(link.href);
@@ -111,17 +135,30 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={localizedHref}
-                  className={`px-1.5 min-[1440px]:px-2.5 2xl:px-3 py-1.5 text-[11px] xl:text-xs font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap shrink-0 ${
+                  className={`px-1 min-[1100px]:px-1.5 min-[1440px]:px-2 2xl:px-3 py-1.5 text-[11px] min-[1360px]:text-xs font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'bg-zinc-100 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100 font-semibold'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/40'
                   }`}
                 >
-                  <span>{link.label}</span>
+                  {link.shortLabel ? (
+                    <>
+                      <span className={shortLabelClass}>{link.shortLabel}</span>
+                      <span className={fullLabelClass}>{link.label}</span>
+                    </>
+                  ) : (
+                    <span>{link.label}</span>
+                  )}
                   {link.isNew && (
                     <span className="ml-1.5 hidden 2xl:inline-flex rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-mono font-semibold text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
                       NEW
                     </span>
+                  )}
+                  {link.hasLiveDot && (
+                    <span
+                      aria-hidden="true"
+                      className="ml-1.5 h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 shrink-0"
+                    />
                   )}
                 </Link>
               );
@@ -169,7 +206,7 @@ export default function Navbar() {
           >
             <Sparkles className="h-3.5 w-3.5 text-indigo-200 shrink-0" />
             <span className="whitespace-nowrap">{t.common.tryRouterApi}</span>
-            <ExternalLink className="hidden xl:inline-block h-3 w-3 text-indigo-200 shrink-0" />
+            <ExternalLink className="hidden min-[1440px]:inline-block h-3 w-3 text-indigo-200 shrink-0" />
           </a>
         </div>
 
@@ -216,16 +253,21 @@ export default function Navbar() {
                   key={link.href}
                   href={localizedHref}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  className={`flex items-center justify-between min-h-[44px] px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
                       ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 font-semibold'
                       : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/80 dark:hover:bg-zinc-900'
                   }`}
                 >
-                  <span>{link.label}</span>
+                  <span>{link.drawerLabel || link.label}</span>
                   {link.isNew && (
                     <span className="rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
                       NEW
+                    </span>
+                  )}
+                  {link.href === '/deals' && (
+                    <span className="rounded-full bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+                      {t.deals.drawerBfBadge}
                     </span>
                   )}
                 </Link>
