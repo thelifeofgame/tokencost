@@ -37,6 +37,15 @@ export const ja: TranslationDictionary = {
     language: '言語 / Language',
     switchToLight: "ライトモードに切替",
     switchToDark: "ダークモードに切替",
+    liveVisits: {
+      windowTag: '24h',
+      drawerLabel: '過去24時間の訪問数',
+      tooltipBadge: 'LIVE · 24H',
+      tooltipTitle: '過去24時間のリアルタイム訪問数',
+      tooltipDesc: '直近24時間のサイト全体の実際の訪問回数をリアルタイムで自動集計・表示しています。',
+      staleHint: '最新の同期データを表示中',
+      ariaLabel: '過去24時間のサイト訪問数: {count}',
+    },
   },
   simulator: {
     heroBadge: '2026年最新 LLM＆エージェントコスト分析',

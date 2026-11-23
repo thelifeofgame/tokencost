@@ -37,6 +37,15 @@ export const en: TranslationDictionary = {
     language: 'Language',
     switchToLight: "Switch to light mode",
     switchToDark: "Switch to dark mode",
+    liveVisits: {
+      windowTag: '24h',
+      drawerLabel: 'Past 24h Visits',
+      tooltipBadge: 'LIVE · 24H',
+      tooltipTitle: 'Past 24 Hours Visits',
+      tooltipDesc: 'Verified real-time site visits recorded across all pages in the rolling 24-hour window.',
+      staleHint: 'Showing last synced count',
+      ariaLabel: 'Past 24 hours site visits: {count}',
+    },
   },
   simulator: {
     heroBadge: '2026 LLM & Agent Cost Intelligence',

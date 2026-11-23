@@ -37,6 +37,15 @@ export const zhCN: TranslationDictionary = {
     language: '语言 / Language',
     switchToLight: "切换到浅色模式",
     switchToDark: "切换到深色模式",
+    liveVisits: {
+      windowTag: '24h',
+      drawerLabel: '过去 24 小时来访',
+      tooltipBadge: '实时 · 24H',
+      tooltipTitle: '过去 24 小时实时来访次数',
+      tooltipDesc: '实时统计过去 24 小时滚动时间窗内全站真实访问次数，自动定时同步更新。',
+      staleHint: '当前显示最近一次同步数据',
+      ariaLabel: '过去 24 小时全站来访次数：{count}',
+    },
   },
   simulator: {
     heroBadge: '告别大模型与 Agent 账单盲猜',

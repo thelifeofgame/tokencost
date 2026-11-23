@@ -37,6 +37,15 @@ export const ko: TranslationDictionary = {
     language: '언어 / Language',
     switchToLight: "라이트 모드로 전환",
     switchToDark: "다크 모드로 전환",
+    liveVisits: {
+      windowTag: '24h',
+      drawerLabel: '최근 24시간 방문',
+      tooltipBadge: '실시간 · 24H',
+      tooltipTitle: '최근 24시간 실시간 방문 횟수',
+      tooltipDesc: '최근 24시간 동안 사이트 전체에서 발생한 실제 방문 횟수를 실시간으로 집계합니다.',
+      staleHint: '최근 동기화된 수치를 표시 중',
+      ariaLabel: '최근 24시간 사이트 방문 수: {count}',
+    },
   },
   simulator: {
     heroBadge: '2026년 최신 LLM 및 에이전트 비용 관리',

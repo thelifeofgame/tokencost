@@ -9,12 +9,14 @@ interface LanguageSwitcherProps {
   className?: string;
   isMobile?: boolean;
   compact?: boolean;
+  adaptiveDesktop?: boolean;
 }
 
 export default function LanguageSwitcher({
   className = '',
   isMobile = false,
   compact = false,
+  adaptiveDesktop = false,
 }: LanguageSwitcherProps) {
   const { locale, locales, setLocale, currentLocaleConfig } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
@@ -74,6 +76,20 @@ export default function LanguageSwitcher({
     );
   }
 
+  const buttonSizeClass = compact
+    ? 'gap-1 h-8 sm:h-9 px-1.5 sm:px-2 after:content-[""] after:absolute after:-inset-1.5 sm:after:inset-0'
+    : adaptiveDesktop
+      ? 'gap-1 min-[1440px]:gap-1.5 h-8 px-2 min-[1440px]:px-2.5'
+      : 'gap-1.5 px-2.5 py-1.5';
+
+  const globeClass = compact
+    ? 'hidden min-[400px]:inline-block'
+    : adaptiveDesktop
+      ? 'hidden min-[1440px]:inline-block'
+      : '';
+
+  const chevronClass = compact ? 'hidden min-[400px]:inline-block' : '';
+
   return (
     <div className={`relative inline-block text-left ${className}`} ref={containerRef}>
       <button
@@ -81,14 +97,16 @@ export default function LanguageSwitcher({
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        className={`flex items-center text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-100 bg-white/90 dark:bg-zinc-900/80 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg border border-zinc-200/90 dark:border-zinc-800/90 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-          compact ? 'gap-1 h-9 px-2' : 'gap-1.5 px-2.5 py-1.5'
-        }`}
+        className={`relative flex items-center text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-100 bg-white/90 dark:bg-zinc-900/80 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg border border-zinc-200/90 dark:border-zinc-800/90 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 ${buttonSizeClass}`}
       >
-        <Globe className={`h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 shrink-0 ${compact ? 'hidden min-[380px]:inline-block' : ''}`} />
-        <span className="text-[13px]">{currentLocaleConfig.flag}</span>
+        <Globe className={`h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 shrink-0 ${globeClass}`} />
+        <span className="text-[13px] leading-none">{currentLocaleConfig.flag}</span>
         <span className="font-semibold">{currentLocaleConfig.shortLabel}</span>
-        <ChevronDown className={`h-3 w-3 text-zinc-500 dark:text-zinc-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          className={`h-3 w-3 text-zinc-500 dark:text-zinc-400 transition-transform duration-200 ${chevronClass} ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
       </button>
 
       {isOpen && (

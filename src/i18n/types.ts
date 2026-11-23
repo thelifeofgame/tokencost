@@ -47,6 +47,15 @@ export interface TranslationDictionary {
     language: string;
     switchToLight: string;
     switchToDark: string;
+    liveVisits: {
+      windowTag: string;
+      drawerLabel: string;
+      tooltipBadge: string;
+      tooltipTitle: string;
+      tooltipDesc: string;
+      staleHint: string;
+      ariaLabel: string;
+    };
   };
   simulator: {
     heroBadge: string;

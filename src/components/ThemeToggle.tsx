@@ -58,7 +58,10 @@ export default function ThemeToggle({
   };
 
   const label = theme === 'dark' ? t.nav.switchToLight : t.nav.switchToDark;
-  const sizeClass = size === 'mobile' ? 'h-9 w-9' : 'h-8 w-8';
+  const sizeClass =
+    size === 'mobile'
+      ? 'h-8 w-8 sm:h-9 sm:w-9 after:content-[""] after:absolute after:-inset-1.5 sm:after:inset-0'
+      : 'h-8 w-8';
 
   return (
     <button

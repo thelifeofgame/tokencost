@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS visit_buckets (
+  bucket_ts INTEGER PRIMARY KEY,
+  hits INTEGER NOT NULL DEFAULT 0
+);

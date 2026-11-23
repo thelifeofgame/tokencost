@@ -1,0 +1,14 @@
+name = "tokencost-visits-24h"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+account_id = "e2df613bfad5edc14daf0bd84e19a2a5"
+
+routes = [
+  { pattern = "tokencostsai.com/api/visits-24h*", zone_id = "2ed5d603d02f067e1fafd1ed33f0021d" },
+  { pattern = "www.tokencostsai.com/api/visits-24h*", zone_id = "2ed5d603d02f067e1fafd1ed33f0021d" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tokencost-visits-db"
+database_id = "768d2008-dc57-4e68-862c-1c635c1492d4"

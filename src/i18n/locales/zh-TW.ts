@@ -37,6 +37,15 @@ export const zhTW: TranslationDictionary = {
     language: '語言 / Language',
     switchToLight: "切換至淺色模式",
     switchToDark: "切換至深色模式",
+    liveVisits: {
+      windowTag: '24h',
+      drawerLabel: '過去 24 小時造訪',
+      tooltipBadge: '即時 · 24H',
+      tooltipTitle: '過去 24 小時即時造訪次數',
+      tooltipDesc: '即時統計過去 24 小時滾動時間窗內全站真實造訪次數，自動定時同步更新。',
+      staleHint: '目前顯示最近一次同步資料',
+      ariaLabel: '過去 24 小時全站造訪次數：{count}',
+    },
   },
   simulator: {
     heroBadge: '告別大模型與 Agent 帳單盲猜',
