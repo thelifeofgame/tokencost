@@ -1,9 +1,12 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import PricingHubPage from '@/app/pricing/page';
+import PricingHubView from '@/components/PricingHubView';
 import { SUPPORTED_LOCALES, getTranslation } from '@/i18n';
 import {
-  buildAlternates, resolveLocale,
+  buildAlternates,
+  resolveLocale,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -35,18 +38,25 @@ export async function generateMetadata({
       description,
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
+      locale: getOgLocale(locale),
+      alternateLocale: getAlternateOgLocales(locale),
       type: 'website',
       images: DEFAULT_OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
-      title: title,
-      description: description,
+      title,
+      description,
       images: [DEFAULT_OG_IMAGE_URL],
     },
   };
 }
 
-export default function LocalizedPricingPage() {
-  return <PricingHubPage />;
+export default function LocalizedPricingPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = resolveLocale(params.locale);
+  return <PricingHubView locale={locale} />;
 }

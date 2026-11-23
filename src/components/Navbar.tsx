@@ -3,10 +3,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Zap, Sparkles, Menu, X, ExternalLink } from 'lucide-react';
+import { Zap, Sparkles, Menu, X, ExternalLink, Sun, Moon } from 'lucide-react';
 import { useI18n } from '@/i18n/I18nProvider';
 import { trackEvent } from '@/lib/analytics';
+import { ThemeMode, applyTheme, readCurrentTheme } from '@/lib/theme';
 import LanguageSwitcher from './LanguageSwitcher';
+import ThemeToggle, { useSyncedTheme } from './ThemeToggle';
 
 const OPENROUTER_NAVBAR_URL =
   'https://openrouter.ai/?ref=tokencostsai_com&utm_source=tokencostsai_com&utm_medium=navbar_cta';
@@ -14,7 +16,8 @@ const OPENROUTER_NAVBAR_URL =
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { t, getLocalizedPath } = useI18n();
+  const { t, locale, getLocalizedPath } = useI18n();
+  const theme = useSyncedTheme();
 
   const navLinks = [
     { href: '/', label: t.nav.simulator },
@@ -35,23 +38,40 @@ export default function Navbar() {
     });
   };
 
+  const handleMobileDrawerThemeSelect = (nextTheme: ThemeMode) => {
+    const current = readCurrentTheme();
+    if (current === nextTheme) return;
+    applyTheme(nextTheme);
+    trackEvent('theme_toggle', {
+      theme_from: current,
+      theme_to: nextTheme,
+      page_path: pathname || (typeof window !== 'undefined' ? window.location.pathname : '/'),
+      locale,
+      placement: 'navbar_mobile',
+    });
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md transition-colors duration-150">
+      <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between gap-2 px-4 sm:px-6 lg:px-8">
         {/* Brand */}
-        <div className="flex items-center gap-6">
-          <Link href={getLocalizedPath('/')} className="flex items-center gap-2.5 group">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+        <div className="flex items-center gap-6 min-w-0">
+          <Link href={getLocalizedPath('/')} className="flex items-center gap-2 sm:gap-2.5 group min-w-0">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
               <Zap className="h-5 w-5 text-white" />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col min-w-0">
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-base tracking-tight text-zinc-100">TokenCosts AI</span>
-                <span className="rounded-full bg-indigo-500/10 px-1.5 py-0.5 text-[10px] font-medium text-indigo-400 border border-indigo-500/20">
+                <span className="font-bold text-sm sm:text-base tracking-tight text-zinc-900 dark:text-zinc-100 whitespace-nowrap">
+                  TokenCosts AI
+                </span>
+                <span className="rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 text-[10px] font-medium text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20 shrink-0">
                   {t.common.versionBadge}
                 </span>
               </div>
-              <span className="text-[10px] text-zinc-500 tracking-tight hidden sm:inline">{t.common.tagline}</span>
+              <span className="text-[10px] text-zinc-600 dark:text-zinc-500 tracking-tight hidden sm:inline truncate">
+                {t.common.tagline}
+              </span>
             </div>
           </Link>
 
@@ -69,13 +89,13 @@ export default function Navbar() {
                   href={localizedHref}
                   className={`px-2.5 lg:px-3 py-1.5 text-xs font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap ${
                     isActive
-                      ? 'bg-zinc-800/80 text-zinc-100'
-                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40'
+                      ? 'bg-zinc-100 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100 font-semibold'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/40'
                   }`}
                 >
                   <span>{link.label}</span>
                   {link.isNew && (
-                    <span className="ml-1.5 hidden xl:inline-flex rounded-full bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-mono font-semibold text-indigo-400 border border-indigo-500/20">
+                    <span className="ml-1.5 hidden xl:inline-flex rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-mono font-semibold text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
                       NEW
                     </span>
                   )}
@@ -85,9 +105,9 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Right CTA & Language Switcher */}
-        <div className="hidden sm:flex items-center gap-2.5">
-          {/* Language Switcher */}
+        {/* Right Theme Toggle, Language Switcher, GitHub & CTA */}
+        <div className="hidden md:flex items-center gap-2 shrink-0">
+          <ThemeToggle placement="navbar_desktop" size="desktop" />
           <LanguageSwitcher />
 
           {/* GitHub Star Link */}
@@ -95,7 +115,7 @@ export default function Navbar() {
             href="https://github.com/thelifeofgame/tokencost"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-400 hover:text-zinc-200 bg-zinc-900/60 hover:bg-zinc-800/80 rounded-lg border border-zinc-800/80 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 bg-zinc-100/80 dark:bg-zinc-900/60 hover:bg-zinc-200/70 dark:hover:bg-zinc-800/80 rounded-lg border border-zinc-200/90 dark:border-zinc-800/80 transition-colors"
           >
             <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
               <path
@@ -121,51 +141,94 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center gap-2">
-          <LanguageSwitcher />
+        {/* Mobile menu controls (360px-safe budget) */}
+        <div className="md:hidden flex items-center gap-1.5 shrink-0">
+          <ThemeToggle placement="navbar_mobile" size="mobile" />
+          <LanguageSwitcher compact={true} />
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-zinc-200"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Nav Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-zinc-800 bg-zinc-950 px-4 py-3 space-y-3">
+        <div className="md:hidden border-b border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md shadow-lg dark:shadow-none px-4 py-3 space-y-3">
           <div className="space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={getLocalizedPath(link.href)}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-900 rounded-lg"
-              >
-                <span>{link.label}</span>
-                {link.isNew && (
-                  <span className="rounded-full bg-indigo-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-indigo-400 border border-indigo-500/20">
-                    NEW
-                  </span>
-                )}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const localizedHref = getLocalizedPath(link.href);
+              const isActive =
+                pathname === link.href ||
+                pathname === localizedHref ||
+                (link.href !== '/' && pathname.includes(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={localizedHref}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    isActive
+                      ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 font-semibold'
+                      : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/80 dark:hover:bg-zinc-900'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  {link.isNew && (
+                    <span className="rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
+                      NEW
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
-          <div className="pt-2 border-t border-zinc-800">
+          {/* Mobile Drawer Appearance Control */}
+          <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-1.5">
+            <div className="px-2 text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">
+              Appearance
+            </div>
+            <div className="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800">
+              <button
+                type="button"
+                onClick={() => handleMobileDrawerThemeSelect('dark')}
+                aria-label={t.nav.switchToDark}
+                aria-pressed={theme === 'dark'}
+                className="min-h-[40px] flex items-center justify-center gap-1.5 rounded-lg text-xs font-medium transition-all text-zinc-600 hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 dark:shadow-sm"
+              >
+                <Moon className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+                <span>Dark</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleMobileDrawerThemeSelect('light')}
+                aria-label={t.nav.switchToLight}
+                aria-pressed={theme === 'light'}
+                className="min-h-[40px] flex items-center justify-center gap-1.5 rounded-lg text-xs font-medium transition-all bg-white text-zinc-900 shadow-sm dark:bg-transparent dark:text-zinc-400 dark:hover:text-zinc-200 dark:shadow-none"
+              >
+                <Sun className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+                <span>Light</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800">
             <LanguageSwitcher isMobile={true} />
           </div>
 
-          <div className="pt-2 border-t border-zinc-800 flex items-center justify-between">
+          <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
             <a
               href={OPENROUTER_NAVBAR_URL}
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
               onClick={handleOpenRouterClick}
-              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold text-white bg-indigo-600 rounded-lg"
+              className="w-full flex items-center justify-center gap-2 py-2.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors"
             >
               <Sparkles className="h-3.5 w-3.5" />
               <span>{t.common.tryRouterApi}</span>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { generateHreflangTags } from '@/i18n';
+import { generateHreflangTags, isValidLocale } from '@/i18n';
 import { Locale } from '@/i18n/types';
+import { getHtmlLang } from '@/lib/seo-alternates';
 
 export interface FAQItem {
   question: string;
@@ -23,11 +24,19 @@ interface SchemaOrgProps {
   name?: string;
   description?: string;
   url?: string;
-  inLanguage?: Locale;
+  inLanguage?: Locale | string;
   modelOffer?: ModelOfferSchema;
   faqs?: FAQItem[];
   breadcrumbs?: BreadcrumbItem[];
   includeHreflang?: boolean;
+}
+
+function resolveInLanguage(inLanguage?: Locale | string): string | undefined {
+  if (!inLanguage) return undefined;
+  if (isValidLocale(inLanguage)) {
+    return getHtmlLang(inLanguage);
+  }
+  return inLanguage;
 }
 
 export default function SchemaOrg({
@@ -42,6 +51,7 @@ export default function SchemaOrg({
   includeHreflang = false,
 }: SchemaOrgProps) {
   const schemas: Record<string, unknown>[] = [];
+  const normalizedLang = resolveInLanguage(inLanguage);
 
   // 1. SoftwareApplication Schema (Primary for Homepage & Calculator pages)
   if (type === 'software') {
@@ -52,7 +62,7 @@ export default function SchemaOrg({
       name,
       description,
       url,
-      ...(inLanguage ? { inLanguage } : {}),
+      ...(normalizedLang ? { inLanguage: normalizedLang } : {}),
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'All',
       softwareVersion: '2.0.0',
@@ -93,7 +103,7 @@ export default function SchemaOrg({
       name,
       description,
       url,
-      ...(inLanguage ? { inLanguage } : {}),
+      ...(normalizedLang ? { inLanguage: normalizedLang } : {}),
       mainEntity: {
         '@type': 'SoftwareApplication',
         '@id': `${url}#model`,
@@ -130,7 +140,7 @@ export default function SchemaOrg({
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      ...(inLanguage ? { inLanguage } : {}),
+      ...(normalizedLang ? { inLanguage: normalizedLang } : {}),
       mainEntity: faqs.map((f) => ({
         '@type': 'Question',
         name: f.question,
@@ -165,7 +175,7 @@ export default function SchemaOrg({
       headline: name,
       description,
       url,
-      ...(inLanguage ? { inLanguage } : {}),
+      ...(normalizedLang ? { inLanguage: normalizedLang } : {}),
       author: {
         '@type': 'Organization',
         name: 'TokenCosts AI Engineering',

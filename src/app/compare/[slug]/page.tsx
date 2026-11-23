@@ -19,6 +19,16 @@ import { BREADCRUMB_LABELS, getLocalizedCompareMeta } from '@/lib/detail-seo';
 import { getLocalizedPath } from '@/i18n';
 import { Locale } from '@/i18n/types';
 import { formatPerMillionPrice } from '@/lib/utils';
+import { ModelPricingRule } from '@/types/pricing';
+
+function formatQualityIndex(m: ModelPricingRule): string {
+  if (m.benchmarks?.intelligenceIndex != null) return `AA ${m.benchmarks.intelligenceIndex.toFixed(1)}`;
+  if (m.benchmarks?.arenaElo != null) return `Elo ${m.benchmarks.arenaElo}`;
+  if (m.benchmarks?.codingIndex != null) {
+    return m.benchmarks.codingIndex <= 100 ? `Code ${m.benchmarks.codingIndex}%` : `Code ${m.benchmarks.codingIndex}`;
+  }
+  return 'Eval N/A';
+}
 import CompareDetailClient from '@/components/CompareDetailClient';
 import {
   Scale,
@@ -254,8 +264,8 @@ export default function ComparePage({
                   <dd className="text-zinc-800 dark:text-zinc-200 font-sans">{(modelA.contextWindow / 1000).toLocaleString()}k tokens</dd>
                 </div>
                 <div className="flex justify-between py-1">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Quality Index (MMLU)</dt>
-                  <dd className="text-indigo-600 dark:text-indigo-300 font-bold">{modelA.benchmarks?.mmlu ?? modelA.benchmarks?.evalScore ?? 'N/A'}</dd>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Quality Index (AA / ELO)</dt>
+                  <dd className="text-indigo-600 dark:text-indigo-300 font-bold">{formatQualityIndex(modelA)}</dd>
                 </div>
               </dl>
             </div>
@@ -335,8 +345,8 @@ export default function ComparePage({
                   <dd className="text-zinc-800 dark:text-zinc-200 font-sans">{(modelB.contextWindow / 1000).toLocaleString()}k tokens</dd>
                 </div>
                 <div className="flex justify-between py-1">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Quality Index (MMLU)</dt>
-                  <dd className="text-indigo-600 dark:text-indigo-300 font-bold">{modelB.benchmarks?.mmlu ?? modelB.benchmarks?.evalScore ?? 'N/A'}</dd>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Quality Index (AA / ELO)</dt>
+                  <dd className="text-indigo-600 dark:text-indigo-300 font-bold">{formatQualityIndex(modelB)}</dd>
                 </div>
               </dl>
             </div>

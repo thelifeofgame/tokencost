@@ -14,31 +14,6 @@ import rawData from '@/data/model_pricing_schema.json';
 import trendingComparisonsData from '@/data/trending_comparisons.json';
 import nonTokenModelsData from '@/data/non_token_models.json';
 
-const KNOWN_BENCHMARKS: Record<string, ModelBenchmarks> = {
-  'gemini-4-neon': { evalScore: 96.4, mmlu: 94.8, arenaElo: 1410, avgLatencyTtftMs: 250, avgThroughputTokS: 145 },
-  'gpt-6.2-sol': { evalScore: 96.8, mmlu: 95.1, arenaElo: 1415, avgLatencyTtftMs: 360, avgThroughputTokS: 85 },
-  'gpt-6.2-astra': { evalScore: 98.5, mmlu: 97.2, arenaElo: 1455, avgLatencyTtftMs: 450, avgThroughputTokS: 85 },
-  'gpt-6.1-sol': { evalScore: 96.2, mmlu: 94.5, arenaElo: 1395, avgLatencyTtftMs: 380, avgThroughputTokS: 110 },
-  'gpt-6.1-sol-pro': { evalScore: 97.4, mmlu: 95.8, arenaElo: 1420, avgLatencyTtftMs: 820, avgThroughputTokS: 65 },
-  'gpt-6.1-terra': { evalScore: 90.5, mmlu: 87.8, arenaElo: 1290, avgLatencyTtftMs: 210, avgThroughputTokS: 150 },
-  'gpt-6.1-terra-pro': { evalScore: 92.8, mmlu: 90.1, arenaElo: 1325, avgLatencyTtftMs: 480, avgThroughputTokS: 85 },
-  'gpt-4o': { evalScore: 88.7, mmlu: 88.7, arenaElo: 1286, avgLatencyTtftMs: 420, avgThroughputTokS: 90 },
-  'gpt-4o-mini': { evalScore: 82.0, mmlu: 82.0, arenaElo: 1215, avgLatencyTtftMs: 250, avgThroughputTokS: 140 },
-  'o1': { evalScore: 94.8, mmlu: 91.8, arenaElo: 1350, avgLatencyTtftMs: 1800, avgThroughputTokS: 45 },
-  'o3-mini': { evalScore: 92.5, mmlu: 89.0, arenaElo: 1310, avgLatencyTtftMs: 950, avgThroughputTokS: 75 },
-  'claude-3-5-sonnet': { evalScore: 93.7, mmlu: 88.3, arenaElo: 1283, avgLatencyTtftMs: 450, avgThroughputTokS: 78 },
-  'claude-3-5-haiku': { evalScore: 81.5, mmlu: 75.2, arenaElo: 1205, avgLatencyTtftMs: 190, avgThroughputTokS: 150 },
-  'claude-sonnet-5.5': { evalScore: 97.8, mmlu: 96.1, arenaElo: 1435, avgLatencyTtftMs: 360, avgThroughputTokS: 120 },
-  'claude-opus-5.5': { evalScore: 98.9, mmlu: 97.5, arenaElo: 1460, avgLatencyTtftMs: 650, avgThroughputTokS: 70 },
-  'deepseek-v3': { evalScore: 88.5, mmlu: 88.5, arenaElo: 1270, avgLatencyTtftMs: 350, avgThroughputTokS: 85 },
-  'deepseek-r1': { evalScore: 96.8, mmlu: 90.8, arenaElo: 1362, avgLatencyTtftMs: 1200, avgThroughputTokS: 55 },
-  'deepseek-v4.1-flash': { evalScore: 91.2, mmlu: 89.0, arenaElo: 1305, avgLatencyTtftMs: 180, avgThroughputTokS: 180 },
-  'deepseek-v4-pro': { evalScore: 95.0, mmlu: 92.4, arenaElo: 1345, avgLatencyTtftMs: 400, avgThroughputTokS: 90 },
-  'llama-3.3-70b': { evalScore: 86.4, mmlu: 86.4, arenaElo: 1250, avgLatencyTtftMs: 160, avgThroughputTokS: 280 },
-  'gemini-1.5-pro': { evalScore: 85.9, mmlu: 85.9, arenaElo: 1260, avgLatencyTtftMs: 490, avgThroughputTokS: 65 },
-  'gemini-1.5-flash': { evalScore: 78.9, mmlu: 78.9, arenaElo: 1195, avgLatencyTtftMs: 220, avgThroughputTokS: 155 },
-};
-
 const FEATURED_PRIORITY_ORDER = [
   'gemini-4-neon',
   'gpt-6.2-sol',
@@ -84,11 +59,56 @@ function buildModelsData(): ModelPricingRule[] {
     const isGeminiPro = raw.modelId === 'gemini-1.5-pro';
     const isGeminiFlash = raw.modelId === 'gemini-1.5-flash';
 
-    const benchmarks: ModelBenchmarks = KNOWN_BENCHMARKS[raw.modelId] || {
-      evalScore: raw.capabilities.reasoning ? 90.0 : 80.0,
-      mmlu: raw.capabilities.reasoning ? 88.0 : 78.0,
-      avgLatencyTtftMs: raw.latencyTier === 'fast' || raw.latencyTier === 'ultra-low' ? 220 : 450,
-      avgThroughputTokS: raw.latencyTier === 'fast' || raw.latencyTier === 'ultra-low' ? 140 : 75,
+    const rawRecord = raw as unknown as {
+      benchmarks?: {
+        intelligenceIndex?: number | null;
+        codingIndex?: number | null;
+        arenaElo?: number | null;
+        agenticIndex?: number | null;
+        evalSources?: string[] | null;
+      };
+      performance?: {
+        throughputTokensPerSec?: number | null;
+        timeToFirstTokenSec?: number | null;
+      };
+    };
+
+    const intelligenceIndex =
+      typeof rawRecord.benchmarks?.intelligenceIndex === 'number'
+        ? rawRecord.benchmarks.intelligenceIndex
+        : undefined;
+    const codingIndex =
+      typeof rawRecord.benchmarks?.codingIndex === 'number'
+        ? rawRecord.benchmarks.codingIndex
+        : undefined;
+    const arenaElo =
+      typeof rawRecord.benchmarks?.arenaElo === 'number'
+        ? rawRecord.benchmarks.arenaElo
+        : undefined;
+    const agenticIndex =
+      typeof rawRecord.benchmarks?.agenticIndex === 'number'
+        ? rawRecord.benchmarks.agenticIndex
+        : undefined;
+    const isBaselineMeasured = agenticIndex !== undefined;
+
+    const benchmarks: ModelBenchmarks = {
+      evalScore: intelligenceIndex,
+      intelligenceIndex,
+      codingIndex,
+      arenaElo,
+      agenticIndex,
+      evalSources: Array.isArray(rawRecord.benchmarks?.evalSources)
+        ? rawRecord.benchmarks.evalSources
+        : undefined,
+      avgThroughputTokS:
+        typeof rawRecord.performance?.throughputTokensPerSec === 'number'
+          ? rawRecord.performance.throughputTokensPerSec
+          : undefined,
+      avgLatencyTtftMs:
+        typeof rawRecord.performance?.timeToFirstTokenSec === 'number'
+          ? Math.round(rawRecord.performance.timeToFirstTokenSec * 1000)
+          : undefined,
+      isEstimatedPerformance: !isBaselineMeasured,
     };
 
     const isFrontier = isFrontierId(raw.modelId);
@@ -241,6 +261,27 @@ export const POPULAR_COMPARE_PAIRS = [
   { a: 'gemini-1.5-pro', b: 'claude-3-5-sonnet' },
   { a: 'o3-mini', b: 'deepseek-r1' },
   { a: 'deepseek-v3', b: 'gpt-4o' },
+  // —— 2026-11-23 本周热点 Open-Weight 对比矩阵扩容（20 组，已按 ASCII 规范序验证）
+  { a: 'gemma-3-27b-it', b: 'gpt-oss-120b' },
+  { a: 'gemma-3-27b-it', b: 'qwen3.8-27b' },
+  { a: 'gemma-3-27b-it', b: 'glm-5.3-flash' },
+  { a: 'gpt-oss-120b', b: 'qwen3.8-27b' },
+  { a: 'gpt-oss-120b', b: 'inkling-2-mini' },
+  { a: 'glm-5.3-flash', b: 'inkling-2-mini' },
+  { a: 'deepseek-v4.1-flash', b: 'gpt-oss-120b' },
+  { a: 'deepseek-v4.1-flash', b: 'gemma-3-27b-it' },
+  { a: 'deepseek-v4.1-flash', b: 'glm-5.3-flash' },
+  { a: 'deepseek-v4.1-flash', b: 'inkling-2-mini' },
+  { a: 'deepseek-v4.1-flash', b: 'qwen3.8-27b' },
+  { a: 'gpt-oss-120b', b: 'gpt-oss-20b' },
+  { a: 'gpt-6.2-sol', b: 'gpt-oss-120b' },
+  { a: 'gpt-6.2-astra', b: 'gpt-oss-120b' },
+  { a: 'gemini-4-neon', b: 'gemma-3-27b-it' },
+  { a: 'gemini-4-carbon', b: 'gemma-3-27b-it' },
+  { a: 'claude-sonnet-4.6', b: 'qwen3.8-27b' },
+  { a: 'claude-sonnet-4.6', b: 'glm-5.3-flash' },
+  { a: 'claude-opus-5.5', b: 'glm-5.3-flash' },
+  { a: 'gemini-4-neon', b: 'inkling-2-mini' },
 ];
 
 export const PRICING_TOPICS = [

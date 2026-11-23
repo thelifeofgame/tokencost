@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import DevelopersClient from './DevelopersClient';
 import {
   buildAlternates,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -17,8 +19,10 @@ export const metadata: Metadata = {
       'Copy production LiteLLM & Vercel AI SDK routing configs to cut LLM token spend automatically.',
     url: 'https://tokencostsai.com/developers/',
     siteName: 'TokenCosts AI',
+    locale: getOgLocale('en'),
+    alternateLocale: getAlternateOgLocales('en'),
     type: 'website',
-      images: DEFAULT_OG_IMAGES,
+    images: DEFAULT_OG_IMAGES,
   },
   twitter: {
     card: 'summary_large_image',

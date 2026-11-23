@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="26" viewBox="0 0 400 26" role="img" aria-label="TokenCosts AI: Kimi K3.1 Pro $0.253 / $8.80 per 1M">
-  <title>TokenCosts AI: Kimi K3.1 Pro $0.253 / $8.80 per 1M</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="26" viewBox="0 0 400 26" role="img" aria-label="TokenCosts AI: Kimi K3.1 Pro $0.2403 / $8.4023 per 1M">
+  <title>TokenCosts AI: Kimi K3.1 Pro $0.2403 / $8.4023 per 1M</title>
   <defs>
     <linearGradient id="indigo-grad-kimi-k3.1-pro-cache" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#4F46E5"/>
@@ -20,6 +20,6 @@
     <text x="23" y="16.8" fill="#FAFAFA">TOKENCOSTS AI</text>
   </g>
   <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="600" text-rendering="geometricPrecision">
-    <text x="137" y="16.8" fill="#EEF2FF">KIMI K3.1 PRO · <tspan fill="#FFFFFF" font-weight="700">-29% Cache ($0.18/1M)</tspan></text>
+    <text x="137" y="16.8" fill="#EEF2FF">KIMI K3.1 PRO · <tspan fill="#FFFFFF" font-weight="700">-17% Cache ($0.20/1M)</tspan></text>
   </g>
 </svg>

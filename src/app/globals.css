@@ -3,8 +3,29 @@
 @tailwind utilities;
 
 :root {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --slider-track: #e4e4e7;
+  --slider-thumb-bg: #ffffff;
+  --slider-thumb-shadow: 0 1px 3px 0 rgba(24, 24, 27, 0.22);
+  --scrollbar-thumb: #d4d4d8;
+  --scrollbar-thumb-hover: #a1a1aa;
+  --custom-scrollbar-thumb: rgba(24, 24, 27, 0.2);
+  --custom-scrollbar-thumb-hover: rgba(24, 24, 27, 0.38);
+  color-scheme: light;
+}
+
+html.dark {
   --background: #09090b;
   --foreground: #fafafa;
+  --slider-track: #27272a;
+  --slider-thumb-bg: #fafafa;
+  --slider-thumb-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --scrollbar-thumb: #27272a;
+  --scrollbar-thumb-hover: #3f3f46;
+  --custom-scrollbar-thumb: rgba(255, 255, 255, 0.18);
+  --custom-scrollbar-thumb-hover: rgba(255, 255, 255, 0.35);
+  color-scheme: dark;
 }
 
 body {
@@ -26,7 +47,7 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 9999px;
-  background: #27272a;
+  background: var(--slider-track);
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -35,10 +56,10 @@ input[type="range"]::-webkit-slider-thumb {
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background: #fafafa;
+  background: var(--slider-thumb-bg);
   border: 2px solid #6366f1;
   margin-top: -5px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: var(--slider-thumb-shadow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -50,22 +71,43 @@ input[type="range"]::-webkit-slider-thumb:hover {
 input[type="range"]::-moz-range-track {
   height: 6px;
   border-radius: 9999px;
-  background: #27272a;
+  background: var(--slider-track);
 }
 
 input[type="range"]::-moz-range-thumb {
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background: #fafafa;
+  background: var(--slider-thumb-bg);
   border: 2px solid #6366f1;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: var(--slider-thumb-shadow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 input[type="range"]::-moz-range-thumb:hover {
   transform: scale(1.15);
   box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+/* CostChart savings segment diagonal hatch (light/dark adaptive) */
+.bg-hatch-emerald {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(16, 185, 129, 0.22),
+    rgba(16, 185, 129, 0.22) 3px,
+    rgba(16, 185, 129, 0.06) 3px,
+    rgba(16, 185, 129, 0.06) 6px
+  );
+}
+
+.bg-hatch-purple {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(168, 85, 247, 0.22),
+    rgba(168, 85, 247, 0.22) 3px,
+    rgba(168, 85, 247, 0.06) 3px,
+    rgba(168, 85, 247, 0.06) 6px
+  );
 }
 
 /* Glassmorphism & Radial glow utilities */
@@ -101,21 +143,21 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--custom-scrollbar-thumb);
   border-radius: 9999px;
   transition: background 0.2s ease;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--custom-scrollbar-thumb-hover);
 }
 
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-color: var(--custom-scrollbar-thumb) transparent;
 }
 
-/* Universal scrollbar styling across all dark views */
+/* Universal scrollbar styling across Light & Dark views */
 *::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -126,10 +168,10 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: var(--scrollbar-thumb);
   border-radius: 9999px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: var(--scrollbar-thumb-hover);
 }

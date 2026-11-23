@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-22T09:03:30.498088+08:00",
-  "lastUpdated": "2026-11-22T09:03:30.498088+08:00",
+  "generatedAt": "2026-11-23T09:03:05.795607+08:00",
+  "lastUpdated": "2026-11-23T09:03:05.795607+08:00",
   "totalModels": 367,
   "totalProviders": 22,
   "providerOrgsCount": 58,
@@ -9,15 +9,15 @@
   "alerts": [
     {
       "id": "radar-2026-012",
-      "badgeText": "53%-84% Flash Drop",
-      "title": "DeepSeek V4.1 Flash ($0.0498/M) & Inkling 2 Mini Lead Nov 22",
-      "highlight": "$0.0498/M & $0.0399/M",
-      "primaryUrl": "/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/",
+      "badgeText": "42%-64% Rate Drop",
+      "title": "Gemma 3 27B (-64%), GPT-OSS 120B ($0.05) & Qwen3.8 Drop Nov 23",
+      "highlight": "Gemma 3 Out $0.16 · OSS $0.05/M",
+      "primaryUrl": "/calculator/gemma-3-27b-it/",
       "secondaryUrl": null
     },
     {
       "id": "radar-2026-003",
-      "badgeText": "8 Days Left: Dec 1 Hike",
+      "badgeText": "7 Days Left: Dec 1 Hike",
       "title": "Gemini 4 Carbon & Argon Intro $2/$10 Pricing Expires Nov 30",
       "highlight": "Doubles to $4/$20 on Dec 1",
       "primaryUrl": "/pricing/gemini-4-carbon-dec-1-migration-guide/",
@@ -32,12 +32,12 @@
       "secondaryUrl": "/compare/gemini-4-neon-vs-gpt-6.2-sol/"
     },
     {
-      "id": "radar-2026-011",
-      "badgeText": "40%-76% Rate Drop",
-      "title": "OpenRouter Slashes gpt-oss-120b (-40%) & DeepSeek V4.1 Flash-1017 (-76%)",
-      "highlight": "$0.09/M & $0.036/M Input",
-      "primaryUrl": "/calculator/deepseek-v4.1-flash/",
-      "secondaryUrl": null
+      "id": "radar-2026-010",
+      "badgeText": "60% Idle Savings",
+      "title": "OpenAI Launches GPT-Live-1.1 & $0.02/min WebRTC Standby Mode",
+      "highlight": "$0.05 -> $0.02/min Standby",
+      "primaryUrl": "/pricing/realtime-voice-world-model-api-costs/",
+      "secondaryUrl": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/"
     }
   ],
   "topModels": [
@@ -90,8 +90,8 @@
       "maxOutputTokens": 943718,
       "latencyTier": "fast",
       "intelligenceIndex": 61.4,
-      "codingIndex": 1391,
-      "arenaElo": 1491,
+      "codingIndex": 1389,
+      "arenaElo": 1492,
       "throughputTps": 145,
       "ttftSec": 0.25
     },
@@ -108,8 +108,8 @@
       "maxOutputTokens": 943718,
       "latencyTier": "reasoning-medium",
       "intelligenceIndex": 60,
-      "codingIndex": 1350,
-      "arenaElo": 1273,
+      "codingIndex": 1351,
+      "arenaElo": 1254,
       "throughputTps": 145,
       "ttftSec": 0.25,
       "pricingNote": "Promotional $2.00/$10.00 expires Nov 30, 2026; doubles +100% to $4.00/$20.00 on Dec 1, 2026."
@@ -128,7 +128,7 @@
       "latencyTier": "reasoning-heavy",
       "intelligenceIndex": 59.1,
       "codingIndex": 1307,
-      "arenaElo": 1402,
+      "arenaElo": 1398,
       "throughputTps": 45,
       "ttftSec": 0.85
     },
@@ -145,8 +145,8 @@
       "maxOutputTokens": 128000,
       "latencyTier": "standard",
       "intelligenceIndex": 54.5,
-      "codingIndex": 1287,
-      "arenaElo": 1264,
+      "codingIndex": 1286,
+      "arenaElo": 1265,
       "throughputTps": 85,
       "ttftSec": 0.45
     },
@@ -163,8 +163,8 @@
       "maxOutputTokens": 128000,
       "latencyTier": "standard",
       "intelligenceIndex": 54.6,
-      "codingIndex": 1270,
-      "arenaElo": 1191,
+      "codingIndex": 1269,
+      "arenaElo": 1190,
       "throughputTps": 85,
       "ttftSec": 0.45
     },
@@ -200,7 +200,7 @@
       "maxOutputTokens": 131072,
       "latencyTier": "fast",
       "intelligenceIndex": 27.8,
-      "codingIndex": 1259,
+      "codingIndex": 1260,
       "arenaElo": 1281,
       "throughputTps": 145,
       "ttftSec": 0.25,
@@ -248,16 +248,16 @@
       "id": "gpt-oss-120b",
       "name": "OpenAI: gpt-oss-120b",
       "provider": "OpenAI",
-      "inputPerM": 0.09,
-      "outputPerM": 0.36,
-      "cachedInputPerM": 0.045,
-      "cacheDiscountPercent": 50,
-      "batchDiscountPercent": 67.11,
+      "inputPerM": 0.05,
+      "outputPerM": 0.25,
+      "cachedInputPerM": 0.05,
+      "cacheDiscountPercent": 0,
+      "batchDiscountPercent": 40.8,
       "contextWindow": 131072,
       "maxOutputTokens": 117964,
       "latencyTier": "reasoning-heavy",
       "intelligenceIndex": 3.8,
-      "codingIndex": 944,
+      "codingIndex": 945,
       "arenaElo": 868,
       "throughputTps": 85,
       "ttftSec": 0.45
@@ -492,16 +492,6 @@
     },
     {
       "rank": 2,
-      "slug": "gpt-6.2-astra-vs-claude-opus-5.5",
-      "category": "frontier_flagship",
-      "badge": "Peak Intelligence",
-      "headline": "GPT-6.2 Astra vs Claude Opus 5.5: AA 62.1 算力巅峰对决 ELO 1402 编程王者",
-      "cheaperModel": "claude-opus-5.5",
-      "costReductionPercent": 50,
-      "url": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/"
-    },
-    {
-      "rank": 3,
       "slug": "gemini-4-neon-vs-claude-sonnet-5.5",
       "category": "frontier_flagship",
       "badge": "Agent Coding Duel",
@@ -509,6 +499,16 @@
       "cheaperModel": "claude-sonnet-5.5",
       "costReductionPercent": 33.3,
       "url": "/compare/gemini-4-neon-vs-claude-sonnet-5.5/"
+    },
+    {
+      "rank": 3,
+      "slug": "gpt-6.2-astra-vs-claude-opus-5.5",
+      "category": "frontier_flagship",
+      "badge": "Peak Intelligence",
+      "headline": "GPT-6.2 Astra vs Claude Opus 5.5: AA 62.1 算力巅峰对决 ELO 1398 编程王者",
+      "cheaperModel": "claude-opus-5.5",
+      "costReductionPercent": 50,
+      "url": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/"
     },
     {
       "rank": 4,
@@ -574,7 +574,7 @@
       "rank": 10,
       "slug": "gemini-4-carbon-vs-claude-opus-5.5",
       "category": "long_context_rag",
-      "badge": "145 t/s vs ELO 1402",
+      "badge": "145 t/s vs ELO 1398",
       "headline": "Gemini 4 Carbon vs Claude Opus 5.5: 145 t/s Throughput vs Coding ELO",
       "cheaperModel": "gemini-4-carbon",
       "costReductionPercent": 50,

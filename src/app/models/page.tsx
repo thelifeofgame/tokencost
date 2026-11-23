@@ -3,6 +3,8 @@ import ModelsClient from './ModelsClient';
 import { MODELS_DATA } from '@/lib/models-data';
 import {
   buildAlternates,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -18,8 +20,10 @@ export const metadata: Metadata = {
       'Explore live token rates, prompt caching discounts, and context limits across OpenAI, Anthropic, DeepSeek, Google, and 50+ providers.',
     url: 'https://tokencostsai.com/models/',
     siteName: 'TokenCosts AI',
+    locale: getOgLocale('en'),
+    alternateLocale: getAlternateOgLocales('en'),
     type: 'website',
-      images: DEFAULT_OG_IMAGES,
+    images: DEFAULT_OG_IMAGES,
   },
   twitter: {
     card: 'summary_large_image',

@@ -4,6 +4,19 @@ import { LIVE_MODEL_COUNT } from '@/lib/live-copy-helpers';
 export const BASE_URL = 'https://tokencostsai.com';
 export const DEFAULT_OG_IMAGE_URL = `${BASE_URL}/og-image.png`;
 
+export const HTML_LANG_MAP: Record<Locale, string> = {
+  en: 'en',
+  'zh-CN': 'zh-Hans',
+  'zh-TW': 'zh-Hant',
+  ja: 'ja',
+  ko: 'ko',
+  es: 'es',
+};
+
+export function getHtmlLang(locale: Locale = DEFAULT_LOCALE): string {
+  return HTML_LANG_MAP[locale] || 'en';
+}
+
 export const OG_LOCALE_MAP: Record<Locale, string> = {
   en: 'en_US',
   'zh-CN': 'zh_CN',
@@ -15,6 +28,12 @@ export const OG_LOCALE_MAP: Record<Locale, string> = {
 
 export function getOgLocale(locale: Locale = DEFAULT_LOCALE): string {
   return OG_LOCALE_MAP[locale] || 'en_US';
+}
+
+export function getAlternateOgLocales(currentLocale: Locale = DEFAULT_LOCALE): string[] {
+  return SUPPORTED_LOCALES.filter((l) => l.code !== currentLocale).map((l) =>
+    getOgLocale(l.code)
+  );
 }
 
 export const DEFAULT_OG_IMAGES = [

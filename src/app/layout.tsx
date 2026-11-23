@@ -2,14 +2,16 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SchemaOrg from '@/components/seo/SchemaOrg';
 import { I18nProvider } from '@/i18n/I18nProvider';
 import { MODELS_DATA } from '@/lib/models-data';
 import {
   buildAlternates,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
+import { THEME_INIT_SCRIPT } from '@/lib/theme';
 
 const MODEL_COUNT = MODELS_DATA.length;
 
@@ -38,7 +40,8 @@ export const metadata: Metadata = {
       'Simulate real-world LLM API costs for Gemini 4 Neon, GPT-6.2, Claude Sonnet 5.5 & DeepSeek-V4.1-Flash with 95% Prompt Caching and Coding Harness overhead.',
     url: 'https://tokencostsai.com/',
     siteName: 'TokenCosts AI',
-    locale: 'en_US',
+    locale: getOgLocale('en'),
+    alternateLocale: getAlternateOgLocales('en'),
     type: 'website',
     images: DEFAULT_OG_IMAGES,
   },
@@ -61,11 +64,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <SchemaOrg includeHreflang={false} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
-      <body className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
+      <body className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-indigo-500/20 dark:selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-indigo-200 transition-colors duration-150">
         <I18nProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

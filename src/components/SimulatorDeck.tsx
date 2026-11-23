@@ -87,34 +87,35 @@ export default function SimulatorDeck({
   };
 
   return (
-    <div className="relative rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-5 sm:p-6 backdrop-blur-md shadow-xl">
+    <div className="relative rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-5 sm:p-6 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-xl">
       {/* Hairline Sheen */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
 
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 mb-5 border-b border-zinc-800/80">
+      <div className="flex items-center justify-between pb-4 mb-5 border-b border-zinc-200/80 dark:border-zinc-800/80">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+          <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 text-indigo-600 dark:text-indigo-400">
             <Sliders className="h-4 w-4" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold tracking-tight text-zinc-100 uppercase">
+            <h2 className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 uppercase">
               {t.nav.simulator}
             </h2>
-            <p className="text-xs text-zinc-400">{t.simulator.controls.estimateTokensBtn}</p>
+            <p className="text-xs text-zinc-600 dark:text-zinc-400">{t.simulator.controls.estimateTokensBtn}</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <button
+            type="button"
             onClick={onShare}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:text-zinc-100 bg-zinc-800/80 hover:bg-zinc-800 border border-zinc-700/60 rounded-xl transition-all active:scale-95"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-100 bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200/80 dark:hover:bg-zinc-800 border border-zinc-200/90 dark:border-zinc-700/60 rounded-xl transition-all active:scale-95"
             title="Copy shareable URL"
           >
             {copiedShare ? (
               <>
-                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-400">{t.common.copied}</span>
+                <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-700 dark:text-emerald-400">{t.common.copied}</span>
               </>
             ) : (
               <>
@@ -124,8 +125,9 @@ export default function SimulatorDeck({
             )}
           </button>
           <button
+            type="button"
             onClick={handleReset}
-            className="p-1.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 rounded-xl transition-colors"
+            className="p-1.5 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 rounded-xl transition-colors"
             title="Reset to default"
           >
             <RotateCcw className="h-3.5 w-3.5" />
@@ -135,7 +137,7 @@ export default function SimulatorDeck({
 
       {/* Scenario Presets */}
       <div className="mb-6 space-y-2">
-        <label className="text-xs font-medium text-zinc-400 flex items-center justify-between">
+        <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 flex items-center justify-between">
           <span>{t.simulator.presetsTitle}</span>
           <span className="text-[10px] text-zinc-500">1-click FinOps templates</span>
         </label>
@@ -162,15 +164,15 @@ export default function SimulatorDeck({
                 key={preset.id}
                 type="button"
                 onClick={() => handlePresetSelect(preset)}
-                className="group relative flex flex-col p-2.5 text-left rounded-xl border border-zinc-800/80 bg-zinc-950/40 hover:bg-zinc-800/60 hover:border-zinc-700/80 transition-all"
+                className="group relative flex flex-col p-2.5 text-left rounded-xl border border-zinc-200/90 dark:border-zinc-800/80 bg-zinc-50/90 dark:bg-zinc-950/40 hover:bg-indigo-50/60 dark:hover:bg-zinc-800/60 hover:border-indigo-300/80 dark:hover:border-zinc-700/80 transition-all"
               >
-                <div className="flex items-center gap-1.5 text-indigo-400 mb-1">
+                <div className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 mb-1">
                   {getIcon()}
-                  <span className="text-xs font-semibold text-zinc-200 group-hover:text-indigo-300">
+                  <span className="text-xs font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-indigo-700 dark:group-hover:text-indigo-300">
                     {tr.title}
                   </span>
                 </div>
-                <span className="text-[10px] text-zinc-500 line-clamp-1">{tr.sub}</span>
+                <span className="text-[10px] text-zinc-600 dark:text-zinc-500 line-clamp-1">{tr.sub}</span>
               </button>
             );
           })}
@@ -182,8 +184,8 @@ export default function SimulatorDeck({
         {/* Monthly Requests */}
         <div className="space-y-1.5">
           <div className="flex justify-between items-center text-xs">
-            <label className="font-medium text-zinc-300">{t.simulator.controls.monthlyRequests}</label>
-            <span className="font-mono font-semibold text-indigo-400">
+            <label className="font-medium text-zinc-700 dark:text-zinc-300">{t.simulator.controls.monthlyRequests}</label>
+            <span className="font-mono font-semibold text-indigo-600 dark:text-indigo-400 tabular-nums">
               {params.monthlyRequests.toLocaleString()} reqs
             </span>
           </div>
@@ -196,9 +198,9 @@ export default function SimulatorDeck({
             onChange={(e) =>
               onChange({ ...params, monthlyRequests: parseInt(e.target.value, 10) })
             }
-            className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+            className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
-          <div className="flex justify-between text-[10px] text-zinc-500 font-mono">
+          <div className="flex justify-between text-[10px] text-zinc-600 dark:text-zinc-500 font-mono">
             <span>1k</span>
             <span>500k</span>
             <span>1M</span>
@@ -208,19 +210,19 @@ export default function SimulatorDeck({
 
         {/* Input Tokens */}
         <div className="space-y-1.5">
-          <div className="flex justify-between items-center text-xs">
-            <div className="flex items-center gap-2">
-              <label className="font-medium text-zinc-300">{t.simulator.controls.inputTokens}</label>
+          <div className="flex justify-between items-center text-xs gap-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <label className="font-medium text-zinc-700 dark:text-zinc-300">{t.simulator.controls.inputTokens}</label>
               <button
                 type="button"
                 onClick={onOpenEstimator}
-                className="inline-flex items-center gap-1 text-[11px] text-indigo-400 hover:text-indigo-300 underline underline-offset-2"
+                className="inline-flex items-center gap-1 text-[11px] text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 underline underline-offset-2 shrink-0"
               >
                 <Calculator className="h-3 w-3" />
                 <span>{t.simulator.controls.estimateTokensBtn}</span>
               </button>
             </div>
-            <span className="font-mono font-semibold text-zinc-200">
+            <span className="font-mono font-semibold text-zinc-900 dark:text-zinc-200 tabular-nums shrink-0">
               {params.inputTokens.toLocaleString()} tokens
             </span>
           </div>
@@ -233,9 +235,9 @@ export default function SimulatorDeck({
             onChange={(e) =>
               onChange({ ...params, inputTokens: parseInt(e.target.value, 10) })
             }
-            className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+            className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
-          <div className="flex justify-between text-[10px] text-zinc-500 font-mono">
+          <div className="flex justify-between text-[10px] text-zinc-600 dark:text-zinc-500 font-mono">
             <span>100</span>
             <span>4k</span>
             <span>16k</span>
@@ -247,8 +249,8 @@ export default function SimulatorDeck({
         {/* Output Tokens */}
         <div className="space-y-1.5">
           <div className="flex justify-between items-center text-xs">
-            <label className="font-medium text-zinc-300">{t.simulator.controls.outputTokens}</label>
-            <span className="font-mono font-semibold text-zinc-200">
+            <label className="font-medium text-zinc-700 dark:text-zinc-300">{t.simulator.controls.outputTokens}</label>
+            <span className="font-mono font-semibold text-zinc-900 dark:text-zinc-200 tabular-nums">
               {params.outputTokens.toLocaleString()} tokens
             </span>
           </div>
@@ -261,9 +263,9 @@ export default function SimulatorDeck({
             onChange={(e) =>
               onChange({ ...params, outputTokens: parseInt(e.target.value, 10) })
             }
-            className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+            className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
-          <div className="flex justify-between text-[10px] text-zinc-500 font-mono">
+          <div className="flex justify-between text-[10px] text-zinc-600 dark:text-zinc-500 font-mono">
             <span>50</span>
             <span>1k</span>
             <span>2k</span>
@@ -275,8 +277,8 @@ export default function SimulatorDeck({
         {/* Prompt Cache Hit Rate */}
         <div className="space-y-1.5">
           <div className="flex justify-between items-center text-xs">
-            <label className="font-medium text-zinc-300">{t.simulator.controls.cacheHitRate}</label>
-            <span className="font-mono font-semibold text-emerald-400">
+            <label className="font-medium text-zinc-700 dark:text-zinc-300">{t.simulator.controls.cacheHitRate}</label>
+            <span className="font-mono font-semibold text-emerald-700 dark:text-emerald-400 tabular-nums">
               {Math.round(params.cacheHitRate * 100)}%
             </span>
           </div>
@@ -289,9 +291,9 @@ export default function SimulatorDeck({
             onChange={(e) =>
               onChange({ ...params, cacheHitRate: parseFloat(e.target.value) })
             }
-            className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+            className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600 dark:accent-emerald-500"
           />
-          <div className="flex justify-between text-[10px] text-zinc-500 font-mono">
+          <div className="flex justify-between text-[10px] text-zinc-600 dark:text-zinc-500 font-mono">
             <span>0% (No Cache)</span>
             <span>50%</span>
             <span>80%</span>
@@ -302,8 +304,8 @@ export default function SimulatorDeck({
         {/* Batch API Offload */}
         <div className="space-y-1.5">
           <div className="flex justify-between items-center text-xs">
-            <label className="font-medium text-zinc-300">{t.simulator.controls.batchOffload}</label>
-            <span className="font-mono font-semibold text-indigo-400">
+            <label className="font-medium text-zinc-700 dark:text-zinc-300">{t.simulator.controls.batchOffload}</label>
+            <span className="font-mono font-semibold text-indigo-600 dark:text-indigo-400 tabular-nums">
               {Math.round(params.batchRate * 100)}%
             </span>
           </div>
@@ -316,9 +318,9 @@ export default function SimulatorDeck({
             onChange={(e) =>
               onChange({ ...params, batchRate: parseFloat(e.target.value) })
             }
-            className="w-full h-1.5 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+            className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
-          <div className="flex justify-between text-[10px] text-zinc-500 font-mono">
+          <div className="flex justify-between text-[10px] text-zinc-600 dark:text-zinc-500 font-mono">
             <span>0% (Realtime)</span>
             <span>50%</span>
             <span>100% (Batch 24h)</span>
@@ -327,20 +329,20 @@ export default function SimulatorDeck({
 
         {/* Long Context Tier Escalation Checkbox */}
         <div className="pt-2">
-          <label className="flex items-start gap-3 p-3 rounded-xl border border-zinc-800 bg-zinc-950/40 hover:bg-zinc-800/30 cursor-pointer transition-colors">
+          <label className="flex items-start gap-3 p-3 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/40 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/30 cursor-pointer transition-colors">
             <input
               type="checkbox"
               checked={params.enableLongContext}
               onChange={(e) =>
                 onChange({ ...params, enableLongContext: e.target.checked })
               }
-              className="mt-0.5 h-4 w-4 rounded border-zinc-700 bg-zinc-900 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-zinc-950"
+              className="mt-0.5 h-4 w-4 rounded border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-white dark:focus:ring-offset-zinc-950"
             />
             <div className="flex flex-col">
-              <span className="text-xs font-semibold text-zinc-200">
+              <span className="text-xs font-semibold text-zinc-900 dark:text-zinc-200">
                 {t.simulator.controls.longContext}
               </span>
-              <span className="text-[11px] text-zinc-500">
+              <span className="text-[11px] text-zinc-600 dark:text-zinc-500">
                 {t.simulator.controls.longContextDesc}
               </span>
             </div>
@@ -349,8 +351,8 @@ export default function SimulatorDeck({
       </div>
 
       {/* Provider Filter Chips */}
-      <div className="mt-6 pt-5 border-t border-zinc-800/80 space-y-2">
-        <label className="text-xs font-medium text-zinc-400 block">
+      <div className="mt-6 pt-5 border-t border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+        <label className="text-xs font-medium text-zinc-600 dark:text-zinc-400 block">
           {t.models.filterByProvider}
         </label>
         <div className="flex flex-wrap gap-1.5">
@@ -363,8 +365,8 @@ export default function SimulatorDeck({
                 onClick={() => onToggleProvider(prov)}
                 className={`px-2.5 py-1 text-xs rounded-lg font-medium transition-all ${
                   isSelected
-                    ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
-                    : 'bg-zinc-950/60 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 border border-zinc-800'
+                    ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/25'
+                    : 'bg-zinc-100/80 dark:bg-zinc-950/60 text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-200/70 dark:hover:bg-zinc-800 border border-zinc-200/90 dark:border-zinc-800'
                 }`}
               >
                 {prov === 'All' ? t.models.allProviders : prov}

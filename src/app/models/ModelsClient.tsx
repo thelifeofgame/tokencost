@@ -812,16 +812,48 @@ export default function ModelsClient() {
                     <span>Context Window:</span>
                     <span className="font-mono text-zinc-800 dark:text-zinc-200">{(m.contextWindow / 1000).toLocaleString()}k tokens</span>
                   </div>
-                  {m.benchmarks?.evalScore && (
-                    <div className="flex justify-between">
-                      <span>Eval Score / MMLU:</span>
-                      <span className="font-mono text-indigo-600 dark:text-indigo-400 font-semibold">{m.benchmarks.evalScore}</span>
-                    </div>
-                  )}
-                  {m.benchmarks?.avgThroughputTokS && (
+                  <div className="flex justify-between items-center">
+                    <span>Intelligence / Arena:</span>
+                    {m.benchmarks?.intelligenceIndex != null ? (
+                      <span
+                        title="Artificial Analysis Intelligence Index"
+                        className="font-mono text-indigo-600 dark:text-indigo-400 font-semibold"
+                      >
+                        AA {m.benchmarks.intelligenceIndex.toFixed(1)}
+                      </span>
+                    ) : m.benchmarks?.arenaElo != null ? (
+                      <span
+                        title="Design / Chatbot Arena ELO"
+                        className="font-mono text-indigo-600 dark:text-indigo-400 font-semibold"
+                      >
+                        Elo {m.benchmarks.arenaElo}
+                      </span>
+                    ) : m.benchmarks?.codingIndex != null ? (
+                      <span
+                        title={m.benchmarks.codingIndex <= 100 ? "Coding Benchmark (%)" : "Coding Arena ELO"}
+                        className="font-mono text-indigo-600 dark:text-indigo-400 font-semibold"
+                      >
+                        {m.benchmarks.codingIndex <= 100
+                          ? `Code ${m.benchmarks.codingIndex}%`
+                          : `Code ${m.benchmarks.codingIndex}`}
+                      </span>
+                    ) : (
+                      <span
+                        title="Pending Artificial Analysis / Arena evaluation"
+                        className="font-mono text-zinc-500"
+                      >
+                        —
+                      </span>
+                    )}
+                  </div>
+                  {m.benchmarks?.avgThroughputTokS != null && (
                     <div className="flex justify-between">
                       <span>Throughput:</span>
-                      <span className="font-mono text-zinc-800 dark:text-zinc-200">{m.benchmarks.avgThroughputTokS} tok/s</span>
+                      <span className="font-mono text-zinc-800 dark:text-zinc-200">
+                        {m.benchmarks.isEstimatedPerformance
+                          ? `~${m.benchmarks.avgThroughputTokS} tok/s (Est.)`
+                          : `${m.benchmarks.avgThroughputTokS} tok/s`}
+                      </span>
                     </div>
                   )}
                 </div>

@@ -9,6 +9,8 @@ import { getLiveFlashRates } from '@/lib/live-copy-helpers';
 import {
   buildAlternates,
   buildLocalizedCanonical,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -48,6 +50,8 @@ export function buildTopicMetadata(
       title: seo.title,
       description: seo.description,
       type: 'article',
+      locale: getOgLocale(locale),
+      alternateLocale: getAlternateOgLocales(locale),
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
       images: DEFAULT_OG_IMAGES,
@@ -108,6 +112,7 @@ export default function PricingTopicPage({
         name={seo.h1}
         description={seo.description}
         url={canonicalUrl}
+        inLanguage={locale}
         faqs={faqs}
         breadcrumbs={breadcrumbs}
         includeHreflang={false}

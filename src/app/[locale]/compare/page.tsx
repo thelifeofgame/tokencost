@@ -4,7 +4,10 @@ import CompareClient from '@/app/compare/CompareClient';
 import { SUPPORTED_LOCALES, getTranslation, formatModelCount } from '@/i18n';
 import { MODELS_DATA } from '@/lib/models-data';
 import {
-  buildAlternates, resolveLocale,
+  buildAlternates,
+  resolveLocale,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -36,13 +39,15 @@ export async function generateMetadata({
       description,
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
+      locale: getOgLocale(locale),
+      alternateLocale: getAlternateOgLocales(locale),
       type: 'website',
       images: DEFAULT_OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
-      title: title,
-      description: description,
+      title,
+      description,
       images: [DEFAULT_OG_IMAGE_URL],
     },
   };

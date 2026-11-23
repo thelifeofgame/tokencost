@@ -13,6 +13,7 @@ import {
   extractLocaleFromPath,
   getLocalizedPath as buildLocalizedPath,
 } from './index';
+import { getHtmlLang } from '@/lib/seo-alternates';
 import { trackEvent } from '@/lib/analytics';
 
 interface I18nContextValue {
@@ -54,8 +55,8 @@ export function I18nProvider({
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Set document lang attribute
-    document.documentElement.lang = locale;
+    // Set document lang attribute using BCP 47 tag
+    document.documentElement.lang = getHtmlLang(locale);
 
     // If at root and no explicit initialLocale was passed, check saved preferences
     const { locale: fromPath } = extractLocaleFromPath(window.location.pathname);
@@ -63,7 +64,7 @@ export function I18nProvider({
       const saved = localStorage.getItem('tokencost_locale') as Locale | null;
       if (saved && SUPPORTED_LOCALES.some((l) => l.code === saved) && saved !== DEFAULT_LOCALE) {
         setLocaleState(saved);
-        document.documentElement.lang = saved;
+        document.documentElement.lang = getHtmlLang(saved);
       } else if (!saved && navigator.language) {
         // Detect from browser Accept-Language
         const navLang = navigator.language.toLowerCase();
@@ -76,7 +77,7 @@ export function I18nProvider({
 
         if (matched) {
           setLocaleState(matched);
-          document.documentElement.lang = matched;
+          document.documentElement.lang = getHtmlLang(matched);
         }
       }
     }
@@ -93,7 +94,7 @@ export function I18nProvider({
         // 1. Persist in localStorage and Cookie
         localStorage.setItem('tokencost_locale', newLocale);
         document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-        document.documentElement.lang = newLocale;
+        document.documentElement.lang = getHtmlLang(newLocale);
 
         // 2. Track commercial event (dataLayer)
         trackEvent('language_change', {

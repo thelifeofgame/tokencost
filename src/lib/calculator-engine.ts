@@ -100,28 +100,34 @@ export function calculateAllModels(
 }
 
 /**
- * Curated list of high-profile mainstream production benchmark models,
- * ranging from ultra-cost-efficient entry models (GPT-6 Luna) to flagship frontier models (Claude Fable 5.2).
+ * Curated list of 16 zero-orphan 2026-11 mainstream production benchmark models
+ * across Fast (5), Frontier (6), and Reasoning (5) camps.
  */
 export const MAINSTREAM_BENCHMARK_MODEL_IDS: string[] = [
-  'gpt-6-luna',        // OpenAI: GPT-6 Luna ($0.10 / $0.50)
-  'deepseek-v3',       // DeepSeek-V3 ($0.27 / $1.10)
-  'gpt-4.1-mini',      // OpenAI: GPT-4.1 Mini ($0.40 / $1.60)
-  'gemini-2.5-flash',  // Google: Gemini 2.5 Flash ($0.30 / $2.50)
-  'deepseek-r1',       // DeepSeek-R1 ($0.55 / $2.19)
-  'claude-3-5-haiku',  // Anthropic: Claude 3.5 Haiku ($0.80 / $4.00)
-  'gpt-6.1-terra',     // OpenAI: GPT-6.1 Terra ($1.00 / $5.00)
-  'claude-haiku-4.5',  // Anthropic: Claude Haiku 4.5 ($1.00 / $5.00)
-  'gemini-2.5-pro',    // Google: Gemini 2.5 Pro ($1.25 / $10.00)
-  'gpt-6.1-sol',       // OpenAI: GPT-6.1 Sol ($2.00 / $10.00)
-  'claude-sonnet-5.5', // Anthropic: Claude Sonnet 5.5 ($2.00 / $10.00)
-  'gpt-4o',            // OpenAI: GPT-4o ($2.50 / $10.00)
-  'claude-fable-5.2',  // Anthropic: Claude Fable 5.2 ($8.00 / $40.00)
+  // Fast (5)
+  'deepseek-v4.1-flash', // DeepSeek-V4.1-Flash ($0.0498 / $0.1992)
+  'glm-5.3-flash',       // Zhipu GLM 5.3 Flash ($0.0399 / $0.0784)
+  'claude-haiku-5.5',    // Anthropic Claude Haiku 5.5 ($0.10 / $0.50)
+  'gpt-6-luna',          // OpenAI GPT-6 Luna ($0.10 / $0.50)
+  'qwen3.8-flash',       // Alibaba Qwen3.8 Flash ($0.15 / $0.47)
+  // Reasoning (5)
+  'deepseek-r1',         // DeepSeek-R1 ($0.55 / $2.19)
+  'kimi-k3.1-pro',       // Moonshot Kimi K3.1 Pro ($0.2403 / $8.4023)
+  'o3-mini',             // OpenAI o3-mini ($1.10 / $4.40)
+  'gemini-4-carbon',     // Google Gemini 4 Carbon ($2.00 / $10.00)
+  'claude-fable-5.2',    // Anthropic Claude Fable 5.2 ($8.00 / $40.00)
+  // Frontier (6)
+  'gemini-4-hydrogen',   // Google Gemini 4 Hydrogen ($1.50 / $7.50)
+  'claude-sonnet-5.5',   // Anthropic Claude Sonnet 5.5 ($2.00 / $10.00)
+  'gpt-6.2-sol',         // OpenAI GPT-6.2 Sol ($2.00 / $10.00)
+  'gemini-4-neon',       // Google Gemini 4 Neon ($3.00 / $15.00)
+  'claude-opus-5.5',     // Anthropic Claude Opus 5.5 ($4.00 / $20.00)
+  'gpt-6.2-astra',       // OpenAI GPT-6.2 Astra ($8.00 / $40.00)
 ];
 
 /**
  * Calculates and returns the clean mainstream models for Monthly Net Cost Breakdown,
- * sorted strictly by monthlyNetCost from lowest (e.g. GPT-6 Luna) to highest (e.g. Claude Fable 5.2).
+ * sorted strictly by monthlyNetCost from lowest (e.g. DeepSeek-V4.1-Flash) to highest (e.g. GPT-6.2 Astra).
  */
 export function calculateMainstreamModels(
   models: ModelPricingRule[],

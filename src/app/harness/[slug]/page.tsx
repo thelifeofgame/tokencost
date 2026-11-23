@@ -8,6 +8,8 @@ import {
 } from '@/lib/harness-data';
 import {
   buildAlternates,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -42,6 +44,8 @@ export async function generateMetadata({
       title: seo.title,
       description: seo.description,
       type: 'article',
+      locale: getOgLocale('en'),
+      alternateLocale: getAlternateOgLocales('en'),
       url: canonicalUrl,
       siteName: 'TokenCosts AI',
       images: DEFAULT_OG_IMAGES,
@@ -84,6 +88,7 @@ export default function HarnessDetailPage({
         name={seo.h1}
         description={seo.description}
         url={canonicalUrl}
+        inLanguage="en"
         faqs={faqs}
         breadcrumbs={breadcrumbs}
         includeHreflang={false}

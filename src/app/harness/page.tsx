@@ -3,6 +3,8 @@ import HarnessDirectoryClient from '@/components/HarnessDirectoryClient';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import {
   buildAlternates,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -17,8 +19,10 @@ export const metadata: Metadata = {
       'Compare real token multipliers (1.2x Aider vs 3.5x Cursor), AST repo-map pruning, Prompt Caching hit rates, and BYOK configs across 7 coding agents.',
     url: 'https://tokencostsai.com/harness/',
     siteName: 'TokenCosts AI',
+    locale: getOgLocale('en'),
+    alternateLocale: getAlternateOgLocales('en'),
     type: 'website',
-      images: DEFAULT_OG_IMAGES,
+    images: DEFAULT_OG_IMAGES,
   },
   twitter: {
     card: 'summary_large_image',
@@ -55,6 +59,7 @@ export default function HarnessDirectoryPage() {
         name="Coding Agent & Harness Token Cost Benchmark (2026)"
         description="Real token multiplier audit and BYOK cost optimization directory across 7 top AI coding agents."
         url="https://tokencostsai.com/harness/"
+        inLanguage="en"
         faqs={HARNESS_HUB_FAQS}
         breadcrumbs={[
           { name: 'Home', url: 'https://tokencostsai.com/' },

@@ -320,7 +320,7 @@ export default function SmartRouterCard({
             <div className="absolute left-0 top-full mt-2 w-80 sm:w-88 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#09090b] shadow-2xl p-3 z-50 animate-in fade-in-0 zoom-in-95 max-h-84 flex flex-col space-y-2.5">
               {/* Search Bar */}
               <div className="relative">
-                <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-zinc-400" />
+                <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" />
                 <input
                   type="text"
                   placeholder="Search model or provider..."

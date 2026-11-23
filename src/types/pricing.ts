@@ -39,10 +39,15 @@ export interface ModelCapabilities {
 
 export interface ModelBenchmarks {
   evalScore?: number;
-  mmlu?: number;
+  intelligenceIndex?: number;
+  codingIndex?: number;
   arenaElo?: number;
+  agenticIndex?: number;
+  evalSources?: string[];
+  mmlu?: number;
   avgLatencyTtftMs?: number;
   avgThroughputTokS?: number;
+  isEstimatedPerformance?: boolean;
 }
 
 export interface HostedProvider {
@@ -73,7 +78,7 @@ export interface ModelPricingRule {
   officialDocUrl: string;
   affiliateUrl?: string;
   isSponsored?: boolean;
-  isFrontier?: boolean;       // 2026 Frontier model flag (e.g. GPT-6.1 Sol, Claude 5)
+  isFrontier?: boolean;       // 2026 Frontier model flag (e.g. GPT-6.2 Sol, Claude 5.5)
   notes?: string;
   hostedProviders?: HostedProvider[];
   tierThreshold?: number;     // e.g. Gemini 128000

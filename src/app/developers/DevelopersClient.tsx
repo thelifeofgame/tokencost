@@ -6,6 +6,7 @@ import SchemaOrg from '@/components/seo/SchemaOrg';
 import BadgeGenerator from '@/components/BadgeGenerator';
 import { useI18n } from '@/i18n/I18nProvider';
 import { trackEvent } from '@/lib/analytics';
+import { buildLocalizedCanonical } from '@/lib/seo-alternates';
 
 export default function DevelopersClient() {
   const { t, locale } = useI18n();
@@ -75,41 +76,42 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
       <SchemaOrg
         name={t.developers.title}
         description={t.developers.desc}
-        url="https://tokencostsai.com/developers/"
+        url={buildLocalizedCanonical('/developers/', locale)}
+        inLanguage={locale}
       />
 
       {/* Header */}
       <div className="space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-400">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 text-xs font-medium text-indigo-700 dark:text-indigo-400">
           <Terminal className="h-3.5 w-3.5" />
           <span>{t.developers.badge}</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-100">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
           {t.developers.title}
         </h1>
-        <p className="text-sm text-zinc-400 max-w-2xl leading-relaxed">
+        <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
           {t.developers.desc}
         </p>
       </div>
 
       {/* Section 1: LiteLLM Configuration */}
-      <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 backdrop-blur-md shadow-xl space-y-4">
+      <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-6 backdrop-blur-md shadow-sm dark:shadow-xl space-y-4">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2">
-            <Terminal className="h-4 w-4 text-indigo-400" />
-            <h2 className="text-base font-bold text-zinc-100">
+            <Terminal className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
               LiteLLM Proxy Config (`config.yaml`)
             </h2>
           </div>
           <button
             type="button"
             onClick={() => copyToClipboard(litellmConfig, 'litellm')}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 border border-zinc-200/80 dark:border-transparent transition-colors"
           >
             {copiedSection === 'litellm' ? (
               <>
-                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-400">{t.common.copied}</span>
+                <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-700 dark:text-emerald-400">{t.common.copied}</span>
               </>
             ) : (
               <>
@@ -120,29 +122,29 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
           </button>
         </div>
 
-        <pre className="p-4 rounded-xl bg-zinc-950 font-mono text-xs text-zinc-200 overflow-x-auto leading-relaxed border border-zinc-800/80">
+        <pre className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950 font-mono text-xs text-zinc-800 dark:text-zinc-200 overflow-x-auto leading-relaxed border border-zinc-200/90 dark:border-zinc-800/80">
           <code>{litellmConfig}</code>
         </pre>
       </div>
 
       {/* Section 2: Vercel AI SDK */}
-      <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 backdrop-blur-md shadow-xl space-y-4">
+      <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-6 backdrop-blur-md shadow-sm dark:shadow-xl space-y-4">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2">
-            <FileCode className="h-4 w-4 text-indigo-400" />
-            <h2 className="text-base font-bold text-zinc-100">
+            <FileCode className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
               Vercel AI SDK (TypeScript)
             </h2>
           </div>
           <button
             type="button"
             onClick={() => copyToClipboard(vercelAiCode, 'vercel')}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 border border-zinc-200/80 dark:border-transparent transition-colors"
           >
             {copiedSection === 'vercel' ? (
               <>
-                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-400">{t.common.copied}</span>
+                <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-700 dark:text-emerald-400">{t.common.copied}</span>
               </>
             ) : (
               <>
@@ -153,7 +155,7 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
           </button>
         </div>
 
-        <pre className="p-4 rounded-xl bg-zinc-950 font-mono text-xs text-zinc-200 overflow-x-auto leading-relaxed border border-zinc-800/80">
+        <pre className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950 font-mono text-xs text-zinc-800 dark:text-zinc-200 overflow-x-auto leading-relaxed border border-zinc-200/90 dark:border-zinc-800/80">
           <code>{vercelAiCode}</code>
         </pre>
       </div>

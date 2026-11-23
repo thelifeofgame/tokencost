@@ -45,6 +45,8 @@ export interface TranslationDictionary {
     developers: string;
     contact: string;
     language: string;
+    switchToLight: string;
+    switchToDark: string;
   };
   simulator: {
     heroBadge: string;
@@ -110,6 +112,23 @@ export interface TranslationDictionary {
       cacheSavings: string;
       batchSavings: string;
       baseCost: string;
+      tabAll: string;
+      tabFast: string;
+      tabFrontier: string;
+      tabReasoning: string;
+      tipFast: string;
+      tipFrontier: string;
+      tipReasoning: string;
+      benchmarkMissingBadge: string;
+      benchmarkMissingHint: string;
+      emptyTierTitle: string;
+      emptyTierDesc: string;
+      resetFilterCta: string;
+      rangeSubtitle: string;
+      lowestBadge: string;
+      showAllModels: string;
+      collapseList: string;
+      clientEngineNote: string;
     };
     router: {
       title: string;

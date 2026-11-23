@@ -3,30 +3,30 @@
   "title": "Market Radar Events Feed",
   "description": "Industry hot news, price cuts, new releases, and policy deals for LLM APIs.",
   "version": "1.0.7",
-  "lastUpdated": "2026-11-22T09:09:02.224315+08:00",
-  "totalEvents": 10,
+  "lastUpdated": "2026-11-23T09:09:30+08:00",
+  "totalEvents": 9,
   "events": [
     {
       "id": "radar-2026-012",
       "type": "price_cut",
-      "badgeText": "53%-84% Flash Drop",
+      "badgeText": "42%-64% Rate Drop",
       "badgeColor": "emerald",
-      "provider": "DeepSeek / Zhipu / Qwen",
-      "title": "DeepSeek V4.1 Flash ($0.0498/M) & Inkling 2 Mini Lead Nov 22",
-      "highlight": "$0.0498/M & $0.0399/M",
-      "prevValue": "$0.300",
-      "newValue": "$0.0498",
-      "discountPercent": 83,
-      "description": "Nov 22 live API tracker records deepseek-v4.1-flash edging down to $0.0498/$0.1992 ($0.001 cached, 97.99% off), glm-5.3-flash holding $0.0399/$0.0784, gemma-3-4b-it dropping to $0.04/$0.05, qwen3.5-27b reverting to $0.26/$2.60, and new Thinking Machines Inkling 2 Mini ($0.075/$0.30, 1M context) added, while minimax-m3.1-flash keeps $0.15/$0.60 peak vs $0.075/$0.30 off-peak (15:00-01:00 UTC).",
-      "ctaText": "Compare V4.1 Flash vs Terra",
-      "ctaLink": "/compare/deepseek-v4.1-flash-vs-gpt-6.1-terra/",
+      "provider": "Google / OpenAI / Qwen",
+      "title": "Gemma 3 27B (-64%), GPT-OSS 120B ($0.05) & Qwen3.8 Drop Nov 23",
+      "highlight": "Gemma 3 Out $0.16 · OSS $0.05/M",
+      "prevValue": "$0.450",
+      "newValue": "$0.160",
+      "discountPercent": 64,
+      "description": "Nov 23 live API tracker records google/gemma-3-27b-it output dropping 64.4% ($0.45 to $0.16, $0.02 cached), openai/gpt-oss-120b falling 44.4% ($0.09/$0.36 to $0.05/$0.25), qwen3.6-35b-a3b -50% ($0.10/$0.90 to $0.05/$0.70), qwen3.8-27b -41.7% ($0.06/$1.96 to $0.035/$1.50), and kimi-k3.1-pro edging down (-5% to $0.2403/$8.4023), while deepseek-v4.1-flash holds $0.0498/$0.1992 ($0.001 cached) and glm-4.7 ($0.60/$2.20) & gpt-oss-20b ($0.03/$0.13) ticked up.",
+      "ctaText": "Calculate Gemma 3 27B",
+      "ctaLink": "/calculator/gemma-3-27b-it/",
       "timestamp": "Today",
       "isFeatured": true
     },
     {
       "id": "radar-2026-003",
       "type": "policy_deal",
-      "badgeText": "8 Days Left: Dec 1 Hike",
+      "badgeText": "7 Days Left: Dec 1 Hike",
       "badgeColor": "rose",
       "provider": "Google",
       "title": "Gemini 4 Carbon & Argon Intro $2/$10 Pricing Expires Nov 30",
@@ -49,26 +49,9 @@
       "description": "Google makes Genie 4 (models/genie-4) generally available on the Gemini v1beta Interactions API, streaming 720p 24fps worlds with 48kHz audio at $1.50/M input and $17.50/M video output (~$6.05/min).",
       "ctaText": "Compare Gemini 4 Flagships",
       "ctaLink": "/compare/gemini-4-neon-vs-gpt-6.2-sol/",
-      "timestamp": "Yesterday",
+      "timestamp": "2 days ago",
       "isFeatured": true,
       "topicLink": "/pricing/realtime-voice-world-model-api-costs/"
-    },
-    {
-      "id": "radar-2026-011",
-      "type": "price_cut",
-      "badgeText": "40%-76% Rate Drop",
-      "badgeColor": "emerald",
-      "provider": "OpenAI / DeepSeek",
-      "title": "OpenRouter Slashes gpt-oss-120b (-40%) & DeepSeek V4.1 Flash-1017 (-76%)",
-      "highlight": "$0.09/M & $0.036/M Input",
-      "prevValue": "$0.150",
-      "newValue": "$0.036",
-      "discountPercent": 76,
-      "description": "Live API tracker records major price drops for openai/gpt-oss-120b ($0.15/$0.60 to $0.09/$0.36), deepseek-v4.1-flash-1017 ($0.15/$0.60 to $0.036/$0.50), GLM-5.1 (-15%), and Kimi-K2.7-Code output (-14.3%). (Note: deepseek-v4.1-flash-1017 has since reverted to $0.15/$0.60; gpt-oss-120b remains at $0.09/$0.36.)",
-      "ctaText": "Calculate Flash Cost",
-      "ctaLink": "/calculator/deepseek-v4.1-flash/",
-      "timestamp": "2 days ago",
-      "isFeatured": true
     },
     {
       "id": "radar-2026-010",
@@ -84,8 +67,8 @@
       "description": "OpenAI releases gpt-live-1.1 on v1/live/sessions alongside a new WebRTC standby billing mode that cuts idle voice session costs by 60% from $0.05/min to $0.02/min.",
       "ctaText": "Explore OpenAI Flagships",
       "ctaLink": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/",
-      "timestamp": "2 days ago",
-      "isFeatured": false,
+      "timestamp": "3 days ago",
+      "isFeatured": true,
       "topicLink": "/pricing/realtime-voice-world-model-api-costs/"
     },
     {
@@ -99,7 +82,7 @@
       "description": "Google debuts Gemini 4 Neon tailored for code and agentic tasks with native 1M context, 145 t/s throughput, and 95% prompt cache read discount ($0.15/1M).",
       "ctaText": "Compare Neon vs Sol",
       "ctaLink": "/compare/gemini-4-neon-vs-gpt-6.2-sol/",
-      "timestamp": "3 days ago",
+      "timestamp": "4 days ago",
       "isFeatured": false
     },
     {
@@ -113,7 +96,7 @@
       "description": "OpenAI introduces GPT-6.2 Astra flagship ($8/$40) and Sol ($2/$10) with reasoning mode, featuring 1.05M token windows and 95% cached input discount.",
       "ctaText": "Compare Astra vs Opus",
       "ctaLink": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/",
-      "timestamp": "4 days ago",
+      "timestamp": "5 days ago",
       "isFeatured": false
     },
     {
@@ -127,7 +110,7 @@
       "description": "DeepSeek drops server-side web search and fetch tool surcharges (billed solely as context tokens) while keeping V4.1-Flash prompt cache hits at $0.003-$0.006/1M.",
       "ctaText": "Calculate New Cost",
       "ctaLink": "/calculator/deepseek-v4.1-flash",
-      "timestamp": "3 days ago",
+      "timestamp": "4 days ago",
       "isFeatured": false
     },
     {

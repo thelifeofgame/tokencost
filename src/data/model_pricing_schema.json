@@ -3,7 +3,7 @@
   "title": "Global LLM Official Pricing, Benchmarks and Performance Schema",
   "description": "Standardized schema tracking official API token rates, prompt caching, batch discounts, context windows, Artificial Analysis benchmarks, and throughput/latency metrics for leading foundational LLM providers.",
   "version": "2.1.0",
-  "lastUpdated": "2026-11-22T09:03:30.498088+08:00",
+  "lastUpdated": "2026-11-23T09:03:05.795607+08:00",
   "currency": "USD",
   "unit": "per_1m_tokens",
   "referenceSources": [
@@ -656,7 +656,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 44.2,
-        "codingIndex": 1236,
+        "codingIndex": 1235,
         "agenticIndex": null,
         "arenaElo": 1203,
         "evalSources": [
@@ -694,7 +694,7 @@
         "intelligenceIndex": 59.1,
         "codingIndex": 1307,
         "agenticIndex": null,
-        "arenaElo": 1402,
+        "arenaElo": 1398,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -763,9 +763,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 54.5,
-        "codingIndex": 1287,
+        "codingIndex": 1286,
         "agenticIndex": null,
-        "arenaElo": 1264,
+        "arenaElo": 1265,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1014,7 +1014,7 @@
         "intelligenceIndex": 32.6,
         "codingIndex": 1281,
         "agenticIndex": null,
-        "arenaElo": 1263,
+        "arenaElo": 1264,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1084,9 +1084,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 60,
-        "codingIndex": 1350,
+        "codingIndex": 1351,
         "agenticIndex": null,
-        "arenaElo": 1273,
+        "arenaElo": 1254,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1122,7 +1122,7 @@
         "intelligenceIndex": 53.9,
         "codingIndex": 1330,
         "agenticIndex": null,
-        "arenaElo": 1333,
+        "arenaElo": 1309,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1156,9 +1156,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 61.4,
-        "codingIndex": 1391,
+        "codingIndex": 1389,
         "agenticIndex": null,
-        "arenaElo": 1491,
+        "arenaElo": 1492,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1542,9 +1542,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 54.6,
-        "codingIndex": 1270,
+        "codingIndex": 1269,
         "agenticIndex": null,
-        "arenaElo": 1191,
+        "arenaElo": 1190,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1859,9 +1859,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 14.2,
-        "codingIndex": 1074,
+        "codingIndex": 1073,
         "agenticIndex": null,
-        "arenaElo": 1074,
+        "arenaElo": 1073,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -2529,9 +2529,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1014,
+        "codingIndex": 1015,
         "agenticIndex": null,
-        "arenaElo": 964,
+        "arenaElo": 965,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -2565,9 +2565,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 923,
+        "codingIndex": 924,
         "agenticIndex": null,
-        "arenaElo": 923,
+        "arenaElo": 924,
         "evalSources": [
           "Design Arena"
         ]
@@ -2670,9 +2670,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1124,
+        "codingIndex": 1125,
         "agenticIndex": null,
-        "arenaElo": 1124,
+        "arenaElo": 1125,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -3057,7 +3057,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1161,
+        "codingIndex": 1162,
         "agenticIndex": null,
         "arenaElo": 1128,
         "evalSources": [
@@ -3163,7 +3163,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1148,
+        "codingIndex": 1149,
         "agenticIndex": null,
         "arenaElo": 1086,
         "evalSources": [
@@ -3250,10 +3250,10 @@
       "modelId": "qwen3.6-35b-a3b",
       "modelName": "Qwen: Qwen3.6 35B A3B",
       "providerOrg": "Alibaba Qwen",
-      "inputPerM": 0.1,
-      "outputPerM": 0.9,
+      "inputPerM": 0.05,
+      "outputPerM": 0.7,
       "cachedInputPerM": 0.025,
-      "cacheDiscountPercent": 75.0,
+      "cacheDiscountPercent": 50.0,
       "batchDiscountPercent": 40.0,
       "contextWindow": 262144,
       "maxOutputTokens": 235929,
@@ -3495,13 +3495,13 @@
       "modelId": "qwen3.8-27b",
       "modelName": "Qwen: Qwen3.8 27B",
       "providerOrg": "Alibaba Qwen",
-      "inputPerM": 0.06,
-      "outputPerM": 1.96,
-      "cachedInputPerM": 0.059,
-      "cacheDiscountPercent": 1.67,
+      "inputPerM": 0.035,
+      "outputPerM": 1.5,
+      "cachedInputPerM": 0.0175,
+      "cacheDiscountPercent": 50.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1024000,
-      "maxOutputTokens": 235929,
+      "maxOutputTokens": 131072,
       "latencyTier": "reasoning-heavy",
       "officialDocUrl": "https://www.alibabacloud.com/help/en/model-studio",
       "affiliateTag": null,
@@ -3970,7 +3970,7 @@
         "intelligenceIndex": 50,
         "codingIndex": 1308,
         "agenticIndex": null,
-        "arenaElo": 1300,
+        "arenaElo": 1301,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4004,9 +4004,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 64.6,
-        "codingIndex": 1391,
+        "codingIndex": 1393,
         "agenticIndex": null,
-        "arenaElo": 1456,
+        "arenaElo": 1433,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4040,7 +4040,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 7.4,
-        "codingIndex": 1096,
+        "codingIndex": 1097,
         "agenticIndex": null,
         "arenaElo": 1039,
         "evalSources": [
@@ -4078,7 +4078,7 @@
         "intelligenceIndex": 36.5,
         "codingIndex": 1273,
         "agenticIndex": null,
-        "arenaElo": 1307,
+        "arenaElo": 1306,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4112,7 +4112,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1152,
+        "codingIndex": 1153,
         "agenticIndex": null,
         "arenaElo": 1120,
         "evalSources": [
@@ -4183,7 +4183,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1174,
+        "codingIndex": 1173,
         "agenticIndex": null,
         "arenaElo": 1144,
         "evalSources": [
@@ -4289,7 +4289,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1164,
+        "codingIndex": 1165,
         "agenticIndex": null,
         "arenaElo": 1124,
         "evalSources": [
@@ -4851,7 +4851,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1093,
+        "codingIndex": 1094,
         "agenticIndex": null,
         "arenaElo": 1044,
         "evalSources": [
@@ -4958,7 +4958,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1145,
+        "codingIndex": 1146,
         "agenticIndex": null,
         "arenaElo": 1099,
         "evalSources": [
@@ -5559,7 +5559,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1094,
+        "codingIndex": 1093,
         "agenticIndex": null,
         "arenaElo": 1061,
         "evalSources": [
@@ -5735,7 +5735,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1197,
+        "codingIndex": 1196,
         "agenticIndex": null,
         "arenaElo": 1181,
         "evalSources": [
@@ -5770,9 +5770,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 30.8,
-        "codingIndex": 1204,
+        "codingIndex": 1205,
         "agenticIndex": null,
-        "arenaElo": 1091,
+        "arenaElo": 1090,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -5964,12 +5964,12 @@
       "modelName": "Google: Gemma 3 27B",
       "providerOrg": "Google",
       "inputPerM": 0.08,
-      "outputPerM": 0.45,
-      "cachedInputPerM": 0.04,
-      "cacheDiscountPercent": 50.0,
+      "outputPerM": 0.16,
+      "cachedInputPerM": 0.02,
+      "cacheDiscountPercent": 75.0,
       "batchDiscountPercent": 50.0,
       "contextWindow": 131072,
-      "maxOutputTokens": 117964,
+      "maxOutputTokens": 16384,
       "latencyTier": "reasoning-heavy",
       "officialDocUrl": "https://ai.google.dev/pricing",
       "affiliateTag": null,
@@ -7036,7 +7036,7 @@
         "intelligenceIndex": 6.3,
         "codingIndex": 1147,
         "agenticIndex": null,
-        "arenaElo": 1058,
+        "arenaElo": 1059,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7072,7 +7072,7 @@
         "intelligenceIndex": null,
         "codingIndex": 1174,
         "agenticIndex": null,
-        "arenaElo": 1130,
+        "arenaElo": 1131,
         "evalSources": [
           "Design Arena"
         ]
@@ -7177,7 +7177,7 @@
         "intelligenceIndex": 36.6,
         "codingIndex": 1275,
         "agenticIndex": null,
-        "arenaElo": 1287,
+        "arenaElo": 1286,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7248,7 +7248,7 @@
         "intelligenceIndex": 24.9,
         "codingIndex": 1289,
         "agenticIndex": null,
-        "arenaElo": 1222,
+        "arenaElo": 1221,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7282,9 +7282,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 43.6,
-        "codingIndex": 1384,
+        "codingIndex": 1385,
         "agenticIndex": null,
-        "arenaElo": 1123,
+        "arenaElo": 1120,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7425,7 +7425,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 18.9,
-        "codingIndex": 1179,
+        "codingIndex": 1178,
         "agenticIndex": null,
         "arenaElo": 1113,
         "evalSources": [
@@ -7566,7 +7566,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1046,
+        "codingIndex": 1047,
         "agenticIndex": null,
         "arenaElo": 957,
         "evalSources": [
@@ -7744,7 +7744,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1123,
+        "codingIndex": 1124,
         "agenticIndex": null,
         "arenaElo": 1066,
         "evalSources": [
@@ -7816,7 +7816,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1050,
+        "codingIndex": 1051,
         "agenticIndex": null,
         "arenaElo": 1050,
         "evalSources": [
@@ -8097,9 +8097,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 888,
+        "codingIndex": 889,
         "agenticIndex": null,
-        "arenaElo": 888,
+        "arenaElo": 889,
         "evalSources": [
           "Design Arena"
         ]
@@ -8343,9 +8343,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1079,
+        "codingIndex": 1080,
         "agenticIndex": null,
-        "arenaElo": 1079,
+        "arenaElo": 1080,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8381,7 +8381,7 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 1100,
+        "arenaElo": 1101,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8415,9 +8415,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1104,
+        "codingIndex": 1103,
         "agenticIndex": null,
-        "arenaElo": 1103,
+        "arenaElo": 1105,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8541,10 +8541,10 @@
       "modelId": "kimi-k3.1-pro",
       "modelName": "MoonshotAI: Kimi K3.1 Pro",
       "providerOrg": "Moonshot AI",
-      "inputPerM": 0.253,
-      "outputPerM": 8.8,
-      "cachedInputPerM": 0.18,
-      "cacheDiscountPercent": 28.85,
+      "inputPerM": 0.2403,
+      "outputPerM": 8.4023,
+      "cachedInputPerM": 0.2,
+      "cacheDiscountPercent": 16.77,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 943718,
@@ -8561,7 +8561,7 @@
         "intelligenceIndex": 46.5,
         "codingIndex": 1294,
         "agenticIndex": null,
-        "arenaElo": 1165,
+        "arenaElo": 1164,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8807,7 +8807,7 @@
         "intelligenceIndex": 11.8,
         "codingIndex": 1124,
         "agenticIndex": null,
-        "arenaElo": 1096,
+        "arenaElo": 1095,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8843,7 +8843,7 @@
         "intelligenceIndex": 11.8,
         "codingIndex": 1124,
         "agenticIndex": null,
-        "arenaElo": 1096,
+        "arenaElo": 1095,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8982,7 +8982,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 13.6,
-        "codingIndex": 1130,
+        "codingIndex": 1131,
         "agenticIndex": null,
         "arenaElo": 1102,
         "evalSources": [
@@ -9018,7 +9018,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 13.6,
-        "codingIndex": 1130,
+        "codingIndex": 1131,
         "agenticIndex": null,
         "arenaElo": 1102,
         "evalSources": [
@@ -9369,7 +9369,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 944,
+        "codingIndex": 945,
         "agenticIndex": null,
         "arenaElo": 892,
         "evalSources": [
@@ -9544,7 +9544,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1149,
+        "codingIndex": 1150,
         "agenticIndex": null,
         "arenaElo": 1022,
         "evalSources": [
@@ -9650,7 +9650,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1096,
+        "codingIndex": 1097,
         "agenticIndex": null,
         "arenaElo": 1004,
         "evalSources": [
@@ -9757,7 +9757,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1152,
+        "codingIndex": 1153,
         "agenticIndex": null,
         "arenaElo": 1028,
         "evalSources": [
@@ -9864,7 +9864,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1075,
+        "codingIndex": 1076,
         "agenticIndex": null,
         "arenaElo": 955,
         "evalSources": [
@@ -10076,7 +10076,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1193,
+        "codingIndex": 1194,
         "agenticIndex": null,
         "arenaElo": 1068,
         "evalSources": [
@@ -10478,11 +10478,11 @@
       "modelId": "gpt-oss-120b",
       "modelName": "OpenAI: gpt-oss-120b",
       "providerOrg": "OpenAI",
-      "inputPerM": 0.09,
-      "outputPerM": 0.36,
-      "cachedInputPerM": 0.045,
-      "cacheDiscountPercent": 50.0,
-      "batchDiscountPercent": 67.11,
+      "inputPerM": 0.05,
+      "outputPerM": 0.25,
+      "cachedInputPerM": 0.05,
+      "cacheDiscountPercent": 0.0,
+      "batchDiscountPercent": 40.8,
       "contextWindow": 131072,
       "maxOutputTokens": 117964,
       "latencyTier": "reasoning-heavy",
@@ -10496,7 +10496,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 3.8,
-        "codingIndex": 944,
+        "codingIndex": 945,
         "agenticIndex": null,
         "arenaElo": 868,
         "evalSources": [
@@ -10514,11 +10514,11 @@
       "modelId": "gpt-oss-20b",
       "modelName": "OpenAI: gpt-oss-20b",
       "providerOrg": "OpenAI",
-      "inputPerM": 0.017,
-      "outputPerM": 0.085,
-      "cachedInputPerM": 0.0085,
-      "cacheDiscountPercent": 50.0,
-      "batchDiscountPercent": 0.0,
+      "inputPerM": 0.03,
+      "outputPerM": 0.13,
+      "cachedInputPerM": 0.03,
+      "cacheDiscountPercent": 0.0,
+      "batchDiscountPercent": 20.0,
       "contextWindow": 131072,
       "maxOutputTokens": 117964,
       "latencyTier": "standard",
@@ -10693,8 +10693,8 @@
       "providerOrg": "Particle-ai",
       "inputPerM": 0.07,
       "outputPerM": 0.5,
-      "cachedInputPerM": 0.006,
-      "cacheDiscountPercent": 91.43,
+      "cachedInputPerM": 0.03,
+      "cacheDiscountPercent": 57.14,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 131072,
@@ -11166,7 +11166,7 @@
         "intelligenceIndex": 17.7,
         "codingIndex": 1215,
         "agenticIndex": null,
-        "arenaElo": 1112,
+        "arenaElo": 1113,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12077,9 +12077,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 12.5,
-        "codingIndex": 1164,
+        "codingIndex": 1163,
         "agenticIndex": null,
-        "arenaElo": 1164,
+        "arenaElo": 1163,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12393,7 +12393,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1244,
+        "codingIndex": 1245,
         "agenticIndex": null,
         "arenaElo": 1185,
         "evalSources": [
@@ -12680,7 +12680,7 @@
         "intelligenceIndex": null,
         "codingIndex": 1147,
         "agenticIndex": null,
-        "arenaElo": 1070,
+        "arenaElo": 1072,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12731,10 +12731,10 @@
       "modelId": "glm-4.7",
       "modelName": "Z.ai: GLM 4.7",
       "providerOrg": "Zhipu AI",
-      "inputPerM": 0.4,
-      "outputPerM": 1.75,
-      "cachedInputPerM": 0.08,
-      "cacheDiscountPercent": 80.0,
+      "inputPerM": 0.6,
+      "outputPerM": 2.2,
+      "cachedInputPerM": 0.11,
+      "cacheDiscountPercent": 81.67,
       "batchDiscountPercent": 50.0,
       "contextWindow": 204800,
       "maxOutputTokens": 131072,
@@ -12749,9 +12749,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1198,
+        "codingIndex": 1199,
         "agenticIndex": null,
-        "arenaElo": 1095,
+        "arenaElo": 1097,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12823,7 +12823,7 @@
         "intelligenceIndex": null,
         "codingIndex": 1228,
         "agenticIndex": null,
-        "arenaElo": 1134,
+        "arenaElo": 1135,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -13000,7 +13000,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 27.8,
-        "codingIndex": 1259,
+        "codingIndex": 1260,
         "agenticIndex": null,
         "arenaElo": 1281,
         "evalSources": [
@@ -13141,7 +13141,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1093,
+        "codingIndex": 1092,
         "agenticIndex": null,
         "arenaElo": 1049,
         "evalSources": [

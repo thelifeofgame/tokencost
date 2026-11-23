@@ -2,9 +2,9 @@
 
 > Real-time LLM API pricing tracker, Prompt Caching & Batch 50% cost simulator, and Coding Agent token multiplier directory covering 367 frontier and open-weight models across 58 provider organizations (22 core labs).
 
-TokenCosts AI normalizes per-1M-token input, output, cached-read, cache-write, and asynchronous batch rates in USD alongside context windows, throughput (tokens/sec), TTFT latency, and benchmark ELO scores. For machine-readable lookups, AI agents and automated FinOps pipelines should fetch the lightweight structured catalog at https://tokencostsai.com/pricing-summary.json (synced daily from verified vendor rate cards; last updated 2026-11-22).
+TokenCosts AI normalizes per-1M-token input, output, cached-read, cache-write, and asynchronous batch rates in USD alongside context windows, throughput (tokens/sec), TTFT latency, and benchmark ELO scores. For machine-readable lookups, AI agents and automated FinOps pipelines should fetch the lightweight structured catalog at https://tokencostsai.com/pricing-summary.json (synced daily from verified vendor rate cards; last updated 2026-11-23).
 
-Current market highlights (2026-11-22): DeepSeek V4.1 Flash ($0.0498/$0.1992, -83%), GLM-5.3-Flash ($0.0399/$0.0784, -84% out), Qwen3-Coder-30B ($0.07/$0.28, -53%).
+Current market highlights (2026-11-23): DeepSeek V4.1 Flash ($0.0498/$0.1992, -83%), GLM-5.3-Flash ($0.0399/$0.0784, -84% out), Qwen3-Coder-30B ($0.07/$0.28, -53%).
 
 ## Authoritative Data & API Endpoints
 

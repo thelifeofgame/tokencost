@@ -3,6 +3,8 @@ import CalculatorClient from './CalculatorClient';
 import { MODELS_DATA } from '@/lib/models-data';
 import {
   buildAlternates,
+  getOgLocale,
+  getAlternateOgLocales,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
@@ -18,8 +20,10 @@ export const metadata: Metadata = {
     description: `Dedicated prompt caching break-even simulators for ${MODEL_COUNT}+ AI foundation models.`,
     url: 'https://tokencostsai.com/calculator/',
     siteName: 'TokenCosts AI',
+    locale: getOgLocale('en'),
+    alternateLocale: getAlternateOgLocales('en'),
     type: 'website',
-      images: DEFAULT_OG_IMAGES,
+    images: DEFAULT_OG_IMAGES,
   },
   twitter: {
     card: 'summary_large_image',

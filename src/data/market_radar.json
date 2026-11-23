@@ -3,8 +3,8 @@
   "title": "Daily LLM Industry Market Radar & Price Drops",
   "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-22T09:04:45.789964+08:00",
-  "date": "2026-11-22",
+  "lastUpdated": "2026-11-23T09:03:06.560900+08:00",
+  "date": "2026-11-23",
   "totalItems": 12,
   "categories": [
     {
@@ -42,9 +42,9 @@
       "metrics": {
         "inputPerM": 0.075,
         "outputPerM": 0.3,
-        "cacheDiscountPercent": 80,
+        "cacheDiscountPercent": 80.0,
         "contextWindow": 1048576,
-        "throughputTps": 145
+        "throughputTps": 145.0
       }
     },
     {
@@ -60,9 +60,9 @@
       "metrics": {
         "inputPerM": 0.15,
         "outputPerM": 1.875,
-        "cacheDiscountPercent": 75,
+        "cacheDiscountPercent": 75.0,
         "contextWindow": 262144,
-        "throughputTps": 85
+        "throughputTps": 85.0
       }
     },
     {
@@ -76,11 +76,11 @@
       "effectiveDate": "2026-11-20",
       "link": "https://openrouter.ai/models/mistralai/pixtral-large-2502",
       "metrics": {
-        "inputPerM": 2,
-        "outputPerM": 6,
-        "cacheDiscountPercent": 50,
+        "inputPerM": 2.0,
+        "outputPerM": 6.0,
+        "cacheDiscountPercent": 50.0,
         "contextWindow": 128000,
-        "throughputTps": 45
+        "throughputTps": 45.0
       }
     },
     {
@@ -94,11 +94,11 @@
       "effectiveDate": "2026-11-18",
       "link": "https://openrouter.ai/models/google/gemini-4-neon",
       "metrics": {
-        "inputPerM": 3,
-        "outputPerM": 15,
-        "cacheDiscountPercent": 95,
+        "inputPerM": 3.0,
+        "outputPerM": 15.0,
+        "cacheDiscountPercent": 95.0,
         "contextWindow": 1048576,
-        "throughputTps": 145
+        "throughputTps": 145.0
       }
     },
     {
@@ -112,11 +112,11 @@
       "effectiveDate": "2026-11-11",
       "link": "https://ai.google.dev/pricing",
       "metrics": {
-        "inputPerM": 2,
-        "outputPerM": 10,
-        "cacheDiscountPercent": 95,
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cacheDiscountPercent": 95.0,
         "contextWindow": 1048576,
-        "throughputTps": 145
+        "throughputTps": 145.0
       }
     },
     {
@@ -130,11 +130,11 @@
       "effectiveDate": "2026-11-10",
       "link": "https://www.anthropic.com/pricing",
       "metrics": {
-        "inputPerM": 8,
-        "outputPerM": 40,
+        "inputPerM": 8.0,
+        "outputPerM": 40.0,
         "cacheDiscountPercent": 97.5,
         "contextWindow": 1000000,
-        "throughputTps": 45
+        "throughputTps": 45.0
       }
     },
     {
@@ -148,12 +148,12 @@
       "effectiveDate": "2026-11-08",
       "link": "https://openai.com/api/pricing/",
       "metrics": {
-        "inputPerM": 2,
-        "outputPerM": 10,
-        "batchDiscountPercent": 50,
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "batchDiscountPercent": 50.0,
         "contextWindow": 1050000,
-        "throughputTps": 85,
-        "cacheDiscountPercent": 95
+        "throughputTps": 85.0,
+        "cacheDiscountPercent": 95.0
       }
     },
     {
@@ -167,11 +167,11 @@
       "effectiveDate": "2026-11-05",
       "link": "https://www.anthropic.com/pricing",
       "metrics": {
-        "inputPerM": 2,
-        "outputPerM": 10,
-        "cacheDiscountPercent": 95,
+        "inputPerM": 2.0,
+        "outputPerM": 10.0,
+        "cacheDiscountPercent": 95.0,
         "contextWindow": 1000000,
-        "throughputTps": 85
+        "throughputTps": 85.0
       }
     },
     {
@@ -189,7 +189,7 @@
         "outputPerM": 0.1992,
         "cacheDiscountPercent": 97.99,
         "contextWindow": 1048576,
-        "throughputTps": 145
+        "throughputTps": 145.0
       }
     },
     {
@@ -207,7 +207,7 @@
         "outputPerM": 1.2505,
         "cacheDiscountPercent": 94.96,
         "contextWindow": 1048576,
-        "throughputTps": 85
+        "throughputTps": 85.0
       }
     },
     {
@@ -225,7 +225,7 @@
         "outputPerM": 0.0784,
         "cacheDiscountPercent": 24.81,
         "contextWindow": 1048576,
-        "throughputTps": 145
+        "throughputTps": 145.0
       }
     },
     {
@@ -241,9 +241,9 @@
       "metrics": {
         "inputPerM": 0.59,
         "outputPerM": 0.79,
-        "cacheDiscountPercent": 50,
+        "cacheDiscountPercent": 50.0,
         "contextWindow": 128000,
-        "throughputTps": 420
+        "throughputTps": 420.0
       }
     }
   ]
