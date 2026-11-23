@@ -450,10 +450,21 @@ export default function MarketPulseRadar() {
                   </span>
                 </div>
 
-                <div className="text-[11px] font-semibold text-zinc-700 dark:text-zinc-300 flex items-center gap-1">
+                <div className="text-[11px] font-semibold text-zinc-700 dark:text-zinc-300 flex items-center justify-between gap-2">
                   <span className="text-zinc-600 dark:text-zinc-400 font-mono uppercase text-[9px] tracking-wider px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                     {item.provider}
                   </span>
+                  {hasModelLink && item.link && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 font-normal text-[10px] transition-colors shrink-0"
+                    >
+                      <span>{radarT.officialAnnouncement}</span>
+                      <ExternalLink className="h-2.5 w-2.5" />
+                    </a>
+                  )}
                 </div>
 
                 <h3 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors line-clamp-2 leading-snug">

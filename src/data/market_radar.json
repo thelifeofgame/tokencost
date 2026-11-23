@@ -2,29 +2,29 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Daily LLM Industry Market Radar & Price Drops",
   "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
-  "version": "1.0.0",
-  "lastUpdated": "2026-11-23T09:03:06.560900+08:00",
+  "version": "1.1.0",
+  "lastUpdated": "2026-11-23T13:53:56.839836+08:00",
   "date": "2026-11-23",
   "totalItems": 12,
   "categories": [
     {
       "type": "new_model",
-      "label": "新模型发布 (New Models)",
+      "label": "New Models",
       "badgeColor": "emerald"
     },
     {
       "type": "price_cut",
-      "label": "API 降价 (Price Cuts)",
+      "label": "Price Cuts",
       "badgeColor": "rose"
     },
     {
       "type": "promo",
-      "label": "限时与批处理特惠 (Batch & Promos)",
+      "label": "Batch & Promos",
       "badgeColor": "amber"
     },
     {
       "type": "caching_update",
-      "label": "缓存降本升级 (Prompt Caching)",
+      "label": "Prompt Caching",
       "badgeColor": "indigo"
     }
   ],
@@ -32,11 +32,11 @@
     {
       "id": "radar-dyn-inkling-2-mini",
       "type": "new_model",
-      "title": "Thinking Machines 上线新模型 Inkling 2 Mini，支持 1,048,576 上下文",
+      "title": "Thinking Machines Releases Inkling 2 Mini with 1,048,576 Context",
       "provider": "Thinkingmachines",
       "modelId": "inkling-2-mini",
       "badgeText": "New Arrival",
-      "summary": "Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle",
+      "summary": "Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times...",
       "effectiveDate": "2026-11-21",
       "link": "https://openrouter.ai/models/thinkingmachines/inkling-2-mini",
       "metrics": {
@@ -45,16 +45,43 @@
         "cacheDiscountPercent": 80.0,
         "contextWindow": 1048576,
         "throughputTps": 145.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "Thinking Machines 上线新模型 Inkling 2 Mini，支持 1,048,576 上下文",
+          "badgeText": "新模型上线",
+          "summary": "Thinking Machines 在 OpenRouter 正式发布 Inkling 2 Mini，支持 1,048,576 上下文窗口，API 定价为输入 $0.075/1M、输出 $0.30/1M。"
+        },
+        "zh-TW": {
+          "title": "Thinking Machines 上線新模型 Inkling 2 Mini，支援 1,048,576 上下文",
+          "badgeText": "新模型上線",
+          "summary": "Thinking Machines 於 OpenRouter 正式發布 Inkling 2 Mini，支援 1,048,576 上下文視窗，API 定價為輸入 $0.075/1M、輸出 $0.30/1M。"
+        },
+        "ja": {
+          "title": "Thinking Machines、1,048,576 コンテキスト対応の新モデル Inkling 2 Mini を公開",
+          "badgeText": "新着モデル",
+          "summary": "Thinking Machines が OpenRouter で Inkling 2 Mini を公開しました。1,048,576 トークンのコンテキストに対応し、料金は入力 $0.075/1M・出力 $0.30/1M です。"
+        },
+        "ko": {
+          "title": "Thinking Machines, 1,048,576 컨텍스트 지원 신규 모델 Inkling 2 Mini 출시",
+          "badgeText": "신규 모델",
+          "summary": "Thinking Machines가 OpenRouter에 Inkling 2 Mini을(를) 출시했습니다. 1,048,576 토큰 컨텍스트를 지원하며 요금은 입력 $0.075/1M, 출력 $0.30/1M입니다."
+        },
+        "es": {
+          "title": "Thinking Machines lanza Inkling 2 Mini con contexto de 1,048,576 tokens",
+          "badgeText": "Nuevo Modelo",
+          "summary": "Thinking Machines lanza Inkling 2 Mini en OpenRouter con ventana de contexto de 1,048,576 tokens a $0.075/1M de entrada y $0.30/1M de salida."
+        }
       }
     },
     {
       "id": "radar-dyn-daisyrose-27b",
       "type": "new_model",
-      "title": "RadixArk 上线新模型 DaisyRose 27B，支持 262,144 上下文",
+      "title": "RadixArk Releases DaisyRose 27B with 262,144 Context",
       "provider": "Radixark",
       "modelId": "daisyrose-27b",
       "badgeText": "New Arrival",
-      "summary": "DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from Qwen3.8 27B using reinforcement learning only on long-horizon agent",
+      "summary": "DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from Qwen3.8 27B using reinforcement learning only on long-horizon agent tasks, with no...",
       "effectiveDate": "2026-11-21",
       "link": "https://openrouter.ai/models/radixark/daisyrose-27b",
       "metrics": {
@@ -63,16 +90,43 @@
         "cacheDiscountPercent": 75.0,
         "contextWindow": 262144,
         "throughputTps": 85.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "RadixArk 上线新模型 DaisyRose 27B，支持 262,144 上下文",
+          "badgeText": "新模型上线",
+          "summary": "RadixArk 在 OpenRouter 正式发布 DaisyRose 27B，支持 262,144 上下文窗口，API 定价为输入 $0.15/1M、输出 $1.875/1M。"
+        },
+        "zh-TW": {
+          "title": "RadixArk 上線新模型 DaisyRose 27B，支援 262,144 上下文",
+          "badgeText": "新模型上線",
+          "summary": "RadixArk 於 OpenRouter 正式發布 DaisyRose 27B，支援 262,144 上下文視窗，API 定價為輸入 $0.15/1M、輸出 $1.875/1M。"
+        },
+        "ja": {
+          "title": "RadixArk、262,144 コンテキスト対応の新モデル DaisyRose 27B を公開",
+          "badgeText": "新着モデル",
+          "summary": "RadixArk が OpenRouter で DaisyRose 27B を公開しました。262,144 トークンのコンテキストに対応し、料金は入力 $0.15/1M・出力 $1.875/1M です。"
+        },
+        "ko": {
+          "title": "RadixArk, 262,144 컨텍스트 지원 신규 모델 DaisyRose 27B 출시",
+          "badgeText": "신규 모델",
+          "summary": "RadixArk가 OpenRouter에 DaisyRose 27B을(를) 출시했습니다. 262,144 토큰 컨텍스트를 지원하며 요금은 입력 $0.15/1M, 출력 $1.875/1M입니다."
+        },
+        "es": {
+          "title": "RadixArk lanza DaisyRose 27B con contexto de 262,144 tokens",
+          "badgeText": "Nuevo Modelo",
+          "summary": "RadixArk lanza DaisyRose 27B en OpenRouter con ventana de contexto de 262,144 tokens a $0.15/1M de entrada y $1.875/1M de salida."
+        }
       }
     },
     {
       "id": "radar-dyn-pixtral-large-2502",
       "type": "new_model",
-      "title": "Mistral 上线新模型 Pixtral Large 2502，支持 128,000 上下文",
+      "title": "Mistral Releases Pixtral Large 2502 with 128,000 Context",
       "provider": "Mistralai",
       "modelId": "pixtral-large-2502",
       "badgeText": "New Arrival",
-      "summary": "Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following Pixtral Large 2411. It accepts text and image input,",
+      "summary": "Pixtral Large 2502 is the February 2025 version of Mistral AI's large multimodal model, following Pixtral Large 2411. It accepts text and image input, including documents, charts...",
       "effectiveDate": "2026-11-20",
       "link": "https://openrouter.ai/models/mistralai/pixtral-large-2502",
       "metrics": {
@@ -81,16 +135,43 @@
         "cacheDiscountPercent": 50.0,
         "contextWindow": 128000,
         "throughputTps": 45.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "Mistral 上线新模型 Pixtral Large 2502，支持 128,000 上下文",
+          "badgeText": "新模型上线",
+          "summary": "Mistral 在 OpenRouter 正式发布 Pixtral Large 2502，支持 128,000 上下文窗口，API 定价为输入 $2.00/1M、输出 $6.00/1M。"
+        },
+        "zh-TW": {
+          "title": "Mistral 上線新模型 Pixtral Large 2502，支援 128,000 上下文",
+          "badgeText": "新模型上線",
+          "summary": "Mistral 於 OpenRouter 正式發布 Pixtral Large 2502，支援 128,000 上下文視窗，API 定價為輸入 $2.00/1M、輸出 $6.00/1M。"
+        },
+        "ja": {
+          "title": "Mistral、128,000 コンテキスト対応の新モデル Pixtral Large 2502 を公開",
+          "badgeText": "新着モデル",
+          "summary": "Mistral が OpenRouter で Pixtral Large 2502 を公開しました。128,000 トークンのコンテキストに対応し、料金は入力 $2.00/1M・出力 $6.00/1M です。"
+        },
+        "ko": {
+          "title": "Mistral, 128,000 컨텍스트 지원 신규 모델 Pixtral Large 2502 출시",
+          "badgeText": "신규 모델",
+          "summary": "Mistral가 OpenRouter에 Pixtral Large 2502을(를) 출시했습니다. 128,000 토큰 컨텍스트를 지원하며 요금은 입력 $2.00/1M, 출력 $6.00/1M입니다."
+        },
+        "es": {
+          "title": "Mistral lanza Pixtral Large 2502 con contexto de 128,000 tokens",
+          "badgeText": "Nuevo Modelo",
+          "summary": "Mistral lanza Pixtral Large 2502 en OpenRouter con ventana de contexto de 128,000 tokens a $2.00/1M de entrada y $6.00/1M de salida."
+        }
       }
     },
     {
       "id": "radar-dyn-gemini-4-neon",
       "type": "new_model",
-      "title": "Google 上线新模型 Gemini 4 Neon，支持 1,048,576 上下文",
+      "title": "Google Releases Gemini 4 Neon with 1,048,576 Context",
       "provider": "Google",
       "modelId": "gemini-4-neon",
       "badgeText": "New Arrival",
-      "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal",
+      "summary": "Gemini 4 Neon is a fast, mid-priced model in the Gemini 4 family from Google, built for coding and agentic work. It is suited for repository and terminal coding, web...",
       "effectiveDate": "2026-11-18",
       "link": "https://openrouter.ai/models/google/gemini-4-neon",
       "metrics": {
@@ -99,16 +180,43 @@
         "cacheDiscountPercent": 95.0,
         "contextWindow": 1048576,
         "throughputTps": 145.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "Google 上线新模型 Gemini 4 Neon，支持 1,048,576 上下文",
+          "badgeText": "新模型上线",
+          "summary": "Google 在 OpenRouter 正式发布 Gemini 4 Neon，支持 1,048,576 上下文窗口，API 定价为输入 $3.00/1M、输出 $15.00/1M。"
+        },
+        "zh-TW": {
+          "title": "Google 上線新模型 Gemini 4 Neon，支援 1,048,576 上下文",
+          "badgeText": "新模型上線",
+          "summary": "Google 於 OpenRouter 正式發布 Gemini 4 Neon，支援 1,048,576 上下文視窗，API 定價為輸入 $3.00/1M、輸出 $15.00/1M。"
+        },
+        "ja": {
+          "title": "Google、1,048,576 コンテキスト対応の新モデル Gemini 4 Neon を公開",
+          "badgeText": "新着モデル",
+          "summary": "Google が OpenRouter で Gemini 4 Neon を公開しました。1,048,576 トークンのコンテキストに対応し、料金は入力 $3.00/1M・出力 $15.00/1M です。"
+        },
+        "ko": {
+          "title": "Google, 1,048,576 컨텍스트 지원 신규 모델 Gemini 4 Neon 출시",
+          "badgeText": "신규 모델",
+          "summary": "Google가 OpenRouter에 Gemini 4 Neon을(를) 출시했습니다. 1,048,576 토큰 컨텍스트를 지원하며 요금은 입력 $3.00/1M, 출력 $15.00/1M입니다."
+        },
+        "es": {
+          "title": "Google lanza Gemini 4 Neon con contexto de 1,048,576 tokens",
+          "badgeText": "Nuevo Modelo",
+          "summary": "Google lanza Gemini 4 Neon en OpenRouter con ventana de contexto de 1,048,576 tokens a $3.00/1M de entrada y $15.00/1M de salida."
+        }
       }
     },
     {
       "id": "radar-gemini-4-carbon-launch",
       "type": "new_model",
-      "title": "Google 发布 Gemini 4 Carbon 超旗舰：2M 窗口原生支持，吞吐达 145 t/s",
+      "title": "Google Launches Gemini 4 Carbon Flagship with 1M Context & 145 t/s Throughput",
       "provider": "Google",
       "modelId": "gemini-4-carbon",
       "badgeText": "New Flagship",
-      "summary": "Google 官方正式上线 Gemini 4 Carbon，定价 $2.00/$10.00 每百万 Token，支持 200 万 Token 原生上下文与 95% 提示词缓存折扣，端到端生成吞吐较上一代提升超 120%。",
+      "summary": "Google introduces Gemini 4 Carbon at $2.00/$10.00 per 1M tokens with a 1M-token context window, 95% prompt cache read discount, and 145 t/s streaming throughput—over 120% faster than the previous generation.",
       "effectiveDate": "2026-11-11",
       "link": "https://ai.google.dev/pricing",
       "metrics": {
@@ -117,16 +225,43 @@
         "cacheDiscountPercent": 95.0,
         "contextWindow": 1048576,
         "throughputTps": 145.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "Google 发布 Gemini 4 Carbon 超旗舰：1M 原生上下文，吞吐达 145 t/s",
+          "badgeText": "旗舰发布",
+          "summary": "Google 正式上线 Gemini 4 Carbon，定价 $2.00/$10.00 每百万 Token，支持 1M 上下文与 95% 提示词缓存折扣，端到端生成吞吐达 145 t/s，较上代提升超 120%。"
+        },
+        "zh-TW": {
+          "title": "Google 發布 Gemini 4 Carbon 超旗艦：1M 原生上下文，吞吐達 145 t/s",
+          "badgeText": "旗艦發布",
+          "summary": "Google 正式上線 Gemini 4 Carbon，定價 $2.00/$10.00 每百萬 Token，支援 1M 上下文與 95% 提示詞快取折扣，端到端生成吞吐達 145 t/s，較前代提升逾 120%。"
+        },
+        "ja": {
+          "title": "Google、Gemini 4 Carbon フラッグシップを公開：1M コンテキスト・145 t/s",
+          "badgeText": "新フラッグシップ",
+          "summary": "Google が Gemini 4 Carbon をリリース。料金は 100 万トークンあたり $2.00/$10.00、1M コンテキストと 95% のプロンプトキャッシュ割引に対応し、145 t/s の高速スループットを実現。"
+        },
+        "ko": {
+          "title": "Google, Gemini 4 Carbon 플래그십 출시: 1M 컨텍스트 및 145 t/s 처리량",
+          "badgeText": "신규 플래그십",
+          "summary": "Google이 Gemini 4 Carbon을 1M 토큰당 $2.00/$10.00 요금으로 출시했습니다. 1M 컨텍스트 창과 95% 프롬프트 캐시 할인, 145 t/s 스트리밍 처리량을 지원합니다."
+        },
+        "es": {
+          "title": "Google lanza Gemini 4 Carbon insignia con contexto 1M y 145 t/s",
+          "badgeText": "Nuevo Insignia",
+          "summary": "Google presenta Gemini 4 Carbon a $2.00/$10.00 por 1M de tokens con ventana de 1M, 95% de descuento en caché de prompts y 145 t/s de rendimiento, más de un 120% más rápido."
+        }
       }
     },
     {
       "id": "radar-claude-fable-5-2-launch",
       "type": "new_model",
-      "title": "Anthropic 推出新一代故事与多模态长篇创作模型 Claude Fable 5.2",
+      "title": "Anthropic Introduces Claude Fable 5.2 for Long-Form Narrative & Multimodal Authoring",
       "provider": "Anthropic",
       "modelId": "claude-fable-5.2",
       "badgeText": "New Model",
-      "summary": "面向长篇连贯叙事、复杂世界观建模与高质量创作者，支持 100 万长上下文，输入缓存折率高达 97.5%（折后仅 $0.20/1M）。",
+      "summary": "Built for coherent long-form storytelling, complex world-building, and multimodal creative workflows, Claude Fable 5.2 offers a 1M-token window and up to 97.5% prompt cache savings ($0.20/1M cached input).",
       "effectiveDate": "2026-11-10",
       "link": "https://www.anthropic.com/pricing",
       "metrics": {
@@ -135,16 +270,43 @@
         "cacheDiscountPercent": 97.5,
         "contextWindow": 1000000,
         "throughputTps": 45.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "Anthropic 推出新一代故事与多模态长篇创作模型 Claude Fable 5.2",
+          "badgeText": "新模型",
+          "summary": "面向长篇连贯叙事、复杂世界观建模与多模态创作，支持 100 万长上下文，输入缓存折扣高达 97.5%（折后仅 $0.20/1M）。"
+        },
+        "zh-TW": {
+          "title": "Anthropic 推出新一代故事與多模態長篇創作模型 Claude Fable 5.2",
+          "badgeText": "新模型",
+          "summary": "專為長篇連貫敘事、複雜世界觀建模與多模態創作打造，支援 100 萬長上下文，輸入快取折扣高達 97.5%（折後僅 $0.20/1M）。"
+        },
+        "ja": {
+          "title": "Anthropic、長編ナラティブ・マルチモーダル制作向け Claude Fable 5.2 を公開",
+          "badgeText": "新モデル",
+          "summary": "一貫した長編ストーリーテリングや複雑な世界観構築向けに設計。1M トークンコンテキストと最大 97.5% のプロンプトキャッシュ割引（$0.20/1M）に対応します。"
+        },
+        "ko": {
+          "title": "Anthropic, 장편 서사 및 멀티모달 창작 모델 Claude Fable 5.2 출시",
+          "badgeText": "신규 모델",
+          "summary": "장편 서사, 복합 세계관 설계 및 멀티모달 창작 워크플로를 위해 설계되었으며 1M 컨텍스트와 최대 97.5% 캐시 할인($0.20/1M)을 제공합니다."
+        },
+        "es": {
+          "title": "Anthropic presenta Claude Fable 5.2 para narrativa extensa y creación multimodal",
+          "badgeText": "Nuevo Modelo",
+          "summary": "Diseñado para narrativa coherente de formato largo y flujos multimodales, Claude Fable 5.2 ofrece ventana de 1M de tokens y hasta un 97.5% de ahorro en caché ($0.20/1M)."
+        }
       }
     },
     {
       "id": "radar-openai-batch-50-expansion",
       "type": "promo",
-      "title": "OpenAI 异步 Batch API 全面覆盖 GPT-6.1 Sol 系列，立减 50% 预算",
+      "title": "OpenAI Expands 50% Async Batch API Discount Across GPT-6.1 Sol Series",
       "provider": "OpenAI",
       "modelId": "gpt-6.1-sol",
       "badgeText": "50% Off Batch",
-      "summary": "针对 24 小时内 SLA 异步离线任务，GPT-6.1 Sol 批量端点输入单价降至 $1.00/1M，输出 $5.00/1M，极大降低大规模代码审计与合成数据训练成本。",
+      "summary": "For 24-hour SLA asynchronous workloads, OpenAI's Batch API cuts GPT-6.1 Sol pricing by 50% to $1.00/1M input and $5.00/1M output (down from $2.00/$10.00 standard), slashing large-scale evaluation and synthetic data costs.",
       "effectiveDate": "2026-11-08",
       "link": "https://openai.com/api/pricing/",
       "metrics": {
@@ -154,16 +316,43 @@
         "contextWindow": 1050000,
         "throughputTps": 85.0,
         "cacheDiscountPercent": 95.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "OpenAI 异步 Batch API 全面覆盖 GPT-6.1 Sol 系列，立减 50% 预算",
+          "badgeText": "Batch 五折",
+          "summary": "针对 24 小时 SLA 异步离线任务，GPT-6.1 Sol 批量端点立减 50% 至输入 $1.00/1M、输出 $5.00/1M（标准价 $2.00/$10.00），大幅降低大规模代码审计与合成数据成本。"
+        },
+        "zh-TW": {
+          "title": "OpenAI 非同步 Batch API 全面覆蓋 GPT-6.1 Sol 系列，立減 50% 預算",
+          "badgeText": "Batch 五折",
+          "summary": "針對 24 小時 SLA 非同步離線任務，GPT-6.1 Sol 批次端點立減 50% 至輸入 $1.00/1M、輸出 $5.00/1M（標準價 $2.00/$10.00），大幅降低大規模程式碼審計與合成資料成本。"
+        },
+        "ja": {
+          "title": "OpenAI、GPT-6.1 Sol シリーズの非同期 Batch API で 50% 割引を拡大",
+          "badgeText": "Batch 50%オフ",
+          "summary": "24時間 SLA の非同期バッチ処理において、GPT-6.1 Sol の料金が標準 $2.00/$10.00 から 50% オフの入力 $1.00/1M・出力 $5.00/1M へ引き下げられました。"
+        },
+        "ko": {
+          "title": "OpenAI, GPT-6.1 Sol 시리즈 비동기 Batch API 50% 할인 확대 적용",
+          "badgeText": "Batch 50% 할인",
+          "summary": "24시간 SLA 비동기 작업에서 GPT-6.1 Sol 배치 엔드포인트 요금이 표준 $2.00/$10.00 대비 50% 절감된 입력 $1.00/1M, 출력 $5.00/1M으로 적용됩니다."
+        },
+        "es": {
+          "title": "OpenAI amplía el descuento del 50% en Batch API asíncrona para la serie GPT-6.1 Sol",
+          "badgeText": "50% Off Batch",
+          "summary": "Para cargas asíncronas con SLA de 24 h, Batch API reduce GPT-6.1 Sol un 50% a $1.00/1M entrada y $5.00/1M salida (desde $2.00/$10.00), abaratando auditorías y datos sintéticos."
+        }
       }
     },
     {
       "id": "radar-anthropic-cache-read-drop",
       "type": "caching_update",
-      "title": "Anthropic 提示词缓存读取折扣升级至 90%~95%，长对话 RAG 成本骤降",
+      "title": "Anthropic Boosts Prompt Cache Read Discounts to 90%–95% for Long-Context RAG",
       "provider": "Anthropic",
       "modelId": "claude-sonnet-5.5",
       "badgeText": "Caching 95%",
-      "summary": "Sonnet 5.5 与 Opus 5.5 提示词缓存（Prompt Caching）读取费率降至基准输入的 5%~10%，企业级多轮客服与 Agent 架构边际成本接近零。",
+      "summary": "Prompt caching read rates on Claude Sonnet 5.5 and Opus 5.5 now drop to 5%–10% of base input pricing, driving near-zero marginal token costs for multi-turn enterprise support and agent loops.",
       "effectiveDate": "2026-11-05",
       "link": "https://www.anthropic.com/pricing",
       "metrics": {
@@ -172,16 +361,43 @@
         "cacheDiscountPercent": 95.0,
         "contextWindow": 1000000,
         "throughputTps": 85.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "Anthropic 提示词缓存读取折扣升级至 90%~95%，长对话 RAG 成本骤降",
+          "badgeText": "缓存 95% 折扣",
+          "summary": "Sonnet 5.5 与 Opus 5.5 提示词缓存（Prompt Caching）读取费率降至基准输入的 5%~10%，企业级多轮客服与 Agent 架构边际成本大幅趋近于零。"
+        },
+        "zh-TW": {
+          "title": "Anthropic 提示詞快取讀取折扣升級至 90%~95%，長對話 RAG 成本驟降",
+          "badgeText": "快取 95% 折扣",
+          "summary": "Sonnet 5.5 與 Opus 5.5 提示詞快取讀取費率降至基準輸入的 5%~10%，企業級多輪客服與 Agent 架構邊際成本大幅下降。"
+        },
+        "ja": {
+          "title": "Anthropic、プロンプトキャッシュ読取割引を 90%〜95% に引き上げ、長文 RAG 費用を削減",
+          "badgeText": "キャッシュ 95%割",
+          "summary": "Claude Sonnet 5.5 および Opus 5.5 のキャッシュ読取単価が通常入力の 5%〜10% に低下し、マルチターン RAG やエージェントループの限界費用を大幅に圧縮します。"
+        },
+        "ko": {
+          "title": "Anthropic, 프롬프트 캐시 읽기 할인을 90%~95%로 확대해 장기 RAG 비용 절감",
+          "badgeText": "캐시 95% 할인",
+          "summary": "Claude Sonnet 5.5 및 Opus 5.5의 캐시 읽기 요율이 기본 입력 대비 5%~10% 수준으로 낮아져 다중 턴 고객지원 및 에이전트 비용이 크게 줄었습니다."
+        },
+        "es": {
+          "title": "Anthropic eleva los descuentos de lectura en caché de prompts al 90%–95% para RAG",
+          "badgeText": "Caché 95%",
+          "summary": "Las lecturas de caché en Claude Sonnet 5.5 y Opus 5.5 bajan al 5%–10% del precio base de entrada, reduciendo casi a cero el costo marginal en agentes y soporte multiturno."
+        }
       }
     },
     {
       "id": "radar-deepseek-v4-1-flash-price-cut",
       "type": "price_cut",
-      "title": "DeepSeek V4.1 Flash 费率再下探：实时路由输入仅 $0.0498/1M，缓存低至 $0.001/1M",
+      "title": "DeepSeek V4.1 Flash Cuts Router Input Rates to $0.0498/1M & $0.001/1M Cached",
       "provider": "DeepSeek",
       "modelId": "deepseek-v4.1-flash",
       "badgeText": "Price Drop",
-      "summary": "DeepSeek V4.1 Flash 持续领跑高并发降本，实时路由输入单价 $0.0498/1M、输出 $0.1992/1M（官方按需峰/谷 $0.30/$0.15），缓存折扣高达 97.99%，稳居全球高频调用前列。",
+      "summary": "DeepSeek V4.1 Flash leads high-concurrency cost optimization with live router pricing at $0.0498/1M input and $0.1992/1M output (official peak/off-peak $0.30/$0.15), plus a 97.99% cache hit discount.",
       "effectiveDate": "2026-11-04",
       "link": "https://api-docs.deepseek.com/quick_start/pricing",
       "metrics": {
@@ -190,52 +406,133 @@
         "cacheDiscountPercent": 97.99,
         "contextWindow": 1048576,
         "throughputTps": 145.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "DeepSeek V4.1 Flash 费率再下探：实时路由输入仅 $0.0498/1M，缓存低至 $0.001/1M",
+          "badgeText": "费率下调",
+          "summary": "DeepSeek V4.1 Flash 持续领跑高并发降本，实时路由输入 $0.0498/1M、输出 $0.1992/1M（官方按需峰/谷 $0.30/$0.15），缓存折扣高达 97.99%。"
+        },
+        "zh-TW": {
+          "title": "DeepSeek V4.1 Flash 費率再下探：即時路由輸入僅 $0.0498/1M，快取低至 $0.001/1M",
+          "badgeText": "費率調降",
+          "summary": "DeepSeek V4.1 Flash 持續領跑高併發降本，即時路由輸入 $0.0498/1M、輸出 $0.1992/1M（官方按需峰/谷 $0.30/$0.15），快取折扣高達 97.99%。"
+        },
+        "ja": {
+          "title": "DeepSeek V4.1 Flash が大幅値下げ：入力 $0.0498/1M、キャッシュ $0.001/1M",
+          "badgeText": "値下げ",
+          "summary": "高並列ワークロードのコスト最適化を牽引。ルーター経由で入力 $0.0498/1M・出力 $0.1992/1M（公式ピーク/オフピーク $0.30/$0.15）、97.99% のキャッシュ割引を提供。"
+        },
+        "ko": {
+          "title": "DeepSeek V4.1 Flash 요금 인하: 라우터 입력 $0.0498/1M, 캐시 $0.001/1M",
+          "badgeText": "가격 인하",
+          "summary": "고동시성 비용 절감을 선도하는 DeepSeek V4.1 Flash의 실시간 라우터 요금이 입력 $0.0498/1M, 출력 $0.1992/1M으로 책정되었으며 97.99% 캐시 할인을 제공합니다."
+        },
+        "es": {
+          "title": "DeepSeek V4.1 Flash baja tarifas a $0.0498/1M de entrada y $0.001/1M en caché",
+          "badgeText": "Bajada de Precio",
+          "summary": "DeepSeek V4.1 Flash lidera la optimización en alta concurrencia con $0.0498/1M entrada y $0.1992/1M salida (oficial $0.30/$0.15), más un 97.99% de descuento en caché."
+        }
       }
     },
     {
       "id": "radar-tencent-hy4-release",
       "type": "new_model",
-      "title": "腾讯发布混元 Hy4 大模型：高性价比多模态推理，周 Token 激增",
+      "title": "Tencent Launches Hunyuan Hy4 with High-Value Multimodal Reasoning at $0.417/$1.25",
       "provider": "Tencent",
       "modelId": "hy4",
       "badgeText": "New Release",
-      "summary": "腾讯新一代混元主力模型 Hy4 登陆全球主流 API 聚合平台，输入 $0.417/1M，输出 $1.25/1M，上线首周即进入 OpenRouter 消耗榜前列。",
+      "summary": "Tencent's flagship Hunyuan Hy4 arrives on global API routers and TokenHub at $0.417/1M input and $1.2505/1M output with 1M context and 94.96% cache discounts, surging into OpenRouter's top-consumed leaderboard.",
       "effectiveDate": "2026-11-04",
-      "link": "https://cloud.tencent.com/document/product/1729",
+      "link": "https://www.tencentcloud.com/document/product/1300/78937",
       "metrics": {
         "inputPerM": 0.417,
         "outputPerM": 1.2505,
         "cacheDiscountPercent": 94.96,
         "contextWindow": 1048576,
         "throughputTps": 85.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "腾讯发布混元 Hy4 大模型：高性价比多模态推理，周消耗量激增",
+          "badgeText": "重磅发布",
+          "summary": "腾讯新一代混元主力模型 Hy4 登陆全球主流 API 聚合平台与 TokenHub，输入 $0.417/1M、输出 $1.2505/1M 并支持 1M 上下文与 94.96% 缓存折扣，上线即入围 OpenRouter 消耗榜前列。"
+        },
+        "zh-TW": {
+          "title": "騰訊發布混元 Hy4 大模型：高性價比多模態推理，週消耗量激增",
+          "badgeText": "重磅發布",
+          "summary": "騰訊新一代混元主力模型 Hy4 登陸全球主流 API 聚合平台與 TokenHub，輸入 $0.417/1M、輸出 $1.2505/1M，支援 1M 上下文與 94.96% 快取折扣，上線首週即躋身 OpenRouter 熱門榜。"
+        },
+        "ja": {
+          "title": "Tencent、高コスパのマルチモーダル推論モデル Hunyuan Hy4 を $0.417/$1.25 で公開",
+          "badgeText": "新リリース",
+          "summary": "Tencent のフラッグシップ Hunyuan Hy4 が主要 API ルーターおよび TokenHub に登場。入力 $0.417/1M・出力 $1.2505/1M、1M コンテキスト・94.96% キャッシュ割引で OpenRouter 上位へ急浮上。"
+        },
+        "ko": {
+          "title": "Tencent, 가성비 멀티모달 추론 모델 Hunyuan Hy4 출시 ($0.417/$1.25)",
+          "badgeText": "신규 출시",
+          "summary": "Tencent의 주력 모델 Hunyuan Hy4가 글로벌 API 라우터와 TokenHub에 입력 $0.417/1M, 출력 $1.2505/1M(1M 컨텍스트, 94.96% 캐시 할인)으로 출시되어 OpenRouter 상위권에 진입했습니다."
+        },
+        "es": {
+          "title": "Tencent lanza Hunyuan Hy4 para razonamiento multimodal a $0.417/$1.25",
+          "badgeText": "Nuevo Lanzamiento",
+          "summary": "El modelo insignia Hunyuan Hy4 de Tencent llega a routers globales y TokenHub a $0.417/1M entrada y $1.2505/1M salida con contexto 1M y 94.96% en caché, escalando en OpenRouter."
+        }
       }
     },
     {
       "id": "radar-glm-5-3-flash-discount",
       "type": "price_cut",
-      "title": "智谱 GLM 5.3 Flash 极速降价：输入 $0.0399/1M 开启普惠算力",
+      "title": "Zhipu AI Slashes GLM 5.3 Flash Pricing to $0.0399/1M Input with 1M Context",
       "provider": "Zhipu AI",
       "modelId": "glm-5.3-flash",
       "badgeText": "Price Drop",
-      "summary": "智谱 AI 针对海量高频场景推出 GLM 5.3 Flash 超低费率，百万 Token 输入仅需 0.28 元人民币（约 $0.0399），并支持 100 万超长上下文。",
+      "summary": "Z.ai / Zhipu AI drops GLM 5.3 Flash rates for high-volume production pipelines to $0.0399/1M input and $0.0784/1M output, pairing ultra-low inference cost with a 1M-token context window.",
       "effectiveDate": "2026-11-03",
-      "link": "https://open.bigmodel.cn/pricing",
+      "link": "https://docs.z.ai/guides/overview/pricing",
       "metrics": {
         "inputPerM": 0.0399,
         "outputPerM": 0.0784,
         "cacheDiscountPercent": 24.81,
         "contextWindow": 1048576,
         "throughputTps": 145.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "智谱 GLM 5.3 Flash 极速降价：输入 $0.0399/1M 开启普惠算力",
+          "badgeText": "费率下调",
+          "summary": "智谱 AI（Z.ai）针对海量高频场景推出 GLM 5.3 Flash 超低费率，百万 Token 输入仅需 $0.0399、输出 $0.0784，并支持 1M 超长上下文窗口。"
+        },
+        "zh-TW": {
+          "title": "智譜 GLM 5.3 Flash 極速降價：輸入 $0.0399/1M 開啟普惠算力",
+          "badgeText": "費率調降",
+          "summary": "智譜 AI（Z.ai）針對海量高頻場景推出 GLM 5.3 Flash 超低費率，百萬 Token 輸入僅需 $0.0399、輸出 $0.0784，並支援 1M 超長上下文視窗。"
+        },
+        "ja": {
+          "title": "Zhipu AI、GLM 5.3 Flash を入力 $0.0399/1M へ大幅値下げ（1M コンテキスト対応）",
+          "badgeText": "値下げ",
+          "summary": "Z.ai / Zhipu AI が大量リクエスト向けに GLM 5.3 Flash の料金を引き下げ。入力 $0.0399/1M・出力 $0.0784/1M の超低価格と 1M トークンコンテキストを両立します。"
+        },
+        "ko": {
+          "title": "Zhipu AI, GLM 5.3 Flash 입력 요금 $0.0399/1M으로 대폭 인하 (1M 컨텍스트)",
+          "badgeText": "가격 인하",
+          "summary": "Z.ai / Zhipu AI가 대규모 트래픽 파이프라인을 위해 GLM 5.3 Flash 요금을 입력 $0.0399/1M, 출력 $0.0784/1M으로 낮추며 1M 컨텍스트를 지원합니다."
+        },
+        "es": {
+          "title": "Zhipu AI rebaja GLM 5.3 Flash a $0.0399/1M de entrada con contexto 1M",
+          "badgeText": "Bajada de Precio",
+          "summary": "Z.ai / Zhipu AI reduce las tarifas de GLM 5.3 Flash para flujos de alto volumen a $0.0399/1M entrada y $0.0784/1M salida, combinando bajo costo con ventana de 1M tokens."
+        }
       }
     },
     {
       "id": "radar-groq-llama-3-3-speedup",
       "type": "new_model",
-      "title": "Groq LPU 架构 Llama 3.3 70B 吞吐提速至 420 t/s，首字延迟 0.18s",
+      "title": "Groq LPU Accelerates Llama 3.3 70B to 420 t/s with 0.18s Time-to-First-Token",
       "provider": "Groq",
       "modelId": "llama-3.3-70b",
       "badgeText": "420 t/s Speed",
-      "summary": "Groq 优化 Llama 3.3 硬件编译架构，在 $0.59/$0.79 的平民定价下实现每秒 420 Token 的实时交互，彻底消灭流式输出卡顿。",
+      "summary": "Groq refines its LPU compiler pipeline for Llama 3.3 70B, delivering 420 tokens/sec real-time streaming at $0.59/$0.79 per 1M tokens—eliminating latency bottlenecks for live voice and agent UX.",
       "effectiveDate": "2026-11-02",
       "link": "https://groq.com/pricing/",
       "metrics": {
@@ -244,6 +541,33 @@
         "cacheDiscountPercent": 50.0,
         "contextWindow": 128000,
         "throughputTps": 420.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "Groq LPU 架构 Llama 3.3 70B 吞吐提速至 420 t/s，首字延迟 0.18s",
+          "badgeText": "420 t/s 极速",
+          "summary": "Groq 优化 Llama 3.3 硬件编译管线，在 $0.59/$0.79 的高性价比定价下实现每秒 420 Token 实时流式输出，彻底消除实时语音与 Agent 交互卡顿。"
+        },
+        "zh-TW": {
+          "title": "Groq LPU 架構 Llama 3.3 70B 吞吐提速至 420 t/s，首字延遲 0.18s",
+          "badgeText": "420 t/s 極速",
+          "summary": "Groq 優化 Llama 3.3 硬體編譯管線，在 $0.59/$0.79 的親民定價下實現每秒 420 Token 即時串流輸出，徹底消除即時語音與 Agent 互動卡頓。"
+        },
+        "ja": {
+          "title": "Groq LPU 上の Llama 3.3 70B が 420 t/s・初回トークン遅延 0.18s を達成",
+          "badgeText": "420 t/s 高速",
+          "summary": "Groq が Llama 3.3 70B の LPU コンパイラを最適化。$0.59/$0.79（100万トークンあたり）の低価格で毎秒 420 トークンのリアルタイム応答を実現しました。"
+        },
+        "ko": {
+          "title": "Groq LPU 기반 Llama 3.3 70B, 420 t/s 처리량 및 0.18초 첫 토큰 지연 달성",
+          "badgeText": "420 t/s 초고속",
+          "summary": "Groq가 LPU 컴파일러 파이프라인을 최적화해 Llama 3.3 70B를 $0.59/$0.79 요금으로 초당 420토큰 속도로 제공하며 실시간 음성·에이전트 지연을 해소했습니다."
+        },
+        "es": {
+          "title": "Groq LPU acelera Llama 3.3 70B a 420 t/s con latencia inicial de 0.18 s",
+          "badgeText": "420 t/s Veloz",
+          "summary": "Groq optimiza su compilador LPU para Llama 3.3 70B, logrando streaming a 420 tokens/s por $0.59/$0.79 por 1M de tokens y eliminando cuellos de botella en voz y agentes."
+        }
       }
     }
   ]
