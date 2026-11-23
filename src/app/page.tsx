@@ -143,6 +143,7 @@ function SimulatorContent() {
             selectedBaselineId={selectedBaselineId}
             onSelectBaseline={setSelectedBaselineId}
             availableModels={MODELS_DATA}
+            monthlyRequests={params.monthlyRequests}
           />
 
           {/* Dual-Engine Sponsored Provider Placement */}

@@ -135,8 +135,15 @@ export interface TranslationDictionary {
       subtitle: string;
       recommended: string;
       savingsBadge: string;
+      cascadeBadge: string;
       baselineModel: string;
       blendedCost: string;
+      weightedSumHint: string;
+      vsBaseline: string;
+      saveMonthly: string;
+      breakdownHeader: string;
+      stagesSumBadge: string;
+      exportGuide: string;
       exportConfig: string;
       shareSimulation: string;
       copyPrompt: string;

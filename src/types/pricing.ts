@@ -169,6 +169,7 @@ export interface RouterRecommendation {
   name: string;
   tagline: string;
   description: string;
+  monthlyRequests: number;
   savingsVsBaseline: number; // percentage, e.g. 38 or 88
   blendedMonthlyCost: number;
   baselineModel: ModelPricingRule;
@@ -177,6 +178,7 @@ export interface RouterRecommendation {
     stageName: string;
     model: ModelPricingRule;
     trafficSharePercent: number;
+    allocatedMonthlyCost: number;
     purpose: string;
   }[];
   codeSnippets: {
