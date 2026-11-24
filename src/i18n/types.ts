@@ -64,9 +64,7 @@ export interface TranslationDictionary {
       drawerLabel: string;
       tooltipBadge: string;
       tooltipTitle: string;
-      tooltipDesc: string;
       humanLabel: string;
-      humanDesc: string;
       staleHint: string;
       ariaLabel: string;
     };

@@ -304,7 +304,7 @@ export default function LiveVisitsBadge({
             </span>
           </div>
 
-          {/* Row 2: Primary Metric — Edge Requests / Heat */}
+          {/* Row 2: Primary Metric — Total Requests */}
           <div className="mt-2.5 flex items-baseline gap-2 flex-wrap">
             <span className="font-mono tabular-nums text-2xl font-bold tracking-tight leading-none text-zinc-900 dark:text-zinc-50">
               {formattedCount}
@@ -314,14 +314,9 @@ export default function LiveVisitsBadge({
             </span>
           </div>
 
-          {/* Row 3: Primary Scope Description */}
-          <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-            {lv.tooltipDesc}
-          </p>
-
-          {/* Row 4: Secondary Metric Bento Sub-card (Omitted cleanly if <= 0 or null) */}
+          {/* Row 3: Secondary Metric Bento Sub-card (Omitted cleanly if <= 0 or null) */}
           {hasHumanVisits && (
-            <div className="mt-3 rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/90 dark:bg-zinc-900/75 px-3 py-2.5">
+            <div className="mt-2.5 rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/90 dark:bg-zinc-900/75 px-3 py-2">
               <div className="flex items-center justify-between gap-2">
                 <div className="inline-flex items-center gap-1.5 min-w-0">
                   <UserCheck
@@ -336,13 +331,10 @@ export default function LiveVisitsBadge({
                   {formattedHumanVisits}
                 </span>
               </div>
-              <p className="mt-1 text-[10px] leading-snug text-zinc-600 dark:text-zinc-400">
-                {lv.humanDesc}
-              </p>
             </div>
           )}
 
-          {/* Row 5: Stale Hint */}
+          {/* Row 4: Stale Hint */}
           {isStale && (
             <p className="mt-2 text-[10px] font-medium text-amber-700 dark:text-amber-400">
               {lv.staleHint}
