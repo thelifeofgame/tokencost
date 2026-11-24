@@ -5,7 +5,9 @@ account_id = "e2df613bfad5edc14daf0bd84e19a2a5"
 
 routes = [
   { pattern = "tokencostsai.com/api/visits-24h*", zone_id = "2ed5d603d02f067e1fafd1ed33f0021d" },
-  { pattern = "www.tokencostsai.com/api/visits-24h*", zone_id = "2ed5d603d02f067e1fafd1ed33f0021d" }
+  { pattern = "www.tokencostsai.com/api/visits-24h*", zone_id = "2ed5d603d02f067e1fafd1ed33f0021d" },
+  { pattern = "tokencostsai.com/api/analytics*", zone_id = "2ed5d603d02f067e1fafd1ed33f0021d" },
+  { pattern = "www.tokencostsai.com/api/analytics*", zone_id = "2ed5d603d02f067e1fafd1ed33f0021d" }
 ]
 
 [vars]

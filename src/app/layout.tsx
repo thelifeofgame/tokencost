@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { I18nProvider } from '@/i18n/I18nProvider';
+import AnalyticsTracker from '@/components/AnalyticsTracker';
+import SiteShell from '@/components/SiteShell';
 import { MODELS_DATA } from '@/lib/models-data';
 import {
   buildAlternates,
@@ -70,9 +70,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-indigo-500/20 dark:selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-indigo-200 transition-colors duration-150">
         <I18nProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <AnalyticsTracker />
+          <SiteShell>{children}</SiteShell>
         </I18nProvider>
       </body>
     </html>

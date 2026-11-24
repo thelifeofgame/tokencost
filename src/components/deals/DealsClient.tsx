@@ -170,7 +170,7 @@ export default function DealsClient() {
   };
 
   return (
-    <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+    <div data-analytics-module="deals" className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
       {/* 1. Hero & Trust Shield */}
       <section className="space-y-4">
         <div className="flex flex-wrap items-center gap-2">

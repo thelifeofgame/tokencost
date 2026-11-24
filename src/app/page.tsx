@@ -123,7 +123,7 @@ function SimulatorContent() {
       {/* Main 3-Column Parallel Bento Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 xl:grid-cols-12 gap-5 items-start">
         {/* Left Column: Workload Simulator Controls (3 cols on xl, 5 on lg) */}
-        <div className="col-span-12 lg:col-span-5 xl:col-span-3 space-y-5">
+        <div data-analytics-module="calculator" className="col-span-12 lg:col-span-5 xl:col-span-3 space-y-5">
           <SimulatorDeck
             params={params}
             onChange={setParams}
@@ -137,6 +137,7 @@ function SimulatorContent() {
 
         {/* Middle Column: Smart Router Strategy & Comparison (5 cols on xl, 7 on lg) */}
         <div className="col-span-12 lg:col-span-7 xl:col-span-5 space-y-5">
+          <div data-analytics-module="smart_router">
           <SmartRouterCard
             recommendations={routerRecs}
             onOpenExporter={handleOpenExporter}
@@ -145,9 +146,12 @@ function SimulatorContent() {
             availableModels={MODELS_DATA}
             monthlyRequests={params.monthlyRequests}
           />
+          </div>
 
           {/* Dual-Engine Sponsored Provider Placement */}
-          <SponsorBanner />
+          <div data-analytics-module="sponsor">
+            <SponsorBanner />
+          </div>
         </div>
 
         {/* Right Column: Monthly Net Cost Waterfall Breakdown (4 cols on xl, 12 on lg) */}
@@ -157,12 +161,12 @@ function SimulatorContent() {
       </div>
 
       {/* Market Radar / Featured Event Strip & Price Drops */}
-      <section className="pt-2">
+      <section data-analytics-module="radar" className="pt-2">
         <MarketPulseRadar />
       </section>
 
       {/* Full Width Model Leaderboard */}
-      <div className="pt-2">
+      <div data-analytics-module="leaderboard" className="pt-2">
         <LeaderboardTable breakdowns={allBreakdowns} />
       </div>
 

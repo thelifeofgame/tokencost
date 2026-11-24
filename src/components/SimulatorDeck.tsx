@@ -4,6 +4,7 @@ import React from 'react';
 import { SimulationParams, ScenarioPreset } from '@/types/pricing';
 import { SCENARIO_PRESETS } from '@/lib/models-data';
 import { useI18n } from '@/i18n/I18nProvider';
+import { trackEventThrottled } from '@/lib/analytics';
 import {
   Sliders,
   Sparkles,
@@ -51,11 +52,21 @@ export default function SimulatorDeck({
     'Groq',
   ];
 
+  const emitCalcInteract = (action: string, next?: Partial<SimulationParams>) => {
+    trackEventThrottled('calculator_interact', {
+      source: 'simulator_deck',
+      action,
+      ...(next?.monthlyRequests ? { monthly_requests: next.monthlyRequests } : {}),
+    });
+  };
+
   const handlePresetSelect = (preset: ScenarioPreset) => {
-    onChange({
+    const next = {
       ...params,
       ...preset.params,
-    });
+    };
+    onChange(next);
+    emitCalcInteract(`preset:${preset.id}`, next);
   };
 
   const handleReset = () => {
@@ -196,7 +207,7 @@ export default function SimulatorDeck({
             step={5000}
             value={params.monthlyRequests}
             onChange={(e) =>
-              onChange({ ...params, monthlyRequests: parseInt(e.target.value, 10) })
+              { onChange({ ...params, monthlyRequests: parseInt(e.target.value, 10) }); emitCalcInteract('slider_change'); }
             }
             className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
@@ -233,7 +244,7 @@ export default function SimulatorDeck({
             step={500}
             value={params.inputTokens}
             onChange={(e) =>
-              onChange({ ...params, inputTokens: parseInt(e.target.value, 10) })
+              { onChange({ ...params, inputTokens: parseInt(e.target.value, 10) }); emitCalcInteract('slider_change'); }
             }
             className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
@@ -261,7 +272,7 @@ export default function SimulatorDeck({
             step={50}
             value={params.outputTokens}
             onChange={(e) =>
-              onChange({ ...params, outputTokens: parseInt(e.target.value, 10) })
+              { onChange({ ...params, outputTokens: parseInt(e.target.value, 10) }); emitCalcInteract('slider_change'); }
             }
             className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
@@ -289,7 +300,7 @@ export default function SimulatorDeck({
             step={0.05}
             value={params.cacheHitRate}
             onChange={(e) =>
-              onChange({ ...params, cacheHitRate: parseFloat(e.target.value) })
+              { onChange({ ...params, cacheHitRate: parseFloat(e.target.value) }); emitCalcInteract('slider_change'); }
             }
             className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-600 dark:accent-emerald-500"
           />
@@ -316,7 +327,7 @@ export default function SimulatorDeck({
             step={0.1}
             value={params.batchRate}
             onChange={(e) =>
-              onChange({ ...params, batchRate: parseFloat(e.target.value) })
+              { onChange({ ...params, batchRate: parseFloat(e.target.value) }); emitCalcInteract('slider_change'); }
             }
             className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500"
           />
@@ -334,7 +345,7 @@ export default function SimulatorDeck({
               type="checkbox"
               checked={params.enableLongContext}
               onChange={(e) =>
-                onChange({ ...params, enableLongContext: e.target.checked })
+                { onChange({ ...params, enableLongContext: e.target.checked }); emitCalcInteract('slider_change'); }
               }
               className="mt-0.5 h-4 w-4 rounded border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-white dark:focus:ring-offset-zinc-950"
             />
@@ -362,7 +373,7 @@ export default function SimulatorDeck({
               <button
                 key={prov}
                 type="button"
-                onClick={() => onToggleProvider(prov)}
+                onClick={() => { onToggleProvider(prov); emitCalcInteract(`provider:${prov}`); }}
                 className={`px-2.5 py-1 text-xs rounded-lg font-medium transition-all ${
                   isSelected
                     ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/25'

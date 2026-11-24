@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { RouterRecommendation, ModelPricingRule } from '@/types/pricing';
 import { formatCurrency, formatPerMillionPrice } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
+import { trackEventThrottled } from '@/lib/analytics';
 import { Network, ArrowRight, Code2, ChevronDown, Check, Search, Sparkles, Zap, Brain, History } from 'lucide-react';
 
 interface SmartRouterCardProps {
@@ -171,6 +172,7 @@ export default function SmartRouterCard({
         type="button"
         onClick={() => {
           if (onSelectBaseline) onSelectBaseline(m.modelId);
+          trackEventThrottled('smart_router_interact', { action: 'baseline_select', model_id: m.modelId }, 1000);
           setBaselineMenuOpen(false);
         }}
         className={`w-full flex items-center justify-between p-2 rounded-lg text-left transition-colors ${
@@ -236,7 +238,7 @@ export default function SmartRouterCard({
               <button
                 key={rec.id}
                 type="button"
-                onClick={() => setSelectedStrategyId(rec.id)}
+                onClick={() => { setSelectedStrategyId(rec.id); trackEventThrottled('smart_router_interact', { action: 'strategy_switch', strategy_id: rec.id }, 1000); }}
                 className={`min-h-[38px] sm:min-h-[32px] px-3 py-1.5 rounded-lg text-xs font-medium transition-all inline-flex items-center justify-center gap-1.5 ${spanClass} ${
                   isSelected
                     ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'

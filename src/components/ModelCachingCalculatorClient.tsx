@@ -7,6 +7,7 @@ import { formatCurrency, formatPerMillionPrice } from '@/lib/utils';
 import { ChevronLeft, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { useI18n } from '@/i18n/I18nProvider';
+import { trackEventThrottled } from '@/lib/analytics';
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink';
 
 interface ModelCachingCalculatorClientProps {
@@ -36,7 +37,7 @@ export default function ModelCachingCalculatorClient({
   const isAnthropic = model.providerOrg === 'Anthropic';
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div data-analytics-module="calculator" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Back button */}
       <div>
         <Link
@@ -132,7 +133,7 @@ export default function ModelCachingCalculatorClient({
               max={1000000}
               step={5000}
               value={requests}
-              onChange={(e) => setRequests(Number(e.target.value))}
+              onChange={(e) => { setRequests(Number(e.target.value)); trackEventThrottled('calculator_interact', { source: 'model_calculator', model_id: model.modelId }); }}
               className="w-full"
             />
           </div>
@@ -148,7 +149,7 @@ export default function ModelCachingCalculatorClient({
               max={100000}
               step={1000}
               value={inputTokens}
-              onChange={(e) => setInputTokens(Number(e.target.value))}
+              onChange={(e) => { setInputTokens(Number(e.target.value)); trackEventThrottled('calculator_interact', { source: 'model_calculator', model_id: model.modelId }); }}
               className="w-full"
             />
           </div>
@@ -164,7 +165,7 @@ export default function ModelCachingCalculatorClient({
               max={1}
               step={0.05}
               value={cacheHitRate}
-              onChange={(e) => setCacheHitRate(Number(e.target.value))}
+              onChange={(e) => { setCacheHitRate(Number(e.target.value)); trackEventThrottled('calculator_interact', { source: 'model_calculator', model_id: model.modelId }); }}
               className="w-full"
             />
           </div>
@@ -180,7 +181,7 @@ export default function ModelCachingCalculatorClient({
               max={4096}
               step={100}
               value={outputTokens}
-              onChange={(e) => setOutputTokens(Number(e.target.value))}
+              onChange={(e) => { setOutputTokens(Number(e.target.value)); trackEventThrottled('calculator_interact', { source: 'model_calculator', model_id: model.modelId }); }}
               className="w-full"
             />
           </div>
@@ -206,7 +207,7 @@ export default function ModelCachingCalculatorClient({
               max={20}
               step={1}
               value={cacheLifetime}
-              onChange={(e) => setCacheLifetime(Number(e.target.value))}
+              onChange={(e) => { setCacheLifetime(Number(e.target.value)); trackEventThrottled('calculator_interact', { source: 'model_calculator', model_id: model.modelId }); }}
               className="w-full"
             />
           </div>
