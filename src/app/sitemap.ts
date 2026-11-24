@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  // Coding Agent & Harness Detail Pages
+  // Coding Agent & Harness Detail Pages (12 EN + 60 localized = 72 total /harness/<slug>/ routes)
   const harnessSlugs = getAllHarnessSlugs();
   const harnessRoutes: MetadataRoute.Sitemap = harnessSlugs.map((slug) => ({
     url: `${baseUrl}/harness/${slug}/`,
@@ -55,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  // Non-English Localized Coding Agent & Harness Detail Pages (35 URLs)
+  // Non-English Localized Coding Agent & Harness Detail Pages (60 URLs)
   const localizedHarnessRoutes: MetadataRoute.Sitemap = nonEnLocales.flatMap((locale) =>
     harnessSlugs.map((slug) => ({
       url: `${baseUrl}/${locale.code}/harness/${slug}/`,

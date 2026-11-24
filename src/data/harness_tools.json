@@ -3,9 +3,9 @@
   "title": "Coding Agent & Harness Benchmark Catalog (2026)",
   "description": "Structured evaluation, token overhead multipliers, BYOK configuration templates, and 2026 model compatibility matrices for top coding agents and harnesses.",
   "version": "1.0.0",
-  "lastUpdated": "2026-11-19T12:25:00+08:00",
-  "verifiedDate": "2026-11-19",
-  "totalTools": 7,
+  "lastUpdated": "2026-11-24T18:15:00+08:00",
+  "verifiedDate": "2026-11-24",
+  "totalTools": 12,
   "benchmarkAssumptions": {
     "referenceTask": "15-turn multi-file repository refactoring with 5 tool calls",
     "referenceTaskZh": "典型 15 轮次跨文件代码重构任务（含 5 次工具调用）",
@@ -45,7 +45,7 @@
       "githubRepo": "anthropics/claude-code",
       "githubStars": 156198,
       "latestVersion": "v2.1.328",
-      "verifiedDate": "2026-11-19",
+      "verifiedDate": "2026-11-24",
       "installDifficulty": 1,
       "runtimeRequirements": [
         "Node.js >= 18.0",
@@ -157,10 +157,10 @@
           "modelId": "deepseek-v4.1-flash",
           "modelName": "DeepSeek: DeepSeek V4.1 Flash",
           "providerOrg": "DeepSeek",
-          "inputPerM": 0.3,
-          "outputPerM": 1.2,
-          "cachedInputPerM": 0.006,
-          "cacheDiscountPercent": 98.0,
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
           "contextWindow": 1048576,
           "supportsVision": true,
           "supportsFunctionCalling": true,
@@ -273,7 +273,7 @@
       "githubRepo": "cursor/cursor",
       "githubStars": 33343,
       "latestVersion": "2.x Stable",
-      "verifiedDate": "2026-11-19",
+      "verifiedDate": "2026-11-24",
       "installDifficulty": 1,
       "runtimeRequirements": [
         "macOS / Windows / Linux Desktop",
@@ -380,10 +380,10 @@
           "modelId": "deepseek-v4.1-flash",
           "modelName": "DeepSeek: DeepSeek V4.1 Flash",
           "providerOrg": "DeepSeek",
-          "inputPerM": 0.3,
-          "outputPerM": 1.2,
-          "cachedInputPerM": 0.006,
-          "cacheDiscountPercent": 98.0,
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
           "contextWindow": 1048576,
           "supportsVision": true,
           "supportsFunctionCalling": true,
@@ -496,7 +496,7 @@
       "githubRepo": "Exafunction/codeium",
       "githubStars": null,
       "latestVersion": "Wave 13+ (LS v2.12.5)",
-      "verifiedDate": "2026-11-19",
+      "verifiedDate": "2026-11-24",
       "installDifficulty": 1,
       "runtimeRequirements": [
         "macOS / Windows / Linux Desktop",
@@ -699,7 +699,7 @@
       "githubRepo": "Aider-AI/aider",
       "githubStars": 50175,
       "latestVersion": "v0.86.0",
-      "verifiedDate": "2026-11-19",
+      "verifiedDate": "2026-11-24",
       "installDifficulty": 2,
       "runtimeRequirements": [
         "Python 3.10–3.12",
@@ -928,7 +928,7 @@
       "githubRepo": "cline/cline",
       "githubStars": 71760,
       "latestVersion": "v4.1.26",
-      "verifiedDate": "2026-11-19",
+      "verifiedDate": "2026-11-24",
       "installDifficulty": 1,
       "runtimeRequirements": [
         "VS Code >= 1.90",
@@ -978,10 +978,10 @@
           "modelId": "deepseek-v4.1-flash",
           "modelName": "DeepSeek: DeepSeek V4.1 Flash",
           "providerOrg": "DeepSeek",
-          "inputPerM": 0.3,
-          "outputPerM": 1.2,
-          "cachedInputPerM": 0.006,
-          "cacheDiscountPercent": 98.0,
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
           "contextWindow": 1048576,
           "supportsVision": true,
           "supportsFunctionCalling": true,
@@ -1151,7 +1151,7 @@
       "githubRepo": "RooCodeInc/Roo-Code",
       "githubStars": 24236,
       "latestVersion": "v3.54.0",
-      "verifiedDate": "2026-11-19",
+      "verifiedDate": "2026-11-24",
       "installDifficulty": 1,
       "runtimeRequirements": [
         "VS Code >= 1.90",
@@ -1201,10 +1201,10 @@
           "modelId": "deepseek-v4.1-flash",
           "modelName": "DeepSeek: DeepSeek V4.1 Flash",
           "providerOrg": "DeepSeek",
-          "inputPerM": 0.3,
-          "outputPerM": 1.2,
-          "cachedInputPerM": 0.006,
-          "cacheDiscountPercent": 98.0,
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
           "contextWindow": 1048576,
           "supportsVision": true,
           "supportsFunctionCalling": true,
@@ -1374,7 +1374,7 @@
       "githubRepo": "anomalyco/opencode",
       "githubStars": 227861,
       "latestVersion": "OpenCode v1.19.6 / Continue v2.0.0",
-      "verifiedDate": "2026-11-19",
+      "verifiedDate": "2026-11-24",
       "installDifficulty": 2,
       "runtimeRequirements": [
         "VS Code / JetBrains IDE (Continue) or macOS/Linux Terminal (OpenCode)",
@@ -1447,10 +1447,10 @@
           "modelId": "deepseek-v4.1-flash",
           "modelName": "DeepSeek: DeepSeek V4.1 Flash",
           "providerOrg": "DeepSeek",
-          "inputPerM": 0.3,
-          "outputPerM": 1.2,
-          "cachedInputPerM": 0.006,
-          "cacheDiscountPercent": 98.0,
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
           "contextWindow": 1048576,
           "supportsVision": true,
           "supportsFunctionCalling": true,
@@ -1584,6 +1584,1131 @@
           "questionZh": "OpenCode 中 `model` 和 `small_model` 怎么搭配最省钱？",
           "answer": "Set `model` to `google/gemini-4-neon` or `claude-sonnet-5.5` for coding edits, and `small_model` to `deepseek/deepseek-v4.1-flash` for title generation and compaction summaries.",
           "answerZh": "主 `model` 选用 `gemini-4-neon` 或 `claude-sonnet-5.5`，辅助 `small_model` 选用 `deepseek-v4.1-flash` 处理标题生成与上下文压缩。"
+        }
+      ]
+    },
+    {
+      "slug": "codex-cli",
+      "name": "OpenAI Codex CLI",
+      "category": "cli-agent",
+      "categoryLabel": "Official Terminal CLI Agent",
+      "categoryLabelZh": "官方终端 CLI Agent",
+      "isOpenSource": true,
+      "license": "Apache-2.0",
+      "officialUrl": "https://github.com/openai/codex",
+      "tagline": "OpenAI's open-source terminal agent built on the Responses API with warm 24h prefix caching, sandboxed execution, and custom model_providers.",
+      "taglineZh": "OpenAI 开源终端编程 Agent，基于 Responses API 协议，支持长达 24h 温热前缀缓存、沙箱执行与自定义 model_providers 路由。",
+      "githubRepo": "openai/codex",
+      "githubStars": 136300,
+      "latestVersion": "v0.172.0",
+      "verifiedDate": "2026-11-24",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "Node.js >= 22.0",
+        "Git >= 2.30",
+        "macOS / Linux / WSL2"
+      ],
+      "dependencies": [
+        "Node.js >= 22.0",
+        "Git >= 2.30",
+        "ripgrep (bundled)"
+      ],
+      "installCommand": "npm install -g @openai/codex",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "OPENAI_API_KEY",
+          "CODEX_HOME"
+        ],
+        "notes": "Uses OpenAI Responses API (wire_api = 'responses'; Chat Completions removed). Configure user-level ~/.codex/config.toml with openai_base_url or [model_providers.<id>] for OpenRouter, DeepSeek, or Ollama; project-level .codex/config.toml ignores base_url for security.",
+        "notesZh": "仅支持 OpenAI Responses API（wire_api = 'responses'，已移除 Chat Completions）。支持在用户级 ~/.codex/config.toml 中配置 openai_base_url 或 [model_providers.<id>] 接入 OpenRouter、DeepSeek、Ollama 等兼容端点；项目级 .codex/config.toml 会出于安全原因忽略 base_url。"
+      },
+      "tokenMultiplierMin": 1.6,
+      "tokenMultiplierMax": 2.4,
+      "tokenMultiplierRange": {
+        "min": 1.6,
+        "max": 2.4,
+        "typical": 2.0
+      },
+      "baseSystemPromptTokens": 6900,
+      "basePromptOverheadTokens": 6900,
+      "compactionStrategy": "Warm prefix caching (up to ~24h retention) + model_auto_compact_token_limit / /compact summarization + stable model_instructions_file / AGENTS.md prefix reuse",
+      "compactionStrategyZh": "温热前缀缓存（最长保留 ~24h 缓存在线）+ model_auto_compact_token_limit 自动或 /compact 手动上下文压缩 + model_instructions_file / AGENTS.md 稳定前缀复用",
+      "promptCachingEfficiency": "Very High (78%–92% cache read hit rate via Responses API warm prefix caching)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "Very High",
+        "hitRateRangePercent": [
+          78,
+          92
+        ],
+        "notes": "Responses API keeps prompt prefixes warm up to ~24h across turns when AGENTS.md and MCP tool lists stay stable.",
+        "notesZh": "基于 Responses API 的温热前缀缓存最长可维持 ~24h，在 AGENTS.md 与 MCP 工具列表不变时缓存命中率达 78%–92%。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, clean Codex CLI starts at ~6.9K input tokens per turn (rising to 21K–24K with heavy MCP/Skills/Plugins) and averages a 1.6x–2.4x multiplier.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮跨文件重构任务中，干净无插件配置每轮起始输入约 6.9K tokens（开启大量 MCP/Skills/Plugins 后可升至 21K–24K），整体 Token 放大倍率为 1.6x–2.4x。",
+      "recommendedModels": [
+        {
+          "modelId": "gpt-5.3-codex",
+          "modelName": "OpenAI: GPT-5.3-Codex",
+          "providerOrg": "OpenAI",
+          "inputPerM": 1.75,
+          "outputPerM": 14.0,
+          "cachedInputPerM": 0.175,
+          "cacheDiscountPercent": 90.0,
+          "contextWindow": 400000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary Coding",
+          "toolCalling": "Native (Responses API)",
+          "promptCaching": "Full (90% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Purpose-built for Codex CLI sandboxed tool loops at $1.75/$14.00 with 90% warm cache savings ($0.175/M).",
+          "reasonZh": "专为 Codex CLI 沙箱工具循环优化，$1.75/$14.00 配合 90% 温热缓存折扣（$0.175/M）。"
+        },
+        {
+          "modelId": "gpt-6.2-sol",
+          "modelName": "OpenAI: GPT-6.2 Sol",
+          "providerOrg": "OpenAI",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1050000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Frontier 1M Agent",
+          "toolCalling": "Native (Responses API)",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "1.05M context window and 95% cached input discount ($0.10/M) for sustained multi-file refactors.",
+          "reasonZh": "1.05M 超长上下文配合 95% 缓存读取折扣（$0.10/M），适合长程跨文件重构。"
+        },
+        {
+          "modelId": "gpt-5.4",
+          "modelName": "OpenAI: GPT-5.4",
+          "providerOrg": "OpenAI",
+          "inputPerM": 2.5,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.25,
+          "cacheDiscountPercent": 90.0,
+          "contextWindow": 1050000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Complex Architecture",
+          "toolCalling": "Native (Responses API)",
+          "promptCaching": "Full (90% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "High coding index (1253) and 1.05M window for deep architectural planning and tricky bug fixes.",
+          "reasonZh": "1253 高编码指数与 1.05M 上下文，适合复杂系统设计与疑难缺陷定位。"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Budget BYOK",
+          "toolCalling": "Native (via Responses bridge)",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Ultra-cheap $0.0498/$0.1992 tier ($0.001/M cached) when routed through a Responses-API-compatible gateway.",
+          "reasonZh": "通过支持 Responses 协议的兼容网关接入可享 $0.0498/$0.1992 极低费率与 98% 缓存折扣。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "gpt-5.3-codex",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Official Codex CLI default"
+        },
+        {
+          "modelId": "gpt-6.2-sol",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "95% cache discount on 1.05M context"
+        },
+        {
+          "modelId": "gpt-5.4",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Top coding index (1253)"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Provider-Dependent",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Requires wire_api = 'responses' bridge"
+        }
+      ],
+      "configTemplate": {
+        "language": "toml",
+        "filename": "~/.codex/config.toml",
+        "code": "# User-level ~/.codex/config.toml (project .codex/config.toml ignores base_url)\nmodel = \"gpt-5.3-codex\"\nmodel_provider = \"custom\"\nmodel_auto_compact_token_limit = 180000\n\n[model_providers.custom]\nname = \"OpenAI Responses / OpenRouter Bridge\"\nbase_url = \"https://openrouter.ai/api/v1\"\nenv_key = \"OPENAI_API_KEY\"\nwire_api = \"responses\""
+      },
+      "configTemplates": [
+        {
+          "id": "codex-config-toml",
+          "title": "OpenAI Responses API + Custom Provider (~/.codex/config.toml)",
+          "titleZh": "Responses API 与兼容网关配置 (~/.codex/config.toml)",
+          "provider": "OpenAI / OpenRouter / DeepSeek",
+          "language": "toml",
+          "filename": "~/.codex/config.toml",
+          "code": "model = \"gpt-5.3-codex\"\nmodel_instructions_file = \"AGENTS.md\"\nmodel_auto_compact_token_limit = 180000\n\n# Optional custom Responses-compatible gateway\nmodel_provider = \"custom\"\n\n[model_providers.custom]\nname = \"Custom Responses Gateway\"\nbase_url = \"https://openrouter.ai/api/v1\"\nenv_key = \"OPENAI_API_KEY\"\nwire_api = \"responses\""
+        },
+        {
+          "id": "codex-auth-profiles",
+          "title": "API Key Login & Isolated Profile CLI",
+          "titleZh": "API Key 登录与 --profile 隔离配置",
+          "provider": "OpenAI",
+          "language": "bash",
+          "filename": "~/.zshrc or CI script",
+          "code": "export CODEX_HOME=\"$HOME/.codex-ci\"\nprintenv OPENAI_API_KEY | codex login --with-api-key\n\n# Run with isolated profile and clean MCP budget\ncodex --profile coding-lean -m gpt-5.3-codex \"Refactor auth middleware\""
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "cdx-faq-1",
+          "severity": "critical",
+          "question": "Why does Codex CLI ignore base_url in repo .codex/config.toml or fail with Chat Completions endpoints?",
+          "questionZh": "为什么仓库内 .codex/config.toml 的 base_url 不生效，或接入传统接口报错？",
+          "answer": "Codex CLI removed Chat Completions and strictly requires `wire_api = \"responses\"`. Moreover, project-level `.codex/config.toml` ignores `base_url` for security—always define `[model_providers.<id>]` in user-level `~/.codex/config.toml`.",
+          "answerZh": "Codex CLI 已移除 Chat Completions，强制要求 `wire_api = \"responses\"`；且出于安全考虑项目级 `.codex/config.toml` 会忽略 `base_url`，自定义网关必须写入用户级 `~/.codex/config.toml`。"
+        },
+        {
+          "id": "cdx-faq-2",
+          "severity": "warning",
+          "question": "Why does per-turn input start at 21K–24K tokens instead of 6.9K?",
+          "questionZh": "为什么有时每轮起始输入高达 21K–24K tokens 而不是 6.9K？",
+          "answer": "A clean Codex CLI session starts around 6.9K tokens, but enabling many MCP servers, Skills, and Plugins injects 14K+ extra schema tokens every turn. Disable unused MCPs or isolate light tasks with `--profile`.",
+          "answerZh": "干净无插件会话每轮起始约 6.9K tokens，但挂载大量 MCP、Skills 与插件后会额外注入 14K+ Schema。建议精简常驻 MCP 或用 `--profile` 隔离轻量任务。"
+        },
+        {
+          "id": "cdx-faq-3",
+          "severity": "tip",
+          "question": "How do I maximize Codex CLI's 24h warm prefix cache hit rate?",
+          "questionZh": "如何最大化利用 Codex CLI 最长 24h 的温热前缀缓存？",
+          "answer": "Keep `AGENTS.md` / `model_instructions_file` static during a sprint, set `model_auto_compact_token_limit`, and run `/compact` proactively before context overflows.",
+          "answerZh": "迭代期间保持 `AGENTS.md` 与 `model_instructions_file` 稳定不变，配置 `model_auto_compact_token_limit` 并在长会话中适时执行 `/compact`。"
+        }
+      ]
+    },
+    {
+      "slug": "deepseek-harness",
+      "name": "DeepSeek Harness (dsh)",
+      "category": "cli-agent",
+      "categoryLabel": "Open-Source Agent Harness",
+      "categoryLabelZh": "开源 Agent 运行框架",
+      "isOpenSource": true,
+      "license": "MIT",
+      "officialUrl": "https://github.com/deepseek-ai/deepseek-harness",
+      "tagline": "DeepSeek's Cordis-powered open-source agent harness with Web UI (:3080), headless CLI, and append-only 90%–99% cache reuse.",
+      "taglineZh": "DeepSeek 开源 Cordis 插件化 Agent 运行框架，提供本地 Web UI（:3080）与 Headless CLI，追加式结构实现 90%–99% 极高缓存命中。",
+      "githubRepo": "deepseek-ai/deepseek-harness",
+      "githubStars": 286300,
+      "latestVersion": "dsh-v0.2.3-alpha.2",
+      "verifiedDate": "2026-11-24",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "Node.js >= 24.22.3",
+        "Git >= 2.26",
+        "macOS / Linux / Windows"
+      ],
+      "dependencies": [
+        "Node.js >= 24.22.3",
+        "npm / npx",
+        "Git >= 2.26"
+      ],
+      "installCommand": "npx @deepseek-ai/dsh web",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "DEEPSEEK_API_KEY",
+          "DSH_HOME"
+        ],
+        "notes": "Built on the Cordis plugin architecture with local Web UI (:3080), headless CLI (dsh --profile headless), and desktop app. Supports official DeepSeek API keys as well as OpenAI/Anthropic-compatible third-party gateways and Token Plans (OpenRouter, Alibaba Bailian).",
+        "notesZh": "基于 Cordis 插件架构，提供本地 Web UI（:3080）、Headless CLI（dsh --profile headless）与桌面端；支持 DeepSeek 官方 API Key 及兼容 OpenAI/Anthropic 协议的第三方网关与 Token Plans（如 OpenRouter、阿里云百炼）。"
+      },
+      "tokenMultiplierMin": 2.4,
+      "tokenMultiplierMax": 3.8,
+      "tokenMultiplierRange": {
+        "min": 2.4,
+        "max": 3.8,
+        "typical": 3.1
+      },
+      "baseSystemPromptTokens": 4800,
+      "basePromptOverheadTokens": 4800,
+      "compactionStrategy": "Append-only session history maximizing prefix cache hits (95%–100% cacheReadTokens, cutting DeepSeek cached input to $0.001–$0.006/1M) + selective plugin pruning & high-thinking caps",
+      "compactionStrategyZh": "追加式（Append-only）会话结构最大化前缀缓存命中率（cacheReadTokens 常达 95%–100%，将 DeepSeek 缓存命中价压低至 $0.001–$0.006/1M），并通过精简插件与按需关闭高思考模式控费",
+      "promptCachingEfficiency": "Very High (90%–99% cache read hit rate via append-only Cordis session prefix)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "Very High",
+        "hitRateRangePercent": [
+          90,
+          99
+        ],
+        "notes": "Append-only session history preserves prefix bytes verbatim, frequently reaching 95%–100% cacheReadTokens ($0.001–$0.006/1M).",
+        "notesZh": "追加式会话历史避免修改前序消息，使 `cacheReadTokens` 占比常达 95%–100%，大幅稀释重工具底噪成本。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, ~24 built-in tools + Cordis plugin schemas (4.8K base) and high-thinking max_tokens (up to 256K) yield a 2.4x–3.8x multiplier—higher raw tokens than slim CLIs, but 90%–99% cache reuse keeps USD cost tiny.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构中，每轮携带约 24 个内置工具与 Cordis 插件 Schema（约 4.8K 底噪），高思考模式下 max_tokens 可达 256K，总 Token 倍率 2.4x–3.8x，但 90%–99% 缓存命中让实际美元账单极低。",
+      "recommendedModels": [
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary High-Cache",
+          "toolCalling": "Native",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Built for dsh append-only caching: $0.001/M cached input with 1M context and 145 t/s speed.",
+          "reasonZh": "与 dsh 追加式缓存天生契合：缓存读取低至 $0.001/M，兼具 1M 窗口与 145 t/s 速度。"
+        },
+        {
+          "modelId": "deepseek-v4-pro",
+          "modelName": "DeepSeek: DeepSeek V4 Pro 0423",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.9,
+          "outputPerM": 1.5,
+          "cachedInputPerM": 0.2,
+          "cacheDiscountPercent": 77.78,
+          "contextWindow": 1048576,
+          "supportsVision": false,
+          "supportsFunctionCalling": true,
+          "role": "Deep Reasoning",
+          "toolCalling": "Native",
+          "promptCaching": "Full (77.8% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "1.05M context and strong architectural reasoning for complex multi-step plugin workflows.",
+          "reasonZh": "1.05M 上下文与强推理能力，适合复杂多步 Cordis 插件编排任务。"
+        },
+        {
+          "modelId": "deepseek-v3",
+          "modelName": "DeepSeek-V3 (deepseek-chat)",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.27,
+          "outputPerM": 1.1,
+          "cachedInputPerM": 0.07,
+          "cacheDiscountPercent": 74.07,
+          "contextWindow": 128000,
+          "supportsVision": false,
+          "supportsFunctionCalling": true,
+          "role": "Classic Workhorse",
+          "toolCalling": "Native",
+          "promptCaching": "Full (74.1% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "Battle-tested $0.27/$1.10 coding workhorse with reliable tool calling across dsh headless pipelines.",
+          "reasonZh": "经典稳健主力（$0.27/$1.10），在 headless 自动化流水线中工具调用稳定。"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Cross-Provider Fallback",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Drop-in Anthropic-compatible option via dsh custom provider routing for complex UI/refactor tasks.",
+          "reasonZh": "可通过 dsh 兼容路由接入 Anthropic 协议模型，应对高难度全栈重构。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Default dsh high-cache engine ($0.001/M cached)"
+        },
+        {
+          "modelId": "deepseek-v4-pro",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Best for complex planning & debugging"
+        },
+        {
+          "modelId": "deepseek-v3",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Reliable low-cost workhorse"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Supported via Anthropic/OpenRouter gateway"
+        }
+      ],
+      "configTemplate": {
+        "language": "bash",
+        "filename": "~/.dsh/config & CLI launch",
+        "code": "export DEEPSEEK_API_KEY=\"sk-ds-...\"\nexport DSH_HOME=\"$HOME/.dsh\"\n\n# Launch local Web UI on :3080\nnpx @deepseek-ai/dsh web --port 3080\n\n# Or run headless CI mode\ndsh --profile headless --model deepseek-v4.1-flash \"Fix failing tests\""
+      },
+      "configTemplates": [
+        {
+          "id": "dsh-web-headless",
+          "title": "dsh Web UI (:3080) & Headless CLI Routing",
+          "titleZh": "Web UI (:3080) 与 Headless CLI 启动及模型路由",
+          "provider": "DeepSeek / OpenRouter / Bailian",
+          "language": "bash",
+          "filename": "dsh-launch.sh",
+          "code": "export DEEPSEEK_API_KEY=\"${DEEPSEEK_API_KEY}\"\nexport DSH_HOME=\"$HOME/.dsh\"\n\n# 1) Interactive Cordis Web Workbench (http://localhost:3080)\nnpx @deepseek-ai/dsh web\n\n# 2) Headless automation profile with custom OpenAI/Anthropic-compat gateway\ndsh --profile headless \\\n  --base-url \"https://openrouter.ai/api/v1\" \\\n  --model \"deepseek/deepseek-v4.1-flash\" \\\n  --prompt \"Run lint and patch type errors\""
+        },
+        {
+          "id": "dsh-usage-plugin",
+          "title": "Usage Billing Audit Plugin (@feiyang666/dsh-usage-plugin)",
+          "titleZh": "峰谷时段 Token 账单统计与 CSV/JSON 导出插件",
+          "provider": "Cordis Plugin",
+          "language": "json",
+          "filename": "$DSH_HOME/cordis.config.json",
+          "code": "{\n  \"plugins\": {\n    \"@feiyang666/dsh-usage-plugin\": {\n      \"enabled\": true,\n      \"trackPeakOffPeak\": true,\n      \"trackCacheReadTokens\": true,\n      \"exportFormats\": [\"csv\", \"json\"],\n      \"exportDir\": \"./reports/dsh-usage\"\n    }\n  }\n}"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "dsh-faq-1",
+          "severity": "critical",
+          "question": "Why does DeepSeek Harness use more raw tokens than lightweight CLIs in DeepSWE benchmarks?",
+          "questionZh": "为什么 DeepSWE 实测中 dsh 的总 Token 消耗高于轻量级 CLI？",
+          "answer": "dsh loads ~24 built-in tool schemas plus Cordis plugin definitions (~4.8K base) on every turn, and high-thinking mode can request up to 256K `max_tokens`. Disable unused Cordis plugins and toggle high-thinking off for routine edits.",
+          "answerZh": "dsh 每轮内置约 24 个工具定义与 Cordis 插件 Schema（底噪约 4.8K），且高思考模式最高可请求 256K `max_tokens`。建议精简非必要插件，并在常规修改中关闭高思考模式。"
+        },
+        {
+          "id": "dsh-faq-2",
+          "severity": "warning",
+          "question": "How does append-only session structure keep actual API bills low despite 2.4x–3.8x multipliers?",
+          "questionZh": "2.4x–3.8x 倍率下，追加式会话是如何把缓存读取单价压到 $0.001–$0.006/1M 的？",
+          "answer": "Because dsh appends tool outputs rather than mutating earlier messages, `cacheReadTokens` routinely hits 95%–100%. Avoid editing mid-history prompts so the prefix cache stays intact.",
+          "answerZh": "dsh 采用严格追加（Append-only）上下文，不改写历史前缀，使 `cacheReadTokens` 命中率常达 95%–100%。尽量避免回改中间轮次提示词以免破坏前缀缓存。"
+        },
+        {
+          "id": "dsh-faq-3",
+          "severity": "tip",
+          "question": "How can teams track peak vs off-peak DeepSeek spend in dsh?",
+          "questionZh": "如何在 dsh 中按峰谷时段精确核算 Token 与缓存费用？",
+          "answer": "Install `@feiyang666/dsh-usage-plugin` in Cordis config to log cached/uncached tokens by time window and export audit-ready CSV/JSON bills.",
+          "answerZh": "安装 `@feiyang666/dsh-usage-plugin` 插件即可按峰谷时段统计缓存与非缓存 Token 账单，并一键导出 CSV/JSON 对账。"
+        }
+      ]
+    },
+    {
+      "slug": "zcode",
+      "name": "ZCode",
+      "category": "ai-ide",
+      "categoryLabel": "Open-Source Agentic IDE",
+      "categoryLabelZh": "开源智能体 IDE",
+      "isOpenSource": true,
+      "license": "Apache-2.0",
+      "officialUrl": "https://zcode.z.ai/",
+      "tagline": "Open-source agentic IDE (Desktop, Web & CLI) with /goal closed-loop execution and lock-in-free triple-protocol BYOK.",
+      "taglineZh": "开源智能体 IDE（支持 Desktop、Web 与 CLI），内置 /goal 长程闭环执行与零锁死三协议 BYOK 路由。",
+      "githubRepo": "zai-org/ZCode",
+      "githubStars": 8877,
+      "latestVersion": "v3.18.2",
+      "verifiedDate": "2026-11-24",
+      "installDifficulty": 2,
+      "runtimeRequirements": [
+        "Node.js >= 24.0",
+        "pnpm",
+        "macOS / Linux / Windows"
+      ],
+      "dependencies": [
+        "Node.js >= 24.0",
+        "pnpm",
+        "Git"
+      ],
+      "installCommand": "pnpm build:zcode  # or zcode.z.ai Desktop",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": true,
+        "customModel": true,
+        "envVars": [
+          "ZCODE_PERSONAL_PROVIDER_CONFIG_FILE",
+          "ZCODE_DATA_BASE_DIR"
+        ],
+        "notes": "Alongside Z.ai GLM Coding Plan, Desktop, Web (zcode --web), and CLI (apps/zcode-cli / zcode-app-cli) all support lock-in-free BYOK via ~/.zcode/v2/provider_config.json for Anthropic Messages, OpenAI Chat Completions, and OpenAI Responses—no Z.ai login required.",
+        "notesZh": "除 Z.ai GLM Coding Plan 订阅外，Desktop、Web（zcode --web）与 CLI（apps/zcode-cli / zcode-app-cli）均支持通过 ~/.zcode/v2/provider_config.json 零锁死接入 Anthropic Messages、OpenAI Chat Completions 与 OpenAI Responses 三种协议，无需登录 Z.ai 账号。"
+      },
+      "tokenMultiplierMin": 2.0,
+      "tokenMultiplierMax": 3.1,
+      "tokenMultiplierRange": {
+        "min": 2.0,
+        "max": 3.1,
+        "typical": 2.5
+      },
+      "baseSystemPromptTokens": 3400,
+      "basePromptOverheadTokens": 3400,
+      "compactionStrategy": "/goal closed-loop iteration (plan-edit-test-verify) + idle background subagents + conversation timeline rollback to prevent context bloat",
+      "compactionStrategyZh": "/goal 长程闭环（规划-改代码-跑测试-验收迭代）+ 空闲后台 Subagent + 对话时间线回滚控制上下文膨胀",
+      "promptCachingEfficiency": "High (70%–88% across GLM 5.3, DeepSeek, and Anthropic Messages endpoints)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "High",
+        "hitRateRangePercent": [
+          70,
+          88
+        ],
+        "notes": "Timeline rollback prunes failed branches instead of compounding stale errors, preserving 70%–88% cache hit rates.",
+        "notesZh": "通过时间线回滚清理失败分支与空闲 Subagent 隔离，避免错误日志污染主前缀，缓存命中率达 70%–88%。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, Goal Mode planner, subagent delegation, built-in browser preview, and MCP tool definitions (3.4K base) yield a 2.0x–3.1x multiplier.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构任务中，Goal Mode 规划器、Subagent 协同、内置浏览器预览与 MCP 工具定义（约 3.4K 底噪）共同带来 2.0x–3.1x 的 Token 倍率。",
+      "recommendedModels": [
+        {
+          "modelId": "glm-5.3",
+          "modelName": "Z.ai: GLM 5.3",
+          "providerOrg": "Zhipu AI",
+          "inputPerM": 0.0699,
+          "outputPerM": 1.4,
+          "cachedInputPerM": 0.0689,
+          "cacheDiscountPercent": 1.43,
+          "contextWindow": 1048576,
+          "supportsVision": false,
+          "supportsFunctionCalling": true,
+          "role": "Primary Native",
+          "toolCalling": "Native",
+          "promptCaching": "Partial (1.4% discount)",
+          "vision": false,
+          "streaming": "Stable",
+          "reason": "Ultra-low $0.0699/$1.40 API pricing with 1335 coding index and native ZCode Goal Mode tuning.",
+          "reasonZh": "仅 $0.0699/$1.40 超低输入单价与 1335 编码指数，与 ZCode Goal Mode 深度适配。"
+        },
+        {
+          "modelId": "glm-5.3-flash",
+          "modelName": "Z.ai: GLM 5.3 Flash",
+          "providerOrg": "Zhipu AI",
+          "inputPerM": 0.0356,
+          "outputPerM": 0.0815,
+          "cachedInputPerM": 0.03,
+          "cacheDiscountPercent": 15.73,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Fast Background Subagent",
+          "toolCalling": "Native",
+          "promptCaching": "Partial (15.7% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "145 t/s throughput at $0.0356/$0.0815 makes browser verification and background subagents nearly free.",
+          "reasonZh": "145 t/s 极速输出与 $0.0356/$0.0815 单价，适合浏览器预览验收与后台子代理。"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "modelName": "DeepSeek: DeepSeek V4.1 Flash",
+          "providerOrg": "DeepSeek",
+          "inputPerM": 0.0498,
+          "outputPerM": 0.1992,
+          "cachedInputPerM": 0.001,
+          "cacheDiscountPercent": 97.99,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "OpenAI-Compat BYOK",
+          "toolCalling": "Native",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Plug into provider_config.json via OpenAI Chat Completions for 98% cached input savings ($0.001/M).",
+          "reasonZh": "通过 provider_config.json 的 OpenAI 兼容协议接入，享 98% 缓存读折扣（$0.001/M）。"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Anthropic-Protocol BYOK",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Direct Anthropic Messages protocol support in ZCode without Z.ai login for peak /goal accuracy.",
+          "reasonZh": "无需 Z.ai 账号即可直连 Anthropic Messages 协议，复杂 /goal 闭环一次通过率最高。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "glm-5.3",
+          "toolCalling": "Native",
+          "promptCaching": "Partial",
+          "vision": false,
+          "streaming": "Stable",
+          "notes": "Native Z.ai flagship coder ($0.0699/$1.40)"
+        },
+        {
+          "modelId": "glm-5.3-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Partial",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "145 t/s ideal for background subagents"
+        },
+        {
+          "modelId": "deepseek-v4.1-flash",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Zero-lock-in OpenAI-compat BYOK"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Native Anthropic Messages wire support"
+        }
+      ],
+      "configTemplate": {
+        "language": "json",
+        "filename": "~/.zcode/v2/provider_config.json",
+        "code": "{\n  \"activeProviderId\": \"custom-anthropic\",\n  \"providers\": [\n    {\n      \"id\": \"custom-anthropic\",\n      \"access\": { \"type\": \"apiKey\", \"apiKey\": \"${ANTHROPIC_API_KEY}\" },\n      \"api\": { \"type\": \"anthropic-messages\", \"baseUrl\": \"https://api.anthropic.com\" },\n      \"model\": \"claude-sonnet-5.5\"\n    },\n    {\n      \"id\": \"custom-openai-compat\",\n      \"access\": { \"type\": \"apiKey\", \"apiKey\": \"${DEEPSEEK_API_KEY}\" },\n      \"api\": { \"type\": \"openai-chat-completions\", \"baseUrl\": \"https://api.deepseek.com/v1\" },\n      \"model\": \"deepseek-chat\"\n    }\n  ]\n}"
+      },
+      "configTemplates": [
+        {
+          "id": "zcode-provider-config",
+          "title": "Triple-Protocol BYOK (~/.zcode/v2/provider_config.json)",
+          "titleZh": "零锁死三协议 BYOK 配置 (~/.zcode/v2/provider_config.json)",
+          "provider": "Z.ai / Anthropic / OpenAI-Compat",
+          "language": "json",
+          "filename": "~/.zcode/v2/provider_config.json",
+          "code": "{\n  \"activeProviderId\": \"zhipu-glm\",\n  \"providers\": [\n    {\n      \"id\": \"zhipu-glm\",\n      \"access\": { \"type\": \"apiKey\", \"apiKey\": \"${ZAI_API_KEY}\" },\n      \"api\": { \"type\": \"openai-chat-completions\", \"baseUrl\": \"https://open.bigmodel.cn/api/paas/v4\" },\n      \"model\": \"glm-5.3\"\n    },\n    {\n      \"id\": \"openai-responses-byok\",\n      \"access\": { \"type\": \"apiKey\", \"apiKey\": \"${OPENAI_API_KEY}\" },\n      \"api\": { \"type\": \"openai-responses\", \"baseUrl\": \"https://api.openai.com/v1\" },\n      \"model\": \"gpt-5.3-codex\"\n    }\n  ]\n}"
+        },
+        {
+          "id": "zcode-web-cli",
+          "title": "ZCode Web Workbench & Non-Interactive CLI",
+          "titleZh": "ZCode Web 工作台与非交互 CLI 启动命令",
+          "provider": "Local / Headless",
+          "language": "bash",
+          "filename": "zcode-cli.sh",
+          "code": "export ZCODE_PERSONAL_PROVIDER_CONFIG_FILE=\"$HOME/.zcode/v2/provider_config.json\"\nexport ZCODE_DATA_BASE_DIR=\"$HOME/.zcode-data\"\n\n# Browser workbench mode\nzcode --web\n\n# Non-interactive headless prompt via zcode-app-cli\nzcode --prompt \"/goal Add unit tests for billing calculator and verify vitest passes\""
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "zc-faq-1",
+          "severity": "critical",
+          "question": "Do I need a Z.ai account or GLM Coding Plan to use ZCode?",
+          "questionZh": "使用 ZCode 必须登录 Z.ai 账号或购买 GLM Coding Plan 吗？",
+          "answer": "No. Set `ZCODE_PERSONAL_PROVIDER_CONFIG_FILE` or edit `~/.zcode/v2/provider_config.json` with `access.type` and `api.type` (`anthropic-messages`, `openai-chat-completions`, or `openai-responses`) to run 100% BYOK across Desktop, `--web`, and CLI.",
+          "answerZh": "不需要。通过 `~/.zcode/v2/provider_config.json`（或 `ZCODE_PERSONAL_PROVIDER_CONFIG_FILE`）声明 `access.type` 与三种 `api.type` 之一，即可免登录运行在 Desktop、Web 与 CLI 模式。"
+        },
+        {
+          "id": "zc-faq-2",
+          "severity": "warning",
+          "question": "How do I stop `/goal` autonomous loops from burning tokens on repeated test failures?",
+          "questionZh": "如何避免 `/goal` 自动规划-测试闭环在报错时反复空转烧 Token？",
+          "answer": "Use conversation timeline rollback to rewind failed detours cleanly, and route verification subagents to fast low-cost models like `glm-5.3-flash` or `deepseek-v4.1-flash`.",
+          "answerZh": "一旦探索方向偏离，使用对话时间线回滚功能直接退回分叉点；同时将后台子代理与测试验收分流给 `glm-5.3-flash` 或 `deepseek-v4.1-flash`。"
+        },
+        {
+          "id": "zc-faq-3",
+          "severity": "tip",
+          "question": "Which protocol should I pick in `provider_config.json` for Anthropic vs OpenAI models?",
+          "questionZh": "`provider_config.json` 中三种 `api.type` 协议该如何选择？",
+          "answer": "Use `anthropic-messages` for Claude models (native cache breakpoints), `openai-responses` for GPT-5.3-Codex/GPT-6.2, and `openai-chat-completions` for GLM-5.3, DeepSeek, or OpenRouter.",
+          "answerZh": "Claude 系列选 `anthropic-messages` 以保留原生缓存断点；OpenAI 新模型选 `openai-responses`；GLM-5.3、DeepSeek 与 OpenRouter 通用端点选 `openai-chat-completions`。"
+        }
+      ]
+    },
+    {
+      "slug": "muse-code",
+      "name": "Muse Code",
+      "category": "cli-agent",
+      "categoryLabel": "Official Terminal CLI Agent",
+      "categoryLabelZh": "官方终端 CLI Agent",
+      "isOpenSource": false,
+      "license": "Proprietary (SDK MIT: meta-models/muse-code-sdk)",
+      "officialUrl": "https://dev.meta.ai/",
+      "tagline": "Meta's terminal CLI agent with git-worktree parallel subagents, /effort depth control, and MSP JSON-RPC SDK telemetry.",
+      "taglineZh": "Meta 官方终端 CLI Agent，默认支持 git worktree 多 Agent 并行评审、/effort 推理深度控费与 MSP JSON-RPC SDK。",
+      "githubRepo": "meta-models/muse-code-sdk",
+      "githubStars": 91,
+      "latestVersion": "v1.4.24",
+      "verifiedDate": "2026-11-24",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "macOS / Linux / WSL2",
+        "Git >= 2.30"
+      ],
+      "dependencies": [
+        "Official install.sh binary",
+        "Git >= 2.30"
+      ],
+      "installCommand": "curl -fsSL https://dev.meta.ai/install.sh | bash",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": false,
+        "customModel": false,
+        "envVars": [
+          "META_API_KEY",
+          "MUSE_SHELL_DROP_META_API_KEY"
+        ],
+        "notes": "Supports Meta pay-as-you-go API keys (META_API_KEY starting with LLM_, including discounted Contributor tier) or Meta subscriptions ($5–$200/mo). Does NOT support third-party OpenAI-compatible --base-url endpoints (hard-depends on Meta model catalog API; returns 404 otherwise).",
+        "notesZh": "支持 Meta 按量付费 API Key（META_API_KEY，LLM_ 开头，含折扣 Contributor 档位）或 Meta 订阅制（$5–$200/月）；不支持通过 --base-url 接入非 Meta 第三方 OpenAI 兼容模型（强依赖 Meta 模型目录接口，否则返回 404）。"
+      },
+      "tokenMultiplierMin": 2.1,
+      "tokenMultiplierMax": 3.3,
+      "tokenMultiplierRange": {
+        "min": 2.1,
+        "max": 3.3,
+        "typical": 2.7
+      },
+      "baseSystemPromptTokens": 3800,
+      "basePromptOverheadTokens": 3800,
+      "compactionStrategy": "Default multi-agent parallelism (git-worktree isolated workers + background reviewer, 30K–150K tokens per subagent) + /effort depth tuning + append-only event log resume",
+      "compactionStrategyZh": "默认多 Agent 并行（git worktree 隔离 Worker + 后台 Reviewer，单 Subagent 常见 30K–150K tokens）+ /effort 调节 Muse Spark 推理深度控费 + 本地追加式事件日志断点恢复",
+      "promptCachingEfficiency": "High (75%–88% across Meta Muse Spark & Wonder sessions)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "High",
+        "hitRateRangePercent": [
+          75,
+          88
+        ],
+        "notes": "Append-only local event logs and 88%–95% cached input discounts on Muse Spark 1.3 / Muse Wonder offset multi-agent fan-out.",
+        "notesZh": "基于本地追加式事件日志与 Muse Spark 1.3（88%）/ Muse Wonder（95%）缓存折扣，多轮缓存命中率约 75%–88%。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, OS sandbox + multi-agent prompts (~3.8K base, up to 64 KiB custom instructions) and git-worktree background reviewers (30K–150K tokens/subagent) produce a 2.1x–3.3x multiplier.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构任务中，内置 OS 沙箱、多 Agent 调度提示词（约 3.8K 底噪，支持最大 64 KiB 自定义指令）与后台 worktree Reviewer（单 Subagent 30K–150K tokens）带来 2.1x–3.3x 倍率。",
+      "recommendedModels": [
+        {
+          "modelId": "muse-spark-1.3",
+          "modelName": "Meta: Muse Spark 1.3",
+          "providerOrg": "Meta",
+          "inputPerM": 1.25,
+          "outputPerM": 4.25,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 88.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Primary Coding",
+          "toolCalling": "Native",
+          "promptCaching": "Full (88% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Default Meta agentic model ($1.25/$4.25, $0.15/M cached) with tunable /effort reasoning depth.",
+          "reasonZh": "Muse Code 默认主力模型（$1.25/$4.25，缓存 $0.15/M），支持 /effort 实时调节推理深度。"
+        },
+        {
+          "modelId": "muse-wonder",
+          "modelName": "Meta: Muse Wonder",
+          "providerOrg": "Meta",
+          "inputPerM": 4.0,
+          "outputPerM": 20.0,
+          "cachedInputPerM": 0.2,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Heavy Architect",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "1444 coding index and 95% cache discount ($0.20/M) for tough cross-repo design and review.",
+          "reasonZh": "编码指数高达 1444 且享 95% 缓存折扣（$0.20/M），适合复杂架构攻坚。"
+        },
+        {
+          "modelId": "muse-spark-1.3-contributor",
+          "modelName": "Meta: Muse Spark 1.3 Contributor",
+          "providerOrg": "Meta",
+          "inputPerM": 0.1,
+          "outputPerM": 0.2,
+          "cachedInputPerM": 0.002,
+          "cacheDiscountPercent": 98.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Contributor Budget Tier",
+          "toolCalling": "Native",
+          "promptCaching": "Full (98% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Discounted Contributor API tier ($0.10/$0.20, $0.002/M cached) cuts multi-agent subagent bills by >90%.",
+          "reasonZh": "折扣 Contributor 档位仅 $0.10/$0.20（缓存 $0.002/M），可将多 Agent 并发消耗降低 90% 以上。"
+        },
+        {
+          "modelId": "muse-glimmer-30b",
+          "modelName": "Meta: Muse Glimmer 30B",
+          "providerOrg": "Meta",
+          "inputPerM": 0.35,
+          "outputPerM": 1.5,
+          "cachedInputPerM": 0.04,
+          "cacheDiscountPercent": 88.57,
+          "contextWindow": 131072,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Lightweight Fast Worker",
+          "toolCalling": "Native",
+          "promptCaching": "Full (88.6% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Compact 30B model ($0.35/$1.50) ideal for quick lint/test subagents.",
+          "reasonZh": "轻量 30B 模型（$0.35/$1.50），适合高频单元测试修复与快速文档生成。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "muse-spark-1.3",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "First-party default with /effort control"
+        },
+        {
+          "modelId": "muse-wonder",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Highest Meta coding benchmark (1444)"
+        },
+        {
+          "modelId": "muse-spark-1.3-contributor",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Discounted Contributor META_API_KEY tier"
+        },
+        {
+          "modelId": "muse-glimmer-30b",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Fast 131K lightweight worker"
+        }
+      ],
+      "configTemplate": {
+        "language": "bash",
+        "filename": "CI / Headless META_API_KEY setup",
+        "code": "export META_API_KEY=\"LLM_your_meta_api_key\"\nexport MUSE_SHELL_DROP_META_API_KEY=1\n\n# Run headless JSON mode and capture run.usage telemetry\nmuse exec --json \"Refactor payment webhook handler\""
+      },
+      "configTemplates": [
+        {
+          "id": "muse-ci-headless",
+          "title": "CI/Headless META_API_KEY + Sandbox Key Drop",
+          "titleZh": "CI/Headless 安全隔离与 run.usage 采集配置",
+          "provider": "Meta AI",
+          "language": "bash",
+          "filename": "muse-ci.sh",
+          "code": "export META_API_KEY=\"LLM_${META_TOKEN}\"\n# Strip META_API_KEY from child bash tool subshells for security\nexport MUSE_SHELL_DROP_META_API_KEY=1\n\nmuse exec --json \"Fix integration tests\" | jq '.run.usage'"
+        },
+        {
+          "id": "muse-sdk-msp",
+          "title": "@muse-code/sdk (MSP JSON-RPC Usage & /effort Control)",
+          "titleZh": "@muse-code/sdk tokenUsage 监控与 /effort 控费示例",
+          "provider": "Meta AI SDK",
+          "language": "typescript",
+          "filename": "muse-runner.ts",
+          "code": "import { MuseClient } from '@muse-code/sdk';\n\nconst client = new MuseClient({ apiKey: process.env.META_API_KEY });\nclient.on('session/tokenUsage', (usage) => {\n  console.log('Live token usage:', usage);\n});\nawait client.send('/effort medium'); // Cap Muse Spark reasoning depth\nawait client.prompt('Audit auth routes and write unit tests');"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "mc-faq-1",
+          "severity": "critical",
+          "question": "Why does pointing Muse Code --base-url to OpenRouter or DeepSeek fail with 404?",
+          "questionZh": "为什么在 Muse Code 中尝试用 --base-url 接入第三方 OpenAI 兼容网关会报 404？",
+          "answer": "Muse Code tightly couples to Meta's internal model catalog endpoint and does not support non-Meta OpenAI-compatible `--base-url` overrides. Use `META_API_KEY` (`LLM_*`) or a Meta subscription ($5–$200/mo).",
+          "answerZh": "Muse Code 强依赖 Meta 官方模型目录接口，不支持通过 `--base-url` 接入第三方 OpenAI 兼容模型（会直接返回 404）。请使用 `LLM_` 开头的 `META_API_KEY` 或官方订阅。"
+        },
+        {
+          "id": "mc-faq-2",
+          "severity": "warning",
+          "question": "Why can a single Muse Code task consume 150K+ tokens unexpectedly?",
+          "questionZh": "为什么单个任务有时会在后台额外消耗 30K–150K tokens？",
+          "answer": "Muse Code enables multi-agent parallelism by default, spawning git-worktree workers and a background reviewer (each 30K–150K tokens). Lower reasoning depth with `/effort` and keep `AGENTS.md` / `CLAUDE.md` well below the 64 KiB cap.",
+          "answerZh": "Muse Code 默认开启 git worktree 多 Worker 与后台 Reviewer 并行，每个 Subagent 常见消耗 30K–150K tokens。建议通过 `/effort` 下调推理深度并精简 `AGENTS.md` / `CLAUDE.md`。"
+        },
+        {
+          "id": "mc-faq-3",
+          "severity": "tip",
+          "question": "How do I keep subprocesses from reading META_API_KEY in CI?",
+          "questionZh": "在 CI 或自动执行命令时如何防止子进程泄露 META_API_KEY？",
+          "answer": "Set `MUSE_SHELL_DROP_META_API_KEY=1` so Muse drops the key from spawned shell environments while keeping `muse exec --json` `run.usage` reporting active.",
+          "answerZh": "设置环境变量 `MUSE_SHELL_DROP_META_API_KEY=1`，即可在向工具子 Shell 隐藏密钥的同时正常通过 `muse exec --json` 获取 `run.usage` 用量。"
+        }
+      ]
+    },
+    {
+      "slug": "antigravity",
+      "name": "Google Antigravity",
+      "category": "ai-ide",
+      "categoryLabel": "Agent-First Platform & IDE",
+      "categoryLabelZh": "智能体优先开发平台 & IDE",
+      "isOpenSource": false,
+      "license": "Proprietary",
+      "officialUrl": "https://antigravity.google/",
+      "tagline": "Google's agent-first IDE & agy CLI featuring 512K auto-compaction checkpoints, Orchestrator routing, and on-demand Skills.",
+      "taglineZh": "Google 智能体优先开发平台与 agy CLI，具备 512K 自动检查点压缩、Orchestrator 降耗调度与按需加载 Skills。",
+      "githubRepo": null,
+      "githubStars": null,
+      "latestVersion": "Antigravity 2.0",
+      "verifiedDate": "2026-11-24",
+      "installDifficulty": 1,
+      "runtimeRequirements": [
+        "macOS / Linux / Windows",
+        "Google Account or Gemini API Key (CLI/Ext)"
+      ],
+      "dependencies": [
+        "Antigravity Desktop / IDE or agy CLI",
+        "Git"
+      ],
+      "installCommand": "Download App / IDE at antigravity.google (CLI: agy)",
+      "byokSupport": {
+        "supported": true,
+        "customBaseUrl": false,
+        "customModel": false,
+        "envVars": [
+          "GEMINI_API_KEY"
+        ],
+        "notes": "Standalone Desktop App & Antigravity IDE do NOT support third-party BYOK or custom Base URLs (tied to Google AI Free/Pro $19.99/Ultra $99.99–$199.99 or Gemini Enterprise; ToS bans reusing OAuth in external tools). Pay-as-you-go GEMINI_API_KEY (Gemini protocol only) is supported in agy CLI and VS Code/JetBrains/Zed extensions.",
+        "notesZh": "独立 Desktop App 与 Antigravity IDE 不支持第三方 BYOK 或自定义 BaseURL（绑定 Google AI Free/Pro $19.99/Ultra $99.99–$199.99 或 Gemini Enterprise 账号，且条款禁止在第三方工具复用 OAuth）；仅终端 CLI（agy）与 VS Code/JetBrains/Zed 插件支持按量付费 GEMINI_API_KEY（限 Gemini 协议）。"
+      },
+      "tokenMultiplierMin": 2.0,
+      "tokenMultiplierMax": 3.2,
+      "tokenMultiplierRange": {
+        "min": 2.0,
+        "max": 3.2,
+        "typical": 2.6
+      },
+      "baseSystemPromptTokens": 6500,
+      "basePromptOverheadTokens": 6500,
+      "compactionStrategy": "512K auto-checkpoint compaction (doubled from 256K, plus manual compact) + Orchestrator (Carbon/Neon planning + Hydrogen execution, ~24% lower quota burn) + on-demand Skills",
+      "compactionStrategyZh": "自动上下文检查点/压缩阈值由 256K 翻倍至 512K tokens（支持手动压缩）+ Orchestrator（Carbon/Neon 规划 + Hydrogen 执行，配额消耗平均降约 24%）+ 按需加载 Skills 替代常驻 Rules",
+      "promptCachingEfficiency": "High (75%–90% across Gemini 4 Neon/Carbon/Hydrogen & Claude Sonnet 5.5)",
+      "promptCachingSupport": {
+        "supported": true,
+        "efficiency": "High",
+        "hitRateRangePercent": [
+          75,
+          90
+        ],
+        "notes": "Core prompt (~6.5K) plus built-in tool/subagent schemas (~13.7K–15.4K) total ~22K–25K tokens on IDE init (5K+ in headless `agy -p`), so keeping rules in on-demand Skills preserves cache density.",
+        "notesZh": "核心提示词约 6.5K tokens（计入 13.7K–15.4K 内置工具与 Subagent Schema 后标准初始化约 22K–25K，无头 `agy -p` 约 5K+）；将规范拆入按需 Skills 可维持 75%–90% 缓存命中。"
+      },
+      "typicalTaskMultiplierNote": "In a 15-turn refactor with 5 tool calls, 6.5K core prompt (~22K–25K with IDE tool & subagent schemas; 5K+ in headless agy -p) drives a 2.0x–3.2x multiplier, trimmed ~24% by Orchestrator split routing.",
+      "typicalTaskMultiplierNoteZh": "在 15 轮重构中，6.5K 核心提示词（含内置工具与 Subagent 定义后标准会话初始化约 22K–25K，无头模式 agy -p 约 5K+）带来 2.0x–3.2x 倍率，Orchestrator 分级调度平均省流约 24%。",
+      "recommendedModels": [
+        {
+          "modelId": "gemini-4-neon",
+          "modelName": "Google: Gemini 4 Neon",
+          "providerOrg": "Google",
+          "inputPerM": 3.0,
+          "outputPerM": 15.0,
+          "cachedInputPerM": 0.15,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Orchestrator / Frontier",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "61.4 AA index, 1448 coding index, and 145 t/s throughput—ideal as Antigravity's top planner.",
+          "reasonZh": "AA 61.4、编码指数 1448 与 145 t/s 极速输出，Antigravity 旗舰规划首选。"
+        },
+        {
+          "modelId": "gemini-4-carbon",
+          "modelName": "Google: Gemini 4 Carbon",
+          "providerOrg": "Google",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Balanced Planner",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "60.0 AA index at $2/$10 ($0.10/M cached) balances planning depth and quota longevity.",
+          "reasonZh": "AA 60.0 配合 $2/$10 定价与 95% 缓存折扣，兼顾规划精度与配额续航。"
+        },
+        {
+          "modelId": "gemini-4-hydrogen",
+          "modelName": "Google: Gemini 4 Hydrogen",
+          "providerOrg": "Google",
+          "inputPerM": 1.5,
+          "outputPerM": 7.5,
+          "cachedInputPerM": 0.075,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1048576,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Orchestrator Worker",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Fast $1.50/$7.50 execution tier paired with Carbon/Neon to cut quota burn by ~24%.",
+          "reasonZh": "由 Orchestrator 分派执行的轻量主力（$1.50/$7.50），平均降低约 24% 配额消耗。"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "modelName": "Anthropic: Claude Sonnet 5.5",
+          "providerOrg": "Anthropic",
+          "inputPerM": 2.0,
+          "outputPerM": 10.0,
+          "cachedInputPerM": 0.1,
+          "cacheDiscountPercent": 95.0,
+          "contextWindow": 1000000,
+          "supportsVision": true,
+          "supportsFunctionCalling": true,
+          "role": "Hosted IDE Alternative",
+          "toolCalling": "Native",
+          "promptCaching": "Full (95% discount)",
+          "vision": true,
+          "streaming": "Stable",
+          "reason": "Available inside Antigravity hosted plans for teams preferring Claude's diff style.",
+          "reasonZh": "Antigravity 官方托管套餐内可选，适合偏好 Claude 代码风格的团队。"
+        }
+      ],
+      "compatibilityMatrix": [
+        {
+          "modelId": "gemini-4-neon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Top Orchestrator planner (145 t/s)"
+        },
+        {
+          "modelId": "gemini-4-carbon",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "High-efficiency planning tier"
+        },
+        {
+          "modelId": "gemini-4-hydrogen",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Fast execution worker (-24% quota)"
+        },
+        {
+          "modelId": "claude-sonnet-5.5",
+          "toolCalling": "Native",
+          "promptCaching": "Full",
+          "vision": true,
+          "streaming": "Stable",
+          "notes": "Hosted Antigravity subscription tier"
+        }
+      ],
+      "configTemplate": {
+        "language": "json",
+        "filename": "~/.gemini/antigravity-cli/settings.json",
+        "code": "{\n  \"auth\": {\n    \"type\": \"gemini-api-key\",\n    \"apiKeyEnv\": \"GEMINI_API_KEY\"\n  },\n  \"orchestrator\": {\n    \"enabled\": true,\n    \"plannerModel\": \"gemini-4-carbon\",\n    \"workerModel\": \"gemini-4-hydrogen\"\n  },\n  \"compaction\": {\n    \"autoCompactThresholdTokens\": 512000\n  }\n}"
+      },
+      "configTemplates": [
+        {
+          "id": "antigravity-cli-settings",
+          "title": "Antigravity CLI (agy) GEMINI_API_KEY Setup",
+          "titleZh": "Antigravity CLI (agy) 按量 API Key 配置",
+          "provider": "Google Gemini API",
+          "language": "json",
+          "filename": "~/.gemini/antigravity-cli/settings.json",
+          "code": "{\n  \"auth\": {\n    \"type\": \"gemini-api-key\"\n  },\n  \"model\": \"gemini-4-neon\",\n  \"headlessDefaultPrompt\": \"agy -p\"\n}\n// Export in shell: export GEMINI_API_KEY=\"AIza...\""
+        },
+        {
+          "id": "antigravity-ide-orchestrator",
+          "title": "IDE Extension API Auth + Orchestrator & On-Demand Skills",
+          "titleZh": "IDE 插件鉴权与 Orchestrator / Skills 省流规范",
+          "provider": "Google Antigravity",
+          "language": "json",
+          "filename": "IDE Extension Settings / .agent/skills",
+          "code": "{\n  \"antigravity.auth\": { \"type\": \"gemini-api-key\" },\n  \"antigravity.orchestrator.enabled\": true,\n  \"antigravity.rulesMode\": \"on-demand-skills\"\n}\n// Tip: Move bulky guidelines out of always_on Rules into .agent/skills/*/SKILL.md"
+        }
+      ],
+      "topFaqs": [
+        {
+          "id": "ag-faq-1",
+          "severity": "critical",
+          "question": "Can I use OpenRouter, DeepSeek, or custom Base URLs inside Google Antigravity Desktop?",
+          "questionZh": "Google Antigravity Desktop / IDE 支持接入第三方 BYOK 或自定义 Base URL 吗？",
+          "answer": "No. The standalone Desktop App & IDE bind to Google AI Free/Pro ($19.99)/Ultra ($99.99–$199.99) or Gemini Enterprise (and Google ToS bans reusing OAuth in external tools). Pay-as-you-go `GEMINI_API_KEY` is supported only in `agy` CLI and VS Code/JetBrains/Zed extensions.",
+          "answerZh": "不支持。独立桌面端与 IDE 绑定 Google AI 账号体系（且条款禁止在第三方工具复用 OAuth）。仅 `agy` CLI 与 IDE 插件支持配置按量付费 `GEMINI_API_KEY`（限 Gemini 协议）。"
+        },
+        {
+          "id": "ag-faq-2",
+          "severity": "warning",
+          "question": "Why does an empty Antigravity IDE session initialize ~22K–25K tokens?",
+          "questionZh": "为什么 Antigravity IDE 新开会话初始化就会占用 ~22K–25K tokens？",
+          "answer": "Beyond the ~6.5K core prompt, built-in IDE tool schemas and subagent definitions add ~13.7K–15.4K tokens. Move heavy coding standards out of `always_on` Rules into on-demand Skills, or use headless `agy -p` (~5K+ init) for quick scripts.",
+          "answerZh": "除约 6.5K 核心提示词外，内置工具 Schema 与 Subagent 定义约占 13.7K–15.4K tokens。建议把大段规范迁入按需加载的 Skills（替代 `always_on` Rules），脚本任务可用无头 `agy -p`（起始约 5K+）。"
+        },
+        {
+          "id": "ag-faq-3",
+          "severity": "tip",
+          "question": "How do Orchestrator and 512K checkpoints reduce quota burn?",
+          "questionZh": "Orchestrator 与 512K 检查点压缩如何帮助节省配额？",
+          "answer": "Orchestrator routes planning to Carbon/Neon and execution to Hydrogen (cutting quota consumption ~24% on average), while auto-compaction checkpoints at 512K prevent long sessions from hitting context walls.",
+          "answerZh": "Orchestrator 用 Carbon/Neon 规划、Hydrogen 执行，平均可降耗约 24%；同时 512K 自动检查点压缩可在长程重构中防止上下文溢出。"
         }
       ]
     }

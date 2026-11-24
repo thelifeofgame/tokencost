@@ -88,7 +88,7 @@ function renderBadgeSvg(model, theme, metric, isHarnessPreset = false) {
       : getShortModelLabel(model);
 
   const rightValue = isHarnessPreset
-    ? '1.2x–3.5x Audited'
+    ? '1.2x–3.8x Audited'
     : getBadgeMetricText(model, metric);
 
   const separator = theme === 'indigo' ? ' · ' : ' ';
@@ -102,7 +102,7 @@ function renderBadgeSvg(model, theme, metric, isHarnessPreset = false) {
 
   const safeTitle = escapeXml(
     isHarnessPreset
-      ? 'TokenCosts AI: Coding Agent Token Multiplier 1.2x-3.5x Audited'
+      ? 'TokenCosts AI: Coding Agent Token Multiplier 1.2x-3.8x Audited'
       : `TokenCosts AI: ${getShortModelLabel(model)} ${formatBadgeRate(model.inputPerM)} / ${formatBadgeRate(model.outputPerM)} per 1M`
   );
   const safeBrand = escapeXml(brandLabel);

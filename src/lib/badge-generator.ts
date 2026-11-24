@@ -115,7 +115,7 @@ export function getBadgeTargetUrl(modelId: string, isHarnessPreset = false): str
 
 export function getBadgeAltText(model: BadgeModelInput, isHarnessPreset = false): string {
   if (isHarnessPreset) {
-    return 'Coding Agent Token Multiplier (1.2x-3.5x) & BYOK Cost Benchmark | Audited by TokenCosts AI';
+    return 'Coding Agent Token Multiplier (1.2x-3.8x) & BYOK Cost Benchmark | Audited by TokenCosts AI';
   }
   const displayName = getShortModelLabel(model);
   const inStr = formatBadgeRate(model.inputPerM);
@@ -149,7 +149,7 @@ export function renderBadgeSvg(
       : getShortModelLabel(model);
 
   const rightValue = isHarnessPreset
-    ? '1.2x–3.5x Audited'
+    ? '1.2x–3.8x Audited'
     : getBadgeMetricText(model, metric);
 
   const separator = theme === 'indigo' ? ' · ' : ' ';
@@ -163,7 +163,7 @@ export function renderBadgeSvg(
 
   const safeTitle = escapeXml(
     isHarnessPreset
-      ? 'TokenCosts AI: Coding Agent Token Multiplier 1.2x-3.5x Audited'
+      ? 'TokenCosts AI: Coding Agent Token Multiplier 1.2x-3.8x Audited'
       : `TokenCosts AI: ${getShortModelLabel(model)} ${formatBadgeRate(model.inputPerM)} / ${formatBadgeRate(model.outputPerM)} per 1M`
   );
   const safeBrand = escapeXml(brandLabel);

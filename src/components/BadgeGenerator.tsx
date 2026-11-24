@@ -247,7 +247,7 @@ export default function BadgeGenerator() {
               }}
               className="w-full min-h-[44px] rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-950/70 px-3.5 text-sm font-medium text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
             >
-              <option value="__harness__">Coding Agent Harness Benchmark (1.2x–3.5x)</option>
+              <option value="__harness__">Coding Agent Harness Benchmark (1.2x–3.8x)</option>
               {MODELS_DATA.map((m) => (
                 <option key={m.modelId} value={m.modelId}>
                   {m.modelName} ({formatBadgeRate(m.inputPerM)}/1M in · {formatBadgeRate(m.outputPerM)}/1M out)

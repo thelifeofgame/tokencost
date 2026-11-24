@@ -32,9 +32,9 @@ const HUB_FAQS = [
     question: 'What is a Coding Agent\'s "Real Token Multiplier" and why does it matter?',
     questionZh: '什么是 Coding Agent 的“真实 Token 消耗倍率”，为什么它比模型单价更关键？',
     answer:
-      'A harness\'s Real Token Multiplier measures total input and output tokens billed during a multi-turn coding task divided by the raw user prompt and diff size. Due to system prompt overhead, file-tree indexing, tool schemas, and error retries, tools range from 1.2x (Aider) to 3.5x (Cursor Composer)—meaning the exact same model can cost nearly 3x more depending on your harness.',
+      'A harness\'s Real Token Multiplier measures total input and output tokens billed during a multi-turn coding task divided by the raw user prompt and diff size. Due to system prompt overhead, file-tree indexing, tool schemas, and error retries, tools range from 1.2x (Aider) to 3.8x (DeepSeek Harness)—meaning the exact same model can cost over 3x more depending on your harness.',
     answerZh:
-      '真实 Token 消耗倍率衡量的是完成一次多轮编码任务时，实际向 API 计费的总 Token 与原始用户输入/Diff 体积的比值。由于系统提示词底噪、文件树索引、工具 Schema 注入与重试循环，不同工具的倍率跨度高达 1.2x（Aider）到 3.5x（Cursor Composer）——同样的模型换个工具，账单可能相差近 3 倍。',
+      '真实 Token 消耗倍率衡量的是完成一次多轮编码任务时，实际向 API 计费的总 Token 与原始用户输入/Diff 体积的比值。由于系统提示词底噪、文件树索引、工具 Schema 注入与重试循环，不同工具的倍率跨度高达 1.2x（Aider）到 3.8x（DeepSeek Harness）——同样的模型换个工具，账单可能相差超 3 倍。',
   },
   {
     id: 'hub-faq-2',
@@ -52,9 +52,9 @@ const HUB_FAQS = [
     question: 'Which Coding Harness is the most token-efficient for large repositories in 2026?',
     questionZh: '2026 年在大型代码仓库中，哪款 Coding Harness 最省 Token？',
     answer:
-      'Aider (1.2x–1.8x) leads in raw token efficiency via Tree-Sitter AST Repo-Map pruning, followed by OpenCode/Continue (1.5x–2.3x) and Roo Code (1.7x–2.6x). Pairing these harnesses with 1M-context models like Gemini 4 Neon or GPT-6.2 Sol maximizes cache hit rates across multi-file refactors.',
+      'Aider (1.2x–1.8x) leads in raw token efficiency via Tree-Sitter AST Repo-Map pruning, followed by OpenCode/Continue (1.5x–2.3x), OpenAI Codex CLI (1.6x–2.4x), and Roo Code (1.7x–2.6x). Pairing these harnesses with 1M-context models like Gemini 4 Neon or GPT-6.2 Sol maximizes cache hit rates across multi-file refactors.',
     answerZh:
-      'Aider（1.2x–1.8x）凭借 Tree-Sitter AST Repo-Map 精准剪枝位居效率榜首，其次是 OpenCode/Continue（1.5x–2.3x）与 Roo Code（1.7x–2.6x）。搭配 Gemini 4 Neon 或 GPT-6.2 Sol 等百万上下文模型，可在多文件重构中获得极高的缓存命中率。',
+      'Aider（1.2x–1.8x）凭借 Tree-Sitter AST Repo-Map 精准剪枝位居效率榜首，其次是 OpenCode/Continue（1.5x–2.3x）、OpenAI Codex CLI（1.6x–2.4x）与 Roo Code（1.7x–2.6x）。搭配 Gemini 4 Neon 或 GPT-6.2 Sol 等百万上下文模型，可在多文件重构中获得极高的缓存命中率。',
   },
 ];
 
@@ -107,6 +107,11 @@ function getMonogram(slug: string): string {
     cline: 'CL',
     'roo-code': 'RC',
     'opencode-continue': 'OC',
+    'codex-cli': 'CX',
+    'deepseek-harness': 'DS',
+    zcode: 'ZC',
+    'muse-code': 'MC',
+    antigravity: 'AG',
   };
   return map[slug] || slug.slice(0, 2).toUpperCase();
 }
@@ -158,8 +163,8 @@ export default function HarnessDirectoryClient() {
           <Terminal className="h-3.5 w-3.5" />
           <span>
             {isZh
-              ? `7 款实测 Coding Harness · 更新于 ${HARNESS_VERIFIED_DATE}`
-              : `7 Verified Coding Harnesses · Updated ${HARNESS_VERIFIED_DATE}`}
+              ? `${HARNESS_TOOLS.length} 款实测 Coding Harness · 更新于 ${HARNESS_VERIFIED_DATE}`
+              : `${HARNESS_TOOLS.length} Verified Coding Harnesses · Updated ${HARNESS_VERIFIED_DATE}`}
           </span>
         </div>
 
@@ -171,8 +176,8 @@ export default function HarnessDirectoryClient() {
 
         <p className="text-sm sm:text-base text-zinc-400 max-w-2xl leading-relaxed">
           {isZh
-            ? '实测 15 轮跨文件代码重构任务下的真实 Token 消耗倍率、System Prompt 隐性底噪与 Prompt Caching 命中率。附带 DeepSeek-V4.1-Flash 与 OpenRouter 生产级 BYOK 配置模板。'
-            : 'Audit the real token multiplier, system prompt overhead, and BYOK cost optimization across Claude Code, Cursor, Windsurf, Aider, Cline, Roo Code & OpenCode on standardized 15-turn repo refactors.'}
+            ? `实测 ${HARNESS_TOOLS.length} 款主流 Coding Agent（含 Claude Code、OpenAI Codex CLI、DeepSeek Harness、Cursor、Google Antigravity、ZCode、Muse Code、Aider 等）在 15 轮跨文件代码重构任务下的真实 Token 消耗倍率、System Prompt 隐性底噪与缓存命中率，附带生产级 BYOK 配置模板。`
+            : `Audit the real token multiplier, system prompt overhead, and BYOK cost optimization across ${HARNESS_TOOLS.length} coding harnesses—including Claude Code, OpenAI Codex CLI, DeepSeek Harness, Cursor, Windsurf, Google Antigravity, ZCode, Muse Code, Aider, Cline, Roo Code & OpenCode—on standardized 15-turn repo refactors.`}
         </p>
       </header>
 
@@ -200,7 +205,7 @@ export default function HarnessDirectoryClient() {
             ~1,150 tok
           </div>
           <p className="text-[11px] text-zinc-500 mt-1">
-            {isZh ? '对比 AI IDE 约 3,600–4,200 tok 固定注入' : 'vs ~3,600–4,200 tok in heavy AI IDEs'}
+            {isZh ? '对比 AI IDE / CLI 约 3,600–6,900 tok 固定注入' : 'vs ~3,600–6,900 tok in heavy AI IDEs & CLIs'}
           </p>
         </div>
 

@@ -196,7 +196,15 @@ const dailyHighlights = [
   `Qwen3-Coder-30B (${qwenIn}/${qwenOut}, -53%)`,
 ].join(', ');
 
-const harnessLines = (harnessTools.tools || []).map((tool) => {
+const toolsList = harnessTools.tools || [];
+const harnessMinMult = toolsList.length
+  ? Math.min(...toolsList.map((t) => t.tokenMultiplierMin)).toFixed(1)
+  : '1.2';
+const harnessMaxMult = toolsList.length
+  ? Math.max(...toolsList.map((t) => t.tokenMultiplierMax)).toFixed(1)
+  : '3.8';
+
+const harnessLines = toolsList.map((tool) => {
   const overhead = tool.basePromptOverheadTokens ?? tool.baseSystemPromptTokens ?? 0;
   const cleanTagline = String(tool.tagline || '').replace(/\.+$/, '');
   return `- [${tool.name} Token Cost & BYOK Guide](https://tokencostsai.com/harness/${tool.slug}/): ${tool.tokenMultiplierMin.toFixed(1)}x–${tool.tokenMultiplierMax.toFixed(1)}x multiplier (~${overhead.toLocaleString('en-US')} token overhead) — ${cleanTagline}.`;
@@ -228,7 +236,7 @@ Current market highlights (${lastUpdatedDate}): ${dailyHighlights}.
 
 ## Coding Agent & Harness Benchmarks
 
-- [Coding Agent Harness Cost Directory](https://tokencostsai.com/harness/): Measured real-world token multipliers (1.2x–3.5x), system prompt overhead, and BYOK cost optimization for AI coding tools.
+- [Coding Agent Harness Cost Directory](https://tokencostsai.com/harness/): Measured real-world token multipliers (${harnessMinMult}x–${harnessMaxMult}x), system prompt overhead, and BYOK cost optimization across ${toolsList.length} AI coding tools.
 ${harnessLines.join('\n')}
 
 ## Top Model Comparisons

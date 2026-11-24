@@ -135,7 +135,7 @@ const typedRaw = harnessRaw as unknown as {
   tools: HarnessTool[];
 };
 
-export const HARNESS_VERIFIED_DATE: string = typedRaw.verifiedDate || '2026-11-19';
+export const HARNESS_VERIFIED_DATE: string = typedRaw.verifiedDate || '2026-11-24';
 export const HARNESS_ASSUMPTIONS: HarnessBenchmarkAssumptions = typedRaw.benchmarkAssumptions || {
   baseTaskInputTokens: 30000,
   baseTaskOutputTokens: 4500,
@@ -208,6 +208,36 @@ export function getHarnessSeoMeta(slug: string): {
         "Audit OpenCode and Continue's 1.5x–2.3x real token multiplier across VS Code & JetBrains. Copy LiteLLM & OpenRouter BYOK configs for zero-lock-in cost control.",
       h1: 'OpenCode / Continue: Open BYOK Cost Optimization & Token Audit',
     },
+    'codex-cli': {
+      title: 'OpenAI Codex CLI Token Cost, Multiplier & BYOK Config | TokenCosts AI',
+      description:
+        "Audit OpenAI Codex CLI's 1.6x–2.4x real token multiplier, MCP schema overhead (~6.9k base), and Responses API BYOK routing via ~/.codex/config.toml.",
+      h1: 'OpenAI Codex CLI: Real Token Multiplier & BYOK Cost Guide',
+    },
+    'deepseek-harness': {
+      title: 'DeepSeek Harness (dsh) Token Cost, Multiplier & Cache Guide | TokenCosts AI',
+      description:
+        "Measure DeepSeek Harness (dsh)'s 2.4x–3.8x token multiplier across 24 built-in tools and slash bills via DeepSeek V4.1-Flash 90%–99% Prompt Caching.",
+      h1: 'DeepSeek Harness (dsh): Token Multiplier & Cache Cost Guide',
+    },
+    zcode: {
+      title: 'ZCode IDE Token Multiplier & Multi-Protocol BYOK Config | TokenCosts AI',
+      description:
+        "Analyze ZCode IDE's 2.0x–3.1x real token multiplier and configure lock-in-free triple-protocol BYOK routing via ~/.zcode/v2/provider_config.json.",
+      h1: 'ZCode IDE: Real Token Multiplier & Multi-Protocol BYOK Guide',
+    },
+    'muse-code': {
+      title: 'Muse Code CLI Token Multiplier, Subagent Cost & Limits | TokenCosts AI',
+      description:
+        "Audit Meta Muse Code CLI's 2.1x–3.3x real token multiplier, git-worktree subagent overhead, and Meta Muse Spark/Wonder API & subscription limits.",
+      h1: 'Muse Code CLI: Real Token Multiplier & Meta API Cost Guide',
+    },
+    antigravity: {
+      title: 'Google Antigravity IDE Token Multiplier & agy CLI BYOK | TokenCosts AI',
+      description:
+        "Measure Google Antigravity IDE's 2.0x–3.2x token multiplier, Artifact & Subagent overhead, and partial BYOK setup with GEMINI_API_KEY in agy CLI.",
+      h1: 'Google Antigravity IDE: Token Multiplier & agy CLI Cost Guide',
+    },
   };
 
   if (map[slug]) return map[slug];
@@ -230,6 +260,11 @@ const HARNESS_TOP_MODELS: Record<string, string> = {
   cline: 'DeepSeek-V4.1-Flash / Gemini 4 Neon',
   'roo-code': 'Gemini 4 Neon / DeepSeek-V4.1-Flash',
   'opencode-continue': 'DeepSeek-V4.1-Flash / GPT-6.2 Sol',
+  'codex-cli': 'GPT-5.3-Codex / GPT-6.2 Sol',
+  'deepseek-harness': 'DeepSeek-V4.1-Flash / DeepSeek V4 Pro',
+  zcode: 'GLM-5.3 / GLM-5.3-Flash',
+  'muse-code': 'Muse Spark 1.3 / Muse Wonder',
+  antigravity: 'Gemini 4 Neon / Gemini 4 Carbon',
 };
 
 export function getLocalizedHarnessSeoMeta(
@@ -353,7 +388,10 @@ export function getRecommendedHarnessesForModel(modelId: string): {
     if (inCompat) score += 40;
     if (tool.byokSupport.customBaseUrl) score += 20;
     if (provider === 'Anthropic' && tool.slug === 'claude-code') score += 30;
-    if (provider === 'DeepSeek' && (tool.slug === 'aider' || tool.slug === 'cline' || tool.slug === 'roo-code')) score += 25;
+    if (provider === 'DeepSeek' && (tool.slug === 'aider' || tool.slug === 'cline' || tool.slug === 'roo-code' || tool.slug === 'deepseek-harness')) score += 25;
+    if (provider === 'OpenAI' && tool.slug === 'codex-cli') score += 25;
+    if (provider === 'Z.ai' && tool.slug === 'zcode') score += 25;
+    if (provider === 'Google' && tool.slug === 'antigravity') score += 20;
     // Slight preference for lower token multiplier ties
     score -= tool.tokenMultiplierMin * 3;
 

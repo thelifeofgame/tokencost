@@ -200,10 +200,14 @@ export default function HarnessDetailClient({
               <span className="rounded-md bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-400 border border-indigo-500/20">
                 {isZh ? tool.categoryLabelZh : tool.categoryLabel}
               </span>
-              {tool.githubStars !== null && (
+              {tool.githubStars !== null && tool.githubStars > 0 && (
                 <span className="rounded-md bg-zinc-800 px-2.5 py-0.5 text-xs font-mono text-amber-300 inline-flex items-center gap-1">
                   <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                  <span>{(tool.githubStars / 1000).toFixed(1)}k</span>
+                  <span>
+                    {tool.githubStars >= 1000
+                      ? `${(tool.githubStars / 1000).toFixed(1)}k`
+                      : tool.githubStars}
+                  </span>
                 </span>
               )}
               <span className="rounded-md bg-zinc-800/80 px-2 py-0.5 text-xs font-mono text-zinc-400">
@@ -319,7 +323,7 @@ export default function HarnessDetailClient({
               </span>
               <span className="text-[11px] text-zinc-500 block mt-0.5">
                 {tool.byokSupport.envVars.length > 0
-                  ? `${tool.byokSupport.envVars.length} Env Vars`
+                  ? `${tool.byokSupport.envVars.length} ${tool.byokSupport.envVars.length === 1 ? 'Env Var' : 'Env Vars'}`
                   : 'UI Settings'}
               </span>
             </div>
@@ -543,7 +547,13 @@ export default function HarnessDetailClient({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h2 className="text-lg font-bold text-zinc-100">
-              {isZh ? '生产级 BYOK 与 DeepSeek / OpenRouter 降本配置' : 'Production BYOK & DeepSeek / OpenRouter Config'}
+              {tool.byokSupport.customBaseUrl
+                ? isZh
+                  ? '生产级 BYOK 与 DeepSeek / OpenRouter 降本配置'
+                  : 'Production BYOK & DeepSeek / OpenRouter Config'
+                : isZh
+                  ? '官方 API Key 接入与订阅控费配置'
+                  : 'Official API Key & Config Templates'}
             </h2>
             <p className="text-xs text-zinc-400 mt-0.5">
               {isZh ? tool.byokSupport.notesZh : tool.byokSupport.notes}
@@ -669,7 +679,9 @@ export default function HarnessDetailClient({
             href="/harness/"
             className="text-xs font-medium text-indigo-400 hover:text-indigo-300 inline-flex items-center gap-1"
           >
-            <span>All 7 Benchmarks</span>
+            <span>
+              {isZh ? `全部 ${HARNESS_TOOLS.length} 款评测` : `All ${HARNESS_TOOLS.length} Benchmarks`}
+            </span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>

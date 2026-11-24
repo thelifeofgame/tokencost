@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MODELS_DATA, TIER1_MODELS, compareHref } from '@/lib/models-data';
-import { getRecommendedHarnessesForModel } from '@/lib/harness-data';
+import { HARNESS_TOOLS, getRecommendedHarnessesForModel } from '@/lib/harness-data';
 import { ExternalLink, ArrowRight, ChevronLeft, Sparkles, Terminal, Calculator } from 'lucide-react';
 import Link from 'next/link';
 import SchemaOrg from '@/components/seo/SchemaOrg';
@@ -263,7 +263,7 @@ export default function ModelDetailPage({
               href={getLocalizedPath('/harness/', locale)}
               className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 inline-flex items-center gap-1 transition-colors"
             >
-              <span>Compare all 7 harnesses →</span>
+              <span>Compare all {HARNESS_TOOLS.length} harnesses →</span>
             </Link>
           </div>
 

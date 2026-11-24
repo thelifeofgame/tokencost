@@ -251,7 +251,7 @@ export default function HomePage() {
             href={getLocalizedPath('/harness/')}
             className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-200 hover:border-indigo-300 dark:hover:border-indigo-400/50 transition-colors"
           >
-            <span>🛠️ {t.nav.harness} (1.2x–3.5x)</span>
+            <span>🛠️ {t.nav.harness} (1.2x–3.8x)</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
           <Link

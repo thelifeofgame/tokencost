@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ModelPricingRule } from '@/types/pricing';
 import { calculateModelCost } from '@/lib/calculator-engine';
-import { estimateHarnessTaskCost } from '@/lib/harness-data';
+import { HARNESS_TOOLS, estimateHarnessTaskCost } from '@/lib/harness-data';
 import { trackEvent } from '@/lib/analytics';
 import { formatCurrency } from '@/lib/utils';
 import { Sparkles, SlidersHorizontal, Calculator, Terminal, ArrowRight } from 'lucide-react';
@@ -326,7 +326,7 @@ export default function CompareDetailClient({
             href={getLocalizedPath(activeHarness.slug ? `/harness/${activeHarness.slug}/` : '/harness/')}
             className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-medium transition-colors"
           >
-            <span>{activeHarness.slug ? 'Full Harness Audit' : 'Compare All 7 Harnesses'}</span>
+            <span>{activeHarness.slug ? 'Full Harness Audit' : `Compare All ${HARNESS_TOOLS.length} Harnesses`}</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
