@@ -51,12 +51,14 @@ export const ja: TranslationDictionary = {
     },
     liveVisits: {
       windowTag: '24h',
-      drawerLabel: '過去24時間の訪問数',
+      drawerLabel: '24時間トラフィック',
       tooltipBadge: 'LIVE · 24H',
-      tooltipTitle: '過去24時間のリアルタイム訪問数',
-      tooltipDesc: '直近24時間のサイト全体の実際の訪問回数をリアルタイムで自動集計・表示しています。',
+      tooltipTitle: 'エッジリクエスト',
+      tooltipDesc: '過去24時間の全ページ閲覧およびエッジノードへのリクエスト総数（クローラー含む）。',
+      humanLabel: '実ユーザー訪問数',
+      humanDesc: 'ブラウザJS検証済み・Botや自動スクリプトを除外した実訪問数。',
       staleHint: '最新の同期データを表示中',
-      ariaLabel: '過去24時間のサイト訪問数: {count}',
+      ariaLabel: '過去24時間のエッジリクエスト数: {count}',
     },
   },
   deals: {

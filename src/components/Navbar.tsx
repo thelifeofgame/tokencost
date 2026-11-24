@@ -43,7 +43,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, locale, getLocalizedPath } = useI18n();
   const theme = useSyncedTheme();
-  const { count: visitsCount, status: visitsStatus } = useLiveVisits24h(pathname);
+  const { count: visitsCount, humanVisits24h, status: visitsStatus } = useLiveVisits24h(pathname);
 
   const showLiveDivider =
     visitsStatus === 'loading' ||
@@ -170,6 +170,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
           <LiveVisitsBadge
             count={visitsCount}
+            humanVisits24h={humanVisits24h}
             status={visitsStatus}
             variant="navbar_desktop"
           />
@@ -214,6 +215,7 @@ export default function Navbar() {
         <div className="lg:hidden flex items-center gap-1 sm:gap-1.5 shrink-0">
           <LiveVisitsBadge
             count={visitsCount}
+            humanVisits24h={humanVisits24h}
             status={visitsStatus}
             variant="navbar_mobile"
           />
@@ -237,6 +239,7 @@ export default function Navbar() {
           {/* Top 24h Live Visits Telemetry Banner */}
           <LiveVisitsBadge
             count={visitsCount}
+            humanVisits24h={humanVisits24h}
             status={visitsStatus}
             variant="mobile_drawer"
           />

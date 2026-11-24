@@ -2,3 +2,10 @@ CREATE TABLE IF NOT EXISTS visit_buckets (
   bucket_ts INTEGER PRIMARY KEY,
   hits INTEGER NOT NULL DEFAULT 0
 );
+
+CREATE TABLE IF NOT EXISTS edge_buckets (
+  hour_ts INTEGER PRIMARY KEY,
+  page_views INTEGER NOT NULL DEFAULT 0,
+  requests INTEGER NOT NULL DEFAULT 0,
+  updated_at INTEGER NOT NULL
+);

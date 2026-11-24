@@ -51,12 +51,14 @@ export const ko: TranslationDictionary = {
     },
     liveVisits: {
       windowTag: '24h',
-      drawerLabel: '최근 24시간 방문',
+      drawerLabel: '24시간 트래픽',
       tooltipBadge: '실시간 · 24H',
-      tooltipTitle: '최근 24시간 실시간 방문 횟수',
-      tooltipDesc: '최근 24시간 동안 사이트 전체에서 발생한 실제 방문 횟수를 실시간으로 집계합니다.',
+      tooltipTitle: '엣지 요청',
+      tooltipDesc: '최근 24시간 동안 사이트 전체의 페이지 조회 및 엣지 요청 총량(크롤러 포함).',
+      humanLabel: '실제 사용자 방문',
+      humanDesc: '브라우저 JS 검증을 거쳐 봇·자동화 스크립트를 제외한 실제 방문 수.',
       staleHint: '최근 동기화된 수치를 표시 중',
-      ariaLabel: '최근 24시간 사이트 방문 수: {count}',
+      ariaLabel: '최근 24시간 엣지 요청 수: {count}',
     },
   },
   deals: {

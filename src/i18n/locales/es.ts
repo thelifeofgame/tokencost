@@ -51,12 +51,14 @@ export const es: TranslationDictionary = {
     },
     liveVisits: {
       windowTag: '24h',
-      drawerLabel: 'Visitas (24h)',
+      drawerLabel: 'Tráfico (24h)',
       tooltipBadge: 'EN VIVO · 24H',
-      tooltipTitle: 'Visitas en las últimas 24h',
-      tooltipDesc: 'Visitas reales registradas en todo el sitio durante las últimas 24 horas.',
+      tooltipTitle: 'Peticiones Edge',
+      tooltipDesc: 'Total de solicitudes y vistas en todo el sitio en las últimas 24h (incl. bots).',
+      humanLabel: 'Visitantes humanos',
+      humanDesc: 'Sesiones verificadas por JS, filtrando bots y scripts.',
       staleHint: 'Mostrando último dato sincronizado',
-      ariaLabel: 'Visitas del sitio en las últimas 24 horas: {count}',
+      ariaLabel: 'Tráfico edge en las últimas 24 horas: {count}',
     },
   },
   deals: {

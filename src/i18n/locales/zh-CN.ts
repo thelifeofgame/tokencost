@@ -51,12 +51,14 @@ export const zhCN: TranslationDictionary = {
     },
     liveVisits: {
       windowTag: '24h',
-      drawerLabel: '过去 24 小时来访',
+      drawerLabel: '24h 全站热度',
       tooltipBadge: '实时 · 24H',
-      tooltipTitle: '过去 24 小时实时来访次数',
-      tooltipDesc: '实时统计过去 24 小时滚动时间窗内全站真实访问次数，自动定时同步更新。',
+      tooltipTitle: '全站边缘请求',
+      tooltipDesc: '过去 24 小时滚动窗口内的全站页面访问与边缘节点请求热度（含爬虫）。',
+      humanLabel: '真实人类访客',
+      humanDesc: '经浏览器 JS 校验并过滤爬虫与自动化脚本后的真实人工访问。',
       staleHint: '当前显示最近一次同步数据',
-      ariaLabel: '过去 24 小时全站来访次数：{count}',
+      ariaLabel: '过去 24 小时全站边缘请求：{count}',
     },
   },
   deals: {

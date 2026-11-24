@@ -51,12 +51,14 @@ export const zhTW: TranslationDictionary = {
     },
     liveVisits: {
       windowTag: '24h',
-      drawerLabel: '過去 24 小時造訪',
+      drawerLabel: '24h 全站熱度',
       tooltipBadge: '即時 · 24H',
-      tooltipTitle: '過去 24 小時即時造訪次數',
-      tooltipDesc: '即時統計過去 24 小時滾動時間窗內全站真實造訪次數，自動定時同步更新。',
+      tooltipTitle: '全站邊緣請求',
+      tooltipDesc: '過去 24 小時滾動時間窗內的全站頁面存取與邊緣節點請求熱度（含爬蟲）。',
+      humanLabel: '真實人類訪客',
+      humanDesc: '經瀏覽器 JS 驗證並過濾爬蟲與自動化腳本後的真實人工造訪。',
       staleHint: '目前顯示最近一次同步資料',
-      ariaLabel: '過去 24 小時全站造訪次數：{count}',
+      ariaLabel: '過去 24 小時全站邊緣請求：{count}',
     },
   },
   deals: {

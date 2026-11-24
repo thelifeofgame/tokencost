@@ -4,19 +4,29 @@ import { useEffect, useRef, useState } from 'react';
 
 export type LiveVisitsStatus = 'loading' | 'live' | 'stale' | 'error';
 
+interface DualVisitsData {
+  count: number;
+  humanVisits24h: number | null;
+}
+
 interface CachedVisitsPayload {
   count: number;
+  humanVisits24h: number | null;
   updatedAt: number;
 }
 
 interface VisitsApiResponse {
   visits24h?: number;
+  edgeVisits24h?: number;
+  humanVisits24h?: number | null;
+  edgeSyncAt?: string | null;
   windowHours?: number;
   updatedAt?: string;
+  mode?: string;
   counted?: boolean;
 }
 
-const SESSION_CACHE_KEY = 'tokencost_live_visits_24h_v1';
+const SESSION_CACHE_KEY = 'tokencost_live_visits_24h_v2';
 const SESSION_POST_THROTTLE_KEY = 'tokencost_live_visits_post_v1';
 const REQUEST_TIMEOUT_MS = 2500;
 const POLL_INTERVAL_MS = 45000;
@@ -32,6 +42,13 @@ function getApiEndpoint(): string {
   return 'https://tokencostsai.com/api/visits-24h';
 }
 
+function normalizeHumanVisits(raw: unknown): number | null {
+  if (raw === null || raw === undefined) return null;
+  const num = Number(raw);
+  if (!Number.isFinite(num) || num < 0) return null;
+  return Math.trunc(num);
+}
+
 function readSessionCache(): CachedVisitsPayload | null {
   if (typeof window === 'undefined') return null;
   try {
@@ -45,7 +62,11 @@ function readSessionCache(): CachedVisitsPayload | null {
       typeof parsed.updatedAt === 'number' &&
       Date.now() - parsed.updatedAt <= CACHE_TTL_MS
     ) {
-      return { count: Math.trunc(parsed.count), updatedAt: parsed.updatedAt };
+      return {
+        count: Math.trunc(parsed.count),
+        humanVisits24h: normalizeHumanVisits(parsed.humanVisits24h),
+        updatedAt: parsed.updatedAt,
+      };
     }
   } catch {
     // Ignore storage access/parse errors
@@ -53,11 +74,12 @@ function readSessionCache(): CachedVisitsPayload | null {
   return null;
 }
 
-function writeSessionCache(count: number): void {
-  if (typeof window === 'undefined' || !Number.isFinite(count) || count <= 0) return;
+function writeSessionCache(data: DualVisitsData): void {
+  if (typeof window === 'undefined' || !Number.isFinite(data.count) || data.count <= 0) return;
   try {
     const payload: CachedVisitsPayload = {
-      count: Math.trunc(count),
+      count: Math.trunc(data.count),
+      humanVisits24h: normalizeHumanVisits(data.humanVisits24h),
       updatedAt: Date.now(),
     };
     window.sessionStorage.setItem(SESSION_CACHE_KEY, JSON.stringify(payload));
@@ -110,7 +132,7 @@ function recordPostForPath(path: string, now: number): void {
   }
 }
 
-async function requestVisits(method: 'GET' | 'POST'): Promise<number> {
+async function requestVisits(method: 'GET' | 'POST'): Promise<DualVisitsData> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
@@ -127,11 +149,16 @@ async function requestVisits(method: 'GET' | 'POST'): Promise<number> {
     }
 
     const data = (await res.json()) as VisitsApiResponse;
-    const count = Number(data?.visits24h);
+    const rawPrimary = data?.edgeVisits24h ?? data?.visits24h;
+    const count = Number(rawPrimary);
     if (!Number.isFinite(count) || count <= 0) {
       throw new Error('Invalid visits count');
     }
-    return Math.trunc(count);
+
+    return {
+      count: Math.trunc(count),
+      humanVisits24h: normalizeHumanVisits(data?.humanVisits24h),
+    };
   } finally {
     clearTimeout(timer);
   }
@@ -139,12 +166,15 @@ async function requestVisits(method: 'GET' | 'POST'): Promise<number> {
 
 export function useLiveVisits24h(pathname: string | null): {
   count: number | null;
+  humanVisits24h: number | null;
   status: LiveVisitsStatus;
 } {
   const [count, setCount] = useState<number | null>(null);
+  const [humanVisits24h, setHumanVisits24h] = useState<number | null>(null);
   const [status, setStatus] = useState<LiveVisitsStatus>('loading');
 
   const countRef = useRef<number | null>(null);
+  const humanVisitsRef = useRef<number | null>(null);
   const lastSuccessAtRef = useRef<number>(0);
 
   useEffect(() => {
@@ -156,17 +186,21 @@ export function useLiveVisits24h(pathname: string | null): {
     const cached = readSessionCache();
     if (cached && (countRef.current === null || countRef.current <= 0)) {
       countRef.current = cached.count;
+      humanVisitsRef.current = cached.humanVisits24h;
       lastSuccessAtRef.current = cached.updatedAt;
       setCount(cached.count);
+      setHumanVisits24h(cached.humanVisits24h);
       setStatus('live');
     }
 
-    const handleSuccess = (nextCount: number) => {
+    const handleSuccess = (nextData: DualVisitsData) => {
       if (!active) return;
-      countRef.current = nextCount;
+      countRef.current = nextData.count;
+      humanVisitsRef.current = nextData.humanVisits24h;
       lastSuccessAtRef.current = Date.now();
-      writeSessionCache(nextCount);
-      setCount(nextCount);
+      writeSessionCache(nextData);
+      setCount(nextData.count);
+      setHumanVisits24h(nextData.humanVisits24h);
       setStatus('live');
     };
 
@@ -178,7 +212,9 @@ export function useLiveVisits24h(pathname: string | null): {
         const fallback = readSessionCache();
         if (fallback) {
           countRef.current = fallback.count;
+          humanVisitsRef.current = fallback.humanVisits24h;
           setCount(fallback.count);
+          setHumanVisits24h(fallback.humanVisits24h);
           setStatus('stale');
         } else {
           setStatus('error');
@@ -208,12 +244,14 @@ export function useLiveVisits24h(pathname: string | null): {
         return;
       }
       try {
-        const nextCount = await requestVisits('GET');
+        const nextData = await requestVisits('GET');
         if (!active) return;
-        countRef.current = nextCount;
+        countRef.current = nextData.count;
+        humanVisitsRef.current = nextData.humanVisits24h;
         lastSuccessAtRef.current = Date.now();
-        writeSessionCache(nextCount);
-        setCount(nextCount);
+        writeSessionCache(nextData);
+        setCount(nextData.count);
+        setHumanVisits24h(nextData.humanVisits24h);
         setStatus('live');
       } catch {
         if (!active) return;
@@ -223,7 +261,9 @@ export function useLiveVisits24h(pathname: string | null): {
           const fallback = readSessionCache();
           if (fallback) {
             countRef.current = fallback.count;
+            humanVisitsRef.current = fallback.humanVisits24h;
             setCount(fallback.count);
+            setHumanVisits24h(fallback.humanVisits24h);
             setStatus('stale');
           } else {
             setStatus('error');
@@ -252,5 +292,5 @@ export function useLiveVisits24h(pathname: string | null): {
     };
   }, []);
 
-  return { count, status };
+  return { count, humanVisits24h, status };
 }

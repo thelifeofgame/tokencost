@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useId } from 'react';
+import { UserCheck } from 'lucide-react';
 import { useI18n } from '@/i18n/I18nProvider';
 import type { LiveVisitsStatus } from '@/hooks/useLiveVisits24h';
 
@@ -8,6 +9,7 @@ export type { LiveVisitsStatus };
 
 interface LiveVisitsBadgeProps {
   count: number | null;
+  humanVisits24h?: number | null;
   status: LiveVisitsStatus;
   /**
    * - navbar_desktop: 1024px 隐藏 "24h ·" 省出 24px 空间，1280px+ 完整显示 [● 24h · 7,349]
@@ -20,6 +22,7 @@ interface LiveVisitsBadgeProps {
 
 export default function LiveVisitsBadge({
   count,
+  humanVisits24h,
   status,
   variant = 'navbar_desktop',
   className = '',
@@ -93,6 +96,17 @@ export default function LiveVisitsBadge({
           useGrouping: 'always' as unknown as boolean,
         }).format(count)
       : '';
+
+  const hasHumanVisits =
+    typeof humanVisits24h === 'number' &&
+    Number.isFinite(humanVisits24h) &&
+    humanVisits24h > 0;
+
+  const formattedHumanVisits = hasHumanVisits
+    ? new Intl.NumberFormat(currentLocaleConfig.numberFormatLocale, {
+        useGrouping: 'always' as unknown as boolean,
+      }).format(Math.trunc(humanVisits24h))
+    : '';
 
   const lv = t.nav.liveVisits;
   const isStale = status === 'stale';
@@ -273,8 +287,9 @@ export default function LiveVisitsBadge({
         <div
           id={tooltipId}
           role="tooltip"
-          className="fixed left-4 right-4 top-[68px] sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 z-50 sm:w-72 origin-top sm:origin-top-right rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl shadow-xl shadow-zinc-950/10 dark:shadow-2xl dark:shadow-black/60 p-3.5 text-left transition-all duration-150 ease-out"
+          className="fixed left-4 right-4 top-[68px] sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 z-50 sm:w-80 origin-top sm:origin-top-right rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl shadow-xl shadow-zinc-950/10 dark:shadow-2xl dark:shadow-black/60 p-3.5 text-left transition-all duration-150 ease-out"
         >
+          {/* Row 1: Header */}
           <div className="flex items-center justify-between gap-2">
             <div className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               <span
@@ -289,21 +304,47 @@ export default function LiveVisitsBadge({
             </span>
           </div>
 
-          <div className="mt-2 flex items-baseline gap-2">
-            <span className="font-mono tabular-nums text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          {/* Row 2: Primary Metric — Edge Requests / Heat */}
+          <div className="mt-2.5 flex items-baseline gap-2 flex-wrap">
+            <span className="font-mono tabular-nums text-2xl font-bold tracking-tight leading-none text-zinc-900 dark:text-zinc-50">
               {formattedCount}
             </span>
-            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+            <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
               {lv.tooltipTitle}
             </span>
           </div>
 
-          <p className="mt-2 pt-2 border-t border-zinc-200/80 dark:border-zinc-800/80 text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+          {/* Row 3: Primary Scope Description */}
+          <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
             {lv.tooltipDesc}
           </p>
 
+          {/* Row 4: Secondary Metric Bento Sub-card (Omitted cleanly if <= 0 or null) */}
+          {hasHumanVisits && (
+            <div className="mt-3 rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/90 dark:bg-zinc-900/75 px-3 py-2.5">
+              <div className="flex items-center justify-between gap-2">
+                <div className="inline-flex items-center gap-1.5 min-w-0">
+                  <UserCheck
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 shrink-0 text-emerald-700 dark:text-emerald-400"
+                  />
+                  <span className="text-[11px] font-medium text-zinc-800 dark:text-zinc-200 truncate">
+                    {lv.humanLabel}
+                  </span>
+                </div>
+                <span className="font-mono tabular-nums text-sm font-semibold text-zinc-900 dark:text-zinc-50 shrink-0">
+                  {formattedHumanVisits}
+                </span>
+              </div>
+              <p className="mt-1 text-[10px] leading-snug text-zinc-600 dark:text-zinc-400">
+                {lv.humanDesc}
+              </p>
+            </div>
+          )}
+
+          {/* Row 5: Stale Hint */}
           {isStale && (
-            <p className="mt-1.5 text-[10px] font-medium text-amber-700 dark:text-amber-400">
+            <p className="mt-2 text-[10px] font-medium text-amber-700 dark:text-amber-400">
               {lv.staleHint}
             </p>
           )}
