@@ -2,6 +2,7 @@ import { TranslationDictionary } from '../types';
 import { en } from './en';
 
 export const ko: TranslationDictionary = {
+  alerts: en.alerts,
   growth: en.growth,
   common: {
     brand: 'TokenCosts AI',

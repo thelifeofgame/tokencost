@@ -1,5 +1,7 @@
 'use client';
 
+import SubscribeBox from '@/components/SubscribeBox';
+import RecentPriceChanges from '@/components/RecentPriceChanges';
 import React, { useState, useMemo, useEffect } from 'react';
 import { trackEvent, trackEventThrottled } from '@/lib/analytics';
 import { SimulationParams, RouterRecommendation } from '@/types/pricing';
@@ -181,6 +183,9 @@ function SimulatorContent() {
           <CostChart breakdowns={mainstreamBreakdowns} />
         </div>
       </div>
+
+      <SubscribeBox placement="home" />
+      <RecentPriceChanges />
 
       {/* Market Radar / Featured Event Strip & Price Drops */}
       <section data-analytics-module="radar" className="pt-2">

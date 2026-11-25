@@ -1,3 +1,4 @@
+import SubscribeBox from '@/components/SubscribeBox';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -613,6 +614,7 @@ export default function ComparePage({
           ))}
         </div>
       </section>
+      <SubscribeBox key={params.slug} placement="compare" models={[modelA, modelB].map(model => ({ id: model.modelId, name: model.modelName }))} />
     </div>
   );
 }

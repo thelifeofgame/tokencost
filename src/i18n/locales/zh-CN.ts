@@ -1,6 +1,28 @@
 import { TranslationDictionary } from '../types';
 
 export const zhCN: TranslationDictionary = {
+  alerts: {
+    title: '降价提醒与每周周报',
+    description: '获取每周价格摘要，也可关注指定模型的降价提醒。你可以随时退订。',
+    open: '订阅更新',
+    email: '邮箱地址',
+    follow: '关注的模型',
+    submit: '发送确认邮件',
+    sending: '发送中…',
+    sent: '如果本次请求可处理，请到邮箱查收确认链接。',
+    error: '请稍后重试。',
+    limited: '请求过于频繁，请稍后再试。',
+    unavailable: '验证表单暂时不可用。',
+    subscribed: '订阅已确认。',
+    unsubscribed: '你已退订。',
+    invalid: '此链接无效或已过期。',
+    recent: '最近价格变动',
+    input: '输入',
+    output: '输出',
+    cached: '缓存输入',
+    new: '新上线',
+    noRate: '暂无',
+  },
   growth: {
     noBenchmark: '暂无评测数据',
     affiliateDisclosure: '通过 OpenRouter 推荐链接注册或购买，我们可能获得佣金。',

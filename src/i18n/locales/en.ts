@@ -1,6 +1,28 @@
 import { TranslationDictionary } from '../types';
 
 export const en: TranslationDictionary = {
+  alerts: {
+    title: 'Price alerts and weekly digest',
+    description: 'Get the weekly summary and optional price-drop alerts for models you follow. Unsubscribe at any time.',
+    open: 'Get updates',
+    email: 'Email address',
+    follow: 'Models to follow',
+    submit: 'Send confirmation email',
+    sending: 'Sending…',
+    sent: 'Check your inbox for a confirmation link if this request can be processed.',
+    error: 'Try again later.',
+    limited: 'Too many requests. Try again later.',
+    unavailable: 'The verification form is temporarily unavailable.',
+    subscribed: 'Subscription confirmed.',
+    unsubscribed: 'You have been unsubscribed.',
+    invalid: 'This link is invalid or has expired.',
+    recent: 'Recent price changes',
+    input: 'Input',
+    output: 'Output',
+    cached: 'Cached input',
+    new: 'New model',
+    noRate: 'Unavailable',
+  },
   growth: {
     noBenchmark: 'No benchmark data yet',
     affiliateDisclosure: 'We may earn a commission through OpenRouter referral links.',

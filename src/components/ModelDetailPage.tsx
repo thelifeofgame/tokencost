@@ -1,3 +1,4 @@
+import SubscribeBox from '@/components/SubscribeBox';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -444,6 +445,7 @@ export default function ModelDetailPage({
           </div>
         )}
       </div>
+      <SubscribeBox key={params.id} placement="model" models={[{ id: model.modelId, name: model.modelName }]} />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import { cleanAlerts, deliverAlerts, handleAlerts, pollPrices, queueDigest } from './alerts';
+import type { AlertsEnv } from './alerts';
 interface D1ResultRow {
   total?: number | string | null;
 }
@@ -103,7 +105,7 @@ interface D1PreparedStatement {
   run(): Promise<D1QueryResult>;
 }
 
-interface D1Database {
+export interface D1Database {
   prepare(query: string): D1PreparedStatement;
   batch<T = Record<string, unknown>>(statements: D1PreparedStatement[]): Promise<D1QueryResult<T>[]>;
 }
@@ -172,8 +174,7 @@ interface GraphQLResponse {
   errors?: Array<{ message?: string }>;
 }
 
-export interface Env {
-  DB: D1Database;
+export interface Env extends AlertsEnv {
   CF_API_TOKEN?: string;
   CF_ZONE_ID?: string;
   ADMIN_PASSWORD?: string;
@@ -1986,10 +1987,19 @@ async function handleOverview(request: Request, env: Env): Promise<Response> {
 
 const worker = {
   async scheduled(
-    _controller: ScheduledController,
+    controller: ScheduledController,
     env: Env,
     _ctx: ExecutionContext
   ): Promise<void> {
+    if (controller.cron === '0 * * * *') {
+      await Promise.all([pollPrices(env, controller.scheduledTime), cleanAlerts(env, Math.floor(controller.scheduledTime / 1000))]);
+      return;
+    }
+    if (controller.cron === '0 1 * * 1') {
+      await queueDigest(env, controller.scheduledTime);
+      return;
+    }
+    _ctx.waitUntil(deliverAlerts(env, Math.floor(controller.scheduledTime / 1000)));
     const synced = await syncEdgeMetrics(env);
     const cache = getDefaultCache();
     const cacheKey = new Request(CACHE_KEY_URL, { method: 'GET' });
@@ -2023,6 +2033,9 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const pathname = url.pathname.replace(/\/+$/, '') || '/';
+
+    const alerts = await handleAlerts(request, env, pathname);
+    if (alerts) return alerts;
 
     if (pathname.startsWith('/api/analytics')) {
       const analyticsCors = getAnalyticsCorsHeaders(request, env);

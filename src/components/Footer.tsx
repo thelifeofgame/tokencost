@@ -1,5 +1,6 @@
 'use client';
 
+import SubscribeBox from '@/components/SubscribeBox';
 import React from 'react';
 import Link from 'next/link';
 import { Cpu, Heart, Code2, Globe, Mail } from 'lucide-react';
@@ -176,6 +177,8 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+
+      <div className="mx-auto mt-8 max-w-[1600px]"><SubscribeBox placement="footer" /></div>
 
       <div className="mx-auto max-w-[1600px] border-t border-zinc-200 dark:border-zinc-900 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500">
         <div className="space-y-1">

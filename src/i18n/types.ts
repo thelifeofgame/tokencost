@@ -11,6 +11,28 @@ export interface LocaleConfig {
 }
 
 export interface TranslationDictionary {
+  alerts: {
+    title: string;
+    description: string;
+    open: string;
+    email: string;
+    follow: string;
+    submit: string;
+    sending: string;
+    sent: string;
+    error: string;
+    limited: string;
+    unavailable: string;
+    subscribed: string;
+    unsubscribed: string;
+    invalid: string;
+    recent: string;
+    input: string;
+    output: string;
+    cached: string;
+    new: string;
+    noRate: string;
+  };
   growth: {
     noBenchmark: string;
     affiliateDisclosure: string;
