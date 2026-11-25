@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import React, { useState, useRef, useEffect } from 'react';
 import { useI18n } from '@/i18n/I18nProvider';
 import { Locale } from '@/i18n/types';
@@ -19,6 +20,11 @@ export default function LanguageSwitcher({
   adaptiveDesktop = false,
 }: LanguageSwitcherProps) {
   const { locale, locales, setLocale, currentLocaleConfig } = useI18n();
+  const pathname = usePathname() || '/';
+  const displayedLocales = /^(?:\/zh-CN)?\/ai-subscriptions(?:\/|$)/.test(pathname)
+    ? locales.filter(item => item.code === 'en' || item.code === 'zh-CN')
+    : locales;
+
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -50,7 +56,7 @@ export default function LanguageSwitcher({
           <span>Language / 语言切换</span>
         </div>
         <div className="grid grid-cols-2 gap-1.5 pt-1">
-          {locales.map((item) => {
+          {displayedLocales.map((item) => {
             const isSelected = item.code === locale;
             return (
               <button
@@ -115,7 +121,7 @@ export default function LanguageSwitcher({
             Select Language
           </div>
           <div className="py-1 space-y-0.5">
-            {locales.map((item) => {
+            {displayedLocales.map((item) => {
               const isSelected = item.code === locale;
               return (
                 <button

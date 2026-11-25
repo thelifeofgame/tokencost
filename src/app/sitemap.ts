@@ -1,3 +1,4 @@
+import { subscriptionComparisons, subscriptionLocales, subscriptionProducts, subscriptionHref, subscriptionAlternates } from '@/lib/ai-subscriptions';
 import { MetadataRoute } from 'next';
 import {
   MODELS_DATA,
@@ -132,7 +133,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  const subscriptionPaths = [
+    '',
+    ...subscriptionProducts.map(product => `${product.id}/`),
+    ...subscriptionComparisons.map(comparison => `compare/${comparison.slug}/`),
+  ];
+  const subscriptionRoutes: MetadataRoute.Sitemap = subscriptionLocales.flatMap(locale =>
+    subscriptionPaths.map(suffix => ({
+      url: `${baseUrl}${subscriptionHref(locale, suffix)}`,
+      alternates: { languages: subscriptionAlternates(suffix, locale).languages },
+    }))
+  );
+
   return [
+    ...subscriptionRoutes,
     ...staticRoutes,
     ...localizedStaticRoutes,
     ...harnessRoutes,

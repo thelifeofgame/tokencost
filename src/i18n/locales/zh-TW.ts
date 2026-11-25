@@ -2,6 +2,7 @@ import { TranslationDictionary } from '../types';
 import { en } from './en';
 
 export const zhTW: TranslationDictionary = {
+  subscriptions: en.subscriptions,
   scenarios: en.scenarios,
   alerts: en.alerts,
   growth: en.growth,

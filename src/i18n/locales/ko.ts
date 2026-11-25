@@ -2,6 +2,7 @@ import { TranslationDictionary } from '../types';
 import { en } from './en';
 
 export const ko: TranslationDictionary = {
+  subscriptions: en.subscriptions,
   scenarios: en.scenarios,
   alerts: en.alerts,
   growth: en.growth,

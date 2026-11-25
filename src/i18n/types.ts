@@ -11,6 +11,50 @@ export interface LocaleConfig {
 }
 
 export interface TranslationDictionary {
+  subscriptions: {
+    faq: string;
+    title: string;
+    shortTitle: string;
+    description: string;
+    catalog: string;
+    all: string;
+    chat: string;
+    writing: string;
+    coding: string;
+    research: string;
+    priceFrom: string;
+    verified: string;
+    missing: string;
+    comparisons: string;
+    pickerTitle: string;
+    pickerUse: string;
+    pickerBudget: string;
+    pickerChina: string;
+    pickerSubmit: string;
+    anyBudget: string;
+    yes: string;
+    no: string;
+    pickerReason: string;
+    pickerNoMatch: string;
+    monthlyUSD: string;
+    yearlyUSD: string;
+    monthlyCNY: string;
+    yearlyCNY: string;
+    limits: string;
+    models: string;
+    features: string;
+    useCases: string;
+    china: string;
+    free: string;
+    source: string;
+    referral: string;
+    faqBilling: string;
+    faqBillingAnswer: string;
+    faqMissing: string;
+    faqMissingAnswer: string;
+    simulator: string;
+    consumerDeals: string;
+  };
   scenarios: {
     cacheReuse: string;
     short: string;

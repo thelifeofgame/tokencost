@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import { subscriptionHref } from '@/lib/ai-subscriptions';
 import React, { useState } from 'react';
 import { Terminal, Copy, Check, FileCode } from 'lucide-react';
 import SchemaOrg from '@/components/seo/SchemaOrg';
@@ -162,6 +164,10 @@ export async function executeCostOptimizedPrompt(prompt: string, isComplex = fal
 
       {/* Section 3: Static GitHub README Dynamic Cost Badge Generator */}
       <BadgeGenerator />
+      <div className="flex flex-wrap gap-4 text-sm">
+        <Link className="text-indigo-700 underline dark:text-indigo-300" href={locale === 'en' ? '/' : `/${locale}/`}>{t.subscriptions.simulator}</Link>
+        <Link className="text-indigo-700 underline dark:text-indigo-300" href={subscriptionHref(locale)}>{t.subscriptions.title}</Link>
+      </div>
     </div>
   );
 }

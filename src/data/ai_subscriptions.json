@@ -1,0 +1,400 @@
+{
+  "products": [
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "vendor": "OpenAI",
+      "useCases": [
+        "chat",
+        "writing",
+        "coding",
+        "research"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://chatgpt.com/pricing",
+        "verifiedAt": "2026-11-25"
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": "Plus",
+          "monthlyUSD": 20,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://chatgpt.com/pricing",
+          "verifiedAt": "2026-11-25"
+        },
+        {
+          "name": "Pro",
+          "monthlyUSD": 100,
+          "monthlyUSDMax": 500,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://chatgpt.com/pricing",
+          "verifiedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "vendor": "Anthropic",
+      "useCases": [
+        "writing",
+        "coding",
+        "research"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://claude.com/pricing",
+        "verifiedAt": "2026-11-25"
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": "Pro",
+          "monthlyUSD": 20,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 200,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://claude.com/pricing",
+          "verifiedAt": "2026-11-25"
+        },
+        {
+          "name": "Max",
+          "monthlyUSD": 100,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://claude.com/pricing",
+          "verifiedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "vendor": "Google",
+      "useCases": [
+        "chat",
+        "writing",
+        "coding",
+        "research"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://one.google.com/about/google-ai-plans/",
+        "verifiedAt": "2026-11-25"
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": "Google AI Plus",
+          "monthlyUSD": 4.99,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://one.google.com/about/google-ai-plans/",
+          "verifiedAt": "2026-11-25"
+        },
+        {
+          "name": "Google AI Pro",
+          "monthlyUSD": 19.99,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 199.99,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://one.google.com/about/google-ai-plans/",
+          "verifiedAt": "2026-11-25"
+        },
+        {
+          "name": "Google AI Ultra",
+          "monthlyUSD": 99.99,
+          "monthlyUSDMax": 199.99,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://one.google.com/about/google-ai-plans/",
+          "verifiedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "vendor": "Perplexity",
+      "useCases": [
+        "research"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://www.perplexity.ai/pro",
+        "verifiedAt": "2026-11-25"
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": "Pro",
+          "monthlyUSD": 20,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 200,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://www.perplexity.ai/pro",
+          "verifiedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "copilot",
+      "name": "Microsoft Copilot",
+      "vendor": "Microsoft",
+      "useCases": [
+        "chat",
+        "writing"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://www.microsoft.com/en-us/microsoft-365/copilot",
+        "verifiedAt": null
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": null,
+          "monthlyUSD": null,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://www.microsoft.com/en-us/microsoft-365/copilot",
+          "verifiedAt": null
+        }
+      ]
+    },
+    {
+      "id": "grok",
+      "name": "Grok",
+      "vendor": "xAI",
+      "useCases": [
+        "chat",
+        "research"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://grok.com/plans",
+        "verifiedAt": "2026-11-25"
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": "Plus",
+          "monthlyUSD": 8,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 80,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://grok.com/plans",
+          "verifiedAt": "2026-11-25"
+        },
+        {
+          "name": "Premium",
+          "monthlyUSD": 30,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 300,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://grok.com/plans",
+          "verifiedAt": "2026-11-25"
+        },
+        {
+          "name": "Super",
+          "monthlyUSD": 100,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 1000,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://grok.com/plans",
+          "verifiedAt": "2026-11-25"
+        },
+        {
+          "name": "Ultra",
+          "monthlyUSD": 200,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 2000,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://grok.com/plans",
+          "verifiedAt": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "doubao",
+      "name": "豆包",
+      "vendor": "ByteDance",
+      "useCases": [
+        "chat",
+        "writing",
+        "research"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://www.doubao.com/",
+        "verifiedAt": null
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": null,
+          "monthlyUSD": null,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://www.doubao.com/",
+          "verifiedAt": null
+        }
+      ]
+    },
+    {
+      "id": "qianwen",
+      "name": "通义",
+      "vendor": "Alibaba",
+      "useCases": [
+        "chat",
+        "writing",
+        "coding"
+      ],
+      "availableInChina": null,
+      "freeTier": null,
+      "source": {
+        "url": "https://www.qianwen.com/",
+        "verifiedAt": null
+      },
+      "affiliateUrl": null,
+      "plans": [
+        {
+          "name": null,
+          "monthlyUSD": null,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": null,
+          "models": null,
+          "features": null,
+          "url": "https://www.qianwen.com/",
+          "verifiedAt": null
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "slug": "chatgpt-vs-claude",
+      "products": [
+        "chatgpt",
+        "claude"
+      ]
+    },
+    {
+      "slug": "chatgpt-vs-gemini",
+      "products": [
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "slug": "claude-vs-gemini",
+      "products": [
+        "claude",
+        "gemini"
+      ]
+    },
+    {
+      "slug": "gemini-vs-perplexity",
+      "products": [
+        "gemini",
+        "perplexity"
+      ]
+    },
+    {
+      "slug": "chatgpt-vs-grok",
+      "products": [
+        "chatgpt",
+        "grok"
+      ]
+    },
+    {
+      "slug": "copilot-vs-chatgpt",
+      "products": [
+        "copilot",
+        "chatgpt"
+      ]
+    },
+    {
+      "slug": "doubao-vs-qianwen",
+      "products": [
+        "doubao",
+        "qianwen"
+      ]
+    }
+  ]
+}

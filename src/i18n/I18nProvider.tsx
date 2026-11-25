@@ -86,6 +86,8 @@ export function I18nProvider({
   const setLocale = useCallback(
     (newLocale: Locale) => {
       if (newLocale === locale) return;
+      const subscriptionPage = /^(?:\/zh-CN)?\/ai-subscriptions(?:\/|$)/.test(pathname);
+      if (subscriptionPage && newLocale !== 'en' && newLocale !== 'zh-CN') return;
 
       const oldLocale = locale;
       setLocaleState(newLocale);
@@ -109,11 +111,15 @@ export function I18nProvider({
         const newPath = buildLocalizedPath(window.location.pathname, newLocale);
         const fullNewTarget = `${newPath}${currentSearch}${currentHash}`;
 
-        // Soft push to history without full page reload
+        // These pages render their translated pricing copy as static HTML.
+        if (subscriptionPage) {
+          window.location.assign(fullNewTarget);
+          return;
+        }
         window.history.pushState(null, '', fullNewTarget);
       }
     },
-    [locale]
+    [locale, pathname]
   );
 
   const getLocalizedPath = useCallback(

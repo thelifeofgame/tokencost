@@ -73,7 +73,8 @@ export function buildLocalizedCanonical(
  */
 export function buildAlternates(
   pathWithoutLocale: string,
-  currentLocale: Locale = DEFAULT_LOCALE
+  currentLocale: Locale = DEFAULT_LOCALE,
+  locales: readonly Locale[] = SUPPORTED_LOCALES.map(locale => locale.code)
 ): {
   canonical: string;
   languages: Record<string, string>;
@@ -82,8 +83,8 @@ export function buildAlternates(
     'x-default': buildLocalizedCanonical(pathWithoutLocale, DEFAULT_LOCALE),
   };
 
-  for (const loc of SUPPORTED_LOCALES) {
-    languages[loc.code] = buildLocalizedCanonical(pathWithoutLocale, loc.code);
+  for (const locale of locales) {
+    languages[locale] = buildLocalizedCanonical(pathWithoutLocale, locale);
   }
 
   return {

@@ -1,5 +1,6 @@
 'use client';
 
+import { subscriptionHref } from '@/lib/ai-subscriptions';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -62,6 +63,7 @@ export default function Navbar() {
       drawerLabel: t.nav.dealsFull,
       hasLiveDot: true,
     },
+    { href: '/ai-subscriptions', label: t.subscriptions.title, shortLabel: t.subscriptions.shortTitle },
     { href: '/developers', label: t.nav.developers, shortLabel: t.nav.short.developers },
     { href: '/contact', label: t.nav.contact, shortLabel: t.nav.short.contact },
   ];
@@ -126,7 +128,7 @@ export default function Navbar() {
           {/* Desktop Nav (lg: 1024px+, 9-tab zero-wrap adaptive) */}
           <nav className="hidden lg:flex items-center gap-0.5 min-[1440px]:gap-1 ml-1 min-w-0 flex-1 overflow-x-auto scrollbar-none">
             {navLinks.map((link) => {
-              const localizedHref = getLocalizedPath(link.href);
+              const localizedHref = link.href === '/ai-subscriptions' ? subscriptionHref(locale) : getLocalizedPath(link.href);
               const isActive =
                 pathname === link.href ||
                 pathname === localizedHref ||
@@ -247,7 +249,7 @@ export default function Navbar() {
 
           <div className="space-y-1">
             {navLinks.map((link) => {
-              const localizedHref = getLocalizedPath(link.href);
+              const localizedHref = link.href === '/ai-subscriptions' ? subscriptionHref(locale) : getLocalizedPath(link.href);
               const isActive =
                 pathname === link.href ||
                 pathname === localizedHref ||

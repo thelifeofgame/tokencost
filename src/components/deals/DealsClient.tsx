@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import { subscriptionHref } from '@/lib/ai-subscriptions';
 import DealDeadline from './DealDeadline';
 
 import React, { useEffect, useMemo, useState } from 'react';
@@ -326,6 +328,8 @@ export default function DealsClient() {
           </div>
         </button>
       </section>
+
+      <Link className="inline-block text-sm text-indigo-700 underline dark:text-indigo-300" href={subscriptionHref(locale)}>{t.subscriptions.title}</Link>
 
       {/* 3. Filter & View Toolbar */}
       <section className="min-w-0 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-3.5 sm:p-4 backdrop-blur-md space-y-3">
