@@ -80,7 +80,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...coreRoutes, ...comparisons, ...models, ...subscriptionRoutes];
+  return [
+    ...coreRoutes, ...comparisons, ...models, ...subscriptionRoutes,
+    { url: buildLocalizedCanonical('/domestic-models/', 'zh-CN') },
+  ];
 }
 
 function latestSubscriptionDate(ids: string[]) {

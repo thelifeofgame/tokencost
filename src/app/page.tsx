@@ -240,6 +240,12 @@ export default function HomePage() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs">
+          {locale === 'zh-CN' && <Link
+            href="/zh-CN/domestic-models/"
+            className="rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-1 text-indigo-700 dark:border-indigo-900 dark:bg-indigo-950 dark:text-indigo-300"
+          >
+            {t.domestic.title}
+          </Link>}
           <Link
             href={getLocalizedPath('/models/')}
             className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-700 shadow-sm dark:shadow-none transition-colors"

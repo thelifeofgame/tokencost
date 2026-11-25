@@ -1,6 +1,29 @@
 import { TranslationDictionary } from '../types';
 
 export const zhCN: TranslationDictionary = {
+  domestic: {
+    peak: '高峰费率',
+    title: '国内模型专区',
+    description: '查找国内大模型 API 的官方价格来源、人民币计费与支付信息，并与海外 API 费率对比。',
+    comparison: '人民币成本对比',
+    fxNote: '费率均按每百万 Token，顺序为输入 / 输出。折算使用你填写的汇率，供预算估算。',
+    domesticModel: '国内模型',
+    foreignModel: '海外模型',
+    fxRate: '每美元折合人民币',
+    usdReference: '官方美元报价',
+    converted: '人民币折算',
+    enterRate: '请输入汇率',
+    verified: '价格核实于 {date}',
+    source: '官方价格来源',
+    cnRates: '人民币官方费率与国内支付',
+    input: '输入',
+    output: '输出',
+    cached: '缓存输入',
+    payments: '国内支付方式',
+    missing: '暂无',
+    paymentSource: '官方支付方式来源',
+    simulator: '打开 API 成本模拟器',
+  },
   detail: {
     unavailablePair: "暂无法对比",
     unavailablePairBody: "当前价格目录缺少其中一款模型。你可前往对比页选择其他组合。",

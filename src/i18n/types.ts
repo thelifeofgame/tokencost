@@ -11,6 +11,29 @@ export interface LocaleConfig {
 }
 
 export interface TranslationDictionary {
+  domestic: {
+    peak: string;
+    title: string;
+    description: string;
+    comparison: string;
+    fxNote: string;
+    domesticModel: string;
+    foreignModel: string;
+    fxRate: string;
+    usdReference: string;
+    converted: string;
+    enterRate: string;
+    verified: string;
+    source: string;
+    cnRates: string;
+    input: string;
+    output: string;
+    cached: string;
+    payments: string;
+    missing: string;
+    paymentSource: string;
+    simulator: string;
+  };
   detail: {
     unavailablePair: string;
     unavailablePairBody: string;

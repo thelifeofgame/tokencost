@@ -1,6 +1,29 @@
 import { TranslationDictionary } from '../types';
 
 export const en: TranslationDictionary = {
+  domestic: {
+    peak: 'Peak rate',
+    title: 'Domestic AI models',
+    description: 'Check official API price sources and convert comparable quotes to CNY.',
+    comparison: 'Compare costs in CNY',
+    fxNote: 'Prices are per million input and output tokens. The conversion uses the exchange rate you enter.',
+    domesticModel: 'Domestic model',
+    foreignModel: 'International model',
+    fxRate: 'CNY per USD',
+    usdReference: 'Official USD reference',
+    converted: 'CNY estimate',
+    enterRate: 'Enter an exchange rate',
+    verified: 'Prices verified on {date}',
+    source: 'Official price source',
+    cnRates: 'Domestic CNY prices and payments',
+    input: 'Input',
+    output: 'Output',
+    cached: 'Cached input',
+    payments: 'Domestic payment methods',
+    missing: 'Unavailable',
+    paymentSource: 'Official payment source',
+    simulator: 'Open the API cost simulator',
+  },
   detail: {
     unavailablePair: "Comparison unavailable",
     unavailablePairBody: "One of these models is missing from the current pricing catalog. Choose another pair to compare.",

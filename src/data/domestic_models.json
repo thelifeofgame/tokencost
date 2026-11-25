@@ -1,0 +1,137 @@
+{
+  "providers": [
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "modelId": "deepseek-v4-pro",
+      "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+      "cnyPerMillion": {
+        "input": null,
+        "output": null,
+        "cached": null
+      },
+      "priceVerifiedAt": null,
+      "paymentMethods": null,
+      "paymentSource": null,
+      "paymentVerifiedAt": null
+    },
+    {
+      "id": "qwen",
+      "name": "通义千问",
+      "modelId": "qwen-plus",
+      "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "cnyPerMillion": {
+        "input": null,
+        "output": null,
+        "cached": null
+      },
+      "priceVerifiedAt": null,
+      "paymentMethods": null,
+      "paymentSource": null,
+      "paymentVerifiedAt": null
+    },
+    {
+      "id": "glm",
+      "name": "智谱 GLM",
+      "modelId": "glm-5",
+      "url": "https://open.bigmodel.cn/pricing",
+      "cnyPerMillion": {
+        "input": null,
+        "output": null,
+        "cached": null
+      },
+      "priceVerifiedAt": null,
+      "paymentMethods": null,
+      "paymentSource": null,
+      "paymentVerifiedAt": null
+    },
+    {
+      "id": "kimi",
+      "name": "月之暗面 Kimi",
+      "modelId": "kimi-k3",
+      "url": "https://platform.moonshot.cn/docs/pricing",
+      "cnyPerMillion": {
+        "input": null,
+        "output": null,
+        "cached": null
+      },
+      "priceVerifiedAt": null,
+      "paymentMethods": null,
+      "paymentSource": null,
+      "paymentVerifiedAt": null
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax",
+      "modelId": "minimax-m3",
+      "url": "https://www.minimaxi.com/",
+      "cnyPerMillion": {
+        "input": null,
+        "output": null,
+        "cached": null
+      },
+      "priceVerifiedAt": null,
+      "paymentMethods": null,
+      "paymentSource": null,
+      "paymentVerifiedAt": null
+    },
+    {
+      "id": "doubao",
+      "name": "豆包 / 火山方舟",
+      "modelId": "seed-2-1-turbo",
+      "url": "https://www.volcengine.com/docs/82379",
+      "cnyPerMillion": {
+        "input": null,
+        "output": null,
+        "cached": null
+      },
+      "priceVerifiedAt": null,
+      "paymentMethods": null,
+      "paymentSource": null,
+      "paymentVerifiedAt": null
+    }
+  ],
+  "usdQuotes": [
+    {
+      "key": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "region": "domestic",
+      "modelId": "deepseek-v4-pro",
+      "input": 1.32,
+      "output": 3.96,
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "verifiedAt": "2026-11-25",
+      "peak": true
+    },
+    {
+      "key": "gpt-6.2-sol",
+      "name": "GPT-6.2 Sol",
+      "region": "foreign",
+      "modelId": "gpt-6.2-sol",
+      "input": 2,
+      "output": 10,
+      "url": "https://openai.com/business/pricing/#api",
+      "verifiedAt": "2026-11-25"
+    },
+    {
+      "key": "gpt-6.2-astra",
+      "name": "GPT-6.2 Astra",
+      "region": "foreign",
+      "modelId": "gpt-6.2-astra",
+      "input": 8,
+      "output": 40,
+      "url": "https://openai.com/business/pricing/#api",
+      "verifiedAt": "2026-11-25"
+    },
+    {
+      "key": "claude-fable-5.2",
+      "name": "Claude Fable 5.2",
+      "region": "foreign",
+      "modelId": "claude-fable-5.2",
+      "input": 8,
+      "output": 40,
+      "url": "https://claude.com/pricing",
+      "verifiedAt": "2026-11-25"
+    }
+  ]
+}

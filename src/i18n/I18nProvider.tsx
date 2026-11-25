@@ -110,11 +110,12 @@ export function I18nProvider({
         // 3. Seamless Hot-Switching of URL without losing state
         const currentSearch = window.location.search || '';
         const currentHash = window.location.hash || '';
-        const newPath = buildLocalizedPath(window.location.pathname, newLocale);
+        const domesticPage = pathnameWithoutLocale === '/domestic-models/';
+        const newPath = buildLocalizedPath(domesticPage ? '/' : window.location.pathname, newLocale);
         const fullNewTarget = `${newPath}${currentSearch}${currentHash}`;
 
         // These pages render their translated pricing copy as static HTML.
-        if (subscriptionPage || priceDetailPage) {
+        if (subscriptionPage || priceDetailPage || domesticPage) {
           window.location.assign(fullNewTarget);
           return;
         }
