@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import DealsClient from '@/components/deals/DealsClient';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import { SUPPORTED_LOCALES, getTranslation } from '@/i18n';
+import { getDealsFaqs } from '@/lib/deals-faq-data';
 import {
   buildAlternates,
   buildLocalizedCanonical,
@@ -61,6 +62,7 @@ export default function LocalizedDealsPage({
   const locale = resolveLocale(params.locale);
   const t = getTranslation(locale);
   const canonicalUrl = buildLocalizedCanonical('/deals/', locale);
+  const faqs = getDealsFaqs(locale);
 
   return (
     <>
@@ -70,6 +72,7 @@ export default function LocalizedDealsPage({
         description={t.deals.seoDesc}
         url={canonicalUrl}
         inLanguage={locale}
+        faqs={faqs}
         breadcrumbs={[
           { name: t.nav.simulator, url: buildLocalizedCanonical('/', locale) },
           { name: t.nav.dealsFull, url: canonicalUrl },

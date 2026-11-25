@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import {
   AlertTriangle,
   ArrowDownRight,
+  Ban,
   CheckCircle2,
   ChevronDown,
   ChevronUp,
@@ -113,6 +114,7 @@ export default function DealVendorCard({ provider }: DealVendorCardProps) {
   const localized = getLocalizedDealFields(provider, locale);
 
   const isActive = provider.promoStatus === 'active_promo';
+  const isExpired = !isActive && provider.id === 'mistral-ai';
   const primaryDomain = extractOfficialDomain(provider.officialSourceUrl);
   const secondaryDomain = provider.secondaryOfficialUrl
     ? extractOfficialDomain(provider.secondaryOfficialUrl)
@@ -184,21 +186,37 @@ export default function DealVendorCard({ provider }: DealVendorCardProps) {
             className={`shrink-0 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-semibold whitespace-nowrap ${
               isActive
                 ? 'bg-emerald-50 dark:bg-emerald-500/15 border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300'
+                : isExpired
+                ? 'bg-rose-50/95 border-rose-300/90 text-rose-800 dark:bg-rose-500/15 dark:border-rose-500/35 dark:text-rose-300'
                 : 'bg-zinc-100 dark:bg-zinc-800/80 border-zinc-200/90 dark:border-zinc-700/70 text-zinc-600 dark:text-zinc-400'
             }`}
           >
             {isActive && (
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 shrink-0" />
             )}
-            <span>{isActive ? dealsT.statusActiveBadge : dealsT.statusNoPromoBadge}</span>
+            {isExpired && <Ban className="h-3 w-3 shrink-0" />}
+            <span>
+              {isActive
+                ? dealsT.statusActiveBadge
+                : isExpired
+                ? dealsT.statusExpiredBadge
+                : dealsT.statusNoPromoBadge}
+            </span>
           </span>
         </div>
 
-        {/* Promo Callout or Honest Empty Notice */}
+        {/* Promo Callout or Expired / Honest Empty Notice */}
         {isActive ? (
           <div className="flex items-center gap-2 rounded-xl border border-emerald-200/90 dark:border-emerald-500/25 bg-emerald-50/75 dark:bg-emerald-500/10 px-3 py-2">
             <Sparkles className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400 shrink-0" />
             <span className="text-xs font-semibold text-emerald-800 dark:text-emerald-200 leading-snug">
+              {localized.promoBadge}
+            </span>
+          </div>
+        ) : isExpired ? (
+          <div className="flex items-center gap-2 rounded-xl border border-rose-200/90 dark:border-rose-500/25 bg-rose-50/80 dark:bg-rose-500/10 px-3 py-2">
+            <Ban className="h-3.5 w-3.5 text-rose-700 dark:text-rose-400 shrink-0" />
+            <span className="text-xs font-semibold text-rose-800 dark:text-rose-200 leading-snug line-through decoration-rose-400/70">
               {localized.promoBadge}
             </span>
           </div>

@@ -105,8 +105,8 @@ export function calculateAllModels(
  */
 export const MAINSTREAM_BENCHMARK_MODEL_IDS: string[] = [
   // Fast (5)
-  'deepseek-v4.1-flash', // DeepSeek-V4.1-Flash ($0.0498 / $0.1992)
-  'glm-5.3-flash',       // Zhipu GLM 5.3 Flash ($0.0399 / $0.0784)
+  'deepseek-v4.1-flash', // DeepSeek-V4.1-Flash ($0.14 / $0.42)
+  'glm-5.3-flash',       // Zhipu GLM 5.3 Flash ($0.12 / $0.38)
   'claude-haiku-5.5',    // Anthropic Claude Haiku 5.5 ($0.10 / $0.50)
   'gpt-6-luna',          // OpenAI GPT-6 Luna ($0.10 / $0.50)
   'qwen3.8-flash',       // Alibaba Qwen3.8 Flash ($0.15 / $0.47)

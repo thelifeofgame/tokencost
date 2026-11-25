@@ -3,7 +3,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   AlertTriangle,
+  Ban,
   CalendarClock,
+  ChevronDown,
+  HelpCircle,
   LayoutGrid,
   RotateCcw,
   Search,
@@ -19,6 +22,7 @@ import {
 } from '@/types/deals';
 import { useI18n } from '@/i18n/I18nProvider';
 import { trackEvent } from '@/lib/analytics';
+import { getDealsFaqs } from '@/lib/deals-faq-data';
 import DealVendorCard from './DealVendorCard';
 import DealsComparisonTable from './DealsComparisonTable';
 
@@ -28,19 +32,39 @@ type ViewMode = 'cards' | 'table';
 
 const dealsPayload = officialDealsRaw as OfficialDealsPayload;
 
+function computeDaysUntil(targetDate: string, referenceDate?: string): number {
+  const [y, m, d] = targetDate.split('-').map(Number);
+  if (!y || !m || !d) return 0;
+
+  let refUtc: number;
+  if (referenceDate) {
+    const [ry, rm, rd] = referenceDate.split('-').map(Number);
+    if (ry && rm && rd) {
+      refUtc = Date.UTC(ry, rm - 1, rd);
+    } else {
+      const now = new Date();
+      refUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+    }
+  } else {
+    const now = new Date();
+    refUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  }
+
+  const targetUtc = Date.UTC(y, m - 1, d);
+  return Math.round((targetUtc - refUtc) / 86400000);
+}
+
 function computeCountdownLabel(
   blackFridayDate: string,
-  dealsT: ReturnType<typeof useI18n>['t']['deals']
+  dealsT: ReturnType<typeof useI18n>['t']['deals'],
+  verifiedDate?: string
 ): string {
   const [y, m, d] = blackFridayDate.split('-').map(Number);
   if (!y || !m || !d) return dealsT.countdownPostBf;
-  const now = new Date();
-  const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-  const bfUtc = Date.UTC(y, m - 1, d);
-  const daysDiff = Math.round((bfUtc - todayUtc) / 86400000);
+  const daysDiff = computeDaysUntil(blackFridayDate, verifiedDate);
 
   if (daysDiff > 0) {
-    return dealsT.countdownPreBf.replace('{days}', String(daysDiff));
+    return dealsT.countdownPreBf.replace(/\{days\}/g, String(daysDiff));
   }
   if (daysDiff === 0) {
     return dealsT.countdownBfDay;
@@ -60,6 +84,7 @@ export default function DealsClient() {
   const [hikesOnly, setHikesOnly] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('cards');
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   // Read optional URL query params on client mount
   useEffect(() => {
@@ -85,6 +110,7 @@ export default function DealsClient() {
   }, []);
 
   const providers: OfficialDealProvider[] = dealsPayload.providers;
+  const faqs = useMemo(() => getDealsFaqs(locale), [locale]);
 
   const stats = useMemo(() => {
     const total = providers.length;
@@ -97,8 +123,13 @@ export default function DealsClient() {
   }, [providers]);
 
   const countdownText = useMemo(
-    () => computeCountdownLabel(dealsPayload.blackFridayDate, dealsT),
+    () => computeCountdownLabel(dealsPayload.blackFridayDate, dealsT, dealsPayload.lastVerifiedDate),
     [dealsT]
+  );
+
+  const daysToNov30 = useMemo(
+    () => Math.max(0, computeDaysUntil('2026-11-30', dealsPayload.lastVerifiedDate)),
+    []
   );
 
   const filteredProviders = useMemo(() => {
@@ -174,14 +205,22 @@ export default function DealsClient() {
       {/* 1. Hero & Trust Shield */}
       <section className="space-y-4">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono font-semibold tracking-wide bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/25 text-emerald-700 dark:text-emerald-400">
+          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono font-semibold tracking-wide bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-300 tabular-nums whitespace-nowrap">
+            <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
+              <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
             <ShieldCheck className="h-3.5 w-3.5 shrink-0" />
-            <span>{dealsT.heroBadge.replace('{date}', dealsPayload.lastVerifiedDate)}</span>
+            <span>Verified: {dealsPayload.lastVerifiedDate}</span>
           </span>
 
-          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono font-medium bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/25 text-amber-800 dark:text-amber-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono font-medium bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/25 text-amber-800 dark:text-amber-300 tabular-nums whitespace-nowrap">
             <CalendarClock className="h-3.5 w-3.5 shrink-0" />
             <span>{countdownText}</span>
+          </span>
+
+          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono font-medium bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">
+            <span>{dealsT.heroBadge.replace('{date}', dealsPayload.lastVerifiedDate)}</span>
           </span>
         </div>
 
@@ -211,6 +250,38 @@ export default function DealsClient() {
           </div>
           <div className="font-mono text-[11px] tabular-nums text-zinc-600 dark:text-zinc-400 shrink-0 pl-10 sm:pl-0">
             {dealsT.lastAuditLabel.replace('{date}', dealsPayload.lastVerifiedDate)}
+          </div>
+        </div>
+
+        {/* Dual Urgent Alert Strip: Nov 30 Cutoff (T-5) & Mistral API Credit Cancelled */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+          <div className="rounded-2xl border border-amber-300/90 dark:border-amber-500/30 bg-amber-50/75 dark:bg-amber-500/10 p-4 space-y-1.5">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 dark:border-amber-500/35 bg-amber-100/90 dark:bg-amber-500/20 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-amber-900 dark:text-amber-200 tabular-nums whitespace-nowrap">
+                <AlertTriangle className="h-3 w-3 shrink-0" />
+                <span>{dealsT.nov30AlertBadge.replace(/\{days\}/g, String(daysToNov30))}</span>
+              </span>
+            </div>
+            <h2 className="text-xs sm:text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
+              {dealsT.nov30AlertTitle}
+            </h2>
+            <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              {dealsT.nov30AlertBody}
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-rose-300/80 dark:border-rose-500/30 bg-rose-50/70 dark:bg-rose-500/10 p-4 space-y-1.5 flex flex-col justify-between">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-300 dark:border-rose-500/35 bg-rose-100/90 dark:bg-rose-500/20 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-rose-800 dark:text-rose-200 whitespace-nowrap">
+                  <Ban className="h-3 w-3 shrink-0" />
+                  <span>{dealsT.mistralCreditAlertBadge}</span>
+                </span>
+              </div>
+              <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                {dealsT.mistralCreditAlertBody}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -497,6 +568,72 @@ export default function DealsClient() {
         <p className="text-xs sm:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
           {dealsT.methodologyBody}
         </p>
+      </section>
+
+      {/* 6. Verified Deals & Billing FAQ Accordion (mirrors SchemaOrg FAQPage) */}
+      <section
+        aria-labelledby="deals-faq-heading"
+        className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/55 p-5 sm:p-6 backdrop-blur-md space-y-4"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <HelpCircle className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+            <h2
+              id="deals-faq-heading"
+              className="text-sm sm:text-base font-bold text-zinc-900 dark:text-zinc-100 tracking-tight"
+            >
+              {dealsT.faqSectionTitle}
+            </h2>
+          </div>
+          <span className="inline-flex items-center rounded-full border border-emerald-200 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-mono font-medium text-emerald-800 dark:text-emerald-300 tabular-nums whitespace-nowrap">
+            {dealsT.faqSectionBadge.replace('{date}', dealsPayload.lastVerifiedDate)}
+          </span>
+        </div>
+
+        <div className="space-y-2.5">
+          {faqs.map((item, idx) => {
+            const isOpen = openFaqIndex === idx;
+            const panelId = `deals-faq-panel-${idx}`;
+            return (
+              <div
+                key={idx}
+                className="rounded-xl border border-zinc-200/85 dark:border-zinc-800/80 bg-zinc-50/70 dark:bg-zinc-950/50 overflow-hidden transition-colors"
+              >
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                  onClick={() => setOpenFaqIndex((prev) => (prev === idx ? null : idx))}
+                  className="min-h-[48px] w-full flex items-center justify-between gap-3 p-3.5 sm:p-4 text-left hover:bg-zinc-100/70 dark:hover:bg-zinc-900/60 transition-colors"
+                >
+                  <span className="flex items-center gap-2.5 min-w-0">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-[10px] font-mono font-bold text-zinc-600 dark:text-zinc-400 tabular-nums">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
+                      {item.question}
+                    </span>
+                  </span>
+                  <ChevronDown
+                    className={`h-4 w-4 shrink-0 text-zinc-500 dark:text-zinc-400 transition-transform duration-150 ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <div
+                    id={panelId}
+                    role="region"
+                    className="px-4 sm:pl-[52px] sm:pr-4 pb-4 pt-3 text-xs sm:text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 border-t border-zinc-200/70 dark:border-zinc-800/70"
+                  >
+                    {item.answer}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );

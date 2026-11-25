@@ -21,6 +21,17 @@ import TokenEstimatorModal from '@/components/TokenEstimatorModal';
 import MarketPulseRadar from '@/components/MarketPulseRadar';
 import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import officialDealsRaw from '@/data/official_deals.json';
+
+function formatHomeBannerBadge(template: string, verifiedDate: string, bfDate: string): string {
+  const [vy, vm, vd] = verifiedDate.split('-').map(Number);
+  const [by, bm, bd] = bfDate.split('-').map(Number);
+  const verifiedUtc = vy && vm && vd ? Date.UTC(vy, vm - 1, vd) : Date.now();
+  const bfUtc = by && bm && bd ? Date.UTC(by, bm - 1, bd) : verifiedUtc;
+  const days = Math.max(0, Math.round((bfUtc - verifiedUtc) / 86400000));
+  const shortDate = verifiedDate.length >= 10 ? `${verifiedDate.slice(5, 7)}/${verifiedDate.slice(8, 10)}` : verifiedDate;
+  return template.replace('{days}', String(days)).replace('{shortDate}', shortDate);
+}
 
 const defaultParams: SimulationParams = {
   monthlyRequests: 100000,
@@ -287,7 +298,7 @@ export default function HomePage() {
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 min-w-0">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100/90 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 shrink-0">
             <ShieldCheck className="h-3 w-3 text-emerald-700 dark:text-emerald-400" />
-            <span>{t.deals.homeBannerBadge}</span>
+            <span>{formatHomeBannerBadge(t.deals.homeBannerBadge, officialDealsRaw.lastVerifiedDate, officialDealsRaw.blackFridayDate)}</span>
           </span>
           <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300 line-clamp-2 sm:truncate">
             {t.deals.homeBannerText}

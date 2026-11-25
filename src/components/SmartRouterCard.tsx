@@ -26,11 +26,11 @@ const CATEGORY_MODEL_IDS: Record<string, string[]> = {
     'claude-sonnet-5.5',
     'gemini-4-carbon',
     'gpt-6.1-terra',
-    'gpt-6.1-sol',
     'claude-fable-5.2',
     'gemini-2.5-pro',
   ],
   fast: [
+    'solar-mini-4-5',
     'deepseek-v4.1-flash',
     'glm-5.3-flash',
     'qwen3-coder-30b-a3b-instruct',

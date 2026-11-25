@@ -9,7 +9,7 @@ const COMPARE_404 = new RegExp(
 
 /**
  * 兜底跳转：当用户访问一个没有被静态预生成的长尾对比 URL
- * （例如 /compare/deepseek-v4.1-flash-1017-vs-gpt-6.1-sol/）时，
+ * （例如 /compare/deepseek-v4.1-flash-vs-solar-mini-4-5/）时，
  * Next 的静态导出会返回 404，这里在浏览器端把它接到按需渲染页。
  *
  * 保留 404 状态码是有意为之：

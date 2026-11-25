@@ -2,10 +2,41 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Market Radar Events Feed",
   "description": "Industry hot news, price cuts, new releases, and policy deals for LLM APIs.",
-  "version": "1.0.7",
-  "lastUpdated": "2026-11-23T09:09:30+08:00",
-  "totalEvents": 9,
+  "version": "1.0.9",
+  "lastUpdated": "2026-11-25T10:12:45+08:00",
+  "totalEvents": 10,
   "events": [
+    {
+      "id": "radar-2026-014",
+      "type": "new_release",
+      "badgeText": "+3 New · 97% Cache",
+      "badgeColor": "cyan",
+      "provider": "Upstage / DeepSeek",
+      "title": "Solar 4.5 ($0.01) & MiMo-V2.6 Live; DeepSeek/GLM Cache Cut",
+      "highlight": "Solar 4.5 $0.01 · V4.1 97% Cache",
+      "description": "Adds Solar Mini 4.5 ($0.01/$0.04) & MiMo-V2.6 ($0.15/$0.42); DeepSeek V4.1 (97%) & GLM 5.3 (83%) cut cache read rates.",
+      "ctaText": "Calculate Solar Mini 4.5",
+      "ctaLink": "/calculator/solar-mini-4-5/",
+      "timestamp": "Today",
+      "isFeatured": true
+    },
+    {
+      "id": "radar-2026-013",
+      "type": "price_cut",
+      "badgeText": "80%-92% Rate Cut",
+      "badgeColor": "emerald",
+      "provider": "DeepSeek / NVIDIA / Dots",
+      "title": "DeepSeek Flash-1017 (-80%), V4 Pro (-92%) & Nemotron 3.5 Cut",
+      "highlight": "Flash-1017 $0.03/$0.20 · Dots3 Free",
+      "prevValue": "$0.150",
+      "newValue": "$0.030",
+      "discountPercent": 80,
+      "description": "Nov 24 live API tracker records deepseek-v4.1-flash-1017 dropping 80.0% input / 66.7% output ($0.15/$0.60 to $0.03/$0.20, $0.001 cached), deepseek-v4-pro-0813 input falling 91.6% ($1.32 to $0.111, output $4.44), nemotron-3.5-lightning cutting input 28.6% to $0.05 ($0.01 cached, 80% off), and dots-3-note-preview:free (512K MoE) debuting (+1/-1 as mimo-v2.5-pro delisted), while glm-5.1 rose +17.6% to $1.40/$4.40.",
+      "ctaText": "Calculate DeepSeek V4.1",
+      "ctaLink": "/calculator/deepseek-v4.1-flash-1017/",
+      "timestamp": "Yesterday",
+      "isFeatured": false
+    },
     {
       "id": "radar-2026-012",
       "type": "price_cut",
@@ -20,13 +51,13 @@
       "description": "Nov 23 live API tracker records google/gemma-3-27b-it output dropping 64.4% ($0.45 to $0.16, $0.02 cached), openai/gpt-oss-120b falling 44.4% ($0.09/$0.36 to $0.05/$0.25), qwen3.6-35b-a3b -50% ($0.10/$0.90 to $0.05/$0.70), qwen3.8-27b -41.7% ($0.06/$1.96 to $0.035/$1.50), and kimi-k3.1-pro edging down (-5% to $0.2403/$8.4023), while deepseek-v4.1-flash holds $0.0498/$0.1992 ($0.001 cached) and glm-4.7 ($0.60/$2.20) & gpt-oss-20b ($0.03/$0.13) ticked up.",
       "ctaText": "Calculate Gemma 3 27B",
       "ctaLink": "/calculator/gemma-3-27b-it/",
-      "timestamp": "Today",
-      "isFeatured": true
+      "timestamp": "2 days ago",
+      "isFeatured": false
     },
     {
       "id": "radar-2026-003",
       "type": "policy_deal",
-      "badgeText": "7 Days Left: Dec 1 Hike",
+      "badgeText": "5 Days Left: Nov 30 Cutoff",
       "badgeColor": "rose",
       "provider": "Google",
       "title": "Gemini 4 Carbon & Argon Intro $2/$10 Pricing Expires Nov 30",
@@ -49,7 +80,7 @@
       "description": "Google makes Genie 4 (models/genie-4) generally available on the Gemini v1beta Interactions API, streaming 720p 24fps worlds with 48kHz audio at $1.50/M input and $17.50/M video output (~$6.05/min).",
       "ctaText": "Compare Gemini 4 Flagships",
       "ctaLink": "/compare/gemini-4-neon-vs-gpt-6.2-sol/",
-      "timestamp": "2 days ago",
+      "timestamp": "4 days ago",
       "isFeatured": true,
       "topicLink": "/pricing/realtime-voice-world-model-api-costs/"
     },
@@ -67,7 +98,7 @@
       "description": "OpenAI releases gpt-live-1.1 on v1/live/sessions alongside a new WebRTC standby billing mode that cuts idle voice session costs by 60% from $0.05/min to $0.02/min.",
       "ctaText": "Explore OpenAI Flagships",
       "ctaLink": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/",
-      "timestamp": "3 days ago",
+      "timestamp": "5 days ago",
       "isFeatured": true,
       "topicLink": "/pricing/realtime-voice-world-model-api-costs/"
     },
@@ -82,7 +113,7 @@
       "description": "Google debuts Gemini 4 Neon tailored for code and agentic tasks with native 1M context, 145 t/s throughput, and 95% prompt cache read discount ($0.15/1M).",
       "ctaText": "Compare Neon vs Sol",
       "ctaLink": "/compare/gemini-4-neon-vs-gpt-6.2-sol/",
-      "timestamp": "4 days ago",
+      "timestamp": "6 days ago",
       "isFeatured": false
     },
     {
@@ -96,7 +127,7 @@
       "description": "OpenAI introduces GPT-6.2 Astra flagship ($8/$40) and Sol ($2/$10) with reasoning mode, featuring 1.05M token windows and 95% cached input discount.",
       "ctaText": "Compare Astra vs Opus",
       "ctaLink": "/compare/gpt-6.2-astra-vs-claude-opus-5.5/",
-      "timestamp": "5 days ago",
+      "timestamp": "7 days ago",
       "isFeatured": false
     },
     {
@@ -110,7 +141,7 @@
       "description": "DeepSeek drops server-side web search and fetch tool surcharges (billed solely as context tokens) while keeping V4.1-Flash prompt cache hits at $0.003-$0.006/1M.",
       "ctaText": "Calculate New Cost",
       "ctaLink": "/calculator/deepseek-v4.1-flash",
-      "timestamp": "4 days ago",
+      "timestamp": "6 days ago",
       "isFeatured": false
     },
     {
@@ -124,20 +155,6 @@
       "description": "Anthropic maintains adaptive TTL caching for Sonnet 5.5 and Opus 5.5, cutting agent multi-turn conversation cost by up to 88%, while API rates hold steady post-IPO.",
       "ctaText": "Check Cache Breakeven",
       "ctaLink": "/calculator/claude-sonnet-5.5",
-      "timestamp": "This Week",
-      "isFeatured": false
-    },
-    {
-      "id": "radar-2026-006",
-      "type": "policy_deal",
-      "badgeText": "Free Compute",
-      "badgeColor": "cyan",
-      "provider": "Groq",
-      "title": "Groq Offers $100 Free Inference Credits on Llama 3.3 70B",
-      "highlight": "420 Tokens/sec",
-      "description": "Claim ultra-fast LPU inference credits. Benchmark real-time voice and agent streaming with sub-200ms TTFT.",
-      "ctaText": "Claim Free Credits",
-      "ctaLink": "https://groq.com?ref=tokencostsai_com",
       "timestamp": "This Week",
       "isFeatured": false
     }

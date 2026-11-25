@@ -21,7 +21,7 @@ const FEATURED_PRIORITY_ORDER = [
   'deepseek-v4.1-flash',
   'gpt-6.2-astra',
   'claude-opus-5.5',
-  'gpt-6.1-sol',
+  'solar-mini-4-5',
   'gpt-6.1-terra',
   'deepseek-v3',
   'deepseek-r1',
@@ -252,7 +252,8 @@ export const POPULAR_COMPARE_PAIRS = [
   { a: 'claude-sonnet-5.5', b: 'gpt-6.2-astra' },
   { a: 'deepseek-v4.1-flash', b: 'gpt-6.2-sol' },
   { a: 'claude-sonnet-5.5', b: 'gemini-4-neon' },
-  { a: 'gpt-6.1-sol', b: 'gpt-4o' },
+  { a: 'gpt-6.2-sol', b: 'gpt-4o' },
+  { a: 'deepseek-v4.1-flash', b: 'solar-mini-4-5' },
   { a: 'gpt-4o', b: 'claude-3-5-sonnet' },
   { a: 'deepseek-v3', b: 'llama-3.3-70b' },
   { a: 'claude-3-5-haiku', b: 'gpt-4o-mini' },
@@ -743,7 +744,7 @@ export const TIER1_MODELS: string[] = [
   // —— OpenAI (2026 Flagships)
   'gpt-6.2-sol',
   'gpt-6.2-astra',
-  'gpt-6.1-sol',
+  'solar-mini-4-5',
   'gpt-6.1-terra',
   'gpt-6-luna',
   'gpt-4o',
@@ -788,7 +789,7 @@ export const TIER1_MODELS: string[] = [
   'mixtral-8x7b',
   // —— Moonshot
   'kimi-k3',
-  'kimi-k2.5',
+  'kimi-k3.1-pro',
   // —— 其余厂商旗舰
   'nemotron-3-ultra-550b-a55b',
   'command-a',

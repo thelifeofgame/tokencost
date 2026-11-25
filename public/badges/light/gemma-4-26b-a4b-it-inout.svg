@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="377" height="22" viewBox="0 0 377 22" role="img" aria-label="TokenCosts AI: Gemma 4 26B A4B  $0.0675 / $0.225 per 1M">
-  <title>TokenCosts AI: Gemma 4 26B A4B  $0.0675 / $0.225 per 1M</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="377" height="22" viewBox="0 0 377 22" role="img" aria-label="TokenCosts AI: Gemma 4 26B A4B  $0.0765 / $0.255 per 1M">
+  <title>TokenCosts AI: Gemma 4 26B A4B  $0.0765 / $0.255 per 1M</title>
   <defs>
     <clipPath id="clip-light-gemma-4-26b-a4b-it-inout">
       <rect width="377" height="22" rx="4"/>
@@ -16,6 +16,6 @@
     <text x="22" y="14.5" fill="#18181B">TokenCosts AI</text>
   </g>
   <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="500" text-rendering="geometricPrecision">
-    <text x="121" y="14.5" fill="#52525B">Gemma 4 26B A4B  <tspan fill="#059669" font-weight="700">$0.0675 · $0.225/1M</tspan></text>
+    <text x="121" y="14.5" fill="#52525B">Gemma 4 26B A4B  <tspan fill="#059669" font-weight="700">$0.0765 · $0.255/1M</tspan></text>
   </g>
 </svg>

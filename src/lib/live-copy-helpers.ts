@@ -1,6 +1,6 @@
 import rawSchema from '@/data/model_pricing_schema.json';
 
-export const LIVE_MODEL_COUNT: number = rawSchema.models.length; // e.g. 367
+export const LIVE_MODEL_COUNT: number = rawSchema.models.length; // e.g. 363
 
 export function formatShortUsd(val: number): string {
   if (val === 0) return '$0';
@@ -43,11 +43,11 @@ export function getLiveFlashRates() {
   const qwen = find('qwen3-coder-30b-a3b-instruct');
 
   return {
-    deepseekIn: formatShortUsd(deepseek?.inputPerM ?? 0.0498),
-    deepseekOut: formatShortUsd(deepseek?.outputPerM ?? 0.1992),
-    deepseekCached: formatShortUsd(deepseek?.cachedInputPerM ?? 0.001),
-    glmIn: formatShortUsd(glm?.inputPerM ?? 0.0399),
-    glmOut: formatShortUsd(glm?.outputPerM ?? 0.0784),
+    deepseekIn: formatShortUsd(deepseek?.inputPerM ?? 0.14),
+    deepseekOut: formatShortUsd(deepseek?.outputPerM ?? 0.42),
+    deepseekCached: formatShortUsd(deepseek?.cachedInputPerM ?? 0.0042),
+    glmIn: formatShortUsd(glm?.inputPerM ?? 0.12),
+    glmOut: formatShortUsd(glm?.outputPerM ?? 0.38),
     qwenIn: formatShortUsd(qwen?.inputPerM ?? 0.07),
     qwenOut: formatShortUsd(qwen?.outputPerM ?? 0.28),
     minDropPct: 53,

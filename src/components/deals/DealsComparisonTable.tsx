@@ -4,6 +4,7 @@ import React from 'react';
 import {
   AlertTriangle,
   ArrowDownRight,
+  Ban,
   CheckCircle2,
   ExternalLink,
   Info,
@@ -120,6 +121,7 @@ export default function DealsComparisonTable({ providers }: DealsComparisonTable
             {providers.map((provider) => {
               const localized = getLocalizedDealFields(provider, locale);
               const isActive = provider.promoStatus === 'active_promo';
+              const isExpired = !isActive && provider.id === 'mistral-ai';
               const primaryDomain = extractOfficialDomain(provider.officialSourceUrl);
               const secondaryDomain = provider.secondaryOfficialUrl
                 ? extractOfficialDomain(provider.secondaryOfficialUrl)
@@ -155,18 +157,30 @@ export default function DealsComparisonTable({ providers }: DealsComparisonTable
                       className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-semibold whitespace-nowrap ${
                         isActive
                           ? 'bg-emerald-50 dark:bg-emerald-500/15 border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300'
+                          : isExpired
+                          ? 'bg-rose-50/95 border-rose-300/90 text-rose-800 dark:bg-rose-500/15 dark:border-rose-500/35 dark:text-rose-300'
                           : 'bg-zinc-100 dark:bg-zinc-800/80 border-zinc-200/90 dark:border-zinc-700/70 text-zinc-600 dark:text-zinc-400'
                       }`}
                     >
                       {isActive && (
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
                       )}
+                      {isExpired && <Ban className="h-3 w-3 shrink-0" />}
                       <span>
-                        {isActive ? dealsT.statusActiveBadge : dealsT.statusNoPromoBadge}
+                        {isActive
+                          ? dealsT.statusActiveBadge
+                          : isExpired
+                          ? dealsT.statusExpiredBadge
+                          : dealsT.statusNoPromoBadge}
                       </span>
                     </span>
                     {isActive && (
                       <div className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 leading-snug">
+                        {localized.promoBadge}
+                      </div>
+                    )}
+                    {isExpired && (
+                      <div className="text-[11px] font-medium text-rose-700 dark:text-rose-300 leading-snug line-through decoration-rose-400/70">
                         {localized.promoBadge}
                       </div>
                     )}

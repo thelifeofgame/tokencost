@@ -3,7 +3,7 @@
   "title": "Global LLM Official Pricing, Benchmarks and Performance Schema",
   "description": "Standardized schema tracking official API token rates, prompt caching, batch discounts, context windows, Artificial Analysis benchmarks, and throughput/latency metrics for leading foundational LLM providers.",
   "version": "2.1.0",
-  "lastUpdated": "2026-11-23T09:03:05.795607+08:00",
+  "lastUpdated": "2026-11-25T09:04:25.631985+08:00",
   "currency": "USD",
   "unit": "per_1m_tokens",
   "referenceSources": [
@@ -656,7 +656,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 44.2,
-        "codingIndex": 1235,
+        "codingIndex": 1234,
         "agenticIndex": null,
         "arenaElo": 1203,
         "evalSources": [
@@ -692,9 +692,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 59.1,
-        "codingIndex": 1307,
+        "codingIndex": 1305,
         "agenticIndex": null,
-        "arenaElo": 1398,
+        "arenaElo": 1400,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -728,7 +728,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1210,
+        "codingIndex": 1209,
         "agenticIndex": null,
         "arenaElo": 1170,
         "evalSources": [
@@ -762,10 +762,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 54.5,
-        "codingIndex": 1286,
+        "intelligenceIndex": 54.7,
+        "codingIndex": 1287,
         "agenticIndex": null,
-        "arenaElo": 1265,
+        "arenaElo": 1264,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -799,9 +799,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1187,
+        "codingIndex": 1247,
         "agenticIndex": null,
-        "arenaElo": 1156,
+        "arenaElo": 1154,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -817,10 +817,10 @@
       "modelId": "deepseek-v4-flash-0731",
       "modelName": "DeepSeek: DeepSeek V4 Flash 0731",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.0443,
+      "inputPerM": 0.047,
       "outputPerM": 0.3,
       "cachedInputPerM": 0.035,
-      "cacheDiscountPercent": 20.99,
+      "cacheDiscountPercent": 25.53,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 943718,
@@ -835,9 +835,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1211,
+        "codingIndex": 1271,
         "agenticIndex": null,
-        "arenaElo": 1175,
+        "arenaElo": 1172,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -853,13 +853,13 @@
       "modelId": "deepseek-v4-flash-vision-exp",
       "modelName": "DeepSeek: DeepSeek V4 Flash Vision Exp",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.2156,
-      "outputPerM": 0.6468,
-      "cachedInputPerM": 0.0069,
-      "cacheDiscountPercent": 96.8,
+      "inputPerM": 0.44,
+      "outputPerM": 1.32,
+      "cachedInputPerM": 0.028,
+      "cacheDiscountPercent": 93.64,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
-      "maxOutputTokens": 262144,
+      "maxOutputTokens": 393216,
       "latencyTier": "fast",
       "officialDocUrl": "https://api-docs.deepseek.com/quick_start/pricing",
       "affiliateTag": null,
@@ -888,10 +888,10 @@
       "modelId": "deepseek-v4-pro",
       "modelName": "DeepSeek: DeepSeek V4 Pro 0423",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.9,
-      "outputPerM": 1.5,
-      "cachedInputPerM": 0.2,
-      "cacheDiscountPercent": 77.78,
+      "inputPerM": 1.28,
+      "outputPerM": 2.56,
+      "cachedInputPerM": 0.108,
+      "cacheDiscountPercent": 91.56,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 393216,
@@ -924,10 +924,10 @@
       "modelId": "deepseek-v4-pro-0813",
       "modelName": "DeepSeek: DeepSeek V4 Pro 0813",
       "providerOrg": "DeepSeek",
-      "inputPerM": 1.32,
-      "outputPerM": 3.96,
-      "cachedInputPerM": 0.044,
-      "cacheDiscountPercent": 96.67,
+      "inputPerM": 0.111,
+      "outputPerM": 4.44,
+      "cachedInputPerM": 0.097,
+      "cacheDiscountPercent": 12.61,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 943718,
@@ -959,11 +959,11 @@
       "modelId": "deepseek-v4.1-flash",
       "modelName": "DeepSeek: DeepSeek V4.1 Flash",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.0498,
-      "outputPerM": 0.1992,
-      "cachedInputPerM": 0.001,
-      "cacheDiscountPercent": 97.99,
-      "batchDiscountPercent": 0.0,
+      "inputPerM": 0.14,
+      "outputPerM": 0.42,
+      "cachedInputPerM": 0.0042,
+      "cacheDiscountPercent": 97.0,
+      "batchDiscountPercent": 64.29,
       "contextWindow": 1048576,
       "maxOutputTokens": 393216,
       "latencyTier": "fast",
@@ -994,11 +994,11 @@
       "modelId": "deepseek-v4.1-flash-1017",
       "modelName": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "providerOrg": "DeepSeek",
-      "inputPerM": 0.15,
-      "outputPerM": 0.6,
-      "cachedInputPerM": 0.003,
-      "cacheDiscountPercent": 98.0,
-      "batchDiscountPercent": 76.67,
+      "inputPerM": 0.03,
+      "outputPerM": 0.2,
+      "cachedInputPerM": 0.001,
+      "cacheDiscountPercent": 96.67,
+      "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 393216,
       "latencyTier": "fast",
@@ -1011,10 +1011,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 32.6,
-        "codingIndex": 1281,
+        "intelligenceIndex": 32.4,
+        "codingIndex": 1341,
         "agenticIndex": null,
-        "arenaElo": 1264,
+        "arenaElo": 1263,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1047,8 +1047,8 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 50.4,
-        "codingIndex": 1277,
+        "intelligenceIndex": 50.5,
+        "codingIndex": 1276,
         "agenticIndex": null,
         "arenaElo": 1266,
         "evalSources": [
@@ -1083,10 +1083,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 60,
-        "codingIndex": 1351,
+        "intelligenceIndex": 60.1,
+        "codingIndex": 1433,
         "agenticIndex": null,
-        "arenaElo": 1254,
+        "arenaElo": 1251,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1119,10 +1119,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 53.9,
-        "codingIndex": 1330,
+        "intelligenceIndex": 54.1,
+        "codingIndex": 1388,
         "agenticIndex": null,
-        "arenaElo": 1309,
+        "arenaElo": 1311,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1155,10 +1155,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 61.4,
-        "codingIndex": 1389,
+        "intelligenceIndex": 61.5,
+        "codingIndex": 1448,
         "agenticIndex": null,
-        "arenaElo": 1492,
+        "arenaElo": 1487,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1261,7 +1261,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 32.3,
+        "intelligenceIndex": 32.2,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -1471,7 +1471,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 44.2,
+        "intelligenceIndex": 44.1,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -1541,8 +1541,8 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 54.6,
-        "codingIndex": 1269,
+        "intelligenceIndex": 54.7,
+        "codingIndex": 1268,
         "agenticIndex": null,
         "arenaElo": 1190,
         "evalSources": [
@@ -1612,7 +1612,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 51.3,
+        "intelligenceIndex": 51.4,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -1682,7 +1682,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 62.1,
+        "intelligenceIndex": 62.2,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -1802,6 +1802,41 @@
       "notes": "GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **C..."
     },
     {
+      "modelId": "solar-mini-4-5",
+      "modelName": "Upstage: Solar Mini 4.5 (Preview)",
+      "providerOrg": "Upstage",
+      "inputPerM": 0.01,
+      "outputPerM": 0.04,
+      "cachedInputPerM": 0.001,
+      "cacheDiscountPercent": 90.0,
+      "batchDiscountPercent": 0.0,
+      "contextWindow": 524288,
+      "maxOutputTokens": 131072,
+      "latencyTier": "fast",
+      "officialDocUrl": "https://openrouter.ai/models/upstage/solar-mini-4-5",
+      "affiliateTag": null,
+      "capabilities": {
+        "reasoning": true,
+        "vision": false,
+        "functionCalling": true,
+        "structuredOutputs": true
+      },
+      "benchmarks": {
+        "intelligenceIndex": null,
+        "codingIndex": null,
+        "agenticIndex": null,
+        "arenaElo": null,
+        "evalSources": [
+          "Artificial Analysis Community Standard"
+        ]
+      },
+      "performance": {
+        "throughputTokensPerSec": 145.0,
+        "timeToFirstTokenSec": 0.25
+      },
+      "notes": "Solar Mini 4.5 is Upstage's compact language model, built on a proprietary mixture-of-experts architecture with 35B total and 3B active parameters and a 524K context window. It is a step..."
+    },
+    {
       "modelId": "solar-mini4",
       "modelName": "Upstage: Solar Mini 4",
       "providerOrg": "Upstage",
@@ -1823,9 +1858,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1113,
+        "codingIndex": 1171,
         "agenticIndex": null,
-        "arenaElo": 1064,
+        "arenaElo": 1065,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1836,6 +1871,41 @@
         "timeToFirstTokenSec": 0.25
       },
       "notes": "Solar Mini 4 is Upstage's compact, cost-efficient language model, a 35B-parameter mixture-of-experts with 3B active parameters and a 524K context window. It is built for agentic use cases where res..."
+    },
+    {
+      "modelId": "solar-pro-4-contributor",
+      "modelName": "Upstage: Solar Pro 4 Contributor",
+      "providerOrg": "Upstage",
+      "inputPerM": 0.09,
+      "outputPerM": 0.36,
+      "cachedInputPerM": 0.009,
+      "cacheDiscountPercent": 90.0,
+      "batchDiscountPercent": 0.0,
+      "contextWindow": 524288,
+      "maxOutputTokens": 131072,
+      "latencyTier": "standard",
+      "officialDocUrl": "https://openrouter.ai/models/upstage/solar-pro-4-contributor",
+      "affiliateTag": null,
+      "capabilities": {
+        "reasoning": true,
+        "vision": false,
+        "functionCalling": true,
+        "structuredOutputs": true
+      },
+      "benchmarks": {
+        "intelligenceIndex": null,
+        "codingIndex": null,
+        "agenticIndex": null,
+        "arenaElo": null,
+        "evalSources": [
+          "Artificial Analysis Community Standard"
+        ]
+      },
+      "performance": {
+        "throughputTokensPerSec": 85.0,
+        "timeToFirstTokenSec": 0.45
+      },
+      "notes": "Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its..."
     },
     {
       "modelId": "solar-pro4",
@@ -1859,9 +1929,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 14.2,
-        "codingIndex": 1073,
+        "codingIndex": 1072,
         "agenticIndex": null,
-        "arenaElo": 1073,
+        "arenaElo": 1072,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -1895,7 +1965,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1112,
+        "codingIndex": 1111,
         "agenticIndex": null,
         "arenaElo": 1035,
         "evalSources": [
@@ -1966,7 +2036,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1093,
+        "codingIndex": 1092,
         "agenticIndex": null,
         "arenaElo": 954,
         "evalSources": [
@@ -2001,7 +2071,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1185,
+        "codingIndex": 1184,
         "agenticIndex": null,
         "arenaElo": 1182,
         "evalSources": [
@@ -2036,7 +2106,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": 31,
-        "codingIndex": 1218,
+        "codingIndex": 1217,
         "agenticIndex": null,
         "arenaElo": 1156,
         "evalSources": [
@@ -2071,8 +2141,8 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 35.5,
-        "codingIndex": 1259,
+        "intelligenceIndex": 35.4,
+        "codingIndex": 1318,
         "agenticIndex": null,
         "arenaElo": 1163,
         "evalSources": [
@@ -2493,9 +2563,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1020,
+        "codingIndex": 1080,
         "agenticIndex": null,
-        "arenaElo": 961,
+        "arenaElo": 959,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -2529,9 +2599,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1015,
+        "codingIndex": 1074,
         "agenticIndex": null,
-        "arenaElo": 965,
+        "arenaElo": 963,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -2565,9 +2635,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 924,
+        "codingIndex": 983,
         "agenticIndex": null,
-        "arenaElo": 924,
+        "arenaElo": 983,
         "evalSources": [
           "Design Arena"
         ]
@@ -2670,9 +2740,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1125,
+        "codingIndex": 1184,
         "agenticIndex": null,
-        "arenaElo": 1125,
+        "arenaElo": 1184,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -3057,9 +3127,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1162,
+        "codingIndex": 1221,
         "agenticIndex": null,
-        "arenaElo": 1128,
+        "arenaElo": 1126,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -3163,9 +3233,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1149,
+        "codingIndex": 1208,
         "agenticIndex": null,
-        "arenaElo": 1086,
+        "arenaElo": 1084,
         "evalSources": [
           "Design Arena"
         ]
@@ -3250,10 +3320,10 @@
       "modelId": "qwen3.6-35b-a3b",
       "modelName": "Qwen: Qwen3.6 35B A3B",
       "providerOrg": "Alibaba Qwen",
-      "inputPerM": 0.05,
-      "outputPerM": 0.7,
-      "cachedInputPerM": 0.025,
-      "cacheDiscountPercent": 50.0,
+      "inputPerM": 0.1,
+      "outputPerM": 0.89,
+      "cachedInputPerM": 0.035,
+      "cacheDiscountPercent": 65.0,
       "batchDiscountPercent": 40.0,
       "contextWindow": 262144,
       "maxOutputTokens": 235929,
@@ -3338,9 +3408,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1218,
+        "codingIndex": 1277,
         "agenticIndex": null,
-        "arenaElo": 1170,
+        "arenaElo": 1168,
         "evalSources": [
           "Design Arena"
         ]
@@ -3408,7 +3478,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1176,
+        "codingIndex": 1175,
         "agenticIndex": null,
         "arenaElo": 1105,
         "evalSources": [
@@ -3443,9 +3513,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1251,
+        "codingIndex": 1311,
         "agenticIndex": null,
-        "arenaElo": 1205,
+        "arenaElo": 1203,
         "evalSources": [
           "Design Arena"
         ]
@@ -3547,7 +3617,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 28.6,
+        "intelligenceIndex": 28.5,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -3687,7 +3757,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 42.9,
+        "intelligenceIndex": 42.8,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -3933,7 +4003,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1230,
+        "codingIndex": 1229,
         "agenticIndex": null,
         "arenaElo": 1231,
         "evalSources": [
@@ -3968,9 +4038,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 50,
-        "codingIndex": 1308,
+        "codingIndex": 1307,
         "agenticIndex": null,
-        "arenaElo": 1301,
+        "arenaElo": 1372,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4003,10 +4073,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 64.6,
-        "codingIndex": 1393,
+        "intelligenceIndex": 64.8,
+        "codingIndex": 1460,
         "agenticIndex": null,
-        "arenaElo": 1433,
+        "arenaElo": 1443,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4040,9 +4110,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 7.4,
-        "codingIndex": 1097,
+        "codingIndex": 1156,
         "agenticIndex": null,
-        "arenaElo": 1039,
+        "arenaElo": 1037,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4076,9 +4146,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 36.5,
-        "codingIndex": 1273,
+        "codingIndex": 1335,
         "agenticIndex": null,
-        "arenaElo": 1306,
+        "arenaElo": 1304,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4112,9 +4182,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1153,
+        "codingIndex": 1212,
         "agenticIndex": null,
-        "arenaElo": 1120,
+        "arenaElo": 1118,
         "evalSources": [
           "Design Arena"
         ]
@@ -4147,9 +4217,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1224,
+        "codingIndex": 1283,
         "agenticIndex": null,
-        "arenaElo": 1180,
+        "arenaElo": 1179,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4183,7 +4253,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1173,
+        "codingIndex": 1172,
         "agenticIndex": null,
         "arenaElo": 1144,
         "evalSources": [
@@ -4254,7 +4324,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1200,
+        "codingIndex": 1199,
         "agenticIndex": null,
         "arenaElo": 1183,
         "evalSources": [
@@ -4289,9 +4359,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1165,
+        "codingIndex": 1224,
         "agenticIndex": null,
-        "arenaElo": 1124,
+        "arenaElo": 1122,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4325,7 +4395,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1158,
+        "codingIndex": 1157,
         "agenticIndex": null,
         "arenaElo": 1118,
         "evalSources": [
@@ -4781,9 +4851,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1090,
+        "codingIndex": 1149,
         "agenticIndex": null,
-        "arenaElo": 1054,
+        "arenaElo": 1052,
         "evalSources": [
           "Design Arena"
         ]
@@ -4851,9 +4921,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1094,
+        "codingIndex": 1153,
         "agenticIndex": null,
-        "arenaElo": 1044,
+        "arenaElo": 1042,
         "evalSources": [
           "Design Arena"
         ]
@@ -4886,9 +4956,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1120,
+        "codingIndex": 1180,
         "agenticIndex": null,
-        "arenaElo": 1078,
+        "arenaElo": 1076,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4922,9 +4992,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1157,
+        "codingIndex": 1217,
         "agenticIndex": null,
-        "arenaElo": 1107,
+        "arenaElo": 1105,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4958,9 +5028,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1146,
+        "codingIndex": 1205,
         "agenticIndex": null,
-        "arenaElo": 1099,
+        "arenaElo": 1097,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -4994,9 +5064,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1152,
+        "codingIndex": 1212,
         "agenticIndex": null,
-        "arenaElo": 1115,
+        "arenaElo": 1113,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -5100,9 +5170,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1086,
+        "codingIndex": 1145,
         "agenticIndex": null,
-        "arenaElo": 1038,
+        "arenaElo": 1036,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -5138,7 +5208,7 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 1167,
+        "arenaElo": 1225,
         "evalSources": [
           "Design Arena"
         ]
@@ -5206,9 +5276,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1134,
+        "codingIndex": 1194,
         "agenticIndex": null,
-        "arenaElo": 1047,
+        "arenaElo": 1045,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -5277,7 +5347,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1078,
+        "codingIndex": 1077,
         "agenticIndex": null,
         "arenaElo": 1073,
         "evalSources": [
@@ -5350,7 +5420,7 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 1251,
+        "arenaElo": 1309,
         "evalSources": [
           "Design Arena"
         ]
@@ -5420,7 +5490,7 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 1261,
+        "arenaElo": 1319,
         "evalSources": [
           "Design Arena"
         ]
@@ -5523,9 +5593,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 6.2,
-        "codingIndex": 1054,
+        "codingIndex": 1113,
         "agenticIndex": null,
-        "arenaElo": 1015,
+        "arenaElo": 1013,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -5559,7 +5629,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1093,
+        "codingIndex": 1092,
         "agenticIndex": null,
         "arenaElo": 1061,
         "evalSources": [
@@ -5630,7 +5700,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1169,
+        "codingIndex": 1168,
         "agenticIndex": null,
         "arenaElo": 1127,
         "evalSources": [
@@ -5700,7 +5770,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1166,
+        "codingIndex": 1164,
         "agenticIndex": null,
         "arenaElo": 1124,
         "evalSources": [
@@ -5735,7 +5805,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1196,
+        "codingIndex": 1195,
         "agenticIndex": null,
         "arenaElo": 1181,
         "evalSources": [
@@ -5769,10 +5839,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 30.8,
-        "codingIndex": 1205,
+        "intelligenceIndex": 30.7,
+        "codingIndex": 1204,
         "agenticIndex": null,
-        "arenaElo": 1090,
+        "arenaElo": 1089,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -6033,9 +6103,9 @@
       "modelId": "gemma-4-26b-a4b-it",
       "modelName": "Google: Gemma 4 26B A4B ",
       "providerOrg": "Google",
-      "inputPerM": 0.0675,
-      "outputPerM": 0.225,
-      "cachedInputPerM": 0.0375,
+      "inputPerM": 0.0765,
+      "outputPerM": 0.255,
+      "cachedInputPerM": 0.0425,
       "cacheDiscountPercent": 44.44,
       "batchDiscountPercent": 50.0,
       "contextWindow": 262144,
@@ -6295,7 +6365,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 5.1,
+        "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -6418,12 +6488,12 @@
       "modelId": "ling-3.1-flash",
       "modelName": "inclusionAI: Ling 3.1 Flash",
       "providerOrg": "Inclusionai",
-      "inputPerM": 0.06,
-      "outputPerM": 0.18,
-      "cachedInputPerM": 0.012,
+      "inputPerM": 0.075,
+      "outputPerM": 0.225,
+      "cachedInputPerM": 0.015,
       "cacheDiscountPercent": 80.0,
       "batchDiscountPercent": 0.0,
-      "contextWindow": 1000000,
+      "contextWindow": 1048576,
       "maxOutputTokens": 262144,
       "latencyTier": "reasoning-medium",
       "officialDocUrl": "https://openrouter.ai/models/inclusionai/ling-3.1-flash",
@@ -6432,10 +6502,10 @@
         "reasoning": true,
         "vision": false,
         "functionCalling": true,
-        "structuredOutputs": false
+        "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 29.6,
+        "intelligenceIndex": 29.7,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -6768,13 +6838,13 @@
       "modelId": "llama-3.1-8b-instruct",
       "modelName": "Meta: Llama 3.1 8B Instruct",
       "providerOrg": "Meta",
-      "inputPerM": 0.02,
-      "outputPerM": 0.04,
-      "cachedInputPerM": 0.02,
-      "cacheDiscountPercent": 0.0,
+      "inputPerM": 0.05,
+      "outputPerM": 0.08,
+      "cachedInputPerM": 0.025,
+      "cacheDiscountPercent": 50.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 131072,
-      "maxOutputTokens": 16384,
+      "maxOutputTokens": 117964,
       "latencyTier": "fast",
       "officialDocUrl": "https://www.llama.com/",
       "affiliateTag": null,
@@ -6891,9 +6961,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 861,
+        "codingIndex": 921,
         "agenticIndex": null,
-        "arenaElo": 868,
+        "arenaElo": 866,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -6927,9 +6997,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 771,
+        "codingIndex": 831,
         "agenticIndex": null,
-        "arenaElo": 771,
+        "arenaElo": 831,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -6997,10 +7067,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 36,
-        "codingIndex": 1340,
+        "intelligenceIndex": 36.1,
+        "codingIndex": 1399,
         "agenticIndex": null,
-        "arenaElo": 1357,
+        "arenaElo": 1355,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7034,9 +7104,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 6.3,
-        "codingIndex": 1147,
+        "codingIndex": 1204,
         "agenticIndex": null,
-        "arenaElo": 1059,
+        "arenaElo": 1042,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7070,7 +7140,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1174,
+        "codingIndex": 1173,
         "agenticIndex": null,
         "arenaElo": 1131,
         "evalSources": [
@@ -7105,7 +7175,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1191,
+        "codingIndex": 1190,
         "agenticIndex": null,
         "arenaElo": 1126,
         "evalSources": [
@@ -7175,9 +7245,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 36.6,
-        "codingIndex": 1275,
+        "codingIndex": 1274,
         "agenticIndex": null,
-        "arenaElo": 1286,
+        "arenaElo": 1284,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7246,9 +7316,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 24.9,
-        "codingIndex": 1289,
+        "codingIndex": 1347,
         "agenticIndex": null,
-        "arenaElo": 1221,
+        "arenaElo": 1216,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7281,10 +7351,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 43.6,
-        "codingIndex": 1385,
+        "intelligenceIndex": 43.7,
+        "codingIndex": 1444,
         "agenticIndex": null,
-        "arenaElo": 1120,
+        "arenaElo": 1122,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7335,13 +7405,13 @@
       "modelId": "minimax-m2.5",
       "modelName": "MiniMax: MiniMax M2.5",
       "providerOrg": "MiniMax",
-      "inputPerM": 0.27,
-      "outputPerM": 0.95,
-      "cachedInputPerM": 0.03,
-      "cacheDiscountPercent": 88.89,
+      "inputPerM": 0.3,
+      "outputPerM": 1.2,
+      "cachedInputPerM": 0.06,
+      "cacheDiscountPercent": 80.0,
       "batchDiscountPercent": 0.0,
-      "contextWindow": 198000,
-      "maxOutputTokens": 32768,
+      "contextWindow": 65536,
+      "maxOutputTokens": 58982,
       "latencyTier": "fast",
       "officialDocUrl": "https://www.minimaxi.com/",
       "affiliateTag": null,
@@ -7353,9 +7423,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1189,
+        "codingIndex": 1248,
         "agenticIndex": null,
-        "arenaElo": 1137,
+        "arenaElo": 1135,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7389,9 +7459,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1215,
+        "codingIndex": 1274,
         "agenticIndex": null,
-        "arenaElo": 1162,
+        "arenaElo": 1160,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7424,7 +7494,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 18.9,
+        "intelligenceIndex": 19,
         "codingIndex": 1178,
         "agenticIndex": null,
         "arenaElo": 1113,
@@ -7496,9 +7566,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 989,
+        "codingIndex": 1048,
         "agenticIndex": null,
-        "arenaElo": 989,
+        "arenaElo": 1048,
         "evalSources": [
           "Design Arena"
         ]
@@ -7566,9 +7636,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1047,
+        "codingIndex": 1106,
         "agenticIndex": null,
-        "arenaElo": 957,
+        "arenaElo": 955,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7602,9 +7672,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 992,
+        "codingIndex": 1051,
         "agenticIndex": null,
-        "arenaElo": 930,
+        "arenaElo": 928,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7638,9 +7708,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1035,
+        "codingIndex": 1094,
         "agenticIndex": null,
-        "arenaElo": 999,
+        "arenaElo": 997,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7744,9 +7814,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1124,
+        "codingIndex": 1183,
         "agenticIndex": null,
-        "arenaElo": 1066,
+        "arenaElo": 1064,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7780,9 +7850,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 26.1,
-        "codingIndex": 1247,
+        "codingIndex": 1307,
         "agenticIndex": null,
-        "arenaElo": 1225,
+        "arenaElo": 1223,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -7793,41 +7863,6 @@
         "timeToFirstTokenSec": 0.85
       },
       "notes": "Mistral Large 4 is a frontier multimodal (text and image input) model from Mistral AI built for reasoning, coding, and agentic workloads. It offers a 1M-token context window with up..."
-    },
-    {
-      "modelId": "mistral-medium-3",
-      "modelName": "Mistral: Mistral Medium 3",
-      "providerOrg": "Mistral",
-      "inputPerM": 0.44,
-      "outputPerM": 2.2,
-      "cachedInputPerM": 0.044,
-      "cacheDiscountPercent": 90.0,
-      "batchDiscountPercent": 50.0,
-      "contextWindow": 131072,
-      "maxOutputTokens": 104857,
-      "latencyTier": "reasoning-heavy",
-      "officialDocUrl": "https://mistral.ai/technology/#pricing",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": false,
-        "vision": true,
-        "functionCalling": true,
-        "structuredOutputs": true
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": 1051,
-        "agenticIndex": null,
-        "arenaElo": 1050,
-        "evalSources": [
-          "Design Arena"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "Mistral Medium 3 is a high-performance enterprise-grade language model designed to deliver frontier-level capabilities at significantly reduced operational cost. It balances state-of-the-art reason..."
     },
     {
       "modelId": "mistral-medium-3-5",
@@ -7863,42 +7898,6 @@
         "timeToFirstTokenSec": 0.45
       },
       "notes": "Mistral Medium 3.5 is a dense 128B instruction-following model from Mistral AI. It supports text and image inputs with text output, and is designed for agentic workflows, coding, and complex..."
-    },
-    {
-      "modelId": "mistral-medium-3.1",
-      "modelName": "Mistral: Mistral Medium 3.1",
-      "providerOrg": "Mistral",
-      "inputPerM": 0.44,
-      "outputPerM": 2.2,
-      "cachedInputPerM": 0.044,
-      "cacheDiscountPercent": 90.0,
-      "batchDiscountPercent": 50.0,
-      "contextWindow": 131072,
-      "maxOutputTokens": 104857,
-      "latencyTier": "standard",
-      "officialDocUrl": "https://mistral.ai/technology/#pricing",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": false,
-        "vision": true,
-        "functionCalling": true,
-        "structuredOutputs": true
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": 1102,
-        "agenticIndex": null,
-        "arenaElo": 1048,
-        "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "Mistral Medium 3.1 is an updated version of Mistral Medium 3, which is a high-performance enterprise-grade language model designed to deliver frontier-level capabilities at significantly reduced op..."
     },
     {
       "modelId": "mistral-nemo",
@@ -8097,9 +8096,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 889,
+        "codingIndex": 948,
         "agenticIndex": null,
-        "arenaElo": 889,
+        "arenaElo": 948,
         "evalSources": [
           "Design Arena"
         ]
@@ -8286,114 +8285,6 @@
       "notes": "Moondream 3.1 is a vision-language model from Moondream, the successor to Moondream 3 Preview, with 9B total parameters and 2B active (mixture-of-experts). It handles visual question answering, cap..."
     },
     {
-      "modelId": "kimi-k2",
-      "modelName": "MoonshotAI: Kimi K2 0711",
-      "providerOrg": "Moonshot AI",
-      "inputPerM": 0.57,
-      "outputPerM": 2.3,
-      "cachedInputPerM": 0.1425,
-      "cacheDiscountPercent": 75.0,
-      "batchDiscountPercent": 50.0,
-      "contextWindow": 131072,
-      "maxOutputTokens": 98304,
-      "latencyTier": "standard",
-      "officialDocUrl": "https://platform.moonshot.cn/docs/pricing",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": false,
-        "vision": false,
-        "functionCalling": true,
-        "structuredOutputs": false
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": 1015,
-        "agenticIndex": null,
-        "arenaElo": 1015,
-        "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "Kimi K2 Instruct is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total parameters with 32 billion active per forward pass. It is optimized fo..."
-    },
-    {
-      "modelId": "kimi-k2-0905",
-      "modelName": "MoonshotAI: Kimi K2 0905",
-      "providerOrg": "Moonshot AI",
-      "inputPerM": 0.6,
-      "outputPerM": 2.5,
-      "cachedInputPerM": 0.15,
-      "cacheDiscountPercent": 75.0,
-      "batchDiscountPercent": 50.0,
-      "contextWindow": 262144,
-      "maxOutputTokens": 98304,
-      "latencyTier": "standard",
-      "officialDocUrl": "https://platform.moonshot.cn/docs/pricing",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": false,
-        "vision": false,
-        "functionCalling": true,
-        "structuredOutputs": true
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": 1080,
-        "agenticIndex": null,
-        "arenaElo": 1080,
-        "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "Kimi K2 0905 is the September update of [Kimi K2 0711](moonshotai/kimi-k2). It is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total paramete..."
-    },
-    {
-      "modelId": "kimi-k2-thinking",
-      "modelName": "MoonshotAI: Kimi K2 Thinking",
-      "providerOrg": "Moonshot AI",
-      "inputPerM": 0.6,
-      "outputPerM": 2.5,
-      "cachedInputPerM": 0.15,
-      "cacheDiscountPercent": 75.0,
-      "batchDiscountPercent": 50.0,
-      "contextWindow": 262144,
-      "maxOutputTokens": 98304,
-      "latencyTier": "reasoning-heavy",
-      "officialDocUrl": "https://platform.moonshot.cn/docs/pricing",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": true,
-        "vision": false,
-        "functionCalling": true,
-        "structuredOutputs": true
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": null,
-        "agenticIndex": null,
-        "arenaElo": 1101,
-        "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 65.0,
-        "timeToFirstTokenSec": 1.8
-      },
-      "notes": "Kimi K2 Thinking is Moonshot AI’s most advanced open reasoning model to date, extending the K2 series into agentic, long-horizon reasoning. Built on the trillion-parameter Mixture-of-Experts (MoE) ..."
-    },
-    {
       "modelId": "kimi-k2.5",
       "modelName": "MoonshotAI: Kimi K2.5",
       "providerOrg": "Moonshot AI",
@@ -8415,9 +8306,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1103,
+        "codingIndex": 1102,
         "agenticIndex": null,
-        "arenaElo": 1105,
+        "arenaElo": 1104,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8487,7 +8378,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1144,
+        "codingIndex": 1143,
         "agenticIndex": null,
         "arenaElo": 1077,
         "evalSources": [
@@ -8558,7 +8449,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 46.5,
+        "intelligenceIndex": 46.6,
         "codingIndex": 1294,
         "agenticIndex": null,
         "arenaElo": 1164,
@@ -8805,9 +8696,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 11.8,
-        "codingIndex": 1124,
+        "codingIndex": 1185,
         "agenticIndex": null,
-        "arenaElo": 1095,
+        "arenaElo": 1093,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8841,9 +8732,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 11.8,
-        "codingIndex": 1124,
+        "codingIndex": 1185,
         "agenticIndex": null,
-        "arenaElo": 1095,
+        "arenaElo": 1093,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -8894,10 +8785,10 @@
       "modelId": "nemotron-3.5-lightning",
       "modelName": "NVIDIA: Nemotron 3.5 Lightning",
       "providerOrg": "NVIDIA",
-      "inputPerM": 0.07,
+      "inputPerM": 0.05,
       "outputPerM": 0.2,
-      "cachedInputPerM": 0.04,
-      "cacheDiscountPercent": 42.86,
+      "cachedInputPerM": 0.01,
+      "cacheDiscountPercent": 80.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 1048576,
       "maxOutputTokens": 235929,
@@ -8982,9 +8873,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 13.6,
-        "codingIndex": 1131,
+        "codingIndex": 1190,
         "agenticIndex": null,
-        "arenaElo": 1102,
+        "arenaElo": 1092,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9018,9 +8909,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 13.6,
-        "codingIndex": 1131,
+        "codingIndex": 1190,
         "agenticIndex": null,
-        "arenaElo": 1102,
+        "arenaElo": 1092,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9299,9 +9190,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1007,
+        "codingIndex": 1067,
         "agenticIndex": null,
-        "arenaElo": 817,
+        "arenaElo": 815,
         "evalSources": [
           "Design Arena"
         ]
@@ -9334,9 +9225,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 975,
+        "codingIndex": 1035,
         "agenticIndex": null,
-        "arenaElo": 804,
+        "arenaElo": 802,
         "evalSources": [
           "Design Arena"
         ]
@@ -9369,9 +9260,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 945,
+        "codingIndex": 1004,
         "agenticIndex": null,
-        "arenaElo": 892,
+        "arenaElo": 890,
         "evalSources": [
           "Design Arena"
         ]
@@ -9544,9 +9435,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1150,
+        "codingIndex": 1209,
         "agenticIndex": null,
-        "arenaElo": 1022,
+        "arenaElo": 1020,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9582,7 +9473,7 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 1172,
+        "arenaElo": 1230,
         "evalSources": [
           "Design Arena"
         ]
@@ -9617,7 +9508,7 @@
         "intelligenceIndex": null,
         "codingIndex": null,
         "agenticIndex": null,
-        "arenaElo": 1165,
+        "arenaElo": 1223,
         "evalSources": [
           "Design Arena"
         ]
@@ -9650,9 +9541,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1097,
+        "codingIndex": 1156,
         "agenticIndex": null,
-        "arenaElo": 1004,
+        "arenaElo": 1002,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9686,9 +9577,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1066,
+        "codingIndex": 1126,
         "agenticIndex": null,
-        "arenaElo": 932,
+        "arenaElo": 930,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9757,9 +9648,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1153,
+        "codingIndex": 1212,
         "agenticIndex": null,
-        "arenaElo": 1028,
+        "arenaElo": 1026,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9793,7 +9684,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 986,
+        "codingIndex": 985,
         "agenticIndex": null,
         "arenaElo": 1086,
         "evalSources": [
@@ -9864,9 +9755,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1076,
+        "codingIndex": 1135,
         "agenticIndex": null,
-        "arenaElo": 955,
+        "arenaElo": 953,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9900,9 +9791,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1054,
+        "codingIndex": 1052,
         "agenticIndex": null,
-        "arenaElo": 1182,
+        "arenaElo": 1235,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -9971,7 +9862,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1019,
+        "codingIndex": 1017,
         "agenticIndex": null,
         "arenaElo": 1176,
         "evalSources": [
@@ -10041,7 +9932,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1000,
+        "codingIndex": 999,
         "agenticIndex": null,
         "arenaElo": 1084,
         "evalSources": [
@@ -10076,9 +9967,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1194,
+        "codingIndex": 1253,
         "agenticIndex": null,
-        "arenaElo": 1068,
+        "arenaElo": 1066,
         "evalSources": [
           "Design Arena"
         ]
@@ -10251,7 +10142,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1085,
+        "codingIndex": 1084,
         "agenticIndex": null,
         "arenaElo": 1125,
         "evalSources": [
@@ -10496,9 +10387,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 3.8,
-        "codingIndex": 945,
+        "codingIndex": 1004,
         "agenticIndex": null,
-        "arenaElo": 868,
+        "arenaElo": 866,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -10603,9 +10494,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1001,
+        "codingIndex": 1061,
         "agenticIndex": null,
-        "arenaElo": 1001,
+        "arenaElo": 1061,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -11164,9 +11055,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 17.7,
-        "codingIndex": 1215,
+        "codingIndex": 1272,
         "agenticIndex": null,
-        "arenaElo": 1113,
+        "arenaElo": 1106,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -11642,7 +11533,7 @@
       "cachedInputPerM": 0.04,
       "cacheDiscountPercent": 80.0,
       "batchDiscountPercent": 0.0,
-      "contextWindow": 262144,
+      "contextWindow": 256000,
       "maxOutputTokens": 230400,
       "latencyTier": "fast",
       "officialDocUrl": "https://platform.stepfun.com/",
@@ -11655,9 +11546,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1161,
+        "codingIndex": 1220,
         "agenticIndex": null,
-        "arenaElo": 1096,
+        "arenaElo": 1093,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -11813,13 +11704,13 @@
       "modelId": "hy3",
       "modelName": "Tencent: Hy3",
       "providerOrg": "Tencent",
-      "inputPerM": 0.14,
-      "outputPerM": 0.58,
-      "cachedInputPerM": 0.035,
+      "inputPerM": 0.132,
+      "outputPerM": 0.528,
+      "cachedInputPerM": 0.033,
       "cacheDiscountPercent": 75.0,
       "batchDiscountPercent": 0.0,
       "contextWindow": 262144,
-      "maxOutputTokens": 235929,
+      "maxOutputTokens": 128000,
       "latencyTier": "reasoning-heavy",
       "officialDocUrl": "https://cloud.tencent.com/document/product/1729",
       "affiliateTag": null,
@@ -11831,9 +11722,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1158,
+        "codingIndex": 1216,
         "agenticIndex": null,
-        "arenaElo": 1141,
+        "arenaElo": 1138,
         "evalSources": [
           "Design Arena"
         ]
@@ -11866,9 +11757,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 34.6,
-        "codingIndex": 1247,
+        "codingIndex": 1308,
         "agenticIndex": null,
-        "arenaElo": 1237,
+        "arenaElo": 1240,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -11902,9 +11793,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1225,
+        "codingIndex": 1282,
         "agenticIndex": null,
-        "arenaElo": 1210,
+        "arenaElo": 1203,
         "evalSources": [
           "Design Arena"
         ]
@@ -12064,7 +11955,7 @@
       "cachedInputPerM": 0.17,
       "cacheDiscountPercent": 83.0,
       "batchDiscountPercent": 0.0,
-      "contextWindow": 524288,
+      "contextWindow": 1048576,
       "maxOutputTokens": 471859,
       "latencyTier": "reasoning-heavy",
       "officialDocUrl": "https://openrouter.ai/models/thinkingmachines/inkling",
@@ -12077,9 +11968,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 12.5,
-        "codingIndex": 1163,
+        "codingIndex": 1162,
         "agenticIndex": null,
-        "arenaElo": 1163,
+        "arenaElo": 1162,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12147,7 +12038,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 30.6,
+        "intelligenceIndex": 30.7,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -12372,78 +12263,6 @@
       "notes": "Palmyra X5 is Writer's most advanced model, purpose-built for building and scaling AI agents across the enterprise. It delivers industry-leading speed and efficiency on context windows up to 1 mill..."
     },
     {
-      "modelId": "mimo-v2.5",
-      "modelName": "Xiaomi: MiMo-V2.5",
-      "providerOrg": "Xiaomi",
-      "inputPerM": 0.4,
-      "outputPerM": 2.0,
-      "cachedInputPerM": 0.08,
-      "cacheDiscountPercent": 80.0,
-      "batchDiscountPercent": 0.0,
-      "contextWindow": 1000000,
-      "maxOutputTokens": 65536,
-      "latencyTier": "standard",
-      "officialDocUrl": "https://miai.xiaomi.com/",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": true,
-        "vision": true,
-        "functionCalling": true,
-        "structuredOutputs": true
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": 1245,
-        "agenticIndex": null,
-        "arenaElo": 1185,
-        "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "MiMo-V2.5 is a native omnimodal model by Xiaomi. It delivers Pro-level agentic performance at roughly half the inference cost, while surpassing MiMo-V2-Omni in multimodal perception across image an..."
-    },
-    {
-      "modelId": "mimo-v2.5-pro",
-      "modelName": "Xiaomi: MiMo-V2.5-Pro",
-      "providerOrg": "Xiaomi",
-      "inputPerM": 0.48,
-      "outputPerM": 1.8,
-      "cachedInputPerM": 0.096,
-      "cacheDiscountPercent": 80.0,
-      "batchDiscountPercent": 0.0,
-      "contextWindow": 262144,
-      "maxOutputTokens": 235929,
-      "latencyTier": "standard",
-      "officialDocUrl": "https://miai.xiaomi.com/",
-      "affiliateTag": null,
-      "capabilities": {
-        "reasoning": true,
-        "vision": false,
-        "functionCalling": true,
-        "structuredOutputs": true
-      },
-      "benchmarks": {
-        "intelligenceIndex": null,
-        "codingIndex": 1255,
-        "agenticIndex": null,
-        "arenaElo": 1221,
-        "evalSources": [
-          "Artificial Analysis",
-          "Design Arena"
-        ]
-      },
-      "performance": {
-        "throughputTokensPerSec": 85.0,
-        "timeToFirstTokenSec": 0.45
-      },
-      "notes": "MiMo-V2.5-Pro is Xiaomi’s flagship model, delivering strong performance in general agentic capabilities, complex software engineering, and long-horizon tasks, with top rankings on benchmarks such a..."
-    },
-    {
       "modelId": "mimo-v2.6-flash",
       "modelName": "Xiaomi: MiMo-V2.6-Flash",
       "providerOrg": "Xiaomi",
@@ -12464,7 +12283,7 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 26.7,
+        "intelligenceIndex": 26.8,
         "codingIndex": null,
         "agenticIndex": null,
         "arenaElo": null,
@@ -12477,6 +12296,41 @@
         "timeToFirstTokenSec": 0.25
       },
       "notes": "MiMo-V2.6-Flash is an open-source foundation model developed by Xiaomi. Built on a Mixture-of-Experts architecture with 309B total parameters and 15B activated per token, it employs a hybrid attent..."
+    },
+    {
+      "modelId": "mimo-v2.6-flash-mopd",
+      "modelName": "Xiaomi: MiMo-V2.6-Flash-MOPD",
+      "providerOrg": "Xiaomi",
+      "inputPerM": 0.15,
+      "outputPerM": 0.42,
+      "cachedInputPerM": 0.02,
+      "cacheDiscountPercent": 86.67,
+      "batchDiscountPercent": 0.0,
+      "contextWindow": 1048576,
+      "maxOutputTokens": 32768,
+      "latencyTier": "fast",
+      "officialDocUrl": "https://miai.xiaomi.com/",
+      "affiliateTag": null,
+      "capabilities": {
+        "reasoning": true,
+        "vision": true,
+        "functionCalling": true,
+        "structuredOutputs": true
+      },
+      "benchmarks": {
+        "intelligenceIndex": null,
+        "codingIndex": null,
+        "agenticIndex": null,
+        "arenaElo": null,
+        "evalSources": [
+          "Artificial Analysis Community Standard"
+        ]
+      },
+      "performance": {
+        "throughputTokensPerSec": 145.0,
+        "timeToFirstTokenSec": 0.25
+      },
+      "notes": "MiMo-V2.6-Flash-MOPD is an updated checkpoint of Xiaomi's MiMo-V2.6-Flash, a Mixture-of-Experts model with 309B total and 15B active parameters, a 1M-token context window, and native multimodal inp..."
     },
     {
       "modelId": "mimo-v2.6-pro",
@@ -12500,9 +12354,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": 29.9,
-        "codingIndex": 1260,
+        "codingIndex": 1259,
         "agenticIndex": null,
-        "arenaElo": 1260,
+        "arenaElo": 1259,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12571,9 +12425,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1147,
+        "codingIndex": 1206,
         "agenticIndex": null,
-        "arenaElo": 1137,
+        "arenaElo": 1135,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12607,9 +12461,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1119,
+        "codingIndex": 1178,
         "agenticIndex": null,
-        "arenaElo": 1089,
+        "arenaElo": 1087,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12678,9 +12532,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1147,
+        "codingIndex": 1207,
         "agenticIndex": null,
-        "arenaElo": 1072,
+        "arenaElo": 1071,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12749,7 +12603,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1199,
+        "codingIndex": 1258,
         "agenticIndex": null,
         "arenaElo": 1097,
         "evalSources": [
@@ -12785,9 +12639,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1159,
+        "codingIndex": 1219,
         "agenticIndex": null,
-        "arenaElo": 1087,
+        "arenaElo": 1085,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12821,9 +12675,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1228,
+        "codingIndex": 1288,
         "agenticIndex": null,
-        "arenaElo": 1135,
+        "arenaElo": 1134,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -12857,9 +12711,9 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1244,
+        "codingIndex": 1303,
         "agenticIndex": null,
-        "arenaElo": 1214,
+        "arenaElo": 1212,
         "evalSources": [
           "Design Arena"
         ]
@@ -12874,10 +12728,10 @@
       "modelId": "glm-5.1",
       "modelName": "Z.ai: GLM 5.1",
       "providerOrg": "Zhipu AI",
-      "inputPerM": 1.19,
-      "outputPerM": 3.74,
-      "cachedInputPerM": 0.6,
-      "cacheDiscountPercent": 49.58,
+      "inputPerM": 1.4,
+      "outputPerM": 4.4,
+      "cachedInputPerM": 0.26,
+      "cacheDiscountPercent": 81.43,
       "batchDiscountPercent": 50.0,
       "contextWindow": 204800,
       "maxOutputTokens": 131072,
@@ -12892,7 +12746,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1252,
+        "codingIndex": 1312,
         "agenticIndex": null,
         "arenaElo": 1336,
         "evalSources": [
@@ -12928,7 +12782,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1191,
+        "codingIndex": 1190,
         "agenticIndex": null,
         "arenaElo": 1156,
         "evalSources": [
@@ -12963,8 +12817,8 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 31.7,
-        "codingIndex": 1275,
+        "intelligenceIndex": 31.6,
+        "codingIndex": 1335,
         "agenticIndex": null,
         "arenaElo": 1277,
         "evalSources": [
@@ -12982,13 +12836,13 @@
       "modelId": "glm-5.3-flash",
       "modelName": "Z.ai: GLM 5.3 Flash",
       "providerOrg": "Zhipu AI",
-      "inputPerM": 0.0399,
-      "outputPerM": 0.0784,
-      "cachedInputPerM": 0.03,
-      "cacheDiscountPercent": 24.81,
-      "batchDiscountPercent": 42.36,
+      "inputPerM": 0.12,
+      "outputPerM": 0.38,
+      "cachedInputPerM": 0.02,
+      "cacheDiscountPercent": 83.33,
+      "batchDiscountPercent": 80.83,
       "contextWindow": 1048576,
-      "maxOutputTokens": 131072,
+      "maxOutputTokens": 943718,
       "latencyTier": "fast",
       "officialDocUrl": "https://open.bigmodel.cn/pricing",
       "affiliateTag": null,
@@ -12999,10 +12853,10 @@
         "structuredOutputs": true
       },
       "benchmarks": {
-        "intelligenceIndex": 27.8,
-        "codingIndex": 1260,
+        "intelligenceIndex": 27.7,
+        "codingIndex": 1320,
         "agenticIndex": null,
-        "arenaElo": 1281,
+        "arenaElo": 1280,
         "evalSources": [
           "Artificial Analysis",
           "Design Arena"
@@ -13141,7 +12995,7 @@
       },
       "benchmarks": {
         "intelligenceIndex": null,
-        "codingIndex": 1092,
+        "codingIndex": 1091,
         "agenticIndex": null,
         "arenaElo": 1049,
         "evalSources": [

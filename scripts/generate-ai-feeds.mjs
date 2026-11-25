@@ -46,7 +46,7 @@ const TOP_24_IDS = [
   'gemini-4-carbon',
   'claude-opus-5.5',
   'claude-sonnet-5.5',
-  'gpt-6.1-sol',
+  'solar-mini-4-5',
   // 今日降价榜与周末 Coding / Flash 套利 (6)
   'deepseek-v4.1-flash',
   'glm-5.3-flash',
@@ -69,6 +69,9 @@ const TOP_24_IDS = [
 ];
 
 function buildPricingNote(m) {
+  if (m.modelId === 'solar-mini-4-5') {
+    return `Preview floor ${fmtRate(m.inputPerM)}/${fmtRate(m.outputPerM)} (${fmtRate(m.cachedInputPerM)}/M cached, 524K ctx) through Nov 30, 2026.`;
+  }
   if (m.modelId === 'gemini-4-carbon' || m.modelId === 'gemini-4-argon') {
     return 'Promotional $2.00/$10.00 expires Nov 30, 2026; doubles +100% to $4.00/$20.00 on Dec 1, 2026.';
   }
@@ -76,10 +79,10 @@ function buildPricingNote(m) {
     return 'Peak (01:00-15:00 UTC) $0.15/$0.60 ($0.015 cached) vs Off-Peak (15:00-01:00 UTC, 50% off) $0.075/$0.30 ($0.0075 cached).';
   }
   if (m.modelId === 'deepseek-v4.1-flash') {
-    return `Live OpenRouter floor ${fmtRate(m.inputPerM)}/${fmtRate(m.outputPerM)} (${fmtRate(m.cachedInputPerM)}/M cached); official on-demand Peak $0.30/$1.20, Off-Peak $0.15/$0.60.`;
+    return `Live OpenRouter floor ${fmtRate(m.inputPerM)}/${fmtRate(m.outputPerM)} (${fmtRate(m.cachedInputPerM)}/M cached, -${Math.round(m.cacheDiscountPercent)}% cache); official on-demand Peak $0.30/$1.20, Off-Peak $0.15/$0.60.`;
   }
   if (m.modelId === 'glm-5.3-flash') {
-    return `Live OpenRouter output rate drop (-84.3% to ${fmtRate(m.outputPerM)}/M output; ${fmtRate(m.inputPerM)}/M input).`;
+    return `Live OpenRouter rates ${fmtRate(m.inputPerM)}/${fmtRate(m.outputPerM)} (${fmtRate(m.cachedInputPerM)}/M cached, -${Math.round(m.cacheDiscountPercent)}% cache, -${Math.round(m.batchDiscountPercent)}% batch).`;
   }
   if (m.modelId === 'qwen3-coder-30b-a3b-instruct') {
     return `Live OpenRouter rate drop (-53.3% to ${fmtRate(m.inputPerM)}/M input, ${fmtRate(m.outputPerM)}/M output).`;
@@ -154,6 +157,7 @@ const pricingSummary = {
     calculator: '/calculator/{modelId}/',
     compare: '/compare/{slug}/',
     model: '/models/{modelId}/',
+    deals: '/deals/',
     llmsTxt: '/llms.txt',
   },
 };
@@ -164,21 +168,31 @@ fs.writeFileSync(
   'utf8'
 );
 
+const solarMini = modelMap.get('solar-mini-4-5');
 const dsFlash = modelMap.get('deepseek-v4.1-flash');
 const glmFlash = modelMap.get('glm-5.3-flash');
-const qwenCoder = modelMap.get('qwen3-coder-30b-a3b-instruct');
 const gptTerra = modelMap.get('gpt-6.1-terra');
 const dsR1 = modelMap.get('deepseek-r1');
 const o3Mini = modelMap.get('o3-mini');
 
-const dsIn = fmtRate(dsFlash?.inputPerM ?? 0.0498);
-const dsOut = fmtRate(dsFlash?.outputPerM ?? 0.1992);
-const dsCached = fmtRate(dsFlash?.cachedInputPerM ?? 0.001);
-const dsCachePct = Math.round(dsFlash?.cacheDiscountPercent ?? 98);
-const glmIn = fmtRate(glmFlash?.inputPerM ?? 0.0399);
-const glmOut = fmtRate(glmFlash?.outputPerM ?? 0.0784);
-const qwenIn = fmtRate(qwenCoder?.inputPerM ?? 0.07);
-const qwenOut = fmtRate(qwenCoder?.outputPerM ?? 0.28);
+const solarIn = fmtRate(solarMini?.inputPerM ?? 0.01);
+const solarOut = fmtRate(solarMini?.outputPerM ?? 0.04);
+const solarCached = fmtRate(solarMini?.cachedInputPerM ?? 0.001);
+const solarCachePct = Math.round(solarMini?.cacheDiscountPercent ?? 90);
+const solarCtxK = Math.round((solarMini?.contextWindow ?? 524288) / 1024);
+
+const dsIn = fmtRate(dsFlash?.inputPerM ?? 0.14);
+const dsOut = fmtRate(dsFlash?.outputPerM ?? 0.42);
+const dsCached = fmtRate(dsFlash?.cachedInputPerM ?? 0.0042);
+const dsCachePct = Math.round(dsFlash?.cacheDiscountPercent ?? 97);
+const dsBatchPct = Math.round(dsFlash?.batchDiscountPercent ?? 64.29);
+
+const glmIn = fmtRate(glmFlash?.inputPerM ?? 0.12);
+const glmOut = fmtRate(glmFlash?.outputPerM ?? 0.38);
+const glmCached = fmtRate(glmFlash?.cachedInputPerM ?? 0.02);
+const glmCachePct = Math.round(glmFlash?.cacheDiscountPercent ?? 83.33);
+const glmBatchPct = Math.round(glmFlash?.batchDiscountPercent ?? 80.83);
+
 const terraIn = fmtRate(gptTerra?.inputPerM ?? 1.0);
 const terraOut = fmtRate(gptTerra?.outputPerM ?? 5.0);
 const r1In = fmtRate(dsR1?.inputPerM ?? 0.55);
@@ -187,14 +201,14 @@ const o3MiniIn = fmtRate(o3Mini?.inputPerM ?? 1.1);
 const o3MiniOut = fmtRate(o3Mini?.outputPerM ?? 4.4);
 
 const compMap = new Map((trendingComparisons.comparisons || []).map((c) => [c.slug, c]));
-const flashVsTerraPct = compMap.get('deepseek-v4.1-flash-vs-gpt-6.1-terra')?.metricsDelta?.costReductionPercent ?? 95.7;
-const flashVsLlamaPct = compMap.get('deepseek-v4.1-flash-vs-llama-3.3-70b')?.metricsDelta?.costReductionPercent ?? 85.4;
+const flashVsTerraPct = compMap.get('deepseek-v4.1-flash-vs-gpt-6.1-terra')?.metricsDelta?.costReductionPercent ?? 89.2;
+const flashVsLlamaPct = compMap.get('deepseek-v4.1-flash-vs-llama-3.3-70b')?.metricsDelta?.costReductionPercent ?? 65.0;
 
 const dailyHighlights = [
-  `DeepSeek V4.1 Flash (${dsIn}/${dsOut}, -83%)`,
-  `GLM-5.3-Flash (${glmIn}/${glmOut}, -84% out)`,
-  `Qwen3-Coder-30B (${qwenIn}/${qwenOut}, -53%)`,
-].join(', ');
+  `Upstage Solar Mini 4.5 (${solarIn}/${solarOut}, ${solarCtxK}K ctx, -${solarCachePct}% cache to ${solarCached})`,
+  `DeepSeek V4.1 Flash (${dsIn}/${dsOut}, -${dsCachePct}% cache ${dsCached}, -${dsBatchPct}% batch)`,
+  `GLM-5.3-Flash (${glmIn}/${glmOut}, -${glmCachePct}% cache ${glmCached}, -${glmBatchPct}% batch)`,
+].join('; ');
 
 const toolsList = harnessTools.tools || [];
 const harnessMinMult = toolsList.length
@@ -223,6 +237,8 @@ Current market highlights (${lastUpdatedDate}): ${dailyHighlights}.
 - [Structured Pricing Summary JSON](https://tokencostsai.com/pricing-summary.json): Lightweight machine-readable JSON feed of top benchmarked models across all ${totalModels} tracked LLMs with normalized input, output, cached read, batch discount, and context window fields.
 - [Full Model Pricing Directory](https://tokencostsai.com/models/): Searchable, sortable catalog of ${totalModels} LLMs with provider direct vs. gateway rates and live latency metrics.
 - [Interactive Token & Caching Cost Calculator](https://tokencostsai.com/calculator/): Simulate monthly spend with 95%+ Prompt Caching hit ratios, 50% Batch API offloading, and tiered long-context escalation.
+- [Official AI Deals & Billing Changes Watch](https://tokencostsai.com/deals/): Daily-verified official Black Friday promos, anti-reseller policy disclosures, Mistral Vibe Pro credit removals, and upcoming Nov 30 / Dec 1 API pricing cliffs & endpoint retirements across 12 vendors.
+- [Upstage Solar Mini 4.5 Live Cost Calculator](https://tokencostsai.com/calculator/solar-mini-4-5/): Ultra-low-floor 35B/3B-active MoE (${solarIn}/M input, ${solarOut}/M output, ${solarCached}/M cached read at ${solarCachePct}% off, ${solarCtxK}K context) for high-volume agent routing and classification workloads.
 - [Developer SDK & LiteLLM Integration Guide](https://tokencostsai.com/developers/): Ready-to-run LiteLLM YAML, Vercel AI SDK, and OpenAI-compatible Python router configs plus embeddable SVG pricing badges.
 
 ## High-Intent Pricing & Migration Guides
@@ -233,6 +249,12 @@ Current market highlights (${lastUpdatedDate}): ${dailyHighlights}.
 - [The Ultimate Prompt Caching Cost Guide](https://tokencostsai.com/pricing/prompt-caching-cost-guide/): Break-even math on Anthropic cache-write surcharges vs. zero-surcharge caching on OpenAI, Google Gemini, and DeepSeek (${dsCached}/M).
 - [Best Coding Models & Price-Performance Index](https://tokencostsai.com/pricing/best-coding-models-pricing/): Cost-adjusted coding ELO rankings across Gemini 4 Neon, Claude Sonnet 5.5, GPT-6.2 Sol, and Qwen3-Coder-30B.
 - [Batch API 50% Off Comparison](https://tokencostsai.com/pricing/batch-api-discount-comparison/): Asynchronous 24-hour queue savings across OpenAI, Anthropic, and Google Gemini for evals and ETL pipelines.
+
+## Official Deals, Deprecations & Nov 30 Deadlines
+
+- [Black Friday Official Deals & Billing Watch (Last verified ${lastUpdatedDate})](https://tokencostsai.com/deals/): Primary-domain-only audit of active official vendor promos vs. "No Official BF Promo" transparency, plus Mistral Vibe Pro bundled API credit removal and Dec 1 price hike alerts.
+- [Nov 30 Deadline: Gemini 4 Carbon/Argon 2x Hike & OpenAI Endpoints Shutdown](https://tokencostsai.com/pricing/gemini-4-carbon-dec-1-migration-guide/): Migrate before Nov 30, 2026 when Gemini 4 Carbon/Argon double from $2/$10 to $4/$20, \`gemini-2.5-pro/flash\` auto-route on Dec 1, and OpenAI \`/v1/prompts\`, Evals API, and Agent Builder sunset.
+- [Sub-Cent Frontier Alternative: Upstage Solar Mini 4.5 (${solarIn}/${solarOut})](https://tokencostsai.com/models/solar-mini-4-5/): ${solarCtxK}K-context 3B-active MoE with ${solarCachePct}% prompt cache discount (${solarCached}/M cached read) and 145 t/s throughput — available via [OpenRouter](https://openrouter.ai/models/upstage/solar-mini-4-5?ref=tokencostsai_com).
 
 ## Coding Agent & Harness Benchmarks
 
@@ -248,22 +270,10 @@ ${harnessLines.join('\n')}
 - [GPT-6.2 Astra vs Claude Opus 5.5](https://tokencostsai.com/compare/gpt-6.2-astra-vs-claude-opus-5.5/): Peak frontier intelligence vs. enterprise 1M-context unit economics.
 - [DeepSeek-R1 vs OpenAI o3-mini](https://tokencostsai.com/compare/deepseek-r1-vs-o3-mini/): 50.1% reasoning cost cut (${r1In}/${r1Out} vs ${o3MiniIn}/${o3MiniOut}) for teams migrating off retired Azure o3/o4-mini.
 - [DeepSeek-R1 vs OpenAI o1](https://tokencostsai.com/compare/deepseek-r1-vs-openai-o1/): 96% reasoning cost reduction guide for high-depth chain-of-thought workloads.
-- [Claude 3.5 Sonnet vs GPT-4o](https://tokencostsai.com/compare/claude-3-5-sonnet-vs-gpt-4o/): Baseline legacy benchmark comparison and Prompt Caching break-even reference.
-
-## Routing & Gateway Recommendations
-
-- [OpenRouter Unified Gateway](https://openrouter.ai/?ref=tokencostsai_com): Single OpenAI-compatible API key (\`https://openrouter.ai/api/v1\`) to auto-route across DeepSeek-V4.1-Flash (${dsIn}/M), GLM-5.3-Flash (${glmIn}/${glmOut}), Qwen3-Coder-30B (${qwenIn}/${qwenOut}), and Gemini 4 Neon with automatic fallbacks.
-- [Groq LPU Inference Cloud](https://groq.com?ref=tokencostsai_com): Dedicated ultra-low-latency LPU inference running Llama 3.3 70B at 420+ tokens/sec (<200ms TTFT) with $100 in free developer compute credits for real-time voice and streaming agents.
-
-## Optional
-
-- [XML Sitemap](https://tokencostsai.com/sitemap.xml): Complete index of localized EN, ZH-CN, ZH-TW, JA, KO, and ES model, comparison, calculator, and harness URLs.
-- [Enterprise FinOps & Migration Audit](https://tokencostsai.com/contact/): Request a 48-hour LLM migration and Prompt Caching architecture review.
-- [Localized Editions](https://tokencostsai.com/zh-CN/): Multilingual pricing hubs available at \`/zh-CN/\`, \`/zh-TW/\`, \`/ja/\`, \`/ko/\`, and \`/es/\`.
 `;
 
 fs.writeFileSync(path.join(PUBLIC_DIR, 'llms.txt'), llmsTxt, 'utf8');
 
 console.log(
-  `[generate-ai-feeds] Generated public/llms.txt (${llmsTxt.length} bytes) & public/pricing-summary.json (models=${totalModels}, topModels=${topModels.length}, alerts=${alerts.length})`
+  `[generate-ai-feeds] Generated pricing-summary.json (${topModels.length} topModels, ${totalModels} totalModels) and llms.txt (lastUpdated: ${lastUpdatedDate})`
 );

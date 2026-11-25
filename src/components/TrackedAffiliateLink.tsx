@@ -25,6 +25,7 @@ interface TrackedAffiliateLinkProps {
   campaign?: string;
   compareSlug?: string;
   includeRef?: boolean;
+  extraParams?: Record<string, unknown>;
   rel?: string;
   className?: string;
   children: React.ReactNode;
@@ -40,6 +41,7 @@ export default function TrackedAffiliateLink({
   campaign,
   compareSlug,
   includeRef,
+  extraParams,
   rel = 'nofollow sponsored noopener noreferrer',
   className,
   children,
@@ -61,6 +63,7 @@ export default function TrackedAffiliateLink({
       partner: resolvedProvider,
       placement,
       ...(compareSlug ? { compare_slug: compareSlug } : {}),
+      ...(extraParams || {}),
       outbound_url: outboundUrl,
     });
   };

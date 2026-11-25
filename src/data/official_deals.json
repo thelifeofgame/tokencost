@@ -3,9 +3,9 @@
   "title": "Official Deals & Billing Changes",
   "description": "Verified official promotions, Black Friday status, 6-element pricing disclosures, and recent billing rule changes across 12 leading LLM, coding agent, and API providers. Official primary sources only.",
   "version": "1.0.0",
-  "lastVerifiedDate": "2026-11-23",
+  "lastVerifiedDate": "2026-11-25",
   "blackFridayDate": "2026-11-27",
-  "lastUpdated": "2026-11-23T15:52:57.475252+08:00",
+  "lastUpdated": "2026-11-25T10:14:34.008222+08:00",
   "currency": "USD",
   "summaryStats": {
     "totalProviders": 12,
@@ -29,13 +29,13 @@
       "officialSourceUrl": "https://one.google.com/about/google-ai-plans/",
       "secondaryOfficialLabel": "Google AI Studio API Pricing",
       "secondaryOfficialUrl": "https://aistudio.google.com/docs/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-12-01",
         "changeType": "price_increase",
-        "headline": "Gemini 4 Carbon API doubles to $4/$20 on Dec 1; Jules shuts down Dec 31",
-        "impactDetail": "Gemini 4 Carbon intro API pricing ($2/$10 per 1M tokens) expires Nov 30 and doubles to $4/$20 on Dec 1, 2026; Jules coding agent became read-only Nov 11 and shuts down Dec 31."
+        "headline": "T-5 Cutoff: Gemini 4 Carbon & Argon double to $4/$20 on Dec 1; Jules ends Dec 31",
+        "impactDetail": "5-day countdown (ends Nov 30): Gemini 4 Carbon & Argon intro API pricing ($2/$10 per 1M, $0.10 cached; Batch/Flex $1/$5) doubles to $4/$20 ($0.20 cached; Batch/Flex $2/$10) on Dec 1, 2026. Jules became read-only Nov 11 and shuts down Dec 31."
       },
       "i18n": {
         "zh-CN": {
@@ -45,8 +45,8 @@
           "eligiblePlans": "现有 Google AI 与 Google One 会员订阅 AI Plus 及年付 AI Pro（最高 5 折，按账号定向推送；AI Ultra 除外）",
           "renewalPrice": "优惠期结束后按标准价自动续费（AI Plus $4.99/月；AI Pro $199.99/年或 $19.99/月）",
           "officialSourceLabel": "Google One 官方套餐页",
-          "billingHeadline": "Gemini 4 Carbon 12/1 费率翻倍至 $4/$20；Jules 12/31 关停",
-          "billingImpactDetail": "Gemini 4 Carbon 入门价（$2/$10 每百万 Token）将于 11 月 30 日到期，12 月 1 日翻倍至 $4/$20；Jules 编程代理已于 11/11 转为只读并将于 12/31 关停。"
+          "billingHeadline": "T-5 倒计时：Gemini 4 Carbon & Argon 12/1 翻倍至 $4/$20；Jules 12/31 关停",
+          "billingImpactDetail": "11 月 30 日截止（仅剩 5 天）：Gemini 4 Carbon 与 Argon 入门价（$2/$10 每百万，缓存 $0.10，Batch/Flex $1/$5）将于 12 月 1 日翻倍至 $4/$20（缓存 $0.20）；Jules 已于 11/11 转为只读并将于 12/31 关停。"
         },
         "zh-TW": {
           "promoBadge": "黑五早鳥最高 5 折",
@@ -55,8 +55,8 @@
           "eligiblePlans": "現有 Google AI 與 Google One 會員訂閱 AI Plus 及年付 AI Pro（最高 5 折，依帳號而異；AI Ultra 除外）",
           "renewalPrice": "優惠期結束後依標準價自動續訂（AI Plus $4.99/月；AI Pro $199.99/年或 $19.99/月）",
           "officialSourceLabel": "Google One 官方方案頁",
-          "billingHeadline": "Gemini 4 Carbon 12/1 費率翻倍至 $4/$20；Jules 12/31 關閉",
-          "billingImpactDetail": "Gemini 4 Carbon 入門價（$2/$10 每百萬 Token）將於 11 月 30 日到期，12 月 1 日翻倍至 $4/$20；Jules 程式代理已於 11/11 轉為唯讀並將於 12/31 停用。"
+          "billingHeadline": "T-5 倒數：Gemini 4 Carbon & Argon 12/1 翻倍至 $4/$20；Jules 12/31 關閉",
+          "billingImpactDetail": "11 月 30 日截止（僅剩 5 天）：Gemini 4 Carbon 與 Argon 入門價（$2/$10 每百萬，快取 $0.10，Batch/Flex $1/$5）將於 12 月 1 日翻倍至 $4/$20（快取 $0.20）；Jules 已於 11/11 轉為唯讀並將於 12/31 停用。"
         },
         "ja": {
           "promoBadge": "BF 先行最大 50% OFF",
@@ -65,8 +65,8 @@
           "eligiblePlans": "既存の Google AI / Google One 会員による AI Plus および年額 AI Pro（最大 50% OFF、アカウントにより異なる；AI Ultra は対象外）",
           "renewalPrice": "割引期間終了後は通常価格で自動更新（AI Plus $4.99/月、AI Pro $199.99/年または $19.99/月）",
           "officialSourceLabel": "Google One 公式プラン",
-          "billingHeadline": "Gemini 4 Carbon が 12/1 に $4/$20 へ倍増；Jules は 12/31 終了",
-          "billingImpactDetail": "Gemini 4 Carbon の導入 API 価格（$2/$10 per 1M）は11月30日で終了し、12月1日に $4/$20 へ倍増。Jules は11月11日から閲覧専用となり12月31日に終了します。"
+          "billingHeadline": "残り5日：Gemini 4 Carbon & Argon が 12/1 に $4/$20 へ倍増；Jules は 12/31 終了",
+          "billingImpactDetail": "11月30日終了（T-5）：Gemini 4 Carbon・Argon の導入価格（$2/$10 per 1M・キャッシュ $0.10）は12月1日に $4/$20（Batch $2/$10）へ倍増。Jules は11/11から閲覧専用で12/31終了。"
         },
         "ko": {
           "promoBadge": "블프 얼리억세스 최대 50%",
@@ -75,8 +75,8 @@
           "eligiblePlans": "기존 Google AI 및 Google One 구독자의 AI Plus 및 연간 AI Pro(최대 50% 할인, 계정별 상이, AI Ultra 제외)",
           "renewalPrice": "프로모션 종료 후 정상 요금으로 갱신(AI Plus $4.99/월, AI Pro $199.99/년 또는 $19.99/월)",
           "officialSourceLabel": "Google One 공식 요금제",
-          "billingHeadline": "12월 1일 Gemini 4 Carbon 요금 2배 인상($4/$20); Jules 12월 31일 종료",
-          "billingImpactDetail": "Gemini 4 Carbon 도입 API 요금(1M당 $2/$10)은 11월 30일 종료 후 12월 1일 $4/$20로 2배 인상되며, Jules 코딩 에이전트는 11월 11일 읽기 전용 전환 후 12월 31일 종료됩니다."
+          "billingHeadline": "마감 D-5: 12월 1일 Gemini 4 Carbon·Argon 요금 2배 인상($4/$20); Jules 12/31 종료",
+          "billingImpactDetail": "11월 30일 종료(D-5): Gemini 4 Carbon 및 Argon 도입 API 요금(1M당 $2/$10, 캐시 $0.10, 배치 $1/$5)이 12월 1일 $4/$20로 2배 인상되며, Jules는 11/11 읽기 전용 전환 후 12/31 종료됩니다."
         },
         "es": {
           "promoBadge": "Hasta 50% Acceso BF",
@@ -85,8 +85,8 @@
           "eligiblePlans": "Suscriptores actuales de Google AI y Google One en AI Plus y AI Pro anual (hasta 50% dto., según cuenta; excluye AI Ultra)",
           "renewalPrice": "Se renueva a tarifa estándar tras la promoción ($4.99/mes Plus; $199.99/año o $19.99/mes Pro)",
           "officialSourceLabel": "Planes oficiales Google One",
-          "billingHeadline": "Gemini 4 Carbon duplica tarifa a $4/$20 el 1 dic; Jules cierra el 31 dic",
-          "billingImpactDetail": "La tarifa introductoria de Gemini 4 Carbon ($2/$10 por 1M) vence el 30 nov y se duplica a $4/$20 el 1 dic 2026; Jules pasó a solo lectura el 11 nov y cierra el 31 dic."
+          "billingHeadline": "Cuenta atrás T-5: Gemini 4 Carbon y Argon duplican a $4/$20 el 1 dic; Jules cierra 31 dic",
+          "billingImpactDetail": "Vence el 30 nov (quedan 5 días): las tarifas intro de Gemini 4 Carbon y Argon ($2/$10 por 1M, $0.10 caché, Batch $1/$5) se duplican a $4/$20 el 1 dic 2026; Jules cierra el 31 dic."
         }
       }
     },
@@ -98,14 +98,14 @@
       "promoStatus": "active_promo",
       "promoBadge": "50% Off 1st Month",
       "regularPrice": "Plus $8/mo ($80/yr), Premium $30/mo ($300/yr), Super $100/mo ($1,000/yr), Ultra $200/mo ($2,000/yr)",
-      "promoWindow": "Active official offer on grok.com/plans as of 2026-11-23 (50% off 1st month; no stated end date, not Black Friday branded)",
+      "promoWindow": "Active official offer on grok.com/plans as of 2026-11-25 (50% off 1st month; no stated end date, not Black Friday branded)",
       "eligiblePlans": "Monthly Premium ($15 1st mo), Super ($50 1st mo), and Ultra ($100 1st mo); Plus ($8/mo) and annual plans excluded",
       "renewalPrice": "Renews at full monthly price ($30/mo Premium, $100/mo Super, $200/mo Ultra)",
       "officialSourceLabel": "Grok Official Plans",
       "officialSourceUrl": "https://grok.com/plans",
       "secondaryOfficialLabel": "xAI API Pricing",
       "secondaryOfficialUrl": "https://x.ai/api",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-11-02",
@@ -117,7 +117,7 @@
         "zh-CN": {
           "promoBadge": "首月官方 5 折",
           "regularPrice": "Plus $8/月（$80/年）、Premium $30/月（$300/年）、Super $100/月（$1,000/年）、Ultra $200/月（$2,000/年）",
-          "promoWindow": "截至 2026-11-23 grok.com/plans 官方在售首月 5 折（未标注结束日期，非黑五冠名活动）",
+          "promoWindow": "截至 2026-11-25 grok.com/plans 官方在售首月 5 折（未标注结束日期，非黑五冠名活动）",
           "eligiblePlans": "月付 Premium（首月 $15）、Super（首月 $50）、Ultra（首月 $100）；Plus 及年付套餐不参与",
           "renewalPrice": "次月起按全额月费自动续费（Premium $30/月、Super $100/月、Ultra $200/月）",
           "officialSourceLabel": "Grok 官方订阅页",
@@ -127,7 +127,7 @@
         "zh-TW": {
           "promoBadge": "首月官方 5 折",
           "regularPrice": "Plus $8/月（$80/年）、Premium $30/月（$300/年）、Super $100/月（$1,000/年）、Ultra $200/月（$2,000/年）",
-          "promoWindow": "截至 2026-11-23 grok.com/plans 官方在售首月 5 折（未標示結束日期，非黑五冠名活動）",
+          "promoWindow": "截至 2026-11-25 grok.com/plans 官方在售首月 5 折（未標示結束日期，非黑五冠名活動）",
           "eligiblePlans": "月繳 Premium（首月 $15）、Super（首月 $50）、Ultra（首月 $100）；Plus 與年繳方案除外",
           "renewalPrice": "次月起依全額月費自動續訂（Premium $30/月、Super $100/月、Ultra $200/月）",
           "officialSourceLabel": "Grok 官方方案頁",
@@ -137,7 +137,7 @@
         "ja": {
           "promoBadge": "初月 50% OFF",
           "regularPrice": "Plus $8/月（$80/年）、Premium $30/月（$300/年）、Super $100/月（$1,000/年）、Ultra $200/月（$2,000/年）",
-          "promoWindow": "2026-11-23 時点で grok.com/plans に公式掲載中（初月 50% OFF、終了日未記載・BF冠なし）",
+          "promoWindow": "2026-11-25 時点で grok.com/plans に公式掲載中（初月 50% OFF、終了日未記載・BF冠なし）",
           "eligiblePlans": "月額 Premium（初月 $15）、Super（初月 $50）、Ultra（初月 $100）；Plus と年額プランは対象外",
           "renewalPrice": "2ヶ月目以降は通常月額で自動更新（Premium $30/月、Super $100/月、Ultra $200/月）",
           "officialSourceLabel": "Grok 公式プラン",
@@ -147,7 +147,7 @@
         "ko": {
           "promoBadge": "첫 달 50% 할인",
           "regularPrice": "Plus $8/월($80/년), Premium $30/월($300/년), Super $100/월($1,000/년), Ultra $200/월($2,000/년)",
-          "promoWindow": "2026-11-23 기준 grok.com/plans 공식 제공(첫 달 50% 할인, 종료일 미고지, 블랙프라이데이 명칭 아님)",
+          "promoWindow": "2026-11-25 기준 grok.com/plans 공식 제공(첫 달 50% 할인, 종료일 미고지, 블랙프라이데이 명칭 아님)",
           "eligiblePlans": "월간 Premium(첫 달 $15), Super(첫 달 $50), Ultra(첫 달 $100); Plus 및 연간 요금제 제외",
           "renewalPrice": "다음 달부터 정상 월 요금으로 갱신(Premium $30/월, Super $100/월, Ultra $200/월)",
           "officialSourceLabel": "Grok 공식 요금제",
@@ -157,7 +157,7 @@
         "es": {
           "promoBadge": "50% Dto. 1er Mes",
           "regularPrice": "Plus $8/mes ($80/año), Premium $30/mes ($300/año), Super $100/mes ($1,000/año), Ultra $200/mes ($2,000/año)",
-          "promoWindow": "Oferta oficial activa en grok.com/plans al 2026-11-23 (50% dto. primer mes; sin fecha de cierre, no etiquetada Black Friday)",
+          "promoWindow": "Oferta oficial activa en grok.com/plans al 2026-11-25 (50% dto. primer mes; sin fecha de cierre, no etiquetada Black Friday)",
           "eligiblePlans": "Planes mensuales Premium ($15 1er mes), Super ($50 1er mes) y Ultra ($100 1er mes); excluye Plus y anuales",
           "renewalPrice": "Se renueva a tarifa mensual completa ($30/mes Premium, $100/mes Super, $200/mes Ultra)",
           "officialSourceLabel": "Planes oficiales de Grok",
@@ -174,12 +174,12 @@
       "promoStatus": "active_promo",
       "promoBadge": "+$40 / +$450 Bonus Credits",
       "regularPrice": "Pro $20/mo ($200/yr); Max $200/mo ($2,000/yr); API billed separately PAYG",
-      "promoWindow": "Limited-time official Computer credit bonus active as of 2026-11-23 (no Black Friday subscription price discount)",
+      "promoWindow": "Limited-time official Computer credit bonus active as of 2026-11-25 (no Black Friday subscription price discount)",
       "eligiblePlans": "New Pro (+$40 free Computer credits) and Max (+$450 free Computer credits); bonus credits expire ~30 days, standalone API credits excluded",
       "renewalPrice": "Renews at standard $20/mo ($200/yr) Pro or $200/mo ($2,000/yr) Max",
       "officialSourceLabel": "Perplexity Pro Plans",
       "officialSourceUrl": "https://www.perplexity.ai/pro",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-11-17",
@@ -191,7 +191,7 @@
         "zh-CN": {
           "promoBadge": "赠 $40 / $450 额度",
           "regularPrice": "Pro $20/月（$200/年）；Max $200/月（$2,000/年）；API 按量独立计费",
-          "promoWindow": "截至 2026-11-23 官方限时赠送 Computer 额度（订阅价本身无黑五降价）",
+          "promoWindow": "截至 2026-11-25 官方限时赠送 Computer 额度（订阅价本身无黑五降价）",
           "eligiblePlans": "新购 Pro（加赠 $40 Computer 额度）与 Max（加赠 $450 Computer 额度）；赠额约 30 天有效，不含独立 API 额度",
           "renewalPrice": "续费按标准价执行（Pro $20/月或 $200/年，Max $200/月或 $2,000/年）",
           "officialSourceLabel": "Perplexity Pro 官方页",
@@ -201,7 +201,7 @@
         "zh-TW": {
           "promoBadge": "贈 $40 / $450 額度",
           "regularPrice": "Pro $20/月（$200/年）；Max $200/月（$2,000/年）；API 依用量獨立計費",
-          "promoWindow": "截至 2026-11-23 官方限時加贈 Computer 額度（訂閱費本身無黑五降價）",
+          "promoWindow": "截至 2026-11-25 官方限時加贈 Computer 額度（訂閱費本身無黑五降價）",
           "eligiblePlans": "新購 Pro（加贈 $40 Computer 額度）與 Max（加贈 $450 Computer 額度）；贈額約 30 天有效，不含獨立 API 額度",
           "renewalPrice": "續訂依標準價執行（Pro $20/月或 $200/年，Max $200/月或 $2,000/年）",
           "officialSourceLabel": "Perplexity Pro 官方頁",
@@ -211,7 +211,7 @@
         "ja": {
           "promoBadge": "+$40 / +$450 特典枠",
           "regularPrice": "Pro $20/月（$200/年）、Max $200/月（$2,000/年）、API は別途従量課金",
-          "promoWindow": "2026-11-23 時点で公式の期間限定 Computer クレジット付与を実施中（サブスク本体のBF割引なし）",
+          "promoWindow": "2026-11-25 時点で公式の期間限定 Computer クレジット付与を実施中（サブスク本体のBF割引なし）",
           "eligiblePlans": "新規 Pro（+$40 無料 Computer クレジット）および Max（+$450 無料クレジット）；特典は約30日期限、単独 API 枠は対象外",
           "renewalPrice": "通常価格で自動更新（Pro $20/月または $200/年、Max $200/月または $2,000/年）",
           "officialSourceLabel": "Perplexity Pro 公式",
@@ -221,7 +221,7 @@
         "ko": {
           "promoBadge": "+$40 / +$450 보너스 크레딧",
           "regularPrice": "Pro $20/월($200/년), Max $200/월($2,000/년), API 별도 종량제",
-          "promoWindow": "2026-11-23 기준 공식 한정 Computer 크레딧 보너스 진행 중(구독료 자체 블프 할인 없음)",
+          "promoWindow": "2026-11-25 기준 공식 한정 Computer 크레딧 보너스 진행 중(구독료 자체 블프 할인 없음)",
           "eligiblePlans": "신규 Pro(+$40 무료 Computer 크레딧) 및 Max(+$450 무료 크레딧); 보너스는 약 30일 후 만료, 단독 API 크레딧 제외",
           "renewalPrice": "정상 요금으로 갱신(Pro $20/월 또는 $200/년, Max $200/월 또는 $2,000/년)",
           "officialSourceLabel": "Perplexity Pro 공식",
@@ -231,7 +231,7 @@
         "es": {
           "promoBadge": "+$40 / +$450 en Créditos",
           "regularPrice": "Pro $20/mes ($200/año); Max $200/mes ($2,000/año); API facturada aparte por uso",
-          "promoWindow": "Bono oficial por tiempo limitado de créditos Computer activo al 2026-11-23 (sin rebaja de suscripción por Black Friday)",
+          "promoWindow": "Bono oficial por tiempo limitado de créditos Computer activo al 2026-11-25 (sin rebaja de suscripción por Black Friday)",
           "eligiblePlans": "Nuevos Pro (+$40 en créditos Computer) y Max (+$450 en créditos Computer); expiran ~30 días, excluye créditos API independientes",
           "renewalPrice": "Renovación estándar a $20/mes ($200/año) en Pro o $200/mes ($2,000/año) en Max",
           "officialSourceLabel": "Planes Perplexity Pro",
@@ -253,7 +253,7 @@
       "renewalPrice": "Subscriptions stay $20/$200/mo; SWE-2 Flash moves to $0.10/1M input & $0.50/1M output after Dec 4",
       "officialSourceLabel": "Devin Official Pricing",
       "officialSourceUrl": "https://devin.ai/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-11-12",
@@ -327,13 +327,13 @@
       "renewalPrice": "Standard 5.5%/8% platform fee and regular model rates once provider promo ends",
       "officialSourceLabel": "OpenRouter Pricing",
       "officialSourceUrl": "https://openrouter.ai/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
-        "effectiveDate": "2026-11-06",
+        "effectiveDate": "2026-11-24",
         "changeType": "billing_rule",
-        "headline": "600+ paid models, rebuilt Auto routers, 0% token markup",
-        "impactDetail": "Catalog expanded to 600+ paid models (Nov 2), rebuilt Auto/Auto Code routers (Nov 6), and launched Extractions API (Nov 10) with 0% token markup."
+        "headline": "48h Catalog Shift: Solar 4.5 & MiMo-V2.6 live; 7 SKUs delisted, 3 providers dropped",
+        "impactDetail": "Past 48h added Solar Mini 4.5 ($0.01/$0.04 preview until Nov 30), Solar Pro 4 Contributor ($0.09/$0.36), and MiMo-V2.6-Flash-MOPD ($0.15/$0.42), while 7 legacy SKUs (kimi-k2*, mistral-medium-3*, mimo-v2.5, dots-3-note-preview:free) were delisted and Together/Phala/Novita were offboarded (125 ZDR endpoints revoked)."
       },
       "i18n": {
         "zh-CN": {
@@ -343,8 +343,8 @@
           "eligiblePlans": "指定厂商赞助降价模型（如 DeepSeek V4 Flash 最高 9 折优惠/1 折价、Tencent Hy4 Flash 5 折）；$400/年 Lenny's Insider 含 $650 OpenRouter 额度",
           "renewalPrice": "活动结束后恢复标准 5.5%/8% 充值费率及模型原价",
           "officialSourceLabel": "OpenRouter 官方定价",
-          "billingHeadline": "在库付费模型破 600 款，重构 Auto 路由且保持 0% Token 加价",
-          "billingImpactDetail": "11 月 2 日付费模型库扩至 600+ 款，11 月 6 日重构 Auto/Auto Code 路由，11 月 10 日上线 Extractions API，全程维持 0% Token 加价。"
+          "billingHeadline": "近 48h 目录更新：Solar 4.5 与 MiMo-V2.6 上线；7 个 SKU 与 3 家供应商下线",
+          "billingImpactDetail": "过去 48h 上线 Solar Mini 4.5（$0.01/$0.04 预览至 11/30）、Solar Pro 4 Contributor（$0.09/$0.36）与 MiMo-V2.6-Flash-MOPD（$0.15/$0.42）；下线 7 个旧 SKU（kimi-k2*、mistral-medium-3*、mimo-v2.5、dots-3-note-preview:free）并清退 Together/Phala/Novita（撤销 125 个 ZDR 节点）。"
         },
         "zh-TW": {
           "promoBadge": "託管模型最高 1 折起",
@@ -353,8 +353,8 @@
           "eligiblePlans": "指定廠商贊助特惠模型（如 DeepSeek V4 Flash 最高省 90%、Tencent Hy4 Flash 5 折）；$400/年 Lenny's Insider 含 $650 OpenRouter 額度",
           "renewalPrice": "活動結束後恢復標準 5.5%/8% 儲值費率與模型原價",
           "officialSourceLabel": "OpenRouter 官方定價",
-          "billingHeadline": "付費模型破 600 款，重構 Auto 路由且維持 0% Token 加價",
-          "billingImpactDetail": "11 月 2 日付費模型庫擴至 600+ 款，11 月 6 日重構 Auto/Auto Code 路由，11 月 10 日上線 Extractions API，全程維持 0% Token 加價。"
+          "billingHeadline": "近 48h 目錄更新：Solar 4.5 與 MiMo-V2.6 上線；7 個 SKU 與 3 家供應商下線",
+          "billingImpactDetail": "過去 48h 上線 Solar Mini 4.5（$0.01/$0.04 預覽至 11/30）、Solar Pro 4 Contributor（$0.09/$0.36）與 MiMo-V2.6-Flash-MOPD（$0.15/$0.42）；下線 7 個舊 SKU（kimi-k2*、mistral-medium-3*、mimo-v2.5、dots-3-note-preview:free）並下架 Together/Phala/Novita（撤銷 125 個 ZDR 節點）。"
         },
         "ja": {
           "promoBadge": "最大 90% OFF モデル群",
@@ -363,8 +363,8 @@
           "eligiblePlans": "対象割引モデル（DeepSeek V4 Flash 最大90%オフ、Tencent Hy4 Flash 50%オフ等）；年額 $400 の Lenny's Insider で $650 枠付与",
           "renewalPrice": "プロモ終了後は通常の 5.5%/8% 手数料および標準モデル単価を適用",
           "officialSourceLabel": "OpenRouter 公式料金",
-          "billingHeadline": "有料モデル 600 種超へ拡大、Auto ルーター刷新（上乗せ 0%）",
-          "billingImpactDetail": "11月2日に有料モデルが600種超へ拡大、11月6日に Auto/Auto Code ルーターを刷新、11月10日に Extractions API を公開（トークン上乗せ 0%）。"
+          "billingHeadline": "48時間更新：Solar 4.5・MiMo-V2.6 追加；7 SKU 終了・3社プロバイダ除外",
+          "billingImpactDetail": "直近48時間で Solar Mini 4.5（11/30まで $0.01/$0.04）・Solar Pro 4 Contributor・MiMo-V2.6-Flash-MOPD が追加。一方、旧7 SKU（kimi-k2* 等）を廃止し、Together/Phala/Novita の3社を除外（ZDR 125拠点取消）。"
         },
         "ko": {
           "promoBadge": "프로바이더 최대 90% 할인",
@@ -373,8 +373,8 @@
           "eligiblePlans": "지정 할인 모델(DeepSeek V4 Flash 최대 90% 할인, Tencent Hy4 Flash 50% 할인 등); 연 $400 Lenny's Insider 시 $650 크레딧",
           "renewalPrice": "프로모션 종료 후 표준 5.5%/8% 수수료 및 정상 모델 요금 적용",
           "officialSourceLabel": "OpenRouter 공식 가격",
-          "billingHeadline": "유료 모델 600종 돌파, Auto 라우터 개편 및 토큰 마크업 0% 유지",
-          "billingImpactDetail": "11월 2일 유료 모델이 600개 이상으로 확대되었고, 11월 6일 Auto/Auto Code 라우터 개편 및 11월 10일 Extractions API 출시에도 0% 토큰 마크업을 유지합니다."
+          "billingHeadline": "48시간 변동: Solar 4.5·MiMo-V2.6 출시; 7개 SKU 종료 및 3개 공급자 제외",
+          "billingImpactDetail": "최근 48시간 동안 Solar Mini 4.5(11/30까지 $0.01/$0.04), Solar Pro 4 Contributor, MiMo-V2.6-Flash-MOPD가 추가되었으며, 기존 7개 SKU(kimi-k2* 등) 종료 및 Together/Phala/Novita 제외(125개 ZDR 해지)가 반영되었습니다."
         },
         "es": {
           "promoBadge": "Hasta 90% en Modelos",
@@ -383,8 +383,8 @@
           "eligiblePlans": "Modelos con descuento (DeepSeek V4 Flash hasta 90%, Tencent Hy4 Flash 50%); $650 en créditos vía pase anual Lenny's Insider ($400/año)",
           "renewalPrice": "Comisión estándar del 5.5%/8% y tarifas normales tras finalizar la promo del proveedor",
           "officialSourceLabel": "Precios OpenRouter",
-          "billingHeadline": "Más de 600 modelos de pago, routers Auto renovados y 0% margen",
-          "billingImpactDetail": "El catálogo superó 600 modelos (2 nov), renovó los routers Auto/Auto Code (6 nov) y lanzó Extractions API (10 nov) manteniendo 0% de margen por token."
+          "billingHeadline": "Últimas 48h: alta de Solar 4.5 y MiMo-V2.6; baja de 7 SKUs y 3 proveedores",
+          "billingImpactDetail": "En 48h se sumaron Solar Mini 4.5 ($0.01/$0.04 hasta 30 nov), Solar Pro 4 Contributor y MiMo-V2.6-Flash-MOPD; se retiraron 7 SKUs heredados (kimi-k2*, mistral-medium-3*, mimo-v2.5, dots-3-note-preview:free) y salieron Together/Phala/Novita (125 endpoints ZDR revocados)."
         }
       }
     },
@@ -396,71 +396,71 @@
       "promoStatus": "no_official_promo",
       "promoBadge": "No BF Promo Found",
       "regularPrice": "Go $8/mo, Plus $20/mo, Pro $100-$500/mo; API GPT-6.2 Astra $8/$40 per 1M, Sol $2/$10 per 1M",
-      "promoWindow": "No official Black Friday consumer subscription or API promo found (verified 2026-11-23; only $500 OpenAI Ads match promo exists)",
+      "promoWindow": "No official Black Friday consumer subscription or API promo found (verified 2026-11-25; only $500 OpenAI Ads match promo exists)",
       "eligiblePlans": "N/A for consumer Black Friday promo (standing Nonprofit/K-12/U.S. Student perks & Pro bundled API credits remain separate)",
       "renewalPrice": "Standard monthly billing ($8 / $20 / $100-$500/mo) and standard PAYG API rate card",
       "officialSourceLabel": "OpenAI API Pricing",
       "officialSourceUrl": "https://openai.com/business/pricing/#api",
       "secondaryOfficialLabel": "ChatGPT Consumer Pricing",
       "secondaryOfficialUrl": "https://chatgpt.com/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
-        "effectiveDate": "2026-11-17",
-        "changeType": "price_cut",
-        "headline": "GPT-6.2 Astra cut 20% ($8/$40); Ultrafast 3x rate until Feb 28",
-        "impactDetail": "Nov 17 cut GPT-6.2 Astra API 20% to $8/$40 ($0.40 cached); Ultrafast opened to Pro 200 (API 3x rate $24/$120 through Feb 28, 2027, rising to 6x on Mar 1, 2027)."
+        "effectiveDate": "2026-11-30",
+        "changeType": "billing_rule",
+        "headline": "T-5 Alert: /v1/prompts & Evals shut down Nov 30; GPT-6.2 Astra cut 20%",
+        "impactDetail": "5-day migration alert: /v1/prompts API, Evals dashboard/API (read-only since Oct 31), and Agent Builder shut down Nov 30, 2026 — move prompts into code (Responses API) and evals to Promptfoo. Nov 17 cut GPT-6.2 Astra 20% ($8/$40); Ultrafast 3x rate holds until Feb 28, 2027."
       },
       "i18n": {
         "zh-CN": {
           "promoBadge": "未查到官方黑五优惠",
           "regularPrice": "Go $8/月、Plus $20/月、Pro $100-$500/月；API GPT-6.2 Astra $8/$40 每百万、Sol $2/$10 每百万",
-          "promoWindow": "未查到面向个人订阅或 API 的官方黑五优惠（核对日期 2026-11-23；仅存在 OpenAI Ads 充 $500 送 $500 广告金活动）",
+          "promoWindow": "未查到面向个人订阅或 API 的官方黑五优惠（核对日期 2026-11-25；仅存在 OpenAI Ads 充 $500 送 $500 广告金活动）",
           "eligiblePlans": "无个人黑五适用套餐（常规非营利/K-12/美国高校学生福利及 Pro 绑定 API 额度单独适用）",
           "renewalPrice": "按标准月费（$8 / $20 / $100-$500/月）及标准 API 价目表计费",
           "officialSourceLabel": "OpenAI 官方定价页",
-          "billingHeadline": "GPT-6.2 Astra 降价 20%（$8/$40）；Ultrafast 3x 费率延至明年 2/28",
-          "billingImpactDetail": "11 月 17 日 GPT-6.2 Astra API 降价 20% 至 $8/$40（缓存 $0.40）；Ultrafast 向 Pro 200 开放，API 维持 3 倍费率（$24/$120）至 2027-02-28，3/1 起升至 6 倍。"
+          "billingHeadline": "T-5 停服预警：/v1/prompts 与 Evals 11/30 关停；Astra 降价 20%",
+          "billingImpactDetail": "仅剩 5 天：/v1/prompts、Evals（10/31 起已只读）及 Agent Builder 将于 11 月 30 日正式停服，请尽快迁移至 Responses API 代码托管与 Promptfoo。另 11/17 GPT-6.2 Astra 已降价 20%（$8/$40）。"
         },
         "zh-TW": {
           "promoBadge": "未查到官方黑五優惠",
           "regularPrice": "Go $8/月、Plus $20/月、Pro $100-$500/月；API GPT-6.2 Astra $8/$40 每百萬、Sol $2/$10 每百萬",
-          "promoWindow": "未查到個人訂閱或 API 的官方黑五優惠（核對日期 2026-11-23；僅有 OpenAI Ads 儲值 $500 送 $500 廣告金活動）",
+          "promoWindow": "未查到個人訂閱或 API 的官方黑五優惠（核對日期 2026-11-25；僅有 OpenAI Ads 儲值 $500 送 $500 廣告金活動）",
           "eligiblePlans": "無個人黑五適用方案（常規非營利/K-12/美國學生優惠與 Pro 隨附 API 額度另計）",
           "renewalPrice": "依標準月費（$8 / $20 / $100-$500/月）及標準 API 價目表計費",
           "officialSourceLabel": "OpenAI 官方定價頁",
-          "billingHeadline": "GPT-6.2 Astra 降價 20%（$8/$40）；Ultrafast 3x 費率延至明年 2/28",
-          "billingImpactDetail": "11 月 17 日 GPT-6.2 Astra API 降價 20% 至 $8/$40（快取 $0.40）；Ultrafast 開放予 Pro 200，API 維持 3 倍費率（$24/$120）至 2027-02-28，3/1 起升至 6 倍。"
+          "billingHeadline": "T-5 停服預警：/v1/prompts 與 Evals 11/30 關停；Astra 降價 20%",
+          "billingImpactDetail": "僅剩 5 天：/v1/prompts、Evals（10/31 起已唯讀）及 Agent Builder 將於 11 月 30 日正式停服，請儘速遷移至 Responses API 程式碼託管與 Promptfoo。另 11/17 GPT-6.2 Astra 已降價 20%（$8/$40）。"
         },
         "ja": {
           "promoBadge": "公式 BF 特価なし",
           "regularPrice": "Go $8/月、Plus $20/月、Pro $100-$500/月；API GPT-6.2 Astra $8/$40、Sol $2/$10（per 1M）",
-          "promoWindow": "個人向けサブスク・API の公式ブラックフライデー割引は未確認（2026-11-23 確認；OpenAI Ads $500 広告クレジット施策のみ）",
+          "promoWindow": "個人向けサブスク・API の公式ブラックフライデー割引は未確認（2026-11-25 確認；OpenAI Ads $500 広告クレジット施策のみ）",
           "eligiblePlans": "個人 BF 割引の対象プランなし（既存の非営利・学生特典および Pro 付帯 API クレジットは別枠）",
           "renewalPrice": "通常の月額料金（$8 / $20 / $100-$500/月）および標準 API 従量単価",
           "officialSourceLabel": "OpenAI 公式料金",
-          "billingHeadline": "GPT-6.2 Astra が 20% 値下げ（$8/$40）；Ultrafast 3倍単価は 2/28 まで",
-          "billingImpactDetail": "11月17日に GPT-6.2 Astra API を 20% 値下げ（$8/$40、キャッシュ $0.40）。Ultrafast を Pro 200 に開放し、API 3倍料金（$24/$120）は2027年2月28日まで継続後、3月1日に6倍へ。"
+          "billingHeadline": "残り5日：/v1/prompts と Evals が 11/30 終了；Astra は 20% 値下げ",
+          "billingImpactDetail": "移行期限 T-5：/v1/prompts API・Evals（10/31以降閲覧専用）・Agent Builder は 11月30日に終了（Responses API コード管理と Promptfoo へ移行要）。11/17 に GPT-6.2 Astra は 20% 値下げ済み（$8/$40）。"
         },
         "ko": {
           "promoBadge": "공식 블프 할인 없음",
           "regularPrice": "Go $8/월, Plus $20/월, Pro $100-$500/월; API GPT-6.2 Astra $8/$40, Sol $2/$10(1M당)",
-          "promoWindow": "개인 구독 및 API 대상 공식 블랙프라이데이 할인 미확인(2026-11-23 확인; OpenAI Ads $500 광고 매칭 프로모션만 존재)",
+          "promoWindow": "개인 구독 및 API 대상 공식 블랙프라이데이 할인 미확인(2026-11-25 확인; OpenAI Ads $500 광고 매칭 프로모션만 존재)",
           "eligiblePlans": "개인용 블프 프로모션 해당 없음(비영리/학생 프로그램 및 Pro 연동 API 크레딧은 별도)",
           "renewalPrice": "표준 월간 구독료($8 / $20 / $100-$500/월) 및 표준 API 요율 적용",
           "officialSourceLabel": "OpenAI 공식 가격",
-          "billingHeadline": "GPT-6.2 Astra 20% 인하($8/$40); Ultrafast 3배 요율 2/28까지 유지",
-          "billingImpactDetail": "11월 17일 GPT-6.2 Astra API를 20% 인하($8/$40, 캐시 $0.40)했으며, Pro 200에 Ultrafast를 개방하고 API 3배 요율($24/$120)을 2027년 2월 28일까지 유지 후 3월 1일 6배로 인상합니다."
+          "billingHeadline": "종료 D-5: /v1/prompts 및 Evals 11/30 중단; Astra 20% 인하",
+          "billingImpactDetail": "마이그레이션 D-5 경보: /v1/prompts API, Evals(10/31부터 읽기 전용), Agent Builder가 11월 30일 종료되므로 Responses API 코드 관리 및 Promptfoo로 이전하세요. GPT-6.2 Astra는 11/17 20% 인하($8/$40)되었습니다."
         },
         "es": {
           "promoBadge": "Sin Promo BF Oficial",
           "regularPrice": "Go $8/mes, Plus $20/mes, Pro $100-$500/mes; API GPT-6.2 Astra $8/$40 y Sol $2/$10 por 1M",
-          "promoWindow": "No se hallaron promos oficiales de Black Friday para suscripción personal o API (verificado 2026-11-23; solo bono OpenAI Ads $500)",
+          "promoWindow": "No se hallaron promos oficiales de Black Friday para suscripción personal o API (verificado 2026-11-25; solo bono OpenAI Ads $500)",
           "eligiblePlans": "N/A para promo BF de consumo (programas educativos/ONG y créditos API incluidos en Pro siguen aparte)",
           "renewalPrice": "Facturación mensual estándar ($8 / $20 / $100-$500/mes) y tarifa estándar de API",
           "officialSourceLabel": "Precios oficiales OpenAI",
-          "billingHeadline": "GPT-6.2 Astra baja un 20% ($8/$40); Ultrafast a 3x hasta el 28 feb",
-          "billingImpactDetail": "El 17 nov redujo GPT-6.2 Astra API un 20% a $8/$40 ($0.40 caché); Ultrafast abrió en Pro 200 (tarifa API 3x de $24/$120 hasta el 28 feb 2027, subiendo a 6x el 1 mar)."
+          "billingHeadline": "Alerta T-5: /v1/prompts y Evals cierran el 30 nov; Astra baja 20%",
+          "billingImpactDetail": "Faltan 5 días: /v1/prompts, Evals (solo lectura desde 31 oct) y Agent Builder cierran el 30 nov 2026; migra prompts a código en Responses API y evals a Promptfoo. GPT-6.2 Astra bajó 20% ($8/$40) el 17 nov."
         }
       }
     },
@@ -472,69 +472,69 @@
       "promoStatus": "no_official_promo",
       "promoBadge": "No BF Promo Found",
       "regularPrice": "Pro $20/mo ($200/yr), Max $100/mo, Ultra $200/mo, Team $25/mo ($20/mo annual); Fable 5.2 API $8/$40 per 1M",
-      "promoWindow": "No official Black Friday consumer subscription or API promo found (verified 2026-11-23)",
+      "promoWindow": "No official Black Friday consumer subscription or API promo found (verified 2026-11-25)",
       "eligiblePlans": "N/A (public consumer/API plans; reported enterprise B2B incentives require private sales)",
       "renewalPrice": "Standard Pro $20/mo ($200/yr), Max $100/mo, Ultra $200/mo",
       "officialSourceLabel": "Claude Official Pricing",
       "officialSourceUrl": "https://claude.com/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
-        "effectiveDate": "2026-11-09",
+        "effectiveDate": "2026-11-23",
         "changeType": "plan_restructure",
-        "headline": "Fable 5.2 cut 20%; Max 20x renamed Ultra ($200/mo); Opus 4.8 Fast retiring",
-        "impactDetail": "Nov 9 cut Fable 5.2 API 20% ($8/$40, $0.20 cache read); Max 20x renamed Ultra ($200/mo incl. $200 API credits, 5-hr cap removed); Opus 4.8 Fast mode in Claude Code removed Nov 30."
+        "headline": "Claude Opus 4.5 deprecated Nov 23 (retires Jan 22); Sonnet 4.5 retires Nov 30",
+        "impactDetail": "Anthropic deprecated Claude Opus 4.5 (claude-opus-4-5) on Nov 23 ahead of Jan 22, 2027 retirement (migrate to Opus 5.5 $4/$20; breaking changes on prefills & forced tool choice). Sonnet 4.5 & Opus 4.8 Fast retire Nov 30 (T-5). Max 20x renamed Ultra ($200/mo)."
       },
       "i18n": {
         "zh-CN": {
           "promoBadge": "未查到官方黑五优惠",
           "regularPrice": "Pro $20/月（$200/年）、Max $100/月、Ultra $200/月、Team $25/月（年付 $20/月）；Fable 5.2 API $8/$40 每百万",
-          "promoWindow": "未查到面向个人订阅或公开 API 的官方黑五优惠（核对日期 2026-11-23）",
+          "promoWindow": "未查到面向个人订阅或公开 API 的官方黑五优惠（核对日期 2026-11-25）",
           "eligiblePlans": "不适用（公开个人与 API 套餐无黑五折扣；仅见企业大客户私下采购激励报道）",
           "renewalPrice": "按标准价续费（Pro $20/月或 $200/年、Max $100/月、Ultra $200/月）",
           "officialSourceLabel": "Claude 官方定价页",
-          "billingHeadline": "Fable 5.2 降价 20%；Max 20x 更名 Ultra（$200/月）；11/30 移除 Opus 4.8 Fast",
-          "billingImpactDetail": "11 月 9 日 Fable 5.2 API 降价 20%（$8/$40，缓存读取 $0.20）；Max 20x 更名为 Ultra（$200/月含等额 $200 API 额度并取消 5 小时上限）；Claude Code 中 Opus 4.8 Fast 将于 11/30 移除。"
+          "billingHeadline": "Claude Opus 4.5 于 11/23 弃用（1/22 退市）；Sonnet 4.5 11/30 停服",
+          "billingImpactDetail": "Anthropic 于 11 月 23 日正式弃用 Claude Opus 4.5（2027-01-22 退市，建议迁移至 Opus 5.5 $4/$20，注意取消预填与强制工具调用）；Sonnet 4.5 与 Opus 4.8 Fast 将于 11/30 停服（T-5）。Max 20x 已更名为 Ultra（$200/月）。"
         },
         "zh-TW": {
           "promoBadge": "未查到官方黑五優惠",
           "regularPrice": "Pro $20/月（$200/年）、Max $100/月、Ultra $200/月、Team $25/月（年繳 $20/月）；Fable 5.2 API $8/$40 每百萬",
-          "promoWindow": "未查到個人訂閱或公開 API 的官方黑五優惠（核對日期 2026-11-23）",
+          "promoWindow": "未查到個人訂閱或公開 API 的官方黑五優惠（核對日期 2026-11-25）",
           "eligiblePlans": "不適用（公開個人與 API 方案無黑五折扣；僅見企業大客戶私下採購激勵報導）",
           "renewalPrice": "依標準價續訂（Pro $20/月或 $200/年、Max $100/月、Ultra $200/月）",
           "officialSourceLabel": "Claude 官方定價頁",
-          "billingHeadline": "Fable 5.2 降價 20%；Max 20x 更名 Ultra（$200/月）；11/30 移除 Opus 4.8 Fast",
-          "billingImpactDetail": "11 月 9 日 Fable 5.2 API 降價 20%（$8/$40，快取讀取 $0.20）；Max 20x 更名為 Ultra（$200/月含等額 $200 API 額度並取消 5 小時上限）；Claude Code 中 Opus 4.8 Fast 將於 11/30 移除。"
+          "billingHeadline": "Claude Opus 4.5 於 11/23 棄用（1/22 退市）；Sonnet 4.5 11/30 停服",
+          "billingImpactDetail": "Anthropic 於 11 月 23 日正式棄用 Claude Opus 4.5（2027-01-22 退市，建議遷移至 Opus 5.5 $4/$20，留意預填與強制工具呼叫變更）；Sonnet 4.5 與 Opus 4.8 Fast 將於 11/30 停服（T-5）。Max 20x 已更名為 Ultra（$200/月）。"
         },
         "ja": {
           "promoBadge": "公式 BF 特価なし",
           "regularPrice": "Pro $20/月（$200/年）、Max $100/月、Ultra $200/月、Team $25/月（年払 $20/月）；Fable 5.2 API $8/$40",
-          "promoWindow": "個人向けサブスク・公開 API の公式ブラックフライデー割引は未確認（2026-11-23 確認）",
+          "promoWindow": "個人向けサブスク・公開 API の公式ブラックフライデー割引は未確認（2026-11-25 確認）",
           "eligiblePlans": "対象外（公開プラン向け割引なし；大企業向け個別契約インセンティブ報道のみ）",
           "renewalPrice": "通常料金で更新（Pro $20/月または $200/年、Max $100/月、Ultra $200/月）",
           "officialSourceLabel": "Claude 公式料金",
-          "billingHeadline": "Fable 5.2 が 20% 値下げ；Max 20x を Ultra へ改称；Opus 4.8 Fast 終了",
-          "billingImpactDetail": "11月9日に Fable 5.2 API を 20% 値下げ（$8/$40、キャッシュ $0.20）。Max 20x は Ultra（$200/月・同額 API 枠付帯、5時間上限撤廃）へ改称し、Opus 4.8 Fast は11月30日終了。"
+          "billingHeadline": "Claude Opus 4.5 が 11/23 非推奨化（1/22 廃止）；Sonnet 4.5 は 11/30 終了",
+          "billingImpactDetail": "Anthropic は 11月23日に Claude Opus 4.5 を非推奨化（2027/1/22 廃止、Opus 5.5 $4/$20 へ移行推奨・prefill 等仕様変更あり）。Sonnet 4.5 と Opus 4.8 Fast は 11月30日終了（残り5日）。Max 20x は Ultra へ改称済み。"
         },
         "ko": {
           "promoBadge": "공식 블프 할인 없음",
           "regularPrice": "Pro $20/월($200/년), Max $100/월, Ultra $200/월, Team $25/월(연간 $20/월); Fable 5.2 API $8/$40(1M당)",
-          "promoWindow": "개인 구독 및 공개 API 대상 공식 블랙프라이데이 할인 미확인(2026-11-23 확인)",
+          "promoWindow": "개인 구독 및 공개 API 대상 공식 블랙프라이데이 할인 미확인(2026-11-25 확인)",
           "eligiblePlans": "해당 없음(공개 개인/API 요금제 할인 없음; 엔터프라이즈 B2B 계약은 별도 영업 문의)",
           "renewalPrice": "표준 요금 적용(Pro $20/월 또는 $200/년, Max $100/월, Ultra $200/월)",
           "officialSourceLabel": "Claude 공식 가격",
-          "billingHeadline": "Fable 5.2 20% 인하; Max 20x를 Ultra($200/월)로 변경; Opus 4.8 Fast 종료",
-          "billingImpactDetail": "11월 9일 Fable 5.2 API를 20% 인하($8/$40, 캐시 읽기 $0.20)했고, Max 20x를 Ultra($200/월, $200 API 크레딧 포함 및 5시간 제한 폐지)로 개편했으며, Opus 4.8 Fast는 11월 30일 종료됩니다."
+          "billingHeadline": "Claude Opus 4.5 11/23 지원 중단 예고(1/22 종료); Sonnet 4.5 11/30 종료",
+          "billingImpactDetail": "Anthropic이 11월 23일 Claude Opus 4.5를 지원 중단(2027년 1월 22일 완전 종료, Opus 5.5 $4/$20 이전 권장·prefill 등 호환성 유의)으로 전환했습니다. Sonnet 4.5 및 Opus 4.8 Fast는 11/30 종료(D-5)되며 Max 20x는 Ultra로 개편되었습니다."
         },
         "es": {
           "promoBadge": "Sin Promo BF Oficial",
           "regularPrice": "Pro $20/mes ($200/año), Max $100/mes, Ultra $200/mes, Team $25/mes ($20/mes anual); API Fable 5.2 $8/$40 por 1M",
-          "promoWindow": "No se hallaron promos oficiales de Black Friday en suscripción personal ni API (verificado 2026-11-23)",
+          "promoWindow": "No se hallaron promos oficiales de Black Friday en suscripción personal ni API (verificado 2026-11-25)",
           "eligiblePlans": "N/A (planes públicos; posibles incentivos B2B requieren venta privada)",
           "renewalPrice": "Estándar Pro $20/mes ($200/año), Max $100/mes, Ultra $200/mes",
           "officialSourceLabel": "Precios oficiales Claude",
-          "billingHeadline": "Fable 5.2 baja 20%; Max 20x pasa a Ultra ($200/mes); retiran Opus 4.8 Fast",
-          "billingImpactDetail": "El 9 nov rebajó Fable 5.2 API un 20% ($8/$40, $0.20 caché); Max 20x pasó a Ultra ($200/mes con $200 en créditos API, sin tope de 5 h); Opus 4.8 Fast se retira el 30 nov."
+          "billingHeadline": "Claude Opus 4.5 obsoleto desde 23 nov (cierra 22 ene); Sonnet 4.5 cierra 30 nov",
+          "billingImpactDetail": "Anthropic declaró obsoleto a Claude Opus 4.5 el 23 nov (cierre 22 ene 2027; migrar a Opus 5.5 $4/$20 revisando prefills y tool choice). Sonnet 4.5 y Opus 4.8 Fast cierran el 30 nov (T-5). Max 20x pasó a Ultra ($200/mes)."
         }
       }
     },
@@ -546,12 +546,12 @@
       "promoStatus": "no_official_promo",
       "promoBadge": "No BF Promo Found",
       "regularPrice": "Free $0, Plus $8/mo ($80/yr), Premium $30/mo ($300/yr), Super $100/mo ($1,000/yr), Ultra $200/mo ($2,000/yr), Teams $30/$100/$200/seat",
-      "promoWindow": "No official Black Friday promo found (verified 2026-11-23)",
+      "promoWindow": "No official Black Friday promo found (verified 2026-11-25)",
       "eligiblePlans": "N/A — standard X Subscription & prepaid third-party API credit billing apply",
       "renewalPrice": "Standard $8 / $30 / $100 / $200 per month (or 10-month annual bundle)",
       "officialSourceLabel": "Cursor Official Pricing",
       "officialSourceUrl": "https://cursor.com/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-10-12",
@@ -563,7 +563,7 @@
         "zh-CN": {
           "promoBadge": "未查到官方黑五优惠",
           "regularPrice": "Free $0、Plus $8/月（$80/年）、Premium $30/月（$300/年）、Super $100/月（$1,000/年）、Ultra $200/月（$2,000/年）、Teams $30/$100/$200/席",
-          "promoWindow": "未查到官方黑五优惠（核对日期 2026-11-23）",
+          "promoWindow": "未查到官方黑五优惠（核对日期 2026-11-25）",
           "eligiblePlans": "不适用 — 现行 X Subscription 周共享额度池与第三方模型预付额度计费规则",
           "renewalPrice": "按标准价 $8 / $30 / $100 / $200 每月续费（年付按 10 个月打包计价）",
           "officialSourceLabel": "Cursor 官方定价页",
@@ -573,7 +573,7 @@
         "zh-TW": {
           "promoBadge": "未查到官方黑五優惠",
           "regularPrice": "Free $0、Plus $8/月（$80/年）、Premium $30/月（$300/年）、Super $100/月（$1,000/年）、Ultra $200/月（$2,000/年）、Teams $30/$100/$200/席",
-          "promoWindow": "未查到官方黑五優惠（核對日期 2026-11-23）",
+          "promoWindow": "未查到官方黑五優惠（核對日期 2026-11-25）",
           "eligiblePlans": "不適用 — 適用標準 X Subscription 週共享額度池與第三方模型預付額度計費",
           "renewalPrice": "依標準價 $8 / $30 / $100 / $200 每月續訂（年繳按 10 個月計價）",
           "officialSourceLabel": "Cursor 官方定價頁",
@@ -583,7 +583,7 @@
         "ja": {
           "promoBadge": "公式 BF 特価なし",
           "regularPrice": "Free $0、Plus $8/月（$80/年）、Premium $30/月（$300/年）、Super $100/月（$1,000/年）、Ultra $200/月（$2,000/年）、Teams $30/$100/$200/席",
-          "promoWindow": "公式ブラックフライデー割引は未確認（2026-11-23 確認）",
+          "promoWindow": "公式ブラックフライデー割引は未確認（2026-11-25 確認）",
           "eligiblePlans": "対象外 — X Subscription 週次共有プールおよび前払い API クレジット課金を適用",
           "renewalPrice": "通常の $8 / $30 / $100 / $200 月額（年払いは 10ヶ月分パック）",
           "officialSourceLabel": "Cursor 公式料金",
@@ -593,7 +593,7 @@
         "ko": {
           "promoBadge": "공식 블프 할인 없음",
           "regularPrice": "Free $0, Plus $8/월($80/년), Premium $30/월($300/년), Super $100/월($1,000/년), Ultra $200/월($2,000/년), Teams $30/$100/$200/석",
-          "promoWindow": "공식 블랙프라이데이 프로모션 미확인(2026-11-23 확인)",
+          "promoWindow": "공식 블랙프라이데이 프로모션 미확인(2026-11-25 확인)",
           "eligiblePlans": "해당 없음 — 표준 X Subscription 및 선불 제3자 API 크레딧 과금 적용",
           "renewalPrice": "표준 월 $8 / $30 / $100 / $200 요금(연간 결제 시 10개월분 요금)",
           "officialSourceLabel": "Cursor 공식 가격",
@@ -603,7 +603,7 @@
         "es": {
           "promoBadge": "Sin Promo BF Oficial",
           "regularPrice": "Free $0, Plus $8/mes ($80/año), Premium $30/mes ($300/año), Super $100/mes ($1,000/año), Ultra $200/mes ($2,000/año), Teams $30/$100/$200/asiento",
-          "promoWindow": "No se halló promoción oficial de Black Friday (verificado 2026-11-23)",
+          "promoWindow": "No se halló promoción oficial de Black Friday (verificado 2026-11-25)",
           "eligiblePlans": "N/A — aplica la suscripción estándar X Subscription y créditos prepagos para API de terceros",
           "renewalPrice": "Estándar $8 / $30 / $100 / $200 al mes (o paquete anual de 10 meses)",
           "officialSourceLabel": "Precios oficiales Cursor",
@@ -620,12 +620,12 @@
       "promoStatus": "no_official_promo",
       "promoBadge": "No BF Promo Found",
       "regularPrice": "deepseek-flash $0.30/$1.20 per 1M ($0.006 cached) peak; deepseek-v4-pro $1.32/$3.96 peak; 50% off-peak discount",
-      "promoWindow": "No official direct Black Friday promo found on api-docs.deepseek.com (verified 2026-11-23; third-party resellers excluded)",
+      "promoWindow": "No official direct Black Friday promo found on api-docs.deepseek.com (verified 2026-11-25; third-party resellers excluded)",
       "eligiblePlans": "N/A — standing off-peak 50% discount applies daily outside 01:00-04:00 & 06:00-10:00 UTC Mon-Fri",
       "renewalPrice": "Standard PAYG peak and off-peak token rates",
       "officialSourceLabel": "DeepSeek API Pricing",
       "officialSourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-11-18",
@@ -637,7 +637,7 @@
         "zh-CN": {
           "promoBadge": "未查到官方黑五优惠",
           "regularPrice": "deepseek-flash 峰时 $0.30/$1.20 每百万（缓存 $0.006）；deepseek-v4-pro 峰时 $1.32/$3.96；日常闲时享 5 折",
-          "promoWindow": "官方直连 api-docs.deepseek.com 未查到黑五促销（核对日期 2026-11-23；严禁收录第三方代充/中转优惠）",
+          "promoWindow": "官方直连 api-docs.deepseek.com 未查到黑五促销（核对日期 2026-11-25；严禁收录第三方代充/中转优惠）",
           "eligiblePlans": "不适用 — 常规工作日 01:00-04:00 与 06:00-10:00 UTC 之外全时段延续闲时 5 折",
           "renewalPrice": "按官方按量峰/谷标准 Token 单价计费",
           "officialSourceLabel": "DeepSeek 官方 API 定价",
@@ -647,7 +647,7 @@
         "zh-TW": {
           "promoBadge": "未查到官方黑五優惠",
           "regularPrice": "deepseek-flash 尖峰 $0.30/$1.20 每百萬（快取 $0.006）；deepseek-v4-pro 尖峰 $1.32/$3.96；日常離峰享 5 折",
-          "promoWindow": "官方直連 api-docs.deepseek.com 未查到黑五促銷（核對日期 2026-11-23；嚴禁收錄第三方代儲/中轉優惠）",
+          "promoWindow": "官方直連 api-docs.deepseek.com 未查到黑五促銷（核對日期 2026-11-25；嚴禁收錄第三方代儲/中轉優惠）",
           "eligiblePlans": "不適用 — 平日週一至五 01:00-04:00 及 06:00-10:00 UTC 以外時段延續離峰 5 折",
           "renewalPrice": "依官方按量尖/離峰標準 Token 單價計費",
           "officialSourceLabel": "DeepSeek 官方 API 定價",
@@ -657,7 +657,7 @@
         "ja": {
           "promoBadge": "公式 BF 特価なし",
           "regularPrice": "deepseek-flash ピーク $0.30/$1.20（キャッシュ $0.006）、deepseek-v4-pro $1.32/$3.96（per 1M）；オフピーク 50% OFF",
-          "promoWindow": "api-docs.deepseek.com 公式直販でのブラックフライデー割引は未確認（2026-11-23 確認；非公式代理店は除外）",
+          "promoWindow": "api-docs.deepseek.com 公式直販でのブラックフライデー割引は未確認（2026-11-25 確認；非公式代理店は除外）",
           "eligiblePlans": "対象外 — 平日 01:00-04:00 / 06:00-10:00 UTC 以外の時間帯で常設のオフピーク 50% 割引を適用",
           "renewalPrice": "通常の従量ピーク/オフピーク単価",
           "officialSourceLabel": "DeepSeek 公式 API 料金",
@@ -667,7 +667,7 @@
         "ko": {
           "promoBadge": "공식 블프 할인 없음",
           "regularPrice": "deepseek-flash 피크 $0.30/$1.20(캐시 $0.006), deepseek-v4-pro 피크 $1.32/$3.96(1M당); 비혼잡 시간대 50% 할인",
-          "promoWindow": "api-docs.deepseek.com 공식 직계약 기준 블랙프라이데이 프로모션 미확인(2026-11-23 확인; 제3자 리셀러 제외)",
+          "promoWindow": "api-docs.deepseek.com 공식 직계약 기준 블랙프라이데이 프로모션 미확인(2026-11-25 확인; 제3자 리셀러 제외)",
           "eligiblePlans": "해당 없음 — 평일 01:00-04:00 및 06:00-10:00 UTC 외 시간대 상시 50% 오프피크 할인 적용",
           "renewalPrice": "표준 피크/오프피크 종량제 토큰 요금",
           "officialSourceLabel": "DeepSeek 공식 API 가격",
@@ -677,7 +677,7 @@
         "es": {
           "promoBadge": "Sin Promo BF Oficial",
           "regularPrice": "deepseek-flash pico $0.30/$1.20 por 1M ($0.006 caché); deepseek-v4-pro pico $1.32/$3.96; 50% descuento fuera de pico",
-          "promoWindow": "No se halló promo oficial directa de Black Friday en api-docs.deepseek.com (verificado 2026-11-23; excluye revendedores)",
+          "promoWindow": "No se halló promo oficial directa de Black Friday en api-docs.deepseek.com (verificado 2026-11-25; excluye revendedores)",
           "eligiblePlans": "N/A — sigue activo el 50% diario fuera de 01:00-04:00 y 06:00-10:00 UTC de lunes a viernes",
           "renewalPrice": "Tarifas estándar por token en horario pico y valle",
           "officialSourceLabel": "Precios API DeepSeek",
@@ -692,71 +692,71 @@
       "product": "Vibe & Mistral API",
       "category": "both",
       "promoStatus": "no_official_promo",
-      "promoBadge": "No BF Promo Found",
-      "regularPrice": "Vibe Pro $14.99/mo (verified student $5.99/mo); Mistral Large 4 API $0.70/$2.10 per 1M",
-      "promoWindow": "No official Black Friday promo found (verified 2026-11-23; standing student discount only)",
-      "eligiblePlans": "N/A for Black Friday; student pricing requires verified student status",
-      "renewalPrice": "Standard $14.99/mo Vibe Pro and PAYG API rates",
+      "promoBadge": "$25.50 Credit Cancelled",
+      "regularPrice": "Vibe Pro $14.99/mo (verified student $5.99/mo; $25.50/mo bundled API credit discontinued); Mistral Large 4 API $0.70/$2.10 per 1M",
+      "promoWindow": "No official Black Friday promo found (verified 2026-11-25; Vibe Pro $25.50 API credit listing cancelled/discontinued)",
+      "eligiblePlans": "N/A for Black Friday; $25.50 bundled API credit removed from Vibe Pro pricing; student tier requires verification",
+      "renewalPrice": "Standard $14.99/mo Vibe Pro (without $25.50 API credit bundle) and prepaid PAYG API rates",
       "officialSourceLabel": "Mistral AI Pricing",
       "officialSourceUrl": "https://mistral.ai/pricing/",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
-        "effectiveDate": "2026-11-07",
+        "effectiveDate": "2026-11-23",
         "changeType": "billing_rule",
-        "headline": "Free tier drops API & Codestral access; paid billing required for keys",
-        "impactDetail": "Free tier no longer includes API access or free Codestral API (PAYG billing activation required for API keys); bundled Vibe API credits reduced; Large 3 & Medium 3.5 deprecated Oct 31."
+        "headline": "Vibe Pro $25.50 API credit cancelled; Free API ends Dec 1 (3rd-party tools capped)",
+        "impactDetail": "Discontinued: Mistral removed the $25.50/mo bundled API credit from Vibe Pro pricing (Nov 20-21) and announced Nov 23 (effective Dec 1) that Free tier drops all monthly API allowance while 3rd-party coding tools draw from the smaller API allowance instead of Vibe."
       },
       "i18n": {
         "zh-CN": {
-          "promoBadge": "未查到官方黑五优惠",
-          "regularPrice": "Vibe Pro $14.99/月（认证学生 $5.99/月）；Mistral Large 4 API $0.70/$2.10 每百万",
-          "promoWindow": "未查到官方黑五优惠（核对日期 2026-11-23；仅保留常规学生折扣）",
-          "eligiblePlans": "无黑五适用套餐；学生价需完成官方学生身份认证",
-          "renewalPrice": "按标准价 $14.99/月 Vibe Pro 及按量 API 费率续费",
+          "promoBadge": "$25.50 额度已取消",
+          "regularPrice": "Vibe Pro $14.99/月（认证学生 $5.99/月；原 $25.50/月附赠 API 额度已终止）；Mistral Large 4 API $0.70/$2.10 每百万",
+          "promoWindow": "未查到官方黑五优惠（核对日期 2026-11-25；Vibe Pro $25.50 额度已从官网套餐下线终止）",
+          "eligiblePlans": "无黑五适用套餐；原 Vibe Pro $25.50 赠送额度已终止，学生价需身份认证",
+          "renewalPrice": "按标准价 $14.99/月 Vibe Pro（不含 $25.50 API 赠额）及预付 PAYG API 费率计费",
           "officialSourceLabel": "Mistral AI 官方定价",
-          "billingHeadline": "Free 套餐取消 API 与免费 Codestral；创建密钥须绑定付费账单",
-          "billingImpactDetail": "11 月起 Free 套餐不再含 API 与免费 Codestral API（创建 API Key 必须激活 PAYG 付费账单）；Vibe 附带 API 额度缩减；Large 3 与 Medium 3.5 已于 10/31 退市。"
+          "billingHeadline": "Vibe Pro 取消 $25.50 额度；12/1 取消 Free API（第三方工具受限）",
+          "billingImpactDetail": "已终止/下线：Mistral 于 11/20-21 从公开定价页移除 Vibe Pro 的 $25.50/月 API 额度，并于 11/23 宣布 12/1 起彻底取消 Free 套餐月度 API 额度，第三方编程工具改走较小 API 额度池且须启用预付 PAYG。"
         },
         "zh-TW": {
-          "promoBadge": "未查到官方黑五優惠",
-          "regularPrice": "Vibe Pro $14.99/月（認證學生 $5.99/月）；Mistral Large 4 API $0.70/$2.10 每百萬",
-          "promoWindow": "未查到官方黑五優惠（核對日期 2026-11-23；僅保留常規學生折扣）",
-          "eligiblePlans": "無黑五適用方案；學生價須完成官方學生身分驗證",
-          "renewalPrice": "依標準價 $14.99/月 Vibe Pro 及按量 API 費率續訂",
+          "promoBadge": "$25.50 額度已取消",
+          "regularPrice": "Vibe Pro $14.99/月（認證學生 $5.99/月；原 $25.50/月附贈 API 額度已終止）；Mistral Large 4 API $0.70/$2.10 每百萬",
+          "promoWindow": "未查到官方黑五優惠（核對日期 2026-11-25；Vibe Pro $25.50 額度已從官網方案下線終止）",
+          "eligiblePlans": "無黑五適用方案；原 Vibe Pro $25.50 贈送額度已終止，學生價須驗證身分",
+          "renewalPrice": "依標準價 $14.99/月 Vibe Pro（不含 $25.50 API 贈額）及預付 PAYG API 費率續訂",
           "officialSourceLabel": "Mistral AI 官方定價",
-          "billingHeadline": "Free 方案取消 API 與免費 Codestral；建立金鑰須綁定付費帳單",
-          "billingImpactDetail": "11 月起 Free 方案不再含 API 與免費 Codestral API（建立 API Key 須啟用 PAYG 付費帳單）；Vibe 附帶 API 額度縮減；Large 3 與 Medium 3.5 已於 10/31 下線。"
+          "billingHeadline": "Vibe Pro 取消 $25.50 額度；12/1 取消 Free API（第三方工具受限）",
+          "billingImpactDetail": "已終止/下線：Mistral 於 11/20-21 從公開定價頁移除 Vibe Pro 的 $25.50/月 API 額度，並於 11/23 宣布 12/1 起徹底取消 Free 方案月度 API 額度，第三方程式工具改扣較小 API 額度池且須啟用預付 PAYG。"
         },
         "ja": {
-          "promoBadge": "公式 BF 特価なし",
-          "regularPrice": "Vibe Pro $14.99/月（認証学生 $5.99/月）、Mistral Large 4 API $0.70/$2.10 per 1M",
-          "promoWindow": "公式ブラックフライデー割引は未確認（2026-11-23 確認；常設の学割のみ）",
-          "eligiblePlans": "ブラックフライデー対象外；学割は認証済み学生ステータスが必要",
-          "renewalPrice": "通常価格 Vibe Pro $14.99/月および従量課金 API 単価",
+          "promoBadge": "$25.50 クレジット終了",
+          "regularPrice": "Vibe Pro $14.99/月（学割 $5.99/月、$25.50/月 API クレジット特典は終了）；Mistral Large 4 API $0.70/$2.10",
+          "promoWindow": "公式ブラックフライデー割引は未確認（2026-11-25 確認；Vibe Pro の $25.50 API 特典は終了・削除済み）",
+          "eligiblePlans": "対象外；$25.50 付帯 API 枠は終了済み（学割は認証必須）",
+          "renewalPrice": "通常価格 Vibe Pro $14.99/月（$25.50 API 枠なし）および前払い PAYG API 単価",
           "officialSourceLabel": "Mistral AI 公式料金",
-          "billingHeadline": "Free 枠から API・Codestral 無料枠を廃止；課金有効化が必須に",
-          "billingImpactDetail": "11月より Free プランで API および無料 Codestral API が利用不可に（API キー発行には PAYG 課金設定が必須）。Vibe 付帯クレジットも縮小、Large 3 / Medium 3.5 は10/31廃止。"
+          "billingHeadline": "Vibe Pro の $25.50 枠を廃止；12/1 Free API 終了（外部ツール枠分離）",
+          "billingImpactDetail": "提供終了：11/20-21 に Vibe Pro 料金表から $25.50/月の API クレジット表記を削除。11/23 発表により 12/1 から Free プランの月間 API 枠を全面廃止し、外部ツール経由は小容量の API 枠消費へ移行します。"
         },
         "ko": {
-          "promoBadge": "공식 블프 할인 없음",
-          "regularPrice": "Vibe Pro $14.99/월(인증 학생 $5.99/월); Mistral Large 4 API $0.70/$2.10(1M당)",
-          "promoWindow": "공식 블랙프라이데이 프로모션 미확인(2026-11-23 확인; 상시 학생 할인만 제공)",
-          "eligiblePlans": "블랙프라이데이 해당 없음; 학생 요금제는 학생 인증 필수",
-          "renewalPrice": "표준 Vibe Pro $14.99/월 및 종량제 API 요율",
+          "promoBadge": "$25.50 크레딧 종료",
+          "regularPrice": "Vibe Pro $14.99/월(학생 $5.99/월; $25.50/월 API 크레딧 혜택 종료); Mistral Large 4 API $0.70/$2.10(1M당)",
+          "promoWindow": "공식 블랙프라이데이 프로모션 미확인(2026-11-25 확인; Vibe Pro $25.50 API 크레딧 항목 종료·삭제됨)",
+          "eligiblePlans": "해당 없음; Vibe Pro $25.50 API 크레딧 번들 종료, 학생 할인은 인증 필수",
+          "renewalPrice": "표준 Vibe Pro $14.99/월($25.50 API 크레딧 미포함) 및 선불 PAYG API 요율",
           "officialSourceLabel": "Mistral AI 공식 가격",
-          "billingHeadline": "무료 티어 API·Codestral 중단; API 키 발급 시 유료 결제 필수",
-          "billingImpactDetail": "11월부터 무료 요금제에 API 및 무료 Codestral 접근이 제외되어 API 키 발급 시 PAYG 결제 등록이 필수이며, Vibe 번들 API 크레딧 축소 및 Large 3/Medium 3.5가 10/31 종료되었습니다."
+          "billingHeadline": "Vibe Pro $25.50 크레딧 종료; 12/1 무료 API 폐지(외부 도구 별도 차감)",
+          "billingImpactDetail": "지원 종료: 11/20-21 공개 요금표에서 Vibe Pro의 $25.50/월 API 크레딧이 삭제되었으며, 11/23 공지에 따라 12월 1일부터 무료 플랜의 월간 API 제공이 중단되고 외부 코딩 도구는 별도 API 한도로 전환됩니다."
         },
         "es": {
-          "promoBadge": "Sin Promo BF Oficial",
-          "regularPrice": "Vibe Pro $14.99/mes (estudiantes $5.99/mes); API Mistral Large 4 $0.70/$2.10 por 1M",
-          "promoWindow": "No se halló promo oficial de Black Friday (verificado 2026-11-23; solo descuento permanente para estudiantes)",
-          "eligiblePlans": "N/A para Black Friday; tarifa estudiantil requiere verificación académica",
-          "renewalPrice": "Estándar $14.99/mes Vibe Pro y tarifas API por uso",
+          "promoBadge": "Crédito $25.50 Cancelado",
+          "regularPrice": "Vibe Pro $14.99/mes (estudiantes $5.99/mes; crédito API de $25.50/mes cancelado); API Mistral Large 4 $0.70/$2.10 por 1M",
+          "promoWindow": "No se halló promo oficial de Black Friday (verificado 2026-11-25; el crédito API de $25.50 en Vibe Pro fue cancelado)",
+          "eligiblePlans": "N/A para Black Friday; crédito de $25.50 retirado de Vibe Pro; tarifa estudiantil exige verificación",
+          "renewalPrice": "Estándar $14.99/mes Vibe Pro (sin bono API de $25.50) y tarifas PAYG prepagas",
           "officialSourceLabel": "Precios Mistral AI",
-          "billingHeadline": "El plan gratuito pierde API y Codestral; clave API exige pago activo",
-          "billingImpactDetail": "El nivel Free ya no incluye acceso API ni Codestral gratis (exige activar facturación PAYG para crear claves); se redujeron créditos API en Vibe y Large 3/Medium 3.5 cerraron el 31 oct."
+          "billingHeadline": "Vibe Pro cancela crédito de $25.50; API gratuita cierra 1 dic",
+          "billingImpactDetail": "Descontinuado: Mistral retiró el crédito API de $25.50/mes de Vibe Pro (20-21 nov) y anunció el 23 nov (vigente 1 dic) el cierre total de la cuota API en el plan Free; herramientas de terceros pasan a la cuota API menor."
         }
       }
     },
@@ -768,12 +768,12 @@
       "promoStatus": "no_official_promo",
       "promoBadge": "No BF Promo Found",
       "regularPrice": "Self-serve: gpt-oss-120b $0.15/$0.60, gpt-oss-20b $0.075/$0.30 per 1M; Whisper v3 $0.111/hr, Turbo $0.04/hr (50% Batch / 50% Cache non-stackable)",
-      "promoWindow": "No official Black Friday promo found (verified 2026-11-23)",
+      "promoWindow": "No official Black Friday promo found (verified 2026-11-25)",
       "eligiblePlans": "N/A — Developer PAYG and Enterprise Contact Sales tiers",
       "renewalPrice": "Standard published per-token / per-hour rate card",
       "officialSourceLabel": "Groq Official Site",
       "officialSourceUrl": "https://groq.com/",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-11-20",
@@ -785,7 +785,7 @@
         "zh-CN": {
           "promoBadge": "未查到官方黑五优惠",
           "regularPrice": "自服务：gpt-oss-120b $0.15/$0.60、gpt-oss-20b $0.075/$0.30 每百万；Whisper v3 $0.111/小时、Turbo $0.04/小时（50% 批量/缓存不叠加）",
-          "promoWindow": "未查到官方黑五优惠（核对日期 2026-11-23）",
+          "promoWindow": "未查到官方黑五优惠（核对日期 2026-11-25）",
           "eligiblePlans": "不适用 — 现行 Developer 按量付费与 Enterprise 销售联系档位",
           "renewalPrice": "按官方公开每百万 Token / 每小时标准费率表计费",
           "officialSourceLabel": "Groq 官方网站",
@@ -795,7 +795,7 @@
         "zh-TW": {
           "promoBadge": "未查到官方黑五優惠",
           "regularPrice": "自助服務：gpt-oss-120b $0.15/$0.60、gpt-oss-20b $0.075/$0.30 每百萬；Whisper v3 $0.111/小時、Turbo $0.04/小時（50% 批次/快取不疊加）",
-          "promoWindow": "未查到官方黑五優惠（核對日期 2026-11-23）",
+          "promoWindow": "未查到官方黑五優惠（核對日期 2026-11-25）",
           "eligiblePlans": "不適用 — 適用 Developer 按量付費與 Enterprise 聯繫銷售方案",
           "renewalPrice": "依官方公開每百萬 Token / 每小時標準費率表計費",
           "officialSourceLabel": "Groq 官方網站",
@@ -805,7 +805,7 @@
         "ja": {
           "promoBadge": "公式 BF 特価なし",
           "regularPrice": "セルフサーブ：gpt-oss-120b $0.15/$0.60、gpt-oss-20b $0.075/$0.30（per 1M）；Whisper v3 $0.111/時、Turbo $0.04/時（Batch/Cache 50% 併用不可）",
-          "promoWindow": "公式ブラックフライデー割引は未確認（2026-11-23 確認）",
+          "promoWindow": "公式ブラックフライデー割引は未確認（2026-11-25 確認）",
           "eligiblePlans": "対象外 — Developer 従量課金および Enterprise 営業問い合わせプラン",
           "renewalPrice": "公開中の標準トークン単価・時間単価を適用",
           "officialSourceLabel": "Groq 公式サイト",
@@ -815,7 +815,7 @@
         "ko": {
           "promoBadge": "공식 블프 할인 없음",
           "regularPrice": "셀프서브: gpt-oss-120b $0.15/$0.60, gpt-oss-20b $0.075/$0.30(1M당); Whisper v3 $0.111/시간, Turbo $0.04/시간(배치/캐시 50% 중복 불가)",
-          "promoWindow": "공식 블랙프라이데이 프로모션 미확인(2026-11-23 확인)",
+          "promoWindow": "공식 블랙프라이데이 프로모션 미확인(2026-11-25 확인)",
           "eligiblePlans": "해당 없음 — Developer 종량제 및 Enterprise 영업 문의 등급",
           "renewalPrice": "공시된 표준 토큰/시간당 요율표 적용",
           "officialSourceLabel": "Groq 공식 사이트",
@@ -825,7 +825,7 @@
         "es": {
           "promoBadge": "Sin Promo BF Oficial",
           "regularPrice": "Autoservicio: gpt-oss-120b $0.15/$0.60, gpt-oss-20b $0.075/$0.30 por 1M; Whisper v3 $0.111/h, Turbo $0.04/h (50% Batch/Caché no acumulable)",
-          "promoWindow": "No se halló promo oficial de Black Friday (verificado 2026-11-23)",
+          "promoWindow": "No se halló promo oficial de Black Friday (verificado 2026-11-25)",
           "eligiblePlans": "N/A — planes Developer PAYG y Enterprise bajo contacto comercial",
           "renewalPrice": "Tarifa pública estándar por token y por hora",
           "officialSourceLabel": "Sitio oficial de Groq",
@@ -842,12 +842,12 @@
       "promoStatus": "no_official_promo",
       "promoBadge": "No BF Promo Found",
       "regularPrice": "Qwen4 Max serverless standard $1.50/$4.50 per 1M ($0.075 cached); HGX B200 GPU $9.29/hr",
-      "promoWindow": "No sitewide Black Friday promo found as of 2026-11-23 (Qwen4 Max 30% intro promo $1.05/$3.15 valid only through Nov 23, 2026)",
-      "eligiblePlans": "N/A for Black Friday — Qwen4 Max 30% intro promo expires today (Nov 23, 2026)",
+      "promoWindow": "No sitewide Black Friday promo found as of 2026-11-25 (Qwen4 Max 30% intro promo $1.05/$3.15 ended Nov 23, 2026)",
+      "eligiblePlans": "N/A for Black Friday — Qwen4 Max 30% intro promo expired Nov 23, 2026 (up to $50K startup credits separate)",
       "renewalPrice": "Standard serverless token ($1.50/$4.50 Qwen4 Max) & on-demand GPU hourly rates",
       "officialSourceLabel": "Together AI Pricing",
       "officialSourceUrl": "https://www.together.ai/pricing",
-      "verifiedDate": "2026-11-23",
+      "verifiedDate": "2026-11-25",
       "billingChange": {
         "hasRecentChange": true,
         "effectiveDate": "2026-11-17",
@@ -859,8 +859,8 @@
         "zh-CN": {
           "promoBadge": "未查到黑五全场优惠",
           "regularPrice": "Qwen4 Max 无服务器标准价 $1.50/$4.50 每百万（缓存 $0.075）；HGX B200 GPU $9.29/小时",
-          "promoWindow": "截至 2026-11-23 未查到黑五全场优惠（Qwen4 Max 30% 首周特惠 $1.05/$3.15 仅有效至 2026-11-23 今日到期）",
-          "eligiblePlans": "无黑五全场适用套餐 — Qwen4 Max 30% 首周特惠于 11 月 23 日到期恢复原价",
+          "promoWindow": "截至 2026-11-25 未查到黑五全场优惠（Qwen4 Max 30% 首周特惠 $1.05/$3.15 已于 2026-11-23 结束）",
+          "eligiblePlans": "无黑五全场适用套餐 — Qwen4 Max 30% 首周特惠已于 11 月 23 日到期恢复原价",
           "renewalPrice": "按标准无服务器 Token 费率（Qwen4 Max $1.50/$4.50）与按需 GPU 小时费率计费",
           "officialSourceLabel": "Together AI 官方定价",
           "billingHeadline": "HGX B200 涨至 $9.29/hr；SDK stop() 改为受理即停计费",
@@ -869,8 +869,8 @@
         "zh-TW": {
           "promoBadge": "未查到黑五全場優惠",
           "regularPrice": "Qwen4 Max 無伺服器標準價 $1.50/$4.50 每百萬（快取 $0.075）；HGX B200 GPU $9.29/小時",
-          "promoWindow": "截至 2026-11-23 未查到黑五全場優惠（Qwen4 Max 30% 首週特惠 $1.05/$3.15 僅有效至 2026-11-23 今日到期）",
-          "eligiblePlans": "無黑五全場適用方案 — Qwen4 Max 30% 首週特惠於 11 月 23 日到期恢復原價",
+          "promoWindow": "截至 2026-11-25 未查到黑五全場優惠（Qwen4 Max 30% 首週特惠 $1.05/$3.15 已於 2026-11-23 結束）",
+          "eligiblePlans": "無黑五全場適用方案 — Qwen4 Max 30% 首週特惠已於 11 月 23 日到期恢復原價",
           "renewalPrice": "依標準無伺服器 Token 費率（Qwen4 Max $1.50/$4.50）與按需 GPU 小時費率計費",
           "officialSourceLabel": "Together AI 官方定價",
           "billingHeadline": "HGX B200 漲至 $9.29/hr；SDK stop() 改為受理即停計費",
@@ -879,8 +879,8 @@
         "ja": {
           "promoBadge": "BF 全般割引なし",
           "regularPrice": "Qwen4 Max サーバーレス標準 $1.50/$4.50 per 1M（キャッシュ $0.075）；HGX B200 GPU $9.29/時",
-          "promoWindow": "2026-11-23 時点でサイト全体のブラックフライデー割引は未確認（Qwen4 Max 30% 初回割 $1.05/$3.15 は本日 11/23 まで）",
-          "eligiblePlans": "ブラックフライデー対象外 — Qwen4 Max 30% 割引は本日（2026-11-23）で終了",
+          "promoWindow": "2026-11-25 時点でサイト全体のブラックフライデー割引は未確認（Qwen4 Max 30% 初回割 $1.05/$3.15 は 11/23 に終了済み）",
+          "eligiblePlans": "ブラックフライデー対象外 — Qwen4 Max 30% 割引は 2026-11-23 に終了",
           "renewalPrice": "標準サーバーレス単価（Qwen4 Max $1.50/$4.50）およびオンデマンド GPU 時間単価",
           "officialSourceLabel": "Together AI 公式料金",
           "billingHeadline": "HGX B200 を $9.29/時へ改定；SDK stop() は受付時点で課金終了",
@@ -889,8 +889,8 @@
         "ko": {
           "promoBadge": "블프 전체 할인 없음",
           "regularPrice": "Qwen4 Max 서버리스 표준 $1.50/$4.50(1M당, 캐시 $0.075); HGX B200 GPU $9.29/시간",
-          "promoWindow": "2026-11-23 기준 사이트 전체 블랙프라이데이 할인 미확인(Qwen4 Max 30% 출시 특가 $1.05/$3.15는 오늘 11/23 종료)",
-          "eligiblePlans": "블랙프라이데이 해당 없음 — Qwen4 Max 30% 출시 프로모션 오늘(11월 23일) 만료",
+          "promoWindow": "2026-11-25 기준 사이트 전체 블랙프라이데이 할인 미확인(Qwen4 Max 30% 출시 특가 $1.05/$3.15는 11/23 종료됨)",
+          "eligiblePlans": "블랙프라이데이 해당 없음 — Qwen4 Max 30% 출시 프로모션은 11월 23일 만료",
           "renewalPrice": "표준 서버리스 토큰 요율(Qwen4 Max $1.50/$4.50) 및 온디맨드 GPU 시간당 요금",
           "officialSourceLabel": "Together AI 공식 가격",
           "billingHeadline": "HGX B200 $9.29/시간 인상; SDK stop() 수락 즉시 과금 중단",
@@ -899,8 +899,8 @@
         "es": {
           "promoBadge": "Sin Promo BF General",
           "regularPrice": "Qwen4 Max serverless estándar $1.50/$4.50 por 1M ($0.075 caché); GPU HGX B200 $9.29/h",
-          "promoWindow": "No se halló promo general de Black Friday al 2026-11-23 (promo intro 30% de Qwen4 Max a $1.05/$3.15 vence hoy 23 nov 2026)",
-          "eligiblePlans": "N/A para Black Friday — la promo de lanzamiento del 30% en Qwen4 Max expira hoy (23 nov 2026)",
+          "promoWindow": "No se halló promo general de Black Friday al 2026-11-25 (promo intro 30% de Qwen4 Max a $1.05/$3.15 finalizó el 23 nov 2026)",
+          "eligiblePlans": "N/A para Black Friday — la promo de lanzamiento del 30% en Qwen4 Max expiró el 23 nov 2026",
           "renewalPrice": "Tarifas estándar serverless ($1.50/$4.50 en Qwen4 Max) y GPU bajo demanda por hora",
           "officialSourceLabel": "Precios Together AI",
           "billingHeadline": "HGX B200 sube a $9.29/h; SDK stop() corta el cobro al aceptarse",

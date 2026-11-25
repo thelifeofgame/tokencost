@@ -308,7 +308,7 @@ export default function MarketPulseRadar() {
             return (
               <article
                 key={ev.id}
-                className={`group relative overflow-hidden rounded-xl border p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg flex flex-col justify-between gap-3 ${
+                className={`group relative overflow-hidden rounded-xl border p-3.5 sm:p-4 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg flex flex-col justify-between gap-3 ${
                   isUrgentCarbon
                     ? 'border-rose-300/80 dark:border-rose-500/40 bg-gradient-to-b from-rose-50/75 via-white/90 to-white/90 dark:from-rose-950/30 dark:via-zinc-900/75 dark:to-zinc-900/70 hover:border-rose-400 dark:hover:border-rose-500/65 hover:shadow-rose-500/10'
                     : 'border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/70 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-indigo-500/5'
@@ -325,12 +325,12 @@ export default function MarketPulseRadar() {
 
                 <div className="space-y-2.5">
                   {/* Layer 1: Provider + Badge */}
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center justify-between gap-1.5">
                     <span className="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 truncate">
                       {ev.provider}
                     </span>
                     <span
-                      className={`shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border text-[10px] font-mono tabular-nums font-bold tracking-tight whitespace-nowrap ${
+                      className={`shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border text-[9.5px] sm:text-[10px] font-mono tabular-nums font-bold tracking-tight whitespace-nowrap ${
                         isUrgentCarbon
                           ? 'bg-rose-500/12 border-rose-500/35 text-rose-800 dark:bg-rose-500/20 dark:border-rose-400/40 dark:text-rose-200'
                           : BADGE_STYLE[colorKey]
@@ -359,7 +359,7 @@ export default function MarketPulseRadar() {
                     className={`rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-950/80 px-2.5 py-1.5 flex items-center justify-between gap-2 ${HIGHLIGHT_ACCENT_BORDER[colorKey]}`}
                   >
                     <span
-                      className={`font-mono tabular-nums text-xs font-bold truncate ${
+                      className={`font-mono tabular-nums text-[11px] sm:text-xs leading-tight font-bold truncate ${
                         isUrgentCarbon
                           ? 'text-rose-700 dark:text-rose-300'
                           : 'text-zinc-900 dark:text-zinc-100'

@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Code2, Copy, Check, FileText, Sun, Moon, ExternalLink } from 'lucide-react';
 import { MODELS_DATA } from '@/lib/models-data';
+import { ModelPricingRule } from '@/types/pricing';
 import { useI18n } from '@/i18n/I18nProvider';
 import { Locale } from '@/i18n/types';
 import { trackEvent } from '@/lib/analytics';
@@ -18,15 +19,17 @@ import {
 } from '@/lib/badge-generator';
 
 const QUICK_MODEL_PRESETS: { id: string; label: string; isNew?: boolean }[] = [
+  { id: 'solar-mini-4-5', label: 'Solar Mini 4.5', isNew: true },
   { id: 'gemini-4-neon', label: 'Gemini 4 Neon' },
   { id: 'deepseek-v4.1-flash', label: 'DeepSeek-V4.1-Flash' },
-  { id: 'glm-5.3-flash', label: 'GLM-5.3-Flash', isNew: true },
-  { id: 'inkling-2-mini', label: 'Inkling 2 Mini', isNew: true },
+  { id: 'glm-5.3-flash', label: 'GLM-5.3-Flash' },
+  { id: 'inkling-2-mini', label: 'Inkling 2 Mini' },
   { id: 'gpt-6.2-sol', label: 'GPT-6.2 Sol' },
   { id: 'claude-sonnet-5.5', label: 'Claude Sonnet 5.5' },
 ];
 
 const BADGE_PRESET_WHITELIST = new Set([
+  'solar-mini-4-5',
   'gemini-4-neon',
   'deepseek-v4.1-flash',
   'glm-5.3-flash',
@@ -35,75 +38,138 @@ const BADGE_PRESET_WHITELIST = new Set([
   'claude-sonnet-5.5',
 ]);
 
-const PRESET_HIGHLIGHTS: Record<
-  'inkling-2-mini' | 'glm-5.3-flash',
-  Record<Locale, { displayTitle: string; description: string }>
-> = {
-  'inkling-2-mini': {
-    en: {
-      displayTitle: 'Inkling 2 Mini · 1M Context MoE',
-      description:
-        "Thinking Machines' 3.4B-active looped MoE ($0.075/$0.30 per 1M, 80% cache discount, 145 t/s) — ideal for lean OSS agents & 1M RAG repos.",
-    },
-    'zh-CN': {
-      displayTitle: 'Inkling 2 Mini · 1M 上下文推理小钢炮',
-      description:
-        'Thinking Machines 开源 3.4B 激活循环 MoE（$0.075/$0.30 每百万，80% 缓存折扣，145 t/s），适合轻量开源 Agent 与百万上下文 RAG 项目挂标。',
-    },
-    'zh-TW': {
-      displayTitle: 'Inkling 2 Mini · 1M 上下文推理輕量王',
-      description:
-        'Thinking Machines 開源 3.4B 激活循環 MoE（$0.075/$0.30 每百萬，80% 快取折扣，145 t/s），適合輕量開源 Agent 與百萬上下文 RAG 專案。',
-    },
-    ja: {
-      displayTitle: 'Inkling 2 Mini · 1M文脈 MoE',
-      description:
-        'Thinking Machines製 3.4Bアクティブ MoE（$0.075/$0.30・キャッシュ80%OFF・145 t/s）。1Mトークン対応の軽量OSSエージェント向けバッジ。',
-    },
-    ko: {
-      displayTitle: 'Inkling 2 Mini · 1M 컨텍스트 MoE',
-      description:
-        'Thinking Machines의 3.4B 활성 루프 MoE($0.075/$0.30, 캐시 80% 할인, 145 t/s) — 경량 오픈소스 에이전트 및 1M RAG README에 최적화.',
-    },
-    es: {
-      displayTitle: 'Inkling 2 Mini · MoE Contexto 1M',
-      description:
-        'MoE de Thinking Machines con 3.4B activos ($0.075/$0.30 por 1M, 80% en caché, 145 t/s): ideal para agentes OSS ligeros y repos RAG de 1M.',
-    },
-  },
-  'glm-5.3-flash': {
-    en: {
-      displayTitle: 'GLM-5.3-Flash · -84% Output Floor',
-      description:
-        'Z.ai 1M-context multimodal Flash ($0.0399 in / $0.0784 out per 1M, 145 t/s, Coding 1259) — built for high-output codegen & batch pipelines.',
-    },
-    'zh-CN': {
-      displayTitle: 'GLM-5.3-Flash · 输出直降 84% 地板价',
-      description:
-        '智谱 1M 上下文原生多模态模型（输入 $0.0399 / 输出 $0.0784 每百万，145 t/s，Coding 1259），适合高输出代码生成与批处理项目。',
-    },
-    'zh-TW': {
-      displayTitle: 'GLM-5.3-Flash · 輸出直降 84% 地板價',
-      description:
-        '智譜 1M 上下文原生多模態模型（輸入 $0.0399 / 輸出 $0.0784 每百萬，145 t/s，Coding 1259），適合高輸出程式碼生成與批次管線。',
-    },
-    ja: {
-      displayTitle: 'GLM-5.3-Flash · 出力84%OFF 最安水準',
-      description:
-        'Z.ai の1M文脈マルチモーダル（入力 $0.0399 / 出力 $0.0784・145 t/s・Coding 1259）。大量出力を伴うコード生成・バッチ処理に最適。',
-    },
-    ko: {
-      displayTitle: 'GLM-5.3-Flash · 출력 84% 인하 최저가',
-      description:
-        'Z.ai 1M 컨텍스트 멀티모달 Flash(입력 $0.0399 / 출력 $0.0784, 145 t/s, Coding 1259) — 대량 출력 코드 생성 및 배치 파이프라인용.',
-    },
-    es: {
-      displayTitle: 'GLM-5.3-Flash · -84% en Salida',
-      description:
-        'Modelo multimodal de Z.ai con contexto 1M ($0.0399 entrada / $0.0784 salida, 145 t/s, Coding 1259): ideal para generación masiva de código.',
-    },
-  },
-};
+function getPresetHighlight(
+  model: ModelPricingRule | undefined,
+  locale: Locale
+): { displayTitle: string; description: string } | null {
+  if (!model) return null;
+
+  const inputRate = formatBadgeRate(model.inputPerM);
+  const outputRate = formatBadgeRate(model.outputPerM);
+  const cachedRate = formatBadgeRate(model.cachedInputPerM);
+  const cacheDiscount = Math.round(model.cacheDiscountPercent);
+  const batchDiscount = Math.round(model.batchDiscountPercent);
+  const tps = model.benchmarks?.avgThroughputTokS;
+  const codingIndex = model.benchmarks?.codingIndex;
+
+  if (model.modelId === 'solar-mini-4-5') {
+    const tpsPhrase = typeof tps === 'number' ? `, ${tps} t/s` : '';
+    const tpsPhraseJa = typeof tps === 'number' ? `・${tps} t/s` : '';
+    switch (locale) {
+      case 'zh-CN':
+        return {
+          displayTitle: `Solar Mini 4.5 · ${inputRate}/${outputRate} 超轻量 MoE`,
+          description: `Upstage 35B 总参 / 3B 激活 MoE（输入 ${inputRate} / 输出 ${outputRate} 每百万，${cacheDiscount}% 缓存低至 ${cachedRate}，524K 上下文${tpsPhrase}），适合高频开源 Agent 与分类检索项目挂标。`,
+        };
+      case 'zh-TW':
+        return {
+          displayTitle: `Solar Mini 4.5 · ${inputRate}/${outputRate} 超輕量 MoE`,
+          description: `Upstage 35B 總參 / 3B 激活 MoE（輸入 ${inputRate} / 輸出 ${outputRate} 每百萬，${cacheDiscount}% 快取低至 ${cachedRate}，524K 上下文${tpsPhrase}），適合高頻開源 Agent 與分類檢索專案掛標。`,
+        };
+      case 'ja':
+        return {
+          displayTitle: `Solar Mini 4.5 · ${inputRate}/${outputRate} 超軽量 MoE`,
+          description: `Upstage 35B/3Bアクティブ MoE（入力 ${inputRate} / 出力 ${outputRate}・キャッシュ ${cacheDiscount}%OFF で ${cachedRate}・524K 文脈${tpsPhraseJa}）。高頻度 OSS エージェントや分類リポジトリ向け。`,
+        };
+      case 'ko':
+        return {
+          displayTitle: `Solar Mini 4.5 · ${inputRate}/${outputRate} 초경량 MoE`,
+          description: `Upstage 35B(활성 3B) MoE(입력 ${inputRate} / 출력 ${outputRate} per 1M, 캐시 ${cacheDiscount}% 할인 ${cachedRate}, 524K 컨텍스트${tpsPhrase}) — 대량 호출 오픈소스 에이전트 README 최적화.`,
+        };
+      case 'es':
+        return {
+          displayTitle: `Solar Mini 4.5 · MoE Ultraligero ${inputRate}/${outputRate}`,
+          description: `MoE de Upstage (35B totales / 3B activos, ${inputRate} entrada / ${outputRate} salida por 1M, -${cacheDiscount}% caché a ${cachedRate}, contexto 524K${tpsPhrase}): ideal para agentes OSS de alto volumen.`,
+        };
+      case 'en':
+      default:
+        return {
+          displayTitle: `Solar Mini 4.5 · ${inputRate}/${outputRate} Ultra-Lean MoE`,
+          description: `Upstage 35B/3B-active MoE (${inputRate} in / ${outputRate} out per 1M, -${cacheDiscount}% cache to ${cachedRate}, 524K context${tpsPhrase}) — built for high-volume OSS agents & classification repos.`,
+        };
+    }
+  }
+
+  if (model.modelId === 'glm-5.3-flash') {
+    const tpsPhrase = typeof tps === 'number' ? `, ${tps} t/s` : '';
+    const tpsPhraseJa = typeof tps === 'number' ? `・${tps} t/s` : '';
+    const codingSuffix = typeof codingIndex === 'number' ? `, Coding ${codingIndex}` : '';
+    const codingSuffixJa = typeof codingIndex === 'number' ? `・Coding ${codingIndex}` : '';
+    switch (locale) {
+      case 'zh-CN':
+        return {
+          displayTitle: `GLM-5.3-Flash · ${cacheDiscount}% 缓存 / ${batchDiscount}% Batch 折扣`,
+          description: `智谱 1M 上下文原生多模态 Flash（输入 ${inputRate} / 输出 ${outputRate} 每百万，缓存 ${cachedRate}，Batch 省 ${batchDiscount}%${tpsPhrase}${codingSuffix}），适合代码生成与异步批处理项目。`,
+        };
+      case 'zh-TW':
+        return {
+          displayTitle: `GLM-5.3-Flash · ${cacheDiscount}% 快取 / ${batchDiscount}% Batch 折扣`,
+          description: `智譜 1M 上下文原生多模態 Flash（輸入 ${inputRate} / 輸出 ${outputRate} 每百萬，快取 ${cachedRate}，Batch 省 ${batchDiscount}%${tpsPhrase}${codingSuffix}），適合程式碼生成與非同步批次管線。`,
+        };
+      case 'ja':
+        return {
+          displayTitle: `GLM-5.3-Flash · キャッシュ${cacheDiscount}%OFF・Batch ${batchDiscount}%OFF`,
+          description: `Z.ai 1M文脈マルチモーダル Flash（入力 ${inputRate} / 出力 ${outputRate}・キャッシュ ${cachedRate}・Batch ${batchDiscount}%OFF${tpsPhraseJa}${codingSuffixJa}）。コード生成やバッチ処理に最適。`,
+        };
+      case 'ko':
+        return {
+          displayTitle: `GLM-5.3-Flash · 캐시 ${cacheDiscount}% / Batch ${batchDiscount}% 할인`,
+          description: `Z.ai 1M 컨텍스트 멀티모달 Flash(입력 ${inputRate} / 출력 ${outputRate}, 캐시 ${cachedRate}, Batch ${batchDiscount}% 할인${tpsPhrase}${codingSuffix}) — 코드 생성 및 비동기 배치 파이프라인용.`,
+        };
+      case 'es':
+        return {
+          displayTitle: `GLM-5.3-Flash · -${cacheDiscount}% Caché / -${batchDiscount}% Batch`,
+          description: `Modelo multimodal de Z.ai con contexto 1M (${inputRate} entrada / ${outputRate} salida por 1M, caché ${cachedRate}, -${batchDiscount}% Batch${tpsPhrase}${codingSuffix}): ideal para código y lotes.`,
+        };
+      case 'en':
+      default:
+        return {
+          displayTitle: `GLM-5.3-Flash · -${cacheDiscount}% Cache / -${batchDiscount}% Batch`,
+          description: `Z.ai 1M-context multimodal Flash (${inputRate} in / ${outputRate} out per 1M, ${cachedRate} cached, -${batchDiscount}% Batch${tpsPhrase}${codingSuffix}) — built for long-context codegen & async pipelines.`,
+        };
+    }
+  }
+
+  if (model.modelId === 'inkling-2-mini') {
+    const tpsPhrase = typeof tps === 'number' ? `, ${tps} t/s` : '';
+    const tpsPhraseJa = typeof tps === 'number' ? `・${tps} t/s` : '';
+    switch (locale) {
+      case 'zh-CN':
+        return {
+          displayTitle: 'Inkling 2 Mini · 1M 上下文推理小钢炮',
+          description: `Thinking Machines 开源 3.4B 激活循环 MoE（${inputRate}/${outputRate} 每百万，${cacheDiscount}% 缓存折扣至 ${cachedRate}${tpsPhrase}），适合轻量开源 Agent 与百万上下文 RAG 项目挂标。`,
+        };
+      case 'zh-TW':
+        return {
+          displayTitle: 'Inkling 2 Mini · 1M 上下文推理輕量王',
+          description: `Thinking Machines 開源 3.4B 激活循環 MoE（${inputRate}/${outputRate} 每百萬，${cacheDiscount}% 快取折扣至 ${cachedRate}${tpsPhrase}），適合輕量開源 Agent 與百萬上下文 RAG 專案。`,
+        };
+      case 'ja':
+        return {
+          displayTitle: 'Inkling 2 Mini · 1M文脈 MoE',
+          description: `Thinking Machines製 3.4Bアクティブ MoE（${inputRate}/${outputRate}・キャッシュ${cacheDiscount}%OFF ${cachedRate}${tpsPhraseJa}）。1Mトークン対応の軽量OSSエージェント向けバッジ。`,
+        };
+      case 'ko':
+        return {
+          displayTitle: 'Inkling 2 Mini · 1M 컨텍스트 MoE',
+          description: `Thinking Machines의 3.4B 활성 루프 MoE(${inputRate}/${outputRate}, 캐시 ${cacheDiscount}% 할인 ${cachedRate}${tpsPhrase}) — 경량 오픈소스 에이전트 및 1M RAG README에 최적화.`,
+        };
+      case 'es':
+        return {
+          displayTitle: 'Inkling 2 Mini · MoE Contexto 1M',
+          description: `MoE de Thinking Machines con 3.4B activos (${inputRate}/${outputRate} por 1M, ${cacheDiscount}% en caché a ${cachedRate}${tpsPhrase}): ideal para agentes OSS ligeros y repos RAG de 1M.`,
+        };
+      case 'en':
+      default:
+        return {
+          displayTitle: 'Inkling 2 Mini · 1M Context MoE',
+          description: `Thinking Machines' 3.4B-active looped MoE (${inputRate}/${outputRate} per 1M, ${cacheDiscount}% cache discount to ${cachedRate}${tpsPhrase}) — ideal for lean OSS agents & 1M RAG repos.`,
+        };
+    }
+  }
+
+  return null;
+}
 
 export default function BadgeGenerator() {
   const { locale } = useI18n();
@@ -117,21 +183,24 @@ export default function BadgeGenerator() {
   const [snippetTab, setSnippetTab] = useState<'markdown' | 'html' | 'url'>('markdown');
   const [copiedFormat, setCopiedFormat] = useState<string | null>(null);
 
+  const modelLookup = useMemo(() => {
+    const map = new Map<string, ModelPricingRule>();
+    MODELS_DATA.forEach((m) => map.set(m.modelId, m));
+    return map;
+  }, []);
+
   const selectedModel = useMemo(() => {
     return (
-      MODELS_DATA.find((m) => m.modelId === selectedModelId) ||
-      MODELS_DATA.find((m) => m.modelId === 'gemini-4-neon') ||
+      modelLookup.get(selectedModelId) ||
+      modelLookup.get('gemini-4-neon') ||
       MODELS_DATA[0]
     );
-  }, [selectedModelId]);
+  }, [modelLookup, selectedModelId]);
 
   const activeHighlight = useMemo(() => {
     if (isHarnessPreset) return null;
-    if (selectedModel.modelId === 'inkling-2-mini' || selectedModel.modelId === 'glm-5.3-flash') {
-      return PRESET_HIGHLIGHTS[selectedModel.modelId][locale];
-    }
-    return null;
-  }, [isHarnessPreset, selectedModel.modelId, locale]);
+    return getPresetHighlight(selectedModel, locale);
+  }, [isHarnessPreset, selectedModel, locale]);
 
   const badgeInput = useMemo(
     () => ({
@@ -259,10 +328,7 @@ export default function BadgeGenerator() {
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
               {QUICK_MODEL_PRESETS.map((preset) => {
                 const active = !isHarnessPreset && selectedModelId === preset.id;
-                const highlight =
-                  preset.id === 'inkling-2-mini' || preset.id === 'glm-5.3-flash'
-                    ? PRESET_HIGHLIGHTS[preset.id][locale]
-                    : undefined;
+                const highlight = getPresetHighlight(modelLookup.get(preset.id), locale);
                 return (
                   <button
                     key={preset.id}

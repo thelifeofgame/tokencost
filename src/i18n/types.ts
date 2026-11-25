@@ -137,6 +137,14 @@ export interface TranslationDictionary {
     resetFilters: string;
     methodologyTitle: string;
     methodologyBody: string;
+    nov30AlertBadge: string;
+    nov30AlertTitle: string;
+    nov30AlertBody: string;
+    mistralCreditAlertBadge: string;
+    mistralCreditAlertBody: string;
+    statusExpiredBadge: string;
+    faqSectionTitle: string;
+    faqSectionBadge: string;
   };
   simulator: {
     heroBadge: string;
@@ -305,6 +313,30 @@ export interface TranslationDictionary {
     baseInput: string;
     cacheHitRead: string;
     launchCalculator: string;
+    batchLabel: string;
+    batchTooltip: string;
+    batchBadgeActive: string;
+    batchBadgeRealtime: string;
+    batchUnsupportedBadge: string;
+    longContextLabel: string;
+    longContextHintTiered: string;
+    longContextHintFlat: string;
+    longContextFlatBadge: string;
+    longContextFallbackAlert: string;
+    groqNonStackableHint: string;
+    breakdownBaseBill: string;
+    breakdownCacheSavings: string;
+    breakdownBatchSavings: string;
+    breakdownNetBill: string;
+    breakdownTotalSaved: string;
+    savingsCardBadge: string;
+    savingsCardTitle: string;
+    savingsCardCompareDesc: string;
+    savingsCardFloorDesc: string;
+    ctaCompareCheaper: string;
+    ctaCompareModel: string;
+    ctaRouteOpenRouter: string;
+    ctaOpenRouterNote: string;
   };
   developers: {
     title: string;
