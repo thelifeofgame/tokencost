@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -19,6 +20,20 @@ if (!fs.existsSync(ANALYST_DIR)) {
   process.exit(0);
 }
 
+function getLastCommitMs(relPath) {
+  try {
+    const out = execFileSync('git', ['log', '-1', '--format=%ct', '--', relPath], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    const sec = Number(out);
+    return Number.isFinite(sec) && sec > 0 ? sec * 1000 : 0;
+  } catch {
+    return 0;
+  }
+}
+
 let copiedCount = 0;
 for (const file of FILES_TO_SYNC) {
   const srcPath = path.join(ANALYST_DIR, file);
@@ -30,6 +45,14 @@ for (const file of FILES_TO_SYNC) {
   const srcBuf = fs.readFileSync(srcPath);
   const destBuf = fs.existsSync(destPath) ? fs.readFileSync(destPath) : null;
   if (!destBuf || !srcBuf.equals(destBuf)) {
+    if (destBuf) {
+      const srcMtimeMs = fs.statSync(srcPath).mtimeMs;
+      const commitMs = getLastCommitMs(path.join('src', 'data', file));
+      if (commitMs > 0 && srcMtimeMs <= commitMs) {
+        console.log(`[sync-data] Skipped older ${file} (source mtime <= repo commit).`);
+        continue;
+      }
+    }
     fs.writeFileSync(destPath, srcBuf);
     copiedCount += 1;
     console.log(`[sync-data] Synced ${file} -> src/data/${file}`);
