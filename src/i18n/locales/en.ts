@@ -1,6 +1,22 @@
 import { TranslationDictionary } from '../types';
 
 export const en: TranslationDictionary = {
+  scenarios: {
+    cacheReuse: 'Requests sharing one cache write',
+    short: 'Short chat',
+    document: 'Long document',
+    agent: 'Coding agent',
+    estimate: 'Estimated monthly cost',
+    advanced: 'Advanced settings',
+    save: 'Save scenario',
+    share: 'Copy share link',
+    recent: 'Recently saved scenarios',
+    restore: 'Restore {requests} requests, {input} input and {output} output tokens',
+    saved: 'Scenario saved on this browser.',
+    restored: 'Scenario restored.',
+    saveError: 'Could not save to this browser.',
+    shareError: 'Could not copy the share link.',
+  },
   alerts: {
     title: 'Price alerts and weekly digest',
     description: 'Get the weekly summary and optional price-drop alerts for models you follow. Unsubscribe at any time.',

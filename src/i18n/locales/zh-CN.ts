@@ -1,6 +1,22 @@
 import { TranslationDictionary } from '../types';
 
 export const zhCN: TranslationDictionary = {
+  scenarios: {
+    cacheReuse: '每次写入缓存的复用请求数',
+    short: '短对话',
+    document: '长文档',
+    agent: '编程 Agent',
+    estimate: '预计月成本',
+    advanced: '高级设置',
+    save: '保存场景',
+    share: '复制分享链接',
+    recent: '最近的场景',
+    restore: '恢复每月 {requests} 次请求、{input} 输入与 {output} 输出 Token',
+    saved: '场景已保存在此浏览器。',
+    restored: '已恢复场景。',
+    saveError: '无法保存到此浏览器。',
+    shareError: '无法复制分享链接。',
+  },
   alerts: {
     title: '降价提醒与每周周报',
     description: '获取每周价格摘要，也可关注指定模型的降价提醒。你可以随时退订。',

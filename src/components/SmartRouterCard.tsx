@@ -11,6 +11,8 @@ interface SmartRouterCardProps {
   recommendations: RouterRecommendation[];
   onOpenExporter: (rec: RouterRecommendation) => void;
   selectedBaselineId?: string;
+  selectedStrategyId: string;
+  onSelectStrategy: (id: string) => void;
   onSelectBaseline?: (modelId: string) => void;
   availableModels?: ModelPricingRule[];
   monthlyRequests?: number;
@@ -74,15 +76,13 @@ export default function SmartRouterCard({
   recommendations,
   onOpenExporter,
   selectedBaselineId = 'gpt-6.2-sol',
+  selectedStrategyId,
+  onSelectStrategy,
   onSelectBaseline,
   availableModels = [],
   monthlyRequests,
 }: SmartRouterCardProps) {
   const { t } = useI18n();
-  const [selectedStrategyId, setSelectedStrategyId] = useState<string>(
-    recommendations[0]?.id || 'weekend-coding-flash'
-  );
-
   const [baselineMenuOpen, setBaselineMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'flagship' | 'fast' | 'reasoning' | 'legacy'>('all');
@@ -230,7 +230,7 @@ export default function SmartRouterCard({
         {/* Strategy Switcher Pills */}
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-1 p-1 bg-zinc-100/90 dark:bg-zinc-950/70 rounded-xl border border-zinc-200/90 dark:border-zinc-800">
           {recommendations.map((rec, idx) => {
-            const isSelected = selectedStrategyId === rec.id;
+            const isSelected = currentRec?.id === rec.id;
             const isArbitrage = rec.id === 'weekend-coding-flash';
             const spanClass =
               recommendations.length % 2 === 1 && idx === 0 ? 'col-span-2 sm:col-span-1' : '';
@@ -238,7 +238,8 @@ export default function SmartRouterCard({
               <button
                 key={rec.id}
                 type="button"
-                onClick={() => { setSelectedStrategyId(rec.id); trackEventThrottled('smart_router_interact', { action: 'strategy_switch', strategy_id: rec.id }, 1000); }}
+                aria-pressed={isSelected}
+                onClick={() => { onSelectStrategy(rec.id); trackEventThrottled('smart_router_interact', { action: 'strategy_switch', strategy_id: rec.id }, 1000); }}
                 className={`min-h-[38px] sm:min-h-[32px] px-3 py-1.5 rounded-lg text-xs font-medium transition-all inline-flex items-center justify-center gap-1.5 ${spanClass} ${
                   isSelected
                     ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'

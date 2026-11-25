@@ -6,9 +6,10 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { trackEvent, trackEventThrottled } from '@/lib/analytics';
 import { SimulationParams, RouterRecommendation } from '@/types/pricing';
 import { MODELS_DATA } from '@/lib/models-data';
-import { calculateAllModels, calculateMainstreamModels } from '@/lib/calculator-engine';
+import { calculateAllModels, calculateMainstreamModels, calculateModelCost } from '@/lib/calculator-engine';
 import { generateRouterRecommendations } from '@/lib/router-engine';
-import { encodeSimulationParams, decodeSimulationParams } from '@/lib/utils';
+import { formatCurrency } from '@/lib/utils';
+import { DEFAULT_SCENARIO, decodeScenario, encodeScenario, readScenarios, storeScenario } from '@/lib/scenarios';
 import { useI18n } from '@/i18n/I18nProvider';
 import { formatModelCount } from '@/i18n';
 import { buildLocalizedCanonical } from '@/lib/seo-alternates';
@@ -35,65 +36,36 @@ function formatHomeBannerBadge(template: string, verifiedDate: string, bfDate: s
   return template.replace('{days}', String(days)).replace('{shortDate}', shortDate);
 }
 
-const defaultParams: SimulationParams = {
-  monthlyRequests: 100000,
-  inputTokens: 4000,
-  outputTokens: 1000,
-  cacheHitRate: 0.65,
-  batchRate: 0.0,
-  enableLongContext: false,
-};
-
 function SimulatorContent() {
-  const [params, setParams] = useState<SimulationParams>(defaultParams);
+  const { t } = useI18n();
+  const [scenario, setScenario] = useState(DEFAULT_SCENARIO);
+  const { params, providers: selectedProviders, baseline: selectedBaselineId, strategy, advanced } = scenario;
+  const [saved, setSaved] = useState<string[]>([]);
+  const [feedback, setFeedback] = useState('');
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    setParams(decodeSimulationParams(new URLSearchParams(window.location.search), defaultParams));
+    setScenario(decodeScenario(new URLSearchParams(window.location.search)));
+    try {
+      setSaved(readScenarios(window.localStorage));
+    } catch {
+      // Storage can be unavailable in private browsing.
+    }
     setHydrated(true);
   }, []);
 
-  const updateParams = (next: SimulationParams) => {
-    setParams(next);
+  const updateParams = (params: SimulationParams) => {
+    setScenario(current => ({ ...current, params }));
     trackEventThrottled('simulator_run');
   };
-
-  const [selectedProviders, setSelectedProviders] = useState<string[]>(['All']);
-  const [selectedBaselineId, setSelectedBaselineId] = useState<string>('gpt-6.2-sol');
 
   const [exporterModalOpen, setExporterModalOpen] = useState(false);
   const [selectedRecForExport, setSelectedRecForExport] = useState<RouterRecommendation | null>(null);
   const [estimatorModalOpen, setEstimatorModalOpen] = useState(false);
-  const [copiedShare, setCopiedShare] = useState(false);
-
-  // Sync params to URL query
-  useEffect(() => {
-    if (!hydrated) return;
-    const q = encodeSimulationParams(params);
-    const current = new URLSearchParams(window.location.search);
-    new URLSearchParams(q).forEach((value, key) => current.set(key, value));
-    const newUrl = `${window.location.pathname}?${current}${window.location.hash}`;
-    window.history.replaceState({}, '', newUrl);
-  }, [hydrated, params]);
-
   const toggleProvider = (provider: string) => {
-    if (provider === 'All') {
-      setSelectedProviders(['All']);
-      return;
-    }
-    if (selectedProviders.includes('All')) {
-      setSelectedProviders([provider]);
-      return;
-    }
-    if (selectedProviders.includes(provider)) {
-      if (selectedProviders.length > 1) {
-        setSelectedProviders(selectedProviders.filter((p) => p !== provider));
-      } else {
-        setSelectedProviders(['All']);
-      }
-    } else {
-      setSelectedProviders([...selectedProviders, provider]);
-    }
+    const providers = provider === 'All' ? ['All'] : selectedProviders.includes('All') ? [provider]
+      : selectedProviders.includes(provider) ? selectedProviders.filter(item => item !== provider) : [...selectedProviders, provider];
+    setScenario(current => ({ ...current, providers: providers.length ? providers : ['All'] }));
   };
 
   // Filter models by selected provider
@@ -129,12 +101,24 @@ function SimulatorContent() {
   }, [params, selectedBaselineModel]);
 
   const handleShare = async () => {
-    const q = encodeSimulationParams(params);
-    const url = `${window.location.origin}${window.location.pathname}?${q}`;
-    await navigator.clipboard.writeText(url);
-    trackEvent('scenario_share_copy');
-    setCopiedShare(true);
-    setTimeout(() => setCopiedShare(false), 2500);
+    try {
+      const url = `${window.location.origin}${window.location.pathname}?${encodeScenario(scenario)}`;
+      await navigator.clipboard.writeText(url);
+      setFeedback(t.common.shareSuccess);
+      trackEvent('scenario_share_copy');
+    } catch {
+      setFeedback(t.scenarios.shareError);
+    }
+  };
+
+  const handleSave = () => {
+    try {
+      setSaved(storeScenario(window.localStorage, scenario));
+      setFeedback(t.scenarios.saved);
+      trackEvent('scenario_save');
+    } catch {
+      setFeedback(t.scenarios.saveError);
+    }
   };
 
   const handleOpenExporter = (rec: RouterRecommendation) => {
@@ -144,48 +128,51 @@ function SimulatorContent() {
 
   return (
     <fieldset disabled={!hydrated} className="min-w-0 space-y-8">
-      {/* Main 3-Column Parallel Bento Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 xl:grid-cols-12 gap-5 items-start">
-        {/* Left Column: Workload Simulator Controls (3 cols on xl, 5 on lg) */}
-        <div data-analytics-module="calculator" className="col-span-12 lg:col-span-5 xl:col-span-3 space-y-5">
-          <SimulatorDeck
-            params={params}
-            onChange={updateParams}
-            selectedProviders={selectedProviders}
-            onToggleProvider={toggleProvider}
-            onOpenEstimator={() => setEstimatorModalOpen(true)}
-            onShare={handleShare}
-            copiedShare={copiedShare}
-          />
-        </div>
-
-        {/* Middle Column: Smart Router Strategy & Comparison (5 cols on xl, 7 on lg) */}
-        <div className="col-span-12 lg:col-span-7 xl:col-span-5 space-y-5">
+      <div data-analytics-module="calculator" className="mx-auto w-full max-w-5xl">
+        <SimulatorDeck
+          params={params}
+          onChange={updateParams}
+          selectedProviders={selectedProviders}
+          onToggleProvider={toggleProvider}
+          advanced={advanced}
+          onToggleAdvanced={() => {
+            setScenario(current => ({ ...current, advanced: !current.advanced }));
+            trackEvent('advanced_toggle', { value: advanced ? 'closed' : 'open' });
+          }}
+          onShare={handleShare}
+          onSave={handleSave}
+          saved={saved}
+          feedback={feedback}
+          onRestore={encoded => {
+            setScenario(decodeScenario(new URLSearchParams(encoded)));
+            setFeedback(t.scenarios.restored);
+            trackEventThrottled('simulator_run');
+          }}
+          monthlyCost={formatCurrency(calculateModelCost(selectedBaselineModel, params).monthlyNetCost)}
+          modelName={selectedBaselineModel.modelName}
+        >
+          <button className="text-xs text-indigo-700 underline dark:text-indigo-300" type="button" onClick={() => setEstimatorModalOpen(true)}>
+            {t.simulator.controls.estimateTokensBtn}
+          </button>
           <div data-analytics-module="smart_router">
-          <SmartRouterCard
-            recommendations={routerRecs}
-            onOpenExporter={handleOpenExporter}
-            selectedBaselineId={selectedBaselineId}
-            onSelectBaseline={setSelectedBaselineId}
-            availableModels={MODELS_DATA}
-            monthlyRequests={params.monthlyRequests}
-          />
+            <SmartRouterCard
+              recommendations={routerRecs}
+              onOpenExporter={handleOpenExporter}
+              selectedBaselineId={selectedBaselineId}
+              onSelectBaseline={baseline => setScenario(current => ({ ...current, baseline }))}
+              selectedStrategyId={strategy}
+              onSelectStrategy={strategy => setScenario(current => ({ ...current, strategy }))}
+              availableModels={MODELS_DATA}
+              monthlyRequests={params.monthlyRequests}
+            />
           </div>
-
-          {/* Dual-Engine Sponsored Provider Placement */}
-          <div data-analytics-module="sponsor">
-            <SponsorBanner />
-          </div>
-        </div>
-
-        {/* Right Column: Monthly Net Cost Waterfall Breakdown (4 cols on xl, 12 on lg) */}
-        <div className="col-span-12 lg:col-span-12 xl:col-span-4 space-y-5">
           <CostChart breakdowns={mainstreamBreakdowns} />
-        </div>
+        </SimulatorDeck>
       </div>
 
       <SubscribeBox placement="home" />
       <RecentPriceChanges />
+      <div data-analytics-module="sponsor"><SponsorBanner /></div>
 
       {/* Market Radar / Featured Event Strip & Price Drops */}
       <section data-analytics-module="radar" className="pt-2">

@@ -11,6 +11,22 @@ export interface LocaleConfig {
 }
 
 export interface TranslationDictionary {
+  scenarios: {
+    cacheReuse: string;
+    short: string;
+    document: string;
+    agent: string;
+    estimate: string;
+    advanced: string;
+    save: string;
+    share: string;
+    recent: string;
+    restore: string;
+    saved: string;
+    restored: string;
+    saveError: string;
+    shareError: string;
+  };
   alerts: {
     title: string;
     description: string;
