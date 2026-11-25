@@ -11,6 +11,25 @@ export interface LocaleConfig {
 }
 
 export interface TranslationDictionary {
+  growth: {
+    noBenchmark: string;
+    affiliateDisclosure: string;
+    affiliateLabel: string;
+    daysRemaining: string;
+    deadline: string;
+    billingAlertTitle: string;
+    migrationTitle: string;
+    expired: string;
+    growthTitle: string;
+    retentionWindow: string;
+    day1: string;
+    day7: string;
+    cohort: string;
+    submitted: string;
+    confirmed: string;
+    confirmationRate: string;
+    eventCounts: string;
+  };
   common: {
     brand: string;
     tagline: string;

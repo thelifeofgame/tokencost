@@ -6,6 +6,7 @@ import {
   isAnalyticsExcludedPath,
   trackModuleImpression,
   trackPageView,
+  trackEvent,
 } from '@/lib/analytics';
 
 const IMPRESSION_DWELL_MS = 2000;
@@ -21,6 +22,9 @@ export default function AnalyticsTracker() {
     if (lastPvRef.current.path !== pathname || now - lastPvRef.current.ts > 1000) {
       lastPvRef.current = { path: pathname, ts: now };
       trackPageView(pathname);
+      if (new URLSearchParams(window.location.search).get('utm_source') === 'digest') {
+        trackEvent('digest_click');
+      }
     }
 
     if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') {

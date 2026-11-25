@@ -97,6 +97,7 @@ export default function SponsorBanner() {
           <span>{sponsorT.openrouter.cta}</span>
           <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
+        <p className="text-[11px] text-zinc-600 dark:text-zinc-400">{t.growth.affiliateDisclosure}</p>
       </div>
 
       {/* Speed Partner (Right): Groq LPU Inference Cloud */}

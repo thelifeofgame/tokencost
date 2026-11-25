@@ -20,7 +20,7 @@ export default function ConfigExporterModal({
   onClose,
   recommendation,
 }: ConfigExporterModalProps) {
-  const { locale } = useI18n();
+  const { locale, t } = useI18n();
   const [activeTab, setActiveTab] = useState<'litellm' | 'ts' | 'py'>('litellm');
   const [copied, setCopied] = useState(false);
 
@@ -194,12 +194,13 @@ export default function ConfigExporterModal({
             </button>
             <a
               href={OPENROUTER_SMART_ROUTER_URL}
+              title={t.growth.affiliateDisclosure}
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
               onClick={handleOpenRouterCta}
               className="min-h-[38px] inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-sm shadow-indigo-500/25 transition-all active:scale-[0.98] whitespace-nowrap"
             >
-              <span>Get OpenRouter API Key</span>
+              <span>Get OpenRouter API Key ({t.growth.affiliateLabel})</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>

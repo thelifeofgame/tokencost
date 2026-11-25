@@ -178,6 +178,7 @@ export interface Env {
   CF_ZONE_ID?: string;
   ADMIN_PASSWORD?: string;
   ADMIN_SESSION_SECRET?: string;
+  ANALYTICS_LOCAL_ORIGIN?: string;
 }
 
 interface DualVisitsMetrics {
@@ -277,6 +278,12 @@ const COUNTRY_NAMES: Record<string, string> = {
   T1: 'Tor Network',
 };
 
+const GROWTH_EVENTS = [
+  'simulator_run', 'advanced_toggle', 'scenario_save', 'scenario_share_copy',
+  'subscribe_submit', 'subscribe_confirmed', 'digest_click',
+  'subs_picker_complete', 'subs_affiliate_click', 'affiliate_click',
+] as const;
+
 const TOOL_INTERACT_EVENTS = new Set([
   'calculator_interact',
   'smart_router_interact',
@@ -284,6 +291,9 @@ const TOOL_INTERACT_EVENTS = new Set([
   'harness_overhead_simulate',
   'deals_filter_change',
   'deals_view_switch',
+  'simulator_run',
+  'advanced_toggle',
+  'subs_picker_complete',
 ]);
 
 const HIGH_INTENT_EVENTS = new Set([
@@ -293,10 +303,15 @@ const HIGH_INTENT_EVENTS = new Set([
   'developers_sdk_copy',
   'pricing_migration_compare_click',
   'radar_featured_click',
+  'scenario_save',
+  'scenario_share_copy',
+  'subscribe_submit',
+  'digest_click',
 ]);
 
 const CONVERSION_EVENTS = new Set([
   'affiliate_click',
+  'subs_affiliate_click',
   'official_deal_outbound',
   'pricing_audit_cta_click',
 ]);
@@ -319,11 +334,12 @@ function isAutomatedRequest(request: Request): boolean {
   return BOT_UA_REGEX.test(ua);
 }
 
-function getAnalyticsCorsHeaders(request: Request): Record<string, string> {
+function getAnalyticsCorsHeaders(request: Request, env: Env): Record<string, string> {
   const origin = request.headers.get('origin') || '';
   const isAllowedOrigin =
     origin === 'https://tokencostsai.com' ||
-    origin === 'https://www.tokencostsai.com';
+    origin === 'https://www.tokencostsai.com' ||
+    Boolean(origin && origin === env.ANALYTICS_LOCAL_ORIGIN && /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin));
   return {
     'Access-Control-Allow-Origin': isAllowedOrigin ? origin : 'https://tokencostsai.com',
     'Access-Control-Allow-Credentials': 'true',
@@ -870,13 +886,13 @@ function normalizeReferrer(rawRef: unknown): string {
   if (!trimmed || trimmed === 'tokencostsai.com' || trimmed === 'localhost' || trimmed === '127.0.0.1') {
     return 'Direct / None';
   }
-  return trimmed.slice(0, 80);
+  return /^[a-z0-9.-]+$/.test(trimmed) ? trimmed.slice(0, 80) : 'Direct / None';
 }
 
 function sanitizeShortToken(raw: unknown, maxLen = 64): string | null {
   if (typeof raw !== 'string') return null;
-  const cleaned = raw.trim().slice(0, maxLen);
-  return cleaned || null;
+  const cleaned = raw.trim();
+  return /^[a-zA-Z0-9_.:-]+$/.test(cleaned) ? cleaned.slice(0, maxLen) : null;
 }
 
 function classifyEvent(event: string): {
@@ -958,15 +974,14 @@ function extractEventTarget(params: Record<string, unknown>): string | null {
   const keys = ['partner', 'model_id', 'modelId', 'strategy', 'strategy_id', 'harness', 'value', 'to_locale', 'theme_to', 'topic', 'placement'];
   for (const k of keys) {
     const v = params[k];
-    if (typeof v === 'string' && v.trim()) {
-      return v.trim().slice(0, 64);
-    }
+    const value = sanitizeShortToken(v);
+    if (value) return value;
   }
   return null;
 }
 
 async function handleCollect(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-  const corsHeaders = getAnalyticsCorsHeaders(request);
+  const corsHeaders = getAnalyticsCorsHeaders(request, env);
 
   if (isAutomatedRequest(request)) {
     return jsonResponse({ ok: true, counted: false }, 200, 'no-store', corsHeaders);
@@ -984,18 +999,27 @@ async function handleCollect(request: Request, env: Env, ctx: ExecutionContext):
 
   let body: Record<string, unknown>;
   try {
-    body = JSON.parse(rawText) as Record<string, unknown>;
+    const parsed: unknown = JSON.parse(rawText);
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('Invalid body');
+    body = parsed as Record<string, unknown>;
   } catch {
     return jsonResponse({ error: 'Invalid JSON' }, 400, 'no-store', corsHeaders);
   }
 
   const event = sanitizeShortToken(body.event, 64);
   const sid = sanitizeShortToken(body.sid, 64);
-  if (!event || !sid || !/^[a-zA-Z0-9_:-]+$/.test(event)) {
+  if (!event || !sid || !/^[a-zA-Z0-9_:-]+$/.test(event) || !/^[a-zA-Z0-9_:-]+$/.test(sid)) {
     return jsonResponse({ error: 'Missing event or sid' }, 400, 'no-store', corsHeaders);
   }
 
-  const path = normalizePath(body.path);
+  // Subscription confirmations are written by the subscription service.
+  if (event === 'subscribe_confirmed') {
+    return jsonResponse({ error: 'Server-only event' }, 400, 'no-store', corsHeaders);
+  }
+
+  const candidatePath = normalizePath(body.path);
+  const path = /^\/[a-zA-Z0-9._/-]*$/.test(candidatePath) ? candidatePath : '/';
+  const vid = typeof body.vid === 'string' && /^[a-f0-9]{32}$/.test(body.vid) ? body.vid : null;
   if (isAdminPath(path)) {
     return jsonResponse({ ok: true, counted: false }, 200, 'no-store', corsHeaders);
   }
@@ -1004,7 +1028,7 @@ async function handleCollect(request: Request, env: Env, ctx: ExecutionContext):
   const nowSec = Math.floor(nowMs / 1000);
   const hourTs = Math.floor(nowSec / 3600) * 3600;
   const dateKey = toDateKeyUtc(nowSec);
-  const pageGroup = sanitizeShortToken(body.page_group, 32) || resolveChannel(path);
+  const pageGroup = resolveChannel(path);
   const locale = normalizeLocale(body.locale, path);
   const device = normalizeDevice(body.device_type);
   const referrerHost = normalizeReferrer(body.referrer_host);
@@ -1073,6 +1097,21 @@ async function handleCollect(request: Request, env: Env, ctx: ExecutionContext):
     ).bind(dateKey, sid, hourTs, cls.stage, nowSec),
   ];
 
+  if (cls.isPv && vid) {
+    stmts.push(
+      env.DB.prepare(
+        `INSERT INTO analytics_visitors (vid, first_date, last_date) VALUES (?1, ?2, ?2)
+         ON CONFLICT (vid) DO UPDATE SET
+           first_date = MIN(first_date, excluded.first_date),
+           last_date = MAX(last_date, excluded.last_date)
+         WHERE excluded.first_date < first_date OR excluded.last_date > last_date`
+      ).bind(vid, dateKey),
+      env.DB.prepare(
+        'INSERT OR IGNORE INTO analytics_visitor_days (vid, date_key) VALUES (?1, ?2)'
+      ).bind(vid, dateKey)
+    );
+  }
+
   if (cls.isPv) {
     const refKey = utmSource ? `${referrerHost}||${utmSource}` : referrerHost;
     stmts.push(
@@ -1138,6 +1177,8 @@ async function handleCollect(request: Request, env: Env, ctx: ExecutionContext):
           'DELETE FROM analytics_recent_events WHERE id NOT IN (SELECT id FROM analytics_recent_events ORDER BY ts DESC LIMIT 100)'
         ),
         env.DB.prepare('DELETE FROM analytics_session_seen WHERE scope_ts < ?1').bind(sessionCutoff),
+        env.DB.prepare('DELETE FROM analytics_visitor_days WHERE date_key < ?1').bind(dailyCutoff),
+        env.DB.prepare('DELETE FROM analytics_visitors WHERE last_date < ?1').bind(dailyCutoff),
         env.DB.prepare('DELETE FROM analytics_hourly WHERE hour_ts < ?1').bind(sessionCutoff),
         env.DB.prepare('DELETE FROM analytics_daily WHERE date_key < ?1').bind(dailyCutoff),
         env.DB.prepare('DELETE FROM analytics_page_daily WHERE date_key < ?1').bind(dailyCutoff),
@@ -1150,7 +1191,7 @@ async function handleCollect(request: Request, env: Env, ctx: ExecutionContext):
 }
 
 async function handleLogin(request: Request, env: Env): Promise<Response> {
-  const corsHeaders = getAnalyticsCorsHeaders(request);
+  const corsHeaders = getAnalyticsCorsHeaders(request, env);
   const adminPassword = env.ADMIN_PASSWORD?.trim();
   const sessionSecret = env.ADMIN_SESSION_SECRET?.trim();
 
@@ -1255,7 +1296,7 @@ async function handleLogin(request: Request, env: Env): Promise<Response> {
 }
 
 async function handleSession(request: Request, env: Env): Promise<Response> {
-  const corsHeaders = getAnalyticsCorsHeaders(request);
+  const corsHeaders = getAnalyticsCorsHeaders(request, env);
   const nowSec = Math.floor(Date.now() / 1000);
   const token = extractRequestSessionToken(request);
   const verified = await verifySessionToken(token, env.ADMIN_SESSION_SECRET?.trim(), nowSec);
@@ -1270,8 +1311,8 @@ async function handleSession(request: Request, env: Env): Promise<Response> {
   );
 }
 
-async function handleLogout(request: Request): Promise<Response> {
-  const corsHeaders = getAnalyticsCorsHeaders(request);
+async function handleLogout(request: Request, env: Env): Promise<Response> {
+  const corsHeaders = getAnalyticsCorsHeaders(request, env);
   return new Response(
     JSON.stringify({ ok: true, authenticated: false }),
     {
@@ -1301,7 +1342,7 @@ function parseJsonSafe<T>(raw: string, fallback: T): T {
 }
 
 async function handleOverview(request: Request, env: Env): Promise<Response> {
-  const corsHeaders = getAnalyticsCorsHeaders(request);
+  const corsHeaders = getAnalyticsCorsHeaders(request, env);
   const nowSec = Math.floor(Date.now() / 1000);
   const token = extractRequestSessionToken(request);
   const verified = await verifySessionToken(token, env.ADMIN_SESSION_SECRET?.trim(), nowSec);
@@ -1624,7 +1665,7 @@ async function handleOverview(request: Request, env: Env): Promise<Response> {
           "SELECT sid, MAX(max_stage) AS max_stage FROM analytics_session_seen WHERE scope_type = 'd' AND scope_val >= ?1 AND scope_val <= ?2 GROUP BY sid"
         ).bind(dimStartDateKey, dimEndDateKey);
 
-  const [sessionStageRes, pagesRes, refRes, localeRes, deviceRes, partnerRes, eventRes, recentRes] =
+  const [sessionStageRes, pagesRes, refRes, localeRes, deviceRes, partnerRes, eventRes, recentRes, retentionRes, growthRes] =
     await Promise.all([
       funnelQuery.all<SessionStageRow>(),
       env.DB.prepare(
@@ -1667,6 +1708,23 @@ async function handleOverview(request: Request, env: Env): Promise<Response> {
       env.DB.prepare(
         'SELECT id, ts, event, category, path, target, locale, device, country FROM analytics_recent_events ORDER BY ts DESC LIMIT 20'
       ).all<RecentEventRow>(),
+      env.DB.prepare(
+        `SELECT
+           COUNT(*) AS cohort_size,
+           COUNT(d1.vid) AS returned_day_1,
+           COUNT(d7.vid) AS returned_day_7
+         FROM analytics_visitors AS v
+         LEFT JOIN analytics_visitor_days AS d1 ON d1.vid = v.vid AND d1.date_key = date(v.first_date, '+1 day')
+         LEFT JOIN analytics_visitor_days AS d7 ON d7.vid = v.vid AND d7.date_key = date(v.first_date, '+7 days')
+         WHERE v.first_date BETWEEN ?1 AND ?2`
+      ).bind(shiftDateKey(todayKey, -37), shiftDateKey(todayKey, -8))
+        .first<{ cohort_size: number; returned_day_1: number; returned_day_7: number }>(),
+      env.DB.prepare(
+        `SELECT dim_key, SUM(count) AS total FROM analytics_dim_daily
+         WHERE date_key BETWEEN ?1 AND ?2 AND dim_type = 'event'
+           AND dim_key IN (${GROWTH_EVENTS.map(() => '?').join(', ')})
+         GROUP BY dim_key`
+      ).bind(dimStartDateKey, dimEndDateKey, ...GROWTH_EVENTS).all<AnalyticsDimRow>(),
     ]);
 
   let stage1 = 0;
@@ -1857,7 +1915,20 @@ async function handleOverview(request: Request, env: Env): Promise<Response> {
         ? 'stale'
         : 'live';
 
+  const growthCounts = new Map((growthRes.results ?? []).map(row => [row.dim_key, toSafeInt(row.total)]));
+  const cohortSize = retentionRes?.cohort_size ?? 0;
+  const submitted = growthCounts.get('subscribe_submit') ?? 0;
+  const confirmed = growthCounts.get('subscribe_confirmed') ?? 0;
+
   const payload = {
+    growth: {
+      cohortSize,
+      day1Rate: cohortSize ? pct(retentionRes?.returned_day_1 ?? 0, cohortSize) : null,
+      day7Rate: cohortSize ? pct(retentionRes?.returned_day_7 ?? 0, cohortSize) : null,
+      submitted,
+      confirmed,
+      events: GROWTH_EVENTS.map(event => ({ event, count: growthCounts.get(event) ?? 0 })),
+    },
     range,
     syncedAt: maxUpdatedAt > 0 ? new Date(maxUpdatedAt * 1000).toISOString() : new Date().toISOString(),
     health: {
@@ -1954,7 +2025,7 @@ const worker = {
     const pathname = url.pathname.replace(/\/+$/, '') || '/';
 
     if (pathname.startsWith('/api/analytics')) {
-      const analyticsCors = getAnalyticsCorsHeaders(request);
+      const analyticsCors = getAnalyticsCorsHeaders(request, env);
       if (request.method === 'OPTIONS') {
         return new Response(null, { status: 204, headers: analyticsCors });
       }
@@ -1969,7 +2040,7 @@ const worker = {
         return handleSession(request, env);
       }
       if (pathname === '/api/analytics/logout' && request.method === 'POST') {
-        return handleLogout(request);
+        return handleLogout(request, env);
       }
       if (pathname === '/api/analytics/overview' && request.method === 'GET') {
         return handleOverview(request, env);

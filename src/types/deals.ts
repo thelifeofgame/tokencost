@@ -33,6 +33,7 @@ export interface OfficialDealProvider {
   product: string;
   category: DealCategory;
   promoStatus: PromoStatus;
+  promoDeadlines?: Array<{ offer: string; endsAt: string }>;
   promoBadge: string;
   regularPrice: string;
   promoWindow: string;

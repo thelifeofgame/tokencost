@@ -1,8 +1,6 @@
 import React from 'react';
-import ModelDetailPage, {
-  generateStaticParams as originalGenerateStaticParams,
-  buildModelMetadata,
-} from '@/app/models/[id]/page';
+import { generateStaticParams as originalGenerateStaticParams } from '@/app/models/[id]/page';
+import ModelDetailPage, { buildModelMetadata } from '@/components/ModelDetailPage';
 import { SUPPORTED_LOCALES } from '@/i18n';
 import { resolveLocale } from '@/lib/seo-alternates';
 

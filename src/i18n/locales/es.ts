@@ -1,6 +1,8 @@
 import { TranslationDictionary } from '../types';
+import { en } from './en';
 
 export const es: TranslationDictionary = {
+  growth: en.growth,
   common: {
     brand: 'TokenCosts AI',
     tagline: 'Inteligencia de Costos de LLM y Enrutador Inteligente',

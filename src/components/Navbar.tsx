@@ -200,13 +200,14 @@ export default function Navbar() {
           {/* Router API CTA */}
           <a
             href={OPENROUTER_NAVBAR_URL}
+            title={t.growth.affiliateDisclosure}
             target="_blank"
             rel="nofollow sponsored noopener noreferrer"
             onClick={handleOpenRouterClick}
             className="flex items-center gap-1.5 px-2.5 xl:px-3.5 py-1.5 text-[11px] xl:text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg shadow-sm shadow-indigo-500/20 transition-all active:scale-[0.98]"
           >
             <Sparkles className="h-3.5 w-3.5 text-indigo-200 shrink-0" />
-            <span className="whitespace-nowrap">{t.common.tryRouterApi}</span>
+            <span className="whitespace-nowrap">{t.common.tryRouterApi} <span className="text-[10px] font-normal">({t.growth.affiliateLabel})</span></span>
             <ExternalLink className="hidden min-[1440px]:inline-block h-3 w-3 text-indigo-200 shrink-0" />
           </a>
         </div>
@@ -323,13 +324,14 @@ export default function Navbar() {
             </a>
             <a
               href={OPENROUTER_NAVBAR_URL}
+              title={t.growth.affiliateDisclosure}
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
               onClick={handleOpenRouterClick}
               className="flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              <span>{t.common.tryRouterApi}</span>
+              <span>{t.common.tryRouterApi} <span className="text-[10px] font-normal">({t.growth.affiliateLabel})</span></span>
             </a>
           </div>
         </div>

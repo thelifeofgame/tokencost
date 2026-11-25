@@ -1,6 +1,8 @@
 import { TranslationDictionary } from '../types';
+import { en } from './en';
 
 export const zhTW: TranslationDictionary = {
+  growth: en.growth,
   common: {
     brand: 'TokenCosts AI',
     tagline: '大模型 API 成本核算與自適應智慧路由平台',

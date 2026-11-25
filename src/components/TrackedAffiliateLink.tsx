@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { getTranslation } from '@/i18n';
 import { Locale } from '@/i18n/types';
 import { detectAffiliatePartner, trackEvent } from '@/lib/analytics';
 import { buildAffiliateOutboundUrl } from '@/lib/utils';
@@ -54,6 +55,9 @@ export default function TrackedAffiliateLink({
     includeRef,
   });
 
+  const isReferral = detectAffiliatePartner(outboundUrl) === 'openrouter' && /[?&]ref=/.test(outboundUrl);
+  const disclosure = getTranslation(locale).growth;
+
   const handleClick = () => {
     trackEvent('affiliate_click', {
       model_id: modelId,
@@ -75,8 +79,10 @@ export default function TrackedAffiliateLink({
       rel={rel}
       onClick={handleClick}
       className={className}
+      title={isReferral ? disclosure.affiliateDisclosure : undefined}
     >
       {children}
+      {isReferral && <span className="text-[10px] font-normal opacity-90">({disclosure.affiliateLabel})</span>}
     </a>
   );
 }

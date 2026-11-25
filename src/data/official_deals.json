@@ -22,7 +22,7 @@
       "promoStatus": "active_promo",
       "promoBadge": "Up to 50% BF Early Access",
       "regularPrice": "Google AI Plus $4.99/mo; AI Pro $19.99/mo ($199.99/yr); AI Ultra $99.99-$199.99/mo; Gemini 4 Carbon API $2/$10 per 1M intro ($4/$20 standard from Dec 1)",
-      "promoWindow": "Member Early Access Nov 20-Nov 26, 2026; general non-subscriber Black Friday offers expected Nov 27, 2026",
+      "promoWindow": "Member early access starts on 2026-11-20; general non-subscriber Black Friday offers expected on 2026-11-27.",
       "eligiblePlans": "Existing Google AI & Google One subscribers on AI Plus and annual AI Pro (up to 50% off, varies by account; AI Ultra excluded)",
       "renewalPrice": "Renews at standard rate after promo ($4.99/mo AI Plus; $199.99/yr or $19.99/mo AI Pro)",
       "officialSourceLabel": "Google One AI Plans",
@@ -34,61 +34,67 @@
         "hasRecentChange": true,
         "effectiveDate": "2026-12-01",
         "changeType": "price_increase",
-        "headline": "T-5 Cutoff: Gemini 4 Carbon & Argon double to $4/$20 on Dec 1; Jules ends Dec 31",
-        "impactDetail": "5-day countdown (ends Nov 30): Gemini 4 Carbon & Argon intro API pricing ($2/$10 per 1M, $0.10 cached; Batch/Flex $1/$5) doubles to $4/$20 ($0.20 cached; Batch/Flex $2/$10) on Dec 1, 2026. Jules became read-only Nov 11 and shuts down Dec 31."
+        "headline": "Gemini 4 Carbon & Argon double to $4/$20 on Dec 1; Jules ends Dec 31",
+        "impactDetail": "Gemini 4 Carbon & Argon intro API pricing ($2/$10 per 1M, $0.10 cached; Batch/Flex $1/$5) doubles to $4/$20 ($0.20 cached; Batch/Flex $2/$10) on Dec 1, 2026. Jules became read-only Nov 11 and shuts down Dec 31."
       },
       "i18n": {
         "zh-CN": {
           "promoBadge": "黑五早鸟最高 5 折",
           "regularPrice": "Google AI Plus $4.99/月；AI Pro $19.99/月（$199.99/年）；AI Ultra $99.99-$199.99/月；Gemini 4 Carbon API 入门价 $2/$10 每百万 Token（12/1 起 $4/$20）",
-          "promoWindow": "会员早鸟期 2026-11-20 至 11-26；面向非会员的通用黑五优惠预计 2026-11-27 开放",
+          "promoWindow": "会员早鸟期 2026-11-20；面向非会员的通用黑五优惠预计 2026-11-27 开放",
           "eligiblePlans": "现有 Google AI 与 Google One 会员订阅 AI Plus 及年付 AI Pro（最高 5 折，按账号定向推送；AI Ultra 除外）",
           "renewalPrice": "优惠期结束后按标准价自动续费（AI Plus $4.99/月；AI Pro $199.99/年或 $19.99/月）",
           "officialSourceLabel": "Google One 官方套餐页",
-          "billingHeadline": "T-5 倒计时：Gemini 4 Carbon & Argon 12/1 翻倍至 $4/$20；Jules 12/31 关停",
-          "billingImpactDetail": "11 月 30 日截止（仅剩 5 天）：Gemini 4 Carbon 与 Argon 入门价（$2/$10 每百万，缓存 $0.10，Batch/Flex $1/$5）将于 12 月 1 日翻倍至 $4/$20（缓存 $0.20）；Jules 已于 11/11 转为只读并将于 12/31 关停。"
+          "billingHeadline": "Gemini 4 Carbon & Argon 12/1 翻倍至 $4/$20；Jules 12/31 关停",
+          "billingImpactDetail": "11 月 30 日截止：Gemini 4 Carbon 与 Argon 入门价（$2/$10 每百万，缓存 $0.10，Batch/Flex $1/$5）将于 12 月 1 日翻倍至 $4/$20（缓存 $0.20）；Jules 已于 11/11 转为只读并将于 12/31 关停。"
         },
         "zh-TW": {
           "promoBadge": "黑五早鳥最高 5 折",
           "regularPrice": "Google AI Plus $4.99/月；AI Pro $19.99/月（$199.99/年）；AI Ultra $99.99-$199.99/月；Gemini 4 Carbon API 入門價 $2/$10 每百萬 Token（12/1 起 $4/$20）",
-          "promoWindow": "會員早鳥期 2026-11-20 至 11-26；非會員通用黑五優惠預計 2026-11-27 開放",
+          "promoWindow": "會員早鳥期 2026-11-20；非會員通用黑五優惠預計 2026-11-27 開放",
           "eligiblePlans": "現有 Google AI 與 Google One 會員訂閱 AI Plus 及年付 AI Pro（最高 5 折，依帳號而異；AI Ultra 除外）",
           "renewalPrice": "優惠期結束後依標準價自動續訂（AI Plus $4.99/月；AI Pro $199.99/年或 $19.99/月）",
           "officialSourceLabel": "Google One 官方方案頁",
-          "billingHeadline": "T-5 倒數：Gemini 4 Carbon & Argon 12/1 翻倍至 $4/$20；Jules 12/31 關閉",
-          "billingImpactDetail": "11 月 30 日截止（僅剩 5 天）：Gemini 4 Carbon 與 Argon 入門價（$2/$10 每百萬，快取 $0.10，Batch/Flex $1/$5）將於 12 月 1 日翻倍至 $4/$20（快取 $0.20）；Jules 已於 11/11 轉為唯讀並將於 12/31 停用。"
+          "billingHeadline": "Gemini 4 Carbon & Argon 12/1 翻倍至 $4/$20；Jules 12/31 關閉",
+          "billingImpactDetail": "11 月 30 日截止：Gemini 4 Carbon 與 Argon 入門價（$2/$10 每百萬，快取 $0.10，Batch/Flex $1/$5）將於 12 月 1 日翻倍至 $4/$20（快取 $0.20）；Jules 已於 11/11 轉為唯讀並將於 12/31 停用。"
         },
         "ja": {
           "promoBadge": "BF 先行最大 50% OFF",
           "regularPrice": "Google AI Plus $4.99/月、AI Pro $19.99/月（$199.99/年）、AI Ultra $99.99-$199.99/月、Gemini 4 Carbon API 導入価格 $2/$10（12/1 以降は $4/$20）",
-          "promoWindow": "会員先行アクセス 2026年11月20日〜11月26日；一般向けブラックフライデー施策は11月27日開始予定",
+          "promoWindow": "会員先行アクセス 2026年11月20日開始；一般向けブラックフライデー施策は11月27日開始予定",
           "eligiblePlans": "既存の Google AI / Google One 会員による AI Plus および年額 AI Pro（最大 50% OFF、アカウントにより異なる；AI Ultra は対象外）",
           "renewalPrice": "割引期間終了後は通常価格で自動更新（AI Plus $4.99/月、AI Pro $199.99/年または $19.99/月）",
           "officialSourceLabel": "Google One 公式プラン",
-          "billingHeadline": "残り5日：Gemini 4 Carbon & Argon が 12/1 に $4/$20 へ倍増；Jules は 12/31 終了",
-          "billingImpactDetail": "11月30日終了（T-5）：Gemini 4 Carbon・Argon の導入価格（$2/$10 per 1M・キャッシュ $0.10）は12月1日に $4/$20（Batch $2/$10）へ倍増。Jules は11/11から閲覧専用で12/31終了。"
+          "billingHeadline": "Gemini 4 Carbon & Argon が 12/1 に $4/$20 へ倍増；Jules は 12/31 終了",
+          "billingImpactDetail": "11月30日終了：Gemini 4 Carbon・Argon の導入価格（$2/$10 per 1M・キャッシュ $0.10）は12月1日に $4/$20（Batch $2/$10）へ倍増。Jules は11/11から閲覧専用で12/31終了。"
         },
         "ko": {
           "promoBadge": "블프 얼리억세스 최대 50%",
           "regularPrice": "Google AI Plus $4.99/월, AI Pro $19.99/월($199.99/년), AI Ultra $99.99-$199.99/월, Gemini 4 Carbon API 도입가 $2/$10(12/1부터 $4/$20)",
-          "promoWindow": "회원 얼리 액세스 2026-11-20 ~ 11-26; 비회원 일반 블랙프라이데이 프로모션은 11월 27일 예정",
+          "promoWindow": "회원 얼리 액세스 2026-11-20 시작; 비회원 일반 블랙프라이데이 프로모션은 11월 27일 예정",
           "eligiblePlans": "기존 Google AI 및 Google One 구독자의 AI Plus 및 연간 AI Pro(최대 50% 할인, 계정별 상이, AI Ultra 제외)",
           "renewalPrice": "프로모션 종료 후 정상 요금으로 갱신(AI Plus $4.99/월, AI Pro $199.99/년 또는 $19.99/월)",
           "officialSourceLabel": "Google One 공식 요금제",
-          "billingHeadline": "마감 D-5: 12월 1일 Gemini 4 Carbon·Argon 요금 2배 인상($4/$20); Jules 12/31 종료",
-          "billingImpactDetail": "11월 30일 종료(D-5): Gemini 4 Carbon 및 Argon 도입 API 요금(1M당 $2/$10, 캐시 $0.10, 배치 $1/$5)이 12월 1일 $4/$20로 2배 인상되며, Jules는 11/11 읽기 전용 전환 후 12/31 종료됩니다."
+          "billingHeadline": "12월 1일 Gemini 4 Carbon·Argon 요금 2배 인상($4/$20); Jules 12/31 종료",
+          "billingImpactDetail": "11월 30일 종료: Gemini 4 Carbon 및 Argon 도입 API 요금(1M당 $2/$10, 캐시 $0.10, 배치 $1/$5)이 12월 1일 $4/$20로 2배 인상되며, Jules는 11/11 읽기 전용 전환 후 12/31 종료됩니다."
         },
         "es": {
           "promoBadge": "Hasta 50% Acceso BF",
           "regularPrice": "Google AI Plus $4.99/mes; AI Pro $19.99/mes ($199.99/año); AI Ultra $99.99-$199.99/mes; API Gemini 4 Carbon $2/$10 intro ($4/$20 desde el 1 dic)",
-          "promoWindow": "Acceso anticipado para miembros del 20 al 26 nov 2026; ofertas generales de Black Friday previstas para el 27 nov 2026",
+          "promoWindow": "Acceso anticipado para miembros desde el 20 nov 2026; ofertas generales de Black Friday previstas para el 27 nov 2026",
           "eligiblePlans": "Suscriptores actuales de Google AI y Google One en AI Plus y AI Pro anual (hasta 50% dto., según cuenta; excluye AI Ultra)",
           "renewalPrice": "Se renueva a tarifa estándar tras la promoción ($4.99/mes Plus; $199.99/año o $19.99/mes Pro)",
           "officialSourceLabel": "Planes oficiales Google One",
-          "billingHeadline": "Cuenta atrás T-5: Gemini 4 Carbon y Argon duplican a $4/$20 el 1 dic; Jules cierra 31 dic",
-          "billingImpactDetail": "Vence el 30 nov (quedan 5 días): las tarifas intro de Gemini 4 Carbon y Argon ($2/$10 por 1M, $0.10 caché, Batch $1/$5) se duplican a $4/$20 el 1 dic 2026; Jules cierra el 31 dic."
+          "billingHeadline": "Gemini 4 Carbon y Argon duplican a $4/$20 el 1 dic; Jules cierra 31 dic",
+          "billingImpactDetail": "Vence el 30 nov: las tarifas intro de Gemini 4 Carbon y Argon ($2/$10 por 1M, $0.10 caché, Batch $1/$5) se duplican a $4/$20 el 1 dic 2026; Jules cierra el 31 dic."
         }
-      }
+      },
+      "promoDeadlines": [
+        {
+          "offer": "Google AI",
+          "endsAt": "2026-11-26"
+        }
+      ]
     },
     {
       "id": "xai-grok",
@@ -246,11 +252,11 @@
       "product": "Devin Desktop (formerly Windsurf)",
       "category": "coding_agent",
       "promoStatus": "active_promo",
-      "promoBadge": "Free SWE-2 Until Dec 4",
+      "promoBadge": "Limited-Time Free SWE Models",
       "regularPrice": "Free $0/mo, Pro $20/mo, Max $200/mo, Teams $80 base + $40/seat/mo; SWE-2 Flash standard $0.10/$0.50 per 1M",
-      "promoWindow": "No Black Friday tier discount; limited-time free model access: SWE-2 through Nov 30, 2026; SWE-2 Flash through Dec 4, 2026 (18:00 UTC)",
+      "promoWindow": "No Black Friday tier discount.",
       "eligiblePlans": "Self-serve Pro and Max plans in Devin Desktop & CLI (excludes cloud sessions)",
-      "renewalPrice": "Subscriptions stay $20/$200/mo; SWE-2 Flash moves to $0.10/1M input & $0.50/1M output after Dec 4",
+      "renewalPrice": "Subscriptions stay $20/$200/mo; SWE-2 Flash moves to $0.10/1M input & $0.50/1M output after the promotion",
       "officialSourceLabel": "Devin Official Pricing",
       "officialSourceUrl": "https://devin.ai/pricing",
       "verifiedDate": "2026-11-25",
@@ -263,9 +269,9 @@
       },
       "i18n": {
         "zh-CN": {
-          "promoBadge": "SWE-2 限时免费至 12/4",
+          "promoBadge": "SWE 模型限时免费",
           "regularPrice": "Free $0/月、Pro $20/月、Max $200/月、Teams $80 基础费 + $40/席/月；SWE-2 Flash 标准价 $0.10/$0.50 每百万",
-          "promoWindow": "套餐价无黑五折扣；官方限时免费：SWE-2 免费至 2026-11-30，SWE-2 Flash 免费至 2026-12-04 18:00 UTC",
+          "promoWindow": "套餐价无黑五折扣",
           "eligiblePlans": "Devin Desktop 与 CLI 中的自服务 Pro 与 Max 用户（云端会话除外）",
           "renewalPrice": "订阅保持 $20/$200/月；12 月 4 日后 SWE-2 Flash 恢复 $0.10/1M 输入与 $0.50/1M 输出",
           "officialSourceLabel": "Devin 官方定价页",
@@ -273,9 +279,9 @@
           "billingImpactDetail": "11 月 12 日更新 Devin Teams（$80 基础费+$40/席），每席含 Devin Desktop 与免费 SWE-2 会话；日/周额度制正式取代旧版月度积分。"
         },
         "zh-TW": {
-          "promoBadge": "SWE-2 限時免費至 12/4",
+          "promoBadge": "SWE 模型限時免費",
           "regularPrice": "Free $0/月、Pro $20/月、Max $200/月、Teams $80 基礎費 + $40/席/月；SWE-2 Flash 標準價 $0.10/$0.50 每百萬",
-          "promoWindow": "方案價無黑五折扣；官方限時免費：SWE-2 免費至 2026-11-30，SWE-2 Flash 免費至 2026-12-04 18:00 UTC",
+          "promoWindow": "方案價無黑五折扣",
           "eligiblePlans": "Devin Desktop 與 CLI 中的自助 Pro 與 Max 用戶（雲端會話除外）",
           "renewalPrice": "訂閱維持 $20/$200/月；12 月 4 日後 SWE-2 Flash 恢復 $0.10/1M 輸入與 $0.50/1M 輸出",
           "officialSourceLabel": "Devin 官方定價頁",
@@ -283,9 +289,9 @@
           "billingImpactDetail": "11 月 12 日更新 Devin Teams（$80 基礎費+$40/席），每席含 Devin Desktop 與免費 SWE-2 會話；日/週額度制正式取代舊版月度積分。"
         },
         "ja": {
-          "promoBadge": "SWE-2 無料 12/4 まで",
+          "promoBadge": "SWE モデル期間限定無料",
           "regularPrice": "Free $0/月、Pro $20/月、Max $200/月、Teams 基本$80 + $40/席/月；SWE-2 Flash 通常 $0.10/$0.50 per 1M",
-          "promoWindow": "プラン割引なし；期間限定モデル無料：SWE-2 は 2026-11-30 まで、SWE-2 Flash は 2026-12-04 18:00 UTC まで",
+          "promoWindow": "プラン割引なし",
           "eligiblePlans": "Devin Desktop / CLI のセルフサーブ Pro・Max プラン（クラウドセッションは対象外）",
           "renewalPrice": "サブスクは $20/$200/月を継続；SWE-2 Flash は 12/4 以降 $0.10/1M 入力・$0.50/1M 出力へ移行",
           "officialSourceLabel": "Devin 公式料金ページ",
@@ -293,9 +299,9 @@
           "billingImpactDetail": "11月12日に Teams を改定し席ごとに Devin Desktop と無料 SWE-2 セッションを付与。従来の月次クレジットは日次/週次クォータへ移行しました。"
         },
         "ko": {
-          "promoBadge": "SWE-2 12/4까지 무료",
+          "promoBadge": "SWE 모델 한정 무료",
           "regularPrice": "Free $0/월, Pro $20/월, Max $200/월, Teams 기본 $80 + $40/석/월; SWE-2 Flash 정상 $0.10/$0.50(1M당)",
-          "promoWindow": "블프 요금제 할인 없음; 한정 무료 모델 제공: SWE-2(2026-11-30까지), SWE-2 Flash(2026-12-04 18:00 UTC까지)",
+          "promoWindow": "블프 요금제 할인 없음",
           "eligiblePlans": "Devin Desktop 및 CLI의 셀프서브 Pro/Max 요금제(클라우드 세션 제외)",
           "renewalPrice": "구독료는 $20/$200/월 유지; SWE-2 Flash는 12월 4일 이후 입력 $0.10/1M, 출력 $0.50/1M 적용",
           "officialSourceLabel": "Devin 공식 가격",
@@ -303,16 +309,26 @@
           "billingImpactDetail": "11월 12일 Devin Teams가 좌석당 Devin Desktop 및 무료 SWE-2 세션을 포함하도록 개편되었으며, 일/주간 할당량이 기존 월간 크레딧을 대체했습니다."
         },
         "es": {
-          "promoBadge": "SWE-2 Gratis hasta 4 Dic",
+          "promoBadge": "Modelos SWE gratis por tiempo limitado",
           "regularPrice": "Free $0/mes, Pro $20/mes, Max $200/mes, Teams $80 base + $40/asiento/mes; SWE-2 Flash estándar $0.10/$0.50 por 1M",
-          "promoWindow": "Sin descuento BF en planes; acceso gratuito temporal: SWE-2 hasta 30 nov 2026; SWE-2 Flash hasta 4 dic 2026 (18:00 UTC)",
+          "promoWindow": "Sin descuento BF en planes",
           "eligiblePlans": "Planes autoservicio Pro y Max en Devin Desktop y CLI (excluye sesiones en la nube)",
           "renewalPrice": "Las suscripciones siguen en $20/$200/mes; SWE-2 Flash pasa a $0.10/1M entrada y $0.50/1M salida tras el 4 dic",
           "officialSourceLabel": "Precios oficiales Devin",
           "billingHeadline": "Teams reestructurado ($80+$40/asiento); cuotas semanales reemplazan créditos",
           "billingImpactDetail": "El 12 nov actualizó Teams ($80 base + $40/asiento) incluyendo Devin Desktop y sesiones SWE-2 gratis; las cuotas diarias/semanales sustituyeron a los créditos mensuales."
         }
-      }
+      },
+      "promoDeadlines": [
+        {
+          "offer": "SWE-2",
+          "endsAt": "2026-11-30"
+        },
+        {
+          "offer": "SWE-2 Flash",
+          "endsAt": "2026-12-04T18:00:00Z"
+        }
+      ]
     },
     {
       "id": "openrouter",
@@ -408,8 +424,8 @@
         "hasRecentChange": true,
         "effectiveDate": "2026-11-30",
         "changeType": "billing_rule",
-        "headline": "T-5 Alert: /v1/prompts & Evals shut down Nov 30; GPT-6.2 Astra cut 20%",
-        "impactDetail": "5-day migration alert: /v1/prompts API, Evals dashboard/API (read-only since Oct 31), and Agent Builder shut down Nov 30, 2026 — move prompts into code (Responses API) and evals to Promptfoo. Nov 17 cut GPT-6.2 Astra 20% ($8/$40); Ultrafast 3x rate holds until Feb 28, 2027."
+        "headline": "/v1/prompts & Evals shut down; GPT-6.2 Astra cut 20%",
+        "impactDetail": "/v1/prompts API, Evals dashboard/API (read-only since Oct 31), and Agent Builder shut down — move prompts into code (Responses API) and evals to Promptfoo. Nov 17 cut GPT-6.2 Astra 20% ($8/$40); Ultrafast 3x rate holds until Feb 28, 2027."
       },
       "i18n": {
         "zh-CN": {
@@ -419,8 +435,8 @@
           "eligiblePlans": "无个人黑五适用套餐（常规非营利/K-12/美国高校学生福利及 Pro 绑定 API 额度单独适用）",
           "renewalPrice": "按标准月费（$8 / $20 / $100-$500/月）及标准 API 价目表计费",
           "officialSourceLabel": "OpenAI 官方定价页",
-          "billingHeadline": "T-5 停服预警：/v1/prompts 与 Evals 11/30 关停；Astra 降价 20%",
-          "billingImpactDetail": "仅剩 5 天：/v1/prompts、Evals（10/31 起已只读）及 Agent Builder 将于 11 月 30 日正式停服，请尽快迁移至 Responses API 代码托管与 Promptfoo。另 11/17 GPT-6.2 Astra 已降价 20%（$8/$40）。"
+          "billingHeadline": "停服预警：/v1/prompts 与 Evals 11/30 关停；Astra 降价 20%",
+          "billingImpactDetail": "/v1/prompts、Evals（10/31 起已只读）及 Agent Builder 将于 11 月 30 日正式停服，请尽快迁移至 Responses API 代码托管与 Promptfoo。另 11/17 GPT-6.2 Astra 已降价 20%（$8/$40）。"
         },
         "zh-TW": {
           "promoBadge": "未查到官方黑五優惠",
@@ -429,8 +445,8 @@
           "eligiblePlans": "無個人黑五適用方案（常規非營利/K-12/美國學生優惠與 Pro 隨附 API 額度另計）",
           "renewalPrice": "依標準月費（$8 / $20 / $100-$500/月）及標準 API 價目表計費",
           "officialSourceLabel": "OpenAI 官方定價頁",
-          "billingHeadline": "T-5 停服預警：/v1/prompts 與 Evals 11/30 關停；Astra 降價 20%",
-          "billingImpactDetail": "僅剩 5 天：/v1/prompts、Evals（10/31 起已唯讀）及 Agent Builder 將於 11 月 30 日正式停服，請儘速遷移至 Responses API 程式碼託管與 Promptfoo。另 11/17 GPT-6.2 Astra 已降價 20%（$8/$40）。"
+          "billingHeadline": "停服預警：/v1/prompts 與 Evals 11/30 關停；Astra 降價 20%",
+          "billingImpactDetail": "/v1/prompts、Evals（10/31 起已唯讀）及 Agent Builder 將於 11 月 30 日正式停服，請儘速遷移至 Responses API 程式碼託管與 Promptfoo。另 11/17 GPT-6.2 Astra 已降價 20%（$8/$40）。"
         },
         "ja": {
           "promoBadge": "公式 BF 特価なし",
@@ -439,8 +455,8 @@
           "eligiblePlans": "個人 BF 割引の対象プランなし（既存の非営利・学生特典および Pro 付帯 API クレジットは別枠）",
           "renewalPrice": "通常の月額料金（$8 / $20 / $100-$500/月）および標準 API 従量単価",
           "officialSourceLabel": "OpenAI 公式料金",
-          "billingHeadline": "残り5日：/v1/prompts と Evals が 11/30 終了；Astra は 20% 値下げ",
-          "billingImpactDetail": "移行期限 T-5：/v1/prompts API・Evals（10/31以降閲覧専用）・Agent Builder は 11月30日に終了（Responses API コード管理と Promptfoo へ移行要）。11/17 に GPT-6.2 Astra は 20% 値下げ済み（$8/$40）。"
+          "billingHeadline": "/v1/prompts と Evals が 11/30 終了；Astra は 20% 値下げ",
+          "billingImpactDetail": "/v1/prompts API・Evals（10/31以降閲覧専用）・Agent Builder は 11月30日に終了（Responses API コード管理と Promptfoo へ移行要）。11/17 に GPT-6.2 Astra は 20% 値下げ済み（$8/$40）。"
         },
         "ko": {
           "promoBadge": "공식 블프 할인 없음",
@@ -449,8 +465,8 @@
           "eligiblePlans": "개인용 블프 프로모션 해당 없음(비영리/학생 프로그램 및 Pro 연동 API 크레딧은 별도)",
           "renewalPrice": "표준 월간 구독료($8 / $20 / $100-$500/월) 및 표준 API 요율 적용",
           "officialSourceLabel": "OpenAI 공식 가격",
-          "billingHeadline": "종료 D-5: /v1/prompts 및 Evals 11/30 중단; Astra 20% 인하",
-          "billingImpactDetail": "마이그레이션 D-5 경보: /v1/prompts API, Evals(10/31부터 읽기 전용), Agent Builder가 11월 30일 종료되므로 Responses API 코드 관리 및 Promptfoo로 이전하세요. GPT-6.2 Astra는 11/17 20% 인하($8/$40)되었습니다."
+          "billingHeadline": "/v1/prompts 및 Evals 11/30 중단; Astra 20% 인하",
+          "billingImpactDetail": "/v1/prompts API, Evals(10/31부터 읽기 전용), Agent Builder가 11월 30일 종료되므로 Responses API 코드 관리 및 Promptfoo로 이전하세요. GPT-6.2 Astra는 11/17 20% 인하($8/$40)되었습니다."
         },
         "es": {
           "promoBadge": "Sin Promo BF Oficial",
@@ -459,8 +475,8 @@
           "eligiblePlans": "N/A para promo BF de consumo (programas educativos/ONG y créditos API incluidos en Pro siguen aparte)",
           "renewalPrice": "Facturación mensual estándar ($8 / $20 / $100-$500/mes) y tarifa estándar de API",
           "officialSourceLabel": "Precios oficiales OpenAI",
-          "billingHeadline": "Alerta T-5: /v1/prompts y Evals cierran el 30 nov; Astra baja 20%",
-          "billingImpactDetail": "Faltan 5 días: /v1/prompts, Evals (solo lectura desde 31 oct) y Agent Builder cierran el 30 nov 2026; migra prompts a código en Responses API y evals a Promptfoo. GPT-6.2 Astra bajó 20% ($8/$40) el 17 nov."
+          "billingHeadline": "/v1/prompts y Evals cierran el 30 nov; Astra baja 20%",
+          "billingImpactDetail": "/v1/prompts, Evals (solo lectura desde 31 oct) y Agent Builder cierran el 30 nov 2026; migra prompts a código en Responses API y evals a Promptfoo. GPT-6.2 Astra bajó 20% ($8/$40) el 17 nov."
         }
       }
     },
@@ -483,7 +499,7 @@
         "effectiveDate": "2026-11-23",
         "changeType": "plan_restructure",
         "headline": "Claude Opus 4.5 deprecated Nov 23 (retires Jan 22); Sonnet 4.5 retires Nov 30",
-        "impactDetail": "Anthropic deprecated Claude Opus 4.5 (claude-opus-4-5) on Nov 23 ahead of Jan 22, 2027 retirement (migrate to Opus 5.5 $4/$20; breaking changes on prefills & forced tool choice). Sonnet 4.5 & Opus 4.8 Fast retire Nov 30 (T-5). Max 20x renamed Ultra ($200/mo)."
+        "impactDetail": "Anthropic deprecated Claude Opus 4.5 (claude-opus-4-5) on Nov 23 ahead of Jan 22, 2027 retirement (migrate to Opus 5.5 $4/$20; breaking changes on prefills & forced tool choice). Sonnet 4.5 & Opus 4.8 Fast retire Nov 30. Max 20x renamed Ultra ($200/mo)."
       },
       "i18n": {
         "zh-CN": {
@@ -494,7 +510,7 @@
           "renewalPrice": "按标准价续费（Pro $20/月或 $200/年、Max $100/月、Ultra $200/月）",
           "officialSourceLabel": "Claude 官方定价页",
           "billingHeadline": "Claude Opus 4.5 于 11/23 弃用（1/22 退市）；Sonnet 4.5 11/30 停服",
-          "billingImpactDetail": "Anthropic 于 11 月 23 日正式弃用 Claude Opus 4.5（2027-01-22 退市，建议迁移至 Opus 5.5 $4/$20，注意取消预填与强制工具调用）；Sonnet 4.5 与 Opus 4.8 Fast 将于 11/30 停服（T-5）。Max 20x 已更名为 Ultra（$200/月）。"
+          "billingImpactDetail": "Anthropic 于 11 月 23 日正式弃用 Claude Opus 4.5（2027-01-22 退市，建议迁移至 Opus 5.5 $4/$20，注意取消预填与强制工具调用）；Sonnet 4.5 与 Opus 4.8 Fast 将于 11/30 停服。Max 20x 已更名为 Ultra（$200/月）。"
         },
         "zh-TW": {
           "promoBadge": "未查到官方黑五優惠",
@@ -504,7 +520,7 @@
           "renewalPrice": "依標準價續訂（Pro $20/月或 $200/年、Max $100/月、Ultra $200/月）",
           "officialSourceLabel": "Claude 官方定價頁",
           "billingHeadline": "Claude Opus 4.5 於 11/23 棄用（1/22 退市）；Sonnet 4.5 11/30 停服",
-          "billingImpactDetail": "Anthropic 於 11 月 23 日正式棄用 Claude Opus 4.5（2027-01-22 退市，建議遷移至 Opus 5.5 $4/$20，留意預填與強制工具呼叫變更）；Sonnet 4.5 與 Opus 4.8 Fast 將於 11/30 停服（T-5）。Max 20x 已更名為 Ultra（$200/月）。"
+          "billingImpactDetail": "Anthropic 於 11 月 23 日正式棄用 Claude Opus 4.5（2027-01-22 退市，建議遷移至 Opus 5.5 $4/$20，留意預填與強制工具呼叫變更）；Sonnet 4.5 與 Opus 4.8 Fast 將於 11/30 停服。Max 20x 已更名為 Ultra（$200/月）。"
         },
         "ja": {
           "promoBadge": "公式 BF 特価なし",
@@ -524,7 +540,7 @@
           "renewalPrice": "표준 요금 적용(Pro $20/월 또는 $200/년, Max $100/월, Ultra $200/월)",
           "officialSourceLabel": "Claude 공식 가격",
           "billingHeadline": "Claude Opus 4.5 11/23 지원 중단 예고(1/22 종료); Sonnet 4.5 11/30 종료",
-          "billingImpactDetail": "Anthropic이 11월 23일 Claude Opus 4.5를 지원 중단(2027년 1월 22일 완전 종료, Opus 5.5 $4/$20 이전 권장·prefill 등 호환성 유의)으로 전환했습니다. Sonnet 4.5 및 Opus 4.8 Fast는 11/30 종료(D-5)되며 Max 20x는 Ultra로 개편되었습니다."
+          "billingImpactDetail": "Anthropic이 11월 23일 Claude Opus 4.5를 지원 중단(2027년 1월 22일 완전 종료, Opus 5.5 $4/$20 이전 권장·prefill 등 호환성 유의)으로 전환했습니다. Sonnet 4.5 및 Opus 4.8 Fast는 11/30 종료되며 Max 20x는 Ultra로 개편되었습니다."
         },
         "es": {
           "promoBadge": "Sin Promo BF Oficial",
@@ -534,7 +550,7 @@
           "renewalPrice": "Estándar Pro $20/mes ($200/año), Max $100/mes, Ultra $200/mes",
           "officialSourceLabel": "Precios oficiales Claude",
           "billingHeadline": "Claude Opus 4.5 obsoleto desde 23 nov (cierra 22 ene); Sonnet 4.5 cierra 30 nov",
-          "billingImpactDetail": "Anthropic declaró obsoleto a Claude Opus 4.5 el 23 nov (cierre 22 ene 2027; migrar a Opus 5.5 $4/$20 revisando prefills y tool choice). Sonnet 4.5 y Opus 4.8 Fast cierran el 30 nov (T-5). Max 20x pasó a Ultra ($200/mes)."
+          "billingImpactDetail": "Anthropic declaró obsoleto a Claude Opus 4.5 el 23 nov (cierre 22 ene 2027; migrar a Opus 5.5 $4/$20 revisando prefills y tool choice). Sonnet 4.5 y Opus 4.8 Fast cierran el 30 nov. Max 20x pasó a Ultra ($200/mes)."
         }
       }
     },

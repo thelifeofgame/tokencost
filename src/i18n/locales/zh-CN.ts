@@ -1,6 +1,25 @@
 import { TranslationDictionary } from '../types';
 
 export const zhCN: TranslationDictionary = {
+  growth: {
+    noBenchmark: '暂无评测数据',
+    affiliateDisclosure: '通过 OpenRouter 推荐链接注册或购买，我们可能获得佣金。',
+    affiliateLabel: '推荐链接',
+    daysRemaining: '还剩 {days} 天',
+    deadline: '截止日期',
+    billingAlertTitle: 'Google 和 OpenAI 计费及 API 变动',
+    migrationTitle: 'Gemini 4 Carbon 涨价迁移',
+    expired: '已结束',
+    growthTitle: '回访与订阅',
+    retentionWindow: '按 UTC 首访日统计，选取已完整度过第 7 天的最近 30 个日队列。',
+    day1: '1 日回访率',
+    day7: '7 日回访率',
+    cohort: '队列访客数',
+    submitted: '提交',
+    confirmed: '确认',
+    confirmationRate: '确认率',
+    eventCounts: '增长事件计数',
+  },
   common: {
     brand: 'TokenCosts AI',
     tagline: '大模型 API 成本核算与自适应智能路由平台',

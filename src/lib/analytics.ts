@@ -1,5 +1,6 @@
 'use client';
 
+const VID_STORAGE_KEY = 'tc_vid';
 const SID_STORAGE_KEY = 'tc_analytics_sid_v1';
 const UTM_STORAGE_KEY = 'tc_analytics_utm_v1';
 const SUPPORTED_LOCALE_CODES = ['en', 'zh-CN', 'zh-TW', 'ja', 'ko', 'es'] as const;
@@ -24,6 +25,19 @@ function getOrCreateSid(): string {
   } catch {
     if (!memorySid) memorySid = generateSid();
     return memorySid;
+  }
+}
+
+function getOrCreateVid(): string | undefined {
+  try {
+    const existing = window.localStorage.getItem(VID_STORAGE_KEY);
+    if (existing && /^[a-f0-9]{32}$/.test(existing)) return existing;
+    const bytes = crypto.getRandomValues(new Uint8Array(16));
+    const next = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
+    window.localStorage.setItem(VID_STORAGE_KEY, next);
+    return next;
+  } catch {
+    return undefined;
   }
 }
 
@@ -126,9 +140,12 @@ function getCollectEndpoint(): string | null {
   if (typeof window === 'undefined') return null;
   const host = window.location.hostname.toLowerCase();
   if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local')) {
-    return null;
+    const localEndpoint = process.env.NEXT_PUBLIC_LOCAL_ANALYTICS_COLLECT;
+    return localEndpoint && /^http:\/\/(localhost|127\.0\.0\.1):\d+\/api\/analytics\/collect$/.test(localEndpoint)
+      ? localEndpoint
+      : null;
   }
-  if (host.endsWith('tokencostsai.com')) {
+  if (host === 'tokencostsai.com' || host === 'www.tokencostsai.com') {
     return '/api/analytics/collect';
   }
   return null;
@@ -146,6 +163,7 @@ function sendFirstPartyBeacon(event: string, params: Record<string, unknown>, ex
   const body = JSON.stringify({
     event,
     sid: getOrCreateSid(),
+    vid: getOrCreateVid(),
     path: pathname,
     page_group: resolvePageGroup(pathname),
     locale: (typeof params.locale === 'string' && params.locale) || resolveLocale(pathname),

@@ -1,6 +1,25 @@
 import { TranslationDictionary } from '../types';
 
 export const en: TranslationDictionary = {
+  growth: {
+    noBenchmark: 'No benchmark data yet',
+    affiliateDisclosure: 'We may earn a commission through OpenRouter referral links.',
+    affiliateLabel: 'Referral link',
+    daysRemaining: '{days} days left',
+    deadline: 'Deadline',
+    billingAlertTitle: 'Google and OpenAI billing and API changes',
+    migrationTitle: 'Gemini 4 Carbon price migration',
+    expired: 'Ended',
+    growthTitle: 'Retention and subscriptions',
+    retentionWindow: '30 daily cohorts with a completed day 7, based on UTC first visits.',
+    day1: 'Day 1 return rate',
+    day7: 'Day 7 return rate',
+    cohort: 'Visitors in cohort',
+    submitted: 'Submitted',
+    confirmed: 'Confirmed',
+    confirmationRate: 'Confirmation rate',
+    eventCounts: 'Growth event counts',
+  },
   common: {
     brand: 'TokenCosts AI',
     tagline: 'LLM Cost Intelligence & Router',

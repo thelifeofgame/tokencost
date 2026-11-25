@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useMemo, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { useState, useMemo, useEffect } from 'react';
+import { trackEvent, trackEventThrottled } from '@/lib/analytics';
 import { SimulationParams, RouterRecommendation } from '@/types/pricing';
 import { MODELS_DATA } from '@/lib/models-data';
 import { calculateAllModels, calculateMainstreamModels } from '@/lib/calculator-engine';
@@ -43,11 +43,18 @@ const defaultParams: SimulationParams = {
 };
 
 function SimulatorContent() {
-  const searchParams = useSearchParams();
+  const [params, setParams] = useState<SimulationParams>(defaultParams);
+  const [hydrated, setHydrated] = useState(false);
 
-  const [params, setParams] = useState<SimulationParams>(() =>
-    decodeSimulationParams(searchParams, defaultParams)
-  );
+  useEffect(() => {
+    setParams(decodeSimulationParams(new URLSearchParams(window.location.search), defaultParams));
+    setHydrated(true);
+  }, []);
+
+  const updateParams = (next: SimulationParams) => {
+    setParams(next);
+    trackEventThrottled('simulator_run');
+  };
 
   const [selectedProviders, setSelectedProviders] = useState<string[]>(['All']);
   const [selectedBaselineId, setSelectedBaselineId] = useState<string>('gpt-6.2-sol');
@@ -59,10 +66,13 @@ function SimulatorContent() {
 
   // Sync params to URL query
   useEffect(() => {
+    if (!hydrated) return;
     const q = encodeSimulationParams(params);
-    const newUrl = `${window.location.pathname}?${q}`;
+    const current = new URLSearchParams(window.location.search);
+    new URLSearchParams(q).forEach((value, key) => current.set(key, value));
+    const newUrl = `${window.location.pathname}?${current}${window.location.hash}`;
     window.history.replaceState({}, '', newUrl);
-  }, [params]);
+  }, [hydrated, params]);
 
   const toggleProvider = (provider: string) => {
     if (provider === 'All') {
@@ -116,10 +126,11 @@ function SimulatorContent() {
     return generateRouterRecommendations(MODELS_DATA, params, selectedBaselineModel);
   }, [params, selectedBaselineModel]);
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const q = encodeSimulationParams(params);
     const url = `${window.location.origin}${window.location.pathname}?${q}`;
-    navigator.clipboard.writeText(url);
+    await navigator.clipboard.writeText(url);
+    trackEvent('scenario_share_copy');
     setCopiedShare(true);
     setTimeout(() => setCopiedShare(false), 2500);
   };
@@ -130,14 +141,14 @@ function SimulatorContent() {
   };
 
   return (
-    <div className="space-y-8">
+    <fieldset disabled={!hydrated} className="min-w-0 space-y-8">
       {/* Main 3-Column Parallel Bento Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 xl:grid-cols-12 gap-5 items-start">
         {/* Left Column: Workload Simulator Controls (3 cols on xl, 5 on lg) */}
         <div data-analytics-module="calculator" className="col-span-12 lg:col-span-5 xl:col-span-3 space-y-5">
           <SimulatorDeck
             params={params}
-            onChange={setParams}
+            onChange={updateParams}
             selectedProviders={selectedProviders}
             onToggleProvider={toggleProvider}
             onOpenEstimator={() => setEstimatorModalOpen(true)}
@@ -192,13 +203,13 @@ function SimulatorContent() {
         isOpen={estimatorModalOpen}
         onClose={() => setEstimatorModalOpen(false)}
         onApplyTokens={(tokens: number) => {
-          setParams({
+          updateParams({
             ...params,
             inputTokens: tokens,
           });
         }}
       />
-    </div>
+    </fieldset>
   );
 }
 
@@ -311,9 +322,7 @@ export default function HomePage() {
       </Link>
 
       {/* Core Cost Simulator */}
-      <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center text-zinc-500 font-mono text-sm">{t.common.loading}</div>}>
-        <SimulatorContent />
-      </Suspense>
+      <SimulatorContent />
     </div>
   );
 }

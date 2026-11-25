@@ -1,5 +1,7 @@
 'use client';
 
+import DealDeadline from './DealDeadline';
+
 import React from 'react';
 import {
   AlertTriangle,
@@ -200,6 +202,11 @@ export default function DealsComparisonTable({ providers }: DealsComparisonTable
                     }`}
                   >
                     {localized.promoWindow}
+              {provider.promoDeadlines?.map(({ offer, endsAt }) => (
+                <span key={offer} className="block">
+                  {offer} · <DealDeadline endsAt={endsAt} />
+                </span>
+              ))}
                   </td>
 
                   {/* 5. Eligible Plans */}

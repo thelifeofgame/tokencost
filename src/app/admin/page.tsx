@@ -6,6 +6,7 @@ import { AnalyticsOverviewResponse, AnalyticsRange } from '@/types/analytics';
 import AdminLockScreen from '@/components/admin/AdminLockScreen';
 import AdminHeader from '@/components/admin/AdminHeader';
 import AdminKpiGrid from '@/components/admin/AdminKpiGrid';
+import AdminGrowth from '@/components/admin/AdminGrowth';
 import AdminTrendChart, { TrendSeriesDef } from '@/components/admin/AdminTrendChart';
 import AdminFunnelCard from '@/components/admin/AdminFunnelCard';
 import AdminPageTable from '@/components/admin/AdminPageTable';
@@ -296,6 +297,7 @@ export default function AdminDashboardPage() {
           }`}
         >
           <AdminKpiGrid kpis={overview.kpis} />
+          {overview.growth && <AdminGrowth growth={overview.growth} />}
 
           <section
             aria-label="趋势曲线"

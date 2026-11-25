@@ -354,7 +354,7 @@ export default function CostChart({ breakdowns }: CostChartProps) {
                           title={t.simulator.chart.benchmarkMissingHint}
                           className="inline-flex items-center rounded px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200/90 dark:border-zinc-700/60 text-zinc-600 dark:text-zinc-400 font-medium leading-none cursor-help whitespace-nowrap"
                         >
-                          {t.simulator.chart.benchmarkMissingBadge}
+                          {t.growth.noBenchmark}
                         </span>
                       )}
                     </div>

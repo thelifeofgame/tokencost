@@ -1,5 +1,7 @@
 'use client';
 
+import DealDeadline from './DealDeadline';
+
 import React, { useState } from 'react';
 import {
   AlertTriangle,
@@ -252,6 +254,11 @@ export default function DealVendorCard({ provider }: DealVendorCardProps) {
               }`}
             >
               {localized.promoWindow}
+              {provider.promoDeadlines?.map(({ offer, endsAt }) => (
+                <span key={offer} className="block">
+                  {offer} · <DealDeadline endsAt={endsAt} />
+                </span>
+              ))}
             </p>
           </div>
 

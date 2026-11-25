@@ -2,6 +2,14 @@ export type AnalyticsRange = '24h' | '7d' | '30d';
 
 export interface AnalyticsOverviewResponse {
   range: AnalyticsRange;
+  growth?: {
+    cohortSize: number;
+    day1Rate: number | null;
+    day7Rate: number | null;
+    submitted: number;
+    confirmed: number;
+    events: Array<{ event: string; count: number }>;
+  };
   syncedAt: string;
   health: {
     status: 'live' | 'stale' | 'degraded';

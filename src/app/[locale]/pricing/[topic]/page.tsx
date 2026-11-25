@@ -1,8 +1,6 @@
 import React from 'react';
-import PricingTopicPage, {
-  generateStaticParams as originalGenerateStaticParams,
-  buildTopicMetadata,
-} from '@/app/pricing/[topic]/page';
+import { generateStaticParams as originalGenerateStaticParams } from '@/app/pricing/[topic]/page';
+import PricingTopicPage, { buildTopicMetadata } from '@/components/PricingTopicPage';
 import { SUPPORTED_LOCALES } from '@/i18n';
 import { resolveLocale } from '@/lib/seo-alternates';
 

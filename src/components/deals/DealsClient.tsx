@@ -1,5 +1,7 @@
 'use client';
 
+import DealDeadline from './DealDeadline';
+
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   AlertTriangle,
@@ -31,49 +33,6 @@ type CategoryFilter = 'all' | 'subscription' | 'api' | 'coding_agent';
 type ViewMode = 'cards' | 'table';
 
 const dealsPayload = officialDealsRaw as OfficialDealsPayload;
-
-function computeDaysUntil(targetDate: string, referenceDate?: string): number {
-  const [y, m, d] = targetDate.split('-').map(Number);
-  if (!y || !m || !d) return 0;
-
-  let refUtc: number;
-  if (referenceDate) {
-    const [ry, rm, rd] = referenceDate.split('-').map(Number);
-    if (ry && rm && rd) {
-      refUtc = Date.UTC(ry, rm - 1, rd);
-    } else {
-      const now = new Date();
-      refUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-    }
-  } else {
-    const now = new Date();
-    refUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-  }
-
-  const targetUtc = Date.UTC(y, m - 1, d);
-  return Math.round((targetUtc - refUtc) / 86400000);
-}
-
-function computeCountdownLabel(
-  blackFridayDate: string,
-  dealsT: ReturnType<typeof useI18n>['t']['deals'],
-  verifiedDate?: string
-): string {
-  const [y, m, d] = blackFridayDate.split('-').map(Number);
-  if (!y || !m || !d) return dealsT.countdownPostBf;
-  const daysDiff = computeDaysUntil(blackFridayDate, verifiedDate);
-
-  if (daysDiff > 0) {
-    return dealsT.countdownPreBf.replace(/\{days\}/g, String(daysDiff));
-  }
-  if (daysDiff === 0) {
-    return dealsT.countdownBfDay;
-  }
-  if (daysDiff >= -3) {
-    return dealsT.countdownCyberWeekend;
-  }
-  return dealsT.countdownPostBf;
-}
 
 export default function DealsClient() {
   const { t, locale } = useI18n();
@@ -122,15 +81,7 @@ export default function DealsClient() {
     return { total, active, noPromo, billing, hikes, cuts };
   }, [providers]);
 
-  const countdownText = useMemo(
-    () => computeCountdownLabel(dealsPayload.blackFridayDate, dealsT, dealsPayload.lastVerifiedDate),
-    [dealsT]
-  );
-
-  const daysToNov30 = useMemo(
-    () => Math.max(0, computeDaysUntil('2026-11-30', dealsPayload.lastVerifiedDate)),
-    []
-  );
+  const openAiBillingDate = providers.find(provider => provider.id === 'openai')?.billingChange.effectiveDate;
 
   const filteredProviders = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -216,7 +167,7 @@ export default function DealsClient() {
 
           <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono font-medium bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/25 text-amber-800 dark:text-amber-300 tabular-nums whitespace-nowrap">
             <CalendarClock className="h-3.5 w-3.5 shrink-0" />
-            <span>{countdownText}</span>
+            <DealDeadline endsAt={dealsPayload.blackFridayDate} />
           </span>
 
           <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono font-medium bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">
@@ -259,11 +210,11 @@ export default function DealsClient() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 dark:border-amber-500/35 bg-amber-100/90 dark:bg-amber-500/20 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-amber-900 dark:text-amber-200 tabular-nums whitespace-nowrap">
                 <AlertTriangle className="h-3 w-3 shrink-0" />
-                <span>{dealsT.nov30AlertBadge.replace(/\{days\}/g, String(daysToNov30))}</span>
+                {openAiBillingDate && <DealDeadline endsAt={openAiBillingDate} />}
               </span>
             </div>
             <h2 className="text-xs sm:text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
-              {dealsT.nov30AlertTitle}
+              {t.growth.billingAlertTitle}
             </h2>
             <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
               {dealsT.nov30AlertBody}

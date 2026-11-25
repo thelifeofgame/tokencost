@@ -217,10 +217,10 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
                       </span>
                     ) : (
                       <span
-                        title="Not yet indexed by third-party benchmarks"
+                        title={t.growth.noBenchmark}
                         className="inline-flex items-center px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200/80 dark:border-zinc-700/50 text-[10px] font-mono text-zinc-600 dark:text-zinc-400"
                       >
-                        —
+                        {t.growth.noBenchmark}
                       </span>
                     )}
                   </td>
@@ -264,6 +264,7 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
                       {item.model.affiliateUrl && (
                         <a
                           href={item.model.affiliateUrl}
+                          title={item.model.affiliateUrl.includes('openrouter.ai') ? t.growth.affiliateDisclosure : t.simulator.leaderboard.connectApi}
                           target="_blank"
                           rel="nofollow sponsored noopener noreferrer"
                           onClick={() =>
@@ -274,10 +275,10 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
                               outbound_url: item.model.affiliateUrl,
                             })
                           }
-                          className="p-1 rounded bg-indigo-50 dark:bg-indigo-600/20 hover:bg-indigo-100 dark:hover:bg-indigo-600/30 text-indigo-600 dark:text-indigo-300 transition-colors"
-                          title={t.simulator.leaderboard.connectApi}
+                          className="inline-flex items-center gap-1 p-1 rounded bg-indigo-50 dark:bg-indigo-600/20 hover:bg-indigo-100 dark:hover:bg-indigo-600/30 text-indigo-600 dark:text-indigo-300 transition-colors"
                         >
                           <ExternalLink className="h-3 w-3" />
+                          {item.model.affiliateUrl.includes('openrouter.ai') && <span className="text-[10px] font-normal">({t.growth.affiliateLabel})</span>}
                         </a>
                       )}
                     </div>

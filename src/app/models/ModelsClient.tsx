@@ -839,10 +839,10 @@ export default function ModelsClient() {
                       </span>
                     ) : (
                       <span
-                        title="Pending Artificial Analysis / Arena evaluation"
+                        title={t.growth.noBenchmark}
                         className="font-mono text-zinc-500"
                       >
-                        —
+                        {t.growth.noBenchmark}
                       </span>
                     )}
                   </div>

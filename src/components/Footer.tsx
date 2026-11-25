@@ -1,51 +1,14 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Cpu, Heart, Code2, Globe, Mail } from 'lucide-react';
 import { useI18n } from '@/i18n/I18nProvider';
-import { getCarbonMigrationCountdown } from '@/lib/live-copy-helpers';
 
 export default function Footer() {
-  const { t, locale, getLocalizedPath } = useI18n();
+  const { t, getLocalizedPath } = useI18n();
 
-  const { migrationTitle, countdownBadge } = useMemo(() => {
-    const { daysLeft, isHikeActive, shortTagEn } = getCarbonMigrationCountdown();
-    if (locale === 'zh-CN') {
-      return {
-        migrationTitle: 'Gemini 4 Carbon 12/1 涨价迁移',
-        countdownBadge: isHikeActive ? '已涨价 2x' : daysLeft > 0 ? `剩${daysLeft}天` : '最后1天',
-      };
-    }
-    if (locale === 'zh-TW') {
-      return {
-        migrationTitle: 'Gemini 4 Carbon 12/1 漲價遷移',
-        countdownBadge: isHikeActive ? '已漲價 2x' : daysLeft > 0 ? `剩${daysLeft}天` : '最後1天',
-      };
-    }
-    if (locale === 'ja') {
-      return {
-        migrationTitle: 'Gemini 4 Carbon 12/1 値上げ移行',
-        countdownBadge: isHikeActive ? '2x適用中' : daysLeft > 0 ? `残${daysLeft}日` : '最終日',
-      };
-    }
-    if (locale === 'ko') {
-      return {
-        migrationTitle: 'Gemini 4 Carbon 12/1 인상 마이그레이션',
-        countdownBadge: isHikeActive ? '2배 적용' : daysLeft > 0 ? `${daysLeft}일 남음` : '마감일',
-      };
-    }
-    if (locale === 'es') {
-      return {
-        migrationTitle: 'Migración Gemini 4 Carbon 1 dic',
-        countdownBadge: isHikeActive ? 'Alza 2x' : daysLeft > 0 ? `${daysLeft}d` : 'Último día',
-      };
-    }
-    return {
-      migrationTitle: 'Gemini 4 Carbon Dec 1 Migration',
-      countdownBadge: shortTagEn,
-    };
-  }, [locale]);
+  const migrationTitle = t.growth.migrationTitle;
 
   return (
     <footer className="border-t border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/90 dark:bg-zinc-950/80 text-zinc-600 dark:text-zinc-400 py-12 px-4 sm:px-6 lg:px-8 mt-auto">
@@ -183,10 +146,6 @@ export default function Footer() {
                 className="group inline-flex items-center flex-wrap gap-1.5 text-xs text-rose-700 dark:text-rose-300 hover:text-rose-900 dark:hover:text-rose-200 transition-colors"
               >
                 <span>{migrationTitle}</span>
-                <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/35 bg-rose-500/10 dark:bg-rose-500/20 px-1.5 py-0.5 text-[10px] font-mono tabular-nums font-bold leading-none text-rose-800 dark:text-rose-200 whitespace-nowrap">
-                  <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-pulse" />
-                  <span>{countdownBadge}</span>
-                </span>
               </Link>
             </li>
             <li>
@@ -219,7 +178,10 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto max-w-[1600px] border-t border-zinc-200 dark:border-zinc-900 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500">
-        <p>© 2026 {t.footer.copyright}</p>
+        <div className="space-y-1">
+          <p>© 2026 {t.footer.copyright}</p>
+          <p>{t.growth.affiliateDisclosure}</p>
+        </div>
         <p className="flex items-center gap-1 mt-2 sm:mt-0">
           <span>{t.footer.craftedWith}</span>
           <Heart className="h-3 w-3 text-red-500 fill-red-500" />

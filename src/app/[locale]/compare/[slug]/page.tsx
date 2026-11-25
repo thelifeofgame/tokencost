@@ -1,8 +1,6 @@
 import React from 'react';
-import ComparePage, {
-  generateStaticParams as originalGenerateStaticParams,
-  buildCompareMetadata,
-} from '@/app/compare/[slug]/page';
+import { generateStaticParams as originalGenerateStaticParams } from '@/app/compare/[slug]/page';
+import ComparePage, { buildCompareMetadata } from '@/components/ComparePage';
 import { SUPPORTED_LOCALES } from '@/i18n';
 import { resolveLocale } from '@/lib/seo-alternates';
 

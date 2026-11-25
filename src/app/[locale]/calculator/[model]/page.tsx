@@ -1,8 +1,6 @@
 import React from 'react';
-import ModelCalculatorPage, {
-  generateStaticParams as originalGenerateStaticParams,
-  buildCalculatorMetadata,
-} from '@/app/calculator/[model]/page';
+import { generateStaticParams as originalGenerateStaticParams } from '@/app/calculator/[model]/page';
+import ModelCalculatorPage, { buildCalculatorMetadata } from '@/components/ModelCalculatorPage';
 import { SUPPORTED_LOCALES } from '@/i18n';
 import { resolveLocale } from '@/lib/seo-alternates';
 
