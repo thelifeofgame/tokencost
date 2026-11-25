@@ -101,7 +101,7 @@ export default function CostChart({ breakdowns }: CostChartProps) {
       : t.simulator.chart.rangeSubtitle;
 
   return (
-    <div className="relative rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-5 sm:p-6 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-xl flex flex-col justify-between">
+    <div className="relative rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-4 sm:p-5 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-xl flex flex-col justify-between">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-400/20 to-transparent" />
 
       {/* Header */}
@@ -120,7 +120,7 @@ export default function CostChart({ breakdowns }: CostChartProps) {
           </div>
 
           {cheapestModel && (
-            <div className="inline-flex items-center gap-1.5 self-start sm:self-auto px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-[11px] font-medium shrink-0 max-w-full">
+            <div className="inline-flex items-center gap-1.5 self-start sm:self-auto px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-[11px] font-medium shrink-0 max-w-[180px] sm:max-w-[200px] xl:max-w-[180px]">
               <Trophy className="h-3 w-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span className="truncate">
                 {t.simulator.chart.lowestBadge.replace('{model}', cheapestModel.model.modelName)}
@@ -129,8 +129,8 @@ export default function CostChart({ breakdowns }: CostChartProps) {
           )}
         </div>
 
-        {/* Filter Segmented Controls (360px 2x2 grid -> sm flex row) */}
-        <div className="grid grid-cols-2 sm:flex items-center gap-1 p-1 bg-zinc-100/90 dark:bg-zinc-950/70 rounded-xl border border-zinc-200/80 dark:border-zinc-800/90 mb-4 text-[11px]">
+        {/* Filter Segmented Controls (2x2 in 360px & xl:col-span-4, 4-col in sm/2xl) */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 items-center gap-1 p-1 bg-zinc-100/90 dark:bg-zinc-950/70 rounded-xl border border-zinc-200/80 dark:border-zinc-800/90 mb-4 text-[11px]">
           <button
             type="button"
             onClick={() => {

@@ -15,6 +15,7 @@ import { formatModelCount } from '@/i18n';
 import { buildLocalizedCanonical } from '@/lib/seo-alternates';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import SimulatorDeck from '@/components/SimulatorDeck';
+import SimpleComparisonPreview from '@/components/SimpleComparisonPreview';
 import CostChart from '@/components/CostChart';
 import SmartRouterCard from '@/components/SmartRouterCard';
 import LeaderboardTable from '@/components/LeaderboardTable';
@@ -54,18 +55,31 @@ function SimulatorContent() {
     setHydrated(true);
   }, []);
 
+  useEffect(() => {
+    if (!feedback) return;
+    const timer = window.setTimeout(() => setFeedback(''), 3000);
+    return () => window.clearTimeout(timer);
+  }, [feedback]);
+
   const updateParams = (params: SimulationParams) => {
-    setScenario(current => ({ ...current, params }));
+    setScenario((current) => ({ ...current, params }));
     trackEventThrottled('simulator_run');
   };
 
   const [exporterModalOpen, setExporterModalOpen] = useState(false);
   const [selectedRecForExport, setSelectedRecForExport] = useState<RouterRecommendation | null>(null);
   const [estimatorModalOpen, setEstimatorModalOpen] = useState(false);
+
   const toggleProvider = (provider: string) => {
-    const providers = provider === 'All' ? ['All'] : selectedProviders.includes('All') ? [provider]
-      : selectedProviders.includes(provider) ? selectedProviders.filter(item => item !== provider) : [...selectedProviders, provider];
-    setScenario(current => ({ ...current, providers: providers.length ? providers : ['All'] }));
+    const providers =
+      provider === 'All'
+        ? ['All']
+        : selectedProviders.includes('All')
+          ? [provider]
+          : selectedProviders.includes(provider)
+            ? selectedProviders.filter((item) => item !== provider)
+            : [...selectedProviders, provider];
+    setScenario((current) => ({ ...current, providers: providers.length ? providers : ['All'] }));
   };
 
   // Filter models by selected provider
@@ -94,6 +108,10 @@ function SimulatorContent() {
       MODELS_DATA[0]
     );
   }, [selectedBaselineId]);
+
+  const baselineNetCost = useMemo(() => {
+    return calculateModelCost(selectedBaselineModel, params).monthlyNetCost;
+  }, [selectedBaselineModel, params]);
 
   // Generate router recommendations dynamically with the selected baseline
   const routerRecs = useMemo(() => {
@@ -127,60 +145,120 @@ function SimulatorContent() {
   };
 
   return (
-    <fieldset disabled={!hydrated} className="min-w-0 space-y-8">
-      <div data-analytics-module="calculator" className="mx-auto w-full max-w-5xl">
-        <SimulatorDeck
-          params={params}
-          onChange={updateParams}
-          selectedProviders={selectedProviders}
-          onToggleProvider={toggleProvider}
-          advanced={advanced}
-          onToggleAdvanced={() => {
-            setScenario(current => ({ ...current, advanced: !current.advanced }));
-            trackEvent('advanced_toggle', { value: advanced ? 'closed' : 'open' });
-          }}
-          onShare={handleShare}
-          onSave={handleSave}
-          saved={saved}
-          feedback={feedback}
-          onRestore={encoded => {
-            setScenario(decodeScenario(new URLSearchParams(encoded)));
-            setFeedback(t.scenarios.restored);
-            trackEventThrottled('simulator_run');
-          }}
-          monthlyCost={formatCurrency(calculateModelCost(selectedBaselineModel, params).monthlyNetCost)}
-          modelName={selectedBaselineModel.modelName}
-        >
-          <button className="text-xs text-indigo-700 underline dark:text-indigo-300" type="button" onClick={() => setEstimatorModalOpen(true)}>
-            {t.simulator.controls.estimateTokensBtn}
-          </button>
-          <div data-analytics-module="smart_router">
-            <SmartRouterCard
-              recommendations={routerRecs}
-              onOpenExporter={handleOpenExporter}
-              selectedBaselineId={selectedBaselineId}
-              onSelectBaseline={baseline => setScenario(current => ({ ...current, baseline }))}
-              selectedStrategyId={strategy}
-              onSelectStrategy={strategy => setScenario(current => ({ ...current, strategy }))}
-              availableModels={MODELS_DATA}
-              monthlyRequests={params.monthlyRequests}
-            />
+    <fieldset disabled={!hydrated} className="min-w-0 space-y-5 sm:space-y-6">
+      {/* Primary Dual-Mode Bento Workspace */}
+      <div data-analytics-module="calculator" className="w-full">
+        {!advanced ? (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+            <div className="lg:col-span-7 min-w-0">
+              <SimulatorDeck
+                params={params}
+                onChange={updateParams}
+                selectedProviders={selectedProviders}
+                onToggleProvider={toggleProvider}
+                advanced={false}
+                onToggleAdvanced={() => {
+                  setScenario((current) => ({ ...current, advanced: true }));
+                  trackEvent('advanced_toggle', { value: 'open' });
+                }}
+                onShare={handleShare}
+                onSave={handleSave}
+                saved={saved}
+                feedback={feedback}
+                onRestore={(encoded) => {
+                  setScenario(decodeScenario(new URLSearchParams(encoded)));
+                  setFeedback(t.scenarios.restored);
+                  trackEventThrottled('simulator_run');
+                }}
+                monthlyCost={formatCurrency(baselineNetCost)}
+                modelName={selectedBaselineModel.modelName}
+                onOpenEstimator={() => setEstimatorModalOpen(true)}
+                className="h-full"
+              />
+            </div>
+
+            <div className="lg:col-span-5 min-w-0">
+              <SimpleComparisonPreview
+                breakdowns={allBreakdowns}
+                routerRecs={routerRecs}
+                baselineModel={selectedBaselineModel}
+                baselineCost={baselineNetCost}
+                onExpandAdvanced={() => {
+                  setScenario((current) => ({ ...current, advanced: true }));
+                  trackEvent('advanced_toggle', { value: 'open', source: 'simple_preview_cta' });
+                }}
+                className="h-full"
+              />
+            </div>
           </div>
-          <CostChart breakdowns={mainstreamBreakdowns} />
-        </SimulatorDeck>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+            <div className="lg:col-span-4 xl:col-span-3 min-w-0">
+              <SimulatorDeck
+                params={params}
+                onChange={updateParams}
+                selectedProviders={selectedProviders}
+                onToggleProvider={toggleProvider}
+                advanced={true}
+                onToggleAdvanced={() => {
+                  setScenario((current) => ({ ...current, advanced: false }));
+                  trackEvent('advanced_toggle', { value: 'closed' });
+                }}
+                onShare={handleShare}
+                onSave={handleSave}
+                saved={saved}
+                feedback={feedback}
+                onRestore={(encoded) => {
+                  setScenario(decodeScenario(new URLSearchParams(encoded)));
+                  setFeedback(t.scenarios.restored);
+                  trackEventThrottled('simulator_run');
+                }}
+                monthlyCost={formatCurrency(baselineNetCost)}
+                modelName={selectedBaselineModel.modelName}
+                onOpenEstimator={() => setEstimatorModalOpen(true)}
+              />
+            </div>
+
+            <div data-analytics-module="smart_router" className="lg:col-span-8 xl:col-span-5 min-w-0">
+              <SmartRouterCard
+                recommendations={routerRecs}
+                onOpenExporter={handleOpenExporter}
+                selectedBaselineId={selectedBaselineId}
+                onSelectBaseline={(baseline) => setScenario((current) => ({ ...current, baseline }))}
+                selectedStrategyId={strategy}
+                onSelectStrategy={(strategy) => setScenario((current) => ({ ...current, strategy }))}
+                availableModels={MODELS_DATA}
+                monthlyRequests={params.monthlyRequests}
+              />
+            </div>
+
+            <div className="lg:col-span-12 xl:col-span-4 min-w-0">
+              <CostChart breakdowns={mainstreamBreakdowns} />
+            </div>
+          </div>
+        )}
       </div>
 
-      <SubscribeBox placement="home" />
-      <RecentPriceChanges />
-      <div data-analytics-module="sponsor"><SponsorBanner /></div>
+      {/* Primary Commercial Anchor */}
+      <div data-analytics-module="sponsor">
+        <SponsorBanner />
+      </div>
 
       {/* Market Radar / Featured Event Strip & Price Drops */}
-      <section data-analytics-module="radar" className="pt-2">
+      <section data-analytics-module="radar">
         <MarketPulseRadar />
       </section>
 
+      {/* Adaptive 12-Col Alerts & Recent Price Changes Group */}
+      <div className="group grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+        <div className="lg:col-span-12 group-has-[[data-price-changes]]:lg:col-span-5 min-w-0">
+          <SubscribeBox placement="home" />
+        </div>
+        <RecentPriceChanges />
+      </div>
+
       {/* Full Width Model Leaderboard */}
-      <div data-analytics-module="leaderboard" className="pt-2">
+      <div data-analytics-module="leaderboard">
         <LeaderboardTable breakdowns={allBreakdowns} />
       </div>
 
@@ -211,7 +289,7 @@ export default function HomePage() {
   const isZh = locale === 'zh-CN' || locale === 'zh-TW';
 
   return (
-    <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+    <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-5 sm:space-y-6">
       <SchemaOrg
         type="software"
         name={`${t.common.brand} | ${t.simulator.heroTitle}`}
@@ -225,7 +303,9 @@ export default function HomePage() {
       <div className="relative text-center max-w-4xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 text-xs font-medium text-indigo-700 dark:text-indigo-400">
           <Sparkles className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
-          <span>{t.simulator.heroBadge} • {modelCount}+ Models (Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude 5.5, DeepSeek-V4.1)</span>
+          <span>
+            {t.simulator.heroBadge} • {formatModelCount(t.common.modelsCount, modelCount)} (Gemini 4 Neon, GPT-6.2 Sol/Astra, Claude 5.5, DeepSeek-V4.1)
+          </span>
         </div>
 
         <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 leading-tight">
@@ -240,12 +320,14 @@ export default function HomePage() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs">
-          {locale === 'zh-CN' && <Link
-            href="/zh-CN/domestic-models/"
-            className="rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-1 text-indigo-700 dark:border-indigo-900 dark:bg-indigo-950 dark:text-indigo-300"
-          >
-            {t.domestic.title}
-          </Link>}
+          {locale === 'zh-CN' && (
+            <Link
+              href="/zh-CN/domestic-models/"
+              className="rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-1 text-indigo-700 dark:border-indigo-900 dark:bg-indigo-950 dark:text-indigo-300"
+            >
+              {t.domestic.title}
+            </Link>
+          )}
           <Link
             href={getLocalizedPath('/models/')}
             className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-700 shadow-sm dark:shadow-none transition-colors"
@@ -307,7 +389,13 @@ export default function HomePage() {
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 min-w-0">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100/90 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 shrink-0">
             <ShieldCheck className="h-3 w-3 text-emerald-700 dark:text-emerald-400" />
-            <span>{formatHomeBannerBadge(t.deals.homeBannerBadge, officialDealsRaw.lastVerifiedDate, officialDealsRaw.blackFridayDate)}</span>
+            <span>
+              {formatHomeBannerBadge(
+                t.deals.homeBannerBadge,
+                officialDealsRaw.lastVerifiedDate,
+                officialDealsRaw.blackFridayDate
+              )}
+            </span>
           </span>
           <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300 line-clamp-2 sm:truncate">
             {t.deals.homeBannerText}

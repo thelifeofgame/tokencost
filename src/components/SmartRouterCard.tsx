@@ -265,7 +265,7 @@ export default function SmartRouterCard({
       </div>
 
       {/* Main Comparison Banner: 100% Single-Model Baseline vs Multi-Model Routed Mix */}
-      <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1.55fr)_minmax(116px,0.95fr)_minmax(0,1.2fr)] gap-3 sm:gap-2.5 items-stretch p-3.5 sm:p-4 rounded-xl bg-zinc-50/95 dark:bg-zinc-950/75 border border-zinc-200/90 dark:border-zinc-800/80 mb-5 relative">
+      <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1.55fr)_minmax(116px,0.95fr)_minmax(0,1.2fr)] gap-3 sm:gap-2 items-stretch p-3.5 sm:p-4 rounded-xl bg-zinc-50/95 dark:bg-zinc-950/75 border border-zinc-200/90 dark:border-zinc-800/80 mb-5 relative">
         {/* Left Zone: 100% Single-Model Baseline */}
         <div className="relative min-w-0 flex flex-col justify-between" ref={dropdownRef}>
           <div>

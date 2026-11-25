@@ -214,6 +214,14 @@ export interface TranslationDictionary {
     restored: string;
     saveError: string;
     shareError: string;
+    previewTitle: string;
+    previewSubtitle: string;
+    expandAdvancedCta: string;
+    selectedCount: string;
+    previewRouterMeta: string;
+    topThreeBadge: string;
+    modeSimple: string;
+    modeAdvanced: string;
   };
   alerts: {
     title: string;
