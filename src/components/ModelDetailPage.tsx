@@ -1,3 +1,5 @@
+import PriceVerificationDate from "@/components/PriceVerificationDate";
+import { pricingDetailSeo, priceVerifiedAt, decodePricingModelId, isIndexablePricingModel } from '@/lib/pricing-detail-seo';
 import SubscribeBox from '@/components/SubscribeBox';
 import React from 'react';
 import { notFound } from 'next/navigation';
@@ -9,19 +11,18 @@ import Link from 'next/link';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink';
 import {
-  buildAlternates,
   buildLocalizedCanonical,
   getOgLocale,
   DEFAULT_OG_IMAGES,
   DEFAULT_OG_IMAGE_URL,
 } from '@/lib/seo-alternates';
 import { BREADCRUMB_LABELS, getLocalizedModelMeta } from '@/lib/detail-seo';
-import { getLocalizedPath } from '@/i18n';
+import { getLocalizedPath, getTranslation } from '@/i18n';
 import { Locale } from '@/i18n/types';
 import { formatPerMillionPrice } from '@/lib/utils';
 
 export function buildModelMetadata(id: string, locale: Locale = 'en'): Metadata {
-  const model = MODELS_DATA.find((m) => m.modelId === id);
+  const model = MODELS_DATA.find((m) => m.modelId === decodePricingModelId(id));
   if (!model) {
     return {
       title: 'Model Not Found | TokenCosts AI',
@@ -30,18 +31,20 @@ export function buildModelMetadata(id: string, locale: Locale = 'en'): Metadata 
   }
 
   const { title, description, keywords } = getLocalizedModelMeta(model, locale);
-  const alternates = buildAlternates(`/models/${model.modelId}/`, locale);
+  const { alternates, robots, alternateLocale } = pricingDetailSeo(`/models/${model.modelId}/`, locale, isIndexablePricingModel(model.modelId));
 
   return {
     title,
     description,
     keywords,
     alternates,
+    robots,
     openGraph: {
       title,
       description,
       type: 'article',
       locale: getOgLocale(locale),
+      alternateLocale,
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
       images: DEFAULT_OG_IMAGES,
@@ -62,7 +65,8 @@ export default function ModelDetailPage({
   params: { id: string };
   locale?: Locale;
 }) {
-  const model = MODELS_DATA.find((m) => m.modelId === params.id);
+  const detail = getTranslation(locale).detail;
+  const model = MODELS_DATA.find((m) => m.modelId === decodePricingModelId(params.id));
 
   if (!model) {
     return notFound();
@@ -95,7 +99,7 @@ export default function ModelDetailPage({
       <SchemaOrg
         type="model"
         name={localizedTitle}
-        description={model.notes || localizedDescription}
+        description={locale === 'zh-CN' ? localizedDescription : model.notes || localizedDescription}
         url={canonicalUrl}
         inLanguage={locale}
         modelOffer={{
@@ -113,7 +117,7 @@ export default function ModelDetailPage({
           className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
         >
           <ChevronLeft className="h-4 w-4" />
-          <span>Back to Models Directory</span>
+          <span>{detail.backModels}</span>
         </Link>
       </div>
 
@@ -131,17 +135,17 @@ export default function ModelDetailPage({
               {model.isFrontier && (
                 <span className="rounded-md bg-indigo-500/15 dark:bg-indigo-500/20 px-2 py-0.5 text-xs font-semibold text-indigo-700 dark:text-indigo-300 border border-indigo-500/30 flex items-center gap-1">
                   <Sparkles className="h-3 w-3" />
-                  <span>2026 Frontier</span>
+                  <span>{detail.frontier}</span>
                 </span>
               )}
               {model.isSponsored && (
                 <span className="rounded-md bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400 border border-amber-500/20">
-                  Featured Partner
+                  {detail.partnerFeature}
                 </span>
               )}
             </div>
             <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {model.modelName} API Pricing
+              {detail.modelPriceHeading.replace('{model}', model.modelName)}
             </h1>
           </div>
 
@@ -151,7 +155,7 @@ export default function ModelDetailPage({
               className="min-h-[40px] w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700/80 bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200/80 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white transition-all active:scale-[0.98] whitespace-nowrap"
             >
               <Calculator className="h-3.5 w-3.5" />
-              <span>ROI Calculator</span>
+              <span>{detail.roi}</span>
             </Link>
 
             <TrackedAffiliateLink
@@ -164,7 +168,7 @@ export default function ModelDetailPage({
               rel="noopener noreferrer"
               className="min-h-[40px] w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-medium rounded-xl border border-zinc-200 dark:border-zinc-700/80 bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200/80 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white transition-all active:scale-[0.98] whitespace-nowrap"
             >
-              <span>Official Pricing</span>
+              <span>{detail.official}</span>
               <ExternalLink className="h-3.5 w-3.5" />
             </TrackedAffiliateLink>
 
@@ -179,7 +183,7 @@ export default function ModelDetailPage({
                 includeRef={true}
                 className="min-h-[40px] w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-sm shadow-indigo-500/25 transition-all active:scale-[0.98] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
               >
-                <span>Call via OpenRouter</span>
+                <span>{detail.openrouter}</span>
                 <ExternalLink className="h-3.5 w-3.5" />
               </TrackedAffiliateLink>
             )}
@@ -187,51 +191,52 @@ export default function ModelDetailPage({
         </div>
 
         <p className="text-sm text-zinc-600 dark:text-zinc-300 mt-4 leading-relaxed">
-          {model.notes}
+          {locale === 'zh-CN' ? localizedDescription : model.notes}
         </p>
+        <PriceVerificationDate date={priceVerifiedAt(model.modelId)} locale={locale} />
 
         {/* Core Pricing Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
           <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800/80 font-mono">
             <span className="text-[10px] uppercase text-zinc-500 block font-sans">
-              Base Input Price
+              {detail.input}
             </span>
             <span className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
               {formatPerMillionPrice(model.inputPerM)}
             </span>
-            <span className="text-[11px] text-zinc-500 block mt-0.5">/ 1M tokens</span>
+            <span className="text-[11px] text-zinc-500 block mt-0.5">{detail.perMillion}</span>
           </div>
 
           <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800/80 font-mono">
             <span className="text-[10px] uppercase text-zinc-500 block font-sans">
-              Base Output Price
+              {detail.output}
             </span>
             <span className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
               {formatPerMillionPrice(model.outputPerM)}
             </span>
-            <span className="text-[11px] text-zinc-500 block mt-0.5">/ 1M tokens</span>
+            <span className="text-[11px] text-zinc-500 block mt-0.5">{detail.perMillion}</span>
           </div>
 
           <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-emerald-500/25 font-mono">
             <span className="text-[10px] uppercase text-emerald-700 dark:text-emerald-400 block font-sans font-medium">
-              Prompt Cache Read
+              {detail.cache}
             </span>
             <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
               {formatPerMillionPrice(model.cachedInputPerM)}
             </span>
             <span className="text-[11px] text-emerald-600 dark:text-emerald-500 block mt-0.5">
-              -{model.cacheDiscountPercent}% discount
+              -{model.cacheDiscountPercent}% {detail.discount}
             </span>
           </div>
 
           <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-indigo-500/25 font-mono">
             <span className="text-[10px] uppercase text-indigo-700 dark:text-indigo-400 block font-sans font-medium">
-              Batch API Rate
+              {detail.batch}
             </span>
             <span className="text-xl font-bold text-indigo-700 dark:text-indigo-300">
-              {model.batchDiscountPercent > 0 ? `-${model.batchDiscountPercent}%` : 'N/A'}
+              {model.batchDiscountPercent > 0 ? `-${model.batchDiscountPercent}%` : detail.missing}
             </span>
-            <span className="text-[11px] text-zinc-500 block mt-0.5">24h async offload</span>
+            <span className="text-[11px] text-zinc-500 block mt-0.5">{detail.asyncBatch}</span>
           </div>
         </div>
       </div>
@@ -243,14 +248,14 @@ export default function ModelDetailPage({
             <div className="flex items-center gap-2">
               <Terminal className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
               <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-                Recommended Coding Agents &amp; Harnesses
+                {detail.harness}
               </h2>
             </div>
             <Link
               href={getLocalizedPath('/harness/', locale)}
               className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 inline-flex items-center gap-1 transition-colors"
             >
-              <span>Compare all {HARNESS_TOOLS.length} harnesses →</span>
+              <span>{detail.compareHarness.replace('{count}', String(HARNESS_TOOLS.length))}</span>
             </Link>
           </div>
 
@@ -261,7 +266,7 @@ export default function ModelDetailPage({
                   ? 'CLI'
                   : tool.category === 'ai-ide'
                   ? 'IDE'
-                  : 'Plugin';
+                  : detail.plugin;
               const hitMin = tool.promptCachingSupport.hitRateRangePercent?.[0] ?? 70;
               const hitMax = tool.promptCachingSupport.hitRateRangePercent?.[1] ?? 85;
               const avgHit = Math.round((hitMin + hitMax) / 2);
@@ -287,21 +292,21 @@ export default function ModelDetailPage({
                           : 'bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-500/30'
                       }`}
                     >
-                      {matchType}
+                      {matchType === 'Native' ? detail.native : detail.gateway}
                     </span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
                     <div>
-                      <span className="text-[10px] text-zinc-500 block">Multiplier</span>
+                      <span className="text-[10px] text-zinc-500 block">{detail.multiplier}</span>
                       <span className="font-mono font-semibold text-emerald-600 dark:text-emerald-400">
                         {tool.tokenMultiplierMin.toFixed(1)}x – {tool.tokenMultiplierMax.toFixed(1)}x
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-zinc-500 block">Cache Match</span>
+                      <span className="text-[10px] text-zinc-500 block">{detail.cacheMatch}</span>
                       <span className="font-mono font-semibold text-zinc-800 dark:text-zinc-200">
-                        ~{avgHit}% Hit
+                        ~{avgHit}% {detail.hit}
                       </span>
                     </div>
                   </div>
@@ -310,7 +315,7 @@ export default function ModelDetailPage({
                     href={getLocalizedPath(`/harness/${tool.slug}/`, locale)}
                     className="min-h-[36px] inline-flex items-center text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
                   >
-                    Setup Config →
+                    {detail.setup}
                   </Link>
                 </div>
               );
@@ -325,24 +330,24 @@ export default function ModelDetailPage({
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-                Inference Hosts & Aggregator Providers
+                {detail.providers}
               </h2>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
-                Compare rates and latency across direct APIs, OpenRouter, and hyperscale cloud providers
+                {detail.providersDesc}
               </p>
             </div>
-            <span className="text-[11px] text-zinc-500">Live verified rates</span>
+            <span className="text-[11px] text-zinc-500">{detail.rateSource}</span>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
                 <tr className="border-b border-zinc-200 dark:border-zinc-800 text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase">
-                  <th className="py-2.5 px-3">Provider Name</th>
-                  <th className="py-2.5 px-3">Input / 1M</th>
-                  <th className="py-2.5 px-3">Output / 1M</th>
-                  <th className="py-2.5 px-3">Prompt Caching</th>
-                  <th className="py-2.5 px-3 text-right">Access Endpoint</th>
+                  <th className="py-2.5 px-3">{detail.providerName}</th>
+                  <th className="py-2.5 px-3">{detail.inputMillion}</th>
+                  <th className="py-2.5 px-3">{detail.outputMillion}</th>
+                  <th className="py-2.5 px-3">{detail.cached}</th>
+                  <th className="py-2.5 px-3 text-right">{detail.access}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-200/70 dark:divide-zinc-800/60 font-mono text-zinc-700 dark:text-zinc-300">
@@ -350,12 +355,12 @@ export default function ModelDetailPage({
                   const isOpenRouterRow = hp.affiliateUrl.toLowerCase().includes('openrouter.ai');
                   const rowCampaign = `${model.modelId}_${hp.name.toLowerCase().replace(/[^a-z0-9]+/g, '_')}`;
                   return (
-                    <tr key={hp.name} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/30">
+                    <tr key={hp.name.endsWith(' Direct') ? detail.officialProvider.replace('{provider}', hp.name.slice(0,-7)) : hp.name} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/30">
                       <td className="py-3 px-3 font-sans font-medium text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-                        <span>{hp.name}</span>
+                        <span>{hp.name.endsWith(' Direct') ? detail.officialProvider.replace('{provider}', hp.name.slice(0,-7)) : hp.name}</span>
                         {hp.isSponsored && (
                           <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-[9px] text-amber-700 dark:text-amber-400 border border-amber-500/20 font-medium">
-                            Partner
+                            {detail.partner}
                           </span>
                         )}
                       </td>
@@ -363,9 +368,9 @@ export default function ModelDetailPage({
                       <td className="py-3 px-3">{formatPerMillionPrice(hp.outputPerM)}</td>
                       <td className="py-3 px-3 font-sans">
                         {hp.supportsCaching ? (
-                          <span className="text-emerald-600 dark:text-emerald-400 font-medium">Supported</span>
+                          <span className="text-emerald-600 dark:text-emerald-400 font-medium">{detail.supported}</span>
                         ) : (
-                          <span className="text-zinc-500">Not available</span>
+                          <span className="text-zinc-500">{detail.missing}</span>
                         )}
                       </td>
                       <td className="py-3 px-3 text-right font-sans">
@@ -379,7 +384,7 @@ export default function ModelDetailPage({
                           includeRef={isOpenRouterRow}
                           className="min-h-[36px] sm:min-h-[32px] inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl border border-indigo-500/35 dark:border-indigo-500/40 bg-indigo-500/10 hover:bg-indigo-600 text-indigo-700 dark:text-indigo-300 hover:text-white hover:border-indigo-600 shadow-sm shadow-indigo-500/5 hover:shadow-indigo-500/20 transition-all active:scale-[0.98] whitespace-nowrap"
                         >
-                          <span>Connect</span>
+                          <span>{detail.connect}</span>
                           <ExternalLink className="h-3 w-3" />
                         </TrackedAffiliateLink>
                       </td>
@@ -395,7 +400,7 @@ export default function ModelDetailPage({
       {/* Versus Comparisons Quick Matrix */}
       <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/60 p-6 backdrop-blur-md shadow-sm dark:shadow-xl space-y-4">
         <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-          Head-to-Head Comparisons for {model.modelName}
+          {detail.comparisonMatrix.replace('{model}', model.modelName)}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {featuredSiblings.map((other) => {
@@ -425,7 +430,7 @@ export default function ModelDetailPage({
         {restSiblings.length > 0 && (
           <div className="pt-1">
             <p className="text-xs font-semibold text-zinc-500 mb-2">
-              All {model.modelName} comparisons
+              {detail.moreComparisons.replace('{model}', model.modelName)}
             </p>
             <div className="flex flex-wrap gap-1.5">
               {restSiblings.map((other) => {

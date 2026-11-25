@@ -1,5 +1,6 @@
 'use client';
 
+import PriceVerificationDate from './PriceVerificationDate';
 import React, { useMemo, useState } from 'react';
 import { ModelPricingRule } from '@/types/pricing';
 import { calculateModelCost } from '@/lib/calculator-engine';
@@ -21,6 +22,7 @@ import TrackedAffiliateLink from '@/components/TrackedAffiliateLink';
 
 interface ModelCachingCalculatorClientProps {
   model: ModelPricingRule;
+  verifiedAt?: string;
 }
 
 function formatCompactContext(tokens: number): string {
@@ -33,8 +35,10 @@ function formatCompactContext(tokens: number): string {
 
 export default function ModelCachingCalculatorClient({
   model,
+  verifiedAt,
 }: ModelCachingCalculatorClientProps) {
   const { locale, t, getLocalizedPath } = useI18n();
+  const detail = t.detail;
   const [requests, setRequests] = useState(100000);
   const [inputTokens, setInputTokens] = useState(8000);
   const [outputTokens, setOutputTokens] = useState(800);
@@ -139,9 +143,9 @@ export default function ModelCachingCalculatorClient({
       if (Math.abs(b.savingsUsd - a.savingsUsd) > 1) {
         return b.savingsUsd - a.savingsUsd;
       }
-      const aScore = a.model.benchmarks?.intelligenceIndex ?? 0;
-      const bScore = b.model.benchmarks?.intelligenceIndex ?? 0;
-      return bScore - aScore;
+      const aScore = a.model.benchmarks?.intelligenceIndex;
+      const bScore = b.model.benchmarks?.intelligenceIndex;
+      return aScore != null && bScore != null ? bScore - aScore : 0;
     });
 
     return pool[0];
@@ -256,7 +260,7 @@ export default function ModelCachingCalculatorClient({
               </span>
               {supportsBatch ? (
                 <span className="rounded-md bg-indigo-50 dark:bg-indigo-500/15 px-2 py-0.5 text-[11px] font-mono font-semibold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 whitespace-nowrap">
-                  Batch -{batchPctDisplay}%
+                  {detail.batchBadge.replace('{percent}', String(batchPctDisplay))}
                 </span>
               ) : (
                 <span className="rounded-md bg-zinc-100 dark:bg-zinc-800/90 px-2 py-0.5 text-[11px] font-mono text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 whitespace-nowrap">
@@ -265,8 +269,9 @@ export default function ModelCachingCalculatorClient({
               )}
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {model.modelName} Prompt Caching Calculator
+              {detail.calculatorHeading.replace('{model}', model.modelName)}
             </h1>
+            <PriceVerificationDate date={verifiedAt} locale={locale} />
           </div>
 
           {model.affiliateUrl && (
@@ -322,15 +327,15 @@ export default function ModelCachingCalculatorClient({
             </span>
           </div>
           <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800">
-            <span className="text-[10px] text-zinc-500 font-sans block">Cache Write Surcharge</span>
+            <span className="text-[10px] text-zinc-500 font-sans block">{detail.cacheWrite}</span>
             <span className="text-base font-bold text-zinc-800 dark:text-zinc-200 tabular-nums">
               {model.cacheWritePerM
                 ? `${formatPerMillionPrice(model.cacheWritePerM)}/M (+25%)`
-                : 'Free (Automatic)'}
+                : detail.automatic}
             </span>
           </div>
           <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800">
-            <span className="text-[10px] text-zinc-500 font-sans block">Output Rate</span>
+            <span className="text-[10px] text-zinc-500 font-sans block">{detail.output}</span>
             <span className="text-base font-bold text-zinc-900 dark:text-zinc-100 tabular-nums">
               {formatPerMillionPrice(
                 isLongContextActive && model.tierOutputPerM ? model.tierOutputPerM : model.outputPerM
@@ -345,7 +350,7 @@ export default function ModelCachingCalculatorClient({
       <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-sm dark:shadow-xl space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-            Simulation Parameters
+            {detail.parameters}
           </h2>
           {!supportsBatch && (
             <span className="inline-flex items-center rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-0.5 text-[11px] font-mono text-zinc-600 dark:text-zinc-300 whitespace-nowrap">
@@ -487,7 +492,7 @@ export default function ModelCachingCalculatorClient({
                   {t.calculator.batchLabel}
                 </span>
                 <span className="inline-flex items-center rounded-full border border-indigo-300 dark:border-indigo-500/40 bg-indigo-100/90 dark:bg-indigo-500/20 px-2 py-0.5 text-[10px] font-mono font-semibold text-indigo-800 dark:text-indigo-200 whitespace-nowrap">
-                  Batch -{batchPctDisplay}% · 24h Async
+                  {detail.batchBadge.replace('{percent}', String(batchPctDisplay))} · 24h Async
                 </span>
               </div>
               <span
@@ -527,9 +532,9 @@ export default function ModelCachingCalculatorClient({
             </div>
 
             <div className="flex items-center justify-between text-[10px] font-mono text-zinc-500 dark:text-zinc-400 tabular-nums">
-              <span>0% (Realtime)</span>
+              <span>{detail.realTimeZero}</span>
               <span>50%</span>
-              <span>100% (Batch 24h)</span>
+              <span>{detail.fullBatch}</span>
             </div>
 
             <p className="text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
@@ -563,7 +568,7 @@ export default function ModelCachingCalculatorClient({
                 {hasExplicitTier ? (
                   <>
                     <span className="inline-flex items-center rounded-md border border-amber-300 dark:border-amber-500/35 bg-amber-100/90 dark:bg-amber-500/20 px-2 py-0.5 text-[10px] font-mono font-semibold text-amber-900 dark:text-amber-200 whitespace-nowrap">
-                      &gt;{thresholdLabel} Tier
+                      {detail.longTier.replace('{threshold}', thresholdLabel)}
                       {tierMultiplierLabel ? ` · ${tierMultiplierLabel}` : ''}
                     </span>
                     {model.tierInputPerM && (
@@ -627,14 +632,14 @@ export default function ModelCachingCalculatorClient({
             <div className="flex justify-between text-xs gap-2">
               <div className="space-y-0.5">
                 <span className="text-zinc-800 dark:text-zinc-300 font-medium block">
-                  Cache Lifetime Multiplier ($K$ Rounds)
+                  {detail.reuse}
                 </span>
                 <span className="text-[11px] text-zinc-500 block">
-                  Amortizes the +25% cache write surcharge across average user conversation turns
+                  {detail.reuseDesc}
                 </span>
               </div>
               <span className="font-mono tabular-nums text-indigo-600 dark:text-indigo-300 font-semibold whitespace-nowrap">
-                {cacheLifetime} turns
+                {detail.turns.replace('{count}', String(cacheLifetime))}
               </span>
             </div>
             <div className="min-h-[44px] flex items-center touch-pan-y">

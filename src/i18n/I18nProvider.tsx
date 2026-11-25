@@ -88,6 +88,8 @@ export function I18nProvider({
       if (newLocale === locale) return;
       const subscriptionPage = /^(?:\/zh-CN)?\/ai-subscriptions(?:\/|$)/.test(pathname);
       if (subscriptionPage && newLocale !== 'en' && newLocale !== 'zh-CN') return;
+      const { pathnameWithoutLocale } = extractLocaleFromPath(pathname);
+      const priceDetailPage = /^\/(?:models|compare|calculator)\/(?!view\/?$)[^/]+\/?$/.test(pathnameWithoutLocale);
 
       const oldLocale = locale;
       setLocaleState(newLocale);
@@ -112,7 +114,7 @@ export function I18nProvider({
         const fullNewTarget = `${newPath}${currentSearch}${currentHash}`;
 
         // These pages render their translated pricing copy as static HTML.
-        if (subscriptionPage) {
+        if (subscriptionPage || priceDetailPage) {
           window.location.assign(fullNewTarget);
           return;
         }

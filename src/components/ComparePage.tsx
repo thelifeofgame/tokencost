@@ -1,6 +1,8 @@
+import ComparisonVerdict from "./ComparisonVerdict";
+import PriceVerificationDate from "./PriceVerificationDate";
+import { pricingDetailSeo, allowComparison, comparisonVerifiedAt, hasVerdict } from '@/lib/pricing-detail-seo';
 import SubscribeBox from '@/components/SubscribeBox';
 import React from 'react';
-import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -9,7 +11,6 @@ import {
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink';
 import {
-  buildAlternates,
   buildLocalizedCanonical,
   getOgLocale,
   DEFAULT_OG_IMAGES,
@@ -45,9 +46,13 @@ import {
 export function buildCompareMetadata(slug: string, locale: Locale = 'en'): Metadata {
   const data = getComparisonData(slug);
   if (!data) {
+    const { detail } = getTranslation(locale);
+    const { alternates, robots } = pricingDetailSeo(`/compare/${slug}/`, locale, false);
     return {
-      title: 'Comparison Not Found | TokenCosts AI',
-      description: 'The requested LLM API comparison does not exist or has been relocated.',
+      title: `${detail.unavailablePair} | TokenCosts AI`,
+      description: detail.unavailablePairBody,
+      alternates,
+      robots,
     };
   }
 
@@ -57,18 +62,21 @@ export function buildCompareMetadata(slug: string, locale: Locale = 'en'): Metad
     data.canonicalSlug,
     locale
   );
-  const alternates = buildAlternates(`/compare/${data.canonicalSlug}/`, locale);
+  const canonicalSlug = data.canonicalSlug;
+  const { alternates, robots, alternateLocale } = pricingDetailSeo(`/compare/${canonicalSlug}/`, locale, slug === canonicalSlug && allowComparison(canonicalSlug));
 
   return {
     title,
     description,
     keywords,
     alternates,
+    robots,
     openGraph: {
       title,
       description,
       type: 'article',
       locale: getOgLocale(locale),
+      alternateLocale,
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
       images: DEFAULT_OG_IMAGES,
@@ -89,14 +97,31 @@ export default function ComparePage({
   params: { slug: string };
   locale?: Locale;
 }) {
-  const benchmarkMissing = getTranslation(locale).growth.noBenchmark;
+  const { detail, growth } = getTranslation(locale);
+  const benchmarkMissing = growth.noBenchmark;
   const data = getComparisonData(params.slug);
 
   if (!data) {
-    return notFound();
+    return (
+      <section className="mx-auto max-w-3xl space-y-4 px-4 py-16">
+        <h1 className="text-2xl font-semibold">{detail.unavailablePair}</h1>
+        <p>{detail.unavailablePairBody}</p>
+        <Link className="text-indigo-700 underline dark:text-indigo-300" href={getLocalizedPath('/compare/', locale)}>
+          {getTranslation(locale).nav.compare}
+        </Link>
+      </section>
+    );
   }
 
-  const { modelA, modelB, canonicalSlug, scenarios, faqs } = data;
+  const { modelA, modelB, canonicalSlug, scenarios } = data;
+  const describe = (template: string, a: string, b: string) => template
+    .replace('{a}', modelA.modelName).replace('{b}', modelB.modelName).replace('{ap}', a).replace('{bp}', b);
+  const rates = (model: ModelPricingRule) => `${formatPerMillionPrice(model.inputPerM)} / ${formatPerMillionPrice(model.outputPerM)}`;
+  const faqs = locale !== 'zh-CN' ? data.faqs : [
+    { question: detail.faqPriceQ, answer: describe(detail.faqPriceA, rates(modelA), rates(modelB)) },
+    { question: detail.faqCacheQ, answer: describe(detail.faqCacheA, formatPerMillionPrice(modelA.cachedInputPerM), formatPerMillionPrice(modelB.cachedInputPerM)) },
+    { question: detail.faqContextQ, answer: describe(detail.faqContextA, modelA.contextWindow.toLocaleString(locale), modelB.contextWindow.toLocaleString(locale)) },
+  ];
 
   const canonicalUrl = buildLocalizedCanonical(`/compare/${canonicalSlug}/`, locale);
   const { title: localizedTitle, description: localizedDescription } = getLocalizedCompareMeta(
@@ -134,7 +159,7 @@ export default function ComparePage({
       />
 
       {/* 2. Breadcrumb Navigation for SEO Hierarchy */}
-      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <nav aria-label={detail.breadcrumb} className="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
         <Link href={getLocalizedPath('/', locale)} className="hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors">
           {bc.home}
         </Link>
@@ -152,7 +177,7 @@ export default function ComparePage({
       <header className="relative text-center max-w-4xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-700 dark:text-indigo-400">
           <Scale className="h-3.5 w-3.5" />
-          <span>Verified 2026 API Rates • Prompt Caching &amp; Batch ROI</span>
+          <span>{detail.compareBadge}</span>
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 sm:leading-tight">
@@ -162,15 +187,19 @@ export default function ComparePage({
         </h1>
 
         <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-          {data.description}
+          {locale === 'zh-CN' ? localizedDescription : data.description}
         </p>
+        <PriceVerificationDate date={comparisonVerifiedAt(modelA.modelId, modelB.modelId)} locale={locale} />
 
-        {/* Quick Executive Verdict Badge */}
+        {hasVerdict(canonicalSlug) && scenarios[0] && <ComparisonVerdict
+        a={modelA} b={modelB} costA={scenarios[0].costA} costB={scenarios[0].costB} locale={locale} />}
+
+      {/* Quick Executive Verdict Badge */}
         <div className="inline-flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
           <span className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-semibold flex items-center gap-1.5">
             <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             <span>
-              {cheaperInputModel.modelName} saves up to {inputSavingsPct}% on base input tokens
+              {detail.inputAdvantage.replace('{model}', cheaperInputModel.modelName).replace('{percent}', String(inputSavingsPct))}
             </span>
           </span>
         </div>
@@ -187,21 +216,21 @@ export default function ComparePage({
           <div className="flex items-start sm:items-center gap-2.5 text-xs sm:text-sm text-rose-900 dark:text-rose-200">
             <AlertTriangle className="h-4 w-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5 sm:mt-0" />
             <span>
-              <strong>Migration Alert:</strong> Gemini 4 Carbon &amp; Argon double from $2/$10 to $4/$20 on Dec 1 (and Azure o3/o4-mini retired Nov 19).
+              {detail.migrationNote}
             </span>
           </div>
           <Link
             href={getLocalizedPath('/pricing/gemini-4-carbon-dec-1-migration-guide/', locale)}
             className="min-h-[38px] shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold transition-colors"
           >
-            <span>Read the Migration Playbook</span>
+            <span>{detail.migration}</span>
             <ChevronRight className="h-3.5 w-3.5" />
           </Link>
         </div>
       )}
 
       {/* 4. Side-by-Side Model Spec & Pricing Matrix */}
-      <section aria-label="Side-by-Side Pricing Matrix">
+      <section aria-label={getTranslation(locale).compare.directPricingTitle}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           {/* Card Model A */}
           <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/60 p-6 backdrop-blur-md shadow-sm dark:shadow-xl flex flex-col justify-between">
@@ -222,37 +251,37 @@ export default function ComparePage({
 
               <dl className="space-y-2.5 text-xs font-mono">
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Base Input Rate</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.input}</dt>
                   <dd className="text-zinc-900 dark:text-zinc-100 font-bold">{formatPerMillionPrice(modelA.inputPerM)} / 1M</dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Output Rate</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.output}</dt>
                   <dd className="text-zinc-900 dark:text-zinc-100 font-bold">{formatPerMillionPrice(modelA.outputPerM)} / 1M</dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Prompt Cache Read</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.cache}</dt>
                   <dd className="text-emerald-600 dark:text-emerald-400 font-bold">
                     {formatPerMillionPrice(modelA.cachedInputPerM)} / 1M (-{modelA.cacheDiscountPercent}%)
                   </dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Cache Write Surcharge</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.cacheWrite}</dt>
                   <dd className="text-zinc-700 dark:text-zinc-300">
-                    {modelA.cacheWritePerM ? `${formatPerMillionPrice(modelA.cacheWritePerM)} / 1M (+25%)` : '$0.00 (Free write)'}
+                    {modelA.cacheWritePerM != null ? `${formatPerMillionPrice(modelA.cacheWritePerM)} / 1M` : detail.noWrite}
                   </dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Batch API Discount</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.batch}</dt>
                   <dd className="text-indigo-600 dark:text-indigo-400 font-bold">
-                    {modelA.batchDiscountPercent > 0 ? `-${modelA.batchDiscountPercent}% Off` : 'Not Supported'}
+                    {modelA.batchDiscountPercent > 0 ? `-${modelA.batchDiscountPercent}% ${detail.discount}` : detail.missing}
                   </dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Context Window</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.context}</dt>
                   <dd className="text-zinc-800 dark:text-zinc-200 font-sans">{(modelA.contextWindow / 1000).toLocaleString()}k tokens</dd>
                 </div>
                 <div className="flex justify-between py-1">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Quality Index (AA / ELO)</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.quality}</dt>
                   <dd className="text-indigo-600 dark:text-indigo-300 font-bold">{formatQualityIndex(modelA, benchmarkMissing)}</dd>
                 </div>
               </dl>
@@ -263,7 +292,7 @@ export default function ComparePage({
                 href={getLocalizedPath(`/models/${modelA.modelId}/`, locale)}
                 className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-medium"
               >
-                Inspect Full Specs →
+                {detail.specs}
               </Link>
               {modelA.affiliateUrl && (
                 <TrackedAffiliateLink
@@ -277,7 +306,7 @@ export default function ComparePage({
                   includeRef={true}
                   className="min-h-[36px] sm:min-h-[32px] inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl border border-indigo-500/35 dark:border-indigo-500/40 bg-indigo-500/10 hover:bg-indigo-600 text-indigo-700 dark:text-indigo-300 hover:text-white hover:border-indigo-600 shadow-sm shadow-indigo-500/5 hover:shadow-indigo-500/20 transition-all active:scale-[0.98] whitespace-nowrap"
                 >
-                  <span>Connect API</span>
+                  <span>{detail.connect}</span>
                   <ExternalLink className="h-3 w-3" />
                 </TrackedAffiliateLink>
               )}
@@ -303,37 +332,37 @@ export default function ComparePage({
 
               <dl className="space-y-2.5 text-xs font-mono">
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Base Input Rate</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.input}</dt>
                   <dd className="text-zinc-900 dark:text-zinc-100 font-bold">{formatPerMillionPrice(modelB.inputPerM)} / 1M</dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Output Rate</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.output}</dt>
                   <dd className="text-zinc-900 dark:text-zinc-100 font-bold">{formatPerMillionPrice(modelB.outputPerM)} / 1M</dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Prompt Cache Read</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.cache}</dt>
                   <dd className="text-emerald-600 dark:text-emerald-400 font-bold">
                     {formatPerMillionPrice(modelB.cachedInputPerM)} / 1M (-{modelB.cacheDiscountPercent}%)
                   </dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Cache Write Surcharge</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.cacheWrite}</dt>
                   <dd className="text-zinc-700 dark:text-zinc-300">
-                    {modelB.cacheWritePerM ? `${formatPerMillionPrice(modelB.cacheWritePerM)} / 1M (+25%)` : '$0.00 (Free write)'}
+                    {modelB.cacheWritePerM != null ? `${formatPerMillionPrice(modelB.cacheWritePerM)} / 1M` : detail.noWrite}
                   </dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Batch API Discount</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.batch}</dt>
                   <dd className="text-indigo-600 dark:text-indigo-400 font-bold">
-                    {modelB.batchDiscountPercent > 0 ? `-${modelB.batchDiscountPercent}% Off` : 'Not Supported'}
+                    {modelB.batchDiscountPercent > 0 ? `-${modelB.batchDiscountPercent}% ${detail.discount}` : detail.missing}
                   </dd>
                 </div>
                 <div className="flex justify-between py-1 border-b border-zinc-200/70 dark:border-zinc-800/50">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Context Window</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.context}</dt>
                   <dd className="text-zinc-800 dark:text-zinc-200 font-sans">{(modelB.contextWindow / 1000).toLocaleString()}k tokens</dd>
                 </div>
                 <div className="flex justify-between py-1">
-                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">Quality Index (AA / ELO)</dt>
+                  <dt className="text-zinc-500 dark:text-zinc-400 font-sans">{detail.quality}</dt>
                   <dd className="text-indigo-600 dark:text-indigo-300 font-bold">{formatQualityIndex(modelB, benchmarkMissing)}</dd>
                 </div>
               </dl>
@@ -344,7 +373,7 @@ export default function ComparePage({
                 href={getLocalizedPath(`/models/${modelB.modelId}/`, locale)}
                 className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-medium"
               >
-                Inspect Full Specs →
+                {detail.specs}
               </Link>
               {modelB.affiliateUrl && (
                 <TrackedAffiliateLink
@@ -358,7 +387,7 @@ export default function ComparePage({
                   includeRef={true}
                   className="min-h-[36px] sm:min-h-[32px] inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl border border-indigo-500/35 dark:border-indigo-500/40 bg-indigo-500/10 hover:bg-indigo-600 text-indigo-700 dark:text-indigo-300 hover:text-white hover:border-indigo-600 shadow-sm shadow-indigo-500/5 hover:shadow-indigo-500/20 transition-all active:scale-[0.98] whitespace-nowrap"
                 >
-                  <span>Connect API</span>
+                  <span>{detail.connect}</span>
                   <ExternalLink className="h-3 w-3" />
                 </TrackedAffiliateLink>
               )}
@@ -372,40 +401,36 @@ export default function ComparePage({
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
             <Zap className="h-4 w-4" />
-            <span>Differential Module 1</span>
+            <span>{detail.cachePricing}</span>
           </div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Prompt Caching ROI &amp; Write Surcharge Break-Even Analysis
+            {detail.cacheTitle}
           </h2>
           <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Prompt caching drastically reduces input token costs for static prefixes like system prompts, tool schemas, and document chunks. Compare caching mechanisms between {modelA.modelName} and {modelB.modelName}:
+            {detail.cacheDesc}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 p-4 space-y-3">
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-200 flex items-center justify-between">
-              <span>{modelA.modelName} Caching Profile</span>
-              <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400">-{modelA.cacheDiscountPercent}% read discount</span>
+              <span>{modelA.modelName} · {detail.cacheProfile}</span>
+              <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400">-{modelA.cacheDiscountPercent}% {detail.readDiscount}</span>
             </h3>
             <ul className="text-xs text-zinc-600 dark:text-zinc-400 space-y-1.5 list-disc list-inside">
-              <li><strong>Cached Read Price:</strong> {formatPerMillionPrice(modelA.cachedInputPerM)} per 1M tokens.</li>
-              <li><strong>Write Surcharge:</strong> {modelA.cacheWritePerM ? `${formatPerMillionPrice(modelA.cacheWritePerM)}/1M (+25% fee on initial cache write)` : '$0.00 (automatic caching with zero write penalty)'}.</li>
-              <li><strong>Minimum Cache Prefix:</strong> 1,024 tokens.</li>
-              <li><strong>Amortization Rule:</strong> {modelA.cacheWritePerM ? 'Net cost savings begin when prefix is reused > 1.25 times within TTL.' : 'Immediate net savings from first cached read call.'}</li>
+              <li><strong>{detail.cache}</strong> {formatPerMillionPrice(modelA.cachedInputPerM)} {detail.priceUnit}.</li>
+              <li><strong>{detail.cacheWrite}</strong> {modelA.cacheWritePerM != null ? formatPerMillionPrice(modelA.cacheWritePerM) : detail.noWrite}.</li>
             </ul>
           </div>
 
           <div className="rounded-xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 p-4 space-y-3">
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-200 flex items-center justify-between">
-              <span>{modelB.modelName} Caching Profile</span>
-              <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400">-{modelB.cacheDiscountPercent}% read discount</span>
+              <span>{modelB.modelName} · {detail.cacheProfile}</span>
+              <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400">-{modelB.cacheDiscountPercent}% {detail.readDiscount}</span>
             </h3>
             <ul className="text-xs text-zinc-600 dark:text-zinc-400 space-y-1.5 list-disc list-inside">
-              <li><strong>Cached Read Price:</strong> {formatPerMillionPrice(modelB.cachedInputPerM)} per 1M tokens.</li>
-              <li><strong>Write Surcharge:</strong> {modelB.cacheWritePerM ? `${formatPerMillionPrice(modelB.cacheWritePerM)}/1M (+25% fee on initial cache write)` : '$0.00 (automatic caching with zero write penalty)'}.</li>
-              <li><strong>Minimum Cache Prefix:</strong> 1,024 tokens.</li>
-              <li><strong>Amortization Rule:</strong> {modelB.cacheWritePerM ? 'Net cost savings begin when prefix is reused > 1.25 times within TTL.' : 'Immediate net savings from first cached read call.'}</li>
+              <li><strong>{detail.cache}</strong> {formatPerMillionPrice(modelB.cachedInputPerM)} {detail.priceUnit}.</li>
+              <li><strong>{detail.cacheWrite}</strong> {modelB.cacheWritePerM != null ? formatPerMillionPrice(modelB.cacheWritePerM) : detail.noWrite}.</li>
             </ul>
           </div>
         </div>
@@ -416,13 +441,13 @@ export default function ComparePage({
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
             <Cpu className="h-4 w-4" />
-            <span>Differential Module 2</span>
+            <span>{detail.batch}</span>
           </div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Batch API 50% Discount Offload vs Real-Time SLA
+            {detail.batchTitle}
           </h2>
           <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Asynchronous Batch APIs cut total token expenditures in half (50% off input and output) in exchange for non-realtime execution (up to 24-hour turnaround SLA).
+            {detail.batchDesc}
           </p>
         </div>
 
@@ -430,11 +455,11 @@ export default function ComparePage({
           <table className="w-full text-xs text-left text-zinc-700 dark:text-zinc-300 font-sans border border-zinc-200/80 dark:border-zinc-800 rounded-xl overflow-hidden">
             <thead className="bg-zinc-100/80 dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 font-semibold uppercase text-[10px] tracking-wider border-b border-zinc-200/80 dark:border-zinc-800">
               <tr>
-                <th className="p-3">Model / Architecture</th>
-                <th className="p-3">Standard Input / Output</th>
-                <th className="p-3">Batch 50% Off Input / Output</th>
-                <th className="p-3">Turnaround SLA</th>
-                <th className="p-3">Optimal Use Cases</th>
+                <th className="p-3">{detail.model}</th>
+                <th className="p-3">{detail.standard}</th>
+                <th className="p-3">{detail.batchRates}</th>
+                <th className="p-3">{detail.delivery}</th>
+                <th className="p-3">{detail.use}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-200/70 dark:divide-zinc-800/60 bg-white/50 dark:bg-zinc-900/40">
@@ -443,22 +468,22 @@ export default function ComparePage({
                 <td className="p-3 font-mono">{formatPerMillionPrice(modelA.inputPerM)} / {formatPerMillionPrice(modelA.outputPerM)}</td>
                 <td className="p-3 font-mono text-emerald-600 dark:text-emerald-400 font-bold">
                   {modelA.batchDiscountPercent > 0
-                    ? `${formatPerMillionPrice(modelA.inputPerM * 0.5)} / ${formatPerMillionPrice(modelA.outputPerM * 0.5)} (-50%)`
-                    : 'Standard on-demand rate'}
+                    ? `${formatPerMillionPrice(modelA.inputPerM * (1 - modelA.batchDiscountPercent / 100))} / ${formatPerMillionPrice(modelA.outputPerM * (1 - modelA.batchDiscountPercent / 100))} (-${modelA.batchDiscountPercent}%)`
+                    : detail.standardOnly}
                 </td>
-                <td className="p-3 text-zinc-600 dark:text-zinc-400">{modelA.batchDiscountPercent > 0 ? '24 Hours max (typically 30m - 2h)' : 'Instant real-time'}</td>
-                <td className="p-3 text-zinc-600 dark:text-zinc-400">Bulk evaluation, dataset labeling, background summarization</td>
+                <td className="p-3 text-zinc-600 dark:text-zinc-400">{modelA.batchDiscountPercent > 0 ? detail.async : detail.realtime}</td>
+                <td className="p-3 text-zinc-600 dark:text-zinc-400">{detail.bulkUse}</td>
               </tr>
               <tr>
                 <td className="p-3 font-bold text-zinc-900 dark:text-zinc-100">{modelB.modelName}</td>
                 <td className="p-3 font-mono">{formatPerMillionPrice(modelB.inputPerM)} / {formatPerMillionPrice(modelB.outputPerM)}</td>
                 <td className="p-3 font-mono text-emerald-600 dark:text-emerald-400 font-bold">
                   {modelB.batchDiscountPercent > 0
-                    ? `${formatPerMillionPrice(modelB.inputPerM * 0.5)} / ${formatPerMillionPrice(modelB.outputPerM * 0.5)} (-50%)`
-                    : 'Standard on-demand rate'}
+                    ? `${formatPerMillionPrice(modelB.inputPerM * (1 - modelB.batchDiscountPercent / 100))} / ${formatPerMillionPrice(modelB.outputPerM * (1 - modelB.batchDiscountPercent / 100))} (-${modelB.batchDiscountPercent}%)`
+                    : detail.standardOnly}
                 </td>
-                <td className="p-3 text-zinc-600 dark:text-zinc-400">{modelB.batchDiscountPercent > 0 ? '24 Hours max (typically 30m - 2h)' : 'Instant real-time'}</td>
-                <td className="p-3 text-zinc-600 dark:text-zinc-400">Offline document translation, embedding backfills, test suites</td>
+                <td className="p-3 text-zinc-600 dark:text-zinc-400">{modelB.batchDiscountPercent > 0 ? detail.async : detail.realtime}</td>
+                <td className="p-3 text-zinc-600 dark:text-zinc-400">{detail.offlineUse}</td>
               </tr>
             </tbody>
           </table>
@@ -470,44 +495,44 @@ export default function ComparePage({
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
             <AlertTriangle className="h-4 w-4" />
-            <span>Differential Module 3</span>
+            <span>{detail.context}</span>
           </div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Context Window Escalation &amp; Tiered Pricing Architecture
+            {detail.tierTitle}
           </h2>
           <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Massive context windows allow ingesting entire repositories or books, but pricing models differ drastically between flat-rate vendors and tiered step-up pricing.
+            {detail.tierDesc}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 p-4 space-y-2">
-            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-200 block">{modelA.modelName} Context Capacity</span>
+            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-200 block">{detail.contextCapacity.replace('{model}', modelA.modelName)}</span>
             <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Provides a <strong>{(modelA.contextWindow / 1000).toLocaleString()}k token</strong> context window with a maximum output limit of <strong>{(modelA.maxOutputTokens / 1000).toLocaleString()}k tokens</strong>.
+              {detail.contextSpec.replace('{context}', modelA.contextWindow.toLocaleString()).replace('{output}', modelA.maxOutputTokens.toLocaleString())}
               {modelA.tierThreshold ? (
                 <span className="block mt-2 text-amber-700 dark:text-amber-400 font-medium">
-                  ⚠️ Note: Prompts exceeding {(modelA.tierThreshold / 1000).toLocaleString()}k tokens double in price to {formatPerMillionPrice(modelA.tierInputPerM ?? 0)}/1M in and {formatPerMillionPrice(modelA.tierOutputPerM ?? 0)}/1M out.
+                  {detail.tierSpec.replace('{threshold}', modelA.tierThreshold.toLocaleString()).replace('{input}', formatPerMillionPrice(modelA.tierInputPerM ?? modelA.inputPerM)).replace('{output}', formatPerMillionPrice(modelA.tierOutputPerM ?? modelA.outputPerM))}
                 </span>
               ) : (
                 <span className="block mt-2 text-emerald-600 dark:text-emerald-400">
-                  ✓ Flat-rate billing across all prompt sizes up to max context ceiling.
+                  {detail.flat}
                 </span>
               )}
             </p>
           </div>
 
           <div className="rounded-xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 p-4 space-y-2">
-            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-200 block">{modelB.modelName} Context Capacity</span>
+            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-200 block">{detail.contextCapacity.replace('{model}', modelB.modelName)}</span>
             <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Provides a <strong>{(modelB.contextWindow / 1000).toLocaleString()}k token</strong> context window with a maximum output limit of <strong>{(modelB.maxOutputTokens / 1000).toLocaleString()}k tokens</strong>.
+              {detail.contextSpec.replace('{context}', modelB.contextWindow.toLocaleString()).replace('{output}', modelB.maxOutputTokens.toLocaleString())}
               {modelB.tierThreshold ? (
                 <span className="block mt-2 text-amber-700 dark:text-amber-400 font-medium">
-                  ⚠️ Note: Prompts exceeding {(modelB.tierThreshold / 1000).toLocaleString()}k tokens double in price to {formatPerMillionPrice(modelB.tierInputPerM ?? 0)}/1M in and {formatPerMillionPrice(modelB.tierOutputPerM ?? 0)}/1M out.
+                  {detail.tierSpec.replace('{threshold}', modelB.tierThreshold.toLocaleString()).replace('{input}', formatPerMillionPrice(modelB.tierInputPerM ?? modelB.inputPerM)).replace('{output}', formatPerMillionPrice(modelB.tierOutputPerM ?? modelB.outputPerM))}
                 </span>
               ) : (
                 <span className="block mt-2 text-emerald-600 dark:text-emerald-400">
-                  ✓ Flat-rate billing across all prompt sizes up to max context ceiling.
+                  {detail.flat}
                 </span>
               )}
             </p>
@@ -516,17 +541,17 @@ export default function ComparePage({
       </section>
 
       {/* 8. Server-Rendered Differential Module 4 (Quill SEO Original Information): 3 Production Scenario Projections */}
-      <section className="space-y-4" aria-label="Production Scenarios">
+      <section className="space-y-4" aria-label={detail.scenarios}>
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
             <Bot className="h-4 w-4" />
-            <span>Quill Strategic Content</span>
+            <span>{detail.scenarios}</span>
           </div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Real-World Production Scenarios: Monthly Spend Projections
+            {detail.monthlyCosts}
           </h2>
           <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
-            Pre-computed monthly engineering bill projections across 3 representative enterprise application workloads:
+            {detail.scenarioIntro}
           </p>
         </div>
 
@@ -538,34 +563,36 @@ export default function ComparePage({
             >
               <div className="space-y-2">
                 <span className="inline-block px-2.5 py-0.5 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-bold text-indigo-700 dark:text-indigo-400 uppercase">
-                  Scenario {idx + 1}
+                  {detail.caseLabel.replace('{number}', String(idx + 1))}
                 </span>
                 <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-                  {sc.scenarioName}
+                  {[detail.caseRag, detail.caseAgent, detail.caseExtract][idx] ?? sc.scenarioName}
                 </h3>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  {sc.description}
+                  {detail.workload.replace('{requests}', sc.monthlyRequests.toLocaleString())
+                    .replace('{input}', sc.inputTokens.toLocaleString()).replace('{output}', sc.outputTokens.toLocaleString())
+                    .replace('{cache}', String(sc.cacheHitRate * 100)).replace('{batch}', String(sc.batchRate * 100))}
                 </p>
               </div>
 
               <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800 space-y-2 font-mono text-xs">
                 <div className="flex justify-between items-center">
                   <span className="text-zinc-500 font-sans">{modelA.modelName}:</span>
-                  <span className="text-zinc-900 dark:text-zinc-200 font-bold">${sc.costA.toFixed(2)}/mo</span>
+                  <span className="text-zinc-900 dark:text-zinc-200 font-bold">${sc.costA.toFixed(2)} {getTranslation(locale).common.monthly}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-zinc-500 font-sans">{modelB.modelName}:</span>
-                  <span className="text-zinc-900 dark:text-zinc-200 font-bold">${sc.costB.toFixed(2)}/mo</span>
+                  <span className="text-zinc-900 dark:text-zinc-200 font-bold">${sc.costB.toFixed(2)} {getTranslation(locale).common.monthly}</span>
                 </div>
                 <div className="pt-2 border-t border-zinc-200/80 dark:border-zinc-800 flex justify-between items-center text-emerald-600 dark:text-emerald-400 font-bold">
-                  <span>Delta Savings:</span>
+                  <span>{detail.difference}</span>
                   <span>-${sc.savingsAmount.toFixed(2)} ({sc.savingsPercent}%)</span>
                 </div>
               </div>
 
               <div className="text-xs text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-900/90 p-2.5 rounded-lg border border-zinc-200/80 dark:border-zinc-800">
-                <span className="text-zinc-900 dark:text-zinc-200 font-semibold block mb-0.5">Architecture Verdict:</span>
-                {sc.verdict}
+                <span className="text-zinc-900 dark:text-zinc-200 font-semibold block mb-0.5">{detail.result}</span>
+                {sc.savingsAmount === 0 ? detail.tie : detail.lowerCase.replace('{model}', sc.recommendedModel).replace('{savings}', formatPerMillionPrice(sc.savingsAmount))}
               </div>
             </div>
           ))}
@@ -573,7 +600,7 @@ export default function ComparePage({
       </section>
 
       {/* 9. Interactive Live Workload Simulator Client Component */}
-      <section aria-label="Interactive Simulator">
+      <section aria-label={getTranslation(locale).compare.interactiveEngine}>
         <CompareDetailClient
           modelA={modelA}
           modelB={modelB}
@@ -581,17 +608,17 @@ export default function ComparePage({
       </section>
 
       {/* 10. Server-Rendered Pre-Indexed FAQ Accordion (Corresponding to FAQPage JSON-LD Schema) */}
-      <section className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-sm dark:shadow-xl space-y-6" aria-label="Frequently Asked Questions">
+      <section className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/60 p-6 sm:p-8 backdrop-blur-md shadow-sm dark:shadow-xl space-y-6" aria-label={detail.faq}>
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
             <HelpCircle className="h-4 w-4" />
-            <span>Developer FAQs</span>
+            <span>{detail.faq}</span>
           </div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Frequently Asked Questions: {modelA.modelName} vs {modelB.modelName}
+            {detail.faq} · {modelA.modelName} vs {modelB.modelName}
           </h2>
           <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
-            Authoritative answers on API rate limits, pricing math, break-even thresholds, and architectural migration.
+            {detail.faqIntro}
           </p>
         </div>
 

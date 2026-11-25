@@ -2,6 +2,7 @@ import { TranslationDictionary } from '../types';
 import { en } from './en';
 
 export const ja: TranslationDictionary = {
+  detail: en.detail,
   subscriptions: en.subscriptions,
   scenarios: en.scenarios,
   alerts: en.alerts,

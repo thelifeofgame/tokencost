@@ -1,3 +1,4 @@
+import { pricingDetailSeo, priceVerifiedAt, decodePricingModelId, isIndexablePricingModel } from '@/lib/pricing-detail-seo';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -5,7 +6,6 @@ import { MODELS_DATA } from '@/lib/models-data';
 import ModelCachingCalculatorClient from '@/components/ModelCachingCalculatorClient';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import {
-  buildAlternates,
   buildLocalizedCanonical,
   getOgLocale,
   DEFAULT_OG_IMAGES,
@@ -15,7 +15,7 @@ import { BREADCRUMB_LABELS, getLocalizedCalculatorMeta } from '@/lib/detail-seo'
 import { Locale } from '@/i18n/types';
 
 export function buildCalculatorMetadata(modelId: string, locale: Locale = 'en'): Metadata {
-  const model = MODELS_DATA.find((m) => m.modelId === modelId);
+  const model = MODELS_DATA.find((m) => m.modelId === decodePricingModelId(modelId));
   if (!model) {
     return {
       title: 'Calculator Not Found | TokenCosts AI',
@@ -24,18 +24,20 @@ export function buildCalculatorMetadata(modelId: string, locale: Locale = 'en'):
   }
 
   const { title, description, keywords } = getLocalizedCalculatorMeta(model, locale);
-  const alternates = buildAlternates(`/calculator/${model.modelId}/`, locale);
+  const { alternates, robots, alternateLocale } = pricingDetailSeo(`/calculator/${model.modelId}/`, locale, isIndexablePricingModel(model.modelId));
 
   return {
     title,
     description,
     keywords,
     alternates,
+    robots,
     openGraph: {
       title,
       description,
       type: 'article',
       locale: getOgLocale(locale),
+      alternateLocale,
       url: alternates.canonical,
       siteName: 'TokenCosts AI',
       images: DEFAULT_OG_IMAGES,
@@ -56,7 +58,7 @@ export default function ModelCachingCalculatorPage({
   params: { model: string };
   locale?: Locale;
 }) {
-  const model = MODELS_DATA.find((m) => m.modelId === params.model);
+  const model = MODELS_DATA.find((m) => m.modelId === decodePricingModelId(params.model));
 
   if (!model) {
     return notFound();
@@ -84,7 +86,7 @@ export default function ModelCachingCalculatorPage({
         inLanguage={locale}
         breadcrumbs={breadcrumbs}
       />
-      <ModelCachingCalculatorClient model={model} />
+      <ModelCachingCalculatorClient model={model} verifiedAt={priceVerifiedAt(model.modelId)} />
     </>
   );
 }

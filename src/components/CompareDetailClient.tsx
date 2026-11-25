@@ -27,6 +27,7 @@ export default function CompareDetailClient({
   modelB,
 }: CompareDetailClientProps) {
   const { t, getLocalizedPath } = useI18n();
+  const detail = t.detail;
 
   // Interactive slider state for dynamic comparison
   const [requests, setRequests] = useState(100000);
@@ -62,7 +63,7 @@ export default function CompareDetailClient({
     ? Math.round((savingsAmount / moreExpensiveCost) * 100)
     : 0;
 
-  const cheaperHeadline = `${cheaperModel.modelName} ${t.compare.cheaperBy.replace('{percent}', String(savingsRatio))}`;
+  const cheaperHeadline = savingsAmount === 0 ? detail.tie : `${cheaperModel.modelName} ${t.compare.cheaperBy.replace('{percent}', String(savingsRatio))}`;
   const savingsDescription = t.compare.savesPerMonth
     .replace('{model}', cheaperModel.modelName)
     .replace('{amount}', formatCurrency(savingsAmount));
@@ -104,7 +105,7 @@ export default function CompareDetailClient({
         </div>
         <div className="flex items-center gap-2 text-xs font-mono text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-950 px-3 py-1.5 rounded-lg border border-zinc-200/80 dark:border-zinc-800">
           <Calculator className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
-          <span>Live 50ms Engine</span>
+          <span>{detail.live}</span>
         </div>
       </div>
 
@@ -226,11 +227,11 @@ export default function CompareDetailClient({
           <div className="flex items-center gap-2">
             <Terminal className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-              Coding Agent Overhead Simulator
+              {detail.agentCost}
             </h3>
           </div>
           <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-            15-turn refactor · 5 tool calls · 30k context · 70% cache hit
+            {detail.agentAssumptions}
           </span>
         </div>
 
@@ -248,13 +249,13 @@ export default function CompareDetailClient({
                     : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/70 text-zinc-600 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700'
                 }`}
               >
-                <span>{mode.label}</span>
+                <span>{mode.id === 'raw' ? detail.rawApi : mode.label}</span>
                 <span className="font-mono text-[11px] text-zinc-700 dark:text-zinc-300">
                   {mode.multiplier.toFixed(1)}x
                 </span>
                 {mode.badge && (
                   <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
-                    {mode.badge}
+                    {t.simulator.router.recommended}
                   </span>
                 )}
               </button>
@@ -276,7 +277,7 @@ export default function CompareDetailClient({
               </span>
               {aWinsTask && taskSavingsPct > 0 && (
                 <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
-                  Cheaper by {taskSavingsPct}%
+                  {detail.cheaper} {taskSavingsPct}%
                 </span>
               )}
             </div>
@@ -303,7 +304,7 @@ export default function CompareDetailClient({
               </span>
               {!aWinsTask && taskSavingsPct > 0 && (
                 <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
-                  Cheaper by {taskSavingsPct}%
+                  {detail.cheaper} {taskSavingsPct}%
                 </span>
               )}
             </div>
@@ -320,13 +321,13 @@ export default function CompareDetailClient({
 
         <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-1">
           <span>
-            Active multiplier: <strong className="text-zinc-800 dark:text-zinc-300 font-mono">{activeHarness.multiplier.toFixed(1)}x</strong>
+            {detail.multiplier} <strong className="text-zinc-800 dark:text-zinc-300 font-mono">{activeHarness.multiplier.toFixed(1)}x</strong>
           </span>
           <Link
             href={getLocalizedPath(activeHarness.slug ? `/harness/${activeHarness.slug}/` : '/harness/')}
             className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-medium transition-colors"
           >
-            <span>{activeHarness.slug ? 'Full Harness Audit' : `Compare All ${HARNESS_TOOLS.length} Harnesses`}</span>
+            <span>{activeHarness.slug ? detail.harnessAudit : detail.compareHarness.replace('{count}', String(HARNESS_TOOLS.length))}</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
