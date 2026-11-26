@@ -83,18 +83,21 @@ function getByokBadge(tool: HarnessTool) {
   if (tool.byokSupport.customBaseUrl && tool.isOpenSource) {
     return {
       label: 'Native BYOK',
-      className: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+      className:
+        'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30',
     };
   }
   if (tool.byokSupport.customBaseUrl) {
     return {
       label: 'Custom BaseURL',
-      className: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30',
+      className:
+        'bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-300 dark:border-indigo-500/30',
     };
   }
   return {
     label: 'Official / Partial',
-    className: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+    className:
+      'bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/30',
   };
 }
 
@@ -117,7 +120,7 @@ function getMonogram(slug: string): string {
 }
 
 export default function HarnessDirectoryClient() {
-  const { locale } = useI18n();
+  const { locale, getLocalizedPath } = useI18n();
   const isZh = locale === 'zh-CN' || locale === 'zh-TW';
 
   const [categoryFilter, setCategoryFilter] = useState<FilterTab>('all');
@@ -159,7 +162,7 @@ export default function HarnessDirectoryClient() {
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
       {/* Hero Section */}
       <header className="space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-400">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 text-xs font-medium text-indigo-700 dark:text-indigo-400">
           <Terminal className="h-3.5 w-3.5" />
           <span>
             {isZh
@@ -168,13 +171,13 @@ export default function HarnessDirectoryClient() {
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-50">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
           {isZh
             ? 'Coding Agent 与 Harness 真实 Token 消耗倍率与 BYOK 省钱评测'
             : 'Coding Agent & Harness Token Cost Benchmark'}
         </h1>
 
-        <p className="text-sm sm:text-base text-zinc-400 max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
           {isZh
             ? `实测 ${HARNESS_TOOLS.length} 款主流 Coding Agent（含 Claude Code、OpenAI Codex CLI、DeepSeek Harness、Cursor、Google Antigravity、ZCode、Muse Code、Aider 等）在 15 轮跨文件代码重构任务下的真实 Token 消耗倍率、System Prompt 隐性底噪与缓存命中率，附带生产级 BYOK 配置模板。`
             : `Audit the real token multiplier, system prompt overhead, and BYOK cost optimization across ${HARNESS_TOOLS.length} coding harnesses—including Claude Code, OpenAI Codex CLI, DeepSeek Harness, Cursor, Windsurf, Google Antigravity, ZCode, Muse Code, Aider, Cline, Roo Code & OpenCode—on standardized 15-turn repo refactors.`}
@@ -183,41 +186,41 @@ export default function HarnessDirectoryClient() {
 
       {/* 3-Stat KPI Strip */}
       <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="rounded-2xl border border-emerald-500/30 bg-zinc-900/60 p-4 sm:p-5 backdrop-blur-md">
-          <div className="flex items-center justify-between text-xs text-zinc-400 mb-1.5">
+        <div className="rounded-2xl border border-emerald-200/90 dark:border-emerald-500/30 bg-white/90 dark:bg-zinc-900/60 p-4 sm:p-5 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-none">
+          <div className="flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 mb-1.5">
             <span>{isZh ? '省钱效率冠军' : 'Most Token-Efficient'}</span>
-            <Award className="h-4 w-4 text-emerald-400" />
+            <Award className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <div className="text-xl font-bold font-mono text-emerald-400">
+          <div className="text-xl font-bold font-mono text-emerald-700 dark:text-emerald-400">
             Aider · 1.2x – 1.8x
           </div>
-          <p className="text-[11px] text-zinc-500 mt-1">
+          <p className="text-[11px] text-zinc-600 dark:text-zinc-500 mt-1">
             {isZh ? 'Tree-Sitter AST Repo-Map 精准上下文剪枝' : 'Tree-Sitter AST Repo-Map context pruning'}
           </p>
         </div>
 
-        <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-4 sm:p-5 backdrop-blur-md">
-          <div className="flex items-center justify-between text-xs text-zinc-400 mb-1.5">
+        <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-4 sm:p-5 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-none">
+          <div className="flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 mb-1.5">
             <span>{isZh ? '最低系统提示词底噪' : 'Lowest System Overhead'}</span>
-            <Cpu className="h-4 w-4 text-cyan-400" />
+            <Cpu className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
           </div>
-          <div className="text-xl font-bold font-mono text-zinc-100">
+          <div className="text-xl font-bold font-mono text-zinc-900 dark:text-zinc-100">
             ~1,150 tok
           </div>
-          <p className="text-[11px] text-zinc-500 mt-1">
+          <p className="text-[11px] text-zinc-600 dark:text-zinc-500 mt-1">
             {isZh ? '对比 AI IDE / CLI 约 3,600–6,900 tok 固定注入' : 'vs ~3,600–6,900 tok in heavy AI IDEs & CLIs'}
           </p>
         </div>
 
-        <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-4 sm:p-5 backdrop-blur-md">
-          <div className="flex items-center justify-between text-xs text-zinc-400 mb-1.5">
+        <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-4 sm:p-5 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-none">
+          <div className="flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 mb-1.5">
             <span>{isZh ? '支持完整自定义网关 (BYOK)' : 'Full BYOK / Custom BaseURL'}</span>
-            <ShieldCheck className="h-4 w-4 text-indigo-400" />
+            <ShieldCheck className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
           </div>
-          <div className="text-xl font-bold font-mono text-indigo-300">
+          <div className="text-xl font-bold font-mono text-indigo-700 dark:text-indigo-300">
             {byokReadyCount} / {HARNESS_TOOLS.length} Harnesses
           </div>
-          <p className="text-[11px] text-zinc-500 mt-1">
+          <p className="text-[11px] text-zinc-600 dark:text-zinc-500 mt-1">
             {isZh ? '支持 DeepSeek / OpenRouter 兼容端点直连' : 'Direct DeepSeek, LiteLLM & OpenRouter routing'}
           </p>
         </div>
@@ -225,7 +228,7 @@ export default function HarnessDirectoryClient() {
 
       {/* Filter & Sort Control Bar */}
       <section className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-1 rounded-xl bg-zinc-900/80 border border-zinc-800 p-1 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-1">
+        <div className="flex items-center gap-1 rounded-xl bg-zinc-100/90 dark:bg-zinc-900/80 border border-zinc-200/90 dark:border-zinc-800 p-1 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-1">
           {filterTabs.map((tab) => {
             const active = categoryFilter === tab.id;
             return (
@@ -235,8 +238,8 @@ export default function HarnessDirectoryClient() {
                 onClick={() => setCategoryFilter(tab.id)}
                 className={`shrink-0 min-h-[38px] px-3.5 py-1.5 rounded-lg text-xs transition-all ${
                   active
-                    ? 'bg-zinc-800 text-zinc-50 shadow-sm font-semibold'
-                    : 'text-zinc-400 hover:text-zinc-200 font-medium'
+                    ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 shadow-sm font-semibold'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 font-medium'
                 }`}
               >
                 {tab.label}
@@ -251,21 +254,25 @@ export default function HarnessDirectoryClient() {
             onClick={() => setByokOnly((prev) => !prev)}
             className={`min-h-[44px] px-3.5 py-2 rounded-xl border text-xs font-medium inline-flex items-center gap-1.5 transition-all ${
               byokOnly
-                ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-300'
-                : 'border-zinc-800 bg-zinc-900/60 text-zinc-300 hover:border-zinc-700'
+                ? 'border-emerald-300 dark:border-emerald-500/50 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
+                : 'border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-700 dark:text-zinc-300 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-900/80 shadow-sm dark:shadow-none'
             }`}
           >
-            <CheckCircle2 className={`h-3.5 w-3.5 ${byokOnly ? 'text-emerald-400' : 'text-zinc-500'}`} />
+            <CheckCircle2
+              className={`h-3.5 w-3.5 ${
+                byokOnly ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-500 dark:text-zinc-500'
+              }`}
+            />
             <span>{isZh ? '仅看支持 BYOK' : 'BYOK Ready'}</span>
           </button>
 
           <div className="relative flex items-center">
-            <SlidersHorizontal className="h-3.5 w-3.5 text-zinc-400 absolute left-3 pointer-events-none" />
+            <SlidersHorizontal className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400 absolute left-3 pointer-events-none" />
             <select
               aria-label={isZh ? '排序方式' : 'Sort harnesses'}
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="min-h-[44px] pl-8 pr-8 py-2 rounded-xl border border-zinc-800 bg-zinc-900/80 text-xs font-medium text-zinc-200 focus:outline-none focus:border-indigo-500 appearance-none cursor-pointer"
+              className="min-h-[44px] pl-8 pr-8 py-2 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900/80 text-xs font-medium text-zinc-800 dark:text-zinc-200 shadow-sm dark:shadow-none focus:outline-none focus:border-indigo-500 appearance-none cursor-pointer"
             >
               <option value="multiplier">
                 {isZh ? '倍率从低到高' : 'Multiplier (Low → High)'}
@@ -277,17 +284,17 @@ export default function HarnessDirectoryClient() {
                 {isZh ? 'GitHub Stars 从高到低' : 'GitHub Stars (High → Low)'}
               </option>
             </select>
-            <ChevronDown className="h-3.5 w-3.5 text-zinc-400 absolute right-2.5 pointer-events-none" />
+            <ChevronDown className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400 absolute right-2.5 pointer-events-none" />
           </div>
         </div>
       </section>
 
       {/* Desktop Matrix Table */}
-      <section className="hidden md:block rounded-2xl border border-zinc-800/80 bg-zinc-900/60 backdrop-blur-md shadow-xl overflow-hidden">
+      <section className="hidden md:block rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-zinc-800 text-[11px] font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-950/50">
+              <tr className="border-b border-zinc-200 dark:border-zinc-800 text-[11px] font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider bg-zinc-50/90 dark:bg-zinc-950/50">
                 <th className="py-3.5 px-4">Coding Agent / Harness</th>
                 <th className="py-3.5 px-4">Token Multiplier (vs Raw API)</th>
                 <th className="py-3.5 px-4">System Prompt Overhead</th>
@@ -296,7 +303,7 @@ export default function HarnessDirectoryClient() {
                 <th className="py-3.5 px-4 text-right">Spec</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/70">
+            <tbody className="divide-y divide-zinc-200/70 dark:divide-zinc-800/70">
               {filteredTools.map((tool) => {
                 const isAider = tool.slug === 'aider';
                 const { leftPct, widthPct, barColor } = getMultiplierBarMetrics(
@@ -311,34 +318,34 @@ export default function HarnessDirectoryClient() {
                     key={tool.slug}
                     className={`transition-colors ${
                       isAider
-                        ? 'bg-emerald-500/[0.04] hover:bg-emerald-500/[0.08] border-l-2 border-l-emerald-500'
-                        : 'hover:bg-zinc-800/30'
+                        ? 'bg-emerald-50/70 hover:bg-emerald-50 dark:bg-emerald-500/[0.04] dark:hover:bg-emerald-500/[0.08] border-l-2 border-l-emerald-500'
+                        : 'hover:bg-zinc-50/90 dark:hover:bg-zinc-800/30'
                     }`}
                   >
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="h-9 w-9 shrink-0 rounded-xl border border-zinc-800 bg-zinc-950 flex items-center justify-center font-mono font-bold text-xs text-zinc-200">
+                        <div className="h-9 w-9 shrink-0 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-950 flex items-center justify-center font-mono font-bold text-xs text-zinc-800 dark:text-zinc-200">
                           {getMonogram(tool.slug)}
                         </div>
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <Link
-                              href={`/harness/${tool.slug}/`}
-                              className="text-sm font-semibold text-zinc-100 hover:text-indigo-300 transition-colors"
+                              href={getLocalizedPath(`/harness/${tool.slug}/`)}
+                              className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
                             >
                               {tool.name}
                             </Link>
-                            <span className="rounded-md bg-zinc-800 px-1.5 py-0.5 text-[10px] font-mono text-zinc-400">
+                            <span className="rounded-md bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/80 dark:border-transparent px-1.5 py-0.5 text-[10px] font-mono text-zinc-700 dark:text-zinc-400">
                               {getShortTypeLabel(tool.category)}
                             </span>
                             {isAider && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
                                 <Sparkles className="h-2.5 w-2.5" />
                                 <span>Token Saver #1</span>
                               </span>
                             )}
                           </div>
-                          <p className="text-[11px] text-zinc-500 truncate max-w-[230px] mt-0.5">
+                          <p className="text-[11px] text-zinc-600 dark:text-zinc-500 truncate max-w-[230px] mt-0.5">
                             {isZh ? tool.taglineZh : tool.tagline}
                           </p>
                         </div>
@@ -348,7 +355,7 @@ export default function HarnessDirectoryClient() {
                     <td className="py-4 px-4">
                       <div className="space-y-1.5">
                         <div
-                          className="h-2 w-32 rounded-full bg-zinc-800 relative overflow-hidden"
+                          className="h-2 w-32 rounded-full bg-zinc-200/90 dark:bg-zinc-800 relative overflow-hidden"
                           title={`${tool.tokenMultiplierMin.toFixed(1)}x - ${tool.tokenMultiplierMax.toFixed(1)}x`}
                         >
                           <div
@@ -358,7 +365,7 @@ export default function HarnessDirectoryClient() {
                         </div>
                         <div
                           className={`font-mono text-xs font-semibold ${
-                            isAider ? 'text-emerald-400' : 'text-zinc-200'
+                            isAider ? 'text-emerald-700 dark:text-emerald-400' : 'text-zinc-900 dark:text-zinc-200'
                           }`}
                         >
                           {tool.tokenMultiplierMin.toFixed(1)}x – {tool.tokenMultiplierMax.toFixed(1)}x
@@ -367,10 +374,10 @@ export default function HarnessDirectoryClient() {
                     </td>
 
                     <td className="py-4 px-4">
-                      <div className="font-mono text-xs text-zinc-200">
+                      <div className="font-mono text-xs font-medium text-zinc-900 dark:text-zinc-200">
                         ~{tool.baseSystemPromptTokens.toLocaleString()} tok
                       </div>
-                      <div className="text-[11px] text-zinc-500 max-w-[210px] truncate mt-0.5">
+                      <div className="text-[11px] text-zinc-600 dark:text-zinc-500 max-w-[210px] truncate mt-0.5">
                         {isZh ? tool.compactionStrategyZh : tool.compactionStrategy}
                       </div>
                     </td>
@@ -388,8 +395,8 @@ export default function HarnessDirectoryClient() {
                         {topModels.map((m) => (
                           <Link
                             key={m.modelId}
-                            href={`/models/${m.modelId}/`}
-                            className="px-2 py-1 rounded-md text-[11px] font-mono border border-zinc-800 bg-zinc-950/60 text-zinc-300 hover:border-indigo-500/50 hover:text-indigo-300 transition-colors"
+                            href={getLocalizedPath(`/models/${m.modelId}/`)}
+                            className="px-2 py-1 rounded-md text-[11px] font-mono border border-zinc-200/90 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-700 dark:text-zinc-300 hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
                           >
                             {m.modelId}
                           </Link>
@@ -399,8 +406,8 @@ export default function HarnessDirectoryClient() {
 
                     <td className="py-4 px-4 text-right">
                       <Link
-                        href={`/harness/${tool.slug}/`}
-                        className="min-h-[36px] inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-zinc-800/80 hover:bg-indigo-600 text-xs font-medium text-zinc-200 hover:text-white transition-colors"
+                        href={getLocalizedPath(`/harness/${tool.slug}/`)}
+                        className="min-h-[36px] inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-zinc-200/90 dark:border-transparent bg-white dark:bg-zinc-800/80 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:border-indigo-600 text-xs font-medium text-zinc-700 dark:text-zinc-200 hover:text-white dark:hover:text-white shadow-sm dark:shadow-none transition-colors"
                       >
                         <span>{isZh ? '详情' : 'Inspect'}</span>
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -429,24 +436,29 @@ export default function HarnessDirectoryClient() {
               key={tool.slug}
               className={`rounded-2xl border p-4 space-y-3.5 ${
                 isAider
-                  ? 'border-emerald-500/40 bg-emerald-500/[0.04]'
-                  : 'border-zinc-800/80 bg-zinc-900/60'
+                  ? 'border-emerald-300 dark:border-emerald-500/40 bg-emerald-50/70 dark:bg-emerald-500/[0.04]'
+                  : 'border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 shadow-sm shadow-zinc-950/[0.04] dark:shadow-none'
               }`}
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="h-9 w-9 shrink-0 rounded-xl border border-zinc-800 bg-zinc-950 flex items-center justify-center font-mono font-bold text-xs text-zinc-200">
+                  <div className="h-9 w-9 shrink-0 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-100/80 dark:bg-zinc-950 flex items-center justify-center font-mono font-bold text-xs text-zinc-800 dark:text-zinc-200">
                     {getMonogram(tool.slug)}
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="text-sm font-bold text-zinc-100">{tool.name}</span>
-                      <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-[10px] font-mono text-zinc-400">
+                      <Link
+                        href={getLocalizedPath(`/harness/${tool.slug}/`)}
+                        className="text-sm font-bold text-zinc-900 dark:text-zinc-100 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
+                      >
+                        {tool.name}
+                      </Link>
+                      <span className="rounded bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/80 dark:border-transparent px-1.5 py-0.5 text-[10px] font-mono text-zinc-700 dark:text-zinc-400">
                         {getShortTypeLabel(tool.category)}
                       </span>
                     </div>
                     {isAider && (
-                      <span className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                      <span className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
                         Token Saver #1
                       </span>
                     )}
@@ -460,11 +472,11 @@ export default function HarnessDirectoryClient() {
               </div>
 
               <div className="grid grid-cols-2 gap-3 pt-1">
-                <div className="rounded-xl bg-zinc-950/70 border border-zinc-800/80 p-2.5">
-                  <span className="text-[10px] uppercase text-zinc-500 block">
+                <div className="rounded-xl bg-zinc-50/90 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800/80 p-2.5">
+                  <span className="text-[10px] uppercase text-zinc-600 dark:text-zinc-500 block">
                     Token Multiplier
                   </span>
-                  <div className="h-1.5 w-full rounded-full bg-zinc-800 relative overflow-hidden my-1.5">
+                  <div className="h-1.5 w-full rounded-full bg-zinc-200 dark:bg-zinc-800 relative overflow-hidden my-1.5">
                     <div
                       className={`absolute top-0 bottom-0 rounded-full ${barColor}`}
                       style={{ left: `${leftPct}%`, width: `${widthPct}%` }}
@@ -472,18 +484,18 @@ export default function HarnessDirectoryClient() {
                   </div>
                   <span
                     className={`font-mono text-xs font-bold ${
-                      isAider ? 'text-emerald-400' : 'text-zinc-100'
+                      isAider ? 'text-emerald-700 dark:text-emerald-400' : 'text-zinc-900 dark:text-zinc-100'
                     }`}
                   >
                     {tool.tokenMultiplierMin.toFixed(1)}x – {tool.tokenMultiplierMax.toFixed(1)}x
                   </span>
                 </div>
 
-                <div className="rounded-xl bg-zinc-950/70 border border-zinc-800/80 p-2.5">
-                  <span className="text-[10px] uppercase text-zinc-500 block">
+                <div className="rounded-xl bg-zinc-50/90 dark:bg-zinc-950/70 border border-zinc-200/80 dark:border-zinc-800/80 p-2.5">
+                  <span className="text-[10px] uppercase text-zinc-600 dark:text-zinc-500 block">
                     System Overhead
                   </span>
-                  <span className="font-mono text-sm font-bold text-zinc-100 block mt-2">
+                  <span className="font-mono text-sm font-bold text-zinc-900 dark:text-zinc-100 block mt-2">
                     ~{tool.baseSystemPromptTokens.toLocaleString()} tok
                   </span>
                 </div>
@@ -493,8 +505,8 @@ export default function HarnessDirectoryClient() {
                 {tool.recommendedModels.slice(0, 2).map((m) => (
                   <Link
                     key={m.modelId}
-                    href={`/models/${m.modelId}/`}
-                    className="px-2 py-1 rounded-md text-[11px] font-mono border border-zinc-800 bg-zinc-950/60 text-zinc-300"
+                    href={getLocalizedPath(`/models/${m.modelId}/`)}
+                    className="px-2 py-1 rounded-md text-[11px] font-mono border border-zinc-200/90 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-700 dark:text-zinc-300"
                   >
                     {m.modelId}
                   </Link>
@@ -502,8 +514,8 @@ export default function HarnessDirectoryClient() {
               </div>
 
               <Link
-                href={`/harness/${tool.slug}/`}
-                className="min-h-[44px] w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-indigo-600/90 hover:bg-indigo-500 text-xs font-semibold text-white transition-colors"
+                href={getLocalizedPath(`/harness/${tool.slug}/`)}
+                className="min-h-[44px] w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white shadow-sm transition-colors"
               >
                 <span>{isZh ? '查看 BYOK 配置与详测 →' : 'Inspect Config & Benchmarks →'}</span>
               </Link>
@@ -513,21 +525,21 @@ export default function HarnessDirectoryClient() {
       </section>
 
       {/* Channel Hub FAQs */}
-      <section className="rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-5 sm:p-6 backdrop-blur-md space-y-4">
+      <section className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-5 sm:p-6 backdrop-blur-md shadow-sm shadow-zinc-950/[0.04] dark:shadow-none space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <h2 className="text-lg font-bold text-zinc-100">
+          <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
             {isZh ? 'Coding Agent 计费机制与 BYOK 常见问题' : 'Coding Harness Token Cost & BYOK FAQ'}
           </h2>
           <Link
-            href="/developers/"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+            href={getLocalizedPath('/developers/')}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
           >
             <Code2 className="h-3.5 w-3.5" />
             <span>{isZh ? '获取 GitHub README 成本徽章 →' : 'Get GitHub README Cost Badge →'}</span>
           </Link>
         </div>
 
-        <div className="divide-y divide-zinc-800/70 rounded-xl border border-zinc-800 bg-zinc-950/50 overflow-hidden">
+        <div className="divide-y divide-zinc-200/80 dark:divide-zinc-800/70 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-950/50 overflow-hidden">
           {HUB_FAQS.map((faq, idx) => {
             const isOpen = openFaqId === faq.id;
             return (
@@ -535,27 +547,27 @@ export default function HarnessDirectoryClient() {
                 <button
                   type="button"
                   onClick={() => setOpenFaqId(isOpen ? '' : faq.id)}
-                  className="min-h-[48px] w-full flex items-center justify-between gap-3 p-4 text-left hover:bg-zinc-900/50 transition-colors"
+                  className="min-h-[48px] w-full flex items-center justify-between gap-3 p-4 text-left hover:bg-zinc-100/70 dark:hover:bg-zinc-900/50 transition-colors"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="h-6 w-6 shrink-0 rounded-full bg-indigo-500/10 text-indigo-400 font-mono text-xs font-semibold flex items-center justify-center">
+                    <span className="h-6 w-6 shrink-0 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-200/80 dark:border-transparent font-mono text-xs font-semibold flex items-center justify-center">
                       0{idx + 1}
                     </span>
-                    <span className="text-sm font-semibold text-zinc-100">
+                    <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                       {isZh ? faq.questionZh : faq.question}
                     </span>
-                    <span className="hidden sm:inline-flex shrink-0 px-2 py-0.5 rounded-full text-[10px] font-medium bg-zinc-800 text-zinc-400">
+                    <span className="hidden sm:inline-flex shrink-0 px-2 py-0.5 rounded-full text-[10px] font-medium bg-zinc-200/70 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400">
                       {faq.tag}
                     </span>
                   </div>
                   <ChevronDown
-                    className={`h-4 w-4 text-zinc-400 shrink-0 transition-transform duration-200 ${
+                    className={`h-4 w-4 text-zinc-500 dark:text-zinc-400 shrink-0 transition-transform duration-200 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-4 pb-4 pl-[52px] text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/50 pt-3">
+                  <div className="px-4 pb-4 pl-[52px] text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed border-t border-zinc-200/70 dark:border-zinc-800/50 pt-3">
                     {isZh ? faq.answerZh : faq.answer}
                   </div>
                 )}
