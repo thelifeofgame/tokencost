@@ -8,14 +8,14 @@ import { trackEvent } from '@/lib/analytics';
 import { useI18n } from '@/i18n/I18nProvider';
 import { formatModelCount } from '@/i18n';
 import { MODELS_DATA } from '@/lib/models-data';
-import { ArrowUpDown, Table, ExternalLink, Search, Sparkles, ChevronDown } from 'lucide-react';
+import { ArrowRight, ArrowUpDown, Table, ExternalLink, Search, Sparkles, ChevronDown } from 'lucide-react';
 
 interface LeaderboardTableProps {
   breakdowns: ModelCostBreakdown[];
 }
 
 export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) {
-  const { t, getLocalizedPath } = useI18n();
+  const { t, locale, getLocalizedPath } = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const [sortField, setSortField] = useState<'net' | 'input' | 'output' | 'eval'>('net');
   const [sortAsc, setSortAsc] = useState(true);
@@ -95,6 +95,26 @@ export default function LeaderboardTable({ breakdowns }: LeaderboardTableProps) 
           />
         </div>
       </div>
+
+      {locale === 'zh-CN' && /deepseek|qwen|kimi|glm|minimax|通义|智谱|豆包/i.test(searchQuery) && (
+        <Link
+          href="/zh-CN/domestic-models/"
+          className="group mb-4 flex items-center justify-between gap-2.5 rounded-xl border border-amber-200/90 dark:border-amber-500/25 bg-amber-50/75 dark:bg-amber-500/[0.08] px-3 py-2 text-xs transition-colors hover:border-amber-300 dark:hover:border-amber-400/45 hover:bg-amber-50 dark:hover:bg-amber-500/12"
+        >
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-amber-200/75 dark:bg-amber-500/20 font-mono text-[10px] font-bold text-amber-900 dark:text-amber-200">
+              ¥
+            </span>
+            <span className="text-[11px] font-medium text-zinc-800 dark:text-zinc-200 line-clamp-2 sm:truncate">
+              查看 DeepSeek / 通义千问 / Kimi 人民币官方费率与国内支付方式
+            </span>
+          </div>
+          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-900 dark:text-amber-300 whitespace-nowrap shrink-0">
+            <span>国内专区</span>
+            <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+          </span>
+        </Link>
+      )}
 
       {/* Table Container */}
       <div className="overflow-x-auto -mx-5 sm:mx-0">

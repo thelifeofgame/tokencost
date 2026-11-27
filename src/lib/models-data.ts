@@ -13,6 +13,7 @@ import { calculateModelCost } from './calculator-engine';
 import rawData from '@/data/model_pricing_schema.json';
 import trendingComparisonsData from '@/data/trending_comparisons.json';
 import nonTokenModelsData from '@/data/non_token_models.json';
+import compareIndexAllowlistData from '@/data/compare_index_allowlist.json';
 
 const FEATURED_PRIORITY_ORDER = [
   'gemini-4-neon',
@@ -46,8 +47,7 @@ function isFrontierId(id: string): boolean {
     lower.includes('opus-5') ||
     lower.includes('deepseek-v4') ||
     lower.includes('grok-4') ||
-    lower.includes('llama-4') ||
-    lower.includes('pareto-26')
+    lower.includes('llama-4')
   );
 }
 
@@ -374,12 +374,12 @@ export const P0_COMPARE_PAIRS: {
     description: 'Compare Claude 3.5 Sonnet ($3.00/$15.00) vs GPT-4o ($2.50/$10.00). Calculate Anthropic 90% prompt caching savings vs OpenAI zero-surcharge caching.',
   },
   {
-    canonicalSlug: 'deepseek-r1-vs-openai-o1',
+    canonicalSlug: 'deepseek-r1-vs-o3',
     a: 'deepseek-r1',
-    b: 'o1',
-    targetKeyword: 'deepseek r1 vs o1 pricing',
-    title: 'DeepSeek R1 vs OpenAI o1 Reasoning API Pricing & Cost Comparison',
-    description: 'Compare DeepSeek-R1 ($0.55/$2.19) vs OpenAI o1 ($15.00/$60.00). Save up to 96% on reasoning tokens with prompt caching analysis.',
+    b: 'o3',
+    targetKeyword: 'deepseek r1 vs o3 pricing',
+    title: 'DeepSeek R1 vs OpenAI o3 Reasoning API Pricing & Cost Comparison',
+    description: 'Compare DeepSeek-R1 ($0.55/$2.19) vs OpenAI o3 ($2.00/$8.00). Save up to 72.6% on reasoning tokens with prompt caching analysis.',
   },
   {
     canonicalSlug: 'deepseek-v3-vs-gpt-4o',
@@ -586,13 +586,8 @@ export function getComparisonData(slug: string): ComparisonData | null {
   if (!modelA || !modelB) return null;
 
   // Determine canonical slug
-  let canonicalSlug = '';
-  if ((modelA.modelId === 'deepseek-r1' && modelB.modelId === 'o1') || (modelA.modelId === 'o1' && modelB.modelId === 'deepseek-r1')) {
-    canonicalSlug = 'deepseek-r1-vs-openai-o1';
-  } else {
-    const sorted = [modelA.modelId, modelB.modelId].sort();
-    canonicalSlug = `${sorted[0]}-vs-${sorted[1]}` as string;
-  }
+  const sorted = [modelA.modelId, modelB.modelId].sort();
+  const canonicalSlug = `${sorted[0]}-vs-${sorted[1]}`;
 
   const title = `${modelA.modelName} vs ${modelB.modelName} API Pricing & Cost Comparison`;
   const description = `Compare real-world API costs for ${modelA.modelName} ($${modelA.inputPerM}/$${modelA.outputPerM}) vs ${modelB.modelName} ($${modelB.inputPerM}/$${modelB.outputPerM}). Calculate Prompt Caching ROI & Batch API savings.`;
@@ -815,16 +810,8 @@ if (_invalidTier1.length > 0) {
  *  - 未预生成 → /compare/view/?slug=<slug>（客户端按需渲染，noindex）
  */
 export function compareHref(aId: string, bId: string): string {
-  let slug: string;
-  if (
-    (aId === 'deepseek-r1' && (bId === 'o1' || bId === 'openai-o1')) ||
-    ((aId === 'o1' || aId === 'openai-o1') && bId === 'deepseek-r1')
-  ) {
-    slug = 'deepseek-r1-vs-openai-o1';
-  } else {
-    const sorted = [aId, bId].sort();
-    slug = `${sorted[0]}-vs-${sorted[1]}`;
-  }
+  const sorted = [aId, bId].sort();
+  const slug = `${sorted[0]}-vs-${sorted[1]}`;
   return hasComparePage(slug)
     ? `/compare/${slug}/`
     : `/compare/view/?slug=${encodeURIComponent(slug)}`;
@@ -858,11 +845,7 @@ export function getAllCompareStaticSlugs(): string[] {
     }
   }
 
-  // 2. Extra aliases for deepseek-r1-vs-openai-o1
-  slugs.add('deepseek-r1-vs-openai-o1');
-  slugs.add('openai-o1-vs-deepseek-r1');
-  slugs.add('deepseek-r1-vs-o1');
-  slugs.add('o1-vs-deepseek-r1');
+
 
   // 3. Extra popular pairs
   for (const p of POPULAR_COMPARE_PAIRS) {
@@ -875,6 +858,21 @@ export function getAllCompareStaticSlugs(): string[] {
     for (let j = i + 1; j < TIER1_MODELS.length; j++) {
       const sorted = [TIER1_MODELS[i], TIER1_MODELS[j]].sort();
       slugs.add(sorted[0] + '-vs-' + sorted[1]);
+    }
+  }
+
+  // 5. Index allowlist (seed + searchConsole)
+  const allowlistSlugs = [
+    ...(compareIndexAllowlistData.seed ?? []),
+    ...(compareIndexAllowlistData.searchConsole ?? []),
+  ];
+  for (const slug of allowlistSlugs) {
+    slugs.add(slug);
+    if (!slug.includes('anthropic-prompt-caching') && !slug.includes('openai-batch-api')) {
+      const parts = slug.split('-vs-');
+      if (parts.length === 2) {
+        slugs.add(`${parts[1]}-vs-${parts[0]}`);
+      }
     }
   }
 

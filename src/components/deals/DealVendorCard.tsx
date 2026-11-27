@@ -242,7 +242,7 @@ export default function DealVendorCard({ provider }: DealVendorCardProps) {
             </p>
           </div>
 
-          <div className="rounded-xl border border-zinc-200/75 dark:border-zinc-800/75 bg-zinc-50/90 dark:bg-zinc-950/60 p-2.5 sm:p-3 space-y-1">
+          <div className="rounded-xl border border-zinc-200/75 dark:border-zinc-800/75 bg-zinc-50/90 dark:bg-zinc-950/60 p-2.5 sm:p-3 space-y-2">
             <div className="text-[10px] font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
               {dealsT.labelPromoWindow}
             </div>
@@ -254,12 +254,26 @@ export default function DealVendorCard({ provider }: DealVendorCardProps) {
               }`}
             >
               {localized.promoWindow}
-              {provider.promoDeadlines?.map(({ offer, endsAt }) => (
-                <span key={offer} className="block">
-                  {offer} · <DealDeadline endsAt={endsAt} />
-                </span>
-              ))}
             </p>
+            {provider.promoDeadlines && provider.promoDeadlines.length > 0 && (
+              <div className="space-y-1.5 pt-1 border-t border-zinc-200/70 dark:border-zinc-800/70">
+                {provider.promoDeadlines.map(({ offer, endsAt }) => (
+                  <div
+                    key={`${offer}-${endsAt}`}
+                    className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-zinc-900/70 px-2 py-1.5"
+                  >
+                    <span className="text-[11px] font-medium text-zinc-800 dark:text-zinc-200 leading-tight min-w-0 break-words">
+                      {offer}
+                    </span>
+                    <DealDeadline
+                      endsAt={endsAt}
+                      variant="pill"
+                      tone={isActive ? 'emerald' : 'neutral'}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="rounded-xl border border-zinc-200/75 dark:border-zinc-800/75 bg-zinc-50/90 dark:bg-zinc-950/60 p-2.5 sm:p-3 space-y-1">

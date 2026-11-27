@@ -10,14 +10,36 @@
         "coding",
         "research"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": false,
+      "freeTier": "Free ($0/mo): Unlimited everyday text chat with GPT-5.6 Luna and GPT-6 Luna in Codex desktop app.",
       "source": {
         "url": "https://chatgpt.com/pricing",
-        "verifiedAt": "2026-11-25"
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
+        {
+          "name": "Go",
+          "monthlyUSD": 8,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": [
+            "Expanded limits over Free tier for everyday text chat & web search"
+          ],
+          "models": [
+            "GPT-5.6 Luna",
+            "GPT-6 Luna"
+          ],
+          "features": [
+            "Higher daily usage than Free",
+            "Web & mobile access",
+            "Ad-supported or entry consumer tier"
+          ],
+          "url": "https://chatgpt.com/pricing",
+          "verifiedAt": "2026-11-27"
+        },
         {
           "name": "Plus",
           "monthlyUSD": 20,
@@ -25,11 +47,22 @@
           "yearlyUSD": null,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "Higher reasoning & Deep Research quotas than Go",
+            "Codex desktop app access"
+          ],
+          "models": [
+            "GPT-6.2 Sol",
+            "GPT-6 Luna",
+            "GPT-5.6 Luna"
+          ],
+          "features": [
+            "Expanded messaging, file uploads & data analysis",
+            "Voice & image generation",
+            "Codex agent tasks"
+          ],
           "url": "https://chatgpt.com/pricing",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         },
         {
           "name": "Pro",
@@ -38,11 +71,23 @@
           "yearlyUSD": null,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "Pro 100 ($100/mo), Pro 200 ($200/mo), Pro 500 ($500/mo) capacity tiers",
+            "Includes matching $100 / $200 / $500 monthly API credits"
+          ],
+          "models": [
+            "GPT-6.2 Astra",
+            "GPT-6.2 Sol",
+            "o3",
+            "Codex"
+          ],
+          "features": [
+            "Priority compute & fast mode",
+            "Maximum Deep Research & Codex concurrency",
+            "Bundled OpenAI API credits matching tier price"
+          ],
           "url": "https://chatgpt.com/pricing",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         }
       ]
     },
@@ -55,11 +100,11 @@
         "coding",
         "research"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": false,
+      "freeTier": "Free ($0/mo): Limited usage every 5 hours and weekly; web, desktop, mobile, Artifacts, Claude Design/Slides/Docs.",
       "source": {
         "url": "https://claude.com/pricing",
-        "verifiedAt": "2026-11-25"
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
@@ -70,11 +115,22 @@
           "yearlyUSD": 200,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "More usage every 5 hours and weekly vs Free",
+            "No monthly API credits included"
+          ],
+          "models": [
+            "Claude Sonnet 5.5",
+            "Claude Opus 5.5",
+            "Claude Haiku 5.5"
+          ],
+          "features": [
+            "Claude Code terminal & IDE",
+            "Claude in Excel & PowerPoint",
+            "Research & Projects"
+          ],
           "url": "https://claude.com/pricing",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         },
         {
           "name": "Max",
@@ -83,11 +139,47 @@
           "yearlyUSD": null,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "5x more weekly usage than Pro",
+            "Includes $100 monthly API credits"
+          ],
+          "models": [
+            "Claude Fable 5.2",
+            "Claude Opus 5.5",
+            "Claude Sonnet 5.5"
+          ],
+          "features": [
+            "Full Claude Code & Cowork heavy usage",
+            "Claude in Word",
+            "Priority access at peak times"
+          ],
           "url": "https://claude.com/pricing",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "Ultra",
+          "monthlyUSD": 200,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": [
+            "10x more weekly usage than Pro",
+            "No 5-hour session cap for verified accounts",
+            "Includes $200 monthly API credits"
+          ],
+          "models": [
+            "Claude Fable 5.2",
+            "Claude Opus 5.5",
+            "Claude Sonnet 5.5"
+          ],
+          "features": [
+            "Renamed from Max 20x",
+            "Uninterrupted long coding agent sessions",
+            "Highest priority compute & early feature access"
+          ],
+          "url": "https://claude.com/pricing",
+          "verifiedAt": "2026-11-27"
         }
       ]
     },
@@ -101,11 +193,11 @@
         "coding",
         "research"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": false,
+      "freeTier": "Free ($0/mo): Gemini 4 Hydrogen in Gemini app and 15 GB Google storage.",
       "source": {
         "url": "https://one.google.com/about/google-ai-plans/",
-        "verifiedAt": "2026-11-25"
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
@@ -116,11 +208,22 @@
           "yearlyUSD": null,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "Expanded entry quota over Free",
+            "400 GB Google One storage",
+            "Share with up to 5 family members"
+          ],
+          "models": [
+            "Gemini 4 Hydrogen",
+            "Gemini 4 Argon"
+          ],
+          "features": [
+            "Gemini in Gmail, Docs & Workspace",
+            "NotebookLM Plus",
+            "Flow & Whisk creative limits"
+          ],
           "url": "https://one.google.com/about/google-ai-plans/",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         },
         {
           "name": "Google AI Pro",
@@ -129,11 +232,23 @@
           "yearlyUSD": 199.99,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "5 TB Google One storage",
+            "$10/mo Google Cloud credits",
+            "200 monthly Colab compute units"
+          ],
+          "models": [
+            "Gemini 4 Neon",
+            "Gemini 4 Carbon",
+            "Veo & Nano Banana"
+          ],
+          "features": [
+            "Deep Research & Gemini CLI",
+            "YouTube Premium Lite included",
+            "Gemini in Workspace apps"
+          ],
           "url": "https://one.google.com/about/google-ai-plans/",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         },
         {
           "name": "Google AI Ultra",
@@ -142,11 +257,22 @@
           "yearlyUSD": null,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "$99.99/mo Ultra & $199.99/mo highest-quota tier",
+            "Up to 30 TB storage & 25,000 monthly AI credits"
+          ],
+          "models": [
+            "Gemini 4 Carbon",
+            "Gemini 4 Neon",
+            "Genie 4 / Veo"
+          ],
+          "features": [
+            "Project Mariner agent access",
+            "Highest YouTube Premium & Workspace AI perks",
+            "Priority early model access"
+          ],
           "url": "https://one.google.com/about/google-ai-plans/",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         }
       ]
     },
@@ -157,11 +283,11 @@
       "useCases": [
         "research"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": false,
+      "freeTier": "Free ($0/mo): Basic Sonar search and limited daily Pro searches.",
       "source": {
         "url": "https://www.perplexity.ai/pro",
-        "verifiedAt": "2026-11-25"
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
@@ -172,11 +298,52 @@
           "yearlyUSD": 200,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "Weekly Perplexity Computer usage allowance",
+            "Extended Pro Search & file uploads"
+          ],
+          "models": [
+            "Sonar",
+            "GPT-6.2 Sol",
+            "Gemini 4 Neon",
+            "Claude Sonnet 5.5",
+            "Grok 4.7",
+            "Kimi K3",
+            "GLM 5.3"
+          ],
+          "features": [
+            "Multi-model selector",
+            "Deep Research reports",
+            "Comet AI browser access"
+          ],
           "url": "https://www.perplexity.ai/pro",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "Max",
+          "monthlyUSD": 200,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 2000,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": [
+            "10,000 monthly Perplexity Computer credits",
+            "Unlimited Labs & Deep Research"
+          ],
+          "models": [
+            "GPT-6.2 Astra",
+            "Gemini 4 Carbon",
+            "Claude Opus 5.5",
+            "Claude Fable 5.2",
+            "Model Council"
+          ],
+          "features": [
+            "Model Council multi-model synthesis",
+            "Comet Max Assistant",
+            "Priority support & early labs"
+          ],
+          "url": "https://www.perplexity.ai/pro",
+          "verifiedAt": "2026-11-27"
         }
       ]
     },
@@ -188,26 +355,101 @@
         "chat",
         "writing"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": false,
+      "freeTier": "Free ($0/mo): Web and mobile Copilot chat; Office desktop apps with Copilot require paid Microsoft 365.",
       "source": {
-        "url": "https://www.microsoft.com/en-us/microsoft-365/copilot",
-        "verifiedAt": null
+        "url": "https://www.microsoft.com/en-us/copilot/pricing/individuals",
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
         {
-          "name": null,
-          "monthlyUSD": null,
+          "name": "Microsoft 365 Personal",
+          "monthlyUSD": 9.99,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 99.99,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": [
+            "Standard AI credits for 1 person",
+            "1 TB OneDrive cloud storage"
+          ],
+          "models": [
+            "Microsoft Copilot (GPT-series routed)"
+          ],
+          "features": [
+            "Copilot in Word, Excel, PowerPoint, Outlook & OneNote",
+            "Microsoft Designer",
+            "Standalone Copilot Pro merged into M365"
+          ],
+          "url": "https://www.microsoft.com/en-us/copilot/pricing/individuals",
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "Microsoft 365 Family",
+          "monthlyUSD": 12.99,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 129.99,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": [
+            "1–6 users; AI features limited to subscription owner",
+            "Up to 6 TB OneDrive (1 TB/person)"
+          ],
+          "models": [
+            "Microsoft Copilot (GPT-series routed)"
+          ],
+          "features": [
+            "Copilot in M365 apps for plan owner",
+            "Family desktop/mobile Office apps",
+            "Defender & Designer"
+          ],
+          "url": "https://www.microsoft.com/en-us/copilot/pricing/individuals",
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "Microsoft 365 Premium",
+          "monthlyUSD": 19.99,
+          "monthlyUSDMax": null,
+          "yearlyUSD": 199.99,
+          "monthlyCNY": null,
+          "yearlyCNY": null,
+          "limits": [
+            "Extensive AI usage limits beyond Personal/Family",
+            "1 TB–6 TB cloud storage options"
+          ],
+          "models": [
+            "Microsoft Copilot + Researcher & Analyst Agents"
+          ],
+          "features": [
+            "Researcher & Analyst agentic AI in M365",
+            "Priority Copilot throughput",
+            "Full Microsoft 365 desktop suite"
+          ],
+          "url": "https://www.microsoft.com/en-us/copilot/pricing/individuals",
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "Microsoft 365 Pro",
+          "monthlyUSD": 99.99,
           "monthlyUSDMax": null,
           "yearlyUSD": null,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
-          "url": "https://www.microsoft.com/en-us/microsoft-365/copilot",
-          "verifiedAt": null
+          "limits": [
+            "Highest consumer AI usage limits (monthly billing only)",
+            "5 TB OneDrive cloud storage"
+          ],
+          "models": [
+            "Microsoft Copilot + Researcher & Analyst Agents"
+          ],
+          "features": [
+            "Maximum individual Copilot & Researcher/Analyst quotas",
+            "Priority compute",
+            "Full Office desktop & web apps"
+          ],
+          "url": "https://www.microsoft.com/en-us/copilot/pricing/individuals",
+          "verifiedAt": "2026-11-27"
         }
       ]
     },
@@ -219,11 +461,11 @@
         "chat",
         "research"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": false,
+      "freeTier": "Free ($0/mo): Daily Grok access and starter Cursor coding agent allowance under The X Subscription.",
       "source": {
         "url": "https://grok.com/plans",
-        "verifiedAt": "2026-11-25"
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
@@ -234,11 +476,21 @@
           "yearlyUSD": 80,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "Entry weekly X Subscription shared pool",
+            "Annual billing equals 10 months ($80/yr)"
+          ],
+          "models": [
+            "Grok 4.7",
+            "Grok 4.5"
+          ],
+          "features": [
+            "X Premium entry perks",
+            "Grok web/iOS/Android chat & DeepSearch",
+            "Starter Cursor allowance"
+          ],
           "url": "https://grok.com/plans",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         },
         {
           "name": "Premium",
@@ -247,11 +499,22 @@
           "yearlyUSD": 300,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "4x weekly usage pool",
+            "Cursor Pro tier bundled"
+          ],
+          "models": [
+            "Grok 4.7",
+            "Grok Heavy",
+            "Cursor Composer"
+          ],
+          "features": [
+            "Grok Bot workspace automation",
+            "Cursor Pro IDE access",
+            "X Premium+ (ad-free feed & creator tools)"
+          ],
           "url": "https://grok.com/plans",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         },
         {
           "name": "Super",
@@ -260,11 +523,22 @@
           "yearlyUSD": 1000,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "15x weekly usage pool",
+            "High-volume Grok + Cursor coding allowance"
+          ],
+          "models": [
+            "Grok 4.7",
+            "Grok Heavy",
+            "Cursor Pro+"
+          ],
+          "features": [
+            "Heavy Grok DeepSearch & Imagine",
+            "Bundled Cursor high-usage tier",
+            "X Premium+ included"
+          ],
           "url": "https://grok.com/plans",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         },
         {
           "name": "Ultra",
@@ -273,11 +547,22 @@
           "yearlyUSD": 2000,
           "monthlyCNY": null,
           "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "limits": [
+            "50x weekly usage pool",
+            "Maximum Grok + Cursor shared capacity"
+          ],
+          "models": [
+            "Grok 4.7",
+            "Grok Heavy",
+            "Cursor Ultra"
+          ],
+          "features": [
+            "Highest priority compute on grok.com & X",
+            "Full Cursor Ultra coding agent capacity",
+            "Grok Imagine high-res media"
+          ],
           "url": "https://grok.com/plans",
-          "verifiedAt": "2026-11-25"
+          "verifiedAt": "2026-11-27"
         }
       ]
     },
@@ -290,26 +575,82 @@
         "writing",
         "research"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": true,
+      "freeTier": "免费版（¥0/月）：基础对话、联网搜索、基础文案写作、翻译与有限高阶功能体验额度。",
       "source": {
         "url": "https://www.doubao.com/",
-        "verifiedAt": null
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
         {
-          "name": null,
+          "name": "标准套餐",
           "monthlyUSD": null,
           "monthlyUSDMax": null,
           "yearlyUSD": null,
-          "monthlyCNY": null,
-          "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "monthlyCNY": 68,
+          "yearlyCNY": 688,
+          "limits": [
+            "不低于免费版 5 倍的深度办公与高阶任务额度",
+            "连续包年折合 ¥57.33/月"
+          ],
+          "models": [
+            "豆包 Doubao 2.1 Pro",
+            "专家模式 / 深度思考"
+          ],
+          "features": [
+            "办公任务加速（PPT/表格/长文档整理）",
+            "高阶专家模式调用",
+            "多端云同步与优先队列"
+          ],
           "url": "https://www.doubao.com/",
-          "verifiedAt": null
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "加强套餐",
+          "monthlyUSD": null,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": 200,
+          "yearlyCNY": 2048,
+          "limits": [
+            "标准版 4 倍高阶任务额度",
+            "支持连续包月/包年"
+          ],
+          "models": [
+            "豆包 Doubao 2.1 Pro",
+            "多模态视频/图像生成高阶模型"
+          ],
+          "features": [
+            "高频长文档研究与代码生成",
+            "大批量图文音视频创作配额",
+            "高峰期优先算力通道"
+          ],
+          "url": "https://www.doubao.com/",
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "高级套餐",
+          "monthlyUSD": null,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": 500,
+          "yearlyCNY": 5088,
+          "limits": [
+            "标准版 10 倍高阶任务额度",
+            "重度个人/专业创作者最高档位"
+          ],
+          "models": [
+            "豆包 Doubao 2.1 Pro",
+            "全模态旗舰模型无降级优先调度"
+          ],
+          "features": [
+            "全天候重度深度研究与复杂任务并发",
+            "最高优先级队列与文件解析容量",
+            "官方会员增值权益（见 doubao.com/legal/ey01）"
+          ],
+          "url": "https://www.doubao.com/",
+          "verifiedAt": "2026-11-27"
         }
       ]
     },
@@ -322,26 +663,79 @@
         "writing",
         "coding"
       ],
-      "availableInChina": null,
-      "freeTier": null,
+      "availableInChina": true,
+      "freeTier": "免费版（¥0/月）：基础对话与搜索永久免费，含有限办公助理试用及每日少量 AI 视频额度。",
       "source": {
         "url": "https://www.qianwen.com/",
-        "verifiedAt": null
+        "verifiedAt": "2026-11-27"
       },
       "affiliateUrl": null,
       "plans": [
         {
-          "name": null,
+          "name": "高级会员",
           "monthlyUSD": null,
           "monthlyUSDMax": null,
           "yearlyUSD": null,
-          "monthlyCNY": null,
-          "yearlyCNY": null,
-          "limits": null,
-          "models": null,
-          "features": null,
+          "monthlyCNY": 19,
+          "yearlyCNY": 200,
+          "limits": [
+            "2 倍高频高阶任务与办公助理额度（对应千问 App 会员体系）"
+          ],
+          "models": [
+            "通义千问 Qwen 系列旗舰模型",
+            "通义万相生图/视频"
+          ],
+          "features": [
+            "文档/会议纪要高效生成",
+            "个人知识库扩展存储",
+            "多端优先响应"
+          ],
           "url": "https://www.qianwen.com/",
-          "verifiedAt": null
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "精英会员",
+          "monthlyUSD": null,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": 49,
+          "yearlyCNY": 568,
+          "limits": [
+            "5 倍高频高阶任务与办公助理额度"
+          ],
+          "models": [
+            "通义千问旗舰推理与代码模型",
+            "通义万相高清视频生成"
+          ],
+          "features": [
+            "大体积长文档与代码库深度分析",
+            "高配额 AI 写作/PPT/音视频转写",
+            "免排队高峰优先通道"
+          ],
+          "url": "https://www.qianwen.com/",
+          "verifiedAt": "2026-11-27"
+        },
+        {
+          "name": "旗舰会员",
+          "monthlyUSD": null,
+          "monthlyUSDMax": null,
+          "yearlyUSD": null,
+          "monthlyCNY": 128,
+          "yearlyCNY": 1499,
+          "limits": [
+            "20 倍最高级全功能额度（千问 App / 办公助理重度档）"
+          ],
+          "models": [
+            "通义千问全系最新旗舰模型",
+            "通义万相高阶视频创作"
+          ],
+          "features": [
+            "重度科研/编程与多模态长程任务",
+            "最大云端文档与工作区配额",
+            "全场景最高并发与新特性抢先体验"
+          ],
+          "url": "https://www.qianwen.com/",
+          "verifiedAt": "2026-11-27"
         }
       ]
     }

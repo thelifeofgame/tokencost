@@ -14,12 +14,14 @@ export type AffiliatePageType =
   | 'home_simulator'
   | 'pricing_topic'
   | 'harness_detail'
+  | 'ai_subscriptions'
   | 'global_nav';
 
 interface TrackedAffiliateLinkProps {
   href: string;
   modelId: string;
   pageType: AffiliatePageType;
+  utmMedium?: string;
   locale: Locale;
   placement: string;
   provider?: string;
@@ -36,6 +38,7 @@ export default function TrackedAffiliateLink({
   href,
   modelId,
   pageType,
+  utmMedium,
   locale,
   placement,
   provider,
@@ -50,7 +53,7 @@ export default function TrackedAffiliateLink({
   const resolvedProvider = provider || detectAffiliatePartner(href);
   const resolvedCampaign = campaign || compareSlug || modelId;
   const outboundUrl = buildAffiliateOutboundUrl(href, {
-    medium: pageType,
+    medium: utmMedium || pageType,
     campaign: resolvedCampaign,
     includeRef,
   });

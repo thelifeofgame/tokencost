@@ -18,36 +18,85 @@ export default function DomesticCostComparison({ quotes }: { quotes: UsdQuote[] 
   const alternative = quotes.find(quote => quote.key === right);
   const compare = (quote: UsdQuote) => convertUsdPriceRate(quote, Number(fx));
   return (
-    <section className="space-y-4 rounded-2xl border border-indigo-200 bg-indigo-50/70 p-4 dark:border-indigo-900 dark:bg-indigo-950/40 sm:p-6">
-      <h2 className="text-xl font-semibold">{t.comparison}</h2>
+    <section className="relative overflow-hidden space-y-4 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/65 p-4 sm:p-6 backdrop-blur-md shadow-sm dark:shadow-xl">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 dark:via-amber-400/35 to-transparent"
+      />
+      <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">{t.comparison}</h2>
       <p className="text-sm text-zinc-600 dark:text-zinc-300">{t.fxNote}</p>
       <div className="grid gap-3 sm:grid-cols-3">
-        <label className="text-sm">{t.domesticModel}
-          <select className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white p-2 dark:border-zinc-700 dark:bg-zinc-900" value={left} onChange={event => setLeft(event.target.value)}>
+        <label className="text-sm text-zinc-700 dark:text-zinc-300">
+          {t.domesticModel}
+          <select
+            className="mt-1 block w-full min-h-[42px] rounded-xl border border-zinc-300/90 dark:border-zinc-700/80 bg-white dark:bg-zinc-950/80 px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            value={left}
+            onChange={event => setLeft(event.target.value)}
+          >
             {domestic.map(quote => <option key={quote.key} value={quote.key}>{quote.name}</option>)}
           </select>
         </label>
-        <label className="text-sm">{t.foreignModel}
-          <select className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white p-2 dark:border-zinc-700 dark:bg-zinc-900" value={right} onChange={event => setRight(event.target.value)}>
+        <label className="text-sm text-zinc-700 dark:text-zinc-300">
+          {t.foreignModel}
+          <select
+            className="mt-1 block w-full min-h-[42px] rounded-xl border border-zinc-300/90 dark:border-zinc-700/80 bg-white dark:bg-zinc-950/80 px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            value={right}
+            onChange={event => setRight(event.target.value)}
+          >
             {foreign.map(quote => <option key={quote.key} value={quote.key}>{quote.name}</option>)}
           </select>
         </label>
-        <label className="text-sm">{t.fxRate}
-          <input className="mt-1 block w-full rounded-lg border border-zinc-300 bg-white p-2 dark:border-zinc-700 dark:bg-zinc-900"
-            type="number" inputMode="decimal" min="0.0001" max="1000" step="any" value={fx} onChange={event => setFx(event.target.value)} />
+        <label className="text-sm text-zinc-700 dark:text-zinc-300">
+          {t.fxRate}
+          <input
+            className="mt-1 block w-full min-h-[42px] rounded-xl border border-zinc-300/90 dark:border-zinc-700/80 bg-white dark:bg-zinc-950/80 px-3 py-2 font-mono tabular-nums text-sm text-zinc-900 dark:text-zinc-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            type="number"
+            inputMode="decimal"
+            min="0.0001"
+            max="1000"
+            step="any"
+            value={fx}
+            onChange={event => setFx(event.target.value)}
+          />
         </label>
       </div>
       <div aria-live="polite" className="grid gap-3 sm:grid-cols-2">
         {[reference, alternative].map(quote => {
           if (!quote) return null;
           const converted = compare(quote);
-          return <article key={quote.key} className="space-y-2 rounded-lg border border-zinc-200 bg-white p-3 text-sm dark:border-zinc-800 dark:bg-zinc-900">
-            <h3 className="font-semibold">{quote.name}{quote.peak ? ` · ${t.peak}` : ''}</h3>
-            <p>{t.usdReference} · {'US$'}{quote.input} / {'US$'}{quote.output}</p>
-            <p><strong>{t.converted}</strong> · {converted ? `${cny.format(converted.input)} / ${cny.format(converted.output)}` : t.enterRate}</p>
-            <p className="text-xs text-zinc-600 dark:text-zinc-400">{t.verified.replace('{date}', quote.verifiedAt)}</p>
-            <a href={quote.url} className="text-indigo-700 underline dark:text-indigo-300" target="_blank" rel="noopener noreferrer">{t.source}</a>
-          </article>;
+          return (
+            <article
+              key={quote.key}
+              className="space-y-2 rounded-xl border border-zinc-200/85 dark:border-zinc-800/85 bg-zinc-50/90 dark:bg-zinc-950/60 p-3.5 text-sm"
+            >
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                {quote.name}{quote.peak ? ` · ${t.peak}` : ''}
+              </h3>
+              <p className="text-zinc-700 dark:text-zinc-300">
+                {t.usdReference} ·{' '}
+                <span className="font-mono tabular-nums font-medium">
+                  {'US$'}{quote.input} / {'US$'}{quote.output}
+                </span>
+              </p>
+              <p className="text-zinc-800 dark:text-zinc-200">
+                <strong>{t.converted}</strong> ·{' '}
+                <span className="font-mono tabular-nums">
+                  {converted ? `${cny.format(converted.input)} / ${cny.format(converted.output)}` : t.enterRate}
+                </span>
+              </p>
+              <p className="font-mono tabular-nums text-xs text-zinc-600 dark:text-zinc-400">
+                {t.verified.replace('{date}', quote.verifiedAt)}
+              </p>
+              <a
+                href={quote.url}
+                className="inline-block text-indigo-700 underline dark:text-indigo-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.source}
+              </a>
+            </article>
+          );
         })}
       </div>
     </section>

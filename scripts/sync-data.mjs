@@ -13,6 +13,10 @@ const FILES_TO_SYNC = [
   'trending_comparisons.json',
   'harness_tools.json',
   'official_deals.json',
+  'compare_index_allowlist.json',
+  'compare_verdicts.json',
+  'domestic_models.json',
+  'ai_subscriptions.json',
 ];
 
 if (!fs.existsSync(ANALYST_DIR)) {

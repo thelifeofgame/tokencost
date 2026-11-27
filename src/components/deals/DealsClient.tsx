@@ -329,7 +329,14 @@ export default function DealsClient() {
         </button>
       </section>
 
-      <Link className="inline-block text-sm text-indigo-700 underline dark:text-indigo-300" href={subscriptionHref(locale)}>{t.subscriptions.title}</Link>
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <Link className="inline-block text-sm text-indigo-700 underline dark:text-indigo-300" href={subscriptionHref(locale)}>{t.subscriptions.title}</Link>
+        {locale === 'zh-CN' && (
+          <Link className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-800 underline dark:text-amber-300" href="/zh-CN/domestic-models/">
+            免海外信用卡：国内大模型官方费率与支付方式一览 →
+          </Link>
+        )}
+      </div>
 
       {/* 3. Filter & View Toolbar */}
       <section className="min-w-0 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 p-3.5 sm:p-4 backdrop-blur-md space-y-3">

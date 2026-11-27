@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="339" height="26" viewBox="0 0 339 26" role="img" aria-label="TokenCosts AI: Qwen3.5 397B A17B $0.45 / $3.00 per 1M">
-  <title>TokenCosts AI: Qwen3.5 397B A17B $0.45 / $3.00 per 1M</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="339" height="26" viewBox="0 0 339 26" role="img" aria-label="TokenCosts AI: Qwen3.5 397B A17B $0.50 / $3.60 per 1M">
+  <title>TokenCosts AI: Qwen3.5 397B A17B $0.50 / $3.60 per 1M</title>
   <defs>
     <linearGradient id="indigo-grad-qwen3.5-397b-a17b-input" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#4F46E5"/>
@@ -20,6 +20,6 @@
     <text x="23" y="16.8" fill="#FAFAFA">TOKENCOSTS AI</text>
   </g>
   <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="600" text-rendering="geometricPrecision">
-    <text x="137" y="16.8" fill="#EEF2FF">QWEN3.5 397B A17B · <tspan fill="#FFFFFF" font-weight="700">$0.45/1M</tspan></text>
+    <text x="137" y="16.8" fill="#EEF2FF">QWEN3.5 397B A17B · <tspan fill="#FFFFFF" font-weight="700">$0.50/1M</tspan></text>
   </g>
 </svg>

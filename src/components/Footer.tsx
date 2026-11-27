@@ -7,7 +7,7 @@ import { Cpu, Heart, Code2, Globe, Mail } from 'lucide-react';
 import { useI18n } from '@/i18n/I18nProvider';
 
 export default function Footer() {
-  const { t, getLocalizedPath } = useI18n();
+  const { t, locale, getLocalizedPath } = useI18n();
 
   const migrationTitle = t.growth.migrationTitle;
 
@@ -136,6 +136,16 @@ export default function Footer() {
                 </span>
               </Link>
             </li>
+            {locale === 'zh-CN' && (
+              <li>
+                <Link
+                  href="/zh-CN/domestic-models/"
+                  className="inline-flex items-center gap-1.5 text-xs text-amber-800 dark:text-amber-300 hover:text-amber-950 dark:hover:text-amber-200 font-medium transition-colors"
+                >
+                  <span>{t.domestic.title}（¥ 人民币计费）</span>
+                </Link>
+              </li>
+            )}
             <li>
               <Link href={getLocalizedPath('/pricing/realtime-voice-world-model-api-costs/')} className="text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-200 transition-colors">
                 Genie 4 &amp; Voice Standby API Costs

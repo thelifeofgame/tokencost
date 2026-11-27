@@ -6,14 +6,18 @@
       "modelId": "deepseek-v4-pro",
       "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
       "cnyPerMillion": {
-        "input": null,
-        "output": null,
-        "cached": null
+        "input": 9,
+        "output": 27,
+        "cached": 0.3
       },
-      "priceVerifiedAt": null,
-      "paymentMethods": null,
-      "paymentSource": null,
-      "paymentVerifiedAt": null
+      "priceVerifiedAt": "2026-11-27",
+      "paymentMethods": [
+        "支付宝",
+        "微信支付",
+        "银行对公汇款（仅企业实名认证）"
+      ],
+      "paymentSource": "https://static.deepseek.com/faq/index.html?lang=zh",
+      "paymentVerifiedAt": "2026-11-27"
     },
     {
       "id": "qwen",
@@ -21,14 +25,20 @@
       "modelId": "qwen-plus",
       "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
       "cnyPerMillion": {
-        "input": null,
-        "output": null,
-        "cached": null
+        "input": 0.8,
+        "output": 2,
+        "cached": 0.08
       },
-      "priceVerifiedAt": null,
-      "paymentMethods": null,
-      "paymentSource": null,
-      "paymentVerifiedAt": null
+      "priceVerifiedAt": "2026-11-27",
+      "paymentMethods": [
+        "支付宝",
+        "个人网银",
+        "企业网银",
+        "银联在线支付",
+        "银行账户对公汇款"
+      ],
+      "paymentSource": "https://help.aliyun.com/zh/user-center/use-alipay-online-banking-to-recharge-online",
+      "paymentVerifiedAt": "2026-11-27"
     },
     {
       "id": "glm",
@@ -36,14 +46,18 @@
       "modelId": "glm-5",
       "url": "https://open.bigmodel.cn/pricing",
       "cnyPerMillion": {
-        "input": null,
-        "output": null,
-        "cached": null
+        "input": 4,
+        "output": 18,
+        "cached": 1
       },
-      "priceVerifiedAt": null,
-      "paymentMethods": null,
-      "paymentSource": null,
-      "paymentVerifiedAt": null
+      "priceVerifiedAt": "2026-11-27",
+      "paymentMethods": [
+        "支付宝",
+        "微信支付",
+        "银行对公汇款（企业实名认证）"
+      ],
+      "paymentSource": "https://docs.bigmodel.cn/cn/terms/recharge-agreement",
+      "paymentVerifiedAt": "2026-11-27"
     },
     {
       "id": "kimi",
@@ -51,57 +65,69 @@
       "modelId": "kimi-k3",
       "url": "https://platform.moonshot.cn/docs/pricing",
       "cnyPerMillion": {
-        "input": null,
-        "output": null,
-        "cached": null
+        "input": 20,
+        "output": 100,
+        "cached": 2
       },
-      "priceVerifiedAt": null,
-      "paymentMethods": null,
-      "paymentSource": null,
-      "paymentVerifiedAt": null
+      "priceVerifiedAt": "2026-11-27",
+      "paymentMethods": [
+        "微信支付",
+        "支付宝",
+        "银行对公汇款（企业实名认证）"
+      ],
+      "paymentSource": "https://platform.kimi.com/docs/guide/account-and-payments",
+      "paymentVerifiedAt": "2026-11-27"
     },
     {
       "id": "minimax",
       "name": "MiniMax",
       "modelId": "minimax-m3",
-      "url": "https://www.minimaxi.com/",
+      "url": "https://platform.minimaxi.com/docs/guides/pricing-paygo",
       "cnyPerMillion": {
-        "input": null,
-        "output": null,
-        "cached": null
+        "input": 2.1,
+        "output": 8.4,
+        "cached": 0.42
       },
-      "priceVerifiedAt": null,
-      "paymentMethods": null,
-      "paymentSource": null,
-      "paymentVerifiedAt": null
+      "priceVerifiedAt": "2026-11-27",
+      "paymentMethods": [
+        "支付宝",
+        "微信支付",
+        "银行对公汇款（仅企业用户）"
+      ],
+      "paymentSource": "https://platform.minimax.cn/docs/faq/about-account",
+      "paymentVerifiedAt": "2026-11-27"
     },
     {
       "id": "doubao",
       "name": "豆包 / 火山方舟",
       "modelId": "seed-2-1-turbo",
-      "url": "https://www.volcengine.com/docs/82379",
+      "url": "https://www.volcengine.com/docs/82379/1544106",
       "cnyPerMillion": {
-        "input": null,
-        "output": null,
-        "cached": null
+        "input": 3,
+        "output": 15,
+        "cached": 0.6
       },
-      "priceVerifiedAt": null,
-      "paymentMethods": null,
-      "paymentSource": null,
-      "paymentVerifiedAt": null
+      "priceVerifiedAt": "2026-11-27",
+      "paymentMethods": [
+        "支付宝",
+        "微信支付",
+        "网银",
+        "线下银行对公转账"
+      ],
+      "paymentSource": "https://docs.volcengine.com/docs/billing-center/overview-of-enterprise-financial-management?lang=zh",
+      "paymentVerifiedAt": "2026-11-27"
     }
   ],
   "usdQuotes": [
     {
       "key": "deepseek-v4-pro",
-      "name": "DeepSeek V4 Pro",
+      "name": "DeepSeek V4 Pro 0423",
       "region": "domestic",
       "modelId": "deepseek-v4-pro",
-      "input": 1.32,
-      "output": 3.96,
+      "input": 0.8882,
+      "output": 1.5887,
       "url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "verifiedAt": "2026-11-25",
-      "peak": true
+      "verifiedAt": "2026-11-27"
     },
     {
       "key": "gpt-6.2-sol",
@@ -111,7 +137,7 @@
       "input": 2,
       "output": 10,
       "url": "https://openai.com/business/pricing/#api",
-      "verifiedAt": "2026-11-25"
+      "verifiedAt": "2026-11-27"
     },
     {
       "key": "gpt-6.2-astra",
@@ -121,7 +147,7 @@
       "input": 8,
       "output": 40,
       "url": "https://openai.com/business/pricing/#api",
-      "verifiedAt": "2026-11-25"
+      "verifiedAt": "2026-11-27"
     },
     {
       "key": "claude-fable-5.2",
@@ -131,7 +157,7 @@
       "input": 8,
       "output": 40,
       "url": "https://claude.com/pricing",
-      "verifiedAt": "2026-11-25"
+      "verifiedAt": "2026-11-27"
     }
   ]
 }

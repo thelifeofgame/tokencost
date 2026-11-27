@@ -101,7 +101,7 @@ export default function DealsComparisonTable({ providers }: DealsComparisonTable
               <th scope="col" className="min-w-[170px] px-3.5 py-3">
                 {dealsT.labelRegularPrice}
               </th>
-              <th scope="col" className="min-w-[155px] px-3.5 py-3">
+              <th scope="col" className="min-w-[195px] px-3.5 py-3">
                 {dealsT.labelPromoWindow}
               </th>
               <th scope="col" className="min-w-[165px] px-3.5 py-3">
@@ -195,18 +195,32 @@ export default function DealsComparisonTable({ providers }: DealsComparisonTable
 
                   {/* 4. Promo Window */}
                   <td
-                    className={`px-3.5 py-3.5 text-[11px] leading-relaxed ${
+                    className={`px-3.5 py-3.5 text-[11px] leading-relaxed space-y-2 ${
                       isActive
                         ? 'text-zinc-900 dark:text-zinc-100 font-medium'
                         : 'text-zinc-600 dark:text-zinc-400'
                     }`}
                   >
-                    {localized.promoWindow}
-              {provider.promoDeadlines?.map(({ offer, endsAt }) => (
-                <span key={offer} className="block">
-                  {offer} · <DealDeadline endsAt={endsAt} />
-                </span>
-              ))}
+                    <p className="leading-relaxed">{localized.promoWindow}</p>
+                    {provider.promoDeadlines && provider.promoDeadlines.length > 0 && (
+                      <div className="space-y-1 pt-1.5 border-t border-zinc-200/70 dark:border-zinc-800/70">
+                        {provider.promoDeadlines.map(({ offer, endsAt }) => (
+                          <div
+                            key={`${offer}-${endsAt}`}
+                            className="flex flex-col gap-1 rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/90 dark:bg-zinc-950/60 px-2 py-1.5"
+                          >
+                            <span className="text-[10px] font-medium text-zinc-700 dark:text-zinc-300 leading-snug">
+                              {offer}
+                            </span>
+                            <DealDeadline
+                              endsAt={endsAt}
+                              variant="pill"
+                              tone={isActive ? 'emerald' : 'neutral'}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </td>
 
                   {/* 5. Eligible Plans */}

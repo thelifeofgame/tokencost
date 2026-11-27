@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="364" height="22" viewBox="0 0 364 22" role="img" aria-label="TokenCosts AI: Pareto 26.10 $0.80 / $3.20 per 1M">
-  <title>TokenCosts AI: Pareto 26.10 $0.80 / $3.20 per 1M</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="364" height="22" viewBox="0 0 364 22" role="img" aria-label="TokenCosts AI: Kimi K2 0905 $0.60 / $2.50 per 1M">
+  <title>TokenCosts AI: Kimi K2 0905 $0.60 / $2.50 per 1M</title>
   <defs>
-    <clipPath id="clip-dark-pareto-26.10-cache">
+    <clipPath id="clip-dark-kimi-k2-0905-cache">
       <rect width="364" height="22" rx="4"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#clip-dark-pareto-26.10-cache)">
+  <g clip-path="url(#clip-dark-kimi-k2-0905-cache)">
     <rect x="0" y="0" width="112" height="22" fill="#09090B"/>
     <rect x="112" y="0" width="252" height="22" fill="#18181B"/>
     <rect x="111.5" y="0" width="1" height="22" fill="#27272A"/>
@@ -16,6 +16,6 @@
     <text x="22" y="14.5" fill="#FAFAFA">TokenCosts AI</text>
   </g>
   <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="500" text-rendering="geometricPrecision">
-    <text x="121" y="14.5" fill="#A1A1AA">Pareto 26.10 <tspan fill="#34D399" font-weight="700">-96% Cache ($0.03/1M)</tspan></text>
+    <text x="121" y="14.5" fill="#A1A1AA">Kimi K2 0905 <tspan fill="#34D399" font-weight="700">-75% Cache ($0.15/1M)</tspan></text>
   </g>
 </svg>

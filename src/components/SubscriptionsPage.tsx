@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import SubscriptionCatalog from './SubscriptionCatalog';
 import SubscriptionPicker from './SubscriptionPicker';
+import SubscriptionBreakevenCard from './SubscriptionBreakevenCard';
 import SubscriptionOutbound from './SubscriptionOutbound';
 import { getTranslation } from '@/i18n';
 import { subscriptionAlternates, subscriptionComparisons, subscriptionHref, subscriptionProducts } from '@/lib/ai-subscriptions';
@@ -52,16 +53,16 @@ function PlanCard({ product, plan, locale }: { product: SubscriptionProduct; pla
     [t.features, plan.features?.join(' · ') ?? t.missing],
   ];
   return (
-    <article className="space-y-3 rounded-xl border border-zinc-200 p-4 dark:border-zinc-800">
-      <h3 className="font-semibold">{plan.name ?? t.missing}</h3>
+    <article className="space-y-3 rounded-xl border border-zinc-200/90 bg-white/90 p-4 dark:border-zinc-800/80 dark:bg-zinc-900/60 shadow-sm dark:shadow-none">
+      <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">{plan.name ?? t.missing}</h3>
       <dl className="grid grid-cols-2 gap-3 text-sm">
         {fields.map(([label, value]) => <div key={label}>
-          <dt className="text-xs text-zinc-600 dark:text-zinc-400">{label}</dt><dd className="font-medium">{value}</dd>
+          <dt className="text-xs text-zinc-600 dark:text-zinc-400">{label}</dt><dd className="font-medium tabular-nums">{value}</dd>
         </div>)}
       </dl>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <SubscriptionOutbound product={product.id} href={plan.url}>{t.source}</SubscriptionOutbound>
-        <span className="text-xs text-zinc-600 dark:text-zinc-400">{t.verified.replace('{date}', plan.verifiedAt ?? t.missing)}</span>
+        <span className="font-mono tabular-nums text-xs text-zinc-600 dark:text-zinc-400">{t.verified.replace('{date}', plan.verifiedAt ?? t.missing)}</span>
       </div>
     </article>
   );
@@ -81,16 +82,17 @@ export default function SubscriptionsPage(props: Props) {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">{t.description}</p>
-        <p className="text-xs text-zinc-600 dark:text-zinc-400">{t.verified.replace('{date}', latest)}</p>
+        <p className="font-mono tabular-nums text-xs text-zinc-600 dark:text-zinc-400">{t.verified.replace('{date}', latest)}</p>
       </header>
       {isHome ? <>
         <SubscriptionCatalog products={products} />
         <SubscriptionPicker />
+        <SubscriptionBreakevenCard locale={locale} />
         <section className="space-y-3">
           <h2 className="text-lg font-semibold">{t.comparisons}</h2>
           <ul className="flex flex-wrap gap-2">
             {subscriptionComparisons.map(comparison => <li key={comparison.slug}>
-              <Link className="block rounded-lg border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700"
+              <Link className="block rounded-xl border border-zinc-200/90 dark:border-zinc-800/80 bg-white/90 dark:bg-zinc-900/60 px-3.5 py-2 text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:border-indigo-300 dark:hover:border-indigo-500/40 transition-colors"
                 href={subscriptionHref(locale, `compare/${comparison.slug}/`)}>
                 {comparison.products.map(id => subscriptionProducts.find(product => product.id === id)?.name).join(' vs ')}
               </Link>
@@ -113,13 +115,18 @@ export default function SubscriptionsPage(props: Props) {
       )}
       <section className="space-y-3">
         <h2 className="text-lg font-semibold">{t.faq}</h2>
-        {faqs.map(item => <details className="rounded-lg border border-zinc-200 p-3 text-sm dark:border-zinc-800" key={item.question}>
-          <summary className="cursor-pointer font-medium">{item.question}</summary><p className="mt-2">{item.answer}</p>
+        {faqs.map(item => <details className="rounded-xl border border-zinc-200/90 bg-white/90 p-3.5 text-sm dark:border-zinc-800/80 dark:bg-zinc-900/60" key={item.question}>
+          <summary className="cursor-pointer font-medium">{item.question}</summary><p className="mt-2 text-zinc-600 dark:text-zinc-400">{item.answer}</p>
         </details>)}
       </section>
       <div className="flex flex-wrap gap-4 text-sm">
         <Link className="text-indigo-700 underline dark:text-indigo-300" href={locale === 'zh-CN' ? '/zh-CN/' : '/'}>{t.simulator}</Link>
         <Link className="text-indigo-700 underline dark:text-indigo-300" href={`${locale === 'zh-CN' ? '/zh-CN' : ''}/deals/?category=subscription`}>{t.consumerDeals}</Link>
+        {locale === 'zh-CN' && (
+          <Link className="text-amber-800 underline dark:text-amber-300" href="/zh-CN/domestic-models/">
+            对比国内大模型人民币 API 与官方直付通道 →
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -6,16 +6,30 @@ const output = process.argv[2] ?? 'out';
 const catalog = JSON.parse(readFileSync(new URL('../src/data/ai_subscriptions.json', import.meta.url), 'utf8'));
 const source = JSON.parse(readFileSync(new URL('../src/data/official_deals.json', import.meta.url), 'utf8'));
 const paidFields = ['monthlyUSD', 'monthlyUSDMax', 'yearlyUSD', 'monthlyCNY', 'yearlyCNY'];
+const nonDealsProducts = new Set(['copilot', 'doubao', 'qianwen']);
+const expectedCatalogDate = catalog.lastVerifiedDate ?? source.lastVerifiedDate;
 assert.ok(catalog.comparisons.length <= 20);
 const sitemap = readFileSync(join(output, 'sitemap.xml'), 'utf8');
 for (const product of catalog.products) {
+  assert.equal(new URL(product.source.url).protocol, 'https:', `${product.id}: source.url`);
+  const isNonDeals = nonDealsProducts.has(product.id);
   for (const plan of product.plans) {
-    assert.equal(new URL(plan.url).protocol, 'https:');
-    if (paidFields.some(field => plan[field] !== null)) {
+    assert.equal(new URL(plan.url).protocol, 'https:', `${product.id}: plan.url`);
+    const presentPaidFields = paidFields.filter(key => plan[key] !== null);
+    if (isNonDeals) {
+      assert.equal(plan.verifiedAt, expectedCatalogDate, `${product.id}: verifiedAt mismatch`);
+      for (const field of presentPaidFields) {
+        assert.equal(typeof plan[field], 'number', `${product.id}: ${field} type`);
+        assert.ok(Number.isFinite(plan[field]) && plan[field] > 0, `${product.id}: ${field} positive`);
+      }
+      if (plan.monthlyCNY !== null || plan.yearlyCNY !== null) {
+        assert.equal(product.availableInChina, true, `${product.id}: availableInChina must be true for CNY plans`);
+      }
+    } else if (presentPaidFields.length > 0) {
       const origin = source.providers.find(provider => provider.verifiedDate === plan.verifiedAt
         && [provider.officialSourceUrl, provider.secondaryOfficialUrl].includes(plan.url));
       assert.ok(origin, product.id);
-      for (const field of paidFields.filter(key => plan[key] !== null)) {
+      for (const field of presentPaidFields) {
         const rates = Array.from(origin.regularPrice.matchAll(/\$([\d,.]+)/g), result => Number(result[1].replace(/,/g, '')));
         assert.ok(rates.includes(plan[field]), `${product.id}: ${field}`);
       }

@@ -323,9 +323,13 @@ export default function HomePage() {
           {locale === 'zh-CN' && (
             <Link
               href="/zh-CN/domestic-models/"
-              className="rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-1 text-indigo-700 dark:border-indigo-900 dark:bg-indigo-950 dark:text-indigo-300"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-50/90 dark:bg-amber-500/10 border border-amber-200/90 dark:border-amber-500/30 text-amber-900 dark:text-amber-300 hover:bg-amber-100/80 dark:hover:bg-amber-500/20 hover:border-amber-300 dark:hover:border-amber-400/50 shadow-sm dark:shadow-none transition-colors"
             >
-              {t.domestic.title}
+              <span className="inline-flex h-4 w-4 items-center justify-center rounded bg-amber-200/80 dark:bg-amber-500/20 font-mono text-[10px] font-bold text-amber-900 dark:text-amber-200">
+                ¥
+              </span>
+              <span className="font-medium">{t.domestic.title}</span>
+              <ArrowRight className="h-3 w-3 shrink-0" />
             </Link>
           )}
           <Link

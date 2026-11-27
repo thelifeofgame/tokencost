@@ -3,9 +3,9 @@
   "title": "Daily LLM Industry Market Radar & Price Drops",
   "description": "Daily automated intelligence tracking new model releases, API price cuts, batch offload discounts, and prompt caching rate drops across leading foundation model vendors.",
   "version": "1.1.0",
-  "lastUpdated": "2026-11-25T10:12:45.302182+08:00",
-  "date": "2026-11-25",
-  "totalItems": 12,
+  "lastUpdated": "2026-11-27T09:02:56.225697+08:00",
+  "date": "2026-11-27",
+  "totalItems": 13,
   "categories": [
     {
       "type": "new_model",
@@ -29,6 +29,96 @@
     }
   ],
   "items": [
+    {
+      "id": "radar-deepseek-v4-pro-price-cut",
+      "type": "price_cut",
+      "title": "DeepSeek V4 Pro Cuts OpenRouter Rates 31%-41% to $0.888/$1.508 per 1M",
+      "provider": "DeepSeek",
+      "modelId": "deepseek-v4-pro",
+      "badgeText": "-41% Output Cut",
+      "summary": "DeepSeek V4 Pro drops 30.6% on input ($1.28 to $0.8882/1M) and 41.1% on output ($2.56 to $1.5082/1M) on OpenRouter with 77.48% prompt caching ($0.20/1M).",
+      "effectiveDate": "2026-11-26",
+      "link": "https://api-docs.deepseek.com/quick_start/pricing",
+      "metrics": {
+        "inputPerM": 0.8882,
+        "outputPerM": 1.5887,
+        "cacheDiscountPercent": 77.48,
+        "contextWindow": 1048576,
+        "throughputTps": 85.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "DeepSeek V4 Pro 路由降价 31%–41%，降至 $0.888/$1.508 每百万 Token",
+          "badgeText": "输出降价 41%",
+          "summary": "DeepSeek V4 Pro 在 OpenRouter 输入下调 30.6%（$1.28 降至 $0.8882/1M），输出大降 41.1%（$2.56 降至 $1.5082/1M），缓存读取 $0.20/1M（77.48% 折扣）。"
+        },
+        "zh-TW": {
+          "title": "DeepSeek V4 Pro 路由降價 31%–41%，降至 $0.888/$1.508 每百萬 Token",
+          "badgeText": "輸出降價 41%",
+          "summary": "DeepSeek V4 Pro 於 OpenRouter 輸入調降 30.6%（$1.28 降至 $0.8882/1M），輸出大降 41.1%（$2.56 降至 $1.5082/1M），快取讀取 $0.20/1M（77.48% 折扣）。"
+        },
+        "ja": {
+          "title": "DeepSeek V4 Pro が OpenRouter で 31%〜41% 値下げ（$0.888/$1.508 per 1M）",
+          "badgeText": "出力 41% 値下げ",
+          "summary": "DeepSeek V4 Pro の OpenRouter 料金が入力 30.6% 減（$0.8882/1M）・出力 41.1% 減（$1.5082/1M）へ改定され、77.48% キャッシュ割引（$0.20/1M）に対応。"
+        },
+        "ko": {
+          "title": "DeepSeek V4 Pro, OpenRouter 요금 31%~41% 인하($0.888/$1.508 per 1M)",
+          "badgeText": "출력 41% 인하",
+          "summary": "DeepSeek V4 Pro의 OpenRouter 입력 요금이 30.6%($0.8882/1M), 출력 요금이 41.1%($1.5082/1M) 인하되었으며 77.48% 캐시 할인($0.20/1M)을 제공합니다."
+        },
+        "es": {
+          "title": "DeepSeek V4 Pro rebaja un 31%–41% en OpenRouter hasta $0.888/$1.508 por 1M",
+          "badgeText": "-41% en Salida",
+          "summary": "DeepSeek V4 Pro recorta un 30.6% la entrada ($0.8882/1M) y un 41.1% la salida ($1.5082/1M) en OpenRouter, con 77.48% de descuento en caché ($0.20/1M)."
+        }
+      }
+    },
+    {
+      "id": "radar-dyn-lingsante-3.1-air-vl",
+      "type": "new_model",
+      "title": "inclusionAI Releases LingSante 3.1 Air VL with 131,072 Context",
+      "provider": "Inclusionai",
+      "modelId": "lingsante-3.1-air-vl",
+      "badgeText": "New Arrival",
+      "summary": "LingSante 3.1 Air VL is inclusionAI's medical vision-language model, a 124B total / 5.5B active MoE. It takes text and up to 16 images (scans, skin and meal photos, lab...",
+      "effectiveDate": "2026-11-26",
+      "link": "https://openrouter.ai/models/inclusionai/lingsante-3.1-air-vl",
+      "metrics": {
+        "inputPerM": 0.06,
+        "outputPerM": 0.18,
+        "cacheDiscountPercent": 80.0,
+        "contextWindow": 131072,
+        "throughputTps": 85.0
+      },
+      "i18n": {
+        "zh-CN": {
+          "title": "inclusionAI 上线新模型 LingSante 3.1 Air VL，支持 131,072 上下文",
+          "badgeText": "新模型上线",
+          "summary": "inclusionAI 在 OpenRouter 正式发布 LingSante 3.1 Air VL，支持 131,072 上下文窗口，API 定价为输入 $0.06/1M、输出 $0.18/1M。"
+        },
+        "zh-TW": {
+          "title": "inclusionAI 上線新模型 LingSante 3.1 Air VL，支援 131,072 上下文",
+          "badgeText": "新模型上線",
+          "summary": "inclusionAI 於 OpenRouter 正式發布 LingSante 3.1 Air VL，支援 131,072 上下文視窗，API 定價為輸入 $0.06/1M、輸出 $0.18/1M。"
+        },
+        "ja": {
+          "title": "inclusionAI、131,072 コンテキスト対応の新モデル LingSante 3.1 Air VL を公開",
+          "badgeText": "新着モデル",
+          "summary": "inclusionAI が OpenRouter で LingSante 3.1 Air VL を公開しました。131,072 トークンのコンテキストに対応し、料金は入力 $0.06/1M・出力 $0.18/1M です。"
+        },
+        "ko": {
+          "title": "inclusionAI, 131,072 컨텍스트 지원 신규 모델 LingSante 3.1 Air VL 출시",
+          "badgeText": "신규 모델",
+          "summary": "inclusionAI가 OpenRouter에 LingSante 3.1 Air VL을(를) 출시했습니다. 131,072 토큰 컨텍스트를 지원하며 요금은 입력 $0.06/1M, 출력 $0.18/1M입니다."
+        },
+        "es": {
+          "title": "inclusionAI lanza LingSante 3.1 Air VL con contexto de 131,072 tokens",
+          "badgeText": "Nuevo Modelo",
+          "summary": "inclusionAI lanza LingSante 3.1 Air VL en OpenRouter con ventana de contexto de 131,072 tokens a $0.06/1M de entrada y $0.18/1M de salida."
+        }
+      }
+    },
     {
       "id": "radar-deepseek-v4-1-flash-price-cut",
       "type": "caching_update",
@@ -85,9 +175,9 @@
       "effectiveDate": "2026-11-25",
       "link": "https://docs.z.ai/guides/overview/pricing",
       "metrics": {
-        "inputPerM": 0.12,
-        "outputPerM": 0.38,
-        "cacheDiscountPercent": 83.33,
+        "inputPerM": 0.15,
+        "outputPerM": 0.5,
+        "cacheDiscountPercent": 80.0,
         "contextWindow": 1048576,
         "throughputTps": 145.0
       },
@@ -177,7 +267,7 @@
       "metrics": {
         "inputPerM": 0.09,
         "outputPerM": 0.36,
-        "cacheDiscountPercent": 90.0,
+        "cacheDiscountPercent": 80.0,
         "contextWindow": 524288,
         "throughputTps": 85.0
       },
@@ -220,9 +310,9 @@
       "effectiveDate": "2026-11-24",
       "link": "https://openrouter.ai/models/xiaomi/mimo-v2.6-flash-mopd",
       "metrics": {
-        "inputPerM": 0.15,
-        "outputPerM": 0.42,
-        "cacheDiscountPercent": 86.67,
+        "inputPerM": 0.5,
+        "outputPerM": 1.0,
+        "cacheDiscountPercent": 90.0,
         "contextWindow": 1048576,
         "throughputTps": 145.0
       },
@@ -230,72 +320,27 @@
         "zh-CN": {
           "title": "Xiaomi 上线新模型 MiMo-V2.6-Flash-MOPD，支持 1,048,576 上下文",
           "badgeText": "新模型上线",
-          "summary": "Xiaomi 在 OpenRouter 正式发布 MiMo-V2.6-Flash-MOPD，支持 1,048,576 上下文窗口，API 定价为输入 $0.15/1M、输出 $0.42/1M。"
+          "summary": "Xiaomi 在 OpenRouter 正式发布 MiMo-V2.6-Flash-MOPD，支持 1,048,576 上下文窗口，API 定价为输入 $0.50/1M、输出 $1.00/1M。"
         },
         "zh-TW": {
           "title": "Xiaomi 上線新模型 MiMo-V2.6-Flash-MOPD，支援 1,048,576 上下文",
           "badgeText": "新模型上線",
-          "summary": "Xiaomi 於 OpenRouter 正式發布 MiMo-V2.6-Flash-MOPD，支援 1,048,576 上下文視窗，API 定價為輸入 $0.15/1M、輸出 $0.42/1M。"
+          "summary": "Xiaomi 於 OpenRouter 正式發布 MiMo-V2.6-Flash-MOPD，支援 1,048,576 上下文視窗，API 定價為輸入 $0.50/1M、輸出 $1.00/1M。"
         },
         "ja": {
           "title": "Xiaomi、1,048,576 コンテキスト対応の新モデル MiMo-V2.6-Flash-MOPD を公開",
           "badgeText": "新着モデル",
-          "summary": "Xiaomi が OpenRouter で MiMo-V2.6-Flash-MOPD を公開しました。1,048,576 トークンのコンテキストに対応し、料金は入力 $0.15/1M・出力 $0.42/1M です。"
+          "summary": "Xiaomi が OpenRouter で MiMo-V2.6-Flash-MOPD を公開しました。1,048,576 トークンのコンテキストに対応し、料金は入力 $0.50/1M・出力 $1.00/1M です。"
         },
         "ko": {
           "title": "Xiaomi, 1,048,576 컨텍스트 지원 신규 모델 MiMo-V2.6-Flash-MOPD 출시",
           "badgeText": "신규 모델",
-          "summary": "Xiaomi가 OpenRouter에 MiMo-V2.6-Flash-MOPD을(를) 출시했습니다. 1,048,576 토큰 컨텍스트를 지원하며 요금은 입력 $0.15/1M, 출력 $0.42/1M입니다."
+          "summary": "Xiaomi가 OpenRouter에 MiMo-V2.6-Flash-MOPD을(를) 출시했습니다. 1,048,576 토큰 컨텍스트를 지원하며 요금은 입력 $0.50/1M, 출력 $1.00/1M입니다."
         },
         "es": {
           "title": "Xiaomi lanza MiMo-V2.6-Flash-MOPD con contexto de 1,048,576 tokens",
           "badgeText": "Nuevo Modelo",
-          "summary": "Xiaomi lanza MiMo-V2.6-Flash-MOPD en OpenRouter con ventana de contexto de 1,048,576 tokens a $0.15/1M de entrada y $0.42/1M de salida."
-        }
-      }
-    },
-    {
-      "id": "radar-dyn-inkling-2-mini",
-      "type": "new_model",
-      "title": "Thinking Machines Releases Inkling 2 Mini with 1,048,576 Context",
-      "provider": "Thinkingmachines",
-      "modelId": "inkling-2-mini",
-      "badgeText": "New Arrival",
-      "summary": "Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times...",
-      "effectiveDate": "2026-11-21",
-      "link": "https://openrouter.ai/models/thinkingmachines/inkling-2-mini",
-      "metrics": {
-        "inputPerM": 0.075,
-        "outputPerM": 0.3,
-        "cacheDiscountPercent": 80.0,
-        "contextWindow": 1048576,
-        "throughputTps": 145.0
-      },
-      "i18n": {
-        "zh-CN": {
-          "title": "Thinking Machines 上线新模型 Inkling 2 Mini，支持 1,048,576 上下文",
-          "badgeText": "新模型上线",
-          "summary": "Thinking Machines 在 OpenRouter 正式发布 Inkling 2 Mini，支持 1,048,576 上下文窗口，API 定价为输入 $0.075/1M、输出 $0.30/1M。"
-        },
-        "zh-TW": {
-          "title": "Thinking Machines 上線新模型 Inkling 2 Mini，支援 1,048,576 上下文",
-          "badgeText": "新模型上線",
-          "summary": "Thinking Machines 於 OpenRouter 正式發布 Inkling 2 Mini，支援 1,048,576 上下文視窗，API 定價為輸入 $0.075/1M、輸出 $0.30/1M。"
-        },
-        "ja": {
-          "title": "Thinking Machines、1,048,576 コンテキスト対応の新モデル Inkling 2 Mini を公開",
-          "badgeText": "新着モデル",
-          "summary": "Thinking Machines が OpenRouter で Inkling 2 Mini を公開しました。1,048,576 トークンのコンテキストに対応し、料金は入力 $0.075/1M・出力 $0.30/1M です。"
-        },
-        "ko": {
-          "title": "Thinking Machines, 1,048,576 컨텍스트 지원 신규 모델 Inkling 2 Mini 출시",
-          "badgeText": "신규 모델",
-          "summary": "Thinking Machines가 OpenRouter에 Inkling 2 Mini을(를) 출시했습니다. 1,048,576 토큰 컨텍스트를 지원하며 요금은 입력 $0.075/1M, 출력 $0.30/1M입니다."
-        },
-        "es": {
-          "title": "Thinking Machines lanza Inkling 2 Mini con contexto de 1,048,576 tokens",
-          "badgeText": "Nuevo Modelo",
-          "summary": "Thinking Machines lanza Inkling 2 Mini en OpenRouter con ventana de contexto de 1,048,576 tokens a $0.075/1M de entrada y $0.30/1M de salida."
+          "summary": "Xiaomi lanza MiMo-V2.6-Flash-MOPD en OpenRouter con ventana de contexto de 1,048,576 tokens a $0.50/1M de entrada y $1.00/1M de salida."
         }
       }
     },

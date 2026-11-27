@@ -194,6 +194,17 @@ export default function ModelDetailPage({
           {locale === 'zh-CN' ? localizedDescription : model.notes}
         </p>
         <PriceVerificationDate date={priceVerifiedAt(model.modelId)} locale={locale} />
+        {locale === 'zh-CN' && /deepseek|qwen|zhipu|glm|moonshot|kimi|minimax|bytedance|seed|doubao/i.test(`${model.modelId} ${model.providerOrg}`) && (
+          <div className="mt-3">
+            <Link
+              href="/zh-CN/domestic-models/"
+              className="inline-flex items-center gap-2 rounded-xl border border-amber-200/90 dark:border-amber-500/25 bg-amber-50/75 dark:bg-amber-500/[0.08] px-3 py-1.5 text-xs font-medium text-amber-900 dark:text-amber-300 hover:bg-amber-100/80 dark:hover:bg-amber-500/15 transition-colors"
+            >
+              <span className="font-mono font-bold">¥</span>
+              <span>查看 {model.modelName} 国内官网人民币费率与微信/支付宝直付方式 →</span>
+            </Link>
+          </div>
+        )}
 
         {/* Core Pricing Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">

@@ -1,15 +1,15 @@
 # TokenCosts AI (tokencostsai.com)
 
-> Real-time LLM API pricing tracker, Prompt Caching & Batch 50% cost simulator, and Coding Agent token multiplier directory covering 363 frontier and open-weight models across 58 provider organizations (22 core labs).
+> Real-time LLM API pricing tracker, Prompt Caching & Batch 50% cost simulator, and Coding Agent token multiplier directory covering 364 frontier and open-weight models across 58 provider organizations (22 core labs).
 
-TokenCosts AI normalizes per-1M-token input, output, cached-read, cache-write, and asynchronous batch rates in USD alongside context windows, throughput (tokens/sec), TTFT latency, and benchmark ELO scores. For machine-readable lookups, AI agents and automated FinOps pipelines should fetch the lightweight structured catalog at https://tokencostsai.com/pricing-summary.json (synced daily from verified vendor rate cards; last updated 2026-11-25).
+TokenCosts AI normalizes per-1M-token input, output, cached-read, cache-write, and asynchronous batch rates in USD alongside context windows, throughput (tokens/sec), TTFT latency, and benchmark ELO scores. For machine-readable lookups, AI agents and automated FinOps pipelines should fetch the lightweight structured catalog at https://tokencostsai.com/pricing-summary.json (synced daily from verified vendor rate cards; last updated 2026-11-27).
 
-Current market highlights (2026-11-25): Upstage Solar Mini 4.5 ($0.01/$0.04, 512K ctx, -90% cache to $0.001); DeepSeek V4.1 Flash ($0.14/$0.42, -97% cache $0.0042, -64% batch); GLM-5.3-Flash ($0.12/$0.38, -83% cache $0.02, -81% batch).
+Current market highlights (2026-11-27): Upstage Solar Mini 4.5 ($0.01/$0.04, 512K ctx, -90% cache to $0.001); DeepSeek V4.1 Flash ($0.14/$0.42, -97% cache $0.0042, -64% batch); GLM-5.3-Flash ($0.15/$0.50, -80% cache $0.03, -85% batch).
 
 ## Authoritative Data & API Endpoints
 
-- [Structured Pricing Summary JSON](https://tokencostsai.com/pricing-summary.json): Lightweight machine-readable JSON feed of top benchmarked models across all 363 tracked LLMs with normalized input, output, cached read, batch discount, and context window fields.
-- [Full Model Pricing Directory](https://tokencostsai.com/models/): Searchable, sortable catalog of 363 LLMs with provider direct vs. gateway rates and live latency metrics.
+- [Structured Pricing Summary JSON](https://tokencostsai.com/pricing-summary.json): Lightweight machine-readable JSON feed of top benchmarked models across all 364 tracked LLMs with normalized input, output, cached read, batch discount, and context window fields.
+- [Full Model Pricing Directory](https://tokencostsai.com/models/): Searchable, sortable catalog of 364 LLMs with provider direct vs. gateway rates and live latency metrics.
 - [Interactive Token & Caching Cost Calculator](https://tokencostsai.com/calculator/): Simulate monthly spend with 95%+ Prompt Caching hit ratios, 50% Batch API offloading, and tiered long-context escalation.
 - [Official AI Deals & Billing Changes Watch](https://tokencostsai.com/deals/): Daily-verified official Black Friday promos, anti-reseller policy disclosures, Mistral Vibe Pro credit removals, and upcoming Nov 30 / Dec 1 API pricing cliffs & endpoint retirements across 12 vendors.
 - [Upstage Solar Mini 4.5 Live Cost Calculator](https://tokencostsai.com/calculator/solar-mini-4-5/): Ultra-low-floor 35B/3B-active MoE ($0.01/M input, $0.04/M output, $0.001/M cached read at 90% off, 512K context) for high-volume agent routing and classification workloads.
@@ -26,7 +26,7 @@ Current market highlights (2026-11-25): Upstage Solar Mini 4.5 ($0.01/$0.04, 512
 
 ## Official Deals, Deprecations & Nov 30 Deadlines
 
-- [Black Friday Official Deals & Billing Watch (Last verified 2026-11-25)](https://tokencostsai.com/deals/): Primary-domain-only audit of active official vendor promos vs. "No Official BF Promo" transparency, plus Mistral Vibe Pro bundled API credit removal and Dec 1 price hike alerts.
+- [Black Friday Official Deals & Billing Watch (Last verified 2026-11-27)](https://tokencostsai.com/deals/): Primary-domain-only audit of active official vendor promos vs. "No Official BF Promo" transparency, plus Mistral Vibe Pro bundled API credit removal and Dec 1 price hike alerts.
 - [Nov 30 Deadline: Gemini 4 Carbon/Argon 2x Hike & OpenAI Endpoints Shutdown](https://tokencostsai.com/pricing/gemini-4-carbon-dec-1-migration-guide/): Migrate before Nov 30, 2026 when Gemini 4 Carbon/Argon double from $2/$10 to $4/$20, `gemini-2.5-pro/flash` auto-route on Dec 1, and OpenAI `/v1/prompts`, Evals API, and Agent Builder sunset.
 - [Sub-Cent Frontier Alternative: Upstage Solar Mini 4.5 ($0.01/$0.04)](https://tokencostsai.com/models/solar-mini-4-5/): 512K-context 3B-active MoE with 90% prompt cache discount ($0.001/M cached read) and 145 t/s throughput — available via [OpenRouter](https://openrouter.ai/models/upstage/solar-mini-4-5?ref=tokencostsai_com).
 

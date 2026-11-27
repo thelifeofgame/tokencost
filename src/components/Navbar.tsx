@@ -25,6 +25,7 @@ interface NavLinkItem {
   drawerLabel?: string;
   isNew?: boolean;
   hasLiveDot?: boolean;
+  isDomesticCny?: boolean;
 }
 
 function GitHubIcon({ className = 'h-3.5 w-3.5 fill-current' }: { className?: string }) {
@@ -53,6 +54,17 @@ export default function Navbar() {
   const navLinks: NavLinkItem[] = [
     { href: '/', label: t.nav.simulator, shortLabel: t.nav.short.simulator },
     { href: '/models', label: t.nav.models, shortLabel: t.nav.short.models },
+    ...(locale === 'zh-CN'
+      ? [
+          {
+            href: '/domestic-models',
+            label: t.domestic.title,
+            shortLabel: '国内模型',
+            drawerLabel: '国内模型专区 · 人民币计费',
+            isDomesticCny: true,
+          },
+        ]
+      : []),
     { href: '/compare', label: t.nav.compare, shortLabel: t.nav.short.compare },
     { href: '/harness', label: t.nav.harness, shortLabel: t.nav.short.harness, isNew: true },
     { href: '/calculator', label: t.nav.calculators, shortLabel: t.nav.short.calculators },
@@ -125,10 +137,15 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav (lg: 1024px+, 9-tab zero-wrap adaptive) */}
+          {/* Desktop Nav (lg: 1024px+, zero-wrap adaptive) */}
           <nav className="hidden lg:flex items-center gap-0.5 min-[1440px]:gap-1 ml-1 min-w-0 flex-1 overflow-x-auto scrollbar-none">
             {navLinks.map((link) => {
-              const localizedHref = link.href === '/ai-subscriptions' ? subscriptionHref(locale) : getLocalizedPath(link.href);
+              const localizedHref =
+                link.href === '/ai-subscriptions'
+                  ? subscriptionHref(locale)
+                  : link.href === '/domestic-models'
+                  ? '/zh-CN/domestic-models/'
+                  : getLocalizedPath(link.href);
               const isActive =
                 pathname === link.href ||
                 pathname === localizedHref ||
@@ -137,7 +154,8 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={localizedHref}
-                  className={`px-1 min-[1100px]:px-1.5 min-[1440px]:px-2 2xl:px-3 py-1.5 text-[11px] min-[1360px]:text-xs font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap shrink-0 ${
+                  title={link.label}
+                  className={`px-1.5 min-[1440px]:px-2 2xl:px-2.5 py-1.5 text-[11px] min-[1440px]:text-xs font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'bg-zinc-100 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100 font-semibold'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/40'
@@ -150,6 +168,11 @@ export default function Navbar() {
                     </>
                   ) : (
                     <span>{link.label}</span>
+                  )}
+                  {link.isDomesticCny && (
+                    <span className="ml-1 hidden 2xl:inline-flex items-center rounded bg-amber-100/90 dark:bg-amber-500/15 px-1 py-0.5 text-[9px] font-mono font-bold leading-none text-amber-800 dark:text-amber-300 border border-amber-200/90 dark:border-amber-500/30">
+                      ¥
+                    </span>
                   )}
                   {link.isNew && (
                     <span className="ml-1.5 hidden 2xl:inline-flex rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-mono font-semibold text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
@@ -206,10 +229,24 @@ export default function Navbar() {
             target="_blank"
             rel="nofollow sponsored noopener noreferrer"
             onClick={handleOpenRouterClick}
-            className="flex items-center gap-1.5 px-2.5 xl:px-3.5 py-1.5 text-[11px] xl:text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg shadow-sm shadow-indigo-500/20 transition-all active:scale-[0.98]"
+            className={`flex items-center gap-1.5 px-2.5 xl:px-3.5 ${
+              locale === 'es' ? 'py-1 xl:py-1.5' : 'py-1.5'
+            } text-[11px] xl:text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg shadow-sm shadow-indigo-500/20 transition-all active:scale-[0.98]`}
           >
             <Sparkles className="h-3.5 w-3.5 text-indigo-200 shrink-0" />
-            <span className="whitespace-nowrap">{t.common.tryRouterApi} <span className="text-[10px] font-normal">({t.growth.affiliateLabel})</span></span>
+            {locale === 'es' ? (
+              <span className="flex flex-col xl:flex-row xl:items-center xl:gap-1 leading-none xl:leading-normal whitespace-nowrap">
+                <span>{t.common.tryRouterApi}</span>
+                <span className="text-[9px] xl:text-[10px] font-normal opacity-90">
+                  ({t.growth.affiliateLabel})
+                </span>
+              </span>
+            ) : (
+              <span className="whitespace-nowrap">
+                {t.common.tryRouterApi}{' '}
+                <span className="text-[10px] font-normal">({t.growth.affiliateLabel})</span>
+              </span>
+            )}
             <ExternalLink className="hidden min-[1440px]:inline-block h-3 w-3 text-indigo-200 shrink-0" />
           </a>
         </div>
@@ -249,7 +286,12 @@ export default function Navbar() {
 
           <div className="space-y-1">
             {navLinks.map((link) => {
-              const localizedHref = link.href === '/ai-subscriptions' ? subscriptionHref(locale) : getLocalizedPath(link.href);
+              const localizedHref =
+                link.href === '/ai-subscriptions'
+                  ? subscriptionHref(locale)
+                  : link.href === '/domestic-models'
+                  ? '/zh-CN/domestic-models/'
+                  : getLocalizedPath(link.href);
               const isActive =
                 pathname === link.href ||
                 pathname === localizedHref ||
@@ -259,20 +301,25 @@ export default function Navbar() {
                   key={link.href}
                   href={localizedHref}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between min-h-[44px] px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  className={`flex items-center justify-between gap-2 min-h-[44px] px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
                       ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 font-semibold'
                       : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/80 dark:hover:bg-zinc-900'
                   }`}
                 >
-                  <span>{link.drawerLabel || link.label}</span>
+                  <span className="min-w-0 leading-snug">{link.drawerLabel || link.label}</span>
+                  {link.isDomesticCny && (
+                    <span className="shrink-0 whitespace-nowrap rounded-full bg-amber-50 dark:bg-amber-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-500/25">
+                      ¥ RMB / 国内支付
+                    </span>
+                  )}
                   {link.isNew && (
-                    <span className="rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
+                    <span className="shrink-0 whitespace-nowrap rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
                       NEW
                     </span>
                   )}
                   {link.href === '/deals' && (
-                    <span className="rounded-full bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+                    <span className="shrink-0 whitespace-nowrap rounded-full bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 text-[10px] font-mono font-semibold text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
                       {t.deals.drawerBfBadge}
                     </span>
                   )}
@@ -319,9 +366,9 @@ export default function Navbar() {
               href={GITHUB_REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 px-3.5 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 bg-zinc-100/80 dark:bg-zinc-900/80 hover:bg-zinc-200/70 dark:hover:bg-zinc-800 rounded-lg border border-zinc-200/90 dark:border-zinc-800/80 transition-colors shrink-0"
+              className="min-h-[44px] flex items-center justify-center gap-1.5 px-3.5 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 bg-zinc-100/80 dark:bg-zinc-900/80 hover:bg-zinc-200/70 dark:hover:bg-zinc-800 rounded-lg border border-zinc-200/90 dark:border-zinc-800/80 transition-colors shrink-0"
             >
-              <GitHubIcon className="h-3.5 w-3.5 fill-current" />
+              <GitHubIcon className="h-3.5 w-3.5 fill-current shrink-0" />
               <span>{t.common.github}</span>
             </a>
             <a
@@ -330,10 +377,13 @@ export default function Navbar() {
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
               onClick={handleOpenRouterClick}
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors"
+              className="min-h-[44px] flex-1 flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors text-center leading-tight min-w-0"
             >
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>{t.common.tryRouterApi} <span className="text-[10px] font-normal">({t.growth.affiliateLabel})</span></span>
+              <Sparkles className="h-3.5 w-3.5 shrink-0" />
+              <span className="min-w-0">
+                {t.common.tryRouterApi}{' '}
+                <span className="text-[10px] font-normal">({t.growth.affiliateLabel})</span>
+              </span>
             </a>
           </div>
         </div>
